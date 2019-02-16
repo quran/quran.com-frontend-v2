@@ -1,0 +1,98 @@
+---
+en:
+  local: english
+  site_local: Site Language
+  change_local: Choose the language you want the site to display in
+  local_native_name:  English
+  language: Language
+  settings:
+    label: Settings
+    chapters: Chapters
+    reciters: Reciters
+    translations: Translations
+    remove_all: Remove all
+    translation_english: English
+    translation_other: Other Languages
+    reading: Reading
+    font_size:
+      label: Font size
+      arabic: Arabic
+      translation: Translations
+    tooltip:
+      label: Tooltip display
+      translation: Translation
+      transliteration: Transliteration
+    night_mode:
+      label: Night Mode
+      day_tip: Switch to day mode
+      night_tip: Switch to night mode
+  verses:
+    media: "Watch video commentary from %{from}"
+    go: Go to verse
+    not_found: Verse not found
+  chapters:
+    label: CHAPTERS
+    next: NEXT
+    previous: PREVIOUS
+    verses: VERSES
+    pages: PAGES
+    info: Chapter Info
+    continue: Continue
+    quick_links: Quick links
+    go_to_beginning: Beginning of chapter
+    read_full: Read full chapter
+  footnote: Footnote
+  action:
+    play: Play
+    pause: Pause
+    tafsir: Tafsirs
+    bookmark:
+      label: Bookmark
+      done: Bookmarked
+    copy:
+      label: Copy
+      done: Copied!
+  search:
+    placeholder: 'Search "Noah"',
+    result: "%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>"
+    error: Sorry, there was an error with your search.
+    no_query: No search query.
+    no_result: No results found.
+  player:
+    current_verse: Verse
+    next_verse: Next verse
+    previous_verse: Previous verse
+    repeat_title: TOGGLE REPEAT
+    repeat_single: Single
+    repeat_range: Range
+    repeat_from: From
+    repeat_to:  To
+    repeat_times: Times
+    repeat_loop: loop
+    scroll: Automatically scrolls to the currently playing ayah
+  loading: Loading...
+  nav:
+    title: Quran
+    settings: Settings
+    contribute: Contribute
+    about_us: About us
+    developers: Developers
+    useful_sites: Useful sites
+    other_links: Other links
+    contact_us: Contact us
+    help: Help & feedback
+    about_project: Quran.com (also known as The Noble Quran, Al Quran, Holy Quran, Koran) is a pro bono project.
+    rights: All Rights Reserved
+    mobilea_apps: Mobile Apps
+    navigate: Navigate
+    legacy_site: Legacy Quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  errors:
+    not_found: Sorry, this page does not exist
+    invalid_verse: Verse is out of range. Please go to home page
+    invalid_chapter: Chapter is out of range. Please go to home page
+    no_script: Looks like either your browser does not support Javascript or its disabled. Quran.com workes best with JavaScript enabled. For more instruction on how to enable javascript
+  click_here: Click here
+  tafsir_select: Select a tafsir
