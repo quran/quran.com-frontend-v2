@@ -21,7 +21,7 @@ gem 'pg'
 gem 'devise', '4.4.3'
 gem 'pagy'
 gem 'oj'
-
+gem 'translation'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
