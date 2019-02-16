@@ -2,11 +2,11 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/quran/quran/ur-PK
+# https://translation.io/quran/quran/ur
 #
 ---
-ur-PK:
-  hello: 
+ur:
+  tafsir_select: 
   date:
     day_names:
     - اتوار
@@ -78,7 +78,7 @@ ur-PK:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 
+      model_invalid: 'توثیق میں نا کا می: %{errors}'
       inclusion: فہرست میں شامل نہیں ہے
       exclusion: مخصوص ہے
       invalid: باطل ہے
@@ -116,13 +116,13 @@ ur-PK:
       not_saved:
         one: 
         other: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
     not_found: 
     invalid_verse: 
     invalid_chapter: 
     no_script: 
+    unavailable_session: 
+    unacceptable_request: 
+    connection_refused: 
   activerecord:
     errors:
       messages:
@@ -193,7 +193,7 @@ ur-PK:
         alert: 
   devise:
     confirmations:
-      confirmed: آپ کا ای میل ایڈریس کامیابی سے تصدیق کی گئی ہے.
+      confirmed: 
       send_instructions: 
       send_paranoid_instructions: 
     failure:
@@ -203,7 +203,7 @@ ur-PK:
       locked: 
       last_attempt: 
       not_found_in_database: 
-      timeout: آپ کا سیشن ختم ہوگیا. جاری رکھنے کے لئے دوبارہ سائن ان کریں.
+      timeout: 
       unauthenticated: 
       unconfirmed: 
     mailer:
@@ -242,7 +242,6 @@ ur-PK:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
-  tafsir_select: 
   local: 
   site_local: 
   change_local: 
@@ -280,7 +279,7 @@ ur-PK:
     verses: 
     pages: 
     info: 
-    continue: جاری رہے
+    continue: 
     quick_links: 
     go_to_beginning: 
     read_full: 

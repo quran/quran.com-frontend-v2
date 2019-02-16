@@ -2,11 +2,10 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/naveed/quran/ar
+# https://translation.io/quran/quran/ar
 #
 ---
 ar:
-  hello: 
   date:
     day_names:
     - الأحد
@@ -78,7 +77,7 @@ ar:
   errors:
     format: "%{message}"
     messages:
-      model_invalid: 
+      model_invalid: 'فشل التحقّق من: %{errors}'
       inclusion: "%{attribute} غير وارد في القائمة"
       exclusion: حقل %{attribute} محجوز
       invalid: محتوى %{attribute} غير صالح
@@ -119,6 +118,10 @@ ar:
     unavailable_session: 
     unacceptable_request: 
     connection_refused: 
+    not_found: 
+    invalid_verse: 
+    invalid_chapter: 
+    no_script: 
   activerecord:
     errors:
       messages:
@@ -236,3 +239,94 @@ ar:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
+  tafsir_select: 
+  local: 
+  site_local: 
+  change_local: 
+  local_native_name: 
+  language: 
+  settings:
+    label: 
+    chapters: 
+    reciters: 
+    translations: 
+    remove_all: 
+    translation_english: 
+    translation_other: 
+    reading: 
+    font_size:
+      label: 
+      arabic: 
+      translation: 
+    tooltip:
+      label: 
+      translation: 
+      transliteration: 
+    night_mode:
+      label: 
+      day_tip: 
+      night_tip: 
+  verses:
+    media: 
+    go: 
+    not_found: 
+  chapters:
+    label: 
+    next: 
+    previous: 
+    verses: 
+    pages: 
+    info: 
+    continue: 
+    quick_links: 
+    go_to_beginning: 
+    read_full: 
+  footnote: 
+  action:
+    play: 
+    pause: 
+    tafsir: 
+    bookmark:
+      label: 
+      done: 
+    copy:
+      label: 
+      done: 
+  search:
+    placeholder: 
+    result: 
+    error: 
+    no_query: 
+    no_result: 
+  player:
+    current_verse: 
+    next_verse: 
+    previous_verse: 
+    repeat_title: 
+    repeat_single: 
+    repeat_range: 
+    repeat_from: 
+    repeat_to: 
+    repeat_times: 
+    repeat_loop: 
+    scroll: 
+  loading: 
+  nav:
+    title: 
+    settings: 
+    contribute: 
+    about_us: 
+    developers: 
+    useful_sites: 
+    other_links: 
+    contact_us: 
+    help: 
+    about_project: 
+    rights: 
+    mobilea_apps: 
+    navigate: 
+    legacy_site: 
+    blog: 
+    forum: 
+  juz: 
+  click_here: 

@@ -53,7 +53,7 @@ en:
       label: Copy
       done: Copied!
   search:
-    placeholder: 'Search "Noah"',
+    placeholder: 'Search "Noah"'
     result: "%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>"
     error: Sorry, there was an error with your search.
     no_query: No search query.
