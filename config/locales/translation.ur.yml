@@ -116,7 +116,7 @@ ur:
       not_saved:
         one: 
         other: 
-    not_found: 
+    not_found: افسوس، یہ صفحہ موجود نہیں ہے
     invalid_verse: 
     invalid_chapter: 
     no_script: 
@@ -322,13 +322,13 @@ ur:
     useful_sites: 
     other_links: 
     contact_us: 
-    help: 
+    help: مدد اور رائے
     about_project: 
     rights: 
     mobilea_apps: 
     navigate: 
-    legacy_site: 
+    legacy_site: پرانی سائٹ
     blog: 
-    forum: 
+    forum: فورم
   juz: 
   click_here: 

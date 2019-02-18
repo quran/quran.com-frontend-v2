@@ -117,8 +117,10 @@ id:
         one: 
         other: 
     not_found: 
-    invalid_verse: 
-    invalid_chapter: 
+    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+      dan pilih Surah / Ayah
+    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+      dan pilih sebuah Surah
     no_script: 
     unavailable_session: 
     unacceptable_request: 
@@ -244,93 +246,96 @@ id:
         caranya untuk mengaktifkan akun yang terkunci beberapa menit lagi.
       send_paranoid_instructions: 
       unlocked: Akun Anda telah tidak terkunci lagi. Anda sekarang telah masuk sistem.
-  local: 
-  site_local: 
-  change_local: 
-  local_native_name: 
+  local: indonesian
+  site_local: Bahasa Situs
+  change_local: Pilih bahasa yang diinginkan untuk tampilan situs
+  local_native_name: Indonesia
   language: 
   settings:
     label: 
     chapters: 
     reciters: 
     translations: 
-    remove_all: 
-    translation_english: 
-    translation_other: 
-    reading: 
+    remove_all: Buang semua
+    translation_english: Bahasa Inggris
+    translation_other: Bahasa Lainnya
+    reading: Membaca
     font_size:
-      label: 
-      arabic: 
+      label: Ukuran huruf
+      arabic: Arab
       translation: 
     tooltip:
       label: 
-      translation: 
-      transliteration: 
+      translation: Terjemahan
+      transliteration: Transliterasi
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
+      label: Mode Malam
+      day_tip: Ganti ke mode terang
+      night_tip: Ganti ke mode malam
   verses:
-    media: 
+    media: 'Lihat kuliah dari %{from}
+
+'
     go: 
-    not_found: 
+    not_found: Ayat tidak ditemukan
   chapters:
     label: 
-    next: 
-    previous: 
+    next: BERIKUTNYA
+    previous: SEBELUMNYA
     verses: 
     pages: 
-    info: 
+    info: Info Surat
     continue: 
     quick_links: 
-    go_to_beginning: 
-    read_full: 
+    go_to_beginning: Awal Surat
+    read_full: Baca lengkap Surah
   footnote: 
   action:
-    play: 
-    pause: 
+    play: Putar
+    pause: Jeda
     tafsir: 
     bookmark:
-      label: 
-      done: 
+      label: Tandai
+      done: Ditandai
     copy:
-      label: 
-      done: 
+      label: Salin
+      done: Tersalin!
   search:
-    placeholder: 
+    placeholder: Cari "Nuh"
     result: 
-    error: 
-    no_query: 
-    no_result: 
+    error: Maaf, terdapat kesalahan dalam pencarian Anda.
+    no_query: Tidak ada kata yang dicari.
+    no_result: Tidak ada hasil yang ditemukan.
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
+    current_verse: Ayat
+    next_verse: Ayat Berikutnya
+    previous_verse: Ayat Sebelumnya
     repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    repeat_single: Satu ayat
+    repeat_range: Rentang
+    repeat_from: Dari
+    repeat_to: Hingga
+    repeat_times: Kali
+    repeat_loop: tak berhenti
+    scroll: Gulirkan secara otomatis ke ayat yang sedang diputar pada saat transisi...
+  loading: Memuat ...
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
-    about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
-    legacy_site: 
-    blog: 
+    title: Quran
+    settings: Pengaturan
+    contribute: Ambil Bagian
+    about_us: Tentang kami
+    developers: Pengembang
+    useful_sites: Situs-situs yang berguna
+    other_links: Tautan lainnya
+    contact_us: Hubungi kami
+    help: Bantuan & umpan balik
+    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+      Quran, Koran) adalah sebuah proyek pro bono.
+    rights: Hak Cipta Terpelihara
+    mobilea_apps: Aplikasi Ponsel
+    navigate: Telusuri
+    legacy_site: Quran.com versi lama
+    blog: Blog
     forum: 
-  juz: 
+  juz: Juz
   click_here: 

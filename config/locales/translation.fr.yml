@@ -6,7 +6,7 @@
 #
 ---
 fr:
-  tafsir_select: 
+  tafsir_select: Sélectionnez un tafsir
   date:
     day_names:
     - dimanche
@@ -116,9 +116,13 @@ fr:
       not_saved:
         one: "%{resource} n'a pu etre sauvegardé à cause d' 1 erreur:"
         other: "%{resource} n'a pu etre sauvegardé à cause de %{count} erreurs:"
-    not_found: 
-    invalid_verse: 
-    invalid_chapter: 
+    not_found: Désolé, cette page n'existe pas
+    invalid_verse: 'L''ayah est hors de portée. Accédez à la page d''accueil et sélectionnez
+      un(e) Surah / Ayah
+
+'
+    invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
+      sélectionnez une Sourate
     no_script: 
     unavailable_session: 
     unacceptable_request: 
@@ -216,9 +220,9 @@ fr:
       unlock_instructions:
         subject: Instruction de déblocage de compte
       email_changed:
-        subject: 
+        subject: Email Modifié
       password_change:
-        subject: 
+        subject: Mot de passe Modifié
     omniauth_callbacks:
       failure: 
       success: 
@@ -245,93 +249,97 @@ fr:
         votre compte dans quelques minutes.
       send_paranoid_instructions: 
       unlocked: Votre compte a été déverrouillé. Vous êtes maintenant connecté.
-  local: 
-  site_local: 
-  change_local: 
-  local_native_name: 
-  language: 
+  local: french
+  site_local: 'Langue du Site
+
+'
+  change_local: Choisir la langue du site
+  local_native_name: Français
+  language: Langue
   settings:
-    label: 
-    chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
-    translation_english: 
-    translation_other: 
-    reading: 
+    label: Paramètres
+    chapters: Sourates
+    reciters: Récitateurs
+    translations: Traductions
+    remove_all: Tout désélectionner
+    translation_english: Anglais
+    translation_other: Autres Langues
+    reading: Lecture
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label: Taille de la police
+      arabic: Arabe
+      translation: Traductions
     tooltip:
       label: 
-      translation: 
-      transliteration: 
+      translation: Traduction
+      transliteration: Translittération
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
+      label: Mode Nuit
+      day_tip: Passer en mode jour
+      night_tip: Passer en mode nuit
   verses:
-    media: 
+    media: Regarder les commentaires de la vidéo depuis %{from}
     go: 
-    not_found: 
+    not_found: Verset introuvable
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
-    pages: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
+    label: SOURATES
+    next: SUIVANT
+    previous: PRECEDENT
+    verses: VERSETS
+    pages: PAGES
+    info: Info Sourate
+    continue: Continuer
+    quick_links: Liens rapides
+    go_to_beginning: Début de la Sourate
+    read_full: Lire la sourate complète
   footnote: 
   action:
-    play: 
-    pause: 
+    play: Lecture
+    pause: Pause
     tafsir: 
     bookmark:
-      label: 
-      done: 
+      label: Favoris
+      done: Favoris ajouté
     copy:
-      label: 
-      done: 
+      label: Copier
+      done: Copié !
   search:
-    placeholder: 
-    result: 
-    error: 
-    no_query: 
-    no_result: 
+    placeholder: Chercher "Noah"
+    result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
+      <span>{query}</span>"
+    error: Désolé, une erreur s’est produite lors de votre recherche.
+    no_query: Aucune requête de recherche.
+    no_result: Aucun résultat trouvé.
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    current_verse: Verset
+    next_verse: Prochain Verset
+    previous_verse: Verset Précèdent
+    repeat_title: ACTIVER REPETITION
+    repeat_single: Une fois
+    repeat_range: Plage
+    repeat_from: De
+    repeat_to: A
+    repeat_times: Fois
+    repeat_loop: boucle
+    scroll: Défiler automatiquement jusqu’au verset en cours de lecture
+  loading: Chargement...
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
-    about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
-    legacy_site: 
-    blog: 
-    forum: 
-  juz: 
-  click_here: 
+    title: Coran
+    settings: Paramètres
+    contribute: Contribuer
+    about_us: Qui sommes-nous
+    developers: Développeurs
+    useful_sites: Sites utiles
+    other_links: Autre liens
+    contact_us: Contacter nous
+    help: Aide et feedback
+    about_project: Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
+      Quran, Koran) est un projet à but non-lucratif.
+    rights: Tous droits réservés
+    mobilea_apps: Applications Mobile
+    navigate: Naviguer
+    legacy_site: Version précédente de Quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  click_here: Cliquez ici
