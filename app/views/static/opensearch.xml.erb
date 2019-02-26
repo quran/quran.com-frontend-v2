@@ -1,0 +1,15 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<ShortName>quran.com</ShortName>
+<Description>Search Qura.com</Description>
+<InputEncoding>UTF-8</InputEncoding>
+<Image width="32" height="32" type="image/png">
+  <%= asset_url 'icons/favicon-32x32.png' %>
+</Image>
+
+<Image width="16" height="16" type="image/png">
+  <%= asset_url 'icons/favicon-16x16.png' %>
+</Image>
+
+<Url type="text/html" method="get" template="https://www.quran.com/search?q={searchTerms}"/>
+<moz:SearchForm><%= search_url %></moz:SearchForm>
+</OpenSearchDescription>
