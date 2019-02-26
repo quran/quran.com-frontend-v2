@@ -2,14 +2,31 @@
 <html>
   <head>
     <title>Quran</title>
+    <%= render "shared/meta_tags" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'hello_react' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="theme-light <%= page_classes %>" id="<%= page_id %>">
+  <noscript>
+      <div class="row">
+        Looks like either your browser does not support Javascript or its disabled. For a better
+        Quran.com experience, please enable JavaScript in your browser.
+        For more instruction on how to enable javascript
+        <a href="http://www.enable-javascript.com/" target="_blank" rel="nofollow">
+          click here</a>.
+      </div>
+  </noscript>
+
+  <%= render "shared/header" %>
+
+     <%= yield %>
   </body>
 </html>

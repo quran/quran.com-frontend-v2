@@ -1,0 +1,43 @@
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
+<meta property="og:locale" content="<%= current_locale %>">
+<meta name="distribution" content="Global">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
+<link href="https://cdn.qurancdn.com" rel="preconnect" crossorigin="">
+<link href="https://assets.qurancdn.com" rel="preconnect" crossorigin="">
+
+<link rel="manifest" href="<%= static_manifest_url(format: :json) %>">
+<link rel="search" type="application/opensearchdescription+xml" title="search Quran.com" href="<%= static_opensearch_path format: 'xml' %>">
+
+<%= favicon_link_tag 'icons/favicon.ico', title: 'Quran.com' %>
+<%= favicon_link_tag 'icons/android-chrome-256x256.png', rel: 'fluid-icon', type: 'image/png', title: 'Quran.com' %>
+<%= favicon_link_tag 'icons/safari-pinned-tab.svg', rel: 'mask-icon', color: 'theme-color', title: 'Quran.com' %>
+<%= favicon_link_tag 'icons/apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png', title: 'Quran.com' %>
+<%= display_meta_tags reverse: true, site: 'Quran.com', canonical: canonical_href, og: {site_name: 'Quran.com' } %>
+
+<meta property="og:rich_attachment"     content="true">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@TODO">
+<meta name="twitter:creator" content="@TODO">
+
+<meta name="theme-color" content="#00acc1">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Quran.com">
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="application-name" content="Quran.com" />
+<meta name="msapplication-TileImage" content="<%= asset_path 'icons/apple-touch-icon.png' %>">
+<meta name="msapplication-TileColor" content="#00acc1">
+<meta name="msapplication-config" content="<%= static_msapplication_config_url format: 'xml' %>">
+<meta name="msapplication-tooltip" content="Quran.com" />
+<meta name="msapplication-starturl" content="https://www.quran.com" />
+<meta name="msapplication-navbutton-color" content="#00acc1" />
+<meta name="rating" content="General">
+
+<meta name="robots" content="all, index, follow, archive">
+<meta name="revisit-after" content="30 days">

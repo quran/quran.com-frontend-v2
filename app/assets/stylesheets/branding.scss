@@ -1,0 +1,15 @@
+// Override bootstrap's colors
+// https://github.com/twbs/bootstrap-rubygem/blob/master/assets/stylesheets/bootstrap/_variables.scss
+
+$color-primary:    #00acc1 !default;
+$color-secondary: #b0bec5 !default;
+
+$link-color: $color-secondary !default;
+$link-hover-color: $color-primary !default;
+$link-hover-decoration: none !default;
+
+$theme-colors: (
+        primary: $color-primary,
+        secondary: $color-secondary,
+
+) !default;

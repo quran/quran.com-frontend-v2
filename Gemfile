@@ -12,8 +12,10 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '>= 4.0.0.rc.3'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'bootstrap', '~> 4.3.1'
 
 gem 'fast_blank'
 gem 'jquery-infinite-pages', github: 'naveed-ahmad/jquery-infinite-pages'
@@ -21,14 +23,21 @@ gem 'pg'
 gem 'devise', '4.4.3'
 gem 'pagy'
 gem 'oj'
+gem 'jbuilder'
+
+# i18n
 gem 'translation'
+
+#seo
+gem 'meta-tags'
+gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
+
+gem 'quran-core', path: '../quran-core'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -49,6 +58,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate', '= 2.7.4'
+  gem 'rails_real_favicon'
 end
 
 group :test do
