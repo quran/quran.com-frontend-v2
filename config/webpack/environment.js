@@ -1,4 +1,5 @@
 const { environment } = require('@rails/webpacker')
+const coffee =  require('./loaders/coffee')
 const typescript =  require('./loaders/typescript')
 const webpack = require('webpack')
 environment.loaders.prepend('typescript', typescript)
@@ -31,4 +32,5 @@ environment.loaders.append('expose', {
     }]
 })
 
+environment.loaders.prepend('coffee', coffee)
 module.exports = environment

@@ -2,18 +2,12 @@ header{
   border-bottom: 1px solid $color-border;
   padding: 10px 0 15px;
 
+  .logo{
+    font-size: 30px;
+    float: left;
+  }
+
   .header-left{
-    .logo {
-      float: left;
-      font-family: $font-bold;
-      font-size: 30px;
-      color: $color-primary;
-
-      span{
-        font-family: $font-regular;
-      }
-    }
-
     #local-switcher{
       float: left;
 
@@ -42,6 +36,15 @@ header{
     padding: 10px 16px;
     margin-right: 40px;
     border: 0;
+  }
+}
+
+.logo {
+  font-family: $font-bold;
+  color: $color-primary;
+
+  span{
+    font-family: $font-regular;
   }
 }
 

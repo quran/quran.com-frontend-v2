@@ -15,10 +15,12 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                  <li role="presentation" class="active"><a href="?local=en" role="menuitem" tabindex="-1">English</a></li>
+                  <li role="presentation" class="active"><a href="?local=en" role="menuitem" tabindex="-1">English</a>
+                  </li>
                   <li role="presentation" class=""><a href="?local=ar" role="menuitem" tabindex="-1">العربية</a></li>
                   <li role="presentation" class=""><a href="?local=ur" role="menuitem" tabindex="-1">اردو</a></li>
-                  <li role="presentation" class=""><a href="?local=id" role="menuitem" tabindex="-1">Bahasa Indonesia</a></li>
+                  <li role="presentation" class="">
+                    <a href="?local=id" role="menuitem" tabindex="-1">Bahasa Indonesia</a></li>
                   <li role="presentation" class=""><a href="?local=tr" role="menuitem" tabindex="-1">Türkçe</a></li>
                   <li role="presentation" class=""><a href="?local=fr" role="menuitem" tabindex="-1">Français</a></li>
                 </ul>
@@ -33,30 +35,65 @@
       <%= link_to 'Download', pages_apps_path, class: 'btn btn-primary download' %>
 
       <a href="javascript:void(0)" class="nav-btn fa-menu"></a>
-
-      <div class="right-sidebar">
-        <div class="right-nav-logo">
-          <a href="#">Quran<span>.com</span></a>
-          <i class="fa fa-times cross"></i>
-        </div>
-
-        <ul class="main-menu">
-          <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-          <li><a href="#"><i class="fa fa-mobile"></i> Mobile Apps</a></li>
-          <li><a href="#"><i class="fa fa-usd"></i> Donation</a></li>
-          <li><a href="#"><i class="fa fa-laptop"></i> Developers</a></li>
-          <li><a href="#"><i class="fa fa-life-ring"></i> Help &amp; Feedback</a></li>
-        </ul>
-        <div class="other-nav">
-          <h4>OTHER</h4>
-          <ul>
-            <li><a href="#">Quraninaudio.com</a></li>
-            <li><a href="#">Salah.com</a></li>
-            <li><a href="#">Sunnah.com</a></li>
-            <li><a href="#">Corpus.Quran.com</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 </header>
+
+<div class="right-sidebar">
+  <div class="sidebar-head">
+    <span class="logo">Quran<span>.com</span></span>
+    <i class="fa-cancel close-menu"></i>
+  </div>
+
+  <ul class="main-menu">
+    <li>
+      <%= link_to root_path do %>
+        <i class="fa-home"></i> Home
+      <% end %>
+    </li>
+    <li>
+      <%= link_to pages_apps_path do %>
+        <i class="fa-mobile"></i> Mobile Apps
+      <% end %>
+    </li>
+    <li>
+      <%= link_to pages_about_us_path do %>
+        <i class="fa-info"> </i> About Us
+      <% end %>
+    </li>
+    <li>
+      <%= link_to pages_donations_path do %>
+       <i class="fa-money"></i> Contribute
+      <% end %>
+    </li>
+    <li>
+      <%= link_to pages_help_and_feedback_path do %>
+      <i class="fa-help-circled"></i> Help &amp; Feedback
+      <% end %>
+    </li>
+    <li>
+      <%= link_to pages_developers_path do %>
+      <i class="fa-desktop"></i> Developers
+      <% end %>
+    </li>
+  </ul>
+
+  <div class="more-links">
+    <h4>Related Sites</h4>
+    <ul>
+      <li>
+        <a href="http://quranicaudio.com/" target="_blank" rel="noopener noreferrer">Quraninaudio.com</a>
+      </li>
+      <li>
+        <a href="http://sunnah.com/" target="_blank" rel="noopener noreferrer">Salah.com</a>
+      </li>
+      <li>
+        <a href="http://legacy.quran.com/" target="_blank" rel="noopener noreferrer"> Legacy Quran.com</a>
+      </li>
+      <li>
+        <a href="http://corpus.quran.com/wordbyword.jsp" target="_blank" rel="noopener noreferrer">Corpus.Quran.com</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

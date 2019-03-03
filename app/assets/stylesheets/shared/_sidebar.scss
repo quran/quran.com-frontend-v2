@@ -8,5 +8,43 @@
   visibility: hidden;
   background: #fff;
   width: 300px;
-  transition: right .35s cubic-bezier(.24,1,.32,1),visibility .2s;
+  transition: right .35s cubic-bezier(.24, 1, .32, 1), visibility .2s;
+
+  &.open {
+    right: 0;
+    visibility: visible;
+    z-index: 20;
+  }
+
+  .sidebar-head {
+    position: relative;
+    border-bottom: 1px solid #eceff1;
+    padding: 28px 25px 25px;
+
+    .logo {
+      font-size: 26px;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 42%;
+      right: 25px;
+      color: #00acc1;
+      cursor: pointer;
+    }
+  }
+
+  ul.main-menu {
+    li a {
+      display: block;
+      font-size: 16px;
+      color: #b0bec5;
+      border-bottom: 1px solid #eceff1;
+      padding: 10px 25px;
+    }
+  }
+  .more-links{
+    line-height: 28px;
+    padding: 20px 25px;
+  }
 }

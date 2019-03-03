@@ -5,4 +5,6 @@
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("custom-bootstrap")
+require('rails_script')
+
 import {} from 'jquery'

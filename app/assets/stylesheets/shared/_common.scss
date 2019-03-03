@@ -9,6 +9,11 @@ h2, .h2{
   }
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 .container {
   width: 1300px !important;
   max-width: 100%;
@@ -37,4 +42,11 @@ body.active:before {
   left: 0px;
   background: rgba(0,0,0,0.5);
   z-index: 10;
+}
+
+h4 {
+  font-family: $font-medium;
+  font-size: 16px;
+  color: $color-primary;
+  margin-bottom: 5px;
 }

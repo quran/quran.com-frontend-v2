@@ -111,6 +111,9 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     coderay (1.1.2)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -209,6 +212,8 @@ GEM
       json (>= 1.7, < 3)
       rails (>= 3.1)
       rubyzip (~> 1)
+    rails_script (2.0.3)
+      coffee-rails (~> 4.0, >= 4.0.0)
     railties (6.0.0.beta1)
       actionpack (= 6.0.0.beta1)
       activesupport (= 6.0.0.beta1)
@@ -314,6 +319,7 @@ DEPENDENCIES
   quran-core!
   rails (~> 6.0.0.beta1)
   rails_real_favicon
+  rails_script (~> 2.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
