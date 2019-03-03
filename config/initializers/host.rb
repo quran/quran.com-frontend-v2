@@ -1,0 +1,1 @@
+Rails.application.config.hosts << "fbc7a743.ngrok.io"
