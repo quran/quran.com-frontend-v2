@@ -27,6 +27,14 @@ header{
         color: #cfd8dc;
         padding: 0px;
       }
+
+      .dropdown-menu {
+        position: absolute;
+        border: 1px solid #ccc;
+        border-radius: 0px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+      }
     }
   }
 
@@ -36,3 +44,37 @@ header{
     border: 0;
   }
 }
+
+@media (max-width: 610px){
+  .logo {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 767px){
+  .logo {
+    float: none !important;
+    margin-left: -107px;
+  }
+
+  .head-right {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+
+  .download{
+    /*TODO: use bootstrap responsive utility*/
+    display: none !important;
+  }
+
+.header-left{
+  width: 100%;
+  text-align: center;
+}
+
+  #local-switcher .navbar {
+    padding: 0px 65px 0 0px;
+  }
+}
+
