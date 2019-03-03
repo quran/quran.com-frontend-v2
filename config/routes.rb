@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/:id', to: 'chapters#show', as: :chapter
   get :search, to: 'search#search', as: :search
 
   namespace :pages do
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     get :developers
   end
 
-  root to: 'pages#donations'
+  root to: 'chapters#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :static do
