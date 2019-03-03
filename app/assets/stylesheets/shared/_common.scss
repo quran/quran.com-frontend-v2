@@ -1,0 +1,40 @@
+h2, .h2{
+  font-family: 'SFProText-Bold';
+  font-size: 30px;
+  color: $color-primary;
+  margin-bottom: 15px;
+
+  span{
+    font-family: 'SFProText-Regular';
+  }
+}
+
+.container {
+  width: 1300px !important;
+  max-width: 100%;
+}
+
+.dropdown-toggle{
+  &:after{
+    content: '\f107';
+    font-family: 'icons';
+    color: $color-primary;
+  }
+}
+
+main{
+  float: left;
+  width: 100%;
+  padding: 50px 0px;
+}
+
+body.active:before {
+  content: '';
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: rgba(0,0,0,0.5);
+  z-index: 10;
+}

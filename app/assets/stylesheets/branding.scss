@@ -3,10 +3,15 @@
 
 $color-primary:    #00acc1 !default;
 $color-secondary: #b0bec5 !default;
+$color-border: #eceff1;
 
 $link-color: $color-secondary !default;
 $link-hover-color: $color-primary !default;
 $link-hover-decoration: none !default;
+
+$enable-caret: false !default;
+
+$body-color: $color-secondary !default;
 
 $theme-colors: (
         primary: $color-primary,

@@ -1,0 +1,30 @@
+@font-face {
+font-family: 'SFProText-Regular';
+  src: font-url('SFProText-Regular?#iefix') format('embedded-opentype'),
+  font-url('SFProText-Regular.woff') format('woff'),
+  font-url('SFProText-Regular.ttf') format('truetype'),
+  font-url('SFProText-Regular.svg#SFProText-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProText-Medium';
+  src: font-url('SFProText-Medium.eot?#iefix') format('embedded-opentype'),
+  font-url('SFProText-Medium.woff') format('woff'),
+  font-url('SFProText-Medium.ttf')  format('truetype'),
+  font-url('SFProText-Medium.svg#SFProText-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProText-Bold';
+  src: font-url('SFProText-Bold.eot?#iefix') format('embedded-opentype'),
+  font-url('SFProText-Bold.woff') format('woff'),
+  font-url('SFProText-Bold.ttf') format('truetype'),
+  font-url('SFProText-Bold.svg#SFProText-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+

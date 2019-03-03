@@ -1,4 +1,47 @@
 // Place all the styles related to the chapters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "branding";
+
+.pages {
+  main {
+    font-size: 15px;
+
+    .align-items-center {
+      margin-bottom: 40px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .sm-wrapper {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 6px;
+
+      &:before {
+        font-family: 'icons';
+        content: '\f105';
+        color: $color-primary;
+        position: absolute;
+        top: 4px;
+        left: 0px;
+      }
+    }
+
+    .btn-primary{
+      padding: 12px 20px;
+    }
+  }
+}

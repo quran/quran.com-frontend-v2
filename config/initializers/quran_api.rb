@@ -1,0 +1,1 @@
+require 'quran_core'

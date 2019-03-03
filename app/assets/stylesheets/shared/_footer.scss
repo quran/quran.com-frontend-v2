@@ -1,0 +1,30 @@
+footer {
+  float: left;
+  width: 100%;
+  background: #fafafa;
+  font-size: 14px;
+  color: #b0bec5;
+  padding: 30px 0 20px;
+
+  .footer-tab {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+   h4 {
+    font-family: 'SFProText-Regular';
+    font-size: 20px;
+    color: $color-primary;
+    margin-bottom: 5px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 5px 0;
+    }
+  }
+}

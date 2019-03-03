@@ -1,0 +1,12 @@
+.right-sidebar {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  bottom: 0;
+  text-align: left;
+  z-index: 1031;
+  visibility: hidden;
+  background: #fff;
+  width: 300px;
+  transition: right .35s cubic-bezier(.24,1,.32,1),visibility .2s;
+}

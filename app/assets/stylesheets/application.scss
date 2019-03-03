@@ -12,4 +12,13 @@
  *
  */
 @import "branding";
-@import "bootstrap";
+@import "shared/header";
+@import "shared/footer";
+@import "shared/fonts";
+@import "shared/icons";
+@import "custom-bootstrap";
+@import "shared/common";
+@import "shared/sidebar";
+
+@import "pages";
+

@@ -15,6 +15,7 @@ gem 'webpacker', '>= 4.0.0.rc.3'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+# For css, we're still using Sprockets
 gem 'bootstrap', '~> 4.3.1'
 
 gem 'fast_blank'
