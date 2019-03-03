@@ -5,12 +5,12 @@ header{
   .header-left{
     .logo {
       float: left;
-      font-family: 'SFProText-Bold';
+      font-family: $font-bold;
       font-size: 30px;
       color: $color-primary;
 
       span{
-        font-family: 'SFProText-Regular';
+        font-family: $font-regular;
       }
     }
 
@@ -22,7 +22,7 @@ header{
       }
 
       .nav-link {
-        font-family: 'SFProText-Medium';
+        font-family: $font-medium;
         font-size: 14px;
         color: #cfd8dc;
         padding: 0px;

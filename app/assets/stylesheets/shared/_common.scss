@@ -1,11 +1,11 @@
 h2, .h2{
-  font-family: 'SFProText-Bold';
+  font-family: $font-bold;
   font-size: 30px;
   color: $color-primary;
   margin-bottom: 15px;
 
   span{
-    font-family: 'SFProText-Regular';
+    font-family: $font-regular;
   }
 }
 

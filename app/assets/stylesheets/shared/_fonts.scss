@@ -1,5 +1,5 @@
 @font-face {
-font-family: 'SFProText-Regular';
+font-family: $font-regular;
   src: font-url('SFProText-Regular?#iefix') format('embedded-opentype'),
   font-url('SFProText-Regular.woff') format('woff'),
   font-url('SFProText-Regular.ttf') format('truetype'),
@@ -9,7 +9,7 @@ font-family: 'SFProText-Regular';
 }
 
 @font-face {
-  font-family: 'SFProText-Medium';
+  font-family: $font-medium;
   src: font-url('SFProText-Medium.eot?#iefix') format('embedded-opentype'),
   font-url('SFProText-Medium.woff') format('woff'),
   font-url('SFProText-Medium.ttf')  format('truetype'),
@@ -19,7 +19,7 @@ font-family: 'SFProText-Regular';
 }
 
 @font-face {
-  font-family: 'SFProText-Bold';
+  font-family: $font-bold;
   src: font-url('SFProText-Bold.eot?#iefix') format('embedded-opentype'),
   font-url('SFProText-Bold.woff') format('woff'),
   font-url('SFProText-Bold.ttf') format('truetype'),

@@ -3,15 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .pages {
+
+  &.donations{
+    img {
+      width: 100%;
+    }
+  }
+
+  &.apps{
+    font-family: $font-medium;
+    font-size: 16px !important;
+  }
+
   main {
     font-size: 15px;
 
     .align-items-center {
       margin-bottom: 40px;
-    }
-
-    img {
-      width: 100%;
     }
 
     .sm-wrapper {
