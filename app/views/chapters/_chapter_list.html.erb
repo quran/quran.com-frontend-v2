@@ -1,0 +1,54 @@
+<div class="chapter-list">
+  <div class="container">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#surrah">Surrah</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#juz">Juz</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="surrah">
+        <div class="items">
+          <ul>
+            <% 1.upto(114) do %>
+              <li>
+                <a class="row d-flex align-items-center" href="#">
+                  <div class="col-sm-8 name">
+                    <h5 class="name">Al-Fatihah</h5>
+                    <span class="translatedName">The Opener</span>
+                  </div>
+                  <div class="col-sm-4 name-arb">
+                    <span class="icon-surah1"> سورة الفاتحة</span>
+                  </div>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="juz">
+        <div class="items">
+          <ul>
+            <% 1.upto(30) do %>
+              <li>
+                <a class="row d-flex align-items-center" href="#">
+                  <div class="col-sm-8">
+                    <h5 class="name">Al-Fatihah</h5>
+                    <span class="translatedName">The Opener</span>
+                  </div>
+                  <div class="col-sm-4 name-arb">
+                    <span class="icon-surah1"> سورة الفاتحة</span>
+                  </div>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>

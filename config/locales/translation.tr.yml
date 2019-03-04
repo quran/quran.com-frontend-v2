@@ -245,7 +245,7 @@ tr:
   local: 
   site_local: 
   change_local: 
-  local_native_name: 
+  local_native_name: Türkçe
   language: 
   settings:
     label: 
@@ -332,3 +332,6 @@ tr:
     forum: 
   juz: 
   click_here: 
+  download: 
+  related_sites: 
+  home: 

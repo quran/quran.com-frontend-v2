@@ -244,7 +244,7 @@ fa:
   local: 
   site_local: 
   change_local: 
-  local_native_name: 
+  local_native_name: فارسی
   language: 
   settings:
     label: 
@@ -331,3 +331,6 @@ fa:
     forum: 
   juz: 
   click_here: 
+  download: 
+  related_sites: 
+  home: 

@@ -243,7 +243,7 @@ ar:
   local: 
   site_local: 
   change_local: 
-  local_native_name: 
+  local_native_name: العربية
   language: 
   settings:
     label: 
@@ -330,3 +330,6 @@ ar:
     forum: 
   juz: 
   click_here: 
+  download: 
+  related_sites: 
+  home: 

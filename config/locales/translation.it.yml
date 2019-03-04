@@ -247,7 +247,7 @@ it:
   local: 
   site_local: 
   change_local: 
-  local_native_name: 
+  local_native_name: Italiano
   language: 
   settings:
     label: 
@@ -334,3 +334,6 @@ it:
     forum: 
   juz: 
   click_here: 
+  download: 
+  related_sites: 
+  home: 

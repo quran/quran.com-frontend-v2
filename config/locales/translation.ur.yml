@@ -6,7 +6,7 @@
 #
 ---
 ur:
-  tafsir_select: 
+  tafsir_select: تفسیر منتخب کریں
   date:
     day_names:
     - اتوار
@@ -83,9 +83,9 @@ ur:
       exclusion: مخصوص ہے
       invalid: باطل ہے
       confirmation: "%{attribute} میل نہیں رکھتا"
-      accepted: قبول ہونا ضروری ہے
-      empty: لازم ہے
-      blank: لازم ہے
+      accepted: قبول کرنا لازمی ہے
+      empty: خالی نہیں ہوسکتی
+      blank: خالی نہیں ہوسکتی
       present: خالی ہونا ضروری ہے
       too_long:
         one: بہت طویل ہے (زیادہ سے زیادہ ایک حرف)
@@ -111,14 +111,20 @@ ur:
       already_confirmed: 
       confirmation_period_expired: 
       expired: 
-      not_found: 
+      not_found: نہیں ملا
       not_locked: 
       not_saved:
         one: 
         other: 
     not_found: افسوس، یہ صفحہ موجود نہیں ہے
-    invalid_verse: 
-    invalid_chapter: 
+    invalid_verse: 'آیت رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+      پر جائیں اور درست سوره/آیت منتخب کریں
+
+'
+    invalid_chapter: 'سورہ رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+      پر جائیں اور درست سوره منتخب کریں
+
+'
     no_script: 
     unavailable_session: 
     unacceptable_request: 
@@ -193,30 +199,33 @@ ur:
         alert: 
   devise:
     confirmations:
-      confirmed: 
-      send_instructions: 
-      send_paranoid_instructions: 
+      confirmed: آپ کا ای میل ایڈریس کامیابی سے تصدیق کی گئی ہے.
+      send_instructions: آپ کو کچھ منٹ میں اپنے ای میل ایڈریس کی تصدیق کرنے کے لئے
+        ہدایات کے ساتھ ایک ای میل مل جائے گا.
+      send_paranoid_instructions: اگر آپ کا ڈیٹا بیس میں آپ کا ای میل ایڈریس موجود
+        ہے، تو آپ کو کچھ منٹ میں اپنے ای میل ایڈریس کی تصدیق کرنے کے لئے ہدایات کے
+        ساتھ ایک ای میل ملے گا.
     failure:
-      already_authenticated: 
+      already_authenticated: آپ پہلے ہی سائن ان ہیں.
       inactive: 
-      invalid: 
-      locked: 
-      last_attempt: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
+      invalid: غلط %{authentication_keys} یا پاس ورڈ.
+      locked: آپ کا اکاؤنٹ بند کر دیا گیا ہے.
+      last_attempt: آپ کا اکاؤنٹ بند ہونے سے پہلے آپ کی ایک اور کوشش ہے.
+      not_found_in_database: غلط %{authentication_keys} یا پاس ورڈ.
+      timeout: آپ کا سیشن ختم ہوگیا. جاری رکھنے کے لئے دوبارہ سائن ان کریں.
+      unauthenticated: آپ کو جاری رکھنے سے پہلے سائن ان کرنا یا سائن اپ کرنا ہوگا.
+      unconfirmed: آپ کو جاری رکھنے سے پہلے اپنے ای میل ایڈریس کی تصدیق کرنا ہے.
     mailer:
       confirmation_instructions:
-        subject: 
+        subject: توثیقی ہدایات
       reset_password_instructions:
-        subject: 
+        subject: پاسورڈ ہدایات کو دوبارہ ترتیب دیں
       unlock_instructions:
         subject: 
       email_changed:
-        subject: 
+        subject: ای میل تبدیل ہوگیا
       password_change:
-        subject: 
+        subject: پاس ورڈ تبدیل ہوگیا
     omniauth_callbacks:
       failure: 
       success: 
@@ -242,93 +251,100 @@ ur:
       send_instructions: 
       send_paranoid_instructions: 
       unlocked: 
-  local: 
-  site_local: 
-  change_local: 
-  local_native_name: 
-  language: 
+  local: urdu
+  site_local: سائٹ کی زبان
+  change_local: جس زبان میں سایٹ دیکھنا چاہتے ہیں اس زبان کا انتخاب کریں
+  local_native_name: اردو
+  language: زبان
   settings:
-    label: 
-    chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
-    translation_english: 
-    translation_other: 
-    reading: 
+    label: اختیارات
+    chapters: سورتیں
+    reciters: قاری منتخب کریں
+    translations: ترجمے
+    remove_all: سب کو ہٹا دیں
+    translation_english: انگریزی
+    translation_other: دوسری زبانیں
+    reading: پڑہائی
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label: حرف کا سائز
+      arabic: عربی
+      translation: ترجمے
     tooltip:
-      label: 
-      translation: 
-      transliteration: 
+      label: لفظ کے اوپر
+      translation: ترجمہ
+      transliteration: تلفظ
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
+      label: رات کا موڈ
+      day_tip: دن موڈ پر سوئچ کریں
+      night_tip: رات کے موڈ پر سوئچ کریں
   verses:
-    media: 
-    go: 
-    not_found: 
+    media: کے لیکچر دیکھے  {from}%
+    go: آیت منتخب کریں
+    not_found: آیت نہیں ملی
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
-    pages: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
-  footnote: 
+    label: سورتیں
+    next: اگلی سورت
+    previous: پچھلی سورت
+    verses: آیات
+    pages: صفحات
+    info: سورہ کی معلومات
+    continue: جاری رہے
+    quick_links: فوری لنک
+    go_to_beginning: سورہ کے شروع میں جائیں
+    read_full: مکمل سورت پڑھیں
+  footnote: حاشیہ
   action:
-    play: 
-    pause: 
-    tafsir: 
+    play: چلاو
+    pause: روک دیں
+    tafsir: تفسیر
     bookmark:
-      label: 
-      done: 
+      label: حوالہ
+      done: حوالہ ہے
     copy:
-      label: 
-      done: 
+      label: کاپی
+      done: کاپی کر لیا
   search:
-    placeholder: 
+    placeholder: " تلاش کریں (نوح)"
     result: 
-    error: 
-    no_query: 
-    no_result: 
+    error: معذرت، آپ کی تلاش میں ایک خرابی تھی.
+    no_query: تلاش کے لئے کچھ لکھئے
+    no_result: کوئی نتیجہ نہیں ملا
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    current_verse: آیت
+    next_verse: اگلی آیت
+    previous_verse: پچھلی آیت
+    repeat_title: دہرائیں
+    repeat_single: اکیلی آیت
+    repeat_range: تک
+    repeat_from: سے
+    repeat_to: تک
+    repeat_times: کتنی بار
+    repeat_loop: چلاتے رہو
+    scroll: 'جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
+
+'
+  loading: لوڈ کر رہا ہے ...
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
+    title: قرآن
+    settings: ترتیبات
+    contribute: تعاون کریں
+    about_us: ہمارے متعلق
+    developers: ڈویلپرز
+    useful_sites: مفید سائٹس
+    other_links: دیگر لنکس
+    contact_us: ہم سے رابطہ کریں
     help: مدد اور رائے
-    about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
+    about_project: 'قرآن کریم ایک فلاح عامہ (عوامی بہبود کے لئے) منصوبہ ہے.
+
+'
+    rights: جملہ حقوق محفوظ ہیں
+    mobilea_apps: موبائل ایپ
+    navigate: تشریف لے جائیں
     legacy_site: پرانی سائٹ
-    blog: 
+    blog: بلاگ
     forum: فورم
-  juz: 
-  click_here: 
+  juz: سپارے
+  click_here: یہاں کلک کریں
+  download: ڈاؤن لوڈ کریں
+  related_sites: متعلقہ سائٹس
+  home: سرورق
