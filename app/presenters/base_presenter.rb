@@ -17,7 +17,7 @@ class BasePresenter
             description: meta_description,
             url: meta_url,
             type: 'website',
-            image: [hd_images],
+            image: meta_image,
             see_also: related_links
         },
         # FB Applinks meta tags
@@ -25,14 +25,14 @@ class BasePresenter
             {
                 web: {url: meta_url},
                 ios: {
-                    url: "applinks://",
-                    app_store_id: '',
-                    app_name: ''
+                    url: "https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303",
+                    app_store_id: '1118663303',
+                    app_name: 'Quran - by Quran.com - قرآن'
                 },
                 android: {
-                    url: '',
-                    app_name: '',
-                    package: ''
+                    url: 'https://play.google.com/store/apps/details?id=com.quran.labs.androidquran',
+                    app_name: 'Quran for Android',
+                    package: 'com.quran.labs.androidquran'
                 }
             },
         twitter: {
@@ -59,10 +59,6 @@ class BasePresenter
 
   def meta_title
     'Quran.com'
-  end
-
-  def hd_images
-    []
   end
 
   def related_links
@@ -103,6 +99,6 @@ class BasePresenter
   end
 
   def meta_image
-    #Only for twitter
+
   end
 end

@@ -4,6 +4,6 @@ class ChaptersController < ApplicationController
   end
 
   def show
-    
+    @presenter = HomePresenter.new(self)
   end
 end
