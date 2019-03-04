@@ -310,6 +310,11 @@ fr:
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
+    popular: 
+    ayatul_kursi: 
+    yaseen: 
+    al_mulk: 
+    ar_rahman: 
   player:
     current_verse: Verset
     next_verse: Prochain Verset
@@ -344,5 +349,13 @@ fr:
   juz: Juz
   click_here: Cliquez ici
   download: 
-  related_sites: 
   home: 
+  noble_quran: 
+  related_sites:
+    label: 
+    sunnah: 
+    sunnah_description: 
+    salah: 
+    salah_description: 
+    audio: 
+    audio_description: 

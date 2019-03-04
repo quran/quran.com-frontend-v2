@@ -3,7 +3,6 @@
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
 <meta property="og:locale" content="<%= current_locale %>">
 <meta name="distribution" content="Global">
-<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
 <link href="https://cdn.qurancdn.com" rel="preconnect" crossorigin="">
 <link href="https://assets.qurancdn.com" rel="preconnect" crossorigin="">
 
@@ -14,7 +13,12 @@
 <%= favicon_link_tag 'icons/android-chrome-256x256.png', rel: 'fluid-icon', type: 'image/png', title: 'Quran.com' %>
 <%= favicon_link_tag 'icons/safari-pinned-tab.svg', rel: 'mask-icon', color: 'theme-color', title: 'Quran.com' %>
 <%= favicon_link_tag 'icons/apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png', title: 'Quran.com' %>
-<%= display_meta_tags reverse: true, site: 'Quran.com', canonical: canonical_href, og: {site_name: 'Quran.com' } %>
+
+<%
+  set_meta_tags @presenter.open_graph_hash
+%>
+
+<%= display_meta_tags reverse: true, site: 'Quran.com'%>
 
 <meta property="og:rich_attachment"     content="true">
 <meta name="twitter:card" content="summary_large_image">

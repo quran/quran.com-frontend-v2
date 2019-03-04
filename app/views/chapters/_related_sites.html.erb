@@ -1,22 +1,22 @@
 <div class="related-sites-section">
   <div class="container">
     <div class="row">
-      <% 1.upto(3) do %>
-      <div class="col-md-4">
-        <figure class="site">
-          <a href="#">
-            <%= image_tag 'img1.jpg', class: 'img-fluid' %>
+      <% related_sites.each do |link, name, description| %>
+        <div class="col-md-4">
+          <figure class="site">
+            <%= link_to link do %>
+              <%= image_tag 'img1.jpg', class: 'img-fluid' %>
 
-            <figcaption class="d-flex align-items-end">
-              <div>
-                <h3>Salah</h3>
-                <p>Search prayer times for any location</p>
-              </div>
-            </figcaption>
-          </a>
-        </figure>
-      </div>
-        <% end %>
+              <figcaption class="d-flex align-items-end">
+                <div>
+                  <h3><%= name %></h3>
+                  <p><%= description %></p>
+                </div>
+              </figcaption>
+            <% end %>
+          </figure>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

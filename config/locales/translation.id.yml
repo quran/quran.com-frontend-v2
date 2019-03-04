@@ -306,6 +306,11 @@ id:
     error: Maaf, terdapat kesalahan dalam pencarian Anda.
     no_query: Tidak ada kata yang dicari.
     no_result: Tidak ada hasil yang ditemukan.
+    popular: 
+    ayatul_kursi: 
+    yaseen: 
+    al_mulk: 
+    ar_rahman: 
   player:
     current_verse: Ayat
     next_verse: Ayat Berikutnya
@@ -340,5 +345,13 @@ id:
   juz: Juz
   click_here: 
   download: 
-  related_sites: 
   home: 
+  noble_quran: 
+  related_sites:
+    label: 
+    sunnah: 
+    sunnah_description: 
+    salah: 
+    salah_description: 
+    audio: 
+    audio_description: 

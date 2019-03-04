@@ -302,6 +302,11 @@ it:
     error: 
     no_query: 
     no_result: 
+    popular: 
+    ayatul_kursi: 
+    yaseen: 
+    al_mulk: 
+    ar_rahman: 
   player:
     current_verse: 
     next_verse: 
@@ -335,5 +340,13 @@ it:
   juz: 
   click_here: 
   download: 
-  related_sites: 
   home: 
+  noble_quran: 
+  related_sites:
+    label: 
+    sunnah: 
+    sunnah_description: 
+    salah: 
+    salah_description: 
+    audio: 
+    audio_description: 

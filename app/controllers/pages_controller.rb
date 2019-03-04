@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :set_presenter
   def about_us
   end
 
@@ -12,5 +13,10 @@ class PagesController < ApplicationController
   end
 
   def developers
+  end
+
+  protected
+  def set_presenter
+    @presenter = StaticPagePresenter.new(self)
   end
 end

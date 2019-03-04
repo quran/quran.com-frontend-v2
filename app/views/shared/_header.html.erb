@@ -49,38 +49,38 @@
   <ul class="main-menu">
     <li>
       <%= link_to root_path do %>
-        <i class="fa-home"></i> Home
+        <i class="fa-home"></i> <%= _t('home') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_apps_path do %>
-        <i class="fa-mobile"></i> Mobile Apps
+        <i class="fa-mobile"></i> <%= _t('nav.mobile_apps') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_about_us_path do %>
-        <i class="fa-info"> </i> About Us
+        <i class="fa-info"> </i> <%= _t('nav.about_us') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_donations_path do %>
-       <i class="fa-money"></i> Contribute
+       <i class="fa-money"></i> <%= _t('nav.contribute') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_help_and_feedback_path do %>
-      <i class="fa-help-circled"></i> Help &amp; Feedback
+      <i class="fa-help-circled"></i> <%= _t('nav.help') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_developers_path do %>
-      <i class="fa-desktop"></i> Developers
+      <i class="fa-desktop"></i> <%= _t('nav.developers') %>
       <% end %>
     </li>
   </ul>
 
   <div class="more-links">
-    <h4>Related Sites</h4>
+    <h4><%= _t('related_sites') %></h4>
     <ul>
       <li>
         <a href="http://quranicaudio.com/" target="_blank" rel="noopener noreferrer">Quraninaudio.com</a>

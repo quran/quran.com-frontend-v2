@@ -1,2 +1,9 @@
 module ChaptersHelper
+  def related_sites
+    [
+      ['http://sunnah.com/', _t('related_sites.sunnah'), _t('related_sites.sunnah_description')],
+      ['http://quranicaudio.com/', _t('related_sites.audio'), _t('related_sites.audio_description')],
+      ['http://salah.com/', _t('related_sites.salah'), _t('related_sites.salah_description')]
+    ]
+  end
 end

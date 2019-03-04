@@ -309,6 +309,11 @@ ur:
     error: معذرت، آپ کی تلاش میں ایک خرابی تھی.
     no_query: تلاش کے لئے کچھ لکھئے
     no_result: کوئی نتیجہ نہیں ملا
+    popular: مقبول تلاش
+    ayatul_kursi: آیت الکرسی
+    yaseen: سورہ یسین
+    al_mulk: سورہ الملک
+    ar_rahman: سورہ الرحمان
   player:
     current_verse: آیت
     next_verse: اگلی آیت
@@ -346,5 +351,13 @@ ur:
   juz: سپارے
   click_here: یہاں کلک کریں
   download: ڈاؤن لوڈ کریں
-  related_sites: متعلقہ سائٹس
   home: سرورق
+  noble_quran: قرآن کریم
+  related_sites:
+    label: متعلقہ سائٹس
+    sunnah: سنت
+    sunnah_description: 'نبی صلی اللہ علیہ وسلم کی حدیث '
+    salah: نماز کا وقت
+    salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
+    audio: آڈیو میں نوبل قرآن
+    audio_description: ایک ہی وقت میں سیکھنا اور سننا

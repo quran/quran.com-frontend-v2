@@ -5,7 +5,7 @@
     </div>
 
     <div class="banner">
-      <h1>The Noble Quran</h1>
+      <h1><%= _t('noble_quran') %></h1>
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
     </div>
 
@@ -13,21 +13,21 @@
 
     <div class="popular-search">
       <ul>
-        <li>Popular Search</li>
+        <li><%= _t('search.popular') %></li>
         <li>
-          <%= link_to 'Yaseen', '#', class: 'btn btn-outline-primary' %>
+          <%= link_to _t('search.yaseen'), '/36', class: 'btn btn-outline-primary' %>
         </li>
 
         <li>
-          <%= link_to 'Surah Al Mulk', '#', class: 'btn btn-outline-primary' %>
+          <%= link_to _t('search.al_mulk'), '/67', class: 'btn btn-outline-primary' %>
         </li>
 
         <li>
-          <%= link_to 'Surah Al Mulk', '#', class: 'btn btn-outline-primary' %>
+          <%= link_to _t('search.ar_rahman'), '/55', class: 'btn btn-outline-primary' %>
         </li>
 
         <li>
-          <%= link_to 'Ayatul Kursi', '#', class: 'btn btn-outline-primary' %>
+          <%= link_to _t('search.ayatul_kursi'), '/ayatul-kursi', class: 'btn btn-outline-primary' %>
         </li>
       </ul>
     </div>

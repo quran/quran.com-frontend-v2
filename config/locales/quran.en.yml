@@ -31,7 +31,7 @@ en:
     go: Go to verse
     not_found: Verse not found
   chapters:
-    label: CHAPTERS
+    label: Surah
     next: NEXT
     previous: PREVIOUS
     verses: VERSES
@@ -58,6 +58,11 @@ en:
     error: Sorry, there was an error with your search.
     no_query: No search query.
     no_result: No results found.
+    popular: Popular Searches
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Surah Al Mulk
+    ar_rahman: Surah Ar-Rahman
   player:
     current_verse: Verse
     next_verse: Next verse
@@ -98,4 +103,13 @@ en:
   tafsir_select: Select a tafsir
   download: Download
   home: Home
-  related_sites: Related Sites
+  related_sites:
+    label: Related Sites
+    sunnah: Sunnah
+    sunnah_description: The Hadit of Prophet Muhammad(PBUH)
+    salah: Salah
+    salah_description: Search prayer time for any location
+    audio: Nobel Quran in audio
+    audio_description: Learning & listening at the same time
+
+  noble_quran: The Noble Quran

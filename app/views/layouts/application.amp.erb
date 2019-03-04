@@ -25,12 +25,17 @@
       <%= Rails.application.assets['amp'].to_s.html_safe %>
     <% end %>
   </style>
-  
-  <%= favicon_link_tag 'favicon32x32.png', title: 'funtraker' %>
-  <%= favicon_link_tag 'funtraker_fluid_icon.png', rel: 'fluid-icon', type: 'image/png', title: 'funtraker' %>
-  <%= favicon_link_tag 'funtraker_mask_icon.svg', rel: 'mask-icon', color: 'theme-color', title: 'funtraker' %>
-  <%= favicon_link_tag 'apple-icon-touch-144-x144.png', rel: 'apple-touch-icon', type: 'image/png', title: 'funtraker' %>
-  <%= display_meta_tags reverse: true, site: 'Fun Traker', author: ''.freeze, canonical: canonical_href,og: {site_name: 'Fun Traker' } %>
+
+  <%= favicon_link_tag 'icons/favicon.ico', title: 'Quran.com' %>
+  <%= favicon_link_tag 'icons/android-chrome-256x256.png', rel: 'fluid-icon', type: 'image/png', title: 'Quran.com' %>
+  <%= favicon_link_tag 'icons/safari-pinned-tab.svg', rel: 'mask-icon', color: 'theme-color', title: 'Quran.com' %>
+  <%= favicon_link_tag 'icons/apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png', title: 'Quran.com' %>
+
+  <%
+    set_meta_tags @presenter.open_graph_hash
+  %>
+
+  <%= display_meta_tags reverse: true, site: 'Quran.com'%>
 
   <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
