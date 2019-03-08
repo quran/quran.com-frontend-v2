@@ -4,7 +4,16 @@ class HomePresenter < BasePresenter
   end
 
   def chapters
-    []
+    chapters = Chapter.includes(:translated_name)
+
+    # Eager load translated names to avoid n+1 queries
+    chapters.
+        where(translated_names: {language_id: language.id}).
+        or(
+            chapters.
+                where(translated_names: {language_id: Language.default.id})
+        ).
+        order('translated_names.language_priority DESC')
   end
 
   def juz

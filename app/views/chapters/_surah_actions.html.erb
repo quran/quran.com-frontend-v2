@@ -1,0 +1,84 @@
+<section class="surah-actions sticky-navbar">
+  <div class="container">
+    <div class="ban-left-col navbar-nav-scroll">
+      <ul class="d-flex justify-content-between navbar-nav flex-row" id="surah-actions">
+        <li class="dropdown" id="tooltip" >
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tooltip-dropdown">
+            <i class="fa fa-commenting-o"></i>
+            <%= _t('settings.tooltip.label') %>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="tooltip-dropdown">
+            <a class="dropdown-item" href="#_">
+              <%= _t('settings.tooltip.translation') %>
+            </a>
+            <a class="dropdown-item" href="#_">
+              <%= _t('settings.tooltip.transliteration') %>
+            </a>
+          </div>
+        </li>
+
+        <li class="arabic-li">
+          <i class="fa fa-text-width"></i>
+          <%= _t('settings.font_size.arabic') %>
+
+          <a href="#" class="font-size">+</a>
+          <a href="#" class="font-size">-</a>
+        </li>
+
+        <li class="translations-li">
+          <%= _t('settings.font_size.translation') %>
+          <a href="#" class="font-size">+</a>
+          <a href="#" class="font-size">-</a>
+        </li
+        >
+        <li class="two-icons">
+          <a href="#" class="fa fa-book"></a>
+          <a href="#" class="fa fa-lightbulb-1"></a>
+        </li>
+
+        <li class="dropdown border-left" id="reciters" >
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="reciter-dropdown">
+            <i class="fa fa-mic"></i>
+            <%= _t('settings.reciters') %>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="reciter-dropdown">
+            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.translation') %></a>
+            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.transliteration') %></a>
+          </div>
+        </li>
+
+
+        <li class="dropdown" id="translations" >
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
+            <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="translation-dropdown">
+            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.translation') %></a>
+            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.transliteration') %></a>
+          </div>
+        </li>
+
+        <li class="info-li">
+          <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader} do %>
+            <i class="fa fa-info"></i> <%= _t("chapters.info") %>
+          <% end %>
+        </li>
+
+        <li class="dropdown d-lg-none">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">&nbsp;</a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-play"></i> Watch Lecture</a></li>
+            <li><a href="#"><i class="fa fa-files-o"></i> Tafsir</a></li>
+            <li><a href="#"><i class="fa fa-book"></i> Corpus</a></li>
+            <li><a href="#"><i class="fa fa-files-o"></i> Copy</a></li>
+            <li><a href="#"><i class="fa fa-pencil-square-o"></i> Note</a></li>
+            <li><a href="#"><i class="fa fa-share-alt"></i> Share</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

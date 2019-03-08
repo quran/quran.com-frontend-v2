@@ -6,4 +6,10 @@ module ChaptersHelper
       ['http://salah.com/', _t('related_sites.salah'), _t('related_sites.salah_description')]
     ]
   end
+
+  def chapter_next_page_link
+    if @presenter.next_page
+      link_to 'load more', {page: @presenter.next_page}, rel: 'next'
+    end
+  end
 end

@@ -1,0 +1,7 @@
+<%= render partial: 'verse', collection: @presenter.paginate, as: :verse %>
+
+<div class="pagination-wrapper">
+  <div id="verses-pagination">
+    <%= chapter_next_page_link %>
+  </div>
+</div>

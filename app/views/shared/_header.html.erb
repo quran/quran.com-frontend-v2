@@ -6,27 +6,21 @@
       <% end %>
 
       <div id="local-switcher">
-        <nav class="navbar navbar-expand-sm">
-          <div class="navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= _t('local_native_name') %> <i class="fa fa-fadown-open"></i>
-                </a>
+        <div class="dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= _t('local_native_name') %> <i class="fa fa-fadown-open"></i>
+          </a>
 
-                <ul class="dropdown-menu">
-                  <% available_locales.each do |locale, name| %>
-                    <li role="presentation" class="<% 'active' if I18n.locale == locale %>>">
-                      <%= link_to url_for(locale: locale), role: "menuitem" do %>
-                        <span class="<%= locale %>"><%= name %></span>
-                       <% end %>
-                    </li>
-                  <% end %>
-                </ul>
+          <ul class="dropdown-menu">
+            <% available_locales.each do |locale, name| %>
+              <li role="presentation">
+                <%= link_to url_for(locale: locale), role: "menuitem", class: "dropdown-item #{'active' if I18n.locale.to_s == locale }" do %>
+                  <span class="<%= locale %>"><%= name %></span>
+                <% end %>
               </li>
-            </ul>
-          </div>
-        </nav>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -64,23 +58,23 @@
     </li>
     <li>
       <%= link_to pages_donations_path do %>
-       <i class="fa-money"></i> <%= _t('nav.contribute') %>
+        <i class="fa-money"></i> <%= _t('nav.contribute') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_help_and_feedback_path do %>
-      <i class="fa-help-circled"></i> <%= _t('nav.help') %>
+        <i class="fa-help-circled"></i> <%= _t('nav.help') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_developers_path do %>
-      <i class="fa-desktop"></i> <%= _t('nav.developers') %>
+        <i class="fa-desktop"></i> <%= _t('nav.developers') %>
       <% end %>
     </li>
   </ul>
 
   <div class="more-links">
-    <h4><%= _t('related_sites') %></h4>
+    <h4><%= _t('related_sites.label') %></h4>
     <ul>
       <li>
         <a href="http://quranicaudio.com/" target="_blank" rel="noopener noreferrer">Quraninaudio.com</a>

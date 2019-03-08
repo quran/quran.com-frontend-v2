@@ -8,6 +8,9 @@ h2, .h2{
     font-family: $font-regular;
   }
 }
+a{
+  cursor: pointer;
+}
 
 ul {
   list-style: none;
@@ -33,15 +36,34 @@ main{
   padding: 50px 0px;
 }
 
-body.active:before {
-  content: '';
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  background: rgba(0,0,0,0.5);
-  z-index: 10;
+body.active {
+  &:before{
+    content: '';
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.5);
+    z-index: 10;
+  }
+
+  .surah-actions{
+    z-index: 1;
+  }
+}
+
+p:empty {
+  display:none;
+}
+p {
+  margin-bottom:15px;
+}
+
+h1 {
+  font-size:55px;
+  color:#222121;
+  margin-bottom: 30px;
 }
 
 h4 {
@@ -49,4 +71,23 @@ h4 {
   font-size: 16px;
   color: $color-primary;
   margin-bottom: 5px;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $color-primary;
+}
+
+
+.tooltip-inner {
+  box-shadow: 0px 10px 35px 0 rgba(0, 172, 193, 0.2);
+}
+
+@media (max-width: 610px) {
+  h2 {
+    font-size: 24px;
+  }
+  .logo {
+    font-size: 24px;
+  }
 }

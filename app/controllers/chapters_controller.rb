@@ -4,6 +4,10 @@ class ChaptersController < ApplicationController
   end
 
   def show
-    @presenter = HomePresenter.new(self)
+    @presenter = ChapterPresenter.new(self)
+
+    if request.xhr?
+     render partial: 'verses', layout: false
+    end
   end
 end

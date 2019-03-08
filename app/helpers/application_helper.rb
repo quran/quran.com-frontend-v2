@@ -13,4 +13,8 @@ module ApplicationHelper
     I18n.locale.to_s
   end
 
+  def spinning_loader
+    "<i class='fa-spin6 animate-spin'></i> #{_t('loading')}".html_safe
+  end
+
 end

@@ -2,6 +2,7 @@ class App.Base
 
   constructor: ->
     new Utility.Sidebar()
+    $('[data-toggle="tooltip"]').tooltip()
     if (window.jQuery) then RailsScript.setClearEventHandlers() # clearing application event handlers only possible with jQuery
     return this
 

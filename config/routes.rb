@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :chapter_info, only: :show
+  resources :foot_note, only: :show
+
 =begin
   /002 => /2
   /002/002 => /2/2
@@ -8,24 +11,6 @@ Rails.application.routes.draw do
   /120 => invalid-surah
    /1/8 => invalid ayah
 =end
-
-  # /2:2:3 => 1/2-3
-  get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
-
-  # /2:2 => /2/2
-  get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 302)
-
-  # /2-2 => 1/2
-  get '/:chapter-:verse', to: redirect('/%{chapter}/%{verse}', status: 302)
-
-  # /2-2-3 => 1/2-3
-  get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
-
-  # /2/1/1 => /2/1-2
-  get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
-
-  get '/:id', to: 'chapters#show', as: :chapter
-  get '/:id/:range', to: 'chapters#show', as: :range
 
   get :search, to: 'search#search', as: :search
 
@@ -45,4 +30,21 @@ Rails.application.routes.draw do
     get :manifest
     get :msapplication_config
   end
+  # /2:2:3 => 1/2-3
+  get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+
+  # /2:2 => /2/2
+  get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 302)
+
+  # /2-2 => 1/2
+  get '/:chapter-:verse', to: redirect('/%{chapter}/%{verse}', status: 302)
+
+  # /2-2-3 => 1/2-3
+  get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+
+  # /2/1/1 => /2/1-2
+  get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+
+  get '/:id', to: 'chapters#show', as: :chapter
+  get '/:id/:range', to: 'chapters#show', as: :range
 end

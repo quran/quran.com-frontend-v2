@@ -1,5 +1,23 @@
-<% content_for :header do  %>
+<% content_for :header do %>
   <div class="head-center">
     <%= render 'shared/search_form' %>
   </div>
 <% end %>
+
+<%= render "font" %>
+
+<%= render "surah_actions" %>
+
+<div id="chapter-info">
+
+</div>
+
+<div class="container">
+  <div id="verses">
+    <%= render "verses" %>
+  </div>
+</div>
+
+<!--
+<p>ﱁ ﱂ ﱃ ﱄ ﱅ ﱆ ﱇ ﱈ ﱉ ﱊ ﱋ ﱌ ﱍ ﱎ ﱏ ﱐ ﱑ ﱒ ﱓ ﱔ ﱕ ﱖ ﱗ ﱘ ﱙ ﱚ ﱛ ﱜ ﱝ ﱞ ﱟ ﱠ ﱡ ﱢ ﱣ ﱤ</p>
+-->

@@ -23,6 +23,8 @@ gem 'jquery-infinite-pages', github: 'naveed-ahmad/jquery-infinite-pages'
 gem 'pg'
 gem 'devise', '4.4.3'
 gem 'pagy'
+gem 'kaminari'
+
 gem 'oj'
 gem 'jbuilder'
 
@@ -33,7 +35,7 @@ gem 'translation'
 gem 'meta-tags'
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 
-gem 'quran-core', path: '../quran-core'
+gem 'quran-core', github: 'quran/quran-core' #path: '../quran-core'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

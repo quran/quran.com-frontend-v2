@@ -1,4 +1,6 @@
 class BasePresenter
+  include Pagy::Backend
+
   HOST = 'https://www.quran.com'.freeze
   attr_reader :context, :resource_class
 
@@ -101,4 +103,13 @@ class BasePresenter
   def meta_image
 
   end
+
+  def language
+
+    @languae ||= (
+    Language.find_by_id_or_iso_code(I18n.locale) ||
+        Language.default
+    )
+  end
+
 end

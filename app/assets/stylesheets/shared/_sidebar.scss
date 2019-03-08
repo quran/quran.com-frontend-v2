@@ -23,6 +23,7 @@
 
     .logo {
       font-size: 26px;
+      margin-left: 0;
     }
 
     .close-menu {
@@ -41,10 +42,26 @@
       color: #b0bec5;
       border-bottom: 1px solid #eceff1;
       padding: 10px 25px;
+
+      &.active, &:focus, &:hover {
+        background:#00acc1;
+        color:#fff;
+      }
+      i {
+        width: 15px;
+        margin-right:10px;
+      }
     }
   }
   .more-links{
     line-height: 28px;
     padding: 20px 25px;
+  }
+}
+
+@media (max-width:479px) {
+  .right-sidebar {
+    right: -100%;
+    width: 100%;
   }
 }
