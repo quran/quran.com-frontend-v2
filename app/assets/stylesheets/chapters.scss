@@ -108,6 +108,26 @@
       column-count: 3;
 
       ul li {
+        a{
+          &:hover {
+            box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
+
+            &:before {
+              color: $color-primary;
+            }
+
+            .name {
+              color: #263238;
+            }
+          }
+        }
+
+        &:hover {
+          &:before {
+            color: $color-primary;
+          }
+        }
+
         position: relative;
         border-radius: 6px;
         padding: 10px 30px;
@@ -128,7 +148,17 @@
           font-family: $font-regular;;
           font-size: 20px;
           color: #607d8b;
+
+          .badge-secondary{
+            background-color: #eceff1;
+            font-size: 10px;
+          }
+
+          span{
+            font-size: 14px;
+          }
         }
+
         .icon{
           font-size: 22px;
           color: $color-primary;
@@ -139,18 +169,6 @@
           font-family: $font-medium;
           font-size: 15px;
           color: $color-primary;
-        }
-
-        &:hover {
-          box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
-
-          &:before {
-            color: $color-primary;
-          }
-
-          .name {
-            color: #263238;
-          }
         }
       }
     }
@@ -317,6 +335,12 @@
 }
 
 .chapters {
+
+  .juz-list{
+    a{
+      padding: 10px 0;
+    }
+  }
 
   figcaption {
     position: absolute;

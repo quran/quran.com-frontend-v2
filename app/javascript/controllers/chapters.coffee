@@ -7,7 +7,6 @@ class App.Chapters extends App.Base
     @bindWordAudio()
 
   index: =>
-    alert("index")
 
   bindFootnotes: ->
     $(document).on "click", ".translation sup", ->
@@ -16,11 +15,9 @@ class App.Chapters extends App.Base
 
   bindWordAudio: ->
     $(document).on "click", ".word", (e) =>
+      e.preventDefault()
       if $(e.target).data('audio')?
         @player.playWord($(e.target).data('audio'))
-      else
-        alert("?")
-
 
   infinitePagination: ->
     $("#verses").infinitePages

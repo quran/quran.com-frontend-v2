@@ -9,5 +9,4 @@ require('rails_script')
 require('partial_replacement')
 require('infinite_scrolling')
 
-import {Howl, Howler} from 'howler';
 import {} from 'jquery'

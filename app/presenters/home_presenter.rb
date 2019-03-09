@@ -17,6 +17,6 @@ class HomePresenter < BasePresenter
   end
 
   def juz
-    []
+    Juz.order('juz_number ASC')
   end
 end

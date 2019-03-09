@@ -15,7 +15,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-Rails.application.config.assets.precompile += %w[.svg .eot .woff .ttf .woff2 .otf]
+Rails.application.config.assets.precompile += %w[svg eot woff ttf woff2 otf]
 Rails.application.config.assets.paths << Pagy.root.join('javascripts')
 
 if Rails.env.production? || Rails.env.staging?
