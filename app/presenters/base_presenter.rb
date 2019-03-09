@@ -22,6 +22,7 @@ class BasePresenter
         url: meta_url,
         type: 'website',
         image: meta_image,
+        'image:alt': 'Quran.com',
         see_also: related_links
       },
       # FB Applinks meta tags
