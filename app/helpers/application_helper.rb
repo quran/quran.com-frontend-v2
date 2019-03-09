@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   include Pagy::Frontend
 
@@ -16,5 +18,4 @@ module ApplicationHelper
   def spinning_loader
     "<i class='fa-spin6 animate-spin'></i> #{_t('loading')}".html_safe
   end
-
 end

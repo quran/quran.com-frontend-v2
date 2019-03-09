@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 TranslationIO.configure do |config|
   config.api_key        = Rails.application.credentials[:translation_key]
   config.source_locale  = 'en'
-  config.target_locales = ['sq', 'ar', 'nl', 'fr', 'id', 'it', 'fa', 'tr', 'ur']
+  config.target_locales = %w[sq ar nl fr id it fa tr ur]
 
   # Uncomment this if you don't want to use gettext
   # config.disable_gettext = true

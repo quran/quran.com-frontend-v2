@@ -1,16 +1,16 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :chapter_info, only: :show
   resources :foot_note, only: :show
 
-=begin
-  /002 => /2
-  /002/002 => /2/2
-  /02:02 => /2:2
-  /2/20-2 => 2/2-20
-  /2:20:2 => /2/2-20
-  /120 => invalid-surah
-   /1/8 => invalid ayah
-=end
+  #   /002 => /2
+  #   /002/002 => /2/2
+  #   /02:02 => /2:2
+  #   /2/20-2 => 2/2-20
+  #   /2:20:2 => /2/2-20
+  #   /120 => invalid-surah
+  #    /1/8 => invalid ayah
 
   get :search, to: 'search#search', as: :search
 

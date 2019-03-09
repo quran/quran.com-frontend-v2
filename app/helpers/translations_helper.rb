@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TranslationsHelper
   def _t(key)
     "<span class='#{I18n.locale}'>#{t key}</span>".html_safe

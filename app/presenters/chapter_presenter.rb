@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChapterPresenter < BasePresenter
   attr_accessor :current_page, :total_pages
 
@@ -45,30 +47,31 @@ class ChapterPresenter < BasePresenter
   end
 
   protected
+
   def verses(verse_start, per)
     verse_end = verse_pagination_end(verse_start, per)
 
-    list = Verse.
-        where(chapter_id: params[:id]).
-        where("verse_number >= ? AND verse_number < ?", verse_start.to_i, verse_end.to_i )
+    list = Verse
+           .where(chapter_id: params[:id])
+           .where('verse_number >= ? AND verse_number < ?', verse_start.to_i, verse_end.to_i)
 
-    list = list.where(translations: {language_id: language.id}).
-        or(list.where(translations: {language_id: Language.default.id})).
-        includes(:translations, words: eager_load_words).
-        where(translations: eager_load_translations)
+    list = list.where(translations: { language_id: language.id })
+               .or(list.where(translations: { language_id: Language.default.id }))
+               .includes(:translations, words: eager_load_words)
+               .where(translations: eager_load_translations)
 
     list.order('verses.verse_index ASC, words.position ASC, translations.priority ASC')
   end
 
   def eager_load_words
-    [
-        :translation,
-        :transliteration
+    %i[
+      translation
+      transliteration
     ]
   end
 
   def eager_load_translations
-    {resource_content_id: 131}
+    { resource_content_id: 131 }
   end
 
   def current_page
@@ -76,14 +79,14 @@ class ChapterPresenter < BasePresenter
   end
 
   def verse_pagination_start
-     ((current_page - 1) * per_page) + 1
+    ((current_page - 1) * per_page) + 1
   end
 
   def verse_pagination_end(start, per)
-    min(start+per, chapter.verses_count + 1)
+    min(start + per, chapter.verses_count + 1)
   end
 
-  def min(a,b)
-    a<b ? a : b
+  def min(a, b)
+    a < b ? a : b
   end
 end

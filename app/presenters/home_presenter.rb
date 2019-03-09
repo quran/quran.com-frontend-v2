@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomePresenter < BasePresenter
   def initialize(view_context)
     super view_context
@@ -7,13 +9,13 @@ class HomePresenter < BasePresenter
     chapters = Chapter.includes(:translated_name)
 
     # Eager load translated names to avoid n+1 queries
-    chapters.
-        where(translated_names: {language_id: language.id}).
-        or(
-            chapters.
-                where(translated_names: {language_id: Language.default.id})
-        ).
-        order('translated_names.language_priority DESC')
+    chapters
+      .where(translated_names: { language_id: language.id })
+      .or(
+        chapters
+            .where(translated_names: { language_id: Language.default.id })
+      )
+      .order('translated_names.language_priority DESC')
   end
 
   def juz

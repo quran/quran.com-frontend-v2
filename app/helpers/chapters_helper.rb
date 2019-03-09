@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ChaptersHelper
   def related_sites
     [
@@ -9,7 +11,7 @@ module ChaptersHelper
 
   def chapter_next_page_link
     if @presenter.next_page
-      link_to 'load more', {page: @presenter.next_page}, rel: 'next'
+      link_to 'load more', { page: @presenter.next_page }, rel: 'next'
     end
   end
 end

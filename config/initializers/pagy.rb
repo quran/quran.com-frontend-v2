@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 # Pagy initializer file
 # Customize only what you really need but notice that Pagy works also without any of the following lines.
 
-
 # Extras
 # See https://ddnexus.github.io/pagy/extras
-
 
 # Backend Extras
 
@@ -16,14 +16,11 @@
 # See https://ddnexus.github.io/pagy/extras/searchkick
 require 'pagy/extras/searchkick'
 
-
 # Frontend Extras
 
 # Bootstrap: Nav, responsive and compact helpers and templates for Bootstrap pagination
 # See https://ddnexus.github.io/pagy/extras/bootstrap
 # require 'pagy/extras/bootstrap'
-
-
 
 # Feature Extras
 
@@ -35,8 +32,8 @@ require 'pagy/extras/searchkick'
 
 # Out Of Range: Allow for easy handling of out of range pages
 # See https://ddnexus.github.io/pagy/extras/out_of_range
-#require 'pagy/extras/out_of_range'
-#Pagy::VARS[:out_of_range_mode] = :empty_page    # default  (other options: :empty_page and :exception)
+# require 'pagy/extras/out_of_range'
+# Pagy::VARS[:out_of_range_mode] = :empty_page    # default  (other options: :empty_page and :exception)
 
 # Trim: Remove the page=1 param from links
 # See https://ddnexus.github.io/pagy/extras/trim
@@ -47,11 +44,9 @@ require 'pagy/extras/searchkick'
 # All the Pagy::VARS are set for all the Pagy instances but can be overridden
 # per instance by just passing them to Pagy.new or the #pagy controller method
 
-
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
-Pagy::VARS[:items] = 10                                   # default
-
+Pagy::VARS[:items] = 10 # default
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
@@ -62,13 +57,11 @@ Pagy::VARS[:items] = 10                                   # default
 # Pagy::VARS[:link_extra] = 'data-remote="true"'            # example
 # Pagy::VARS[:item_path]  = 'activerecord.models.product'   # example
 
-
 # Rails
 
 # Rails: extras assets path required by the compact and responsive navs, and the items extra
 # See https://ddnexus.github.io/pagy/extras#javascript
 # Rails.application.config.assets.paths << Pagy.root.join('javascripts')
-
 
 # I18n
 

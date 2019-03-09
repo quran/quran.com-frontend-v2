@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChaptersController < ApplicationController
   def index
     @presenter = HomePresenter.new(self)
@@ -6,8 +8,6 @@ class ChaptersController < ApplicationController
   def show
     @presenter = ChapterPresenter.new(self)
 
-    if request.xhr?
-     render partial: 'verses', layout: false
-    end
+    render partial: 'verses', layout: false if request.xhr?
   end
 end

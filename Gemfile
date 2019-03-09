@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -18,24 +20,24 @@ gem 'turbolinks', '~> 5'
 # For css, we're still using Sprockets
 gem 'bootstrap', '~> 4.3.1'
 
+gem 'devise', '4.4.3'
 gem 'fast_blank'
 gem 'jquery-infinite-pages', github: 'naveed-ahmad/jquery-infinite-pages'
-gem 'pg'
-gem 'devise', '4.4.3'
-gem 'pagy'
 gem 'kaminari'
+gem 'pagy'
+gem 'pg'
 
-gem 'oj'
 gem 'jbuilder'
+gem 'oj'
 
 # i18n
 gem 'translation'
 
-#seo
-gem 'meta-tags'
+# seo
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
+gem 'meta-tags'
 
-gem 'quran-core', github: 'quran/quran-core' #path: '../quran-core'
+gem 'quran-core', github: 'quran/quran-core' # path: '../quran-core'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -48,21 +50,23 @@ gem 'rails_script', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'binding_of_caller'
   gem 'pry-rails'
+  gem 'web-console', '>= 3.3.0'
 
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate', '= 2.7.4'
   gem 'rails_real_favicon'
+  gem 'rubocop', '~> 0.65.0', require: false
+  gem "rubocop-rails_config"
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -74,4 +78,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
