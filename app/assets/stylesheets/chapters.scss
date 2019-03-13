@@ -184,6 +184,9 @@
 .surah-actions, .info-heading {
   background: #fafafa;
   padding: 15px 0;
+  float: left;
+  width: 100%;
+  padding: 15px 0;
 
   li {
     float: left;
@@ -375,6 +378,22 @@
     }
   }
   @media (max-width: 991px) {
+    .scrolled-section{
+      .row {
+        width: 1300px;
+
+        .col-md-4 {
+          -ms-flex: 0 0 33.333333%;
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+        }
+      }
+
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+
     figcaption h3 {
       font-size: 18px;
     }
@@ -410,6 +429,13 @@
     }
 
     .popular-search ul li {
+      &:first-child {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin: 0px 10px 10px;
+      }
+
       margin: 0px;
 
       a.btn-outline-primary {
@@ -456,7 +482,6 @@
 
 
     .popular-search ul li {
-      display: block;
       margin-bottom: 10px;
 
       a.btn-outline-primary {

@@ -10,7 +10,7 @@ class ChapterPresenter < BasePresenter
   end
 
   def chapter
-    @chapter ||= Chapter.find(params[:id])
+    @chapter ||= Chapter.find_using_slug(params[:id])
   end
 
   def paginate
@@ -46,13 +46,35 @@ class ChapterPresenter < BasePresenter
     current_page > total_pages
   end
 
+  def meta_keyword
+    chapter.translated_names.pluck(:name) + ['القران الكريم',
+                                            'القرآن',
+                                             'قران',
+                                             'quran']
+  end
+
+  def meta_description
+    "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{paginate.first.text_madani}"
+  end
+
+  def meta_url
+    context.chapter_url(chapter)
+  end
+
+  def meta_title
+    "Surah #{chapter.name_simple}"
+  end
   protected
 
   def verses(verse_start, per)
+    return @verses if @verses
+
+
+
     verse_end = verse_pagination_end(verse_start, per)
 
     list = Verse
-           .where(chapter_id: params[:id])
+           .where(chapter_id: chapter.id)
            .where('verse_number >= ? AND verse_number < ?', verse_start.to_i, verse_end.to_i)
 
     list = list.where(translations: { language_id: language.id })
@@ -60,7 +82,7 @@ class ChapterPresenter < BasePresenter
                .includes(:translations, words: eager_load_words)
                .where(translations: eager_load_translations)
 
-    list.order('verses.verse_index ASC, words.position ASC, translations.priority ASC')
+    @verses = list.order('verses.verse_index ASC, words.position ASC, translations.priority ASC')
   end
 
   def eager_load_words

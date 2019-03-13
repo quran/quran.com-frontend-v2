@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get :manifest
     get :msapplication_config
   end
+
   # /2:2:3 => 1/2-3
   get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
 
@@ -37,10 +38,10 @@ Rails.application.routes.draw do
   get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 302)
 
   # /2-2 => 1/2
-  get '/:chapter-:verse', to: redirect('/%{chapter}/%{verse}', status: 302)
+  # get '/:chapter-:verse', to: redirect('/%{chapter}/%{verse}', status: 302)
 
   # /2-2-3 => 1/2-3
-  get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+  # get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
 
   # /2/1/1 => /2/1-2
   get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)

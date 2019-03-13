@@ -1,9 +1,12 @@
 header{
-  border-bottom: 1px solid $color-border;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: #fff;
+  z-index: 9;
   padding: 10px 0 15px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
+  border-bottom: 1px solid $color-border;
 
   .logo{
     font-size: 30px;
@@ -111,7 +114,7 @@ header{
 }
 
 
-.sticky-navbar {
+.surah-actionas {
   min-height: 4rem;
 
   .navbar-nav-scroll {
