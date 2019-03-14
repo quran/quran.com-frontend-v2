@@ -186,6 +186,19 @@ fr:
       create: Créer un(e) %{model}
       update: Modifier ce(tte) %{model}
       submit: Enregistrer ce(tte) %{model}
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: "<b>%{count}</b> %{entry_name}"
+          other: "<b>tous les %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "%{entry_name}  <b>%{first} - %{last}</b> sur <b>%{total}</b>
+          au total"
   flash:
     actions:
       create:
@@ -315,6 +328,9 @@ fr:
     yaseen: 
     al_mulk: 
     ar_rahman: 
+    al_waqiah: 
+    al_kahf: 
+    al_muzammil: 
   player:
     current_verse: Verset
     next_verse: Prochain Verset
@@ -359,3 +375,11 @@ fr:
     salah_description: 
     audio: 
     audio_description: 
+  views:
+    pagination:
+      first: "&laquo; Premier"
+      last: Dernier &raquo;
+      previous: "&lsaquo; Précédent"
+      next: Suivant &rsaquo;
+      truncate: "&hellip;"
+  close: 

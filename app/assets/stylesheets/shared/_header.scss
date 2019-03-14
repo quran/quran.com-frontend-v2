@@ -2,12 +2,17 @@ header{
   position: fixed;
   top: 0px;
   left: 0px;
+  right: 0px;
+  float: left;
   width: 100%;
   background: #fff;
   z-index: 9;
   padding: 10px 0 15px;
   border-bottom: 1px solid $color-border;
 
+  &.active{
+    border-bottom: 1px solid $color-border !important;
+  }
   .logo{
     font-size: 30px;
     float: left;

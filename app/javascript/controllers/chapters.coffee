@@ -1,10 +1,10 @@
 class App.Chapters extends App.Base
-
   show: =>
     @player = new Utility.Player()
     @bindFootnotes()
     @infinitePagination()
     @bindWordAudio()
+    @bindWordTooltip()
 
   index: =>
 
@@ -12,6 +12,37 @@ class App.Chapters extends App.Base
     $(document).on "click", ".translation sup", ->
       id = $(@).attr("foot_note")
       $.get("/foot_note/#{id}")
+
+  bindWordTooltip: =>
+    $(document).on "mouseover", '.verse', @loadVerseTooltip
+    $(document).on "click", '.word', @loadWordTooltip
+
+  loadVerseTooltip: (e) =>
+    $(e.target).find('.word').tooltip({
+      delay: 10,
+      title: @getTooltip,
+      html: true
+    });
+
+  loadWordTooltip: (e) =>
+    $(e.target).tooltip({
+      delay: 10,
+      title: @getTooltip,
+      html: true
+    });
+
+  getTooltip: ->
+    word = $(@)
+    # TODO: Transliteration
+    return word.data('translation') if  word.data('translation')?
+    $.get "/verses/#{word.data('verse')}/tooltip", {}, (response) ->
+      words = Object.keys(response)
+      words.forEach (key) ->
+        translation = response[key].translation
+        transliteration = response[key].transliteration
+        $("#w-#{key}").data('translation', if translation then translation.text else 'Verse')
+        $("#w-#{key}").data('transliteration', if transliteration then transliteration.text else 'Verse')
+    '...'
 
   bindWordAudio: ->
     $(document).on "click", ".word", (e) =>
@@ -36,7 +67,6 @@ class App.Chapters extends App.Base
         # called after successful ajax call
         $("#verses-pagination").remove()
         newItems = $(data)
-        newItems.find('[data-toggle="tooltip"]').tooltip()
         $("#verses").append newItems
 
       error: (container, error) ->

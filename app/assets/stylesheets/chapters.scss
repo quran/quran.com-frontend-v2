@@ -3,8 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .chapters {
-  header {
-    border: none;
+  &.index {
+    header {
+      border: none;
+    }
+  }
+
+  &.show{
+    main {
+      padding: 65px 0;
+    }
+    .search-form .fa-search{
+      display: none;
+    }
   }
 
   .top-section {
@@ -36,13 +47,18 @@
   }
 
   .popular-search {
-    margin-bottom: 50px;
+    font-family: $font-regular;
+    color: #607d8b;
+
+    p {
+      font-size: 14px;
+      margin-left: 20px;
+      text-align: left;
+    }
 
     ul li {
       display: inline-block;
-      font-family: $font-regular;
       font-size: 14px;
-      color: #607d8b;
       margin: 0 14px;
     }
 
@@ -63,7 +79,7 @@
   }
 
   .related-sites-section {
-    padding: 50px 0px;
+    padding: 25px 0px;
 
     .site {
       position: relative;
@@ -108,7 +124,7 @@
       column-count: 3;
 
       ul li {
-        a{
+        a {
           &:hover {
             box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
 
@@ -149,17 +165,17 @@
           font-size: 20px;
           color: #607d8b;
 
-          .badge-secondary{
+          .badge-secondary {
             background-color: #eceff1;
             font-size: 10px;
           }
 
-          span{
+          span {
             font-size: 14px;
           }
         }
 
-        .icon{
+        .icon {
           font-size: 22px;
           color: $color-primary;
           text-align: right;
@@ -175,17 +191,8 @@
   }
 }
 
-#chapters-show {
-  main {
-    padding: 0;
-  }
-}
-
 .surah-actions, .info-heading {
   background: #fafafa;
-  padding: 15px 0;
-  float: left;
-  width: 100%;
   padding: 15px 0;
 
   li {
@@ -244,11 +251,19 @@
     margin: 0px;
   }
 
-  span {
-    display: block;
-    font-size: 18px;
-    color: $color-primary;
+  li{
+    padding: 0 25px;
+    span.info {
+      display: block;
+      font-size: 18px;
+      color: $color-primary;
+    }
+
+    .fa-close{
+      color: #00acc1;
+    }
   }
+
 }
 
 #verses {
@@ -280,38 +295,42 @@
       text-align: right;
       padding-right: 65px;
 
-      span{
+      span {
         cursor: pointer;
+
+        &:hover{
+          color: $color-primary
+        }
       }
     }
 
     .translation {
       line-height: 36px;
-      font-size:20px;
+      font-size: 20px;
       color: #607d8b;
 
-      sup{
-        color:#00acc1;
+      sup {
+        color: #00acc1;
         cursor: pointer;
       }
 
       .resource {
-        display:block;
+        display: block;
         font-family: $font-medium;
-        font-size:16px;
-        color:#00acc1;
+        font-size: 16px;
+        color: #00acc1;
       }
 
       small {
-        a{
-        font-size:14px;
-        color:#607d8b;
+        a {
+          font-size: 14px;
+          color: #607d8b;
         }
 
         i {
-          font-size:11px;
-          color:#00acc1;
-          margin-right:5px;
+          font-size: 11px;
+          color: #00acc1;
+          margin-right: 5px;
         }
       }
     }
@@ -322,25 +341,35 @@
       text-align: center;
       padding-top: 10px;
     }
+
     .icon-col-left a,
     .icon-col-right a {
       display: block;
-      color:#b0bec5;
-      margin-bottom:28px;
+      color: #b0bec5;
+      margin-bottom: 28px;
     }
+
     .icon-col-left a:hover,
     .icon-col-right a:hover {
-      color:#00acc1;
+      color: #00acc1;
     }
   }
+}
 
+.scrolled-section {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .chapters {
 
-  .juz-list{
-    a{
+  .juz-list {
+    a {
       padding: 10px 0;
     }
   }
@@ -378,7 +407,7 @@
     }
   }
   @media (max-width: 991px) {
-    .scrolled-section{
+    .scrolled-section {
       .row {
         width: 1300px;
 
@@ -388,10 +417,6 @@
           max-width: 33.333333%;
         }
       }
-
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      white-space: nowrap;
     }
 
     figcaption h3 {
@@ -406,13 +431,14 @@
       }
     }
 
-    .verse{
-    .translation {
-      line-height: normal;
-    }
-    .translation small {
-      display:none;
-    }
+    .verse {
+      .translation {
+        line-height: normal;
+      }
+
+      .translation small {
+        display: none;
+      }
     }
   }
   @media (max-width: 767px) {
@@ -420,7 +446,7 @@
       column-count: 1 !important;
     }
 
-      figcaption {
+    figcaption {
       font-size: 16px;
 
       h3 {
@@ -429,13 +455,6 @@
     }
 
     .popular-search ul li {
-      &:first-child {
-        display: block;
-        width: 100%;
-        text-align: left;
-        margin: 0px 10px 10px;
-      }
-
       margin: 0px;
 
       a.btn-outline-primary {
@@ -444,7 +463,7 @@
       }
     }
 
-    .verse{
+    .verse {
       .translation {
         font-family: $font-medium;
         font-size: 17px;
@@ -467,7 +486,7 @@
   }
 
   @media (max-width: 610px) {
-    .items{
+    .items {
       .col-sm-7.name {
         float: left;
         width: 67%;
@@ -488,6 +507,21 @@
         display: block;
         font-size: 14px;
         padding: 8px 18px;
+      }
+    }
+
+    .info-heading {
+      padding: 0;
+
+       ul li {
+        border-left: 0px solid #eceff1;
+        border-bottom: 1px solid #eceff1;
+        width: 50%;
+        padding: 20px 0px;
+
+         &:first-child{
+           width: 100%;
+         }
       }
     }
   }

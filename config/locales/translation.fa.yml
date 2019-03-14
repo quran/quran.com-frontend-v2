@@ -181,6 +181,18 @@ fa:
       create: ایجاد %{model}
       update: بروز رسانی %{model}
       submit: ذخیره‌ی %{model}
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: 
+          other: 
+      more_pages:
+        display_entries: 
   flash:
     actions:
       create:
@@ -304,6 +316,9 @@ fa:
     yaseen: 
     al_mulk: 
     ar_rahman: 
+    al_waqiah: 
+    al_kahf: 
+    al_muzammil: 
   player:
     current_verse: 
     next_verse: 
@@ -347,3 +362,11 @@ fa:
     salah_description: 
     audio: 
     audio_description: 
+  views:
+    pagination:
+      first: 
+      last: 
+      previous: 
+      next: 
+      truncate: 
+  close: 

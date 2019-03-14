@@ -188,6 +188,18 @@ ur:
       create: "%{model} تشکیل دیں"
       update: اپ ڈیٹ %{model}
       submit: "%{model} محفوظ کریں"
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: 
+          other: 
+      more_pages:
+        display_entries: 
   flash:
     actions:
       create:
@@ -314,6 +326,9 @@ ur:
     yaseen: سورہ یسین
     al_mulk: سورہ الملک
     ar_rahman: سورہ الرحمان
+    al_waqiah: سورہ الواقعة
+    al_kahf: سورہ الكهف
+    al_muzammil: سورہ المزمل
   player:
     current_verse: آیت
     next_verse: اگلی آیت
@@ -361,3 +376,11 @@ ur:
     salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
     audio: آڈیو میں نوبل قرآن
     audio_description: ایک ہی وقت میں سیکھنا اور سننا
+  views:
+    pagination:
+      first: "& laquo؛ پہلا"
+      last: آخری & raquo؛
+      previous: "& lsaquo؛ پچھلا"
+      next: اگلا & rsaquo؛
+      truncate: 
+  close: 

@@ -183,6 +183,19 @@ id:
       create: Buat %{model}
       update: Perbarui %{model}
       submit: Simpan %{model}
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: 
+          other: 
+      more_pages:
+        display_entries: Ditampilkan %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>
+          dari total <b>%{total}</b>
   flash:
     actions:
       create:
@@ -311,6 +324,9 @@ id:
     yaseen: 
     al_mulk: 
     ar_rahman: 
+    al_waqiah: 
+    al_kahf: 
+    al_muzammil: 
   player:
     current_verse: Ayat
     next_verse: Ayat Berikutnya
@@ -355,3 +371,11 @@ id:
     salah_description: 
     audio: 
     audio_description: 
+  views:
+    pagination:
+      first: "&laquo; Awal"
+      last: Akhir &raquo;
+      previous: "&lsaquo; Sebelumnya"
+      next: Berikutnya &rsaquo;
+      truncate: "&hellip;"
+  close: 

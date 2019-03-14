@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class ChapterPresenter < BasePresenter
-  attr_accessor :current_page, :total_pages
-
   def initialize(context)
     super context
 
-    @total_pages = (chapter.verses_count / per_page).ceil
+    @range_start, @range_end = params[:range].to_s.split('-')
   end
 
   def chapter
@@ -64,25 +62,34 @@ class ChapterPresenter < BasePresenter
   def meta_title
     "Surah #{chapter.name_simple}"
   end
+
+  def range
+    "#{range_start}-#{range_end}"
+  end
+
   protected
 
   def verses(verse_start, per)
     return @verses if @verses
 
-
-
     verse_end = verse_pagination_end(verse_start, per)
 
     list = Verse
            .where(chapter_id: chapter.id)
-           .where('verse_number >= ? AND verse_number < ?', verse_start.to_i, verse_end.to_i)
+           .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
 
-    list = list.where(translations: { language_id: language.id })
-               .or(list.where(translations: { language_id: Language.default.id }))
-               .includes(:translations, words: eager_load_words)
+    #list = list.where(translations: { language_id: language.id })
+    #           .or(list.where(translations: { language_id: Language.default.id }))
+    #           .includes(:translations, words: eager_load_words)
+    #           .where(translations: eager_load_translations)
+    #
+    # @verses = list.order('verses.verse_index ASC, words.position ASC, translations.priority ASC')
+
+    list = list
+               .includes(:translations, :words)
                .where(translations: eager_load_translations)
 
-    @verses = list.order('verses.verse_index ASC, words.position ASC, translations.priority ASC')
+    @verses = list.order('verses.verse_index ASC, words.position ASC')
   end
 
   def eager_load_words
@@ -100,12 +107,43 @@ class ChapterPresenter < BasePresenter
     params[:page].to_i <= 1 ? 1 : params[:page].to_i
   end
 
+  def total_pages
+    total = (range_end - range_start)
+
+
+    (total / per_page).ceil
+  end
+
+  def has_more_verses?
+    range_end < chapter.verses_count
+  end
+
+  def has_previous_verses?
+    range_start > 1
+  end
+
+  protected
+
+  def range_end
+    # min((@range_end || chapter.verses_count).to_i, chapter.verses_count)
+    (@range_end || range_start).to_i
+  end
+
+  def range_start
+    start = (@range_start || 1).to_i
+
+    # Range start and end is inclusive while quering the data.
+    # We don't want to repeat last ayah after first page
+    # So start + 1
+    current_page > 1 ? start + 1 : start
+  end
+
   def verse_pagination_start
-    ((current_page - 1) * per_page) + 1
+    (((current_page - 1) * per_page) + range_start).to_i
   end
 
   def verse_pagination_end(start, per)
-    min(start + per, chapter.verses_count + 1)
+    min(start + per, range_end)
   end
 
   def min(a, b)

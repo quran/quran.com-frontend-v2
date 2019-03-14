@@ -182,6 +182,19 @@ it:
       create: Crea %{model}
       update: Aggiorna %{model}
       submit: Invia %{model}
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: "<b>%{count}</b> %{entry_name}"
+          other: "<b>Tutti %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "%{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> di <b>%{total}</b>
+          totali"
   flash:
     actions:
       create:
@@ -307,6 +320,9 @@ it:
     yaseen: 
     al_mulk: 
     ar_rahman: 
+    al_waqiah: 
+    al_kahf: 
+    al_muzammil: 
   player:
     current_verse: 
     next_verse: 
@@ -350,3 +366,11 @@ it:
     salah_description: 
     audio: 
     audio_description: 
+  views:
+    pagination:
+      first: "&laquo; Inizio"
+      last: Fine &raquo;
+      previous: "&lsaquo; Prec."
+      next: Succ. &rsaquo;
+      truncate: "&hellip;"
+  close: 

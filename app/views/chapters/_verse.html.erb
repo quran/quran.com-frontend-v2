@@ -13,8 +13,8 @@
       <div class="arabic">
         <p>
           <% verse.words.each do |w| %>
-            <span data-toggle="tooltip" data-placement="top" title="<%= w.translation&.text %>" data-audio="<%= w.location %>" class="word p<%= w.page_number %>-v1"><%= w.code.html_safe %> </span>
-          <% end %>
+            <span data-placement="top" data-id=<%= w.id %> data-verse=<%= w.verse_id %> data-audio="<%= w.location %>" class="word p<%= w.page_number %>-v1" id="w-<%= w.id %>"><%= w.code.html_safe %> </span>
+        <% end %>
         </p>
       </div>
     </div>
@@ -35,10 +35,6 @@
         <%= render partial: 'translation', collection: verse.translations, as: :translation %>
       </div>
     </div>
-
-    <!--<div class="col-md-1">
-      <div class="icon-col-right"> <a href="#" class="fa fa-file-text-o"></a> <a href="#" class="fa fa-file-text-o"></a> <a href="#" class="report">REPORT</a> </div>
-    </div>-->
   </div>
 </div>
 
