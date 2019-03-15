@@ -154,10 +154,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
     ffi (1.9.25)
-    friendly_id (5.2.5)
-      activerecord (>= 4.0.0)
-    friendly_id-globalize (1.0.0.alpha3)
-      friendly_id (>= 5.2.0, < 6.0)
     gettext (3.2.9)
       locale (>= 2.0.5)
       text (>= 1.3.0)
@@ -369,8 +365,6 @@ DEPENDENCIES
   chromedriver-helper
   devise (= 4.4.3)
   fast_blank
-  friendly_id (~> 5.2.4)
-  friendly_id-globalize
   jbuilder
   jquery-infinite-pages!
   kaminari
