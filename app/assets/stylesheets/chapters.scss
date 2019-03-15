@@ -9,11 +9,12 @@
     }
   }
 
-  &.show{
+  &.show {
     main {
       padding: 65px 0;
     }
-    .search-form .fa-search{
+
+    .search-form .fa-search {
       display: none;
     }
   }
@@ -27,7 +28,7 @@
     width: 100%;
     max-width: 257px;
     height: auto;
-    margin: 0 auto 44px;
+    margin: 40px auto;
   }
 
   .banner {
@@ -112,9 +113,9 @@
         padding: 0px;
 
         &.active {
-          color: #00acc1;
+          color: $color-primary;
           border: 0px;
-          border-bottom: 3px solid #00acc1;
+          border-bottom: 3px solid $color-primary;
         }
       }
     }
@@ -227,7 +228,7 @@
     height: 20px;
     line-height: 17px;
     font-size: 14px;
-    color: #00acc1;
+    color: $color-primary;
     border-radius: 14px;
     border: solid 1px #cfd8dc;
     background-color: #ffffff;
@@ -251,16 +252,17 @@
     margin: 0px;
   }
 
-  li{
+  li {
     padding: 0 25px;
+
     span.info {
       display: block;
       font-size: 18px;
       color: $color-primary;
     }
 
-    .fa-close{
-      color: #00acc1;
+    .fa-close {
+      color: $color-primary;
     }
   }
 
@@ -280,11 +282,16 @@
         height: 45px;
         line-height: 43px;
         font-size: 18px;
-        color: #00acc1;
+        color: $color-primary;
         text-align: center;
         border-radius: 30px;
         border: solid 1px #b0bec5;
         margin-right: 40px;
+
+        &:hover {
+          background: $color-primary;
+          color: $white
+        }
       }
     }
 
@@ -298,7 +305,7 @@
       span {
         cursor: pointer;
 
-        &:hover{
+        &:hover {
           color: $color-primary
         }
       }
@@ -310,7 +317,7 @@
       color: #607d8b;
 
       sup {
-        color: #00acc1;
+        color: $color-primary;
         cursor: pointer;
       }
 
@@ -318,7 +325,7 @@
         display: block;
         font-family: $font-medium;
         font-size: 16px;
-        color: #00acc1;
+        color: $color-primary;
       }
 
       small {
@@ -329,29 +336,26 @@
 
         i {
           font-size: 11px;
-          color: #00acc1;
+          color: $color-primary;
           margin-right: 5px;
         }
       }
     }
 
-    .icon-col-left,
-    .icon-col-right {
+    .verse-actions {
       display: block;
       text-align: center;
       padding-top: 10px;
-    }
 
-    .icon-col-left a,
-    .icon-col-right a {
-      display: block;
-      color: #b0bec5;
-      margin-bottom: 28px;
-    }
+      a {
+        display: block;
+        color: #b0bec5;
+        margin-bottom: 28px;
 
-    .icon-col-left a:hover,
-    .icon-col-right a:hover {
-      color: #00acc1;
+        &:hover {
+          color: $color-primary;
+        }
+      }
     }
   }
 }
@@ -360,7 +364,8 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
-
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
   &::-webkit-scrollbar {
     display: none;
   }
@@ -406,6 +411,7 @@
       }
     }
   }
+
   @media (max-width: 991px) {
     .scrolled-section {
       .row {
@@ -431,16 +437,25 @@
       }
     }
 
-    .verse {
+    #verses .verse {
       .translation {
         line-height: normal;
+
+        small {
+          display: none;
+        }
       }
 
-      .translation small {
+      .arabic {
+        padding-right: 0;
+      }
+
+      .verse-actions {
         display: none;
       }
     }
   }
+
   @media (max-width: 767px) {
     .items {
       column-count: 1 !important;
@@ -463,7 +478,7 @@
       }
     }
 
-    .verse {
+    #verses .verse {
       .translation {
         font-family: $font-medium;
         font-size: 17px;
@@ -471,6 +486,11 @@
 
       .resource {
         font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .arabic {
+        font-size: 40px;
       }
     }
   }
@@ -481,6 +501,16 @@
 
       h3 {
         font-size: 23px;
+      }
+    }
+
+    #verses .verse {
+      .col-md-10, .col-md-2 {
+        width: 100%;
+      }
+
+      .col-md-2 {
+        margin-bottom: 15px;
       }
     }
   }
@@ -499,6 +529,20 @@
       }
     }
 
+    #verses {
+      .verse {
+        .arabic {
+          font-size: 30px;
+        }
+
+        .play-verse {
+          width: 35px;
+          height: 35px;
+          line-height: 33px;
+          font-size: 13px;
+        }
+      }
+    }
 
     .popular-search ul li {
       margin-bottom: 10px;
@@ -513,15 +557,15 @@
     .info-heading {
       padding: 0;
 
-       ul li {
+      ul li {
         border-left: 0px solid #eceff1;
         border-bottom: 1px solid #eceff1;
         width: 50%;
         padding: 20px 0px;
 
-         &:first-child{
-           width: 100%;
-         }
+        &:first-child {
+          width: 100%;
+        }
       }
     }
   }

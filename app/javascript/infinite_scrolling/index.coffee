@@ -59,12 +59,12 @@ Released under the MIT License
       # Setup the callback to handle turbolinks page loads
       $(window.document).on("page:change", => @_recache())
 
-# Internal helper for logging messages
+    # Internal helper for logging messages
     _log: (msg) ->
       console?.log(msg) if @options.debug
 
-# Check the distance of the nav selector from the bottom of the window and fire
-# load event if close enough
+    # Check the distance of the nav selector from the bottom of the window and fire
+    # load event if close enough
     check: ->
       nav = $(@options.nextSelector)
       if nav.length == 0
@@ -88,7 +88,7 @@ Released under the MIT License
       else
         $(@options.nextSelector).attr('href')
 
-# Load the next page
+    # Load the next page
     next: ->
       if @options.state.done
         @_log "Loaded all pages"
@@ -113,7 +113,7 @@ Released under the MIT License
         @options.loading $(@options.navSelector)
 
     _success: ($container, newItems) ->
-# ignore any requests for elements that are no longer on the page
+      # ignore any requests for elements that are no longer on the page
       return unless $.contains(document, $container[0])
       @options.state.loading = false
       @_log "New page loaded!"
@@ -121,27 +121,32 @@ Released under the MIT License
         @options.success @$container, newItems
 
     _error: ($container, error) ->
-# ignore any requests for elements that are no longer on the page
+      # ignore any requests for elements that are no longer on the page
       return unless $.contains(document, $container[0])
       @options.state.loading = false
       @_log "Error loading new page :("
       if typeof @options.error is 'function'
         @options.error @$container, error
 
-# Pause firing of events on scroll
+    # Pause firing of events on scroll
     pause: ->
       @options.state.paused = true
       @_log "Scroll checks paused"
 
-# Resume firing of events on scroll
+    destroy: ->
+      @$context.off 'scroll.infinitePages'
+      @_log "Scroll checks destroyed"
+      @$container.removeData 'infinitepages'
+
+    # Resume firing of events on scroll
     resume: ->
       @options.state.paused = false
       @_log "Scroll checks resumed"
       @check()
 
     _recache: ->
-# remove the existing scroll listener
-      @$context.off("scroll")
+      # remove the existing scroll listener
+      @$context.off("scroll.infinitePages")
 
       # Recache the element references we use (needed when using turbolinks)
       @$container = $("[data-jquery-infinite-pages-container=#{@instanceId}]")
@@ -151,7 +156,7 @@ Released under the MIT License
       @_listenForScrolling()
 
     _listenForScrolling: ->
-# Debounce scroll event to improve performance
+      # Debounce scroll event to improve performance
       scrollDelay = 250
       scrollTimeout = null
       lastCheckAt = null
@@ -162,7 +167,7 @@ Released under the MIT License
       # Have we waited enough time since the last check?
       shouldCheck = -> +new Date > lastCheckAt + scrollDelay
 
-      @$context.scroll ->
+      @$context.on 'scroll.infinitePages', ->
         scrollHandler() if shouldCheck() # Call check once every scrollDelay ms
         if scrollTimeout
           clearTimeout(scrollTimeout)
@@ -189,3 +194,4 @@ Released under the MIT License
         data[option].apply(data, args)
 
 ) $, window
+

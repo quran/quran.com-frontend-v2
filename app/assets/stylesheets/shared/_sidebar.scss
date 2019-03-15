@@ -30,7 +30,7 @@
       position: absolute;
       top: 42%;
       right: 25px;
-      color: #00acc1;
+      color: $color-primary;
       cursor: pointer;
     }
   }
@@ -44,7 +44,7 @@
       padding: 10px 25px;
 
       &.active, &:focus, &:hover {
-        background:#00acc1;
+        background:$color-primary;
         color:#fff;
       }
       i {

@@ -1,11 +1,15 @@
-<div class="verse">
+<div class="verse" id="<%= verse.id %>">
   <div class="row">
     <div class="col-md-2">
       <div class="actions">
-        <a href="#" class="play">
+        <a class="play play-verse">
           <i class="fa fa-play"></i>
         </a>
-        <span><%= link_to verse.verse_key, range_path(params[:id], verse.verse_number) %></span>
+
+        <span>
+         <a href="#_" class="fa fa-clipboard" data-toggle="tooltip" data-placement="left" title="Copy ayah"></a>
+          <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
+         </span>
       </div>
     </div>
 
@@ -14,23 +18,27 @@
         <p>
           <% verse.words.each do |w| %>
             <span data-placement="top" data-id=<%= w.id %> data-verse=<%= w.verse_id %> data-audio="<%= w.location %>" class="word p<%= w.page_number %>-v1" id="w-<%= w.id %>"><%= w.code.html_safe %> </span>
-        <% end %>
+          <% end %>
         </p>
       </div>
     </div>
   </div>
-  <div class="row second-row">
+
+  <div class="row">
     <div class="col-md-1">
-      <div class="icon-col-left">
-        <a href="#" class="fa fa-bookmark-empty-1"></a>
-        <a href="#" class="fa fa-edit-1"></a>
+      <div class="verse-actions">
+        <a href="#" class="fa fa-bookmark-empty-1" data-toggle="tooltip" data-placement="left" title="Bookmark this ayah"></a>
+        <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
         <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="Share"></a>
       </div>
     </div>
     <div class="col-md-10">
       <div class="translation">
-        <small>
-          <a href="#"><i class="fa fa-play"></i> Watch lecture by Bayyinah</a></small>
+        <% if media = VerseMedia.get_media(verse.id) %>
+          <small>
+            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %></a>
+          </small>
+        <% end %>
 
         <%= render partial: 'translation', collection: verse.translations, as: :translation %>
       </div>

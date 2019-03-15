@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module TranslationsHelper
-  def _t(key)
-    "<span class='#{I18n.locale}'>#{t key}</span>".html_safe
+  def _t(key, args={})
+    "<span class='#{I18n.locale}'>#{t key, args}</span>".html_safe
   end
 
   def available_locales

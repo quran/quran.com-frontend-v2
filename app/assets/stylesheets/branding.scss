@@ -7,7 +7,7 @@
   --peach: #ee6723;
 }
 
-$color-primary:    #00acc1 !default;
+$color-primary:  #00acc1 !default;
 $color-secondary: #b0bec5 !default;
 $color-border: #eceff1;
 $white:    #fff !default;
@@ -40,7 +40,11 @@ $theme-colors: (
 
 ) !default;
 
+$embed-responsive-aspect-ratios: (
+                (16 9),
+) !default;
 
 $font-regular: 'SFProText-Regular';
 $font-bold: 'SFProText-Bold';
 $font-medium: 'SFProText-Medium';
+

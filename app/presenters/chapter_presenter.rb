@@ -60,23 +60,53 @@ class ChapterPresenter < BasePresenter
   end
 
   def meta_title
-    "Surah #{chapter.name_simple}"
+    "Surah #{chapter.name_simple} - #{paginate.first.verse_key}"
   end
 
   def range
     "#{range_start}-#{range_end}"
   end
 
-  protected
+  def current_page
+    params[:page].to_i <= 1 ? 1 : params[:page].to_i
+  end
 
+  def total_pages
+    total = (range_end - range_start)
+
+
+    (total / per_page).ceil
+  end
+
+  def has_more_verses?
+    range_end < chapter.verses_count
+  end
+
+  def has_previous_verses?
+    range_start > 1
+  end
+
+  def show_bismillah?
+    single_ayah? || chapter.bismillah_pre?
+  end
+
+  def single_ayah?
+    # 2/255-255
+    # 2/10
+    # /ayat-ul-kursi all are single ayah
+
+    @range_start.present? && (@range_end.nil? || @range_end == @range_start)
+  end
+
+  protected
   def verses(verse_start, per)
     return @verses if @verses
 
     verse_end = verse_pagination_end(verse_start, per)
 
     list = Verse
-           .where(chapter_id: chapter.id)
-           .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+               .where(chapter_id: chapter.id)
+               .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
 
     #list = list.where(translations: { language_id: language.id })
     #           .or(list.where(translations: { language_id: Language.default.id }))
@@ -103,30 +133,14 @@ class ChapterPresenter < BasePresenter
     { resource_content_id: 131 }
   end
 
-  def current_page
-    params[:page].to_i <= 1 ? 1 : params[:page].to_i
-  end
-
-  def total_pages
-    total = (range_end - range_start)
-
-
-    (total / per_page).ceil
-  end
-
-  def has_more_verses?
-    range_end < chapter.verses_count
-  end
-
-  def has_previous_verses?
-    range_start > 1
-  end
-
-  protected
-
   def range_end
-    # min((@range_end || chapter.verses_count).to_i, chapter.verses_count)
-    (@range_end || range_start).to_i
+    if @range_start && @range_end.nil?
+      # For single ayah(e.g 2/1) range start and end should be same. One ayah
+      #
+      range_start
+    else
+      min((@range_end || chapter.verses_count).to_i, chapter.verses_count)
+    end
   end
 
   def range_start

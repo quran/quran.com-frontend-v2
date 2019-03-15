@@ -13,11 +13,10 @@
 </div>
 
 <div class="container">
+  <% if @presenter.show_bismillah? %>
+    <%= render "bismillah" %>
+<% end %>
   <div id="verses">
     <%= render "verses" %>
   </div>
 </div>
-
-<!--
-<p>ﱁ ﱂ ﱃ ﱄ ﱅ ﱆ ﱇ ﱈ ﱉ ﱊ ﱋ ﱌ ﱍ ﱎ ﱏ ﱐ ﱑ ﱒ ﱓ ﱔ ﱕ ﱖ ﱗ ﱘ ﱙ ﱚ ﱛ ﱜ ﱝ ﱞ ﱟ ﱠ ﱡ ﱢ ﱣ ﱤ</p>
--->
