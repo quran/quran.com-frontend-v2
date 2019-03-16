@@ -1,6 +1,7 @@
 @font-face {
 font-family: $font-regular;
-  src: font-url('SFProText-Regular?#iefix') format('embedded-opentype'),
+  src: font-url('SFProText-Regular.woff2'),
+  font-url('SFProText-Regular.eot?#iefix') format('embedded-opentype'),
   font-url('SFProText-Regular.woff') format('woff'),
   font-url('SFProText-Regular.ttf') format('truetype'),
   font-url('SFProText-Regular.svg#SFProText-Regular') format('svg');
@@ -10,7 +11,8 @@ font-family: $font-regular;
 
 @font-face {
   font-family: $font-medium;
-  src: font-url('SFProText-Medium.eot?#iefix') format('embedded-opentype'),
+  src: font-url('SFProText-Medium.woff2'),
+  font-url('SFProText-Medium.eot?#iefix') format('embedded-opentype'),
   font-url('SFProText-Medium.woff') format('woff'),
   font-url('SFProText-Medium.ttf')  format('truetype'),
   font-url('SFProText-Medium.svg#SFProText-Medium') format('svg');
@@ -20,7 +22,8 @@ font-family: $font-regular;
 
 @font-face {
   font-family: $font-bold;
-  src: font-url('SFProText-Bold.eot?#iefix') format('embedded-opentype'),
+  src: font-url('SFProText-Bold.woff2'),
+  font-url('SFProText-Bold.eot?#iefix') format('embedded-opentype'),
   font-url('SFProText-Bold.woff') format('woff'),
   font-url('SFProText-Bold.ttf') format('truetype'),
   font-url('SFProText-Bold.svg#SFProText-Bold') format('svg');
@@ -30,7 +33,8 @@ font-family: $font-regular;
 
 @font-face {
   font-family: 'nafees';
-  src: font-url('nafees/nafees-nastaleeq-webfont.eot?#iefix') format('embedded-opentype'),
+  src: font-url('nafees/nafees-nastaleeq-webfont.woff2'),
+  font-url('nafees/nafees-nastaleeq-webfont.eot?#iefix') format('embedded-opentype'),
   font-url('nafees/nafees-nastaleeq-webfont.woff') format('woff'),
   font-url('nafees/nafees-nastaleeq-webfont.ttf') format('truetype'),
   font-url('nafees/nafees-nastaleeq-webfont.svg#SFProText-Bold') format('svg');
@@ -40,7 +44,8 @@ font-family: $font-regular;
 
 @font-face {
   font-family: 'bismillah';
-  src: font-url('bismillah/bismillah.eot?#iefix') format('embedded-opentype'),
+  src: font-url('bismillah/bismillah.woff2'),
+  font-url('bismillah/bismillah.eot?#iefix') format('embedded-opentype'),
   font-url('bismillah/bismillah.woff') format('woff'),
   font-url('bismillah/bismillah.ttf') format('truetype'),
   font-url('bismillah/bismillah.svg#bismillah') format('svg');
@@ -62,7 +67,8 @@ font-family: $font-regular;
 
 @font-face {
   font-family: 'p<%= i %>-v1';
-  src: font-url("quran_fonts/v1/woff/p<%=i%>.woff"),
+  src: font-url("quran_fonts/v1/woff2/p<%=i%>.woff2"),
+  font-url("quran_fonts/v1/woff/p<%=i%>.woff") format('woff'),
   font-url("quran_fonts/v1/ttf/p<%= i %>.ttf") format('truetype');
 }
 
@@ -74,12 +80,3 @@ font-family: $font-regular;
   font-family: 'p<%=i%>-v1';
 }
 <% end %>
-
-
-@font-face {
-  font-family: pg_001;
-  src: local(QCF2001),
-  url(https://muqri.com/mushaf/woff2/QCF2001.woff2) format('woff2'),
-  url(https://muqri.com/mushaf/woff/QCF2001.woff) format('woff');
-  font-display: block;
-}
