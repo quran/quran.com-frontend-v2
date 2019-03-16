@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/quran/quran-core.git
-  revision: 246a42792b08aa809e0e761a28146b5084b3f07d
+  revision: 35485784d6891c7c81a985753bc9c750eede1ebd
   specs:
     quran-core (0.2.0)
       activerecord (~> 6.0.0.beta1)
@@ -211,7 +211,6 @@ GEM
       mini_portile2 (~> 2.4.0)
     oj (3.7.9)
     orm_adapter (0.5.0)
-    pagy (2.0.0)
     parallel (1.14.0)
     parser (2.6.0.0)
       ast (~> 2.4.0)
@@ -371,7 +370,6 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   meta-tags
   oj
-  pagy
   pg
   pry-rails
   puma (~> 3.11)

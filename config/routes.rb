@@ -4,15 +4,9 @@ Rails.application.routes.draw do
   resources :chapter_info, only: :show
   resources :foot_note, only: :show
 
-  #   /002 => /2
-  #   /002/002 => /2/2
-  #   /02:02 => /2:2
-  #   /2/20-2 => 2/2-20
-  #   /2:20:2 => /2/2-20
-  #   /120 => invalid-surah
-  #    /1/8 => invalid ayah
-
   get :search, to: 'search#search', as: :search
+  get '/verses/:id/tooltip', to: 'verses#tooltip'
+  get '/ayatul-kursi', to: 'chapters#show', id: '2', range: '255'
 
   namespace :pages do
     get :about_us
@@ -30,21 +24,16 @@ Rails.application.routes.draw do
     get :manifest
     get :msapplication_config
   end
+
   # /2:2:3 => 1/2-3
-  get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+  get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
   # /2:2 => /2/2
-  get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 302)
-
-  # /2-2 => 1/2
-  get '/:chapter-:verse', to: redirect('/%{chapter}/%{verse}', status: 302)
-
-  # /2-2-3 => 1/2-3
-  get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+  get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 301)
 
   # /2/1/1 => /2/1-2
-  get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 302)
+  get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
   get '/:id', to: 'chapters#show', as: :chapter
-  get '/:id/:range', to: 'chapters#show', as: :range
+  get '/:id/(:range)', to: 'chapters#show', as: :range
 end

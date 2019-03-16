@@ -41,6 +41,7 @@ en:
     quick_links: Quick links
     go_to_beginning: Beginning of chapter
     read_full: Read full chapter
+    invalid: Invalid Surah
   footnote: Footnote
   action:
     play: Play
@@ -63,6 +64,9 @@ en:
     yaseen: Surah Yaseen
     al_mulk: Surah Al Mulk
     ar_rahman: Surah Ar-Rahman
+    al_waqiah: Surah Al Waqiah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Surah Al Muzzammil
   player:
     current_verse: Verse
     next_verse: Next verse

@@ -1,6 +1,6 @@
-const { environment } = require('@rails/webpacker')
-const coffee =  require('./loaders/coffee')
-const typescript =  require('./loaders/typescript')
+const {environment} = require('@rails/webpacker')
+const coffee = require('./loaders/coffee')
+const typescript = require('./loaders/typescript')
 const webpack = require('webpack')
 environment.loaders.prepend('typescript', typescript)
 
@@ -27,10 +27,16 @@ environment.plugins.prepend(
 environment.loaders.append('expose', {
     test: require.resolve('jquery'),
     use: [{
-        loader: 'expose-loader',
-        options: '$'
-    }]
-})
+            loader: 'expose-loader',
+            options: '$'
+         },
+         {
+            loader: 'expose-loader',
+            options: 'jQuery'
+         }
+      ]
+  }
+)
 
 environment.loaders.prepend('coffee', coffee)
 module.exports = environment

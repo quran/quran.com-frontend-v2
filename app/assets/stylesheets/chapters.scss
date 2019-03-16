@@ -3,8 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .chapters {
-  header {
-    border: none;
+  &.index {
+    header {
+      border: none;
+    }
+  }
+
+  &.show {
+    main {
+      padding: 65px 0;
+    }
+
+    .search-form .fa-search {
+      display: none;
+    }
   }
 
   .top-section {
@@ -16,7 +28,7 @@
     width: 100%;
     max-width: 257px;
     height: auto;
-    margin: 0 auto 44px;
+    margin: 40px auto;
   }
 
   .banner {
@@ -36,13 +48,18 @@
   }
 
   .popular-search {
-    margin-bottom: 50px;
+    font-family: $font-regular;
+    color: #607d8b;
+
+    p {
+      font-size: 14px;
+      margin-left: 20px;
+      text-align: left;
+    }
 
     ul li {
       display: inline-block;
-      font-family: $font-regular;
       font-size: 14px;
-      color: #607d8b;
       margin: 0 14px;
     }
 
@@ -63,7 +80,7 @@
   }
 
   .related-sites-section {
-    padding: 50px 0px;
+    padding: 25px 0px;
 
     .site {
       position: relative;
@@ -96,9 +113,9 @@
         padding: 0px;
 
         &.active {
-          color: #00acc1;
+          color: $color-primary;
           border: 0px;
-          border-bottom: 3px solid #00acc1;
+          border-bottom: 3px solid $color-primary;
         }
       }
     }
@@ -108,7 +125,7 @@
       column-count: 3;
 
       ul li {
-        a{
+        a {
           &:hover {
             box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
 
@@ -149,17 +166,17 @@
           font-size: 20px;
           color: #607d8b;
 
-          .badge-secondary{
+          .badge-secondary {
             background-color: #eceff1;
             font-size: 10px;
           }
 
-          span{
+          span {
             font-size: 14px;
           }
         }
 
-        .icon{
+        .icon {
           font-size: 22px;
           color: $color-primary;
           text-align: right;
@@ -172,12 +189,6 @@
         }
       }
     }
-  }
-}
-
-#chapters-show {
-  main {
-    padding: 0;
   }
 }
 
@@ -217,7 +228,7 @@
     height: 20px;
     line-height: 17px;
     font-size: 14px;
-    color: #00acc1;
+    color: $color-primary;
     border-radius: 14px;
     border: solid 1px #cfd8dc;
     background-color: #ffffff;
@@ -241,11 +252,20 @@
     margin: 0px;
   }
 
-  span {
-    display: block;
-    font-size: 18px;
-    color: $color-primary;
+  li {
+    padding: 0 25px;
+
+    span.info {
+      display: block;
+      font-size: 18px;
+      color: $color-primary;
+    }
+
+    .fa-close {
+      color: $color-primary;
+    }
   }
+
 }
 
 #verses {
@@ -262,11 +282,16 @@
         height: 45px;
         line-height: 43px;
         font-size: 18px;
-        color: #00acc1;
+        color: $color-primary;
         text-align: center;
         border-radius: 30px;
         border: solid 1px #b0bec5;
         margin-right: 40px;
+
+        &:hover {
+          background: $color-primary;
+          color: $white
+        }
       }
     }
 
@@ -277,67 +302,79 @@
       text-align: right;
       padding-right: 65px;
 
-      span{
+      span {
         cursor: pointer;
+
+        &:hover {
+          color: $color-primary
+        }
       }
     }
 
     .translation {
       line-height: 36px;
-      font-size:20px;
+      font-size: 20px;
       color: #607d8b;
 
-      sup{
-        color:#00acc1;
+      sup {
+        color: $color-primary;
         cursor: pointer;
       }
 
       .resource {
-        display:block;
+        display: block;
         font-family: $font-medium;
-        font-size:16px;
-        color:#00acc1;
+        font-size: 16px;
+        color: $color-primary;
       }
 
       small {
-        a{
-        font-size:14px;
-        color:#607d8b;
+        a {
+          font-size: 14px;
+          color: #607d8b;
         }
 
         i {
-          font-size:11px;
-          color:#00acc1;
-          margin-right:5px;
+          font-size: 11px;
+          color: $color-primary;
+          margin-right: 5px;
         }
       }
     }
 
-    .icon-col-left,
-    .icon-col-right {
+    .verse-actions {
       display: block;
       text-align: center;
       padding-top: 10px;
-    }
-    .icon-col-left a,
-    .icon-col-right a {
-      display: block;
-      color:#b0bec5;
-      margin-bottom:28px;
-    }
-    .icon-col-left a:hover,
-    .icon-col-right a:hover {
-      color:#00acc1;
+
+      a {
+        display: block;
+        color: #b0bec5;
+        margin-bottom: 28px;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
     }
   }
+}
 
-
+.scrolled-section {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .chapters {
 
-  .juz-list{
-    a{
+  .juz-list {
+    a {
       padding: 10px 0;
     }
   }
@@ -374,7 +411,20 @@
       }
     }
   }
+
   @media (max-width: 991px) {
+    .scrolled-section {
+      .row {
+        width: 1300px;
+
+        .col-md-4 {
+          -ms-flex: 0 0 33.333333%;
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+        }
+      }
+    }
+
     figcaption h3 {
       font-size: 18px;
     }
@@ -387,21 +437,31 @@
       }
     }
 
-    .verse{
-    .translation {
-      line-height: normal;
-    }
-    .translation small {
-      display:none;
-    }
+    #verses .verse {
+      .translation {
+        line-height: normal;
+
+        small {
+          display: none;
+        }
+      }
+
+      .arabic {
+        padding-right: 0;
+      }
+
+      .verse-actions {
+        display: none;
+      }
     }
   }
+
   @media (max-width: 767px) {
     .items {
       column-count: 1 !important;
     }
 
-      figcaption {
+    figcaption {
       font-size: 16px;
 
       h3 {
@@ -418,7 +478,7 @@
       }
     }
 
-    .verse{
+    #verses .verse {
       .translation {
         font-family: $font-medium;
         font-size: 17px;
@@ -426,6 +486,11 @@
 
       .resource {
         font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .arabic {
+        font-size: 40px;
       }
     }
   }
@@ -438,10 +503,20 @@
         font-size: 23px;
       }
     }
+
+    #verses .verse {
+      .col-md-10, .col-md-2 {
+        width: 100%;
+      }
+
+      .col-md-2 {
+        margin-bottom: 15px;
+      }
+    }
   }
 
   @media (max-width: 610px) {
-    .items{
+    .items {
       .col-sm-7.name {
         float: left;
         width: 67%;
@@ -454,15 +529,43 @@
       }
     }
 
+    #verses {
+      .verse {
+        .arabic {
+          font-size: 30px;
+        }
+
+        .play-verse {
+          width: 35px;
+          height: 35px;
+          line-height: 33px;
+          font-size: 13px;
+        }
+      }
+    }
 
     .popular-search ul li {
-      display: block;
       margin-bottom: 10px;
 
       a.btn-outline-primary {
         display: block;
         font-size: 14px;
         padding: 8px 18px;
+      }
+    }
+
+    .info-heading {
+      padding: 0;
+
+      ul li {
+        border-left: 0px solid #eceff1;
+        border-bottom: 1px solid #eceff1;
+        width: 50%;
+        padding: 20px 0px;
+
+        &:first-child {
+          width: 100%;
+        }
       }
     }
   }

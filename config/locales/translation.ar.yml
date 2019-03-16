@@ -179,6 +179,18 @@ ar:
       create: "%{model} إنشاء"
       update: "%{model} تحديث"
       submit: "%{model} حِفظ"
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: 
+          other: 
+      more_pages:
+        display_entries: 
   flash:
     actions:
       create:
@@ -303,6 +315,9 @@ ar:
     yaseen: 
     al_mulk: 
     ar_rahman: 
+    al_waqiah: 
+    al_kahf: 
+    al_muzammil: 
   player:
     current_verse: 
     next_verse: 
@@ -346,3 +361,11 @@ ar:
     salah_description: 
     audio: 
     audio_description: 
+  views:
+    pagination:
+      first: 
+      last: 
+      previous: 
+      next: 
+      truncate: 
+  close: 

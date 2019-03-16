@@ -12,22 +12,37 @@
     <%= render 'shared/search_form' %>
 
     <div class="popular-search">
-      <ul>
-        <li><%= _t('search.popular') %></li>
-        <li>
-          <%= link_to _t('search.yaseen'), '/36', class: 'btn btn-outline-primary' %>
-        </li>
+      <p>
+        <%= _t('search.popular') %>
+      </p>
 
-        <li>
-          <%= link_to _t('search.al_mulk'), '/67', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.ar_rahman'), '/55', class: 'btn btn-outline-primary' %>
-        </li>
-
+      <ul class="scrolled-section">
         <li>
           <%= link_to _t('search.ayatul_kursi'), '/ayatul-kursi', class: 'btn btn-outline-primary' %>
+        </li>
+
+        <li>
+          <%= link_to _t('search.yaseen'), '/surah-ya-sin', class: 'btn btn-outline-primary' %>
+        </li>
+
+        <li>
+          <%= link_to _t('search.al_mulk'), '/surah-al-mulk', class: 'btn btn-outline-primary' %>
+        </li>
+
+        <li>
+          <%= link_to _t('search.ar_rahman'), '/surah-ar-rahman', class: 'btn btn-outline-primary' %>
+        </li>
+
+        <li>
+          <%= link_to _t('search.al_waqiah'), '/surah-al-waqiah', class: 'btn btn-outline-primary' %>
+        </li>
+
+        <li>
+          <%= link_to _t('search.al_kahf'), '/surah-al-kahf', class: 'btn btn-outline-primary' %>
+        </li>
+
+        <li>
+          <%= link_to _t('search.al_muzammil'), '/surah-al-muzzammil', class: 'btn btn-outline-primary' %>
         </li>
       </ul>
     </div>

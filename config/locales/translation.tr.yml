@@ -180,6 +180,19 @@ tr:
       create: "%{model} Ekle"
       update: "%{model} Güncelle"
       submit: "%{model} Kaydet"
+    page_entries_info:
+      entry:
+        zero: 
+        one: 
+        other: 
+      one_page:
+        display_entries:
+          zero: 
+          one: 
+          other: 
+      more_pages:
+        display_entries: Toplam <b>%{total}</b> %{entry_name}; <b>%{first}&nbsp;-&nbsp;%{last}</b>
+          arası gösteriliyor.
   flash:
     actions:
       create:
@@ -305,6 +318,9 @@ tr:
     yaseen: 
     al_mulk: 
     ar_rahman: 
+    al_waqiah: 
+    al_kahf: 
+    al_muzammil: 
   player:
     current_verse: 
     next_verse: 
@@ -348,3 +364,11 @@ tr:
     salah_description: 
     audio: 
     audio_description: 
+  views:
+    pagination:
+      first: "&laquo; İlk"
+      last: Son &raquo;
+      previous: "&lsaquo; Önceki"
+      next: Sonraki &rsaquo;
+      truncate: "&hellip;"
+  close: 

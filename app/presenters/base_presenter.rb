@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class BasePresenter
-  include Pagy::Backend
-
   HOST = 'https://www.quran.com'
   attr_reader :context, :resource_class
 
@@ -22,6 +20,7 @@ class BasePresenter
         url: meta_url,
         type: 'website',
         image: meta_image,
+        'image:alt': 'Quran.com',
         see_also: related_links
       },
       # FB Applinks meta tags
@@ -50,7 +49,7 @@ class BasePresenter
       image: meta_image,
       canonical: canonical_href,
       alternate: alternate_links,
-      amphtml: context.url_for(format: :amp, protocol: 'https', host: HOST)
+      amphtml: canonical_href+'.amp'
     }
   end
 
@@ -68,12 +67,9 @@ class BasePresenter
   def related_links; end
 
   def meta_url
-    canonical_href
+    context.url_for locale: I18n.locale
   end
-
-  def canonical_href
-    context.url_for locale: nil, host: HOST, protocol: 'https'
-  end
+  alias_method :canonical_href, :meta_url
 
   def meta_description
     'The Quran translated into many languages in a simple and easy interface'
