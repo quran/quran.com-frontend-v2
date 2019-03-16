@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class BasePresenter
-  include Pagy::Backend
-
   HOST = 'https://www.quran.com'
   attr_reader :context, :resource_class
 
