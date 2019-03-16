@@ -68,7 +68,6 @@ class App.Chapters extends App.Base
         @player.playWord($(e.target).data('audio'))
 
   infinitePagination: ->
-    console.log("binding pagination")
     $("#verses").infinitePages
       debug: true
       buffer: 1000 # load new page when within 200px of nav link
@@ -79,7 +78,7 @@ class App.Chapters extends App.Base
 
       success: (container, data) ->
         # called after successful ajax call
-        $("#verses-pagination").remove()
+        $("#pagination-wrap").remove()
         newItems = $(data)
         $("#verses").append newItems
 

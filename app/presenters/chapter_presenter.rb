@@ -98,6 +98,21 @@ class ChapterPresenter < BasePresenter
     @range_start.present? && (@range_end.nil? || @range_end == @range_start)
   end
 
+  def continue?
+    paginate.last.verse_number < chapter.verses_count
+  end
+
+  def continue_range
+    context.range_path @chapter, "#{range_start}-#{chapter.verses_count}"
+  end
+
+  def previous_surah?
+   chapter.chapter_number - 1 if chapter.chapter_number > 1
+  end
+
+  def next_surah?
+    chapter.chapter_number + 1 if chapter.chapter_number < 114
+  end
   protected
   def verses(verse_start, per)
     return @verses if @verses
