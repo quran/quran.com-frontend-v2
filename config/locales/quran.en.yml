@@ -32,10 +32,10 @@ en:
     not_found: Verse not found
   chapters:
     label: Surah
-    next: NEXT
-    previous: PREVIOUS
-    verses: VERSES
-    pages: PAGES
+    next: Next Surah
+    previous: Previous Surah
+    verses: Verses
+    pages: Pages
     info: Chapter Info
     continue: Continue
     quick_links: Quick links

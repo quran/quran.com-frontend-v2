@@ -297,6 +297,7 @@ nl:
     quick_links: 
     go_to_beginning: 
     read_full: 
+    invalid: 
   footnote: 
   action:
     play: 

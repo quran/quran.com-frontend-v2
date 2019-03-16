@@ -74,7 +74,7 @@ class App.Chapters extends App.Base
       navSelector: "#verses-pagination"
       nextSelector: "#verses-pagination a[rel=next]:first"
       loading: ->
-        console.log("loading more")
+        $("#verses-pagination a[rel=next]:first").html("<i class='fa-spin6 fa-2x animate-spin brand'></i>")
 
       success: (container, data) ->
         # called after successful ajax call

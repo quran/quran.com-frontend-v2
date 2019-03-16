@@ -302,6 +302,7 @@ id:
     quick_links: 
     go_to_beginning: Awal Surat
     read_full: Baca lengkap Surah
+    invalid: 
   footnote: 
   action:
     play: Putar
