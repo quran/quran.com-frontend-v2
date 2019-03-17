@@ -1,3 +1,5 @@
+import copyToClipboard from 'copy-to-clipboard';
+
 class App.Chapters extends App.Base
   show: =>
     @player = new Utility.Player()
@@ -6,11 +8,25 @@ class App.Chapters extends App.Base
     @bindWordAudio()
     @bindWordTooltip()
     @bindMedia()
+    @bindVerseActions()
+
 
     $(document).on "turbolinks:before-cache", ->
       $("#verses").infinitePages('destroy')
 
-  index: =>
+  bindVerseActions: =>
+    $(document).on "click", '.copy', @copyAyahToClipboard
+
+  copyAyahToClipboard: (e) ->
+    element = $(e.target)
+    copyToClipboard(element.closest(".verse").find(".text").text())
+
+    title = element.data('original-title')
+    done = element.attr('done')
+
+    element.attr('title', done).tooltip('_fixTitle').tooltip('show')
+    element.on 'hidden.bs.tooltip', ->
+      element.attr('title', title).tooltip('_fixTitle')
 
   bindMedia: ->
     $('#modal').on 'hidden.bs.modal', ->

@@ -7,7 +7,7 @@
         </a>
 
         <span>
-         <a href="#_" class="fa fa-clipboard" data-toggle="tooltip" data-placement="left" title="Copy"></a>
+         <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
           <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
          </span>
       </div>
@@ -17,7 +17,10 @@
       <div class="arabic">
         <p>
           <% verse.words.each do |w| %>
-            <span data-placement="top" data-id=<%= w.id %> data-verse=<%= w.verse_id %> data-audio="<%= w.location %>" class="word p<%= w.page_number %>-v1" id="w-<%= w.id %>"><%= w.code.html_safe %> </span>
+            <span class="word" id="w-<%= w.id %>" data-placement="top" data-id=<%= w.id %> data-verse=<%= w.verse_id %> data-audio="<%= w.location %>">
+              <span class="glyph p<%= w.page_number %>-v1"><%= w.code.html_safe %></span>
+              <span class="text"><%= w.text_madani %> </span>
+            </span>
           <% end %>
         </p>
       </div>
@@ -36,7 +39,8 @@
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
           <small>
-            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %></a>
+            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
+            </a>
           </small>
         <% end %>
 
