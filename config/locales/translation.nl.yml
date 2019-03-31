@@ -256,65 +256,70 @@ nl:
         je account kunt ontgrendelen.
       send_paranoid_instructions: 
       unlocked: Je account is succesvol ontgrendeld. Je bent nu aangemeld.
-  local: 
-  site_local: 
-  change_local: 
+  local: nederlands
+  site_local: Site Taal
+  change_local: Kies de taal waarin u de site wilt weergeven
   local_native_name: Nederlands
   language: 
   settings:
-    label: 
+    label: 'Instellingen
+
+'
     chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
-    translation_english: 
-    translation_other: 
-    reading: 
+    reciters: Reciteurs
+    translations: Vertalingen
+    remove_all: Verwijder alles
+    translation_english: Engels
+    translation_other: Andere Talen
+    reading: Lezing
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label: Lettertypegrootte
+      arabic: Arabisch
+      translation: Vertalingen
     tooltip:
-      label: 
-      translation: 
-      transliteration: 
+      label: Tooltip display
+      translation: Vertaling
+      transliteration: Transliteratie
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
+      label: Nachtmodus
+      day_tip: Overschakelen naar de dagmodus
+      night_tip: Overschakelen naar nachtmodus
+    reset: 
   verses:
-    media: 
-    go: 
-    not_found: 
+    media: Bekijk video commentaar van %{from}
+    go: Ga naar vers
+    not_found: Ayah niet gevonden
   chapters:
-    label: 
-    next: 
-    previous: 
+    label: Soeras
+    next: VOLGENDE
+    previous: VORIGE
     verses: 
     pages: 
-    info: 
+    info: Soera Info
     continue: 
     quick_links: 
     go_to_beginning: 
-    read_full: 
+    read_full: Lees de volledige Soera
     invalid: 
   footnote: 
   action:
-    play: 
-    pause: 
+    play: Afspelen
+    pause: Pauze
     tafsir: 
     bookmark:
-      label: 
-      done: 
+      label: Bladwijzer
+      done: Aangemaakte Bladwijzers
     copy:
-      label: 
-      done: 
+      label: Kopiëren
+      done: Gekopieerd!
+    share: 
+    addNote: 
   search:
-    placeholder: 
+    placeholder: Zoek "Noah"
     result: 
-    error: 
+    error: Sorry, er is een fout opgetreden bij uw zoekopdracht.
     no_query: 
-    no_result: 
+    no_result: Geen resultaten gevonden.
     popular: 
     ayatul_kursi: 
     yaseen: 
@@ -323,22 +328,25 @@ nl:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
+    current_verse: Ayah
+    next_verse: Volgende Ayah
+    previous_verse: Vorige Ayah
+    repeat_title: HERHALING
+    repeat_single: Single
+    repeat_range: Bereik
     repeat_from: 
     repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
+    repeat_times: Keer
+    repeat_loop: lus
+    scroll: Scroll automatisch naar de huidige ayah
   loading: 
   nav:
     title: 
-    settings: 
+    settings: 'Instellingen
+
+'
     contribute: 
     about_us: 
     developers: 

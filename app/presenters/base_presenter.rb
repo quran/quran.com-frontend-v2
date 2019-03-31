@@ -49,6 +49,7 @@ class BasePresenter
       image: meta_image,
       canonical: canonical_href,
       alternate: alternate_links,
+      'apple-itunes-app': 'app-id=1118663303',
       amphtml: canonical_href+'.amp'
     }
   end
@@ -95,7 +96,9 @@ class BasePresenter
      'Allah'].freeze
   end
 
-  def meta_image; end
+  def meta_image
+    context.view_context.image_url('thumbnail.png')
+  end
 
   def language
     @language ||= Language.find_by_id_or_iso_code(I18n.locale) || Language.default

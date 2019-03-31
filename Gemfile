@@ -36,7 +36,7 @@ gem 'translation'
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags'
 
-gem 'quran-core', github: 'quran/quran-core' # path: '../quran-core'
+gem 'quran-core',  github: 'quran/quran-core' #path: '../quran-core'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

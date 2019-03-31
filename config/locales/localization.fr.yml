@@ -84,3 +84,6 @@ fr:
       default: "%d %B %Y %Hh %Mmin %Ss"
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
+  spree:
+    date_picker:
+      first_day: 0

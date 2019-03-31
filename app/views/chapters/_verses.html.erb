@@ -6,7 +6,7 @@
   </div>
 
   <% if @presenter.continue? %>
-    <%= link_to @presenter.continue_range, class: 'btn btn-outline-primary' do %>
+    <%= link_to chapter_path(@presenter.chapter), class: 'btn btn-outline-primary' do %>
       <%= _t('chapters.read_full') %>
     <% end %>
 

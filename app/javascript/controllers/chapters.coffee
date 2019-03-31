@@ -3,13 +3,13 @@ import copyToClipboard from 'copy-to-clipboard';
 class App.Chapters extends App.Base
   show: =>
     @player = new Utility.Player()
+    @setting ||= new Utility.Settings()
     @bindFootnotes()
     @infinitePagination()
     @bindWordAudio()
-    @bindWordTooltip()
+    @bindWordTooltip($('.word'))
     @bindMedia()
     @bindVerseActions()
-
 
     $(document).on "turbolinks:before-cache", ->
       $("#verses").infinitePages('destroy')
@@ -46,44 +46,26 @@ class App.Chapters extends App.Base
       id = $(@).attr("foot_note")
       $.get("/foot_note/#{id}")
 
-  bindWordTooltip: =>
-    $(document).on "mouseover", '.verse', @loadVerseTooltip
-    $(document).on "click", '.word', @loadWordTooltip
-
-  loadVerseTooltip: (e) =>
-    $(e.target).find('.word').tooltip({
-      delay: 10,
-      title: @getTooltip,
+  bindWordTooltip: (dom)=>
+    that = @
+    dom.tooltip({
+      trigger: 'hover',
+      placement: 'top'
       html: true
+      title: ->
+        tooltip = that.setting.getTooltipType();
+        $(@).attr(tooltip)
     });
-
-  loadWordTooltip: (e) =>
-    $(e.target).tooltip({
-      delay: 10,
-      title: @getTooltip,
-      html: true
-    });
-
-  getTooltip: ->
-    word = $(@)
-    # TODO: Transliteration
-    return word.data('translation') if  word.data('translation')?
-    $.get "/verses/#{word.data('verse')}/tooltip", {}, (response) ->
-      words = Object.keys(response)
-      words.forEach (key) ->
-        translation = response[key].translation
-        transliteration = response[key].transliteration
-        $("#w-#{key}").data('translation', if translation then translation.text else 'Verse')
-        $("#w-#{key}").data('transliteration', if transliteration then transliteration.text else 'Verse')
-    '...'
 
   bindWordAudio: ->
-    $(document).on "click", ".word", (e) =>
+    $(document).on "dblclick", ".word", (e) =>
       e.preventDefault()
-      if $(e.target).data('audio')?
-        @player.playWord($(e.target).data('audio'))
+      audio = $(e.target).data('audio') || $(e.target).closest('.word').data('audio')
+      if audio?
+        @player.playWord(audio)
 
-  infinitePagination: ->
+  infinitePagination: =>
+    that = @
     $("#verses").infinitePages
       debug: true
       buffer: 1000 # load new page when within 200px of nav link
@@ -97,6 +79,7 @@ class App.Chapters extends App.Base
         $("#pagination-wrap").remove()
         newItems = $(data)
         $("#verses").append newItems
+        that.bindWordTooltip(newItems.find('.word'))
 
       error: (container, error) ->
         console.log("err", error)

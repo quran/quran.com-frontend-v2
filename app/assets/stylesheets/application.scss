@@ -12,23 +12,27 @@
  *
  */
 @import "branding";
-@import "shared/header";
-@import "shared/footer";
-@import "shared/fonts";
-@import "shared/icons";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/fonts";
+@import "partials/icons";
 @import "custom-bootstrap";
-@import "shared/common";
-@import "shared/sidebar";
-@import "shared/search";
-@import "shared/locals";
-@import "shared/animation";
-@import "shared/surah_names";
-@import "shared/dark";
-//@import "shared/r";
-
-
+@import "partials/common";
+@import "partials/sidebar";
+@import "partials/search";
+@import "partials/locals";
+@import "partials/animation";
+@import "partials/surah_names";
+@import "partials/dark";
 
 @import "pages";
 @import "chapters";
 
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: $color-primary;
+}
 
+.tooltip-inner {
+  box-shadow: 0px 10px 35px 0 rgba(0, 172, 193, 0.2);
+}

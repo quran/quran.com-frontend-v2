@@ -285,6 +285,7 @@ id:
       label: Mode Malam
       day_tip: Ganti ke mode terang
       night_tip: Ganti ke mode malam
+    reset: 
   verses:
     media: 'Lihat kuliah dari %{from}
 
@@ -314,6 +315,8 @@ id:
     copy:
       label: Salin
       done: Tersalin!
+    share: 
+    addNote: 
   search:
     placeholder: Cari "Nuh"
     result: 
@@ -328,6 +331,7 @@ id:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
     current_verse: Ayat
     next_verse: Ayat Berikutnya

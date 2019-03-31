@@ -277,22 +277,23 @@ fr:
     remove_all: Tout désélectionner
     translation_english: Anglais
     translation_other: Autres Langues
-    reading: Lecture
+    reading: Mode lecture
     font_size:
       label: Taille de la police
       arabic: Arabe
       translation: Traductions
     tooltip:
-      label: 
+      label: Contenu de l’infobulle
       translation: Traduction
       transliteration: Translittération
     night_mode:
       label: Mode Nuit
       day_tip: Passer en mode jour
       night_tip: Passer en mode nuit
+    reset: Remettre les paramètres par défault
   verses:
     media: Regarder les commentaires de la vidéo depuis %{from}
-    go: 
+    go: Aller au verset
     not_found: Verset introuvable
   chapters:
     label: SOURATES
@@ -305,18 +306,20 @@ fr:
     quick_links: Liens rapides
     go_to_beginning: Début de la Sourate
     read_full: Lire la sourate complète
-    invalid: 
-  footnote: 
+    invalid: Aucune sourate trouvée
+  footnote: note de bas de page
   action:
     play: Lecture
     pause: Pause
-    tafsir: 
+    tafsir: Tafsirs
     bookmark:
       label: Favoris
-      done: Favoris ajouté
+      done: Ajouter aux favoris
     copy:
       label: Copier
       done: Copié !
+    share: Partager le verset
+    addNote: Ajouter une note
   search:
     placeholder: Chercher "Noah"
     result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
@@ -324,14 +327,17 @@ fr:
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
-    al_kahf: 
-    al_muzammil: 
+    popular: Recherches populaires
+    ayatul_kursi: Ayatul Kursi
+    yaseen: 'Sourate Yaseen
+
+'
+    al_mulk: Sourate Al Mulk
+    ar_rahman: Sourate Ar-Rahman
+    al_waqiah: Sourate Al Waqiah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Sourate Al Muzzammil
+    label: Chercher
   player:
     current_verse: Verset
     next_verse: Prochain Verset
@@ -365,17 +371,17 @@ fr:
     forum: Forum
   juz: Juz
   click_here: Cliquez ici
-  download: 
-  home: 
-  noble_quran: 
+  download: Télécharger
+  home: Accueil
+  noble_quran: Le Noble Coran
   related_sites:
-    label: 
-    sunnah: 
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
+    label: Sites connexes
+    sunnah: Sunnah
+    sunnah_description: Les hadiths du Prophète Muhammad (ﷺ)
+    salah: Prière
+    salah_description: Recherchez l'heure de prière pour n'importe quel endroit
+    audio: Le Noble Coran en audio
+    audio_description: Apprendre et écouter en même temps
   views:
     pagination:
       first: "&laquo; Premier"
@@ -383,4 +389,4 @@ fr:
       previous: "&lsaquo; Précédent"
       next: Suivant &rsaquo;
       truncate: "&hellip;"
-  close: 
+  close: Fermer

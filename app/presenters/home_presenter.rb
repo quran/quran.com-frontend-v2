@@ -6,10 +6,12 @@ class HomePresenter < BasePresenter
   end
 
   def chapters
+    return @chapters if @chapters
+
     chapters = Chapter.includes(:translated_name)
 
     # Eager load translated names to avoid n+1 queries
-    chapters
+    @chapters = chapters
       .where(translated_names: { language_id: language.id })
       .or(
         chapters

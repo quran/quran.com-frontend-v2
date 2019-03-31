@@ -2,63 +2,100 @@
   <div class="container">
     <div class="ban-left-col navbar-nav-scroll">
       <ul class="d-flex justify-content-between navbar-nav flex-row" id="surah-actions">
-        <li class="dropdown" id="tooltip" >
+        <li class="dropdown" id="tooltip">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tooltip-dropdown">
             <i class="fa fa-commenting-o"></i>
             <%= _t('settings.tooltip.label') %>
           </a>
 
           <div class="dropdown-menu" aria-labelledby="tooltip-dropdown">
-            <a class="dropdown-item" href="#_">
+            <a class="dropdown-item word-tooltip" href='#' data-tooltip="translation" >
               <%= _t('settings.tooltip.translation') %>
             </a>
-            <a class="dropdown-item" href="#_">
+
+            <a class="dropdown-item word-tooltip" href='#' data-tooltip="transliteration" >
               <%= _t('settings.tooltip.transliteration') %>
             </a>
           </div>
         </li>
 
-        <li class="arabic-li">
+        <li id="arabic-font" data-target=".word">
           <i class="fa fa-text-width"></i>
           <%= _t('settings.font_size.arabic') %>
 
-          <a href="#" class="font-size">+</a>
-          <a href="#" class="font-size">-</a>
+          <a href="" class="font-size increase">+</a>
+          <a href="" class="font-size decrease">-</a>
         </li>
 
-        <li class="translations-li">
+        <li id="translation-font" data-target=".translation">
           <%= _t('settings.font_size.translation') %>
-          <a href="#" class="font-size">+</a>
-          <a href="#" class="font-size">-</a>
-        </li
-        >
+          <a href="" class="font-size increase">+</a>
+          <a href="" class="font-size decrease">-</a>
+        </li>
+
         <li class="two-icons">
           <a href="#" class="fa fa-book"></a>
-          <a href="#" class="fa fa-lightbulb-1"></a>
+          <a href="#" class="fa fa-lightbulb-1"
+             data-toggle="tooltip"
+             data-placement="top"
+             title="<%= t('settings.night_mode.night_tip') %>"
+             day="<%= t('settings.night_mode.night_tip') %>"
+             title="<%= t('settings.night_mode.night_tip') %>"
+          >
+
+          </a>
         </li>
 
-        <li class="dropdown border-left" id="reciters" >
+        <li class="dropdown border-left" id="reciters">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="reciter-dropdown">
             <i class="fa fa-mic"></i>
             <%= _t('settings.reciters') %>
           </a>
 
           <div class="dropdown-menu" aria-labelledby="reciter-dropdown">
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.translation') %></a>
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.transliteration') %></a>
+            <a class="dropdown-item" href=""><%= _t('settings.tooltip.translation') %></a>
+            <a class="dropdown-item" href=""><%= _t('settings.tooltip.transliteration') %></a>
           </div>
         </li>
 
 
-        <li class="dropdown" id="translations" >
+        <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
             <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
           </a>
 
           <div class="dropdown-menu" aria-labelledby="translation-dropdown">
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.translation') %></a>
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.transliteration') %></a>
+            <span class="dropdown-item">
+      <select style="width: 100%" id="gridSize" multiple>
+        <option>Grid Size</option>
+        <% ResourceContent.one_verse.translations.each do |t| %>
+              <option value="<%= t.id %>"><%= t.name %></option>
+            <% end %>
+      </select>
+    </span>
           </div>
+        </li>
+
+        <!-- <li class="dropdown" id="translations" >
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
+            <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="reciter-dropdown">
+            <div class="dropdown-item">
+          <select id="translation-dropdown" data-placeholder="<i class='fa fa-list'></i> Translations" data-tags="false" multiple>
+            <% ResourceContent.translations.each do |t| %>
+              <option value="<%= t.id %>"><%= t.name %></option>
+            <% end %>
+          </select>
+            </div>
+          </div>
+        </li>-->
+
+        <li>
+          <a href="" id="reset-setting">
+            <i class="fa fa-close" data-toggle="tooltip" data-placement="top" title="<%= t('settings.reset') %>"></i>
+          </a>
         </li>
 
         <li class="info-li">

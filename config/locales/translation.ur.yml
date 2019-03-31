@@ -289,6 +289,7 @@ ur:
       label: رات کا موڈ
       day_tip: دن موڈ پر سوئچ کریں
       night_tip: رات کے موڈ پر سوئچ کریں
+    reset: ترتیب کو ہٹا دیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں
@@ -304,7 +305,7 @@ ur:
     quick_links: فوری لنک
     go_to_beginning: سورہ کے شروع میں جائیں
     read_full: مکمل سورت پڑھیں
-    invalid: 
+    invalid: سورہ نہیں ملی
   footnote: حاشیہ
   action:
     play: چلاو
@@ -316,6 +317,8 @@ ur:
     copy:
       label: کاپی
       done: کاپی کر لیا
+    share: 
+    addNote: 
   search:
     placeholder: " تلاش کریں (نوح)"
     result: 
@@ -330,6 +333,7 @@ ur:
     al_waqiah: سورہ الواقعة
     al_kahf: سورہ الكهف
     al_muzammil: سورہ المزمل
+    label: تلاش کریں (نوح)
   player:
     current_verse: آیت
     next_verse: اگلی آیت
@@ -384,4 +388,4 @@ ur:
       previous: "& lsaquo؛ پچھلا"
       next: اگلا & rsaquo؛
       truncate: 
-  close: 
+  close: بند کریں

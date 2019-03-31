@@ -279,6 +279,7 @@ fa:
       label: 
       day_tip: 
       night_tip: 
+    reset: 
   verses:
     media: 
     go: 
@@ -306,6 +307,8 @@ fa:
     copy:
       label: 
       done: 
+    share: 
+    addNote: 
   search:
     placeholder: 
     result: 
@@ -320,6 +323,7 @@ fa:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
     current_verse: 
     next_verse: 
