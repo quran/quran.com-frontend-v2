@@ -196,7 +196,7 @@
   background: #fafafa;
   padding: 15px 0;
 
-  li {
+  li, .dropdown-item {
     float: left;
     font-family: $font-medium;
     font-size: 16px;
@@ -212,14 +212,14 @@
       padding-left: 0px;
     }
 
-    a {
-      color: #607d8b;
-    }
-
     .fa {
       color: #b0bec5;
       margin-right: 8px;
     }
+  }
+
+  .dropdown-item:hover{
+    color: #fff;
   }
 
   a.font-size {
@@ -231,9 +231,14 @@
     color: $color-primary;
     border-radius: 14px;
     border: solid 1px #cfd8dc;
-    background-color: #ffffff;
+    background-color: #fff;
     text-align: center;
     margin-left: 5px;
+
+    &:hover{
+      background: $color-primary;
+      color: #fff;
+    }
   }
 
   .dropdown-toggle::after {
@@ -261,21 +266,36 @@
       color: $color-primary;
     }
 
+    .close{
+      position: relative;
+    }
+
     .fa-close {
       color: $color-primary;
     }
   }
-
 }
 
 #verses {
   .verse {
     padding: 30px 0px 0px;
 
+    .ayah-number{
+      display: inline-block;
+      background: image-url('ayah.png') no-repeat;
+      background-size: contain;
+      width: 53px;
+      height: 55px;
+      line-height: 55px;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 15px;
+    }
     .word {
       -webkit-font-smoothing: antialiased;
       position: relative;
       direction: rtl;
+      margin: 0 5px;
 
       &:hover {
         color: $color-primary
@@ -328,15 +348,14 @@
       color: #000;
       text-align: right;
       float: right;
-      padding-right: 65px;
 
       span {
         cursor: pointer;
+        float: right;
       }
     }
 
     .translation {
-      line-height: 36px;
       font-size: 20px;
       color: #607d8b;
 
@@ -596,3 +615,42 @@
   }
 }
 
+
+#translation-dropdown-menu{
+  height: 400px;
+  overflow-y: scroll;
+  max-width: 400px;
+
+  .dropdown-item{
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    overflow: hidden;
+  }
+
+  .dropdown-item.selected{
+    background:$color-primary;
+    color: #fff;
+
+    &:after{
+      content: '✓';
+      position: absolute;
+      top: 15px;
+      right: 0px;
+      width: 25px;
+      height: 25px;
+      line-height: 22px;
+      border: solid 1px #80deea;
+      background-color: #e0f7fa;
+      border-radius: 50%;
+      font-size: 16px;
+      color: #80deea;
+      text-align: center;
+    }
+  }
+}

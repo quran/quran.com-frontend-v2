@@ -80,6 +80,7 @@ class App.Chapters extends App.Base
         newItems = $(data)
         $("#verses").append newItems
         that.bindWordTooltip(newItems.find('.word'))
+        $('[data-toggle="tooltip"]').tooltip()
 
       error: (container, error) ->
         console.log("err", error)

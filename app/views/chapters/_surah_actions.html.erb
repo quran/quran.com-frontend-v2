@@ -1,6 +1,6 @@
 <section class="surah-actions">
   <div class="container">
-    <div class="ban-left-col navbar-nav-scroll">
+    <div class="scrolled-section">
       <ul class="d-flex justify-content-between navbar-nav flex-row" id="surah-actions">
         <li class="dropdown" id="tooltip">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tooltip-dropdown">
@@ -9,11 +9,11 @@
           </a>
 
           <div class="dropdown-menu" aria-labelledby="tooltip-dropdown">
-            <a class="dropdown-item word-tooltip" href='#' data-tooltip="translation" >
+            <a class="dropdown-item word-tooltip" href='#' data-tooltip="translation">
               <%= _t('settings.tooltip.translation') %>
             </a>
 
-            <a class="dropdown-item word-tooltip" href='#' data-tooltip="transliteration" >
+            <a class="dropdown-item word-tooltip" href='#' data-tooltip="transliteration">
               <%= _t('settings.tooltip.transliteration') %>
             </a>
           </div>
@@ -35,8 +35,9 @@
 
         <li class="two-icons">
           <a href="#" class="fa fa-book"></a>
-          <a href="#" class="fa fa-lightbulb-1"
-             data-toggle="tooltip"
+          <a id="toggle-nightmode"
+             href="#" class="fa fa-lightbulb-1"
+             rel="tooltip"
              data-placement="top"
              title="<%= t('settings.night_mode.night_tip') %>"
              day="<%= t('settings.night_mode.night_tip') %>"
@@ -58,39 +59,23 @@
           </div>
         </li>
 
-
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
             <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
           </a>
 
-          <div class="dropdown-menu" aria-labelledby="translation-dropdown">
-            <span class="dropdown-item">
-      <select style="width: 100%" id="gridSize" multiple>
-        <option>Grid Size</option>
-        <% ResourceContent.one_verse.translations.each do |t| %>
-              <option value="<%= t.id %>"><%= t.name %></option>
+          <div class="dropdown-menu keep-open" id='translation-dropdown-menu' aria-labelledby="translation-dropdown">
+            <% ordered_translations.each do |language, list| %>
+
+              <% list.each do |trans| %>
+                <div class="dropdown-item" data-translation="<%= trans[0] %>">
+                  <%= trans[1] %>
+                </div>
+              <% end %>
+              <div class="dropdown-divider"></div>
             <% end %>
-      </select>
-    </span>
           </div>
         </li>
-
-        <!-- <li class="dropdown" id="translations" >
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
-            <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="reciter-dropdown">
-            <div class="dropdown-item">
-          <select id="translation-dropdown" data-placeholder="<i class='fa fa-list'></i> Translations" data-tags="false" multiple>
-            <% ResourceContent.translations.each do |t| %>
-              <option value="<%= t.id %>"><%= t.name %></option>
-            <% end %>
-          </select>
-            </div>
-          </div>
-        </li>-->
 
         <li>
           <a href="" id="reset-setting">
@@ -102,18 +87,6 @@
           <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader} do %>
             <i class="fa fa-info"></i> <%= _t("chapters.info") %>
           <% end %>
-        </li>
-
-        <li class="dropdown d-lg-none">
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown">&nbsp;</a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-play"></i> Watch Lecture</a></li>
-            <li><a href="#"><i class="fa fa-files-o"></i> Tafsir</a></li>
-            <li><a href="#"><i class="fa fa-book"></i> Corpus</a></li>
-            <li><a href="#"><i class="fa fa-files-o"></i> Copy</a></li>
-            <li><a href="#"><i class="fa fa-pencil-square-o"></i> Note</a></li>
-            <li><a href="#"><i class="fa fa-share-alt"></i> Share</a></li>
-          </ul>
         </li>
       </ul>
     </div>

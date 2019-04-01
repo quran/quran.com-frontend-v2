@@ -17,10 +17,10 @@ class HomePresenter < BasePresenter
         chapters
             .where(translated_names: { language_id: Language.default.id })
       )
-      .order('translated_names.language_priority DESC')
+      .order("translated_names.language_priority DESC")
   end
 
   def juz
-    Juz.order('juz_number ASC')
+    Juz.order("juz_number ASC")
   end
 end

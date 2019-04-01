@@ -7,6 +7,12 @@ class Utility.Settings
     $(document).on 'click', '.font-size', @handleFontSize
     $(document).on "click", '.word-tooltip', @handleTooltip
     $(document).on 'click', '#reset-setting', @resetSetting
+    $(document).on 'click', '#toggle-nightmode', @toggleNightMode
+
+    $(document).on 'click', '.dropdown-menu.keep-open .dropdown-item', (e)->
+      $(e.target).toggleClass('selected')
+      e.stopPropagation()
+      e.preventDefault()
 
     setting = try
       JSON.parse(localStorage.getItem("settings") || "{}")
@@ -14,6 +20,10 @@ class Utility.Settings
       {}
 
     @settings = Object.assign(setting, @defaultSetting())
+
+  toggleNightMode: (e)->
+    e.preventDefault()
+    $("body").toggleClass('night')
 
   handleTooltip: (e) =>
     e.preventDefault()
@@ -47,7 +57,7 @@ class Utility.Settings
     @updatePage()
 
   updatePage: =>
-    $(".translation").css('font-size', '50px')
+    $(".translation").css('font-size', '20px')
     $(".word").css('font-size', '50px')
 
   defaultSetting: =>

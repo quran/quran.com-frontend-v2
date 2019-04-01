@@ -11,12 +11,14 @@
          </span>
       </div>
 
-      <div class="verse-actions">
-        <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-        <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
-        <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
-        <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
-      </div>
+      <% unless @presenter.render_translations? %>
+        <div class="verse-actions">
+          <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
+          <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
+          <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
+          <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-md-10">
@@ -27,11 +29,22 @@
               <span class="text"><%= w.text_madani %> </span>
             </span>
         <% end %>
+        <span class="ayah-number"><%= verse.verse_number %></span>
       </div>
     </div>
   </div>
 
   <div class="row">
+    <div class="col-md-1">
+      <% if @presenter.render_translations? %>
+        <div class="verse-actions">
+          <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
+          <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
+          <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
+          <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
+        </div>
+      <% end %>
+    </div>
     <div class="col-md-11">
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>

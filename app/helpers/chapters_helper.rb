@@ -14,4 +14,9 @@ module ChaptersHelper
       link_to 'load more', range_path(@presenter.chapter.id, @presenter.range, page: @presenter.next_page), rel: 'next'
     end
   end
+
+  def ordered_translations
+    translations = ResourceContent.one_verse.translations.order("priority desc").pluck(:id, :name, :language_name)
+    translations.group_by do |trans| trans[2] end
+  end
 end

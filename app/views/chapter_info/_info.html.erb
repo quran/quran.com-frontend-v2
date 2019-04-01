@@ -1,14 +1,15 @@
 <section id="chapter-info">
   <div class="container alert alert-dismissible fade show" role="alert">
     <ul class="d-flex align-items-center info-heading">
-      <li><h1>About Surah Al-Fatihah</h1></li>
-      <li><%= _t("chapters.verses") %> <span class="info">7</span></li>
-      <li><%= _t("chapters.pages") %> <span class="info">1-1</span></li>
+      <li><h1>About Surah <%= @presenter.name_simple %></h1></li>
+      <li><%= _t("chapters.verses") %> <span class="info"><%= @presenter.verses_count %></span></li>
+      <li><%= _t("chapters.pages") %> <span class="info"><%= @presenter.pages.join('-') %></span></li>
+      <li><%= _t("chapters.revelation_place") %> <span class="info"><%= @presenter.revelation_place.humanize %></span></li>
 
       <li class="ml-auto">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <a class="close" data-dismiss="alert" aria-label="Close">
           <i class="fa fa-close"></i>
-        </button>
+        </a>
       </li>
     </ul>
 
@@ -16,7 +17,7 @@
       <div class="row">
         <div class="col-md-4 order-1">
           <div class="img-col">
-            <%= image_tag 'makha.jpg', alt: 'Makkah', class: 'img-fluid' %>
+            <%= image_tag "#{@presenter.revelation_place}.jpg", class: 'img-fluid' %>
           </div>
         </div>
 
