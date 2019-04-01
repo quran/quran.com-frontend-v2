@@ -10,7 +10,12 @@ class Utility.Settings
     $(document).on 'click', '#toggle-nightmode', @toggleNightMode
 
     $(document).on 'click', '.dropdown-menu.keep-open .dropdown-item', (e)->
-      $(e.target).toggleClass('selected')
+      target = $(e.target)
+      window.tt=target
+      unless target.hasClass('dropdown-item')
+        target = target.parent('.dropdown-item')
+
+      target.toggleClass('active')
       e.stopPropagation()
       e.preventDefault()
 
@@ -28,6 +33,8 @@ class Utility.Settings
   handleTooltip: (e) =>
     e.preventDefault()
     target = $(e.target)
+    target.parent('.dropdown-menu')
+    target.toggleClass('active')
     @settings.tooltip = target.data('tooltip') || target.parent().data('tooltip')
 
   handleFontSize: (e) =>
@@ -53,6 +60,7 @@ class Utility.Settings
 
   resetSetting: (e) =>
     e.preventDefault()
+    $('body').removeClass('night')
     @settings = @defaultSetting()
     @updatePage()
 

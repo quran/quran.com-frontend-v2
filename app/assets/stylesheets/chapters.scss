@@ -190,27 +190,54 @@
       }
     }
   }
+
+  .dropdown-item {
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    overflow: hidden;
+
+    //for localized strings inside dropdown-item
+    span{
+      display: block;
+      text-align: left;
+    }
+
+
+    &.active{
+      &:after{
+        content: '✓';
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        width: 25px;
+        height: 25px;
+        line-height: 22px;
+        border: solid 1px #80deea;
+        background-color: #e0f7fa;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #80deea;
+        text-align: center;
+      }
+    }
+  }
 }
 
 .surah-actions, .info-heading {
   background: #fafafa;
   padding: 15px 0;
 
-  li, .dropdown-item {
-    float: left;
-    font-family: $font-medium;
-    font-size: 16px;
+  li{
     color: #607d8b;
-    border-left: 1px solid #eceff1;
-    line-height: normal;
     padding: 0 25px;
-    border: 0px;
     padding: 5px 0px;
-
-    &:first-child {
-      border-left: 0px;
-      padding-left: 0px;
-    }
+    font-family: $font-medium;
 
     .fa {
       color: #b0bec5;
@@ -218,11 +245,7 @@
     }
   }
 
-  .dropdown-item:hover{
-    color: #fff;
-  }
-
-  a.font-size {
+  .font-size {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -235,7 +258,7 @@
     text-align: center;
     margin-left: 5px;
 
-    &:hover{
+    &:hover {
       background: $color-primary;
       color: #fff;
     }
@@ -266,7 +289,7 @@
       color: $color-primary;
     }
 
-    .close{
+    .close {
       position: relative;
     }
 
@@ -280,7 +303,7 @@
   .verse {
     padding: 30px 0px 0px;
 
-    .ayah-number{
+    .ayah-number {
       display: inline-block;
       background: image-url('ayah.png') no-repeat;
       background-size: contain;
@@ -291,6 +314,7 @@
       font-size: 22px;
       margin-top: 15px;
     }
+
     .word {
       -webkit-font-smoothing: antialiased;
       position: relative;
@@ -616,41 +640,34 @@
 }
 
 
-#translation-dropdown-menu{
+#translation-dropdown-menu {
   height: 400px;
   overflow-y: scroll;
   max-width: 400px;
+  left: 50px !important;
+  top: 30px !important;
+}
 
-  .dropdown-item{
-    padding: 15px;
-    position: relative;
-    width: 100%;
-    cursor: pointer;
-    display: block;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
+@media (max-width: 991.98px) {
+  .navbar-nav-scroll {
+    max-width: 100%;
+    height: 2.5rem;
+    margin-top: .25rem;
     overflow: hidden;
+
+    .navbar-nav {
+      padding-bottom: 2rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dropdown{
+      position: static !important;
+    }
   }
 
-  .dropdown-item.selected{
-    background:$color-primary;
-    color: #fff;
-
-    &:after{
-      content: '✓';
-      position: absolute;
-      top: 15px;
-      right: 0px;
-      width: 25px;
-      height: 25px;
-      line-height: 22px;
-      border: solid 1px #80deea;
-      background-color: #e0f7fa;
-      border-radius: 50%;
-      font-size: 16px;
-      color: #80deea;
-      text-align: center;
-    }
+  #translation-dropdown-menu{
+    max-width: 300px;
   }
 }
