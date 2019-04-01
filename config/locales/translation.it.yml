@@ -108,14 +108,6 @@ it:
       even: deve essere pari
       required: deve esistere
       taken: è già presente
-      already_confirmed: è già stato confermato
-      confirmation_period_expired: 
-      expired: 
-      not_found: non trovato
-      not_locked: non era bloccato
-      not_saved:
-        one: 'questo %{resource} non può essere salvato a causa di 1 errore:'
-        other: 'questo %{resource} non può essere salvato a causa di %{count} errori:'
     not_found: 
     invalid_verse: 
     invalid_chapter: 
@@ -182,81 +174,6 @@ it:
       create: Crea %{model}
       update: Aggiorna %{model}
       submit: Invia %{model}
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: "<b>%{count}</b> %{entry_name}"
-          other: "<b>Tutti %{count}</b> %{entry_name}"
-      more_pages:
-        display_entries: "%{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> di <b>%{total}</b>
-          totali"
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: Il tuo account è stato confermato. Hai effettuato il login.
-      send_instructions: Entro pochi minuti riceverai un'email con le istruzioni per
-        confermare il tuo account.
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: Il tuo account non è ancora stato attivato.
-      invalid: Email o password non valide.
-      locked: Il tuo account è bloccato.
-      last_attempt: 
-      not_found_in_database: Email o password non valide.
-      timeout: La tua sessione è scaduta. Per favore effettua nuovamente il login.
-      unauthenticated: Devi registrarti o effettuare il login per  continuare.
-      unconfirmed: Devi confermare il tuo account pre continuare.
-    mailer:
-      confirmation_instructions:
-        subject: Istruzioni di Conferma
-      reset_password_instructions:
-        subject: Istruzioni per il reset della password
-      unlock_instructions:
-        subject: Istruzioni per Sbloccare
-      email_changed:
-        subject: 
-      password_change:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: Riceverai un'email con le istruzioni per sbloccare il tuo
-        account entro pochi minuti.
-      send_paranoid_instructions: 
-      unlocked: Il tuo account è stato sbloccato con successo. Hai effettuato il login.
   local: 
   site_local: 
   change_local: 
@@ -268,7 +185,7 @@ it:
     reciters: 
     translations: 
     remove_all: 
-    translation_english: 
+    translation_english: Italiano
     translation_other: 
     reading: 
     font_size:
@@ -300,6 +217,7 @@ it:
     go_to_beginning: 
     read_full: 
     invalid: 
+    revelation_place: 
   footnote: 
   action:
     play: 
@@ -371,11 +289,4 @@ it:
     salah_description: 
     audio: 
     audio_description: 
-  views:
-    pagination:
-      first: "&laquo; Inizio"
-      last: Fine &raquo;
-      previous: "&lsaquo; Prec."
-      next: Succ. &rsaquo;
-      truncate: "&hellip;"
   close: 

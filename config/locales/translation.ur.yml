@@ -108,14 +108,6 @@ ur:
       even: جفت ہونا ضروری ہے
       required: 
       taken: پہلے سے ہی استعمال میں ہے
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: نہیں ملا
-      not_locked: 
-      not_saved:
-        one: 
-        other: 
     not_found: افسوس، یہ صفحہ موجود نہیں ہے
     invalid_verse: 'آیت رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
       پر جائیں اور درست سوره/آیت منتخب کریں
@@ -188,81 +180,6 @@ ur:
       create: "%{model} تشکیل دیں"
       update: اپ ڈیٹ %{model}
       submit: "%{model} محفوظ کریں"
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: 
-          other: 
-      more_pages:
-        display_entries: 
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: آپ کا ای میل ایڈریس کامیابی سے تصدیق کی گئی ہے.
-      send_instructions: آپ کو کچھ منٹ میں اپنے ای میل ایڈریس کی تصدیق کرنے کے لئے
-        ہدایات کے ساتھ ایک ای میل مل جائے گا.
-      send_paranoid_instructions: اگر آپ کا ڈیٹا بیس میں آپ کا ای میل ایڈریس موجود
-        ہے، تو آپ کو کچھ منٹ میں اپنے ای میل ایڈریس کی تصدیق کرنے کے لئے ہدایات کے
-        ساتھ ایک ای میل ملے گا.
-    failure:
-      already_authenticated: آپ پہلے ہی سائن ان ہیں.
-      inactive: 
-      invalid: غلط %{authentication_keys} یا پاس ورڈ.
-      locked: آپ کا اکاؤنٹ بند کر دیا گیا ہے.
-      last_attempt: آپ کا اکاؤنٹ بند ہونے سے پہلے آپ کی ایک اور کوشش ہے.
-      not_found_in_database: غلط %{authentication_keys} یا پاس ورڈ.
-      timeout: آپ کا سیشن ختم ہوگیا. جاری رکھنے کے لئے دوبارہ سائن ان کریں.
-      unauthenticated: آپ کو جاری رکھنے سے پہلے سائن ان کرنا یا سائن اپ کرنا ہوگا.
-      unconfirmed: آپ کو جاری رکھنے سے پہلے اپنے ای میل ایڈریس کی تصدیق کرنا ہے.
-    mailer:
-      confirmation_instructions:
-        subject: توثیقی ہدایات
-      reset_password_instructions:
-        subject: پاسورڈ ہدایات کو دوبارہ ترتیب دیں
-      unlock_instructions:
-        subject: 
-      email_changed:
-        subject: ای میل تبدیل ہوگیا
-      password_change:
-        subject: پاس ورڈ تبدیل ہوگیا
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
   local: urdu
   site_local: سائٹ کی زبان
   change_local: جس زبان میں سایٹ دیکھنا چاہتے ہیں اس زبان کا انتخاب کریں
@@ -306,19 +223,20 @@ ur:
     go_to_beginning: سورہ کے شروع میں جائیں
     read_full: مکمل سورت پڑھیں
     invalid: سورہ نہیں ملی
+    revelation_place: 
   footnote: حاشیہ
   action:
     play: چلاو
     pause: روک دیں
     tafsir: تفسیر
     bookmark:
-      label: حوالہ
-      done: حوالہ ہے
+      label: حوالہ کریں
+      done: حوالہ ھو گیا
     copy:
       label: کاپی
       done: کاپی کر لیا
     share: 
-    addNote: 
+    addNote: نوٹ شامل کریں
   search:
     placeholder: " تلاش کریں (نوح)"
     result: 
@@ -381,11 +299,4 @@ ur:
     salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
     audio: آڈیو میں نوبل قرآن
     audio_description: ایک ہی وقت میں سیکھنا اور سننا
-  views:
-    pagination:
-      first: "& laquo؛ پہلا"
-      last: آخری & raquo؛
-      previous: "& lsaquo؛ پچھلا"
-      next: اگلا & rsaquo؛
-      truncate: 
   close: بند کریں

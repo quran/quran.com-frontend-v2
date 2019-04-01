@@ -108,14 +108,6 @@ fr:
       even: doit être pair
       required: doit exister
       taken: n'est pas disponible
-      already_confirmed: est déjà confirmé
-      confirmation_period_expired: 
-      expired: 
-      not_found: Non trouvé(e)
-      not_locked: n'est pas bloqué
-      not_saved:
-        one: "%{resource} n'a pu etre sauvegardé à cause d' 1 erreur:"
-        other: "%{resource} n'a pu etre sauvegardé à cause de %{count} erreurs:"
     not_found: Désolé, cette page n'existe pas
     invalid_verse: 'L''ayah est hors de portée. Accédez à la page d''accueil et sélectionnez
       un(e) Surah / Ayah
@@ -186,82 +178,6 @@ fr:
       create: Créer un(e) %{model}
       update: Modifier ce(tte) %{model}
       submit: Enregistrer ce(tte) %{model}
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: "<b>%{count}</b> %{entry_name}"
-          other: "<b>tous les %{count}</b> %{entry_name}"
-      more_pages:
-        display_entries: "%{entry_name}  <b>%{first} - %{last}</b> sur <b>%{total}</b>
-          au total"
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: Votre compte a été confirmé avec succès. Vous êtes maintenant enregistré.
-      send_instructions: Vous recevrez un courriel avec des instructions pour confirmer
-        la création de votre compte dans quelques minutes.
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: Votre compte n'est pas encore actif.
-      invalid: Courriel ou mot de passe invalide.
-      locked: Votre compte est bloqué.
-      last_attempt: 
-      not_found_in_database: Courriel ou mot de passe invalide.
-      timeout: Votre session est expirée, s'il vous plaît connectez-vous de nouveaux
-        pour continuer.
-      unauthenticated: Vous devez être connecté avant de pouvoir continuer.
-      unconfirmed: Vous devez confirmer votre compte avant de pouvoir continuer.
-    mailer:
-      confirmation_instructions:
-        subject: Instruction de confirmation de compte
-      reset_password_instructions:
-        subject: Instruction de changement de mot de passe
-      unlock_instructions:
-        subject: Instruction de déblocage de compte
-      email_changed:
-        subject: Email Modifié
-      password_change:
-        subject: Mot de passe Modifié
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: Vous allez recevoir un courriel expliquant comment déverrouiller
-        votre compte dans quelques minutes.
-      send_paranoid_instructions: 
-      unlocked: Votre compte a été déverrouillé. Vous êtes maintenant connecté.
   local: french
   site_local: 'Langue du Site
 
@@ -307,6 +223,7 @@ fr:
     go_to_beginning: Début de la Sourate
     read_full: Lire la sourate complète
     invalid: Aucune sourate trouvée
+    revelation_place: 
   footnote: note de bas de page
   action:
     play: Lecture
@@ -382,11 +299,4 @@ fr:
     salah_description: Recherchez l'heure de prière pour n'importe quel endroit
     audio: Le Noble Coran en audio
     audio_description: Apprendre et écouter en même temps
-  views:
-    pagination:
-      first: "&laquo; Premier"
-      last: Dernier &raquo;
-      previous: "&lsaquo; Précédent"
-      next: Suivant &rsaquo;
-      truncate: "&hellip;"
   close: Fermer
