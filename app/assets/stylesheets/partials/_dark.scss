@@ -1,0 +1,50 @@
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ddd;
+    background-color: #222;
+  }
+}
+
+body.night{
+  background: #1d1f21;
+  color: #fff;
+
+  header, footer, .dropdown-menu, #footnote{
+    background: #32312c;
+  }
+
+  .verse .word, #bismillah, .ayah-number, .translation{
+    color: #fff !important;
+  }
+
+  .fa-lightbulb-1{
+    color: #f9d71c !important;
+  }
+
+  .surah-actions, .info-heading{
+    li a, li, h1{
+      color: lighten(#fff, 5%);
+    }
+    background: #2d2d2d !important;
+  }
+
+  .surah-actions{
+    a.font-size{
+      color: $color-primary;
+
+      &:hover{
+        color: #fff;
+      }
+    }
+  }
+
+  .search-form{
+    input{
+      background: #32312c;
+    }
+  }
+
+  header, header.active{
+    border-color: #2d2d2d;
+  }
+}

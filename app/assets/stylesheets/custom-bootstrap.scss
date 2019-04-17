@@ -38,3 +38,16 @@ NOTE: which components we'll need?
 @import "bootstrap/spinners";
 @import "bootstrap/utilities";
 @import "bootstrap/print";
+
+.container {
+  width: 1300px !important;
+  max-width: 100%;
+}
+
+.dropdown-toggle{
+  &:after{
+    content: '\f107';
+    font-family: 'icons';
+    color: $color-primary;
+  }
+}

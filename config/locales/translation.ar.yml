@@ -107,14 +107,6 @@ ar:
       even: يجب أن يكون عدد %{attribute} زوجياً
       required: 
       taken: حقل %{attribute} محجوز مسبقاً
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: 
-      not_locked: 
-      not_saved:
-        one: 
-        other: 
     unavailable_session: 
     unacceptable_request: 
     connection_refused: 
@@ -179,78 +171,6 @@ ar:
       create: "%{model} إنشاء"
       update: "%{model} تحديث"
       submit: "%{model} حِفظ"
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: 
-          other: 
-      more_pages:
-        display_entries: 
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: 
-      send_instructions: 
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      locked: 
-      last_attempt: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
-    mailer:
-      confirmation_instructions:
-        subject: 
-      reset_password_instructions:
-        subject: 
-      unlock_instructions:
-        subject: 
-      email_changed:
-        subject: 
-      password_change:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
   tafsir_select: 
   local: 
   site_local: 
@@ -263,7 +183,7 @@ ar:
     reciters: 
     translations: 
     remove_all: 
-    translation_english: 
+    translation_english: العربية
     translation_other: 
     reading: 
     font_size:
@@ -278,6 +198,7 @@ ar:
       label: 
       day_tip: 
       night_tip: 
+    reset: 
   verses:
     media: 
     go: 
@@ -294,6 +215,7 @@ ar:
     go_to_beginning: 
     read_full: 
     invalid: 
+    revelation_place: 
   footnote: 
   action:
     play: 
@@ -305,6 +227,8 @@ ar:
     copy:
       label: 
       done: 
+    share: 
+    addNote: 
   search:
     placeholder: 
     result: 
@@ -319,6 +243,7 @@ ar:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
     current_verse: 
     next_verse: 
@@ -362,11 +287,4 @@ ar:
     salah_description: 
     audio: 
     audio_description: 
-  views:
-    pagination:
-      first: 
-      last: 
-      previous: 
-      next: 
-      truncate: 
   close: 

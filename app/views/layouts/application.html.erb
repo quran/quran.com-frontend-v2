@@ -11,10 +11,14 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', 'nonce': true %>
+    <!--
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+-->
   </head>
+
 
   <body class="<%= page_classes %>" id="<%= page_id %>">
     <noscript>
@@ -37,7 +41,7 @@
     <%= render "shared/footer" %>
     <%= include_rails_script %>
 
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade hidden" id="modal" tabindex="-1" role="dialog"  aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body">

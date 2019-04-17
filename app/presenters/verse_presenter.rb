@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VersePresenter < BasePresenter
   def initialize(context)
     super context
@@ -24,12 +26,12 @@ class VersePresenter < BasePresenter
 
   protected
 
-  def load_words
-    Word.
-        eager_load(:translation, :transliteration).
-        where("translations.language_id = ? OR translations.language_id = ?", language.id, Language.default.id).
-        where("translations.language_id = ? OR translations.language_id = ?", language.id, Language.default.id).
-        order("translations.priority ASC").
-        where(verse_id: params[:id])
-  end
+    def load_words
+      Word.
+          eager_load(:translation, :transliteration).
+          where("translations.language_id = ? OR translations.language_id = ?", language.id, Language.default.id).
+          where("translations.language_id = ? OR translations.language_id = ?", language.id, Language.default.id).
+          order("translations.priority ASC").
+          where(verse_id: params[:id])
+    end
 end

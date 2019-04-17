@@ -108,14 +108,6 @@ id:
       even: harus genap
       required: harus ada
       taken: sudah digunakan
-      already_confirmed: telah dikonfirmasi.
-      confirmation_period_expired: 
-      expired: 
-      not_found: tidak ditemukan
-      not_locked: tidak terkunci
-      not_saved:
-        one: 
-        other: 
     not_found: 
     invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
@@ -183,89 +175,13 @@ id:
       create: Buat %{model}
       update: Perbarui %{model}
       submit: Simpan %{model}
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: 
-          other: 
-      more_pages:
-        display_entries: Ditampilkan %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>
-          dari total <b>%{total}</b>
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: Akun Anda telah berhasil di konfirmasi. Anda sekarang telah masuk
-        sistem.
-      send_instructions: Anda akan menerima email dengan instruksi tentang bagaimana
-        caranya untuk mengkonfirmasi akun Anda beberapa menit lagi.
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: Akun Anda belum teraktivasi
-      invalid: Email atau password salah
-      locked: Akun Anda sedang terkunci
-      last_attempt: 
-      not_found_in_database: Email atau password salah
-      timeout: Sesi Anda telah berakhir, silahkan login kembali untuk melanjutkan.
-      unauthenticated: Anda perlu login atau mendaftar dulu sebelum melanjutkan.
-      unconfirmed: Anda perlu mengkonfirmasi akun Anda sebelum melanjutkan.
-    mailer:
-      confirmation_instructions:
-        subject: Instruksi konfirmasi.
-      reset_password_instructions:
-        subject: Instruksi reset kata sandi
-      unlock_instructions:
-        subject: Instruksi membuka Akun terkunci
-      email_changed:
-        subject: 
-      password_change:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: Anda akan menerima email dengan instruksi tentang bagaimana
-        caranya untuk mengaktifkan akun yang terkunci beberapa menit lagi.
-      send_paranoid_instructions: 
-      unlocked: Akun Anda telah tidak terkunci lagi. Anda sekarang telah masuk sistem.
   local: indonesian
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
   local_native_name: Indonesia
   language: 
   settings:
-    label: 
+    label: Pengaturan
     chapters: 
     reciters: 
     translations: 
@@ -285,6 +201,7 @@ id:
       label: Mode Malam
       day_tip: Ganti ke mode terang
       night_tip: Ganti ke mode malam
+    reset: 
   verses:
     media: 'Lihat kuliah dari %{from}
 
@@ -303,6 +220,7 @@ id:
     go_to_beginning: Awal Surat
     read_full: Baca lengkap Surah
     invalid: 
+    revelation_place: 
   footnote: 
   action:
     play: Putar
@@ -314,6 +232,8 @@ id:
     copy:
       label: Salin
       done: Tersalin!
+    share: 
+    addNote: 
   search:
     placeholder: Cari "Nuh"
     result: 
@@ -328,6 +248,7 @@ id:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
     current_verse: Ayat
     next_verse: Ayat Berikutnya
@@ -372,11 +293,4 @@ id:
     salah_description: 
     audio: 
     audio_description: 
-  views:
-    pagination:
-      first: "&laquo; Awal"
-      last: Akhir &raquo;
-      previous: "&lsaquo; Sebelumnya"
-      next: Berikutnya &rsaquo;
-      truncate: "&hellip;"
   close: 

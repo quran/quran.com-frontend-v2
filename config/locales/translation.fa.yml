@@ -108,14 +108,6 @@ fa:
       even: باید زوج باشد
       required: باید وجود داشته باشد
       taken: پیشتر گرفته شده
-      already_confirmed: 
-      confirmation_period_expired: 
-      expired: 
-      not_found: 
-      not_locked: 
-      not_saved:
-        one: 
-        other: 
     not_found: 
     invalid_verse: 
     invalid_chapter: 
@@ -181,78 +173,6 @@ fa:
       create: ایجاد %{model}
       update: بروز رسانی %{model}
       submit: ذخیره‌ی %{model}
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: 
-          other: 
-      more_pages:
-        display_entries: 
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: 
-      send_instructions: 
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: 
-      invalid: 
-      locked: 
-      last_attempt: 
-      not_found_in_database: 
-      timeout: 
-      unauthenticated: 
-      unconfirmed: 
-    mailer:
-      confirmation_instructions:
-        subject: 
-      reset_password_instructions:
-        subject: 
-      unlock_instructions:
-        subject: 
-      email_changed:
-        subject: 
-      password_change:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: 
-      send_paranoid_instructions: 
-      unlocked: 
   local: 
   site_local: 
   change_local: 
@@ -264,7 +184,7 @@ fa:
     reciters: 
     translations: 
     remove_all: 
-    translation_english: 
+    translation_english: فارسی
     translation_other: 
     reading: 
     font_size:
@@ -279,6 +199,7 @@ fa:
       label: 
       day_tip: 
       night_tip: 
+    reset: 
   verses:
     media: 
     go: 
@@ -295,6 +216,7 @@ fa:
     go_to_beginning: 
     read_full: 
     invalid: 
+    revelation_place: 
   footnote: 
   action:
     play: 
@@ -306,6 +228,8 @@ fa:
     copy:
       label: 
       done: 
+    share: 
+    addNote: 
   search:
     placeholder: 
     result: 
@@ -320,6 +244,7 @@ fa:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
     current_verse: 
     next_verse: 
@@ -363,11 +288,4 @@ fa:
     salah_description: 
     audio: 
     audio_description: 
-  views:
-    pagination:
-      first: 
-      last: 
-      previous: 
-      next: 
-      truncate: 
   close: 

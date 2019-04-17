@@ -190,31 +190,54 @@
       }
     }
   }
+
+  .dropdown-item {
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    overflow: hidden;
+
+    //for localized strings inside dropdown-item
+    span{
+      display: block;
+      text-align: left;
+    }
+
+
+    &.active{
+      &:after{
+        content: '✓';
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        width: 25px;
+        height: 25px;
+        line-height: 22px;
+        border: solid 1px #80deea;
+        background-color: #e0f7fa;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #80deea;
+        text-align: center;
+      }
+    }
+  }
 }
 
 .surah-actions, .info-heading {
   background: #fafafa;
   padding: 15px 0;
 
-  li {
-    float: left;
-    font-family: $font-medium;
-    font-size: 16px;
+  li{
     color: #607d8b;
-    border-left: 1px solid #eceff1;
-    line-height: normal;
     padding: 0 25px;
-    border: 0px;
     padding: 5px 0px;
-
-    &:first-child {
-      border-left: 0px;
-      padding-left: 0px;
-    }
-
-    a {
-      color: #607d8b;
-    }
+    font-family: $font-medium;
 
     .fa {
       color: #b0bec5;
@@ -222,7 +245,7 @@
     }
   }
 
-  a.font-size {
+  .font-size {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -231,9 +254,14 @@
     color: $color-primary;
     border-radius: 14px;
     border: solid 1px #cfd8dc;
-    background-color: #ffffff;
+    background-color: #fff;
     text-align: center;
     margin-left: 5px;
+
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
   }
 
   .dropdown-toggle::after {
@@ -261,30 +289,47 @@
       color: $color-primary;
     }
 
+    .close {
+      position: relative;
+    }
+
     .fa-close {
       color: $color-primary;
     }
   }
-
 }
 
 #verses {
   .verse {
     padding: 30px 0px 0px;
 
-    .word{
+    .ayah-number {
+      display: inline-block;
+      background: image-url('ayah.png') no-repeat;
+      background-size: contain;
+      width: 53px;
+      height: 55px;
+      line-height: 55px;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 15px;
+    }
+
+    .word {
       -webkit-font-smoothing: antialiased;
-       position: relative;
+      position: relative;
+      direction: rtl;
+      margin: 0 5px;
 
-      .glyph{
-        user-select: none;
-
-        &:hover {
-          color: $color-primary
-        }
+      &:hover {
+        color: $color-primary
       }
 
-      .text{
+      .glyph {
+        user-select: none;
+      }
+
+      .text {
         position: absolute;
         right: 0;
         top: 0;
@@ -326,15 +371,15 @@
       font-size: 50px;
       color: #000;
       text-align: right;
-      padding-right: 65px;
+      float: right;
 
       span {
         cursor: pointer;
+        float: right;
       }
     }
 
     .translation {
-      line-height: 36px;
       font-size: 20px;
       color: #607d8b;
 
@@ -366,8 +411,7 @@
 
     .verse-actions {
       display: block;
-      text-align: center;
-      padding-top: 10px;
+      padding: 15px 0 0 15px;
 
       a {
         display: block;
@@ -528,12 +572,20 @@
 
     #verses .verse {
       padding: 0px;
+
       .col-md-10, .col-md-2 {
         width: 100%;
       }
 
       .col-md-2 {
         margin-bottom: 15px;
+      }
+
+      .ayah-number{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
       }
     }
   }
@@ -594,3 +646,35 @@
   }
 }
 
+
+#translation-dropdown-menu {
+  height: 400px;
+  overflow-y: scroll;
+  max-width: 400px;
+  left: 50px !important;
+  top: 30px !important;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav-scroll {
+    max-width: 100%;
+    height: 2.5rem;
+    margin-top: .25rem;
+    overflow: hidden;
+
+    .navbar-nav {
+      padding-bottom: 2rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dropdown{
+      position: static !important;
+    }
+  }
+
+  #translation-dropdown-menu{
+    max-width: 300px;
+  }
+}

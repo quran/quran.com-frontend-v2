@@ -14,6 +14,7 @@ en:
     translation_english: English
     translation_other: Other Languages
     reading: Reading
+    reset: Reset Setting
     font_size:
       label: Font size
       arabic: Arabic
@@ -36,6 +37,7 @@ en:
     previous: Previous Surah
     verses: Verses
     pages: Pages
+    revelation_place: Revelation Place
     info: Chapter Info
     continue: Continue
     quick_links: Quick links
@@ -47,6 +49,8 @@ en:
     play: Play
     pause: Pause
     tafsir: Tafsirs
+    share: Share ayah
+    addNote: Add Note
     bookmark:
       label: Bookmark
       done: Bookmarked
@@ -54,6 +58,7 @@ en:
       label: Copy
       done: Copied!
   search:
+    label: Search
     placeholder: 'Search "Noah"'
     result: "%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>"
     error: Sorry, there was an error with your search.

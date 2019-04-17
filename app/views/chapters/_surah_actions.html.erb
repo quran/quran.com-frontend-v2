@@ -1,84 +1,88 @@
-<section class="surah-actions">
+<section class="surah-actions navbar-nav-scroll">
   <div class="container">
-    <div class="ban-left-col navbar-nav-scroll">
-      <ul class="d-flex justify-content-between navbar-nav flex-row" id="surah-actions">
-        <li class="dropdown" id="tooltip" >
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tooltip-dropdown">
-            <i class="fa fa-commenting-o"></i>
-            <%= _t('settings.tooltip.label') %>
-          </a>
+    <ul class="navbar-nav flex-row" id="surah-actions">
+      <li class="nav-item dropdown" id="reciters">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="reciter-dropdown">
+          <i class="fa fa-mic"></i>
+          <%= _t('settings.reciters') %>
+        </a>
 
-          <div class="dropdown-menu" aria-labelledby="tooltip-dropdown">
-            <a class="dropdown-item" href="#_">
-              <%= _t('settings.tooltip.translation') %>
-            </a>
-            <a class="dropdown-item" href="#_">
-              <%= _t('settings.tooltip.transliteration') %>
-            </a>
-          </div>
-        </li>
+        <div class="dropdown-menu keep-open single" aria-labelledby="reciter-dropdown">
+          <div class="dropdown-item"><%= _t('settings.tooltip.translation') %></div>
+          <div class="dropdown-item"><%= _t('settings.tooltip.transliteration') %></div>
+        </div>
+      </li>
 
-        <li class="arabic-li">
-          <i class="fa fa-text-width"></i>
-          <%= _t('settings.font_size.arabic') %>
+      <li class="nav-item dropdown">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
+          <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
+        </a>
 
-          <a href="#" class="font-size">+</a>
-          <a href="#" class="font-size">-</a>
-        </li>
+        <div class="dropdown-menu keep-open" id='translation-dropdown-menu' aria-labelledby="translation-dropdown">
+          <% ordered_translations.each do |language, list| %>
 
-        <li class="translations-li">
-          <%= _t('settings.font_size.translation') %>
-          <a href="#" class="font-size">+</a>
-          <a href="#" class="font-size">-</a>
-        </li
-        >
-        <li class="two-icons">
-          <a href="#" class="fa fa-book"></a>
-          <a href="#" class="fa fa-lightbulb-1"></a>
-        </li>
-
-        <li class="dropdown border-left" id="reciters" >
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="reciter-dropdown">
-            <i class="fa fa-mic"></i>
-            <%= _t('settings.reciters') %>
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="reciter-dropdown">
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.translation') %></a>
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.transliteration') %></a>
-          </div>
-        </li>
-
-
-        <li class="dropdown" id="translations" >
-          <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="translation-dropdown">
-            <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
-          </a>
-
-          <div class="dropdown-menu" aria-labelledby="translation-dropdown">
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.translation') %></a>
-            <a class="dropdown-item" href="#_"><%= _t('settings.tooltip.transliteration') %></a>
-          </div>
-        </li>
-
-        <li class="info-li">
-          <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader} do %>
-            <i class="fa fa-info"></i> <%= _t("chapters.info") %>
+            <% list.each do |trans| %>
+              <div class="dropdown-item" data-translation="<%= trans[0] %>">
+                <%= trans[1] %>
+              </div>
+            <% end %>
+            <div class="dropdown-divider"></div>
           <% end %>
-        </li>
+        </div>
+      </li>
 
-        <li class="dropdown d-lg-none">
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown">&nbsp;</a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-play"></i> Watch Lecture</a></li>
-            <li><a href="#"><i class="fa fa-files-o"></i> Tafsir</a></li>
-            <li><a href="#"><i class="fa fa-book"></i> Corpus</a></li>
-            <li><a href="#"><i class="fa fa-files-o"></i> Copy</a></li>
-            <li><a href="#"><i class="fa fa-pencil-square-o"></i> Note</a></li>
-            <li><a href="#"><i class="fa fa-share-alt"></i> Share</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+      <li class="nav-item dropdown" id="tooltip">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tooltip-dropdown">
+          <i class="fa fa-commenting-o"></i>
+          <%= _t('settings.tooltip.label') %>
+        </a>
+
+        <div class="dropdown-menu keep-open" aria-labelledby="tooltip-dropdown">
+          <div class="dropdown-item word-tooltip" data-tooltip="translation">
+            <%= _t('settings.tooltip.translation') %>
+          </div>
+
+          <div class="dropdown-item word-tooltip" data-tooltip="transliteration">
+            <%= _t('settings.tooltip.transliteration') %>
+          </div>
+        </div>
+      </li>
+
+      <li class='nav-item border-left' id="arabic-font" data-target=".word">
+        <i class="fa fa-text-width"></i>
+        <%= _t('settings.font_size.arabic') %>
+
+        <a href="" class="font-size increase">+</a>
+        <a href="" class="font-size decrease">-</a>
+      </li>
+
+      <li class='nav-item' id="translation-font" data-target=".translation">
+        <%= _t('settings.font_size.translation') %>
+        <a href="" class="font-size increase">+</a>
+        <a href="" class="font-size decrease">-</a>
+      </li>
+
+      <li class="nav-item border-left">
+        <a href="#" class="fa fa-book">Reading</a>
+
+        <a id="toggle-nightmode"
+           class="fa fa-lightbulb-1"
+           rel="tooltip"
+           title="<%= t('settings.night_mode.night_tip') %>"
+           day="<%= t('settings.night_mode.night_tip') %>"
+           title="<%= t('settings.night_mode.night_tip') %>"
+        >Night</a>
+      </li>
+
+      <li class="nav-item">
+        <a id="reset-setting" class="fa fa-close" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader} do %>
+          <i class="fa fa-info"></i> <%= _t("chapters.info") %>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </section>

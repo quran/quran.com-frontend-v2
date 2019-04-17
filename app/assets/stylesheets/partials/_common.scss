@@ -1,0 +1,64 @@
+h2, .h2{
+  font-family: $font-bold;
+  font-size: 30px;
+  color: $color-primary;
+  margin-bottom: 15px;
+
+  span{
+    font-family: $font-regular;
+  }
+}
+a{
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#bismillah{
+  color: #000;
+  font-family: 'bismillah';
+  font-size: 60px;
+  padding: 25px 0;
+}
+
+main{
+  float: left;
+  width: 100%;
+  padding: 50px 0px;
+}
+
+p:empty {
+  display:none;
+}
+p {
+  margin-bottom:15px;
+}
+
+h1 {
+  font-size:55px;
+  color:#222121;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-family: $font-medium;
+  font-size: 16px;
+  color: $color-primary;
+  margin-bottom: 5px;
+}
+
+.brand{
+  color: $color-primary;
+}
+
+@media (max-width: 610px) {
+  h2 {
+    font-size: 24px;
+  }
+  .logo {
+    font-size: 24px;
+  }
+}

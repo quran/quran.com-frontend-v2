@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BasePresenter
-  HOST = 'https://www.quran.com'
+  HOST = "https://www.quran.com"
   attr_reader :context, :resource_class
 
   def initialize(context)
@@ -12,15 +12,19 @@ class BasePresenter
     context.params
   end
 
+  def session
+    context.session
+  end
+
   def open_graph_hash
     {
       og: {
         title: meta_title,
         description: meta_description,
         url: meta_url,
-        type: 'website',
+        type: "website",
         image: meta_image,
-        'image:alt': 'Quran.com',
+        'image:alt': "Quran.com",
         see_also: related_links
       },
       # FB Applinks meta tags
@@ -28,14 +32,14 @@ class BasePresenter
             {
               web: { url: meta_url },
               ios: {
-                url: 'https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303',
-                app_store_id: '1118663303',
-                app_name: 'Quran - by Quran.com - قرآن'
+                url: "https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303",
+                app_store_id: "1118663303",
+                app_name: "Quran - by Quran.com - قرآن"
               },
               android: {
-                url: 'https://play.google.com/store/apps/details?id=com.quran.labs.androidquran',
-                app_name: 'Quran for Android',
-                package: 'com.quran.labs.androidquran'
+                url: "https://play.google.com/store/apps/details?id=com.quran.labs.androidquran",
+                app_name: "Quran for Android",
+                package: "com.quran.labs.androidquran"
               }
             },
       twitter: {
@@ -49,19 +53,20 @@ class BasePresenter
       image: meta_image,
       canonical: canonical_href,
       alternate: alternate_links,
-      amphtml: canonical_href+'.amp'
+      'apple-itunes-app': "app-id=1118663303",
+      amphtml: canonical_href + ".amp"
     }
   end
 
   def alternate_links
     [
-      { hreflang: 'x-default', href: canonical_href }
+      { hreflang: "x-default", href: canonical_href }
 
     ]
   end
 
   def meta_title
-    'Quran.com'
+    "Quran.com"
   end
 
   def related_links; end
@@ -72,30 +77,32 @@ class BasePresenter
   alias_method :canonical_href, :meta_url
 
   def meta_description
-    'The Quran translated into many languages in a simple and easy interface'
+    "The Quran translated into many languages in a simple and easy interface"
   end
 
   def meta_keyword
-    ['القران الكريم',
-     'قران كريم',
-     'القرآن',
-     'قران',
-     'quran',
+    ["القران الكريم",
+     "قران كريم",
+     "القرآن",
+     "قران",
+     "quran",
      "qur'an",
-     'koran',
-     'kareem',
-     'surah',
-     'yasin',
-     'yaseen',
-     'kahf',
-     'mulk',
-     'rahman',
-     'muslim',
-     'islam',
-     'Allah'].freeze
+     "koran",
+     "kareem",
+     "surah",
+     "yasin",
+     "yaseen",
+     "kahf",
+     "mulk",
+     "rahman",
+     "muslim",
+     "islam",
+     "Allah"].freeze
   end
 
-  def meta_image; end
+  def meta_image
+    context.view_context.image_url("thumbnail.png")
+  end
 
   def language
     @language ||= Language.find_by_id_or_iso_code(I18n.locale) || Language.default

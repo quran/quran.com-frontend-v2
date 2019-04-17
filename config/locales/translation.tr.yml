@@ -108,14 +108,6 @@ tr:
       even: çift olmalı
       required: doldurulmalı
       taken: hali hazırda kullanılmakta
-      already_confirmed: zaten onaylanmış
-      confirmation_period_expired: 
-      expired: 
-      not_found: bulunamadı
-      not_locked: kilitli değil
-      not_saved:
-        one: 
-        other: 
     not_found: 
     invalid_verse: 
     invalid_chapter: 
@@ -180,81 +172,6 @@ tr:
       create: "%{model} Ekle"
       update: "%{model} Güncelle"
       submit: "%{model} Kaydet"
-    page_entries_info:
-      entry:
-        zero: 
-        one: 
-        other: 
-      one_page:
-        display_entries:
-          zero: 
-          one: 
-          other: 
-      more_pages:
-        display_entries: Toplam <b>%{total}</b> %{entry_name}; <b>%{first}&nbsp;-&nbsp;%{last}</b>
-          arası gösteriliyor.
-  flash:
-    actions:
-      create:
-        notice: 
-      update:
-        notice: 
-      destroy:
-        notice: 
-        alert: 
-  devise:
-    confirmations:
-      confirmed: Hesabınız başarıyla etkinleştirildi. Şu anda giriş yaptınız.
-      send_instructions: Hesabınızı nasıl etkinleştirebileceğinize dair bir bilgiler
-        e-posta adresinize gönderilmiştir.
-      send_paranoid_instructions: 
-    failure:
-      already_authenticated: 
-      inactive: Hesabınız henüz etkileştirilmemiş.
-      invalid: Geçersiz e-posta ya da şifre.
-      locked: Hesabınız kilitlenmiş.
-      last_attempt: 
-      not_found_in_database: Geçersiz e-posta ya da şifre.
-      timeout: Oturum süreniz dolmuştur, devam etmek için lütfen yeniden giriş yapın.
-      unauthenticated: Devam etmeden önce giriş yapmalı ya da kayıt olmalısınız.
-      unconfirmed: Devam etmeden önce hesabınızı etkinleştirmelisiniz.
-    mailer:
-      confirmation_instructions:
-        subject: Etkinleştirme adımları
-      reset_password_instructions:
-        subject: Şifre sıfırlama adımları
-      unlock_instructions:
-        subject: Kilit Çözme Adımları
-      email_changed:
-        subject: 
-      password_change:
-        subject: 
-    omniauth_callbacks:
-      failure: 
-      success: 
-    passwords:
-      no_token: 
-      send_instructions: 
-      send_paranoid_instructions: 
-      updated: 
-      updated_not_active: 
-    registrations:
-      destroyed: 
-      signed_up: 
-      signed_up_but_inactive: 
-      signed_up_but_locked: 
-      signed_up_but_unconfirmed: 
-      update_needs_confirmation: 
-      updated: 
-    sessions:
-      signed_in: 
-      signed_out: 
-      already_signed_out: 
-    unlocks:
-      send_instructions: Hesabınızın kilidini nasıl çözebileceğinize dair açıklamaları
-        içeren e-posta adresinize gönderilmiştir.
-      send_paranoid_instructions: 
-      unlocked: Hesabınızın kilidi kaldırılmıştır. Şu anda giriş yaptınız.
   local: 
   site_local: 
   change_local: 
@@ -266,7 +183,7 @@ tr:
     reciters: 
     translations: 
     remove_all: 
-    translation_english: 
+    translation_english: Türkçe
     translation_other: 
     reading: 
     font_size:
@@ -281,6 +198,7 @@ tr:
       label: 
       day_tip: 
       night_tip: 
+    reset: 
   verses:
     media: 
     go: 
@@ -297,6 +215,7 @@ tr:
     go_to_beginning: 
     read_full: 
     invalid: 
+    revelation_place: 
   footnote: 
   action:
     play: 
@@ -308,6 +227,8 @@ tr:
     copy:
       label: 
       done: 
+    share: 
+    addNote: 
   search:
     placeholder: 
     result: 
@@ -322,6 +243,7 @@ tr:
     al_waqiah: 
     al_kahf: 
     al_muzammil: 
+    label: 
   player:
     current_verse: 
     next_verse: 
@@ -365,11 +287,4 @@ tr:
     salah_description: 
     audio: 
     audio_description: 
-  views:
-    pagination:
-      first: "&laquo; İlk"
-      last: Son &raquo;
-      previous: "&lsaquo; Önceki"
-      next: Sonraki &rsaquo;
-      truncate: "&hellip;"
   close: 

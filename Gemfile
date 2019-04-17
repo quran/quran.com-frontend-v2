@@ -20,10 +20,8 @@ gem 'turbolinks', '~> 5'
 # For css, we're still using Sprockets
 gem 'bootstrap', '~> 4.3.1'
 
-gem 'devise', '4.4.3'
 gem 'fast_blank'
 gem 'jquery-infinite-pages', github: 'naveed-ahmad/jquery-infinite-pages'
-gem 'kaminari'
 gem 'pg'
 
 gem 'jbuilder'
@@ -36,7 +34,7 @@ gem 'translation'
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags'
 
-gem 'quran-core', github: 'quran/quran-core' # path: '../quran-core'
+gem 'quran-core',  github: 'quran/quran-core' #path: '../quran-core'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

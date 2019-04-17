@@ -7,35 +7,45 @@
         </a>
 
         <span>
-         <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
           <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
          </span>
       </div>
+
+      <% unless @presenter.render_translations? %>
+        <div class="verse-actions">
+          <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
+          <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
+          <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
+          <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-md-10">
       <div class="arabic">
-        <p>
-          <% verse.words.each do |w| %>
-            <span class="word" id="w-<%= w.id %>" data-placement="top" data-id=<%= w.id %> data-verse=<%= w.verse_id %> data-audio="<%= w.location %>">
+        <% verse.words.each do |w| %>
+            <span class="word" id="w-<%= w.id %>" data-id=<%= w.id %> data-audio="<%= w.audio_url %>" t="<%= w.word_translation&.text %>" tr="<%= w.transliteration&.text %>">
               <span class="glyph p<%= w.page_number %>-v1"><%= w.code.html_safe %></span>
               <span class="text"><%= w.text_madani %> </span>
             </span>
-          <% end %>
-        </p>
+        <% end %>
+        <span class="ayah-number"><%= verse.verse_number %></span>
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-1">
-      <div class="verse-actions">
-        <a href="#" class="fa fa-docs" data-toggle="tooltip" data-placement="left" title="Bookmark ayah"></a>
-        <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
-        <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="Share"></a>
-      </div>
+      <% if @presenter.render_translations? %>
+        <div class="verse-actions">
+          <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
+          <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
+          <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
+          <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
+        </div>
+      <% end %>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-11">
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
           <small>
@@ -44,7 +54,9 @@
           </small>
         <% end %>
 
-        <%= render partial: 'translation', collection: verse.translations, as: :translation %>
+        <% if @presenter.render_translations? %>
+          <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translation %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -37,13 +37,29 @@
 
   <%= display_meta_tags reverse: true, site: 'Quran.com'%>
 
-  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-  <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
-  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+  <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+  <script async custom-element="amp-app-banner" src="https://cdn.ampproject.org/v0/amp-app-banner-0.1.js"></script>
 </head>
 <body>
+<amp-app-banner layout="nodisplay" id="demo-app-banner-2134">
+  <amp-img src="https://example.com/icon.png"
+           width="60" height="51">
+  </amp-img>
+  <h3>Quran.com</h3>
+  <p>Download mobile application</p>
+  <div class="actions">
+    <button open-button>Get the app</button>
+  </div>
+</amp-app-banner>
+
 <%= render 'shared/amp_header' %>
+
+<amp-layout layout="responsive">
+
+</amp-layout>
 
 <main>
   <%= yield %>

@@ -1,7 +1,7 @@
 window.Utility ||= {}
 
 class Utility.Player
-  AUDIO_CDN = "https://audio.qurancdn.com/verses/wbw"
+  AUDIO_CDN = "https://audio.qurancdn.com/"
   files: []
   player: false
 
@@ -11,13 +11,9 @@ class Utility.Player
 
   close: =>
 
-  playWord: (wordLocation) =>
-     location = wordLocation.split(':').map (num) -> new Array(4-num.length).join("0") + num
-
-     console.log("playing word audio", "#{AUDIO_CDN}/#{location.join('_')}.mp3");
-
+  playWord: (path) =>
      sound = new Howl(
-       src: ["#{AUDIO_CDN}/#{location.join('_')}.mp3"]
+       src: ["#{AUDIO_CDN}/#{path}"]
        autoplay: true
      )
 
