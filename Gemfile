@@ -20,10 +20,8 @@ gem 'turbolinks', '~> 5'
 # For css, we're still using Sprockets
 gem 'bootstrap', '~> 4.3.1'
 
-# gem 'devise', '4.4.3'
 gem 'fast_blank'
 gem 'jquery-infinite-pages', github: 'naveed-ahmad/jquery-infinite-pages'
-# gem 'kaminari'
 gem 'pg'
 
 gem 'jbuilder'
