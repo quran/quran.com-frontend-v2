@@ -51,7 +51,8 @@ class App.Chapters extends App.Base
     dom.tooltip({
       trigger: 'hover',
       placement: 'top'
-      html: true
+      html: true,
+      template: "<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner #{window.locale}'></div></div>"
       title: ->
         tooltip = that.setting.getTooltipType();
         $(@).attr(tooltip)
