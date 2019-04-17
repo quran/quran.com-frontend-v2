@@ -204,10 +204,10 @@ bn-BD:
     go: 
     not_found: 
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
+    label: সূরা
+    next: পরবর্তী সূরা
+    previous: পূর্ববর্তী সূরা
+    verses: আয়াত
     pages: 
     revelation_place: 
     info: 
@@ -218,17 +218,17 @@ bn-BD:
     invalid: 
   footnote: 
   action:
-    play: 
-    pause: 
-    tafsir: 
-    share: 
-    addNote: 
+    play: তিলাওয়াত শুনুন
+    pause: বিরতি
+    tafsir: তাফসীর
+    share: আয়াত শেয়ার করুন
+    addNote: নোট করুন
     bookmark:
-      label: 
-      done: 
+      label: বুকমার্ক করুন
+      done: বুকমার্ক করা হয়েছে
     copy:
-      label: 
-      done: 
+      label: কপি
+      done: কপি করা হয়েছে
   search:
     label: 
     placeholder: 
@@ -275,7 +275,7 @@ bn-BD:
     blog: 
     forum: 
   juz: 
-  click_here: 
+  click_here: এখানে ক্লিক করুন
   tafsir_select: 
   download: 
   home: 

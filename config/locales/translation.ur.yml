@@ -223,7 +223,7 @@ ur:
     go_to_beginning: سورہ کے شروع میں جائیں
     read_full: مکمل سورت پڑھیں
     invalid: سورہ نہیں ملی
-    revelation_place: 
+    revelation_place: وحی کی جگہ
   footnote: حاشیہ
   action:
     play: چلاو
@@ -235,7 +235,7 @@ ur:
     copy:
       label: کاپی
       done: کاپی کر لیا
-    share: 
+    share: آیت کا اشتراک کریں
     addNote: نوٹ شامل کریں
   search:
     placeholder: " تلاش کریں (نوح)"

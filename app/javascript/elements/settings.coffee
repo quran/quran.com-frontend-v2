@@ -8,6 +8,7 @@ class Utility.Settings
     $(document).on "click", '.word-tooltip', @handleTooltip
     $(document).on 'click', '#reset-setting', @resetSetting
     $(document).on 'click', '#toggle-nightmode', @toggleNightMode
+    $(document).on 'click', '#toggle-readingmode', @toggleReadingMode
 
     $(document).on 'click', '.dropdown-menu.keep-open .dropdown-item', (e)->
       target = $(e.target)
@@ -25,6 +26,10 @@ class Utility.Settings
       {}
 
     @settings = Object.assign(setting, @defaultSetting())
+
+  toggleReadingMode: (e)->
+    e.preventDefault()
+    $("body").toggleClass('reading-mode')
 
   toggleNightMode: (e)->
     e.preventDefault()

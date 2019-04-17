@@ -63,15 +63,16 @@
       </li>
 
       <li class="nav-item border-left">
-        <a href="#" class="fa fa-book">Reading</a>
+        <a id="toggle-readingmode" class="fa fa-book"><%= _t('settings.reading')%></a>
 
         <a id="toggle-nightmode"
            class="fa fa-lightbulb-1"
            rel="tooltip"
            title="<%= t('settings.night_mode.night_tip') %>"
-           day="<%= t('settings.night_mode.night_tip') %>"
+           day="<%= t('settings.night_mode.day_tip') %>"
+           night="<%= t('settings.night_mode.night_tip') %>"
            title="<%= t('settings.night_mode.night_tip') %>"
-        >Night</a>
+        ><%= _t('settings.night_mode.label') %></a>
       </li>
 
       <li class="nav-item">
