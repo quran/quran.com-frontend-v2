@@ -12,7 +12,7 @@ class ChapterPresenter < BasePresenter
   end
 
   def paginate
-    verses(verse_pagination_start, per_page)
+    @verses ||= verses(verse_pagination_start, per_page)
   end
 
   def per_page
@@ -153,7 +153,7 @@ class ChapterPresenter < BasePresenter
                .or(list.where(word_translations: {language_id: Language.default.id}))
                .eager_load(words: eager_load_words)
 
-    @verses = list.order("verses.verse_index ASC, words.position ASC, word_translations.priority ASC")
+    list.order("verses.verse_index ASC, words.position ASC, word_translations.priority ASC")
   end
 
 

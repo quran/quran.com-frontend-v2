@@ -1,0 +1,69 @@
+<div id="player">
+  <div class="container">
+    <div class="audio-left-col">
+      <ul class="d-flex align-items-center justify-content-between">
+        <li>
+          <button><i class="fa fa-to-start"></i></button>
+        </li>
+
+        <li class="play-btn">
+          <button>
+            <i class="fa fa-play"></i>
+          </button>
+        </li>
+
+        <li>
+          <button><i class="fa fa-to-end"></i></button>
+        </li>
+
+        <li>
+          <button><i class="fa fa-loop"></i></button>
+        </li>
+
+        <li class="audio-link-btn">
+          <button><i class="fa fa-link"></i></button>
+        </li>
+
+        <li class="text-primary timer">00:00</li>
+
+        <li class="lg-audio">
+          <div class="bar">
+            <div class="progress"></div>
+          </div>
+        </li>
+
+        <li class="lg-vol">
+          <button><i class="fa fa-volume-up text-primary"></i></button>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+            <%= @presenter.chapter.name_complex %>
+          </a>
+
+          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <% Chapter.find_each do |chapter| %>
+              <div class="dropdown-item <%= 'active' if chapter.id == @presenter.chapter.id %>">
+                <%= link_to chapter.name_simple, chapter_path(chapter) %>
+              </div>
+            <% end %>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <% current_verse = @presenter.paginate.first.verse_number %>
+
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Verse <%= current_verse %></a>
+
+          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <% 1.upto(@presenter.chapter.verses_count) do |verse| %>
+              <div class="dropdown-item <%= 'active' if verse == current_verse %>">
+                <%= link_to "Verse #{verse}", range_path("#{@presenter.chapter.chapter_number}/#{verse}") %>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

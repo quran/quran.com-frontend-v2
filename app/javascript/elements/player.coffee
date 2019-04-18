@@ -6,6 +6,7 @@ class Utility.Player
   player: false
 
   constructor: ->
+    $("#player .bar").slider()
 
   open: =>
 

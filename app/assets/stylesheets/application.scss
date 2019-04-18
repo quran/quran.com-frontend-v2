@@ -24,11 +24,13 @@
 @import "partials/animation";
 @import "partials/surah_names";
 @import "partials/dark";
+@import "bootstrap-slider.min";
 
 @import "pages";
 @import "chapters";
 @import "footnote";
 @import "reading-mode";
+@import "player";
 
 .turbolinks-progress-bar {
   height: 5px;

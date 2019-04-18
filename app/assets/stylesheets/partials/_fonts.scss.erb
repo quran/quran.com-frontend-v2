@@ -72,6 +72,11 @@ font-family: $font-regular;
   font-url("quran_fonts/v1/ttf/p<%= i %>.ttf") format('truetype');
 }
 
+@font-face {
+  font-family: 'pdms';
+  src: font-url("quran_fonts/pdms/pdms-saleem-quranfont.ttf");
+}
+
 .p<%= i %>-v2{
   font-family: 'p<%=i%>-v2';
 }
@@ -80,3 +85,8 @@ font-family: $font-regular;
   font-family: 'p<%=i%>-v1';
 }
 <% end %>
+
+.indopak{
+  font-family: 'pdms';
+  font-size: 25px;
+}

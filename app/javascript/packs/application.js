@@ -8,6 +8,7 @@ require("custom-bootstrap")
 require('rails_script')
 require('partial_replacement')
 require('infinite_scrolling')
+require('bootstrap_slider')
 require('howler')
 
 import {} from 'jquery'

@@ -1,0 +1,97 @@
+#player{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  box-shadow: 0 0 35px 0 rgba(38, 50, 56, 0.1);
+  background-color: #ffffff;
+  z-index: 100;
+  padding: 18px 0;
+
+  ul li {
+    display: inline-block;
+    margin: 0px;
+    padding: 0 30px 0 0;
+
+    button {
+      background: none;
+      border: 0px;
+      outline: none;
+    }
+
+    i {
+      font-size: 14px;
+      color: #b0bec5;
+    }
+
+    /*.bar {
+      display: inline-block;
+      background: #eceff1;
+      width: 500px;
+      height: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      .progress {
+        position: relative;
+        background: #00acc1;
+        width: 1.5%;
+        height: 8px;
+        border-radius: 4px;
+
+        &:after {
+          content: '';
+          position: absolute;
+          right: -3px;
+          top: -1px;
+          background: #fff;
+          width: 10px;
+          height: 10px;
+          border-radius: 6px;
+          box-shadow: 0px 5px 15px 0 rgba(38, 50, 56, 0.15);
+          cursor: pointer;
+        }
+      }
+    }*/
+
+    &.play-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      background: #00acc1;
+      text-align: center;
+      border-radius: 50px;
+
+      i{
+        font-size: 30px;
+        color: $white;
+      }
+    }
+
+    &.timer {
+      font-size: 14px;
+      margin-left: 20px;
+    }
+  }
+
+  .dropdown a {
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    padding-right: 15px;
+  }
+
+  .dropdown-menu {
+    height: 400px;
+    overflow-y: scroll;
+    max-width: 400px;
+
+    .dropdown-item{
+      &:hover, &.active{
+        a{
+          color: $white;
+        }
+      }
+    }
+  }
+}
