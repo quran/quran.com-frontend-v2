@@ -52,40 +52,11 @@ font-family: $font-regular;
   font-weight: normal;
   font-style: normal;
 }
-// TODO: maybe add this as inline style?
-<% 1.upto(604) do |i| %>
-@font-face {
-  font-family: 'p<%= i %>-v2';
-  src: local(QCF2001),
-  font-url("quran_fonts/v2/QCF2<%= i.to_s.rjust(3, '0') %>.woff2") format('woff2'),
-  font-url("quran_fonts/v2/QCF2<%= i.to_s.rjust(3, '0') %>.woff") format('woff');
-  font-display: block;
-}
-.p<%= i %>-v2{
-  font-family: 'p<%=i%>';
-}
-
-@font-face {
-  font-family: 'p<%= i %>-v1';
-  src: font-url("quran_fonts/v1/woff2/p<%=i%>.woff2"),
-  font-url("quran_fonts/v1/woff/p<%=i%>.woff") format('woff'),
-  font-url("quran_fonts/v1/ttf/p<%= i %>.ttf") format('truetype');
-}
 
 @font-face {
   font-family: 'pdms';
   src: font-url("quran_fonts/pdms/pdms-saleem-quranfont.ttf");
 }
-
-.p<%= i %>-v2{
-  font-family: 'p<%=i%>-v2';
-}
-
-.p<%= i %>-v1{
-  font-family: 'p<%=i%>-v1';
-}
-<% end %>
-
 .indopak{
   font-family: 'pdms';
   font-size: 25px;

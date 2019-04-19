@@ -19,4 +19,10 @@ module ChaptersHelper
     translations = ResourceContent.one_verse.translations.order("priority desc").pluck(:id, :name, :language_name)
     translations.group_by do |trans| trans[2] end
   end
+
+  def font_ids(verses)
+    verses.map do |v|
+      v.page_number
+    end.uniq
+  end
 end
