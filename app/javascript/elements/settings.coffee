@@ -9,6 +9,7 @@ class Utility.Settings
     $(document).on 'click', '#reset-setting', @resetSetting
     $(document).on 'click', '#toggle-nightmode', @toggleNightMode
     $(document).on 'click', '#toggle-readingmode', @toggleReadingMode
+    $(document).on 'hide.bs.dropdown', '#translation-dropdown', @reloadTranslations
 
     $(document).on 'click', '.dropdown-menu.keep-open .dropdown-item', (e)->
       target = $(e.target)
@@ -30,6 +31,11 @@ class Utility.Settings
   toggleReadingMode: (e)->
     e.preventDefault()
     $("body").toggleClass('reading-mode')
+
+  reloadTranslations: ->
+    activeTranslations = $("#translation-dropdown-menu .dropdown-item.active")
+    translationIds = activeTranslations.map (t) -> $(t).data('translation')
+    console.log("translations ", translationIds)
 
   toggleNightMode: (e)->
     e.preventDefault()
