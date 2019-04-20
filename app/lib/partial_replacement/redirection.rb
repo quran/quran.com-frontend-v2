@@ -26,28 +26,28 @@ module PartialReplacement
 
     private
 
-    def _extract_turbolinks_options!(options)
-      turbolinks = options.delete(:turbolinks)
-      options = options.extract!(:change, :append, :prepend, :replace).delete_if { |_, value| value.nil? }
+      def _extract_turbolinks_options!(options)
+        turbolinks = options.delete(:turbolinks)
+        options = options.extract!(:change, :append, :prepend, :replace).delete_if { |_, value| value.nil? }
 
-      [turbolinks, options]
-    end
+        [turbolinks, options]
+      end
 
-    def _turbolinks_js_options(options)
-      js_options = {}
+      def _turbolinks_js_options(options)
+        js_options = {}
 
-      js_options[:change] = Array(options[:change]) || []
-      js_options[:append] = Array(options[:append]) if options[:append]
-      js_options[:replace] = Array(options[:replace]) if options[:replace]
-      js_options[:prepend] = Array(options[:prepend]) if options[:prepend]
+        js_options[:change] = Array(options[:change]) || []
+        js_options[:append] = Array(options[:append]) if options[:append]
+        js_options[:replace] = Array(options[:replace]) if options[:replace]
+        js_options[:prepend] = Array(options[:prepend]) if options[:prepend]
 
-      # js_options[:change] << '#flash_messages' if view_context.flash.present?
+        # js_options[:change] << '#flash_messages' if view_context.flash.present?
 
-      ", #{js_options.to_json}" if js_options.present?
-    end
+        ", #{js_options.to_json}" if js_options.present?
+      end
 
-    def get_flash_messages
-      view_context.render('shared/flash_notices') if view_context.flash.present?
-    end
+      def get_flash_messages
+        view_context.render("shared/flash_notices") if view_context.flash.present?
+      end
   end
 end
