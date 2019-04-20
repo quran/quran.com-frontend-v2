@@ -10,5 +10,6 @@ require('partial_replacement')
 require('infinite_scrolling')
 require('bootstrap_slider')
 require('howler')
+require('service-worker-companion')
 
 import {} from 'jquery'

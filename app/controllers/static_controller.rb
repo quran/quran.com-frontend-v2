@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class StaticController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :serviceworker
+
   def opensearch
     render formats: :xml
   end
@@ -11,5 +13,9 @@ class StaticController < ApplicationController
 
   def msapplication_config
     render formats: :xml
+  end
+
+  def serviceworker
+    render formats: :js
   end
 end

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get :msapplication_config
   end
 
+  get :serviceworker, to: 'static#serviceworker'
+
   # /2:2:3 => 1/2-3
   get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 

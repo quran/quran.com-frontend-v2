@@ -28,8 +28,8 @@ quran_core:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
-  port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] %>
+  # host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
+  # port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] %>
   database: quran_dev
-  username: quran_dev
-  password: dev_quran
+  # username: quran_dev
+  # password: dev_quran
