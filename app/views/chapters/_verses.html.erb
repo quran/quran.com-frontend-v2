@@ -2,7 +2,7 @@
 <%= render partial: 'verse', collection: @presenter.paginate, as: :verse %>
 
 <div class="text-center" id="pagination-wrap">
-  <div id="verses-pagination">
+  <div id="verses-pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range, page: 1) %>">
     <%= chapter_next_page_link %>
   </div>
 

@@ -31,15 +31,19 @@ class Utility.Settings
   toggleReadingMode: (e)->
     e.preventDefault()
     $("body").toggleClass('reading-mode')
+    $("#toggle-readingmode").toggleClass('text-primary')
 
   reloadTranslations: ->
     activeTranslations = $("#translation-dropdown-menu .dropdown-item.active")
-    translationIds = activeTranslations.map (t) -> $(t).data('translation')
-    console.log("translations ", translationIds)
+    translationIds = []
+    activeTranslations.each (i, t) -> translationIds.push $(t).data('translation')
+    $.get "#{$('#verses-pagination').data('url')}", {translations: translationIds.join(',')}, (response) ->
+      $("#verses").html response
 
   toggleNightMode: (e)->
     e.preventDefault()
     $("body").toggleClass('night')
+    $('#toggle-nightmode').toggleClass('text-primary')
 
   handleTooltip: (e) =>
     e.preventDefault()

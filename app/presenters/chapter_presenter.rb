@@ -24,6 +24,10 @@ class ChapterPresenter < BasePresenter
     current_page + 1 unless last_page? || out_of_range?
   end
 
+  def first_page
+    1
+  end
+
   # Previous page number in the collection
   def prev_page
     current_page - 1 unless first_page? || out_of_range?
