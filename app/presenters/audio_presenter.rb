@@ -25,10 +25,26 @@ class AudioPresenter < BasePresenter
   protected
 
   def load_verses
-    # TODO: add pagination?
     Verse
         .eager_load(:audio)
         .where(chapter_id: chapter_id, audio_files: {recitation_id: recitation_id})
+        .where("verse_number >= ? AND verse_number <= ?", verse_start.to_i, verse_end.to_i)
+  end
+
+  def verse_start
+    (current_page*per_page) + 1
+  end
+
+  def verse_end
+    verse_start + per_page - 1
+  end
+
+  def per_page
+    10
+  end
+
+  def current_page
+    (params[:page].presence || 0).to_i
   end
 
   def recitation_id
