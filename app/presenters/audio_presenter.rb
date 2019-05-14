@@ -10,9 +10,12 @@ class AudioPresenter < BasePresenter
     json = {}
 
     @verses.each do |verse|
+      audio = verse.audio
+
       json[verse.verse_number] = {
-          audio: verse.audio.url,
-          segments: verse.audio.segments
+          audio: audio.url,
+          segments: audio.segments,
+          duration: audio.duration
       }
     end
 
@@ -37,7 +40,7 @@ class AudioPresenter < BasePresenter
     )
 
     session[:recitation] = recitation
-    
+
     recitation.to_i
   end
 
