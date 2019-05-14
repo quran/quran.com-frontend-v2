@@ -107,9 +107,9 @@ class ChapterPresenter < BasePresenter
     list = Word.where(verse_id: verse.id)
 
     list
-        .where(word_translations: { language_id: language.id })
+        .where(word_translations: {language_id: language.id})
         .or(
-          list.where(word_translations: { language_id: Language.default.id })
+            list.where(word_translations: {language_id: Language.default.id})
         )
         .eager_load(:transliteration, :word_translation).
         order("word_translations.priority ASC, words.position ASC")
@@ -121,97 +121,102 @@ class ChapterPresenter < BasePresenter
 
   protected
 
-    def meta_keyword
-      chapter.translated_names.pluck(:name) + ["القران الكريم",
-                                               "القرآن",
-                                               "قران",
-                                               "quran"]
-    end
+  def meta_keyword
+    chapter.translated_names.pluck(:name) + ["القران الكريم",
+                                             "القرآن",
+                                             "قران",
+                                             "quran"]
+  end
 
-    def meta_description
-      "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{paginate.first.text_madani}"
-    end
+  def meta_description
+    "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{paginate.first.text_madani}"
+  end
 
-    def meta_url
-      context.chapter_url(chapter)
-    end
+  def meta_url
+    context.chapter_url(chapter)
+  end
 
-    def meta_title
-      "Surah #{chapter.name_simple} - #{paginate.first.verse_key}"
-    end
+  def meta_title
+    "Surah #{chapter.name_simple} - #{paginate.first.verse_key}"
+  end
 
-    def meta_image
-      "https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
-    end
+  def meta_image
+    "https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
+  end
 
-    def verses(verse_start, per)
-      return @verses if @verses
+  def verses(verse_start, per)
+    return @verses if @verses
 
-      verse_end = verse_pagination_end(verse_start, per)
+    verse_end = verse_pagination_end(verse_start, per)
 
-      list = Verse
-                 .where(chapter_id: chapter.id)
-                 .where("verse_number >= ? AND verse_number <= ?", verse_start.to_i, verse_end.to_i)
+    list = Verse
+               .where(chapter_id: chapter.id)
+               .where("verse_number >= ? AND verse_number <= ?", verse_start.to_i, verse_end.to_i)
 
-      list = list.where(word_translations: { language_id: language.id })
-                 .or(list.where(word_translations: { language_id: Language.default.id }))
-                 .eager_load(words: eager_load_words)
+    list = list.where(word_translations: {language_id: language.id})
+               .or(list.where(word_translations: {language_id: Language.default.id}))
+               .eager_load(words: eager_load_words)
 
-      list.order("verses.verse_index ASC, words.position ASC, word_translations.priority ASC")
-    end
+    list.order("audio_files.verse_index ASC, words.position ASC, word_translations.priority ASC")
+  end
 
 
-    def eager_load_words
-      %i[
+  def eager_load_words
+    %i[
           word_translation
           transliteration
         ]
+  end
+
+  def range_end
+    if @range_start && @range_end.nil?
+      # For single ayah(e.g 2/1) range start and end should be same. One ayah
+      #
+      range_start
+    else
+      min((@range_end || chapter.verses_count).to_i, chapter.verses_count)
     end
+  end
 
-    def range_end
-      if @range_start && @range_end.nil?
-        # For single ayah(e.g 2/1) range start and end should be same. One ayah
-        #
-        range_start
-      else
-        min((@range_end || chapter.verses_count).to_i, chapter.verses_count)
-      end
-    end
+  def range_start
+    start = (@range_start || 1).to_i
 
-    def range_start
-      start = (@range_start || 1).to_i
+    # Range start and end is inclusive while quering the data.
+    # We don't want to repeat last ayah after first page
+    # So start + 1
+    start = current_page > 1 ? start + 1 : start
 
-      # Range start and end is inclusive while quering the data.
-      # We don't want to repeat last ayah after first page
-      # So start + 1
-      start = current_page > 1 ? start + 1 : start
+    min(start, chapter.verses_count)
+  end
 
-      min(start, chapter.verses_count)
-    end
+  def verse_pagination_start
+    (((current_page - 1) * per_page) + range_start).to_i
+  end
 
-    def verse_pagination_start
-      (((current_page - 1) * per_page) + range_start).to_i
-    end
+  def verse_pagination_end(start, per)
+    min(start + per, range_end)
+  end
 
-    def verse_pagination_end(start, per)
-      min(start + per, range_end)
-    end
+  def min(a, b)
+    a < b ? a : b
+  end
 
-    def min(a, b)
-      a < b ? a : b
-    end
+  def valid_translations
+    # 131 default translation
+    return @trans if @trans
 
-    def valid_translations
-      # 131 default translation
+    translations = (
+    params[:translation].presence ||
+        params[:translations].presence ||
+        session[:translation] || "131"
+    )
 
-      return @trans if @trans
+    session[:translation] = translations
 
-      translations = (
-      params[:translation].presence ||
-          params[:translations].presence ||
-          session[:translation] || "131"
-      )
-      session[:translation] = translations
+    if translations == 'no'
+      @trans = []
+    else
       @trans = translations.to_s.split(",")
     end
+  end
 end

@@ -20,6 +20,11 @@
 
         <div class="dropdown-menu keep-open" id='translation-dropdown-menu' aria-labelledby="translation-dropdown">
           <% ordered_translations.each do |language, list| %>
+            <div class="dropdown-item" data-translation="no">
+              Remove all translations
+            </div>
+
+            <h6 class="dropdown-header"><%= language.humanize %></h6>
 
             <% list.each do |trans| %>
               <div class="dropdown-item" data-translation="<%= trans[0] %>">

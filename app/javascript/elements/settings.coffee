@@ -37,13 +37,15 @@ class Utility.Settings
     activeTranslations = $("#translation-dropdown-menu .dropdown-item.active")
     translationIds = []
     activeTranslations.each (i, t) -> translationIds.push $(t).data('translation')
-    $.get "#{$('#verses-pagination').data('url')}", {translations: translationIds.join(',')}, (response) ->
-      $("#verses").html response
+    $.get "#{$('#audio_files-pagination').data('url')}", {translations: translationIds.join(',')}, (response) ->
+      $("#audio_files").html response
+      $this.bindWordTooltip($('.word'))
 
   toggleNightMode: (e)->
     e.preventDefault()
     $("body").toggleClass('night')
     $('#toggle-nightmode').toggleClass('text-primary')
+    alert 'a'
 
   handleTooltip: (e) =>
     e.preventDefault()

@@ -1,3 +1,5 @@
 <%= render 'top_section' %>
-<%= render 'related_sites' %>
-<%= render 'chapter_and_juzs_tabs' %>
+<%= cache "chapters-and-juz-#{I18n.locale}" do %>
+  <%= render 'related_sites' %>
+  <%= render 'chapter_and_juzs_tabs' %>
+<% end %>

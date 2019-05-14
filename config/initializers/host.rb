@@ -6,4 +6,6 @@ Rails.application.config.hosts += ["staging.quran.com",
                                    "beta.qurancdn.com",
                                    "beta.qurancdn.com",
                                    "www.qurancdn.com",
-                                   "localhost"]
+                                   "localhost",
+                                   "bc374ba8.ngrok.io"
+]

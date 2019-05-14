@@ -2,7 +2,7 @@
   <div class="container alert alert-dismissible fade show" role="alert">
     <ul class="d-flex align-items-center info-heading">
       <li><h1>About Surah <%= @presenter.name_simple %></h1></li>
-      <li><%= _t("chapters.verses") %> <span class="info"><%= @presenter.verses_count %></span></li>
+      <li><%= _t("chapters.audio_files") %> <span class="info"><%= @presenter.verses_count %></span></li>
       <li><%= _t("chapters.pages") %> <span class="info"><%= @presenter.pages.join('-') %></span></li>
       <li><%= _t("chapters.revelation_place") %> <span class="info"><%= @presenter.revelation_place.humanize %></span></li>
 
@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-md-4 order-1">
           <div class="img-col">
-            <%= image_tag "#{@presenter.revelation_place}.jpg", class: 'img-fluid' %>
+            <%= image_tag "#{@presenter.revelation_place}.jpg", class: 'img-fluid', alt: @presenter.revelation_place %>
           </div>
         </div>
 

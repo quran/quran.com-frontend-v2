@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/quran/quran-core.git
-  revision: 657be62c7b7b4b833735d8906ed737dc8a1720e4
+  revision: f689ea0336e2f5f35e2f7903c9578e5011406ba1
   specs:
     quran-core (0.4.0)
       activerecord (~> 6.0.0.beta1)
@@ -127,21 +127,21 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     debug_inspector (0.0.3)
-    elasticsearch (6.2.0)
-      elasticsearch-api (= 6.2.0)
-      elasticsearch-transport (= 6.2.0)
-    elasticsearch-api (6.2.0)
+    elasticsearch (7.0.0)
+      elasticsearch-api (= 7.0.0)
+      elasticsearch-transport (= 7.0.0)
+    elasticsearch-api (7.0.0)
       multi_json
     elasticsearch-model (6.0.0)
       activesupport (> 3)
       elasticsearch (> 1)
       hashie
     elasticsearch-rails (6.0.0)
-    elasticsearch-transport (6.2.0)
+    elasticsearch-transport (7.0.0)
       faraday
       multi_json
     erubi (1.8.0)
-    excon (0.62.0)
+    excon (0.64.0)
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
@@ -186,7 +186,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.6)
     multi_json (1.13.1)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)

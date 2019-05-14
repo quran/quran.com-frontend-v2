@@ -1,12 +1,9 @@
 <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta property="og:locale" content="<%= current_locale %>">
-<meta name="distribution" content="Global">
-<link href="https://cdn.qurancdn.com" rel="preconnect" crossorigin="">
-<link href="https://assets.qurancdn.com" rel="preconnect" crossorigin="">
+<meta name="distribution" content="Global"/>
 
-<link rel="manifest" href="<%= static_manifest_url(format: :json) %>">
+<link rel="manifest" href="<%= static_manifest_path(format: :json) %>">
 <link rel="search" type="application/opensearchdescription+xml" title="search Quran.com" href="<%= static_opensearch_path format: 'xml' %>">
 
 <%= favicon_link_tag 'icons/favicon.ico', title: 'Quran.com' %>
@@ -34,7 +31,6 @@
 <meta name="HandheldFriendly" content="true" />
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
 <meta name="application-name" content="Quran.com" />
 <meta name="msapplication-TileImage" content="<%= asset_path 'icons/apple-touch-icon.png' %>">
 <meta name="msapplication-TileColor" content="#00acc1">
@@ -43,6 +39,7 @@
 <meta name="msapplication-starturl" content="https://www.quran.com" />
 <meta name="msapplication-navbutton-color" content="#00acc1" />
 <meta name="rating" content="General">
-
 <meta name="robots" content="all, index, follow, archive">
 <meta name="revisit-after" content="30 days">
+<link href="https://cdn.qurancdn.com" rel="preconnect" crossorigin="">
+<link href="https://audio.qurancdn.com" rel="preconnect" crossorigin="">

@@ -20,7 +20,7 @@ config/database.yml
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
-
+database.yml
 /public/assets
 .byebug_history
 

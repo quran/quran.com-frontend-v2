@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :foot_note, only: :show
 
   get :search, to: 'search#search', as: :search
-  get '/verses/:id/tooltip', to: 'verses#tooltip'
+  get '/audio', to: 'audio_files#index'
   get '/ayatul-kursi', to: 'chapters#show', id: '2', range: '255'
 
   namespace :pages do
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get :msapplication_config
   end
 
-  get :serviceworker, to: 'static#serviceworker'
+  get :sw, to: 'static#serviceworker'
 
   # /2:2:3 => 1/2-3
   get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)

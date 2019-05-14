@@ -3,9 +3,9 @@
 module ChaptersHelper
   def related_sites
     [
-      ["http://sunnah.com/", _t("related_sites.sunnah"), _t("related_sites.sunnah_description")],
-      ["http://quranicaudio.com/", _t("related_sites.audio"), _t("related_sites.audio_description")],
-      ["http://salah.com/", _t("related_sites.salah"), _t("related_sites.salah_description")]
+        ['salah.jpg', "http://salah.com/", _t("related_sites.salah"), _t("related_sites.salah_description")],
+        ['sunnah.png', "http://sunnah.com/", _t("related_sites.sunnah"), _t("related_sites.sunnah_description")],
+        ['audio.png', "http://quranicaudio.com/", _t("related_sites.audio"), _t("related_sites.audio_description")]
     ]
   end
 
@@ -17,7 +17,10 @@ module ChaptersHelper
 
   def ordered_translations
     translations = ResourceContent.one_verse.translations.order("priority desc").pluck(:id, :name, :language_name)
-    translations.group_by do |trans| trans[2] end
+
+    translations.group_by do |trans|
+      trans[2]
+    end
   end
 
   def font_ids(verses)

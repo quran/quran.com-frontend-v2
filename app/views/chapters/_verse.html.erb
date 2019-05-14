@@ -14,9 +14,7 @@
       <% unless @presenter.render_translations? %>
         <div class="verse-actions">
           <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
-          <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
-          <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
+          <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
         </div>
       <% end %>
     </div>
@@ -24,7 +22,7 @@
     <div class="col-md-10">
       <div class="arabic">
         <% verse.words.each do |w| %>
-            <span class="word" id="w-<%= w.id %>" data-id=<%= w.id %> data-audio="<%= w.audio_url %>" t="<%= w.word_translation&.text %>" tr="<%= w.transliteration&.text %>">
+            <span class="word" id="w-<%= w.id %>" data-local='<%= w.word_translation&.language_name %>' data-id=<%= w.id %> data-audio="<%= w.audio_url %>" data-t="<%= w.word_translation&.text %>" data-tr="<%= w.transliteration&.text %>">
               <span class="glyph p<%= w.page_number %>-v1"><%= w.code.html_safe %></span>
               <span class="text"><%= w.text_madani %> </span>
             </span>
@@ -39,9 +37,7 @@
       <% if @presenter.render_translations? %>
         <div class="verse-actions">
           <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a href="#" class="fa fa-bookmark" data-toggle="tooltip" data-placement="left" title="<%= t('action.bookmark.label') %>" done="<%= t('action.bookmark.done') %>"></a>
-          <a href="#" class="fa fa-edit-1" data-toggle="tooltip" data-placement="left" title="Add note"></a>
-          <a href="#_" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share')%>"></a>
+          <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share')%>"></a>
         </div>
       <% end %>
     </div>
@@ -49,7 +45,7 @@
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
           <small>
-            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
+            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('audio_files.media', from: 'Bayyinah') %>
             </a>
           </small>
         <% end %>

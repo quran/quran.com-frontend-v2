@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceworker.js')
+    navigator.serviceWorker.register('/sw.js')
         .then(function(registration) {
             console.log('Quran.com SW Registered:', registration);
         })

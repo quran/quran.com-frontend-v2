@@ -6,13 +6,12 @@ class App.Chapters extends App.Base
     @setting ||= new Utility.Settings()
     @bindFootnotes()
     @infinitePagination()
-    @bindWordAudio()
     @bindWordTooltip($('.word'))
     @bindMedia()
     @bindVerseActions()
 
     $(document).on "turbolinks:before-cache", ->
-      $("#verses").infinitePages('destroy')
+      $("#audio_files").infinitePages('destroy')
 
   bindVerseActions: =>
     $(document).on "click", '.copy', @copyAyahToClipboard
@@ -46,40 +45,35 @@ class App.Chapters extends App.Base
       id = $(@).attr("foot_note")
       $.get("/foot_note/#{id}")
 
-  bindWordTooltip: (dom)=>
+  bindWordTooltip: (dom) =>
     that = @
     dom.tooltip({
       trigger: 'hover',
       placement: 'top'
       html: true,
-      template: "<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner #{window.locale}'></div></div>"
+      template: "<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>"
       title: ->
+        local = $(@).data('local')
         tooltip = that.setting.getTooltipType();
-        $(@).attr(tooltip)
+        text = $(@).data(tooltip)
+        "<div class='#{local}'>#{text}</div>"
     });
-
-  bindWordAudio: ->
-    $(document).on "dblclick", ".word", (e) =>
-      e.preventDefault()
-      audio = $(e.target).data('audio') || $(e.target).closest('.word').data('audio')
-      if audio?
-        @player.playWord(audio)
 
   infinitePagination: =>
     that = @
-    $("#verses").infinitePages
+    $("#audio_files").infinitePages
       debug: true
       buffer: 1000 # load new page when within 200px of nav link
-      navSelector: "#verses-pagination"
-      nextSelector: "#verses-pagination a[rel=next]:first"
+      navSelector: "#audio_files-pagination"
+      nextSelector: "#audio_files-pagination a[rel=next]:first"
       loading: ->
-        $("#verses-pagination a[rel=next]:first").html("<i class='fa-spin6 fa-2x animate-spin brand'></i>")
+        $("#audio_files-pagination a[rel=next]:first").html("<i class='fa-spin6 fa-2x animate-spin brand'></i>")
 
       success: (container, data) ->
         # called after successful ajax call
         $("#pagination-wrap").remove()
         newItems = $(data)
-        $("#verses").append newItems
+        $("#audio_files").append newItems
         that.bindWordTooltip(newItems.find('.word'))
         $('[data-toggle="tooltip"]').tooltip()
 

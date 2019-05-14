@@ -6,9 +6,9 @@ if (workbox) {
     workbox.navigationPreload.enable();
 
     workbox.routing.registerRoute(
-        new RegExp('^https://(cdnjs|fonts|oss|maxcdn|cdn).(?:googleapis|gstatic|cloudflare|maxcdn|bootstrapcdn|ravenjs).com/(.*)'),
+        new RegExp('^https://(cdnjs|fonts|oss|maxcdn|cdn|audio).(?:googleapis|gstatic|cloudflare|maxcdn|bootstrapcdn|ravenjs|qurancdn).com/(.*)'),
         new workbox.strategies.CacheFirst({
-            cacheName: 'google-fonts-webfonts',
+            cacheName: 'quran-static',
             plugins: [
                 new workbox.cacheableResponse.Plugin({
                     statuses: [0, 200],
@@ -22,7 +22,7 @@ if (workbox) {
     );
 
     workbox.routing.registerRoute(
-        new RegExp('^https://(www|beta|audio).(?:quran|qurancdn).com/(.*)'),
+        new RegExp('^https://(www|beta)?.(?:quran).com/(.*)'),
         new workbox.strategies.NetworkFirst({
             cacheName: 'quran-pages',
             plugins: [
@@ -37,18 +37,8 @@ if (workbox) {
         })
     );
 
-
-    /*workbox.precaching.precacheAndRoute(
-      [
-        '/offline',
-      ],
-      {
-        directoryIndex: null,
-      }
-    );*/
-
     workbox.routing.registerRoute(
-        /\.(?:js|css)$/,
+        /\.(?:js|css|eot|ttf|woff|woff2|otf)$/,
         new workbox.strategies.CacheFirst()
     );
 

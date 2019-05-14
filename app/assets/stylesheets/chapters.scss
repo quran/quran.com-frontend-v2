@@ -445,7 +445,7 @@
     }
   }
 
-  figcaption {
+  .caption {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -467,7 +467,7 @@
   }
 
   @media only screen and (max-width: 1199px) {
-    figcaption {
+    .caption {
       font-size: 14px;
       line-height: normal;
       padding: 0 20px;
@@ -491,7 +491,7 @@
       }
     }
 
-    figcaption h3 {
+    .caption h3 {
       font-size: 18px;
     }
 
@@ -527,7 +527,7 @@
       column-count: 1 !important;
     }
 
-    figcaption {
+    .caption {
       font-size: 16px;
 
       h3 {
@@ -562,7 +562,7 @@
   }
 
   @media (max-width: 479px) {
-    figcaption {
+    .caption {
       font-size: 14px;
 
       h3 {
