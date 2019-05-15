@@ -10,7 +10,6 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/config/database.yml
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -21,7 +20,7 @@
 !/storage/.keep
 /public/assets
 .byebug_history
-config/database.yml
+/config/database.yml
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /public/packs
