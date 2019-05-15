@@ -54,18 +54,45 @@
       }
     }*/
 
-    &.play-btn {
-      width: 50px;
-      height: 50px;
-      font-size: 18px;
-      background: #00acc1;
-      text-align: center;
-      border-radius: 50px;
-
-      i{
-        font-size: 30px;
-        color: $white;
+    &.play-ctrls {
+      & > * {
+        display: none;
       }
+
+      &.play .play-btn {
+        display: inline-block;
+      }
+
+      &.pause .pause-btn {
+        display: inline-block;
+      }
+
+      &.loading .loading {
+        display: inline-block;
+      }
+
+      .play-btn,
+      .pause-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 50px;
+  
+        i{
+          font-size: 30px;
+          color: $white;
+        }
+      }
+
+      .play-btn {
+        background: #00acc1;
+      }
+
+      .pause-btn {
+        background: #000;
+      }
+
     }
 
     &.timer {
