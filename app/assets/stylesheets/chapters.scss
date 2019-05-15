@@ -303,6 +303,10 @@
   .verse {
     padding: 30px 0px 0px;
 
+    &.verse-highlight {
+      background-color: #f5fbf7;
+    }
+
     .ayah-number {
       display: inline-block;
       background: image-url('ayah.png') no-repeat;
@@ -320,6 +324,10 @@
       position: relative;
       direction: rtl;
       margin: 0 5px;
+
+      &.word-highlight {
+        color: #279197;
+      }
 
       &:hover {
         color: $color-primary

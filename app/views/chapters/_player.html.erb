@@ -3,17 +3,21 @@
     <div class="audio-left-col">
       <ul class="d-flex align-items-center justify-content-between">
         <li>
-          <button><i class="fa fa-to-start"></i></button>
+          <button class="previous-btn"><i class="fa fa-to-start"></i></button>
         </li>
 
-        <li class="play-btn">
-          <button>
+        <li class="play-ctrls play">
+          <button class="play-btn">
             <i class="fa fa-play"></i>
           </button>
+          <button class="pause-btn">
+            <i class="fa fa-pause"></i>
+          </button>
+          <div class="loading"></div>
         </li>
 
         <li>
-          <button><i class="fa fa-to-end"></i></button>
+          <button class="next-btn"><i class="fa fa-to-end"></i></button>
         </li>
 
         <li>
@@ -50,14 +54,14 @@
           </div>
         </li>
 
-        <li class="dropdown">
+        <li class="dropdown dropdown-verse">
           <% current_verse = @presenter.paginate.first.verse_number %>
 
           <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Verse <%= current_verse %></a>
 
           <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
             <% 1.upto(@presenter.chapter.verses_count) do |verse| %>
-              <div class="dropdown-item <%= 'active' if verse == current_verse %>">
+              <div class="dropdown-item <%= 'active' if verse == current_verse %>" data-verse="<%= verse %>">
                 <%= link_to "Verse #{verse}", range_path("#{@presenter.chapter.chapter_number}/#{verse}") %>
               </div>
             <% end %>
