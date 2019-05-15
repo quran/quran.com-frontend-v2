@@ -238,9 +238,9 @@ class Utility.Player
   handleDropdownVerseClick: (e) =>
     # TODO: check if the verse is not displayed
 
-  handlePlayVerseBtnClick: =>
-    #verse = $(this).closest(".verse").data("verse-number")
-    #@play(verse)
+  handlePlayVerseBtnClick: (ev) =>
+    verse = $(ev.target).closest(".verse").data("verse-number")
+    @play(verse)
 
   setMenuSelectedVerse: =>
     $("#player .dropdown-verse .dropdown-toggle").text("Verse " + @track.verse)
