@@ -18,7 +18,7 @@ class Utility.Player
     # define vars
     @audioData = {}
     @chapter = $("#verses").data("chapter-id")
-    @recitation = '1' # TODO: get recitation id from settings
+    @recitation = '7' # TODO: get recitation id from settings
     @updateVerses().then( =>
       # set first track to play
       @track = {}
@@ -73,6 +73,7 @@ class Utility.Player
       @track.howl.stop()
     # reset
     @progressBar.slider('setValue', 0)
+    @removeSegmentHighlight()
     @track = {}
     @track.verse = verse
     # play
@@ -127,8 +128,10 @@ class Utility.Player
       onend: =>
         console.log "onend"
         @removeInterval()
+        @removeVerseHighlight()
         @removeSegmentHighlight()
         @progressBar.slider('setValue', 0)
+        @updatePlayCtrls()
         $("#player .timer").text("00:00")
         # play next track if found
         nextTrackVerse = @getNextTrackVerse()
@@ -248,8 +251,11 @@ class Utility.Player
     $("#player .dropdown-verse .dropdown-menu .dropdown-item[data-verse=" + @track.verse + "]").addClass("active")
 
   highlightCurrentVerse: =>
-    $("#verses .verse").removeClass("verse-highlight")
+    @removeVerseHighlight()
     $("#verses .verse[data-verse-number=" + @track.verse + "]").addClass("verse-highlight")
+
+  removeVerseHighlight: =>
+    $("#verses .verse").removeClass("verse-highlight")
 
   scrollToCurrentVerse: =>
     verseElement = $("#verses .verse[data-verse-number=" + @track.verse + "]")
@@ -307,5 +313,4 @@ class Utility.Player
         .addClass("word-highlight")
 
   removeSegmentHighlight: =>
-    $("#verses .verse .word")
-        .removeClass("word-highlight")
+    $("#verses .verse .word").removeClass("word-highlight")
