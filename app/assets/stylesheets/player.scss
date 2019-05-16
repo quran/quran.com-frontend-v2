@@ -78,19 +78,12 @@
         font-size: 18px;
         text-align: center;
         border-radius: 50px;
+        background: #00acc1;
   
         i{
           font-size: 30px;
           color: $white;
         }
-      }
-
-      .play-btn {
-        background: #00acc1;
-      }
-
-      .pause-btn {
-        background: #000;
       }
 
     }
