@@ -20,7 +20,6 @@
 !/storage/.keep
 /public/assets
 .byebug_history
-/config/database.yml
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /public/packs
@@ -29,5 +28,5 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
 .idea/*
+config/database.yml
