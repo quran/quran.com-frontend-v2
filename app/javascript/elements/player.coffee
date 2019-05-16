@@ -90,6 +90,13 @@ class Utility.Player
     if true # TODO: check if scroll setting is on
       @scrollToCurrentVerse()
 
+  unload: =>
+    # stop current track
+    if @track.howl
+      @track.howl.stop()
+    # unload all tracks
+    Howler.unload()
+
   createHowl: (verse, autoplay) =>
     new Howl(
       src: [@audioData[verse].audio]
@@ -113,6 +120,10 @@ class Utility.Player
       onpause: =>
         console.log "onpause"
         @updatePlayCtrls()
+        @removeInterval()
+        @removeAlignTimers()
+      onstop: =>
+        console.log "onstop"
         @removeInterval()
         @removeAlignTimers()
       onseek: =>
@@ -201,6 +212,8 @@ class Utility.Player
     Promise.all( requests )
 
   bindEvents: =>
+    # turbolinks navigation
+    $(document).one 'turbolinks:visit', @unload
     # slider
     @progressBar.slider 'on', 'change', @handleProgressBarChange
     # player controls
