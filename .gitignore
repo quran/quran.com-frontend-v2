@@ -30,3 +30,5 @@ yarn-debug.log*
 .yarn-integrity
 .idea/*
 config/database.yml
+.ruby-gemset
+lib/tasks/download_font.rake

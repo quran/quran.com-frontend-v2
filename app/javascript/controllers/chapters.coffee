@@ -11,7 +11,7 @@ class App.Chapters extends App.Base
     @bindVerseActions()
 
     $(document).on "turbolinks:before-cache", ->
-      $("#audio_files").infinitePages('destroy')
+      $("#verses").infinitePages('destroy')
 
   bindVerseActions: =>
     $(document).on "click", '.copy', @copyAyahToClipboard
@@ -61,23 +61,23 @@ class App.Chapters extends App.Base
 
   infinitePagination: =>
     that = @
-    $("#audio_files").infinitePages
+    $("#verses").infinitePages
       debug: true
       buffer: 1000 # load new page when within 200px of nav link
-      navSelector: "#audio_files-pagination"
-      nextSelector: "#audio_files-pagination a[rel=next]:first"
+      navSelector: "#verses-pagination"
+      nextSelector: "#verses-pagination a[rel=next]:first"
       loading: ->
-        $("#audio_files-pagination a[rel=next]:first").html("<i class='fa-spin6 fa-2x animate-spin brand'></i>")
+        $("#verses-pagination a[rel=next]:first").html("<i class='fa-spin6 fa-2x animate-spin brand'></i>")
 
       success: (container, data) ->
         # called after successful ajax call
         $("#pagination-wrap").remove()
         newItems = $(data)
-        $("#audio_files").append newItems
+        $("#verses").append newItems
         that.bindWordTooltip(newItems.find('.word'))
         $('[data-toggle="tooltip"]').tooltip()
         @player.updateVerses()
 
       error: (container, error) ->
         console.log("err", error)
-        $("#feed_pagination").find(".pagination").before error
+        $("#verses-pagination").find(".pagination").before error
