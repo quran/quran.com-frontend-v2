@@ -326,11 +326,11 @@
       margin: 0 5px;
 
       &.word-highlight {
-        color: #279197;
+        color: $color-primary !important;
       }
 
       &:hover {
-        color: $color-primary
+        color: $color-primary !important;
       }
 
       .glyph {
