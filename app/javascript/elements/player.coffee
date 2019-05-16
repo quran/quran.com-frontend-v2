@@ -55,6 +55,7 @@ class Utility.Player
     Howler.unload()
     # set new recitation
     @recitation = id
+
     @updateVerses( =>
       if wasPlaying
         @play(@track.verse)

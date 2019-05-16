@@ -76,7 +76,7 @@ class App.Chapters extends App.Base
         $("#verses").append newItems
         that.bindWordTooltip(newItems.find('.word'))
         $('[data-toggle="tooltip"]').tooltip()
-        @player.updateVerses()
+        that.player.updateVerses()
 
       error: (container, error) ->
         console.log("err", error)
