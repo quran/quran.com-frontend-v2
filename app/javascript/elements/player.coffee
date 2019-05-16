@@ -28,7 +28,7 @@ class Utility.Player
       @preloadTrack.verse = @firstVerse
       @preloadTrack.howl = @createHowl(@firstVerse, false)
       # bind events
-      @bindEvents()
+      @bindPlayerEvents()
     )
     # init slider
     @progressBar = $('#player .bar').slider
@@ -42,7 +42,9 @@ class Utility.Player
     verses = $("#verses .verse")
     @firstVerse = verses.first().data("verse-number")
     @lastVerse = verses.last().data("verse-number")
-    @fetchAudioData( @firstVerse, @lastVerse )
+    @fetchAudioData( @firstVerse, @lastVerse ).then( =>
+      @bindVerseEvents()
+    )
 
   setRecitation: (id) =>
     # clear current data
@@ -55,7 +57,6 @@ class Utility.Player
     Howler.unload()
     # set new recitation
     @recitation = id
-
     @updateVerses( =>
       if wasPlaying
         @play(@track.verse)
@@ -212,7 +213,7 @@ class Utility.Player
     # callback
     Promise.all( requests )
 
-  bindEvents: =>
+  bindPlayerEvents: =>
     # turbolinks navigation
     $(document).one 'turbolinks:visit', @unload
     # slider
@@ -224,7 +225,10 @@ class Utility.Player
     $('#player .next-btn').on 'click', @handleNextBtnClick
     # select a verse from drop down
     $('#player .dropdown-verse .dropdown-menu .dropdown-item').on 'click', @handleDropdownVerseClick
-    # play verse
+
+  bindVerseEvents: =>
+    # play verse buttons, remove previous event first to prevent adding multiple handlers
+    $('.verse .play-verse').off 'click'
     $('.verse .play-verse').on 'click', @handlePlayVerseBtnClick
 
   handlePlayBtnClick: =>
