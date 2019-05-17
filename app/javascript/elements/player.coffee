@@ -13,12 +13,14 @@ class Utility.Player
   @progressBar = null
   @interval = null
   @alignTimers = []
+  @autoScroll = true
 
   constructor: ->
     # define vars
     @audioData = {}
     @chapter = $("#verses").data("chapter-id")
     @recitation = '7' # TODO: get recitation id from settings
+    @autoScroll = true
     @updateVerses().then( =>
       # set first track to play
       @track = {}
@@ -89,7 +91,7 @@ class Utility.Player
     # highlight current ayah
     @highlightCurrentVerse()
     # scroll to current ayah if setting is on
-    if true # TODO: check if scroll setting is on
+    if @autoScroll
       @scrollToCurrentVerse()
 
   unload: =>
@@ -223,6 +225,7 @@ class Utility.Player
     $('#player .pause-btn').on 'click', @handlePauseBtnClick
     $('#player .previous-btn').on 'click', @handlePreviousBtnClick
     $('#player .next-btn').on 'click', @handleNextBtnClick
+    $('#player .auto-scroll-btn').on 'click', @handleScrollBtnClick
     # select a verse from drop down
     $('#player .dropdown-verse .dropdown-menu .dropdown-item').on 'click', @handleDropdownVerseClick
 
@@ -255,6 +258,14 @@ class Utility.Player
     nextTrackVerse = @getNextTrackVerse()
     if nextTrackVerse != null
       @play(nextTrackVerse)
+
+  handleScrollBtnClick: (ev) =>
+    # set the settings and button
+    @autoScroll = !@autoScroll
+    $('#player .auto-scroll-btn').toggleClass("active")
+    # scroll if turned on
+    if @autoScroll
+      @scrollToCurrentVerse()
 
   handleDropdownVerseClick: (e) =>
     # TODO: check if the verse is not displayed
