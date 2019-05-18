@@ -3,6 +3,7 @@ window.Utility ||= {}
 
 class Utility.Player
   AUDIO_CDN = "https://audio.qurancdn.com/"
+  HTML5 = true # TODO: should set to false to use web audio instead, but this requires CORS
   @chapter = null
   @firstVerse = null
   @lastVerse = null
@@ -127,7 +128,7 @@ class Utility.Player
   createHowl: (verse, autoplay) =>
     new Howl(
       src: [@audioData[verse].audio]
-      html5: true # TODO: should set to false
+      html5: HTML5
       autoplay: autoplay
       onplayerror: =>
         console.log "onplayerror"
@@ -352,9 +353,13 @@ class Utility.Player
     )
 
   bindVerseEvents: =>
-    # play verse buttons, remove previous event first to prevent adding multiple handlers
+    # remove previous event first to prevent adding multiple handlers
+    # play verse buttons
     $('.verse .play-verse').off 'click'
     $('.verse .play-verse').on 'click', @handlePlayVerseBtnClick
+    # play word
+    $('.verse .word').off 'click'
+    $('.verse .word').on 'click', @handlePlayWordClick
 
   handlePlayBtnClick: =>
     if @track.howl
@@ -389,12 +394,21 @@ class Utility.Player
     if @autoScroll
       @scrollToCurrentVerse()
 
-  handleDropdownVerseClick: (e) =>
+  handleDropdownVerseClick: (ev) =>
     # TODO: check if the verse is not displayed
 
   handlePlayVerseBtnClick: (ev) =>
     verse = $(ev.target).closest(".verse").data("verse-number")
     @play(verse)
+
+  handlePlayWordClick: (ev) =>
+    if @track.howl && @track.howl.playing()
+      return;
+    new Howl(
+      src: [AUDIO_CDN + $(ev.target).closest(".word").data("audio")]
+      html5: HTML5
+      autoplay: true
+    )
 
   updateRepeatRange: () =>
     # save selected option
