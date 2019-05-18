@@ -119,3 +119,27 @@
     }
   }
 }
+
+.repeat-btn.active i {
+  color: #00acc1 !important;
+}
+.repeat-popover-title {
+  .custom-switch {
+    transform: scale(1.25);
+  }
+}
+.repeat-popover-content {
+  position: relative;
+  width: 175px;
+  height: 185px;
+}
+.repeat-popover-content-disable-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: .5;
+  z-index: 1;
+}
