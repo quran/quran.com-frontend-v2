@@ -19,16 +19,17 @@ class Utility.Player
   @repeatIteration = 1
 
   constructor: ->
+    @populatePlayerVerses()
     # define vars
     @audioData = {}
     @chapter = $("#verses").data("chapter-id")
-    @recitation = '7' # TODO: get recitation id from settings
+    @recitation = setting.get('recitation')
     @autoScroll = true
     @repeat =
       enabled: false
       type: 'single'
       value: '2'
-    @repeatIteration = 1
+
     @updateVerses().then( =>
       # set first track to play
       @track = {}
@@ -50,6 +51,7 @@ class Utility.Player
       step: .1
       value: 0
       enabled: false
+
     # init repeat popover
     $("#player .repeat-btn").popover(
       title: $("#player .repeat-popover-title")
@@ -57,6 +59,13 @@ class Utility.Player
       html: true
       placement: 'top'
     )
+
+    @bindVerseEvents()
+
+  loadVerses: (start) =>
+    # If this ayah is already loaded, scroll to it
+    # if not, then load the ayah
+    console.log("load ", start)
 
   updateVerses: =>
     verses = $("#verses .verse")
@@ -66,13 +75,32 @@ class Utility.Player
       # update first & last
       @firstVerse = firstVerse
       @lastVerse = lastVerse
-      # bind verse button events
-      @bindVerseEvents()
-      # update repeat range select options
-      @updateRepeatRange()
     )
 
+  populatePlayerVerses: =>
+    total = $("#verses").data("total-verses") + 1
+    verses = []
+    dropDownVerses = []
+    chapter = $("#verses").data("chapter-id")
+    i18nLabel = $("#player-verse-dropdown").data('i18n-label')
+
+    for verse in [1...total]  by 1
+      verses.push("<option value='#{verse}'>#{verse}</option>");
+      dropDownVerses.push(
+        "<div class='dropdown-item'  data-verse='#{verse}'>
+           <a href='/#{chapter}/#{verse}'>#{i18nLabel} #{verse}</a>
+        </div>"
+      )
+    verses = verses.join('')
+
+    $("#repeat-popover-single").html verses
+    $("#repeat-popover-range-from").html verses
+    $("#repeat-popover-range-to").html verses
+    $("#player-verse-dropdown").html dropDownVerses.join('')
+
   setRecitation: (id) =>
+    @recitation = id
+
     # clear current data
     @audioData = {}
     # store if playing or not
@@ -82,7 +110,6 @@ class Utility.Player
       @track.howl.stop()
     Howler.unload()
     # set new recitation
-    @recitation = id
     @updateVerses( =>
       if wasPlaying
         @play(@track.verse)
@@ -92,28 +119,33 @@ class Utility.Player
     )
 
   play: (verse) =>
-    verse = verse or @track.verse
-    # enable progress bar if disabled
-    if !@progressBar.slider('isEnabled')
-      @progressBar.slider('enable')
     # stop previous track
-    if @track.howl
+    if @track.howl && @track.howl.playing()
       @track.howl.stop()
-    # reset
+
+    verse = verse or @track.verse
+
+    # enable progress bar if disabled
+    @progressBar.slider('enable')
     @progressBar.slider('setValue', 0)
+
     @removeSegmentHighlight()
     @track = {}
     @track.verse = verse
+
     # play
     if @preloadTrack.verse == verse
         @track.howl = @preloadTrack.howl
         @track.howl.play()
       else
         @track.howl = @createHowl(verse, true)
+
     # set selected verse in the dropdown menu
     @setMenuSelectedVerse()
+
     # highlight current ayah
     @highlightCurrentVerse()
+
     # scroll to current ayah if setting is on
     if @autoScroll
       @scrollToCurrentVerse()
@@ -126,19 +158,20 @@ class Utility.Player
     Howler.unload()
 
   createHowl: (verse, autoplay) =>
+    thisVerse = $("#verses .verse[data-verse-number=#{verse}]")
     new Howl(
       src: [@audioData[verse].audio]
       html5: HTML5
       autoplay: autoplay
       onplayerror: =>
-        console.log "onplayerror"
         @track.howl.pause()
         @updatePlayCtrls()
       onplay: =>
-        console.log "onplay"
         @updatePlayCtrls()
         @setInterval()
         @setAlignHighlight()
+        thisVerse.find(".play .fa").removeClass('fa-play').addClass('fa-pause')
+
         # preload next @track is using web audio
         if Howler.usingWebAudio
           nextTrackVerse = @getNextTrackVerse()
@@ -146,16 +179,15 @@ class Utility.Player
             @preloadTrack.verse = nextTrackVerse
             @preloadTrack.howl = @createHowl(nextTrackVerse, false)
       onpause: =>
-        console.log "onpause"
         @updatePlayCtrls()
         @removeInterval()
         @removeAlignTimers()
+        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
       onstop: =>
-        console.log "onstop"
         @removeInterval()
         @removeAlignTimers()
+        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
       onseek: =>
-        console.log "onseek"
         if @track.howl.playing()
           # due to howl bug, run @setAlignHighlight() after 100ms, this reduced occurance of bug
           # note: this won't affect align accuracy
@@ -165,7 +197,7 @@ class Utility.Player
         else
           @setAlignHighlight( true )
       onend: =>
-        console.log "onend"
+        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
         @removeInterval()
         @removeVerseHighlight()
         @removeSegmentHighlight()
@@ -175,43 +207,34 @@ class Utility.Player
         # what to play next ?
         nextTrackVerse = @getNextTrackVerse()
         if @repeat.enabled # if repeat is enabled
-          console.log("repeat is enabled")
           if @repeat.type == 'single' # if repeat is single
             # if repeat is loop or iteration is not finished
             if @repeat.value == 'loop' || @repeatIteration < 1* @repeat.value
               # play the same track
-              console.log("play the same track")
               @play()
               @repeatIteration++
             else
               # play next track if found
-              console.log("play the next track")
               if nextTrackVerse != null
                 @play(nextTrackVerse)
               @repeatIteration = 1
           else if @repeat.type == 'range' # if repeat is range
             if @track.verse == 1* @repeat.to # if iteration reached to
-              console.log('iteration reached "to"')
               # if repeat is loop or iteration is not finished
-              console.log @repeat.value, @repeatIteration
               if @repeat.value == 'loop' || @repeatIteration < 1* @repeat.value
                 # play from
-                console.log('play range "from"')
                 @play( 1* @repeat.from )
                 @repeatIteration++
               else
                 # play next track if found
-                console.log("play the next track")
                 if nextTrackVerse != null
                   @play(nextTrackVerse)
                 @repeatIteration = 1
             else # if iteration didn't reach to
-              console.log('iteration didn\'t reach "to"')
               # play next track if found
               if nextTrackVerse != null
                 @play(nextTrackVerse)
         else # if repeat is not enabled
-          console.log("repeat is not enabled")
           # play next track if found
           if nextTrackVerse != null
             @play(nextTrackVerse)
@@ -259,79 +282,99 @@ class Utility.Player
     requests = []
     firstPage = Math.floor( (firstVerse - 1) / 10 )
     lastPage = Math.floor( (lastVerse - 1) / 10 )
+
+    #TODO: We can detect page number without loop. For ayah 1-10 page is 1, for 11-20 page is 2
     for page in [firstPage...lastPage + 1] by 1
       # continue if data exist
       if @audioData.hasOwnProperty( page * 10 + 1 )
         continue
+
       # get page
       audioRequestQuery =
         chapter: @chapter
         recitation: @recitation
         page: page
+
       requests.push $.getJSON("/audio", audioRequestQuery, (data) =>
-        for k,v of data
+        for k, v of data
           # append audio cdn url
           if !/(http)?s?:?\/\//.test(v.audio)
             v.audio = AUDIO_CDN + v.audio
+
           @audioData[k] = v
       )
+
     # callback
     Promise.all( requests )
 
   bindPlayerEvents: =>
-    # turbolinks navigation
+    # unload the player when user navigate
     $(document).one 'turbolinks:visit', @unload
+
     # player controls
     $('#player .play-btn').on 'click', @handlePlayBtnClick
     $('#player .pause-btn').on 'click', @handlePauseBtnClick
     $('#player .previous-btn').on 'click', @handlePreviousBtnClick
     $('#player .next-btn').on 'click', @handleNextBtnClick
     $('#player .auto-scroll-btn').on 'click', @handleScrollBtnClick
+
     # select a verse from drop down
-    $('#player .dropdown-verse .dropdown-menu .dropdown-item').on 'click', @handleDropdownVerseClick
+    $('#player .dropdown-verse .dropdown-item').on 'click', @handleDropdownVerseClick
+
     # slider
     @progressBar.slider 'on', 'change', @handleProgressBarChange
+
     # repeat popover
     # hide on click outside
     hidePopover = (e) =>
       if $(e.target).closest(".popover").length == 0
         $("#player .repeat-btn").popover('hide')
-    $("#player .repeat-btn").on('shown.bs.popover', =>
-      $(document).on 'click', hidePopover
-    )
-    $("#player .repeat-btn").on('hide.bs.popover', =>
-      $(document).off 'click', hidePopover
-    )
+
+    $("#player .repeat-btn").on('shown.bs.popover', => $(document).on 'click', hidePopover)
+    $("#player .repeat-btn").on('hide.bs.popover', => $(document).off 'click', hidePopover)
+
     # switch disable/enable 
     _this = @
     $("#repeat-popover-switch").change( ->
       checked = $(this).is(":checked")
-      $(".repeat-popover-content-disable-overlay").toggle(!checked)
+      $(".repeat-popover-content .overlay").toggle(!checked)
       $(".repeat-btn").toggleClass("active", checked)
       _this.repeat.enabled = $("#repeat-popover-switch").is(":checked")
       _this.repeatIteration = 1
       console.log _this.repeat
     )
+
     $("#repeat-popover-pills-single-tab").on('show.bs.tab', ->
       _this.repeat.type = 'single'
       _this.repeat.value = $('#repeat-popover-single-repeat').val()
       _this.repeatIteration = 1
       console.log _this.repeat
     )
+
     $("#repeat-popover-pills-range-tab").on('show.bs.tab', ->
       _this.repeat.type = 'range'
       _this.repeat.value = $('#repeat-popover-range-repeat').val()
       _this.repeatIteration = 1
       console.log _this.repeat
     )
+
     $(".repeat-popover-repeat-value").change( ->
       _this.repeat.value = $(this).val()
       _this.repeatIteration = 1
       console.log _this.repeat
     )
+
+    $("#repeat-popover-single").change( ->
+      _this.loadVerses($(this).val())
+      _this.repeat.from = $(this).val()
+      _this.repeatIteration = 1
+    )
+
     $("#repeat-popover-range-from").change( ->
+      _this.loadVerses($(this).val())
       _this.repeat.from = $(this).val()
       repeatFrom = parseInt(_this.repeat.from, 10)
+
       # hide some to options
       $("#repeat-popover-range-to option").each( ->
         if parseInt($(this).val(), 10) > repeatFrom
@@ -339,27 +382,24 @@ class Utility.Player
         else
           $(this).hide().prop( "disabled", true )
       )
+
       if $("#repeat-popover-range-to option:selected").is(':disabled')
         $("#repeat-popover-range-to")
           .val($("#repeat-popover-range-to option:enabled").first().val())
           .change()
+
+      #TODO: DRY this out
       _this.repeatIteration = 1
-      console.log _this.repeat
     )
+
     $("#repeat-popover-range-to").change( ->
       _this.repeat.to = $(this).val()
       _this.repeatIteration = 1
-      console.log _this.repeat
     )
 
   bindVerseEvents: =>
-    # remove previous event first to prevent adding multiple handlers
-    # play verse buttons
-    $('.verse .play-verse').off 'click'
-    $('.verse .play-verse').on 'click', @handlePlayVerseBtnClick
-    # play word
-    $('.verse .word').off 'click'
-    $('.verse .word').on 'click', @handlePlayWordClick
+    $(document).on 'click', '.verse .play-verse', @handlePlayVerseBtnClick
+    $(document).on 'click', '.verse .word', @handlePlayWordClick
 
   handlePlayBtnClick: =>
     if @track.howl
@@ -377,25 +417,25 @@ class Utility.Player
     @track.howl.seek(time)
 
   handlePreviousBtnClick: =>
-    previousTrackVerse = @getPreviousTrackVerse()
-    if previousTrackVerse != null
-      @play(previousTrackVerse)
+    if(previous = @getPreviousTrackVerse())?
+      @play(previous)
 
   handleNextBtnClick: =>
-    nextTrackVerse = @getNextTrackVerse()
-    if nextTrackVerse != null
-      @play(nextTrackVerse)
+    if(next=@getNextTrackVerse())?
+      @play(next)
 
   handleScrollBtnClick: (ev) =>
     # set the settings and button
     @autoScroll = !@autoScroll
     $('#player .auto-scroll-btn').toggleClass("active")
+
     # scroll if turned on
     if @autoScroll
       @scrollToCurrentVerse()
 
-  handleDropdownVerseClick: (ev) =>
-    # TODO: check if the verse is not displayed
+  handleDropdownVerseClick: (event) =>
+    event.preventDefault()
+    @loadVerses $(event.target).closest('.dropdown-item').data('verse')
 
   handlePlayVerseBtnClick: (ev) =>
     verse = $(ev.target).closest(".verse").data("verse-number")
@@ -410,40 +450,21 @@ class Utility.Player
       autoplay: true
     )
 
-  updateRepeatRange: () =>
-    # save selected option
-    rangeFrom = $("#repeat-popover-range-from").val()
-    rangeTo = $("#repeat-popover-range-from").val()
-    # clear previous options
-    $("#repeat-popover-range-from").empty()
-    $("#repeat-popover-range-to").empty()
-    # add first verse for from only
-    $("#repeat-popover-range-from").append('<option value="' + @firstVerse + '">' + @firstVerse + '</option>')
-    # new range
-    options = ''
-    for verse in [@firstVerse + 1...@lastVerse + 1] by 1
-      options += '<option value="' + verse + '">' + verse + '</option>'
-    # add it
-    $("#repeat-popover-range-from").append(options)
-    $("#repeat-popover-range-to").append(options)
-    # select the previously selected
-    $("#repeat-popover-range-from").val(rangeTo).change()
-    $("#repeat-popover-range-from").val(rangeFrom).change()
-
   setMenuSelectedVerse: =>
-    $("#player .dropdown-verse .dropdown-toggle").text("Verse " + @track.verse)
-    $("#player .dropdown-verse .dropdown-menu .dropdown-item.active").removeClass("active")
-    $("#player .dropdown-verse .dropdown-menu .dropdown-item[data-verse=" + @track.verse + "]").addClass("active")
+    i18nLabel = $("#player-verse-dropdown").data('i18n-label')
+    $("#player .dropdown-verse .dropdown-toggle").text("#{i18nLabel} #{@track.verse}")
+    $("#player .dropdown-verse .dropdown-item.active").removeClass("active")
+    $("#player .dropdown-verse .dropdown-item[data-verse=#{@track.verse}]").addClass("active")
 
   highlightCurrentVerse: =>
     @removeVerseHighlight()
-    $("#verses .verse[data-verse-number=" + @track.verse + "]").addClass("verse-highlight")
+    $("#verses .verse[data-verse-number=#{@track.verse}]").addClass("verse-highlight")
 
   removeVerseHighlight: =>
-    $("#verses .verse").removeClass("verse-highlight")
+    $(".verse-highlight").removeClass("verse-highlight")
 
   scrollToCurrentVerse: =>
-    verseElement = $("#verses .verse[data-verse-number=" + @track.verse + "]")
+    verseElement = $("#verses .verse[data-verse-number=#{@track.verse}]")
     verseTopOffset = verseElement.offset().top
     verseHeight = verseElement.outerHeight()
     currentScroll = $(window).scrollTop()
@@ -453,6 +474,7 @@ class Utility.Player
     # scroll if there isn't a space to appear completely
     bottomOffsetCheck = verseTopOffset + verseHeight > currentScroll + windowHeight - playerHeight
     topOffsetCheck = verseTopOffset < currentScroll + headerHeight
+
     if bottomOffsetCheck || topOffsetCheck
       $('html, body').stop(true, true).animate(
         scrollTop: verseTopOffset - headerHeight
@@ -462,17 +484,21 @@ class Utility.Player
     @removeAlignTimers()
     segments = @audioData[@track.verse].segments
     seek = @track.howl.seek()
+
     if typeof seek != 'number' # TODO: try to fix that bug
       @removeSegmentHighlight()
-      throw "howl bug: howl.seek() returned object instead of number"
+      console.error "howl bug: howl.seek() returned object instead of number"
+
     currentTime = seek * 1000
     @alignTimers = []
     $.each( segments, (index, segment) =>
       startTime = parseInt(segment[2], 10)
       endTime = parseInt(segment[3], 10)
+
       # continue if the segment is passed
       if currentTime > endTime
         return true
+
       if currentTime > startTime
         @highlightSegment(segment[0], segment[1])
         if currentOnly? && currentOnly
@@ -493,9 +519,12 @@ class Utility.Player
     @removeSegmentHighlight()
     start = parseInt(startIndex, 10) + 1
     end = parseInt(endIndex, 10) + 1
+    words = $("#verses .verse[data-verse-number=#{@track.verse}] .word")
+
     for word in [start...end] by 1
-      $("#verses .verse[data-verse-number=" + @track.verse + "] .word").eq( word - 1 )
+      words
+        .eq( word - 1 )
         .addClass("word-highlight")
 
   removeSegmentHighlight: =>
-    $("#verses .verse .word").removeClass("word-highlight")
+    $(".word-highlight").removeClass("word-highlight")

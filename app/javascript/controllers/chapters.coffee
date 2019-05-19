@@ -2,8 +2,9 @@ import copyToClipboard from 'copy-to-clipboard';
 
 class App.Chapters extends App.Base
   show: =>
-    @player = new Utility.Player()
-    @setting ||= new Utility.Settings()
+    window.setting = new Utility.Settings()
+    window.player = new Utility.Player()
+
     @bindFootnotes()
     @infinitePagination()
     @bindWordTooltip($('.word'))
@@ -46,7 +47,6 @@ class App.Chapters extends App.Base
       $.get("/foot_note/#{id}")
 
   bindWordTooltip: (dom) =>
-    that = @
     dom.tooltip({
       trigger: 'hover',
       placement: 'top'
@@ -54,7 +54,7 @@ class App.Chapters extends App.Base
       template: "<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>"
       title: ->
         local = $(@).data('local')
-        tooltip = that.setting.getTooltipType();
+        tooltip = setting.getTooltipType();
         text = $(@).data(tooltip)
         "<div class='#{local}'>#{text}</div>"
     });
@@ -76,7 +76,7 @@ class App.Chapters extends App.Base
         $("#verses").append newItems
         that.bindWordTooltip(newItems.find('.word'))
         $('[data-toggle="tooltip"]').tooltip()
-        that.player.updateVerses()
+        player.updateVerses()
 
       error: (container, error) ->
         console.log("err", error)

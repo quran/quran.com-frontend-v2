@@ -13,7 +13,9 @@
           <button class="pause-btn">
             <i class="fa fa-pause"></i>
           </button>
-          <div class="loading"></div>
+          <button class="pause-loading">
+            <i class="fa fa-spinner animate-spin"></i>
+          </button>
         </li>
 
         <li>
@@ -22,31 +24,53 @@
 
         <li>
           <button class="repeat-btn"><i class="fa fa-loop"></i></button>
+
           <div class="repeat-popover-container" style="display:none;">
             <div class="repeat-popover-title text-center mt-1">
               <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="repeat-popover-switch">
-                <label class="custom-control-label" for="repeat-popover-switch">REPEAT</label>
+                <label class="custom-control-label" for="repeat-popover-switch">
+                  <%= _t("player.repeat_title") %>
+                </label>
               </div>
             </div>
+
             <div class="repeat-popover-content">
-              <div class="repeat-popover-content-disable-overlay">
+              <div class="overlay">
               </div>
+
               <ul class="nav nav-pills mb-3 text-center" id="repeat-popover-pills-tab" role="tablist">
                 <li class="nav-item w-50">
-                  <a class="nav-link active" id="repeat-popover-pills-single-tab" data-toggle="pill" href="#repeat-popover-pills-single-content" role="tab" aria-selected="true">Single</a>
+                  <a class="nav-link active"
+                     id="repeat-popover-pills-single-tab"
+                     data-toggle="pill"
+                     href="#repeat-popover-pills-single-content"
+                     role="tab" aria-selected="true">
+                    <%= _t("player.repeat_single") %>
+                  </a>
                 </li>
                 <li class="nav-item w-50">
-                  <a class="nav-link" id="repeat-popover-pills-range-tab" data-toggle="pill" href="#repeat-popover-pills-range-content" role="tab" aria-selected="false">Range</a>
+                  <a class="nav-link"
+                     id="repeat-popover-pills-range-tab"
+                     data-toggle="pill"
+                     href="#repeat-popover-pills-range-content"
+                     role="tab" aria-selected="false">
+                    <%= _t("player.repeat_range") %>
+                  </a>
                 </li>
               </ul>
-              <div class="tab-content" id="pills-tabContent">
+
+              <div class="tab-content">
                 <div id="repeat-popover-pills-single-content" class="tab-pane fade show active" role="tabpanel" aria-labelledby="repeat-popover-pills-single-tab">
-                  <div class="text-center h6">
-                    Each Ayah
+                  <div class="h6">
+                    <%= _t("player.current_verse") %>
                   </div>
-                  Repeat:
-                  <select id="repeat-popover-single-repeat" class="form-control repeat-popover-repeat-value">
+
+                  <select id="repeat-popover-single" class="form-control custom-select">
+                  </select>
+
+                  <%= _t("player.repeat_times") %>
+                  <select id="repeat-popover-single-repeat" class="form-control custom-select repeat-popover-repeat-value">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -56,29 +80,26 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
-                    <option value="loop">loop</option>
+                    <option value="loop"><%= _t("player.repeat_loop") %></option>
                   </select>
                 </div>
+
                 <div id="repeat-popover-pills-range-content" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="repeat-popover-pills-range-tab">
                   <div class="row">
                     <div class="col-6">
-                      From:
+                      <%= _t("player.repeat_from") %>
                       <select id="repeat-popover-range-from" class="form-control">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
                       </select>
                     </div>
                     <div class="col-6">
-                      To:
-                      <select id="repeat-popover-range-to" class="form-control">
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                      <%= _t("player.repeat_to") %>
+                      <select id="repeat-popover-range-to" class="form-control custom-select">
                       </select>
                     </div>
                   </div>
-                  Repeat:
-                  <select id="repeat-popover-range-repeat" class="form-control repeat-popover-repeat-value">
+
+                  <%= _t("player.repeat_times") %>
+                  <select id="repeat-popover-range-repeat" class="form-control custom-select repeat-popover-repeat-value">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -88,7 +109,7 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                     <option value="10">10</option>
-                    <option value="loop">loop</option>
+                    <option value="loop"><%= _t("player.repeat_loop") %></option>
                   </select>
                 </div>
               </div>
@@ -97,7 +118,7 @@
         </li>
 
         <li>
-          <button class="auto-scroll-btn active"><i class="fa fa-link"></i></button>
+          <button class="auto-scroll-btn active" data-toggle="tooltip" data-placement="top" data-html="true" title="<%= _t("player.scroll") %>"><i class="fa fa-link"></i></button>
         </li>
 
         <li class="text-primary timer">00:00</li>
@@ -106,10 +127,6 @@
           <div class="bar">
             <div class="progress"></div>
           </div>
-        </li>
-
-        <li class="lg-vol">
-          <button><i class="fa fa-volume-up text-primary"></i></button>
         </li>
 
         <li class="dropdown">
@@ -127,16 +144,21 @@
         </li>
 
         <li class="dropdown dropdown-verse">
-          <% current_verse = @presenter.paginate.first.verse_number %>
+          <%
+            current_verse = @presenter.paginate.first.verse_number
+            verse_i18n = t('player.current_verse')
+          %>
 
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Verse <%= current_verse %></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <%= verse_i18n %> <%= current_verse %>
+          </a>
 
-          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
-            <% 1.upto(@presenter.chapter.verses_count) do |verse| %>
-              <div class="dropdown-item <%= 'active' if verse == current_verse %>" data-verse="<%= verse %>">
-                <%= link_to "Verse #{verse}", range_path("#{@presenter.chapter.chapter_number}/#{verse}") %>
-              </div>
-            <% end %>
+          <div
+            class="dropdown-menu"
+            id="player-verse-dropdown"
+            data-i18n-label="<%=  verse_i18n %>"
+            x-placement="bottom-start"
+            style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
           </div>
         </li>
       </ul>

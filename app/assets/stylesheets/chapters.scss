@@ -655,12 +655,10 @@
 }
 
 
-#translation-dropdown-menu {
+.dropdown-menu {
   height: 400px;
   overflow-y: scroll;
   max-width: 400px;
-  left: 50px !important;
-  top: 30px !important;
 }
 
 @media (max-width: 991.98px) {

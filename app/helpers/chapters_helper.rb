@@ -23,6 +23,10 @@ module ChaptersHelper
     end
   end
 
+  def recitations
+    Recitation.approved.select(:id, :reciter_name, :style)
+  end
+
   def font_ids(verses)
     verses.map do |v|
       v.page_number

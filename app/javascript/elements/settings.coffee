@@ -10,12 +10,16 @@ class Utility.Settings
     $(document).on 'click', '#toggle-nightmode', @toggleNightMode
     $(document).on 'click', '#toggle-readingmode', @toggleReadingMode
     $(document).on 'hide.bs.dropdown', '#translation-dropdown', @reloadTranslations
+    $(document).on 'hide.bs.dropdown', '#reciter-dropdown', @updateReciter
 
     $(document).on 'click', '.dropdown-menu.keep-open .dropdown-item', (e)->
       target = $(e.target)
-      window.tt=target
+
       unless target.hasClass('dropdown-item')
         target = target.parent('.dropdown-item')
+
+      if target.closest('.dropdown-menu').hasClass('single')
+        target.closest('.dropdown-menu').find('.dropdown-item').removeClass('active')
 
       target.toggleClass('active')
       e.stopPropagation()
@@ -30,22 +34,30 @@ class Utility.Settings
 
   toggleReadingMode: (e)->
     e.preventDefault()
+    alert("reading")
     $("body").toggleClass('reading-mode')
     $("#toggle-readingmode").toggleClass('text-primary')
+
+  updateReciter: ->
+    activeRecitation = $("#reciter-dropdown-menu .dropdown-item.active")
+    player.setRecitation activeRecitation.data('recitation')
 
   reloadTranslations: ->
     activeTranslations = $("#translation-dropdown-menu .dropdown-item.active")
     translationIds = []
     activeTranslations.each (i, t) -> translationIds.push $(t).data('translation')
-    $.get "#{$('#audio_files-pagination').data('url')}", {translations: translationIds.join(',')}, (response) ->
-      $("#audio_files").html response
+    $.get "#{$('#verses-pagination').data('url')}", {translations: translationIds.join(',')}, (response) ->
+      $("#verses").html response
       $this.bindWordTooltip($('.word'))
+
+  get: (key) ->
+    @settings[key]
 
   toggleNightMode: (e)->
     e.preventDefault()
     $("body").toggleClass('night')
     $('#toggle-nightmode').toggleClass('text-primary')
-    alert 'a'
+    #alert 'a'
 
   handleTooltip: (e) =>
     e.preventDefault()
@@ -89,7 +101,7 @@ class Utility.Settings
     {
       font: 'qcf_v1',
       tooltip: 'translation',
-      recitation:  '',
+      recitation:  7,
       nightMode: false,
       readingMode: false,
       translations: [],

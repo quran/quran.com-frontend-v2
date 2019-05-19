@@ -26,7 +26,7 @@ bn-BD:
     - শনিবার
     month_names:
     - 
-    - জানুয়ারি
+    - জানুয়ারী
     - ফেব্রুয়ারি
     - মার্চ
     - এপ্রিল
@@ -34,24 +34,24 @@ bn-BD:
     - জুন
     - জুলাই
     - অগাস্ট
-    - সেপ্টেমবার
-    - অক্টোবার
-    - নভেম্বার
-    - ডিসেম্বার
+    - সেপ্টেম্বর
+    - অক্টোবর
+    - নভেম্বর
+    - ডিসেম্বর
     abbr_month_names:
     - 
-    - জানুয়ারি
-    - ফেব্রুয়ারি
+    - জানুয়ারী
+    - ফেব্রুয়ারী
     - মার্চ
     - এপ্রিল
     - মে
     - জুন
     - জুলাই
-    - অগাস্ট
-    - সেপ্টেমবার
-    - অক্টোবার
-    - নভেম্বার
-    - ডিসেম্বার
+    - আগস্ট
+    - সেপ্টেম্বর
+    - অক্টোবর
+    - নভেম্বর
+    - ডিসেম্বর
   time:
     am: am
     pm: pm
@@ -70,7 +70,7 @@ bn-BD:
           eb: 
       decimal_units:
         units:
-          thousand: 
+          thousand: হাজার
           million: 
           billion: 
           trillion: 
@@ -156,7 +156,7 @@ bn-BD:
         one: ১ বছরের বেশি
         other: "%{count} বছরের বেশি"
       almost_x_years:
-        one: 
+        one: প্রায় 1 বছর
         other: 
     prompts:
       year: বছর
@@ -181,10 +181,10 @@ bn-BD:
     label: 
     chapters: 
     reciters: 
-    translations: 
+    translations: অনুবাদ
     remove_all: 
-    translation_english: 
-    translation_other: 
+    translation_english: ইংরেজি
+    translation_other: অন্যান্য ভাষাসমূহ
     reading: 
     reset: 
     font_size:
@@ -193,7 +193,7 @@ bn-BD:
       translation: 
     tooltip:
       label: 
-      translation: 
+      translation: অনুবাদ
       transliteration: 
     night_mode:
       label: 
@@ -242,12 +242,12 @@ bn-BD:
     al_mulk: 
     ar_rahman: 
     al_waqiah: 
-    al_kahf: 
+    al_kahf: সূরা আল কাহফ
     al_muzammil: 
   player:
     current_verse: 
-    next_verse: 
-    previous_verse: 
+    next_verse: পরবর্তী আয়াত
+    previous_verse: পূর্ববর্তী আয়াত
     repeat_title: 
     repeat_single: 
     repeat_range: 
@@ -258,10 +258,10 @@ bn-BD:
     scroll: 
   loading: 
   nav:
-    title: 
-    settings: 
+    title: কুরআন
+    settings: সেটিংস
     contribute: 
-    about_us: 
+    about_us: আমাদের সম্পর্কে
     developers: 
     useful_sites: 
     other_links: 
@@ -269,11 +269,11 @@ bn-BD:
     help: 
     about_project: 
     rights: 
-    mobilea_apps: 
+    mobilea_apps: মোবাইল অ্যাপস
     navigate: 
     legacy_site: 
-    blog: 
-    forum: 
+    blog: ব্লগ
+    forum: ফোরাম
   juz: 
   click_here: এখানে ক্লিক করুন
   tafsir_select: 
@@ -281,7 +281,7 @@ bn-BD:
   home: 
   related_sites:
     label: 
-    sunnah: 
+    sunnah: সুন্নাহ
     sunnah_description: 
     salah: 
     salah_description: 

@@ -9,7 +9,7 @@ body.night{
   background: #1d1f21;
   color: #fff;
 
-  header, footer, .dropdown-menu, #footnote, .verse-highlight{
+  header, footer, .dropdown-menu, #footnote, .verse-highlight, .popover-header{
     background: #32312c !important;
   }
 
@@ -25,11 +25,34 @@ body.night{
     color: #f9d71c !important;
   }
 
-  .surah-actions, .info-heading{
+  .surah-actions, .info-heading, .popover-body{
     li a, li, h1{
       color: lighten(#fff, 5%);
     }
     background: #2d2d2d !important;
+  }
+
+  .repeat-popover-content {
+    .overlay {
+      background-color: #2d2d2d;
+    }
+  }
+
+  .popover{
+    border-color: #2d2d2d;
+
+    .arrow{
+      &:before{
+        border-top-color: lighten(#2d2d2d, 5%);
+      }
+
+      &:after{
+        border-top-color: lighten(#2d2d2d, 5%);
+      }
+    }
+  }
+  #player{
+    background: #2d2d2d;
   }
 
   .surah-actions{
