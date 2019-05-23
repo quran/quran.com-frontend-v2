@@ -105,12 +105,14 @@ class Utility.Player
     @audioData = {}
     # store if playing or not
     wasPlaying = @track.howl && @track.howl.playing()
+    # clear preloaded track
+    @preloadTrack = {}
     # stop current track and unload all tracks
     if @track.howl
       @track.howl.stop()
     Howler.unload()
     # set new recitation
-    @updateVerses( =>
+    @updateVerses().then( =>
       if wasPlaying
         @play(@track.verse)
       else
