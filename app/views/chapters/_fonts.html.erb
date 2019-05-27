@@ -3,16 +3,16 @@
   @font-face {
     font-family: 'p<%= i %>-v2';
     src: local(QCF2001),
-    url("quran_fonts/v2/QCF2<%= i.to_s.rjust(3, '0') %>.woff2") format('woff2'),
-    url("quran_fonts/v2/QCF2<%= i.to_s.rjust(3, '0') %>.woff") format('woff');
+    url('<%= asset_path("quran_fonts/v2/QCF2#{i.to_s.rjust(3, '0')}.woff2") %>') format('woff2'),
+    url('<%= asset_path("quran_fonts/v2/QCF2#{i.to_s.rjust(3, '0')}.woff") %>') format('woff');
     font-display: block;
   }
 
   @font-face {
     font-family: 'p<%= i %>-v1';
-    src: url('<%= asset_path("quran_fonts/v1/woff2/p#{i}.woff2") %>'),
-    url("quran_fonts/v1/woff/p<%=i%>.woff") format('woff'),
-    url("quran_fonts/v1/ttf/p<%= i %>.ttf") format('truetype');
+    src: url('<%= asset_path("quran_fonts/v1/woff2/p#{i}.woff2")%>'),
+    url('<%= asset_path("quran_fonts/v1/woff/p#{i}.woff")%>') format('woff'),
+    url('<%= asset_path("quran_fonts/v1/ttf/p#{i}.ttf")%>') format('truetype');
   }
 
   .p<%= i %>-v2{

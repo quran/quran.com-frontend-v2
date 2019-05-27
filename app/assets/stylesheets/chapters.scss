@@ -11,7 +11,7 @@
 
   &.show {
     main {
-      padding: 65px 0;
+      padding: 110px 0;
     }
 
     .search-form .fa-search {
@@ -228,7 +228,15 @@
     }
   }
 }
-
+.surah-actions{
+  position: fixed;
+  top:70px;
+  left: 0px;
+  right: 0px;
+  float: left;
+  width: 100%;
+  z-index: 8;
+}
 .surah-actions, .info-heading {
   background: #fafafa;
   padding: 15px 0;

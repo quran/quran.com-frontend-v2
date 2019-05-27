@@ -11,6 +11,24 @@ class ChapterPresenter < BasePresenter
     @chapter ||= Chapter.find_using_slug(params[:id])
   end
 
+  def font
+    return @font if @font
+
+    _font = (
+    params[:font].presence ||
+        session[:font] || "v1"
+    )
+
+    session[:font] = _font
+    @font = _font
+  end
+
+  def font_method
+    return @font_method if @font_method
+
+    @font_method = font == 'v1' ? 'code' : 'code_v2'
+  end
+
   def paginate
     @verses ||= verses(verse_pagination_start, per_page)
   end
