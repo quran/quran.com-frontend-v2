@@ -2,7 +2,7 @@
 
 module ApplicationHelper
   def page_classes
-    "#{controller_name} #{action_name}"
+    "#{controller_name} #{action_name} lang-#{I18n.locale}"
   end
 
   def page_id

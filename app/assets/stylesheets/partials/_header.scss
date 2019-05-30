@@ -1,4 +1,4 @@
-header{
+header {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -10,17 +10,17 @@ header{
   padding: 10px 0 15px;
   border-bottom: 1px solid $color-border;
 
-  &.active{
+  &.active {
     border-bottom: 1px solid $color-border !important;
   }
 
-  .logo{
+  .logo {
     font-size: 30px;
     float: left;
   }
 
-  .header-left{
-    #local-switcher{
+  .header-left {
+    #local-switcher {
       float: left;
       margin: 13px 19px;
 
@@ -33,13 +33,13 @@ header{
       }
 
       .dropdown-menu {
-        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
       }
     }
   }
 
-  .head-center{
+  .head-center {
     width: 40%;
     margin: 0 auto 0 80px;
 
@@ -65,7 +65,7 @@ header{
     }
   }
 
-  .download{
+  .download {
     padding: 10px 16px;
     margin-right: 40px;
     border: 0;
@@ -77,25 +77,29 @@ header{
   font-family: $font-bold;
   color: $color-primary;
 
-  span{
+  span {
     font-family: $font-regular;
   }
 }
 
-@media (max-width: 610px){
+@media (max-width: 610px) {
   .logo {
     font-size: 24px !important;
   }
 }
 
-@media (max-width: 767px){
-  #local-switcher{
+@media (max-width: 767px) {
+  #local-switcher {
     margin: 7px 2px !important;
   }
 
   .logo {
     float: none !important;
-    margin-left: -107px;
+    margin-left: -5px;
+  }
+
+  .justify-content-between {
+    display: block !important;
   }
 
   .head-right {
@@ -104,18 +108,35 @@ header{
     right: 30px;
   }
 
-  .download{
+  .download {
     /*TODO: use bootstrap responsive utility*/
     display: none !important;
   }
 
-.header-left{
-  width: 100%;
-  text-align: center;
-}
+  .header-left {
+    width: 100%;
+    text-align: left;
+  }
 
-  #local-switcher .navbar {
-    padding: 0px 65px 0 0px;
+  .head-center {
+    width: 80%;
+    margin: 0px;
+
+    .search-form form {
+      padding: 6px 115px 6px 5px;
+    }
+  }
+
+  #local-switcher {
+    float: right;
+    margin: 13px 19px;
+    position: relative;
+    top: 34px;
+    right: 9px;
+
+    .navbar {
+      padding: 0px 65px 0 0px;
+    }
   }
 }
 

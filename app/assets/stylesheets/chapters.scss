@@ -203,14 +203,14 @@
     overflow: hidden;
 
     //for localized strings inside dropdown-item
-    span{
+    span {
       display: block;
       text-align: left;
     }
 
 
-    &.active{
-      &:after{
+    &.active {
+      &:after {
         content: '✓';
         position: absolute;
         top: 15px;
@@ -228,28 +228,30 @@
     }
   }
 }
-.surah-actions{
+
+.surah-actions {
   position: fixed;
-  top:70px;
+  top: 70px;
   left: 0px;
   right: 0px;
   float: left;
   width: 100%;
   z-index: 8;
 }
+
 .surah-actions, .info-heading {
   background: #fafafa;
   padding: 15px 0;
 
-  li{
+  li {
     color: #607d8b;
-    padding: 0 25px;
-    padding: 5px 0px;
+    padding: 5px;
+    font-size: 95% !important;
     font-family: $font-medium;
 
     .fa {
       color: #b0bec5;
-      margin-right: 8px;
+      margin-right: 3px;
     }
   }
 
@@ -597,7 +599,7 @@
         margin-bottom: 15px;
       }
 
-      .ayah-number{
+      .ayah-number {
         width: 40px;
         height: 40px;
         line-height: 40px;
@@ -683,12 +685,52 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    .dropdown{
+    .dropdown {
       position: static !important;
     }
   }
 
-  #translation-dropdown-menu{
+  #translation-dropdown-menu {
     max-width: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-nav-scroll {
+    height: fit-content;
+    padding-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  #surah-actions {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .surah-actions {
+    top: 90px;
+
+    li:nth-last-child(2), li:nth-last-child(1) {
+      padding-bottom: 0px;
+    }
+
+    .border-left {
+      border: 0px !important;
+    }
+  }
+  .surah-actions, .info-heading {
+    padding: 11px 0 0px 0;
+
+    li {
+      padding: 0px 3px 11px 3px;
+    }
+  }
+}
+
+.lang-ur, .lang-ar{
+  .surah-actions{
+   li{
+     padding: 5px 10px;
+   }
   }
 }

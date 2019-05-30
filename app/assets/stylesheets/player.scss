@@ -1,4 +1,4 @@
-#player{
+#player {
   position: fixed;
   bottom: 0px;
   left: 0px;
@@ -6,89 +6,94 @@
   box-shadow: 0 0 35px 0 rgba(38, 50, 56, 0.1);
   background-color: #ffffff;
   z-index: 100;
-  padding: 18px 0;
+  padding: 7px 0;
 
-  ul li {
-    display: inline-block;
-    margin: 0px;
-    padding: 0 30px 0 0;
+  ul {
+    margin-bottom: 0.3rem;
+
+    li {
+      display: inline-block;
+      margin: 0px;
+      padding: 0 30px 0 0;
+
+      button {
+        background: none;
+        border: 0px;
+        outline: none;
+      }
+
+      i {
+        font-size: 14px;
+        color: #b0bec5;
+      }
+
+      &.play-ctrls {
+        & > * {
+          display: none;
+        }
+
+        &.play .play-btn {
+          display: inline-block;
+        }
+
+        &.pause .pause-btn {
+          display: inline-block;
+        }
+
+        &.loading .loading {
+          display: inline-block;
+        }
+
+        .play-btn,
+        .pause-btn {
+          width: 50px;
+          height: 50px;
+          font-size: 18px;
+          text-align: center;
+          border-radius: 50px;
+          background: #00acc1;
+
+          i {
+            font-size: 30px;
+            color: $white;
+          }
+        }
+
+      }
+
+      &.timer {
+        font-size: 14px;
+        margin-left: 20px;
+      }
+    }
 
     button {
-      background: none;
-      border: 0px;
-      outline: none;
-    }
+      &.active, &:hover {
+        color: $color-primary;
 
-    i {
-      font-size: 14px;
-      color: #b0bec5;
-    }
-
-    &.play-ctrls {
-      & > * {
-        display: none;
-      }
-
-      &.play .play-btn {
-        display: inline-block;
-      }
-
-      &.pause .pause-btn {
-        display: inline-block;
-      }
-
-      &.loading .loading {
-        display: inline-block;
-      }
-
-      .play-btn,
-      .pause-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 18px;
-        text-align: center;
-        border-radius: 50px;
-        background: #00acc1;
-  
-        i{
-          font-size: 30px;
-          color: $white;
+        i {
+          color: $color-primary;
         }
       }
-
     }
 
-    &.timer {
-      font-size: 14px;
-      margin-left: 20px;
+    .dropdown a {
+      position: relative;
+      display: inline-block;
+      width: 130px;
+      padding-right: 15px;
     }
-  }
 
-  button{
-    &.active, &:hover{
-      color: $color-primary;
-      i{
-        color: $color-primary;
-      }
-    }
-  }
+    .dropdown-menu {
+      height: 400px;
+      overflow-y: scroll;
+      max-width: 400px;
 
-  .dropdown a {
-    position: relative;
-    display: inline-block;
-    width: 130px;
-    padding-right: 15px;
-  }
-
-  .dropdown-menu {
-    height: 400px;
-    overflow-y: scroll;
-    max-width: 400px;
-
-    .dropdown-item{
-      &:hover, &.active{
-        a{
-          color: $white;
+      .dropdown-item {
+        &:hover, &.active {
+          a {
+            color: $white;
+          }
         }
       }
     }
@@ -98,17 +103,19 @@
 .repeat-btn.active i {
   color: #00acc1 !important;
 }
+
 .repeat-popover-title {
   .custom-switch {
     transform: scale(1.25);
   }
 }
+
 .repeat-popover-content {
   position: relative;
   width: 175px;
   height: 185px;
 
-  .nav-link{
+  .nav-link {
     padding: .5rem;
   }
 
