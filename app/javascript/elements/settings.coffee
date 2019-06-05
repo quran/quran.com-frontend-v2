@@ -30,11 +30,11 @@ class Utility.Settings
     catch
       {}
 
-    @settings = Object.assign(setting, @defaultSetting())
+    @settings = Object.assign(@defaultSetting(), setting)
+    @updatePage()
 
   toggleReadingMode: (e)->
     e.preventDefault()
-    alert("reading")
     $("body").toggleClass('reading-mode')
     $("#toggle-readingmode").toggleClass('text-primary')
 
@@ -53,11 +53,13 @@ class Utility.Settings
   get: (key) ->
     @settings[key]
 
-  toggleNightMode: (e)->
+  toggleNightMode: (e) =>
     e.preventDefault()
+    isNightMode = $("body").hasClass('night')
     $("body").toggleClass('night')
     $('#toggle-nightmode').toggleClass('text-primary')
-    #alert 'a'
+    @settings.nightMode =  !isNightMode
+    @saveSettings()
 
   handleTooltip: (e) =>
     e.preventDefault()
@@ -91,11 +93,21 @@ class Utility.Settings
     e.preventDefault()
     $('body').removeClass('night')
     @settings = @defaultSetting()
-    @updatePage()
+    @resetPage()
+    @saveSettings()
 
-  updatePage: =>
+  resetPage: =>
     $(".translation").css('font-size', '20px')
     $(".word").css('font-size', '50px')
+
+  updatePage: =>
+    if @get('nightMode')
+      $('body').addClass('night')
+    else
+      $('body').removeClass('night')
+
+  saveSettings: =>
+    localStorage.setItem("settings", JSON.stringify(@settings))
 
   defaultSetting: =>
     {

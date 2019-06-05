@@ -2,7 +2,7 @@ import copyToClipboard from 'copy-to-clipboard';
 
 class App.Chapters extends App.Base
   show: =>
-    window.setting = new Utility.Settings()
+    window.setting ||= new Utility.Settings()
     window.player = new Utility.Player()
 
     @bindFootnotes()

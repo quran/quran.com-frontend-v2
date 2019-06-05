@@ -112,7 +112,7 @@
         border-bottom: 3px solid transparent;
         padding: 0px;
 
-        &.active {
+        &.active, &:hover {
           color: $color-primary;
           border: 0px;
           border-bottom: 3px solid $color-primary;
