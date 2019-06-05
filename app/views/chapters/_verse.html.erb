@@ -23,7 +23,7 @@
       <div class="arabic">
         <% verse.words.each do |w| %>
             <span class="<%= w.char_type_name %> w" id="w-<%= w.id %>" data-local='<%= w.word_translation&.language_name %>' data-id=<%= w.id %> data-audio="<%= w.audio_url %>" data-t="<%= w.word_translation&.text %>" data-tr="<%= w.transliteration&.text %>" data-position="<%= w.position %>">
-              <span class="glyph p<%= w.page_number %>-v1"><%= w.code.html_safe %></span>
+              <span class="glyph p<%= w.page_number %>-<%= @presenter.font %>"><%= w.send(@presenter.font_method).html_safe %></span>
               <span class="text"><%= w.text_madani %> </span>
             </span>
         <% end %>

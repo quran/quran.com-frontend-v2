@@ -9,7 +9,7 @@ body.night{
   background: #1d1f21;
   color: #fff;
 
-  header, footer, .dropdown-menu, #footnote, .verse-highlight, .popover-header{
+  header, footer, .dropdown-menu, #footnote, .verse-highlight, .popover-header, .right-sidebar{
     background: #32312c !important;
   }
 
@@ -66,12 +66,39 @@ body.night{
   }
 
   .search-form{
+    border-color: #2d2d2d;
     input{
       background: #32312c;
     }
   }
 
+  .right-sidebar ul.main-menu li a{
+    border-color: #2d2d2d;
+  }
+
   header, header.active{
     border-color: #2d2d2d;
+  }
+
+  // home page
+  .chapter-list .items ul li {
+    .name{
+      color: #fff;
+    }
+
+    a {
+      &:hover {
+       // box-shadow: 0px 10px 35px 0 rgba(45, 45, 45, 1);
+        box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.5);
+
+       .name{
+           color: $color-primary;
+       }
+      }
+    }
+  }
+
+  .nav-tabs .nav-link{
+    background: transparent !important;
   }
 }

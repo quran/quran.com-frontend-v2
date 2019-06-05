@@ -1,15 +1,17 @@
-h2, .h2{
+h2, .h2 {
   font-family: $font-bold;
   font-size: 30px;
   color: $color-primary;
   margin-bottom: 15px;
 
-  span{
+  span {
     font-family: $font-regular;
   }
 }
-a{
+
+a {
   cursor: pointer;
+  text-decoration: none;
 }
 
 ul {
@@ -17,29 +19,30 @@ ul {
   padding: 0;
 }
 
-#bismillah{
+#bismillah {
   color: #000;
   font-family: 'bismillah';
   font-size: 60px;
   padding: 25px 0;
 }
 
-main{
+main {
   float: left;
   width: 100%;
   padding: 50px 0px;
 }
 
 p:empty {
-  display:none;
+  display: none;
 }
+
 p {
-  margin-bottom:15px;
+  margin-bottom: 15px;
 }
 
 h1 {
-  font-size:55px;
-  color:#222121;
+  font-size: 55px;
+  color: #222121;
   margin-bottom: 30px;
 }
 
@@ -50,7 +53,7 @@ h4 {
   margin-bottom: 5px;
 }
 
-.brand{
+.brand {
   color: $color-primary;
 }
 

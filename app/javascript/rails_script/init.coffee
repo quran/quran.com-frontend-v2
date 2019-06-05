@@ -25,6 +25,9 @@ RailsScript.init = ->
   if typeof $this.afterAction == 'function'
     $this.afterAction action
 
+  window.setting ||= new Utility.Settings()
+  window.setting.updatePage()
+
 # Clear event handlers on navigation
 RailsScript.setClearEventHandlers = ->
   jQuery(document).on 'page:before-change turbolinks:before-render', ->
