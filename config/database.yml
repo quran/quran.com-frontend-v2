@@ -33,3 +33,9 @@ quran_core:
   database: quran_dev
   username: quran_dev
   password: dev_quran
+
+quran_core_development:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: quran_dev

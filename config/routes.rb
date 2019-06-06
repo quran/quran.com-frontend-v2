@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   get :sw, to: 'static#serviceworker'
+  get '/:id/load_verses', to: 'chapters#load_verses'
 
   # /2:2:3 => 1/2-3
   get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
