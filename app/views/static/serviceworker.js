@@ -22,22 +22,6 @@ if (workbox) {
     );
 
     workbox.routing.registerRoute(
-        new RegExp('^https://(www|beta)?.(?:quran).com/(.*)'),
-        new workbox.strategies.NetworkFirst({
-            cacheName: 'quran-pages',
-            plugins: [
-                new workbox.cacheableResponse.Plugin({
-                    statuses: [0, 200],
-                }),
-                new workbox.expiration.Plugin({
-                    maxAgeSeconds: 60 * 60 * 24 * 365, //one year
-                    maxEntries: 50,
-                })
-            ],
-        })
-    );
-
-    workbox.routing.registerRoute(
         /\.(?:js|css|eot|ttf|woff|woff2|otf)$/,
         new workbox.strategies.CacheFirst()
     );
@@ -51,6 +35,22 @@ if (workbox) {
                     maxEntries: 200,
                     maxAgeSeconds: 12 * 30 * 24 * 60 * 60, // 1 year
                 }),
+            ],
+        })
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('^https://(www|beta)?.(?:quran).com/(.*)'),
+        new workbox.strategies.NetworkFirst({
+            cacheName: 'quran-pages',
+            plugins: [
+                new workbox.cacheableResponse.Plugin({
+                    statuses: [0, 200],
+                }),
+                new workbox.expiration.Plugin({
+                    maxAgeSeconds: 60 * 60 * 24 * 365, //one year
+                    maxEntries: 50,
+                })
             ],
         })
     );

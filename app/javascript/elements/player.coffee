@@ -64,8 +64,30 @@ class Utility.Player
 
   loadVerses: (start) =>
     # If this ayah is already loaded, scroll to it
+    if $("#verses .verse[data-verse-number=#{start}]").length > 0
+      @scrollToVerse(start)
+      return
+
     # if not, then load the ayah
     console.log("load ", start)
+    loadAndUpdateVerses = ->
+      # callback
+      chapter = $("#verses").data("chapter-id")
+      request = $.get "/#{chapter}/load_verses", verse:  start, (data) =>
+        dom = $("<div>").html data
+
+        previous = $(dom.find('.verse')[0]).data('verseNumber')
+
+        while $("#verses .verse[data-verse-number=#{previous}]").length == 0
+          previous = previous - 1
+
+        targetDom = $("#verses .verse[data-verse-number=#{previous}]")
+        targetDom.after(data)
+
+      Promise.resolve( request )
+
+    loadAndUpdateVerses().then =>
+      @scrollToVerse(start)
 
   updateVerses: =>
     verses = $("#verses .verse")
@@ -331,7 +353,9 @@ class Utility.Player
         $("#player .repeat-btn").popover('hide')
 
     $("#player .repeat-btn").on('shown.bs.popover', => $(document).on 'click', hidePopover)
-    $("#player .repeat-btn").on('hide.bs.popover', => $(document).off 'click', hidePopover)
+    $("#player .repeat-btn").on('hide.bs.popover', =>
+      $(document).off 'click', hidePopover
+    )
 
     # switch disable/enable 
     _this = @
@@ -341,14 +365,12 @@ class Utility.Player
       $(".repeat-btn").toggleClass("active", checked)
       _this.repeat.enabled = $("#repeat-popover-switch").is(":checked")
       _this.repeatIteration = 1
-      console.log _this.repeat
     )
 
     $("#repeat-popover-pills-single-tab").on('show.bs.tab', ->
       _this.repeat.type = 'single'
       _this.repeat.value = $('#repeat-popover-single-repeat').val()
       _this.repeatIteration = 1
-      console.log _this.repeat
     )
 
     $("#repeat-popover-pills-range-tab").on('show.bs.tab', ->
@@ -463,8 +485,8 @@ class Utility.Player
   removeVerseHighlight: =>
     $(".verse-highlight").removeClass("verse-highlight")
 
-  scrollToCurrentVerse: =>
-    verseElement = $("#verses .verse[data-verse-number=#{@track.verse}]")
+  scrollToVerse: (verse) ->
+    verseElement = $("#verses .verse[data-verse-number=#{verse}]")
     verseTopOffset = verseElement.offset().top
     verseHeight = verseElement.outerHeight()
     currentScroll = $(window).scrollTop()
@@ -479,6 +501,9 @@ class Utility.Player
       $('html, body').stop(true, true).animate(
         scrollTop: verseTopOffset - headerHeight
       , 500)
+
+  scrollToCurrentVerse: =>
+    @scrollToVerse @track.verse
 
   setAlignHighlight: (currentOnly) =>
     @removeAlignTimers()

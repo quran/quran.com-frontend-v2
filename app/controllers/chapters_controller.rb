@@ -17,6 +17,14 @@ class ChaptersController < ApplicationController
     render partial: "verses", layout: false if request.xhr?
   end
 
+  def load_verses
+    start = params[:verse].to_i
+    params[:range] = "#{start}-#{start+10}"
+    @presenter = ChapterPresenter.new(self)
+
+    render layout: false
+  end
+
   protected
 
     def check_routes
