@@ -75,7 +75,7 @@ class Utility.Player
       request = $.get "/#{chapter}/load_verses", verse:  start, (data) =>
         dom = $("<div>").html data
 
-        # TODO: fix duplicate verses issue here. 
+        # TODO: fix duplicate verses issue here.
         previous = $(dom.find('.verse')[0]).data('verseNumber')
 
         while $("#verses .verse[data-verse-number=#{previous}]").length == 0 && previous > 0
@@ -469,7 +469,11 @@ class Utility.Player
 
   handlePlayVerseBtnClick: (ev) =>
     verse = $(ev.target).closest(".verse").data("verse-number")
-    @play(verse)
+
+    if @track.howl && @track.howl.playing() && @track.verse == verse
+      @track.howl.stop()
+    else
+      @play(verse)
 
   handlePlayWordClick: (ev) =>
     if @track.howl && @track.howl.playing()
