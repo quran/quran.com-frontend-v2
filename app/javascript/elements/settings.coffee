@@ -111,7 +111,7 @@ class Utility.Settings
 
   defaultSetting: =>
     {
-      font: 'qcf_v1',
+      font: 'qcf_v2',
       tooltip: 'translation',
       recitation:  7,
       nightMode: false,
