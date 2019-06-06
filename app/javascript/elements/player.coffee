@@ -69,20 +69,28 @@ class Utility.Player
       return
 
     # if not, then load the ayah
-    console.log("load ", start)
     loadAndUpdateVerses = ->
       # callback
       chapter = $("#verses").data("chapter-id")
       request = $.get "/#{chapter}/load_verses", verse:  start, (data) =>
         dom = $("<div>").html data
 
+        # TODO: fix duplicate verses issue here. 
         previous = $(dom.find('.verse')[0]).data('verseNumber')
 
-        while $("#verses .verse[data-verse-number=#{previous}]").length == 0
+        while $("#verses .verse[data-verse-number=#{previous}]").length == 0 && previous > 0
           previous = previous - 1
 
-        targetDom = $("#verses .verse[data-verse-number=#{previous}]")
-        targetDom.after(data)
+        if previous > 0
+          targetDom = $("#verses .verse[data-verse-number=#{previous}]")
+          targetDom.after(data)
+        else
+          nextVerse = $(dom.find('.verse')[dom.find('.verse').length - 1]).data('verseNumber')
+          while $("#verses .verse[data-verse-number=#{nextVerse}]").length == 0
+            nextVerse = nextVerse + 1
+
+          targetDom = $("#verses .verse[data-verse-number=#{nextVerse}]")
+          targetDom.before(data)
 
       Promise.resolve( request )
 
