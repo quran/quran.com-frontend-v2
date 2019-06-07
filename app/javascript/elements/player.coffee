@@ -28,7 +28,7 @@ class Utility.Player
     @repeat =
       enabled: false
       type: 'single'
-      value: '2'
+      value: 2
 
     @updateVerses().then( =>
       # set first track to play
@@ -41,8 +41,8 @@ class Utility.Player
       # bind events
       @bindPlayerEvents()
       # set repeat range
-      @repeat.from = $("#repeat-popover-range-from").val()
-      @repeat.to = $("#repeat-popover-range-to").val()
+      @repeat.from = Number($("#repeat-popover-range-from").val())
+      @repeat.to = Number($("#repeat-popover-range-to").val())
     )
     # init slider
     @progressBar = $('#player .bar').slider
@@ -255,7 +255,7 @@ class Utility.Player
               # if repeat is loop or iteration is not finished
               if @repeat.value == 'loop' || @repeatIteration < 1* @repeat.value
                 # play from
-                @play( 1* @repeat.from )
+                @play(@repeat.from)
                 @repeatIteration++
               else
                 # play next track if found
@@ -379,37 +379,34 @@ class Utility.Player
 
     $("#repeat-popover-pills-single-tab").on('show.bs.tab', ->
       _this.repeat.type = 'single'
-      _this.repeat.value = $('#repeat-popover-single-repeat').val()
+      _this.repeat.value = Number($('#repeat-popover-single-repeat').val())
       _this.repeatIteration = 1
     )
 
     $("#repeat-popover-pills-range-tab").on('show.bs.tab', ->
       _this.repeat.type = 'range'
-      _this.repeat.value = $('#repeat-popover-range-repeat').val()
+      _this.repeat.value = Number($('#repeat-popover-range-repeat').val())
       _this.repeatIteration = 1
-      console.log _this.repeat
     )
 
     $(".repeat-popover-repeat-value").change( ->
-      _this.repeat.value = $(this).val()
+      _this.repeat.value = Number($(this).val())
       _this.repeatIteration = 1
-      console.log _this.repeat
     )
 
     $("#repeat-popover-single").change( ->
       _this.loadVerses($(this).val())
-      _this.repeat.from = $(this).val()
+      # handle selecting single verse for repeat
       _this.repeatIteration = 1
     )
 
     $("#repeat-popover-range-from").change( ->
-      _this.loadVerses($(this).val())
-      _this.repeat.from = $(this).val()
-      repeatFrom = parseInt(_this.repeat.from, 10)
+      _this.repeat.from = Number($(this).val())
+      _this.loadVerses(_this.repeat.from)
 
       # hide some to options
       $("#repeat-popover-range-to option").each( ->
-        if parseInt($(this).val(), 10) > repeatFrom
+        if Number($(this).val()) > _this.repeat.from
           $(this).show().prop( "disabled", false )
         else
           $(this).hide().prop( "disabled", true )
@@ -422,11 +419,15 @@ class Utility.Player
 
       #TODO: DRY this out
       _this.repeatIteration = 1
+      if _this.repeat.enabled && _this.repeat.type == 'range' && ( _this.track.verse < _this.repeat.from || _this.track.verse > _this.repeat.to )
+        _this.play(_this.repeat.from)
     )
 
     $("#repeat-popover-range-to").change( ->
-      _this.repeat.to = $(this).val()
+      _this.repeat.to = Number($(this).val())
       _this.repeatIteration = 1
+      if _this.repeat.enabled && _this.repeat.type == 'range' && ( _this.track.verse < _this.repeat.from || _this.track.verse > _this.repeat.to )
+        _this.play(_this.repeat.from)
     )
 
   bindVerseEvents: =>
