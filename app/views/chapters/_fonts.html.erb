@@ -2,9 +2,9 @@
 <% font_ids(@presenter.paginate).each do |i| %>
   @font-face {
     font-family: 'p<%= i %>-v2';
-    src: local(QCF2001),
-    url('<%= asset_path("quran_fonts/v2/QCF2#{i.to_s.rjust(3, '0')}.woff2") %>') format('woff2'),
-    url('<%= asset_path("quran_fonts/v2/QCF2#{i.to_s.rjust(3, '0')}.woff") %>') format('woff');
+    src: local(QCF200<%=i%>),
+    url('<%= asset_path("quran_fonts/v2/woff2/p#{i}.woff2") %>') format('woff2'),
+    url('<%= asset_path("quran_fonts/v2/woff/p#{i}.woff") %>') format('woff');
     font-display: block;
   }
 
