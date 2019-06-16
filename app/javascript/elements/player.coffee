@@ -94,18 +94,20 @@ class Utility.Player
 
       Promise.resolve( request )
 
+    that = @
     loadAndUpdateVerses().then =>
       @scrollToVerse(start)
+      verses = $("#verses .verse")
+      that.firstVerse = verses.first().data("verse-number")
+      that.lastVerse = verses.last().data("verse-number")
+      that.fetchAudioData(start, start+10)
 
   updateVerses: =>
     verses = $("#verses .verse")
-    firstVerse = verses.first().data("verse-number")
-    lastVerse = verses.last().data("verse-number")
-    @fetchAudioData( firstVerse, lastVerse ).then( =>
-      # update first & last
-      @firstVerse = firstVerse
-      @lastVerse = lastVerse
-    )
+    @firstVerse = verses.first().data("verse-number")
+    @lastVerse = verses.last().data("verse-number")
+
+    @fetchAudioData( @firstVerse, @lastVerse )
 
   populatePlayerVerses: =>
     total = $("#verses").data("total-verses") + 1
@@ -395,14 +397,18 @@ class Utility.Player
     )
 
     $("#repeat-popover-single").change( ->
-      _this.loadVerses($(this).val())
       # handle selecting single verse for repeat
-      _this.repeatIteration = 1
+      _this.repeatIteration = Number($("#repeat-popover-single-repeat").val())
+      _this.repeat.value = Number($(this).val())
+
+      _this.loadVerses($(this).val()).then =>
+        _this.play(_this.repeat.value)
     )
 
     $("#repeat-popover-range-from").change( ->
       _this.repeat.from = Number($(this).val())
-      _this.loadVerses(_this.repeat.from)
+      _this.repeatIteration = Number($("#repeat-popover-range-repeat").val())
+      _this.loadVerses(_this.repeat.from).then => _this.play(_this.repeat.from)
 
       # hide some to options
       $("#repeat-popover-range-to option").each( ->
@@ -416,18 +422,10 @@ class Utility.Player
         $("#repeat-popover-range-to")
           .val($("#repeat-popover-range-to option:enabled").first().val())
           .change()
-
-      #TODO: DRY this out
-      _this.repeatIteration = 1
-      if _this.repeat.enabled && _this.repeat.type == 'range' && ( _this.track.verse < _this.repeat.from || _this.track.verse > _this.repeat.to )
-        _this.play(_this.repeat.from)
     )
 
     $("#repeat-popover-range-to").change( ->
       _this.repeat.to = Number($(this).val())
-      _this.repeatIteration = 1
-      if _this.repeat.enabled && _this.repeat.type == 'range' && ( _this.track.verse < _this.repeat.from || _this.track.verse > _this.repeat.to )
-        _this.play(_this.repeat.from)
     )
 
   bindVerseEvents: =>
