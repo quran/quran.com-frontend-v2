@@ -327,7 +327,7 @@
       line-height: 55px;
       text-align: center;
       font-size: 22px;
-      margin-top: 15px;
+      margin-top: 14px;
     }
 
     .w {
@@ -525,18 +525,10 @@
     #verses .verse {
       .translation {
         line-height: normal;
-
-        small {
-          display: none;
-        }
       }
 
       .arabic {
         padding-right: 0;
-      }
-
-      .verse-actions {
-        display: none;
       }
     }
   }
@@ -636,6 +628,9 @@
           font-size: 13px;
         }
       }
+      .ayah-number {
+        margin-top: 7px;
+      }
     }
 
     .popular-search ul li {
@@ -704,9 +699,8 @@
   }
 
   #surah-actions {
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+   // justify-content: center;
   }
   .surah-actions {
     top: 90px;

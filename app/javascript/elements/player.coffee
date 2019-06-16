@@ -506,7 +506,7 @@ class Utility.Player
     verseHeight = verseElement.outerHeight()
     currentScroll = $(window).scrollTop()
     windowHeight = window.innerHeight
-    headerHeight = $("header").outerHeight()
+    headerHeight = $("header").outerHeight() + $(".surah-actions").outerHeight()
     playerHeight = $("#player").outerHeight()
     # scroll if there isn't a space to appear completely
     bottomOffsetCheck = verseTopOffset + verseHeight > currentScroll + windowHeight - playerHeight

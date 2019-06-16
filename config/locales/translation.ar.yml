@@ -39,18 +39,18 @@ ar:
     - ديسمبر
     abbr_month_names:
     - 
-    - ينا
-    - فبر
-    - مار
-    - أبر
-    - ماي
-    - يون
-    - يول
-    - أغس
-    - سبت
-    - أكت
-    - نوف
-    - ديس
+    - يناير
+    - فبراير
+    - مارس
+    - أبريل
+    - مايو
+    - يونيو
+    - يوليو
+    - أغسطس
+    - سبتمبر
+    - أكتوبر
+    - نوفمبر
+    - ديسمبر
   time:
     am: صباحًا
     pm: مساءً
@@ -97,23 +97,24 @@ ar:
         other: طول %{attribute} غير مطابق للحد المطلوب (يجب أن يكون %{count} حرف)
       not_a_number: يجب أن يكون محتوى %{attribute} رقماً
       not_an_integer: يجب أن يكون عدد %{attribute} عدد صحيحاً
-      greater_than: ميجب أن يكون عدد %{attribute} أكبر من %{count}
+      greater_than: يجب أن يكون عدد %{attribute} أكبر من %{count}
       greater_than_or_equal_to: يجب أن يكون عدد %{attribute} أكبر أو يساوي %{count}
       equal_to: يجب أن يساوي طول %{attribute} %{count}
       less_than: يجب أن يكون عدد %{attribute} أصغر من %{count}
       less_than_or_equal_to: يجب أن يكون عدد %{attribute} أصغر أو  يساوي %{count}
-      other_than: 
+      other_than: يجب ان يكون غير %{count}
       odd: يجب أن يكون عدد %{attribute} عدداً فردياً
       even: يجب أن يكون عدد %{attribute} زوجياً
-      required: 
+      required: يتطلب الخروج
       taken: حقل %{attribute} محجوز مسبقاً
     unavailable_session: 
     unacceptable_request: 
     connection_refused: 
-    not_found: 
-    invalid_verse: 
-    invalid_chapter: 
-    no_script: 
+    not_found: عذرا، صفحة غير متواجدة
+    invalid_verse: الآية المطلوب خارج النطاق. يرجى الذهاب للصفحة الرئيسية
+    invalid_chapter: الجزء المطلوب خارج النطاق. يرجى الذهاب للصفحة الرئيسية
+    no_script: يبدو أن متصفحك لا يدعم جافا سكريبت أو معطل. Quran.com يعمل بشكل أفضل
+      مع تمكين JavaScript. لمزيد من التعليمات حول كيفية تمكين جافا سكريبت
   activerecord:
     errors:
       messages:
@@ -171,120 +172,122 @@ ar:
       create: "%{model} إنشاء"
       update: "%{model} تحديث"
       submit: "%{model} حِفظ"
-  tafsir_select: 
-  local: 
-  site_local: 
-  change_local: 
+  tafsir_select: اختر التفسير
+  local: الإنجليزية
+  site_local: لغة الموقع
+  change_local: أختر اللغة المرجو أظهار الموقع بها
   local_native_name: العربية
-  language: 
+  language: اللغة
   settings:
-    label: 
-    chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
+    label: إعدادات
+    chapters: الأجزاء
+    reciters: القرآء
+    translations: ترجمة
+    remove_all: حذف الكل
     translation_english: العربية
-    translation_other: 
-    reading: 
+    translation_other: لغات اخرى
+    reading: قراءة
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label: حجم الخط
+      arabic: العربية
+      translation: ترجمة
     tooltip:
-      label: 
-      translation: 
-      transliteration: 
+      label: عرض تلميح الأدوات
+      translation: ترجمة
+      transliteration: الترجمة الحرفية
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
-    reset: 
+      label: الوضع الليلي
+      day_tip: التبديل إلى وضع اليوم
+      night_tip: التبديل إلى الوضع الليلي
+    reset: إعادة الضبط لما كان
   verses:
     media: 
-    go: 
-    not_found: 
+    go: إذهب إلى الآية
+    not_found: الآية غير موجودة
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
-    pages: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
-    invalid: 
-    revelation_place: 
-  footnote: 
+    label: سورة
+    next: السورة التالية
+    previous: السورة السابقة
+    verses: الآيات
+    pages: الصفحات
+    info: معلومات عن الجزء
+    continue: استمرار
+    quick_links: روابط سريعة
+    go_to_beginning: بداية الجزء
+    read_full: قراءة الجزء كاملا
+    invalid: سورة غير موجودة
+    revelation_place: 'مكان النزول '
+  footnote: حاشية
   action:
-    play: 
-    pause: 
-    tafsir: 
+    play: تشغيل
+    pause: توقف
+    tafsir: تفسير
     bookmark:
-      label: 
-      done: 
+      label: إشارة مرجعية
+      done: تمت الإشارة المرجعية
     copy:
-      label: 
-      done: 
-    share: 
-    addNote: 
+      label: نسخ
+      done: تم النسخ
+    share: مشاركة آية
+    addNote: 'أضف ملاحظة
+
+'
   search:
-    placeholder: 
+    placeholder: البحث عن "نوح"
     result: 
-    error: 
-    no_query: 
-    no_result: 
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
-    al_kahf: 
-    al_muzammil: 
-    label: 
+    error: عذرا ، حدث خطأ في بحثك.
+    no_query: لا يوجد بحث
+    no_result: لا توجد نتائج.
+    popular: عمليات البحث الشائعة
+    ayatul_kursi: آية الكرسي
+    yaseen: سورة ياسين
+    al_mulk: سورة الملك
+    ar_rahman: سورة الرحمن
+    al_waqiah: سورة الوقيه
+    al_kahf: سورة الكهف
+    al_muzammil: سورة المزمل
+    label: البحث
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    current_verse: آية
+    next_verse: الآية التالية
+    previous_verse: الآية السابقة
+    repeat_title: كرر
+    repeat_single: مرة
+    repeat_range: نطاق
+    repeat_from: بداية من
+    repeat_to: إلى
+    repeat_times: مرات
+    repeat_loop: عدد التكرار
+    scroll: التمرير تلقائيًا إلى الآية التي تستمع لها حاليًا
+  loading: جار التحميل...
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
+    title: القرآن
+    settings: إعدادات
+    contribute: ساهم معنا
+    about_us: معلومات عنا
+    developers: المبرمجون
+    useful_sites: مواقع مفيدة
+    other_links: روابط اخرى
+    contact_us: تواصل معنا
+    help: مساعدة وردود الفعل
     about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
-    legacy_site: 
-    blog: 
-    forum: 
-  juz: 
-  click_here: 
-  download: 
-  home: 
-  noble_quran: 
+    rights: كل الحقوق محفوظة
+    mobilea_apps: تطبيقات الموبايل
+    navigate: التنقل
+    legacy_site: الموقع السابق quran.com
+    blog: مدونة
+    forum: المنتدى
+  juz: الجزء
+  click_here: أنقر هنا
+  download: تحميل
+  home: الصفحة الرئيسية
+  noble_quran: القرآن الكريم
   related_sites:
-    label: 
-    sunnah: 
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
-  close: 
+    label: مواقع ذات صلة
+    sunnah: السنة
+    sunnah_description: حديث النبي محمد (صلى الله عليه وسلم)
+    salah: الصلاة
+    salah_description: بحث وقت الصلاة عن أي مكان
+    audio: القرآن الكريم صوتيا
+    audio_description: التعلم والاستماع في نفس الوقت
+  close: غلق

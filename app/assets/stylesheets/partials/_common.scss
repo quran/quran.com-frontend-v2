@@ -65,3 +65,38 @@ h4 {
     font-size: 24px;
   }
 }
+
+@media (max-width: 767px) {
+  .logo {
+    float: left;
+  }
+  .header-left {
+    width: 40%;
+  }
+  header .head-center {
+    width: 60%;
+    margin: 0 5px 0 0px;
+  }
+  .head-right {
+    top: 65px;
+    right: 20px;
+  }
+  #local-switcher {
+    top: 13px;
+    right: 3px;
+  }
+  .sidebar-head .logo {
+    position: relative;
+    top: -10px;
+  }
+  #player ul {
+    margin-bottom: 0;
+  }
+
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav-scroll .navbar-nav {
+    padding-bottom: 1rem;
+  }
+}

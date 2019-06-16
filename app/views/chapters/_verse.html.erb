@@ -27,6 +27,7 @@
               <span class="text"><%= w.text_madani %> </span>
             </span>
         <% end %>
+
         <span class="ayah-number"><%= verse.verse_number %></span>
       </div>
     </div>
@@ -37,7 +38,17 @@
       <% if @presenter.render_translations? %>
         <div class="verse-actions">
           <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share')%>"></a>
+          <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
+
+          <div class="hidden-md-up">
+            <a class="play play-verse">
+              <i class="fa fa-play"></i>
+            </a>
+
+            <span>
+             <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
+            </span>
+          </div>
         </div>
       <% end %>
     </div>
@@ -45,7 +56,7 @@
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
           <small>
-            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('audio_files.media', from: 'Bayyinah') %>
+            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
             </a>
           </small>
         <% end %>

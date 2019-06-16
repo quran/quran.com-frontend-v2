@@ -14,7 +14,7 @@ if (workbox) {
                     statuses: [0, 200],
                 }),
                 new workbox.expiration.Plugin({
-                    maxAgeSeconds: 60 * 60 * 24 * 365, //one year
+                    maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
                     maxEntries: 50,
                 }),
             ],
@@ -48,7 +48,7 @@ if (workbox) {
                     statuses: [0, 200],
                 }),
                 new workbox.expiration.Plugin({
-                    maxAgeSeconds: 60 * 60 * 24 * 365, //one year
+                    maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
                     maxEntries: 50,
                 })
             ],
