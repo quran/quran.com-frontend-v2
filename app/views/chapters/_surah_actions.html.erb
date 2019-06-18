@@ -74,7 +74,9 @@
       </li>
 
       <li class="nav-item border-left">
-        <a id="toggle-readingmode" class="fa fa-book"><%= _t('settings.reading') %></a>
+        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class: 'fa fa-book' do %>
+          <%= _t('settings.reading') %>
+        <%end %>
       </li>
 
       <li class="nav-item">

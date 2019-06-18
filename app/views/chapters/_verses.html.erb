@@ -1,5 +1,10 @@
 <%= render "fonts" %>
-<%= render partial: 'verse', collection: @presenter.paginate, as: :verse %>
+<% if @presenter.reading_mode? %>
+  <% pages = @presenter.paginate.group_by(&:page_number) %>
+  <%= render partial: 'page', collection: pages, as: :verses %>
+<% else %>
+  <%= render partial: 'verse', collection: @presenter.paginate, as: :verse %>
+<% end %>
 
 <div class="text-center" id="pagination-wrap">
   <div id="verses-pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range, page: 1) %>">

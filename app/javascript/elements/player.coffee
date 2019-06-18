@@ -466,7 +466,13 @@ class Utility.Player
 
   handleDropdownVerseClick: (event) =>
     event.preventDefault()
-    @loadVerses $(event.target).closest('.dropdown-item').data('verse')
+    verse = Number($(event.target).closest('.dropdown-item').data('verse'))
+
+    @loadVerses(verse).then =>
+      @play(verse)
+
+    $("#player .dropdown-verse .dropdown-item.active").removeClass("active")
+    $("#player .dropdown-verse .dropdown-item[data-verse=#{verse}]").addClass("active")
 
   handlePlayVerseBtnClick: (ev) =>
     verse = $(ev.target).closest(".verse").data("verse-number")

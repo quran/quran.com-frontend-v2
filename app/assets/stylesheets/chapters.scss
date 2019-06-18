@@ -628,6 +628,7 @@
           font-size: 13px;
         }
       }
+
       .ayah-number {
         margin-top: 7px;
       }
@@ -660,6 +661,24 @@
   }
 }
 
+.page {
+  .line {
+    line-height: normal;
+    font-size: 50px;
+    color: #000;
+    direction: rtl;
+    padding: 0 !important;
+
+    .verse {
+      position: relative;
+      display: inline-block;
+      padding: 0 !important;
+    }
+  }
+  h4{
+    text-align: left;
+  }
+}
 
 .dropdown-menu {
   height: 400px;
@@ -700,7 +719,7 @@
 
   #surah-actions {
     align-items: center;
-   // justify-content: center;
+    // justify-content: center;
   }
   .surah-actions {
     top: 90px;
@@ -722,10 +741,10 @@
   }
 }
 
-.lang-ur, .lang-ar{
-  .surah-actions{
-   li{
-     padding: 5px 10px;
-   }
+.lang-ur, .lang-ar {
+  .surah-actions {
+    li {
+      padding: 5px 10px;
+    }
   }
 }

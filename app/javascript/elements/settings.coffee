@@ -34,8 +34,6 @@ class Utility.Settings
     @updatePage()
 
   toggleReadingMode: (e)->
-    e.preventDefault()
-    $("body").toggleClass('reading-mode')
     $("#toggle-readingmode").toggleClass('text-primary')
 
   updateReciter: ->

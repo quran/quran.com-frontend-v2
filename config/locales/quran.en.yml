@@ -5,6 +5,7 @@ en:
   change_local: Choose the language you want the site to display in
   local_native_name:  English
   language: Language
+  page: Page
   settings:
     label: Settings
     chapters: Chapters

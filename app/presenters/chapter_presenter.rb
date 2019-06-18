@@ -11,6 +11,14 @@ class ChapterPresenter < BasePresenter
     @chapter ||= Chapter.find_using_slug(params[:id])
   end
 
+  def reading_mode?
+    return @reading_mode unless @reading_mode.nil?
+
+    reading = params[:reading] || session[:reading]
+    session[:reading] = reading.to_s == 'true'
+    @reading_mode = session[:reading]
+  end
+
   def font
     return @font if @font
 
