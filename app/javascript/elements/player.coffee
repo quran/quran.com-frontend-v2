@@ -66,7 +66,7 @@ class Utility.Player
     # If this ayah is already loaded, scroll to it
     if $("#verses .verse[data-verse-number=#{start}]").length > 0
       @scrollToVerse(start)
-      return
+      return Promise.resolve( [] )
 
     # if not, then load the ayah
     loadAndUpdateVerses = ->
@@ -91,6 +91,9 @@ class Utility.Player
 
           targetDom = $("#verses .verse[data-verse-number=#{nextVerse}]")
           targetDom.before(data)
+
+        # Bind tooltip
+        $this.bindWordTooltip(dom.find('.word'))
 
       Promise.resolve( request )
 

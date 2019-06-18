@@ -62,7 +62,7 @@ class App.Chapters extends App.Base
   infinitePagination: =>
     that = @
     $("#verses").infinitePages
-      debug: true
+      debug: false
       buffer: 1000 # load new page when within 200px of nav link
       navSelector: "#verses-pagination"
       nextSelector: "#verses-pagination a[rel=next]:first"
@@ -75,7 +75,6 @@ class App.Chapters extends App.Base
         newItems = $(data)
         $("#verses").append newItems
         that.bindWordTooltip(newItems.find('.word'))
-        $('[data-toggle="tooltip"]').tooltip()
         player.updateVerses()
 
       error: (container, error) ->
