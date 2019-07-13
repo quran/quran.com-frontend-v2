@@ -93,7 +93,7 @@ class Utility.Player
           targetDom.before(data)
 
         # Bind tooltip
-        $this.bindWordTooltip(dom.find('.word'))
+        $this.bindWordTooltip(data)
 
       Promise.resolve( request )
 

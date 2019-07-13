@@ -1,11 +1,10 @@
-<div class="row page">
+<div class="row page" id="page-num-<%=verses[0]%>">
   <div class="col-md-12">
     <h4><%= _t('page') %> <%= verses[0] %></h4>
 
     <% lines = group_ayah_by_lines(verses[1]) %>
 
     <% lines.each do |k, line| %>
-
       <div class="line arabic">
         <div class="text-center">
           <% line.each do |verse_number, words| %>

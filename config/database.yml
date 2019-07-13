@@ -7,6 +7,7 @@
 default: &default
   adapter: postgresql
   timeout: 5000
+  host: localhost
   schema_search_path: quran,"$user",content,audio,i18n,public
 
 development:
@@ -37,5 +38,6 @@ quran_core:
 quran_core_development:
   <<: *default
   adapter: postgresql
+  host: localhost
   encoding: unicode
   database: quran_dev

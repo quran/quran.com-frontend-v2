@@ -59,6 +59,30 @@ class App.Chapters extends App.Base
         "<div class='#{local}'>#{text}</div>"
     });
 
+  appendPage: (items) =>
+    $("#pagination-wrap").remove()
+
+    newItems = $("<div>", {html: items})
+    if newItems.find("[id^=page-num-]").length > 0
+      # READING MODE
+      $("#verses").prepend(newItems.find("style"))
+      newItems.find("[id^=page-num-]").each (i, dom) ->
+        if $("##{dom.id}").length > 0
+          # IF document already has this page, then append it
+          # TODO: append to lines later on, to keep the format same as mushaf
+          $("##{dom.id}").find('.row-border').before($(dom).find('.line'))
+        else
+          # otherwise simply append to verses
+          $("#verses").append($(dom))
+
+      $("#verses").append newItems.find("#pagination-wrap")
+    else
+      $("#verses").append newItems
+
+    @bindWordTooltip(newItems.find('.word'))
+    player.updateVerses()
+
+
   infinitePagination: =>
     that = @
     $("#verses").infinitePages
@@ -71,11 +95,7 @@ class App.Chapters extends App.Base
 
       success: (container, data) ->
         # called after successful ajax call
-        $("#pagination-wrap").remove()
-        newItems = $(data)
-        $("#verses").append newItems
-        that.bindWordTooltip(newItems.find('.word'))
-        player.updateVerses()
+        that.appendPage(data)
 
       error: (container, error) ->
         console.log("err", error)
