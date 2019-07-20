@@ -11,7 +11,6 @@ class Utility.Settings
     $(document).on 'click', '#toggle-readingmode', @toggleReadingMode
     $(document).on 'hide.bs.dropdown', '#translation-dropdown', @reloadTranslations
     $(document).on 'hide.bs.dropdown', '#reciter-dropdown', @updateReciter
-
     $(document).on 'click', '.dropdown-menu.keep-open .dropdown-item', (e)->
       target = $(e.target)
 
@@ -48,7 +47,7 @@ class Utility.Settings
       $("#verses").html response
       $this.bindWordTooltip($('.word'))
 
-  get: (key) ->
+  get: (key) =>
     @settings[key]
 
   toggleNightMode: (e) =>
@@ -99,10 +98,19 @@ class Utility.Settings
     $(".word").css('font-size', '50px')
 
   updatePage: =>
-    if @get('nightMode')
-      $('body').addClass('night')
-    else
-      $('body').removeClass('night')
+    isNightMode = @get('nightMode')
+    setDark = (e) ->
+      if e.matches
+        $("body").addClass('night')
+      else
+        if isNightMode
+          $('body').addClass('night')
+        else
+          $('body').removeClass('night')
+
+    nightMode = window.matchMedia("(prefers-color-scheme: dark)")
+    setDark(nightMode)
+    document.addEventListener "DOMContentLoaded", () -> setDark(mql)
 
   saveSettings: =>
     localStorage.setItem("settings", JSON.stringify(@settings))
