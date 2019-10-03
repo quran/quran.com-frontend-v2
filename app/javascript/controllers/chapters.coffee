@@ -43,6 +43,7 @@ class App.Chapters extends App.Base
 
   bindFootnotes: ->
     $(document).on "click", ".translation sup", ->
+
       id = $(@).attr("foot_note")
       $.get("/foot_note/#{id}")
 

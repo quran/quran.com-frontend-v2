@@ -1,24 +1,57 @@
-# README
+# Quran.com [![SLACK](http://i.imgur.com/Lk5HsBo.png)](https://quranslack.herokuapp.com)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Code Climate](https://codeclimate.com/github/quran/quran.com-api.png)](https://codeclimate.com/github/quran/quran.com-api)
 
-Things you may want to cover:
+#### Requirements
+- Rails 6.0.0
+- Elasticsearch 5.0.1
 
-* Ruby version
+#### Installations
+Gems:
+```
+bundle install
+```
 
-* System dependencies
+Elasticsearch:
+See config/elasticsearch/README.md
 
-* Configuration
+Postgresql:
 
-* Database creation
+This is the best way if you're on mac: http://postgresapp.com/
+But to install the pg gem, you will have to do:
+```
+gem install pg -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/9.4/bin/pg_config
+```
 
-* Database initialization
+If you decide to install postgres with homebrew (`brew install postgresql`) you should not have this problem.
 
-* How to run the test suite
+Why should you use the app? You have quick commandline tools such as:
+The following tools come with Postgres.app:
 
-* Services (job queues, cache servers, search engines, etc.)
+PostgreSQL: clusterdb createdb createlang createuser dropdb droplang dropuser ecpg initdb oid2name pg_archivecleanup pg_basebackup pg_config pg_controldata pg_ctl pg_dump pg_dumpall pg_receivexlog pg_resetxlog pg_restore pg_standby pg_test_fsync pg_test_timing pg_upgrade pgbench postgres postmaster psql reindexdb vacuumdb vacuumlo
 
-* Deployment instructions
+See: http://postgresapp.com/documentation/cli-tools.html
 
-* ...
+
+Database
+--------
+
+Currently, not everyone has access to the database as it's not opensource and will require you to contact one of the project's collaborators for access. Once you have access, you can pull down the submodule in one of two ways:
+```
+git clone --recursive git@github.com:quran/quran-api-rails.git
+cd quran-api-rails
+```
+For already cloned repo:
+```
+git clone git@github.com:quran/quran-api-rails.git
+cd quran-api-rails
+git submodule update --init --recursive
+```
+
+Tests
+-------------
+
+Simply run:
+```
+rspec
+```

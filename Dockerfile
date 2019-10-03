@@ -1,28 +1,56 @@
 FROM ruby:2.6.2-alpine
 
+RUN apt-get update -qq && \
+    apt-get install -y \
+        build-essential \
+        libpq-dev \
+        nodejs \
+        rsync && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN apk add --no-cache curl postgresql-dev tzdata git make gcc g++ python linux-headers binutils-gold gnupg libstdc++ yarn
 
-ENV RAILS_ROOT /var/www/quran
-RUN mkdir -p $RAILS_ROOT 
-WORKDIR $RAILS_ROOT
+ARG env=development
 
-# Setting env up
-ENV RAILS_ENV='production'
-ENV RACK_ENV='production' 
+WORKDIR /app
+COPY /app /app/app
+COPY /bin /app/bin
+COPY /config /app/config
+COPY /db /app/db
+COPY /lib /app/lib
+COPY /public /app/public
+COPY /spec /app/spec
+COPY /config.ru /app/
+COPY /Gemfile /app/
+COPY /Gemfile.lock /app/
+COPY /Rakefile /app/
+COPY /gen-sitemaps-and-run.sh /app/gen-sitemaps-and-run.sh
+# files could be mounted in dev for realtime code changes without rebuild
+# typically that would be: .:/app
 
-# Adding gems
-RUN gem install bundler
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
-RUN bundle install --jobs 20 --retry 5 --without development test 
+# copy build cache for the requested environment only
+COPY /build-cache/$env/bundle/ /usr/local/bundle/
 
-# Adding project files
-COPY . .
-#RUN bundle exec rake assets:precompile
+RUN mkdir /var/www && \
+    chown -R www-data /app /var/www /usr/local/bundle
 
-#running this stops assets from compiling - but perhaps in the future
-#can remove some of these for a slightly smaller image.
-#RUN apk del curl git make gcc g++ python linux-headers binutils-gold gnupg
+USER www-data
+
+# install a matching bundler to Gemfile.lock
+RUN gem install bundler -v 1.17.2
+
+# install all gems
+ARG env=development
+ARG bundle_opts=
+
+ENV RAILS_ENV $env
+ENV RACK_ENV $env
+
+RUN echo "Running \"bundle install $bundle_opts\" with environment set to \"$env\"..." && \
+    bundle install $bundle_opts
 
 EXPOSE 3000
-CMD ["bundle", "exec", "puma", "--early-hints", "-C", "config/puma.rb"]
+
+ENTRYPOINT ["bundle", "exec"]
+CMD ["./gen-sitemaps-and-run.sh"]

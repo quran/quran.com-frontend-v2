@@ -39,4 +39,21 @@ Rails.application.routes.draw do
 
   get '/:id', to: 'chapters#show', as: :chapter
   get '/:id/(:range)', to: 'chapters#show', as: :range
+
+  ['sitemap.xml.gz', 'sitemap:number.xml.gz'].each do |path|
+    get "/sitemaps/#{path}" => proc { |req|
+      filename = req['PATH_INFO'].gsub('sitemaps', '').gsub(/\//, '')
+
+      [
+          200,
+          {
+              'Pragma'        => 'public',
+              'Cache-Control' => "max-age=#{1.month.to_i}",
+              'Expires'       => 1.month.from_now.to_s(:rfc822),
+              'Content-Type'  => 'text/html'
+          },
+          [open(Rails.root.join('public', 'sitemaps', filename)).read]
+      ]
+    }
+  end
 end

@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0.beta1'
+gem 'rails', '~> 6.0.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -23,6 +23,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'fast_blank'
 gem 'jquery-infinite-pages', github: 'naveed-ahmad/jquery-infinite-pages'
 gem 'pg'
+gem 'sitemap_generator'
 
 gem 'jbuilder'
 gem 'oj'
