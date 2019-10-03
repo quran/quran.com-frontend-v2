@@ -38,7 +38,7 @@ RUN mkdir /var/www && \
 USER www-data
 
 # install a matching bundler to Gemfile.lock
-RUN gem install bundler -v 1.17.2
+RUN gem install bundler -v 2.0.1
 
 # install all gems
 ARG env=development
@@ -47,8 +47,16 @@ ARG bundle_opts=
 ENV RAILS_ENV $env
 ENV RACK_ENV $env
 
+
+
 RUN echo "Running \"bundle install $bundle_opts\" with environment set to \"$env\"..." && \
     bundle install $bundle_opts
+
+RUN echo "Installing Yarn" && \
+    yarn install
+
+RUN echo "Compiling assets" && \
+    bundle exec rails assets:precompile
 
 EXPOSE 3000
 
