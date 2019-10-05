@@ -12,7 +12,7 @@ default: &default
 
 development:
   <<: *default
-  database: one_quran_dev
+  database: quran_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

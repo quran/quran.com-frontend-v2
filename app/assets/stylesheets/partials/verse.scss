@@ -1,0 +1,11 @@
+.verse{
+  .translations{
+    .verse-actions{
+      @media (max-width: 767px) {
+        display: flex !important;
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
+  }
+}
