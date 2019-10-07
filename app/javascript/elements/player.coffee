@@ -204,10 +204,10 @@ class Utility.Player
         @track.howl.pause()
         @updatePlayCtrls()
       onplay: =>
-        @updatePlayCtrls()
         @setInterval()
         @setAlignHighlight()
         thisVerse.find(".play .fa").removeClass('fa-play').addClass('fa-pause')
+        @updatePlayCtrls()
 
         # preload next @track is using web audio
         if Howler.usingWebAudio
@@ -216,14 +216,17 @@ class Utility.Player
             @preloadTrack.verse = nextTrackVerse
             @preloadTrack.howl = @createHowl(nextTrackVerse, false)
       onpause: =>
-        @updatePlayCtrls()
         @removeInterval()
         @removeAlignTimers()
         thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
+        @updatePlayCtrls()
+
       onstop: =>
         @removeInterval()
         @removeAlignTimers()
+        @updatePlayCtrls()
         thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
+
       onseek: =>
         if @track.howl.playing()
           # due to howl bug, run @setAlignHighlight() after 100ms, this reduced occurance of bug
@@ -234,13 +237,14 @@ class Utility.Player
         else
           @setAlignHighlight( true )
       onend: =>
-        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
         @removeInterval()
         @removeVerseHighlight()
         @removeSegmentHighlight()
         @progressBar.slider('setValue', 0)
         @updatePlayCtrls()
+        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
         $("#player .timer").text("00:00")
+
         # what to play next ?
         nextTrackVerse = @getNextTrackVerse()
         if @repeat.enabled # if repeat is enabled

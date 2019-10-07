@@ -59,16 +59,17 @@ body.night{
   }
 
   .search-form{
-    border-color: #2d2d2d;
+    border-color: white;
     input{
       background: #32312c;
+      color: white;
     }
   }
-
-  .right-sidebar ul.main-menu li a{
-    border-color: #2d2d2d;
+  .top-section{
+    .search-form input {
+      background: #1c1f21;
+    }
   }
-
   header, header.active{
     border-color: #2d2d2d;
   }

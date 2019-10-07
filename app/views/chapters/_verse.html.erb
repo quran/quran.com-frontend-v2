@@ -1,6 +1,6 @@
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>">
   <div class="row">
-    <div class="col-md-2 verse-actions">
+    <div class="col-md-2 verse-actions d-none d-md-block">
       <div class="actions">
         <a class="play play-verse">
           <i class="fa fa-play"></i>
@@ -40,15 +40,13 @@
           <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
           <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
 
-          <div class="hidden-md-up">
-            <a class="play play-verse">
-              <i class="fa fa-play"></i>
-            </a>
+          <a class="play play-verse d-md-none">
+            <i class="fa fa-play"></i>
+          </a>
 
-            <span>
-             <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
-            </span>
-          </div>
+          <span class="d-md-none">
+           <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
+          </span>
         </div>
       <% end %>
     </div>
