@@ -62,21 +62,6 @@
       font-size: 14px;
       margin: 0 14px;
     }
-
-    .btn-outline-primary {
-      display: inline-block;
-      background: #e0f7fa;
-      font-family: $font-medium;
-      color: #00bcd4;
-      border-radius: 50px;
-      border: solid 1px #80deea;
-      padding: 10px 35px;
-
-      &:hover, &.active {
-        background: $color-primary;
-        color: $white
-      }
-    }
   }
 
   .related-sites-section {
@@ -363,7 +348,6 @@
     }
 
     .actions {
-      padding-left: 18px;
       padding-top: 14px;
 
       .play {
@@ -429,9 +413,6 @@
     }
 
     .verse-actions {
-      display: block;
-      padding: 15px 0 0 15px;
-
       a {
         display: block;
         color: #b0bec5;
@@ -714,7 +695,7 @@
   .navbar-nav-scroll {
     height: fit-content;
     padding-bottom: 0px;
-    margin-top: 0px;
+    margin-top: 20px;
   }
 
   #surah-actions {

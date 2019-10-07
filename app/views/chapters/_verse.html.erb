@@ -53,10 +53,9 @@
     <div class="col-md-11">
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
-          <small>
-            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
-            </a>
-          </small>
+          <a class="media btn btn-outline-primary mb-3" href data-media="<%= media %>">
+            <i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
+          </a>
         <% end %>
 
         <% if @presenter.render_translations? %>
