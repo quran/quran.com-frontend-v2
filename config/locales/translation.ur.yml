@@ -208,7 +208,7 @@ ur:
       night_tip: رات کے موڈ پر سوئچ کریں
     reset: ترتیب کو ہٹا دیں
   verses:
-    media: '"کے لیکچر دیکھے %{from}"'
+    media: کے لیکچر دیکھے %{from}
     go: آیت منتخب کریں
     not_found: آیت نہیں ملی
   chapters:
