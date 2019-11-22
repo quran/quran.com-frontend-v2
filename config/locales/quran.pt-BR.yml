@@ -1,0 +1,125 @@
+---
+pt-BR:
+  local: portuguese
+  site_local: Idioma do Site
+  change_local: Escolha o idioma que você deseja que o site seja exibido
+  local_native_name:  Português
+  language: Idioma
+  page: Pagina
+  settings:
+    label: Configurações
+    chapters: Capítulo
+    reciters: Recitadores
+    translations: Tradução
+    remove_all: Remover todos
+    translation_english: Inglês
+    translation_other: Outros Idiomas
+    reading: Lendo
+    reset: Reinicializar Configurações
+    font_size:
+      label: Tamanho da Fonte
+      arabic: Árabe
+      translation: Tradução
+    tooltip:
+      label: Exibir Dicas
+      translation: Tradução
+      transliteration: Transliteração
+    night_mode:
+      label: Modo noturno
+      day_tip: Mudar para o modo matutino
+      night_tip: Mudar para o modo noturno
+  verses:
+    media: "Assistir o video ee comentário de %{from}"
+    go: Ir para o verso
+    not_found: Verso não encontrad
+  chapters:
+    label: Surah
+    next: Próxima Surah
+    previous: Surah Anterior
+    verses: Versos
+    pages: Páginass
+    revelation_place: Local de Revelação
+    info: Informação do Capítulo
+    continue: Continuar
+    quick_links:  links rápidos
+    go_to_beginning: Início do Capítulo
+    read_full: Ler capítulo completo
+    invalid: Surah inválida
+  footnote: Nota de roda pé
+  action:
+    play: Tocar
+    pause: Pausar
+    tafsir: Tafsirs
+    share: Compartilhar ayah
+    addNote: Adicionar nota
+    bookmark:
+      label: Marcar
+      done: Marcado
+    copy:
+      label: Copiar
+      done: Copiado!
+  search:
+    label: Procurar
+    placeholder: 'procurar "Noah"'
+    result: "%{from}-%{to} de <span> {total} </span> resultados para: <span>{query}</span>"
+    error: Desculpe, há algum problema com sua consulta.
+    no_query: Nenhum consulta informada.
+    no_result: Nenhum restultado para sua consulta.
+    popular: Consultas mais populares
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Surah Al Mulk
+    ar_rahman: Surah Ar-Rahman
+    al_waqiah: Surah Al Waqiah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Surah Al Muzzammil
+  player:
+    current_verse: Verso
+    next_verse: Próximo verso
+    previous_verse: Verse anterior
+    repeat_title: Repetir Ayah
+    repeat_single: Simples
+    repeat_range: Faixa
+    repeat_from: de
+    repeat_to:  até
+    repeat_times: vezes
+    repeat_loop: repetir
+    scroll: Rolar automáticamente para o ayah em execução
+  loading: Carregando...
+  nav:
+    title: Alcorão
+    settings: Configurações
+    contribute: Contribuir
+    about_us: Sobre nós
+    developers: Desenvolvedores
+    useful_sites: Sites Úteis
+    other_links: Outros links
+    contact_us: Fale conosco
+    help: Ajuda & feedback
+    about_project: Quran.com é um projeto pro bono para ler e estudar o Alcorão (também conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
+    rights: Todos os direitos reservados
+    mobilea_apps: Aplicações Mobile
+    navigate: Navegar
+    legacy_site: Questões Legais Quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  errors:
+    not_found: Desculpe, esta página não existe
+    invalid_verse: O verso está fora da faixa. Por favor volte para a página incial
+    invalid_chapter: O capítulo está fora da faixa, Por favor volte para a página inicial
+    no_script: Verifique se seu navegador suporta JavaScript ou se está desabilitado. Quran.com trabalha melhor com o JavaScript abilitado. Para mais instruções veja como abilitar JavaScript.
+  click_here: Clique Aqui
+  tafsir_select: Selecione um tafsir
+  download: Download
+  home: Home
+  related_sites:
+    label: Sites Relacionados
+    sunnah: Sunnah
+    sunnah_description: O Hadit do Profeta Muhammad(PBUH)
+    salah: Salah
+    salah_description: Procurar horários de oração para algum localidade
+    audio: Nobre Alcorão em audio
+    audio_description: Aprenda e Escute ao mesmo tempo
+  close: Fechar
+  noble_quran: O Nobre Alcorão
