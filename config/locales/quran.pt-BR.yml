@@ -26,18 +26,18 @@ pt-BR:
       transliteration: Transliteração
     night_mode:
       label: Modo noturno
-      day_tip: Mudar para o modo matutino
+      day_tip: Mudar para o modo diurno
       night_tip: Mudar para o modo noturno
   verses:
     media: "Assistir o video ee comentário de %{from}"
     go: Ir para o verso
     not_found: Verso não encontrad
   chapters:
-    label: Surah
-    next: Próxima Surah
-    previous: Surah Anterior
+    label: Sura
+    next: Próxima Sura
+    previous: Sura Anterior
     verses: Versos
-    pages: Páginass
+    pages: Páginas
     revelation_place: Local de Revelação
     info: Informação do Capítulo
     continue: Continuar
@@ -47,7 +47,7 @@ pt-BR:
     invalid: Surah inválida
   footnote: Nota de roda pé
   action:
-    play: Tocar
+    play: Recitar
     pause: Pausar
     tafsir: Tafsirs
     share: Compartilhar ayah
@@ -67,12 +67,12 @@ pt-BR:
     no_result: Nenhum restultado para sua consulta.
     popular: Consultas mais populares
     ayatul_kursi: Ayatul Kursi
-    yaseen: Surah Yaseen
-    al_mulk: Surah Al Mulk
-    ar_rahman: Surah Ar-Rahman
-    al_waqiah: Surah Al Waqiah
-    al_kahf: Surah Al Kahf
-    al_muzammil: Surah Al Muzzammil
+    yaseen: Sura Yaseen
+    al_mulk: Sura Al Mulk
+    ar_rahman: Sura Ar-Rahman
+    al_waqiah: Sura Al Waqiah
+    al_kahf: Sura Al Kahf
+    al_muzammil: Sura Al Muzzammil
   player:
     current_verse: Verso
     next_verse: Próximo verso
