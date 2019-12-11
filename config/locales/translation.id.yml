@@ -205,7 +205,7 @@ id:
   verses:
     media: 'Lihat kuliah dari %{from}
 
-'
+      '
     go: 
     not_found: Ayat tidak ditemukan
   chapters:

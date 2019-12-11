@@ -19,27 +19,18 @@
         </div>
       </li>
 
-      <li class="nav-item dropdown" id="translation-dropdown">
-        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-list"></i>  <%= _t('settings.translations') %>
-        </a>
-
-        <div class="dropdown-menu keep-open" id='translation-dropdown-menu' aria-labelledby="translation-dropdown">
-          <div class="dropdown-item" data-translation="no">
-            Remove all translations
-          </div>
-
+      <li class="nav-item" id="translation-dropdown">
+        <select id="translations" placeholder="Translation">
           <% ordered_translations.each do |language, list| %>
-            <h6 class="dropdown-header"><%= language.humanize %></h6>
-
-            <% list.each do |trans| %>
-              <div class="dropdown-item" data-translation="<%= trans[0] %>">
-                <%= trans[1] %>
-              </div>
-            <% end %>
-            <div class="dropdown-divider"></div>
+            <optgroup label="<%= language.humanize %>">
+              <% list.each do |trans| %>
+                <option value="<%= trans[0] %>">
+                  <%= trans[1] %>
+                </option>
+              <% end %>
+            </optgroup>
           <% end %>
-        </div>
+        </select>
       </li>
 
       <li class="nav-item dropdown" id="tooltip">
@@ -74,7 +65,8 @@
       </li>
 
       <li class="nav-item border-left">
-        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class: 'fa fa-book' do %>
+        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode' do %>
+          <span class="fa fa-book"></span>
           <%= _t('settings.reading') %>
         <%end %>
       </li>

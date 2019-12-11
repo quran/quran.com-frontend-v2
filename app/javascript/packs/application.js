@@ -11,5 +11,8 @@ require('infinite_scrolling')
 require('bootstrap_slider')
 require('howler')
 require('service-worker-companion')
+require('select2/dist/js/select2.full')
+
+
 
 import {} from 'jquery'

@@ -1,6 +1,6 @@
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>">
   <div class="row">
-    <div class="col-md-2 verse-actions d-none d-md-block">
+    <div class="col-md-2 verse-actions">
       <div class="actions">
         <a class="play play-verse">
           <i class="fa fa-play"></i>
@@ -40,22 +40,25 @@
           <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
           <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
 
-          <a class="play play-verse d-md-none">
-            <i class="fa fa-play"></i>
-          </a>
+          <div class="hidden-md-up">
+            <a class="play play-verse">
+              <i class="fa fa-play"></i>
+            </a>
 
-          <span class="d-md-none">
-           <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
-          </span>
+            <span>
+             <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
+            </span>
+          </div>
         </div>
       <% end %>
     </div>
     <div class="col-md-11">
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
-          <a class="media btn btn-outline-primary mb-3" href data-media="<%= media %>">
-            <i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
-          </a>
+          <small>
+            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
+            </a>
+          </small>
         <% end %>
 
         <% if @presenter.render_translations? %>
