@@ -180,7 +180,7 @@ nl:
   settings:
     label: 'Instellingen
 
-'
+      '
     chapters: 
     reciters: Reciteurs
     translations: Vertalingen
@@ -263,7 +263,7 @@ nl:
     title: 
     settings: 'Instellingen
 
-'
+      '
     contribute: 
     about_us: 
     developers: 

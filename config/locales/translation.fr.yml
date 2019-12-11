@@ -112,7 +112,7 @@ fr:
     invalid_verse: 'L''ayah est hors de portée. Accédez à la page d''accueil et sélectionnez
       un(e) Surah / Ayah
 
-'
+      '
     invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
     no_script: 
@@ -181,7 +181,7 @@ fr:
   local: french
   site_local: 'Langue du Site
 
-'
+    '
   change_local: Choisir la langue du site
   local_native_name: Français
   language: Langue
@@ -248,7 +248,7 @@ fr:
     ayatul_kursi: Ayatul Kursi
     yaseen: 'Sourate Yaseen
 
-'
+      '
     al_mulk: Sourate Al Mulk
     ar_rahman: Sourate Ar-Rahman
     al_waqiah: Sourate Al Waqiah
