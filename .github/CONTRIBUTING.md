@@ -1,8 +1,7 @@
 # Contributing
 
 Firstly, Jazakallahu Khairan for contributing to Quran.com, may Allah reward all of us for our efforts. 
-Please read this guide really well, and when contributing to this repository, feel free to discuss the change
-you wish to make via an issue or an email. Don't hesitate to join our Slack channel!
+Please read this guide really well and feel free to discuss the change you wish to make via an issue or an email. Don't hesitate at all to join our Slack channel!
 
 ## Reporting Issues
 
@@ -20,15 +19,17 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 
 	```bash
 	# Clone your fork of the repository into the current directory
-	git clone https://github.com/<your-username>/quran.com-frontend
+	git clone https://github.com/<your-username>/quran.com-frontend-v2
 	# Navigate to the newly cloned directory
-	cd quran.com-frontend
-	#Assign the forked repository to a remote call "origin"
-	git remote add origin git://github.com/<your-username>/quran.com-frontend.git
+	cd quran.com-frontend-v2
+	# Assign the forked repository to a remote call "origin"
+	git remote add origin git://github.com/<your-username>/quran.com-frontend-v2.git
 	# Assign the original repository to a remote called "upstream"
-	git remote add upstream https://github.com/quran/quran.com-frontend
+	git remote add upstream https://github.com/quran/quran.com-frontend-v2
 	# Install the tools necessary for development
-	npm install
+	npm install 
+	# or with yarn
+	yarn
 	```
 2. Pull latest changes from "upstream" and push these changes to your "origin"(forked)
 	> NOTE - This step will repeat every time You plan to contribute
@@ -76,6 +77,6 @@ Pull requests are the greatest contributions, so be sure they are focused in sco
 
 
 [upstream]: https://help.github.com/articles/syncing-a-fork/
-[already been reported]: https://github.com/quran/quran.com-frontend/issues
-[fork this project]:     https://github.com/quran/quran.com-frontend/fork
+[already been reported]: https://github.com/quran/quran.com-frontend-v2/issues
+[fork this project]:     https://github.com/quran/quran.com-frontend-v2/fork
 [open a pull request]:   https://help.github.com/articles/using-pull-requests/
