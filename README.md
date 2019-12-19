@@ -16,19 +16,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/quran/quran.com-frontend-v2">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://quran.com">
+    <img src="app/assets/images/icons/android-chrome-256x256.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">quran.com-frontend-v2</h3>
+  <h3 align="center">The Noble Quran</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    The source code for the Quran.com website.
     <br />
-    <a href="https://github.com/quran/quran.com-frontend-v2"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/quran/quran.com-frontend-v2"><strong>Join Slack Channel »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/quran/quran.com-frontend-v2">View Demo</a>
+    <a href="https://quran.com">View Site</a>
     ·
     <a href="https://github.com/quran/quran.com-frontend-v2/issues">Report Bug</a>
     ·
@@ -46,18 +46,20 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+  - [End Note:](#end-note)
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<a href="https://quran.com">
+<img src="./app/assets/images/thumbnail.png" alt="Quran.com Thumbnail">
+</a>
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
 
@@ -73,11 +75,14 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+The tech stack for this project:
 
-- [Bootstrap](https://getbootstrap.com)
-- [JQuery](https://jquery.com)
-- [Laravel](https://laravel.com)
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Rails](https://rubyonrails.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Coffeescript](https://coffeescript.org/)
+- [jQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
 
 <!-- GETTING STARTED -->
 
@@ -117,14 +122,6 @@ npm install
 const API_KEY = 'ENTER YOUR API';
 ```
 
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -135,19 +132,13 @@ See the [open issues](https://github.com/quran/quran.com-frontend-v2/issues) for
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please go through the brief [contribution guidelines](./.github/CONTRIBUTING.md) to learn how to contribute to this project.
 
 <!-- LICENSE -->
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GNU GPLv3 License. See [LICENSE](./LICENSE) for more information.
 
 <!-- CONTACT -->
 
@@ -155,7 +146,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: https://github.com/quran/quran.com-frontend-v2
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -187,3 +178,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [license-shield]: https://img.shields.io/github/license/quran/quran.com-frontend-v2?style=for-the-badge
 [license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
+
+### End Note:
+
+We trust that you will not copy this idea/project, this is at the end for the sake of Allah and we all have good intentions while working with this project. But we must stress that copying the code/project is unacceptable.
