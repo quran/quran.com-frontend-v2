@@ -32,11 +32,13 @@ class App.Chapters extends App.Base
     $('#modal').on 'hidden.bs.modal', ->
       $('#modal .modal-body').empty()
 
-    $(document).on "click", '.media', ->
+    $(document).on "click", '.media', (e) ->
+      e.preventDefault();
+
       if media = $(@).data('media')
         $("#modal").find(".modal-body").html("
           <div class='embed-responsive embed-responsive-16by9'>
-           <iframe class='embed-responsive-item' width='720' height='405' src='https://www.youtube.com/embed/#{media}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+           <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/#{media}' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
           </div>"
         )
         $("#modal").modal("show")

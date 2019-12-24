@@ -5,7 +5,7 @@
     "@babel/preset-react": "^7.0.0",
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
-    "@rails/webpacker": "^4.0.0-rc.7",
+    "@rails/webpacker": "^4.0.0",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
@@ -21,6 +21,7 @@
     "react-dom": "^16.8.2",
     "react-howler": "^3.7.4",
     "resolve-url-loader": "^3.0.1",
+    "select2": "^4.0.10",
     "ts-loader": "^5.3.3",
     "turbolinks": "^5.2.0",
     "typescript": "^3.3.3"
