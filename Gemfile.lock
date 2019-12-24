@@ -204,8 +204,8 @@ GEM
       pry (>= 0.10.4)
     psych (3.1.0)
     public_suffix (3.0.3)
-    puma (3.12.0)
-    rack (2.0.6)
+    puma (3.12.2)
+    rack (2.0.8)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -345,7 +345,7 @@ DEPENDENCIES
   oj
   pg
   pry-rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   quran-core!
   rails (~> 6.0.0.beta1)
   rails_real_favicon
