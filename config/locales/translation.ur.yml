@@ -112,11 +112,11 @@ ur:
     invalid_verse: 'آیت رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
       پر جائیں اور درست سوره/آیت منتخب کریں
 
-'
+      '
     invalid_chapter: 'سورہ رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
       پر جائیں اور درست سوره منتخب کریں
 
-'
+      '
     no_script: 
     unavailable_session: 
     unacceptable_request: 
@@ -265,7 +265,7 @@ ur:
     repeat_loop: چلاتے رہو
     scroll: 'جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
 
-'
+      '
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
