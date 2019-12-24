@@ -6,7 +6,7 @@
 #
 ---
 th:
-  noble_quran: 
+  noble_quran: อัลกุรอาน
   date:
     day_names:
     - อาทิตย์
@@ -60,14 +60,14 @@ th:
       storage_units:
         units:
           byte:
-            one: 
-            other: 
+            one: ไบต์
+            other: ไบต์
           kb: กิโลไบต์
           mb: เมกะไบต์
           gb: จิกะไบต์
           tb: เทระไบต์
-          pb: 
-          eb: 
+          pb: เพตะไบต์
+          eb: เอกซะไบต์
       decimal_units:
         units:
           thousand: พัน
@@ -78,86 +78,94 @@ th:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 
+      model_invalid: 'ตรวจสอบข้อมูลไม่ผ่าน: %{errors}'
       inclusion: ไม่ได้อยู่ในรายการ
-      exclusion: ไม่ได้รับอนุญาตให้ใช้
+      exclusion: ถูกสงวนไว้
       invalid: ไม่ถูกต้อง
-      confirmation: ไม่ตรงกับการยืนยัน
+      confirmation: ไม่ตรงกับ %{attribute}
       accepted: ต้องถูกยอมรับ
       empty: ต้องไม่เว้นว่างเอาไว้
       blank: ต้องไม่เว้นว่างเอาไว้
-      present: 
+      present: ต้องเว้นว่างเอาไว้
       too_long:
-        one: 
-        other: 
+        one: ยาวเกินไป (สูงสุดคือ 1 ตัวอักษร)
+        other: ยาวเกินไป (สูงสุดคือ %{count} ตัวอักษร)
       too_short:
-        one: 
-        other: 
+        one: สั้นเกินไป (อย่างน้อยต้อง 1 ตัวอักษร)
+        other: สั้นเกินไป (อย่างน้อยต้อง %{count} ตัวอักษร)
       wrong_length:
-        one: 
-        other: 
+        one: มีความยาวที่ไ​​ม่ถูกต้อง (ควรจะมี 1 ตัวอักษร)
+        other: มีความยาวที่ไ​​ม่ถูกต้อง (ควรจะมี %{count} ตัวอักษร)
       not_a_number: ไม่ใช่ตัวเลข
-      not_an_integer: ไม่ใช่จำนวนเต็ม
+      not_an_integer: ต้องเป็นจำนวนเต็ม
       greater_than: ต้องมากกว่า %{count}
       greater_than_or_equal_to: ต้องมากกว่าหรือเท่ากับ %{count}
       equal_to: ต้องมีค่าเท่ากับ %{count}
       less_than: ต้องมีค่าน้อยกว่า %{count}
       less_than_or_equal_to: ต้องมีค่าน้อยกว่าหรือเท่ากับ %{count}
-      other_than: 
+      other_than: ต้องไม่ใช่ %{count}
       odd: ต้องเป็นจำนวนคี่
       even: ต้องเป็นจำนวนคู่
-      required: 
+      required: จะต้องมีอยู่
       taken: ถูกใช้ไปแล้ว
-    not_found: 
-    invalid_verse: 
-    invalid_chapter: 
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    not_found: ขออภัย ไม่พบหน้าดังกล่าว
+    invalid_verse: ไม่พบอายะห์ดังกล่าว. กรุณากลับไปยังหน้าหลัก
+    invalid_chapter: ไม่พบซูเราะห์ดังกล่าว. กรุณากลับไปยังหน้าหลัก
+    no_script: ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
+      Quran.com ทำงานได้ดีที่สุดเมื่อเปิดใช้งาน JavaScript. สำหรับคำแนะนำเพิ่มเติมเกี่ยวกับวิธีเปิดใช้งาน
+      JavaScript
+    unavailable_session: |
+      เซสชัน %{id} ไม่สามารถใช้งานในหน่วยความจำได้
+
+      หากคุณรันบนเซิร์ฟเวอร์แบบ multi-process (เช่น Unicorn หรือ Puma) โปรเซสของ
+       request นี้จะไม่เก็บ %{id} ในหน่วยความจำ. คุณอาจจะต้องเปลี่ยนจำนวนของโปรเซส (process) หรือเวิร์กเกอร์ (workers) ต่างๆให้เป็น 1, หรือลองใช้เซิร์ฟเวอร์อื่นในการพัฒนา.
+    unacceptable_request: ควรกำหนดเวอร์ชั่นที่รองรับไว้ใน Accept header.
+    connection_refused: |-
+      อุปส์! การเชื่อมต่อกับ Web Console middleware ล้มเหลว.
+      กรุณาตรวจสอบให้แน่ใจว่าเซิฟเวอร์ rails ทำงานอยู่.
   activerecord:
     errors:
       messages:
         record_invalid: 'ไม่ผ่านการตรวจสอบ: %{errors}'
         restrict_dependent_destroy:
-          has_one: 
-          has_many: 
+          has_one: 'ไม่สามารถลบข้อมูลได้ เนื่องจากมีข้อมูลเหล่านี้อยู่ %{record} '
+          has_many: ไม่สามารถลบข้อมูลได้ เนื่องจากมีข้อมูล %{record} อยู่
   datetime:
     distance_in_words:
       half_a_minute: ครึ่งนาที
       less_than_x_seconds:
-        one: 
-        other: 
+        one: น้อยกว่า 1 วินาที
+        other: น้อยกว่า %{count} วินาที
       x_seconds:
-        one: 
-        other: 
+        one: 1 วินาที
+        other: "%{count} วินาที"
       less_than_x_minutes:
-        one: 
-        other: 
+        one: ไม่กี่วินาที
+        other: น้อยกว่า %{count} นาที
       x_minutes:
-        one: 
-        other: 
+        one: 1 นาที
+        other: "%{count} นาที"
       about_x_hours:
-        one: 
-        other: 
+        one: ประมาณ 1 ชั่วโมง
+        other: ประมาณ %{count} ชั่วโมง
       x_days:
-        one: 
-        other: 
+        one: 1 วัน
+        other: "%{count} วัน"
       about_x_months:
-        one: 
-        other: 
+        one: ประมาณ 1 เดือน
+        other: ประมาณ %{count} เดือน
       x_months:
-        one: 
-        other: 
+        one: 1 เดือน
+        other: "%{count} เดือน"
       about_x_years:
-        one: 
-        other: 
+        one: ประมาณ 1 ปี
+        other: ประมาณ %{count} ปี
       over_x_years:
-        one: 
-        other: 
+        one: มากกว่า 1 ปี
+        other: มากกว่า %{count} ปี
       almost_x_years:
-        one: 
-        other: 
+        one: เกือบ 1 ปี
+        other: เกือบ %{count} ปี
     prompts:
       year: ปี
       month: เดือน
@@ -169,123 +177,123 @@ th:
     select:
       prompt: โปรดเลือก
     submit:
-      create: สร้าง%{model}
-      update: ปรับปรุง%{model}
-      submit: บันทึก%{model}
-  local: 
-  site_local: 
-  change_local: 
-  local_native_name: 
-  language: 
-  page: 
+      create: สร้าง %{model}
+      update: ปรับปรุง %{model}
+      submit: บันทึก %{model}
+  local: ภาษาอังกฤษ
+  site_local: ภาษาของเว็บไซต์
+  change_local: เลือกภาษาที่คุณต้องการให้แสดงผล
+  local_native_name: ภาษาอังกฤษ
+  language: ภาษา
+  page: หน้า
   settings:
-    label: 
-    chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
-    translation_english: 
-    translation_other: 
-    reading: 
-    reset: 
+    label: การตั้งค่า
+    chapters: ซูเราะห์
+    reciters: เสียงอ่าน
+    translations: การแปล
+    remove_all: ลบทั้งหมด
+    translation_english: ภาษาอังกฤษ
+    translation_other: ภาษาอื่น ๆ
+    reading: การอ่าน
+    reset: รีเซ็ตการตั้งค่า
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label: ขนาดตัวอักษร
+      arabic: ภาษาอาหรับ
+      translation: การแปล
     tooltip:
-      label: 
-      translation: 
-      transliteration: 
+      label: การแสดงคำแนะนำ
+      translation: การแปล
+      transliteration: การทับศัพท์
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
+      label: โหมดกลางคืน
+      day_tip: เปลี่ยนเป็นโหมดปกติ
+      night_tip: เปลี่ยนเป็นโหมดกลางคืน
   verses:
-    media: 
-    go: 
-    not_found: 
+    media: ดูวิดีโออรรถาธิบายจาก %{from}
+    go: ไปยังอายะห์
+    not_found: ไม่พบอายะห์
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
-    pages: 
-    revelation_place: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
-    invalid: 
-  footnote: 
+    label: ซูเราะห์
+    next: ซูเราะห์ถัดไป
+    previous: ซูเราะห์ก่อนหน้า
+    verses: อายะห์
+    pages: หน้า
+    revelation_place: ตำแหน่งที่ปรากฏ
+    info: ข้อมูลซูเราะห์
+    continue: ต่อ
+    quick_links: ลิงค์
+    go_to_beginning: ส่วนต้นของซูเราะห์
+    read_full: อ่านทั้งซูเราะห์
+    invalid: ข้อมูลซูเราะห์ไม่ถูกต้อง
+  footnote: เชิงอรรถ
   action:
-    play: 
-    pause: 
-    tafsir: 
-    share: 
-    addNote: 
+    play: เล่น
+    pause: หยุด
+    tafsir: ตัฟซีร
+    share: แชร์อายะห์
+    addNote: เพิ่มโน๊ต
     bookmark:
-      label: 
-      done: 
+      label: บุ๊คมาร์ค
+      done: บุ๊คมาร์คแล้ว
     copy:
-      label: 
-      done: 
+      label: คัดลอก
+      done: คัดลอกสำเร็จ!
   search:
-    label: 
-    placeholder: 
-    result: 
-    error: 
-    no_query: 
-    no_result: 
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
-    al_kahf: 
-    al_muzammil: 
+    label: ค้นหา
+    placeholder: ค้นหา "นุห์"
+    result: "%{from} - %{to} จาก <span>{total}</span> ผลการค้นหาสำหรับ: <span>{query}</span>"
+    error: ขออภัยเกิดข้อผิดพลาดในการค้นหาของคุณ
+    no_query: ไม่มีคำค้นหา
+    no_result: ไม่พบผลลัพธ์
+    popular: คำค้นหายอดนิยม
+    ayatul_kursi: อายะห์กุรซี
+    yaseen: ซูเราะห์ยาซีน
+    al_mulk: ซูเราะห์อัลมุลกฺ
+    ar_rahman: ซูเราะห์อัรรอหฺมาน
+    al_waqiah: ซูเราะห์ อัลวากิอะฮฺ
+    al_kahf: ซูเราะห์อัลกะฮฺฟฺ
+    al_muzammil: ซูเราะห์อัลมุซซัมมิล
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    current_verse: อายะห์
+    next_verse: อายะห์ถัดไป
+    previous_verse: อายะห์ก่อนหน้า
+    repeat_title: เล่นซ้ำอายะห์
+    repeat_single: เดี่ยว
+    repeat_range: เป็นช่วง
+    repeat_from: จาก
+    repeat_to: ถึง
+    repeat_times: ครั้ง
+    repeat_loop: วนซ้ำ
+    scroll: เลื่อนไปที่อายะห์ที่กำลังเล่นอยู่โดยอัตโนมัติ
+  loading: กำลังโหลด...
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
-    about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
-    legacy_site: 
-    blog: 
-    forum: 
-  juz: 
-  click_here: 
-  tafsir_select: 
-  download: 
-  home: 
+    title: อัลกุรอาน
+    settings: การตั้งค่า
+    contribute: สนับสนุน
+    about_us: เกี่ยวกับเรา
+    developers: นักพัฒนา
+    useful_sites: เว็บไซต์แนะนำ
+    other_links: ลิงค์อื่น ๆ
+    contact_us: ติดต่อเรา
+    help: แนะนำติชม
+    about_project: Quran.com เป็นโครงการเพื่อสังคม สำหรับการอ่านและศึกษาคัมภีร์อัลกุรอาน
+    rights: สงวนลิขสิทธิ์
+    mobilea_apps: แอปพลิเคชันมือถือ
+    navigate: นำทาง
+    legacy_site: Quran.com เวอร์ชั่นเก่า
+    blog: บล็อก
+    forum: ฟอรัม
+  juz: ญุซ
+  click_here: คลิกที่นี่
+  tafsir_select: เลือกตัฟซีร
+  download: ดาวน์โหลด
+  home: หน้าหลัก
   related_sites:
-    label: 
-    sunnah: 
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
-  close: 
+    label: เว็บไซต์ที่เกี่ยวข้อง
+    sunnah: ซุนนะฮฺ
+    sunnah_description: หะดิษของท่านนบีมุฮัมหมัด (ศ็อลฯ)
+    salah: ละหมาด
+    salah_description: ค้นหาเวลาละหมาดสำหรับสถานที่ต่างๆ
+    audio: เสียงอ่านอัลกุรอาน
+    audio_description: ศึกษาข้อมูล และฟังไปพร้อมกัน
+  close: ปิด
