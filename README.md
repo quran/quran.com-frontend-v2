@@ -25,7 +25,7 @@
   <p align="center">
     The source code for the Quran.com website.
     <br />
-    <a href="https://github.com/quran/quran.com-frontend-v2"><strong>Join Slack Channel »</strong></a>
+    <a href="#contact"><strong>Join Slack Channel »</strong></a>
     <br />
     <br />
     <a href="https://quran.com">View Site</a>
@@ -51,7 +51,7 @@
 - [License](#license)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
-  - [End Note:](#end-note)
+- [End Note:](#end-note)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -61,17 +61,9 @@
 <img src="./app/assets/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+["The Noble Quran"](https://quran.com) project has served millions of visitors from all corners of the world - and we continue to grow everyday.
 
-Here's why:
-
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+This, with the blessing of Allah, is powered by a handful of volunteers who are working hard on their spare time to keep this project as beneficial and useful to people all around the world. Any help or contribution of yours will surely go a long way.
 
 ### Built With
 
@@ -88,39 +80,60 @@ The tech stack for this project:
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running please follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-
-```sh
-npm install npm@latest -g
-```
+- [Make sure Node.js is installed](https://nodejs.org/en/)
+- [Make sure Yarn is installed](https://yarnpkg.com/en/)
+- [Follow this guide install Ruby, Rails & and PostgreSQL](https://gorails.com/setup) (select your OS from the options). Please try to install ruby with rvm, otherwise there might be problems later on.
+- Make sure you install ruby version `2.6.2`; you can update later on.
+- Install [pgAdmin](https://www.pgadmin.org/), a GUI for postgreSQL. (You can do this later on).
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/quran/quran.com-frontend-v2.git
 ```
 
-3. Install NPM packages
+2. Move into quran.com-frontend-v2 with `cd quran.com-frontend-v2`
+
+3. Install frontend packages with yarn
 
 ```sh
-npm install
+yarn
 ```
 
-4. Enter your API in `config.js`
+4. Install the ruby bundles with this series of commands
 
-```JS
-const API_KEY = 'ENTER YOUR API';
+```sh
+rvm gemset create quran
+rvm gemset use quran
+gem install bundler
+bundle install
 ```
+
+5. [Contact us](#contact) to get the database dump.
+
+6. Make sure postgreSQL is up and running (this command is for Linux, this might differ on other OSes)
+
+```sh
+sudo service postgresql status
+```
+
+7. Load dump in database (the process might vary based on OS)
+
+```sh
+psql -cxq --quiet -d quran_dev -f dump.sql
+```
+
+8. Run `rake db:create` inside `quran.com-fronted-v2` directory
+
+9. Run `rails s` to start the local server with rails.
+
+Inshallah, after going through these steps properly you should see the web app running on localhost:3000
 
 <!-- ROADMAP -->
 
@@ -144,9 +157,7 @@ Distributed under the GNU GPLv3 License. See [LICENSE](./LICENSE) for more infor
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: https://github.com/quran/quran.com-frontend-v2
+Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our slack channel where we can discuss ideas, issues, features and so much more. We will try to add you as soon as possible.
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -179,6 +190,6 @@ Project Link: https://github.com/quran/quran.com-frontend-v2
 [license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
 
-### End Note:
+## End Note:
 
-We trust that you will not copy this idea/project, this is at the end for the sake of Allah and we all have good intentions while working with this project. But we must stress that copying the code/project is unacceptable.
+This project is for the sake of Allah and we all have good intentions while working with this project. But we must stress that copying the code/project unethically or using this for any material gains is unacceptable.
