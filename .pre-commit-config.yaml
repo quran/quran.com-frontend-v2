@@ -1,0 +1,21 @@
+- repo: https://github.com/naveed-ahmad/pre-commit-hooks
+  rev: 1.11.0
+  hooks:
+    - id: bundler-audit
+    - id: fasterer
+    - id: forbid-binary
+    - id: forbid-space-in-indent
+    - id: git-check # Configure in .gitattributes
+    - id: git-dirty # Configure in .gitignore
+    - id: rubocop
+    - id: reek
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+- repo: https://github.com/prettier/prettier
+  rev: 1.18.2
+  hooks:
+    - id: prettier

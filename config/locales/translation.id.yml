@@ -6,52 +6,52 @@
 #
 ---
 id:
-  tafsir_select: 
+  tafsir_select:
   date:
     day_names:
-    - Minggu
-    - Senin
-    - Selasa
-    - Rabu
-    - Kamis
-    - Jumat
-    - Sabtu
+      - Minggu
+      - Senin
+      - Selasa
+      - Rabu
+      - Kamis
+      - Jumat
+      - Sabtu
     abbr_day_names:
-    - Min
-    - Sen
-    - Sel
-    - Rab
-    - Kam
-    - Jum
-    - Sab
+      - Min
+      - Sen
+      - Sel
+      - Rab
+      - Kam
+      - Jum
+      - Sab
     month_names:
-    - 
-    - Januari
-    - Februari
-    - Maret
-    - April
-    - Mei
-    - Juni
-    - Juli
-    - Agustus
-    - September
-    - Oktober
-    - November
-    - Desember
+      -
+      - Januari
+      - Februari
+      - Maret
+      - April
+      - Mei
+      - Juni
+      - Juli
+      - Agustus
+      - September
+      - Oktober
+      - November
+      - Desember
     abbr_month_names:
-    - 
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - Mei
-    - Jun
-    - Jul
-    - Agu
-    - Sep
-    - Okt
-    - Nov
-    - Des
+      -
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - Mei
+      - Jun
+      - Jul
+      - Agu
+      - Sep
+      - Okt
+      - Nov
+      - Des
   time:
     am: am
     pm: pm
@@ -66,8 +66,8 @@ id:
           mb: MB
           gb: GB
           tb: TB
-          pb: 
-          eb: 
+          pb:
+          eb:
       decimal_units:
         units:
           thousand: Ribu
@@ -78,7 +78,7 @@ id:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 'Validasi gagal: %{errors}'
+      model_invalid: "Validasi gagal: %{errors}"
       inclusion: tidak termasuk
       exclusion: sudah digunakan
       invalid: tidak valid
@@ -108,21 +108,24 @@ id:
       even: harus genap
       required: harus ada
       taken: sudah digunakan
-    not_found: 
-    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    not_found:
+    invalid_verse:
+      Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
-    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_chapter:
+      Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih sebuah Surah
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    no_script:
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
   activerecord:
     errors:
       messages:
-        record_invalid: 'Validasi gagal: %{errors}'
+        record_invalid: "Validasi gagal: %{errors}"
         restrict_dependent_destroy:
-          has_one: Tidak bisa menghapus record karena terdapat satu %{record} yang
+          has_one:
+            Tidak bisa menghapus record karena terdapat satu %{record} yang
             bergantung
           has_many: Tidak bisa menghapus record karena terdapat %{record} yang bergantung
   datetime:
@@ -179,12 +182,12 @@ id:
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
   local_native_name: Indonesia
-  language: 
+  language:
   settings:
     label: Pengaturan
-    chapters: 
-    reciters: 
-    translations: 
+    chapters:
+    reciters:
+    translations:
     remove_all: Buang semua
     translation_english: Bahasa Inggris
     translation_other: Bahasa Lainnya
@@ -192,68 +195,68 @@ id:
     font_size:
       label: Ukuran huruf
       arabic: Arab
-      translation: 
+      translation:
     tooltip:
-      label: 
+      label:
       translation: Terjemahan
       transliteration: Transliterasi
     night_mode:
       label: Mode Malam
       day_tip: Ganti ke mode terang
       night_tip: Ganti ke mode malam
-    reset: 
+    reset:
   verses:
-    media: 'Lihat kuliah dari %{from}
+    media: "Lihat kuliah dari %{from}
 
-      '
-    go: 
+      "
+    go:
     not_found: Ayat tidak ditemukan
   chapters:
-    label: 
+    label:
     next: BERIKUTNYA
     previous: SEBELUMNYA
-    verses: 
-    pages: 
+    verses:
+    pages:
     info: Info Surat
-    continue: 
-    quick_links: 
+    continue:
+    quick_links:
     go_to_beginning: Awal Surat
     read_full: Baca lengkap Surah
-    invalid: 
-    revelation_place: 
-  footnote: 
+    invalid:
+    revelation_place:
+  footnote:
   action:
     play: Putar
     pause: Jeda
-    tafsir: 
+    tafsir:
     bookmark:
       label: Tandai
       done: Ditandai
     copy:
       label: Salin
       done: Tersalin!
-    share: 
-    addNote: 
+    share:
+    addNote:
   search:
     placeholder: Cari "Nuh"
-    result: 
+    result:
     error: Maaf, terdapat kesalahan dalam pencarian Anda.
     no_query: Tidak ada kata yang dicari.
     no_result: Tidak ada hasil yang ditemukan.
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
-    al_kahf: 
-    al_muzammil: 
-    label: 
+    popular:
+    ayatul_kursi:
+    yaseen:
+    al_mulk:
+    ar_rahman:
+    al_waqiah:
+    al_kahf:
+    al_muzammil:
+    label:
   player:
     current_verse: Ayat
     next_verse: Ayat Berikutnya
     previous_verse: Ayat Sebelumnya
-    repeat_title: 
+    repeat_title:
     repeat_single: Satu ayat
     repeat_range: Rentang
     repeat_from: Dari
@@ -272,26 +275,27 @@ id:
     other_links: Tautan lainnya
     contact_us: Hubungi kami
     help: Bantuan & umpan balik
-    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+    about_project:
+      Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
     mobilea_apps: Aplikasi Ponsel
     navigate: Telusuri
     legacy_site: Quran.com versi lama
     blog: Blog
-    forum: 
+    forum:
   juz: Juz
-  click_here: 
-  download: 
-  home: 
-  noble_quran: 
+  click_here:
+  download:
+  home:
+  noble_quran:
   related_sites:
-    label: 
-    sunnah: 
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
-  close: 
-  page: 
+    label:
+    sunnah:
+    sunnah_description:
+    salah:
+    salah_description:
+    audio:
+    audio_description:
+  close:
+  page:

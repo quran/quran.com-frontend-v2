@@ -1,9 +1,9 @@
-.darkbg{
+.darkbg {
   background-color: rgba(34, 34, 34, 0.85);
   color: #fff;
   padding-top: 10px;
 
-  h1{
+  h1 {
     margin: 0;
   }
 }
@@ -53,7 +53,8 @@
   .basic-info {
     margin-top: 15px;
 
-    .col-sm-12, .col-sm-6 {
+    .col-sm-12,
+    .col-sm-6 {
       margin-bottom: 15px;
     }
   }
@@ -96,7 +97,6 @@
       display: inline-block;
       width: 68px;
       height: 46px;
-
     }
   }
 
@@ -253,12 +253,11 @@ img.round {
       display: flex;
       align-items: center;
     }
-
-
   }
 }
 
-p, .p {
+p,
+.p {
   overflow: visible;
   text-overflow: clip;
   white-space: normal;
@@ -274,19 +273,20 @@ p, .p {
   font-size: 1rem;
 }
 .subtitles {
-  .b{
+  .b {
     margin-right: 5px;
   }
-  li{
+  li {
     list-style-type: none;
     list-style-position: inside;
   }
 }
 
-.video{
-.fa-play-circle-o{
-  position: absolute;
-  top: 45%;
-  left: 45%;
-  font-size: 4rem;
-}}
+.video {
+  .fa-play-circle-o {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    font-size: 4rem;
+  }
+}

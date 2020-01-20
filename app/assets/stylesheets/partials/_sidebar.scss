@@ -8,7 +8,7 @@
   visibility: hidden;
   background: #fff;
   width: 300px;
-  transition: right .35s cubic-bezier(.24, 1, .32, 1), visibility .2s;
+  transition: right 0.35s cubic-bezier(0.24, 1, 0.32, 1), visibility 0.2s;
 
   &.open {
     right: 0;
@@ -43,23 +43,25 @@
       border-bottom: 1px solid #eceff1;
       padding: 10px 25px;
 
-      &.active, &:focus, &:hover {
-        background:$color-primary;
-        color:#fff;
+      &.active,
+      &:focus,
+      &:hover {
+        background: $color-primary;
+        color: #fff;
       }
       i {
         width: 15px;
-        margin-right:10px;
+        margin-right: 10px;
       }
     }
   }
-  .more-links{
+  .more-links {
     line-height: 28px;
     padding: 20px 25px;
   }
 }
 
-@media (max-width:479px) {
+@media (max-width: 479px) {
   .right-sidebar {
     right: -100%;
     width: 100%;
@@ -68,18 +70,18 @@
 
 // When sidebar is visible
 body.active {
-  &:before{
-    content: '';
+  &:before {
+    content: "";
     position: fixed;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10;
   }
 
-  .surah-actions{
+  .surah-actions {
     z-index: 1;
   }
 }

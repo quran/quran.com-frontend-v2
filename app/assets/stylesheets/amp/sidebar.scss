@@ -1,72 +1,73 @@
-#sidebar-head{
+#sidebar-head {
   width: 300px;
   max-width: 100%;
   padding: 5px 10px;
   position: relative;
   color: #ddd;
 
-  #s-logo{
+  #s-logo {
     display: inline-block;
     height: 51px;
     line-height: 74px;
   }
 
-  .fa-times-circle{
+  .fa-times-circle {
     font-size: 2rem;
     float: right;
     padding: 12px 6px 0 0;
     cursor: pointer;
   }
 }
-#menu > div:not(.divider){
-    padding: 17px 20px;
-  }
+#menu > div:not(.divider) {
+  padding: 17px 20px;
+}
 
-#menu div{padding: 0}
+#menu div {
+  padding: 0;
+}
 
 #menu h6,
-#menu a{
+#menu a {
   font-size: 1.3rem;
   font-weight: 300;
-  padding:0;
+  padding: 0;
   border: none;
   background: transparent;
 }
 
 #menu a,
-#menu span{
+#menu span {
   padding: 14px 20px 14px 53px;
   display: block;
   color: inherit;
   position: relative;
 
-  -webkit-transition: all ease-in-out .2s;
-  transition: all ease-in-out .2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
 }
 
-#menu section[expanded] > h6 span{
+#menu section[expanded] > h6 span {
   background-color: #669900;
 }
 
-#menu h6 span:after{
+#menu h6 span:after {
   position: absolute;
   right: 20px;
   top: 0;
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
   font-size: 12px;
   line-height: 47px;
-  content: '\f0dd';
+  content: "\f0dd";
 }
 
 #menu i,
-#mainSideBar li i{
+#mainSideBar li i {
   font-size: 1.7rem;
   position: absolute;
   left: 20px;
 }
 
-
-.social-ball{
+.social-ball {
   font-size: 1.6rem;
   display: inline-block;
   text-align: center;
@@ -74,6 +75,6 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  color: #FFF;
+  color: #fff;
   margin-right: 5px;
 }

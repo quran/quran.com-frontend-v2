@@ -98,7 +98,8 @@
         border-bottom: 3px solid transparent;
         padding: 0px;
 
-        &.active, &:hover {
+        &.active,
+        &:hover {
           color: $color-primary;
           border: 0px;
           border-bottom: 3px solid $color-primary;
@@ -148,7 +149,7 @@
         }
 
         .name {
-          font-family: $font-regular;;
+          font-family: $font-regular;
           font-size: 20px;
           color: #607d8b;
 
@@ -194,10 +195,9 @@
       text-align: left;
     }
 
-
     &.active {
       &:after {
-        content: '✓';
+        content: "✓";
         position: absolute;
         top: 15px;
         right: 0px;
@@ -224,12 +224,12 @@
   width: 100%;
   z-index: 8;
 }
-.border-info{
+.border-info {
   border: 1px solid #00acc1;
 }
 
-
-.surah-actions, .info-heading {
+.surah-actions,
+.info-heading {
   background: #fafafa;
   padding: 15px 0;
 
@@ -309,7 +309,7 @@
 
     .ayah-number {
       display: inline-block;
-      background: image-url('ayah.png') no-repeat;
+      background: image-url("ayah.png") no-repeat;
       background-size: contain;
       width: 53px;
       height: 55px;
@@ -366,7 +366,7 @@
 
         &:hover {
           background: $color-primary;
-          color: $white
+          color: $white;
         }
       }
     }
@@ -440,7 +440,6 @@
 }
 
 .chapters {
-
   .juz-list {
     a {
       padding: 10px 0;
@@ -567,7 +566,8 @@
     #verses .verse {
       padding: 0px;
 
-      .col-md-10, .col-md-2 {
+      .col-md-10,
+      .col-md-2 {
         width: 100%;
       }
 
@@ -658,7 +658,7 @@
       padding: 0 !important;
     }
   }
-  h4{
+  h4 {
     text-align: left;
   }
 }
@@ -673,7 +673,7 @@
   .navbar-nav-scroll {
     max-width: 100%;
     height: 2.5rem;
-    margin-top: .25rem;
+    margin-top: 0.25rem;
     overflow: hidden;
 
     .navbar-nav {
@@ -713,7 +713,8 @@
       border: 0px !important;
     }
   }
-  .surah-actions, .info-heading {
+  .surah-actions,
+  .info-heading {
     padding: 11px 0 0px 0;
 
     li {
@@ -722,7 +723,8 @@
   }
 }
 
-.lang-ur, .lang-ar {
+.lang-ur,
+.lang-ar {
   .surah-actions {
     li {
       padding: 5px 10px;

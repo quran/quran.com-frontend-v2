@@ -17,9 +17,9 @@ fa:
       long: "%e %B %Y"
       short: "%m/%d"
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   number:
     currency:
       format:
@@ -40,9 +40,9 @@ fa:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 1
         significant: true
         strip_insignificant_zeros: true
@@ -50,10 +50,10 @@ fa:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: " و "
@@ -67,16 +67,16 @@ fa:
   i18n:
     transliterate:
       rule:
-        ۰: '0'
-        ۱: '1'
-        ۲: '2'
-        ۳: '3'
-        ۴: '4'
-        ۵: '5'
-        ۶: '6'
-        ۷: '7'
-        ۸: '8'
-        ۹: '9'
+        ۰: "0"
+        ۱: "1"
+        ۲: "2"
+        ۳: "3"
+        ۴: "4"
+        ۵: "5"
+        ۶: "6"
+        ۷: "7"
+        ۸: "8"
+        ۹: "9"
         آ: a
         ا: a
         ب: b

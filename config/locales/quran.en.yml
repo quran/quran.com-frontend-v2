@@ -3,7 +3,7 @@ en:
   local: english
   site_local: Site Language
   change_local: Choose the language you want the site to display in
-  local_native_name:  English
+  local_native_name: English
   language: Language
   page: Page
   settings:
@@ -81,7 +81,7 @@ en:
     repeat_single: Single
     repeat_range: Range
     repeat_from: From
-    repeat_to:  To
+    repeat_to: To
     repeat_times: Times
     repeat_loop: loop
     scroll: Automatically scrolls to the currently playing ayah

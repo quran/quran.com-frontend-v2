@@ -6,52 +6,52 @@
 #
 ---
 fa:
-  tafsir_select: 
+  tafsir_select:
   date:
     day_names:
-    - یکشنبه
-    - دوشنبه
-    - سه‌شنبه
-    - چهارشنبه
-    - پنج‌شنبه
-    - جمعه
-    - شنبه
+      - یکشنبه
+      - دوشنبه
+      - سه‌شنبه
+      - چهارشنبه
+      - پنج‌شنبه
+      - جمعه
+      - شنبه
     abbr_day_names:
-    - ی
-    - د
-    - س
-    - چ
-    - پ
-    - ج
-    - ش
+      - ی
+      - د
+      - س
+      - چ
+      - پ
+      - ج
+      - ش
     month_names:
-    - 
-    - ژانویه
-    - فوریه
-    - مارس
-    - آوریل
-    - مه
-    - ژوئن
-    - ژوئیه
-    - اوت
-    - سپتامبر
-    - اکتبر
-    - نوامبر
-    - دسامبر
+      -
+      - ژانویه
+      - فوریه
+      - مارس
+      - آوریل
+      - مه
+      - ژوئن
+      - ژوئیه
+      - اوت
+      - سپتامبر
+      - اکتبر
+      - نوامبر
+      - دسامبر
     abbr_month_names:
-    - 
-    - ژانویه
-    - فوریه
-    - مارس
-    - آوریل
-    - مه
-    - ژوئن
-    - ژوئیه
-    - اوت
-    - سپتامبر
-    - اکتبر
-    - نوامبر
-    - دسامبر
+      -
+      - ژانویه
+      - فوریه
+      - مارس
+      - آوریل
+      - مه
+      - ژوئن
+      - ژوئیه
+      - اوت
+      - سپتامبر
+      - اکتبر
+      - نوامبر
+      - دسامبر
   time:
     am: قبل از ظهر
     pm: بعد از ظهر
@@ -66,8 +66,8 @@ fa:
           mb: مگابایت
           gb: گیگابایت
           tb: ترابایت
-          pb: 
-          eb: 
+          pb:
+          eb:
       decimal_units:
         units:
           thousand: هزار
@@ -88,14 +88,14 @@ fa:
       blank: نباید خالی باشد
       present: باید خالی باشد
       too_long:
-        one: 
-        other: 
+        one:
+        other:
       too_short:
-        one: 
-        other: 
+        one:
+        other:
       wrong_length:
-        one: 
-        other: 
+        one:
+        other:
       not_a_number: عدد نیست
       not_an_integer: عدد صحیح نیست
       greater_than: باید بزرگتر از %{count} باشد
@@ -108,19 +108,20 @@ fa:
       even: باید زوج باشد
       required: باید وجود داشته باشد
       taken: پیشتر گرفته شده
-    not_found: 
-    invalid_verse: 
-    invalid_chapter: 
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    not_found:
+    invalid_verse:
+    invalid_chapter:
+    no_script:
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
   activerecord:
     errors:
       messages:
         record_invalid: رکورد نامعتبر است %{errors}
         restrict_dependent_destroy:
-          has_one: نمی توان رکورد را حذف کرد بخاطر اینکه یک %{record} وابسته وجود
+          has_one:
+            نمی توان رکورد را حذف کرد بخاطر اینکه یک %{record} وابسته وجود
             دارد
           has_many: نمی توان رکورد را حذف کرد بخاطر اینکه %{record} وابسته وجود دارد
   datetime:
@@ -173,120 +174,120 @@ fa:
       create: ایجاد %{model}
       update: بروز رسانی %{model}
       submit: ذخیره‌ی %{model}
-  local: 
-  site_local: 
-  change_local: 
+  local:
+  site_local:
+  change_local:
   local_native_name: فارسی
-  language: 
+  language:
   settings:
-    label: 
-    chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
+    label:
+    chapters:
+    reciters:
+    translations:
+    remove_all:
     translation_english: فارسی
-    translation_other: 
-    reading: 
+    translation_other:
+    reading:
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label:
+      arabic:
+      translation:
     tooltip:
-      label: 
-      translation: 
-      transliteration: 
+      label:
+      translation:
+      transliteration:
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
-    reset: 
+      label:
+      day_tip:
+      night_tip:
+    reset:
   verses:
-    media: 
-    go: 
-    not_found: 
+    media:
+    go:
+    not_found:
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
-    pages: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
-    invalid: 
-    revelation_place: 
-  footnote: 
+    label:
+    next:
+    previous:
+    verses:
+    pages:
+    info:
+    continue:
+    quick_links:
+    go_to_beginning:
+    read_full:
+    invalid:
+    revelation_place:
+  footnote:
   action:
-    play: 
-    pause: 
-    tafsir: 
+    play:
+    pause:
+    tafsir:
     bookmark:
-      label: 
-      done: 
+      label:
+      done:
     copy:
-      label: 
-      done: 
-    share: 
-    addNote: 
+      label:
+      done:
+    share:
+    addNote:
   search:
-    placeholder: 
-    result: 
-    error: 
-    no_query: 
-    no_result: 
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
-    al_kahf: 
-    al_muzammil: 
-    label: 
+    placeholder:
+    result:
+    error:
+    no_query:
+    no_result:
+    popular:
+    ayatul_kursi:
+    yaseen:
+    al_mulk:
+    ar_rahman:
+    al_waqiah:
+    al_kahf:
+    al_muzammil:
+    label:
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    current_verse:
+    next_verse:
+    previous_verse:
+    repeat_title:
+    repeat_single:
+    repeat_range:
+    repeat_from:
+    repeat_to:
+    repeat_times:
+    repeat_loop:
+    scroll:
+  loading:
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
-    about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
-    legacy_site: 
-    blog: 
-    forum: 
-  juz: 
-  click_here: 
-  download: 
-  home: 
-  noble_quran: 
+    title:
+    settings:
+    contribute:
+    about_us:
+    developers:
+    useful_sites:
+    other_links:
+    contact_us:
+    help:
+    about_project:
+    rights:
+    mobilea_apps:
+    navigate:
+    legacy_site:
+    blog:
+    forum:
+  juz:
+  click_here:
+  download:
+  home:
+  noble_quran:
   related_sites:
-    label: 
-    sunnah: 
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
-  close: 
-  page: 
+    label:
+    sunnah:
+    sunnah_description:
+    salah:
+    salah_description:
+    audio:
+    audio_description:
+  close:
+  page:

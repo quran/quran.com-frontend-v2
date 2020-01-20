@@ -34,7 +34,8 @@
 .mx-auto {
   margin-left: auto;
 }
-.mr-auto, .mx-auto {
+.mr-auto,
+.mx-auto {
   margin-right: auto;
 }
 .my0 {
@@ -46,7 +47,7 @@
   box-sizing: border-box;
 }
 
-.hambugr{
+.hambugr {
   cursor: pointer;
   text-decoration: none;
   line-height: 3.5rem;
@@ -57,7 +58,7 @@
   padding-right: 1.5rem;
 }
 
-.navbar-close{
+.navbar-close {
   line-height: 3.5rem;
   font-size: 2rem;
 }

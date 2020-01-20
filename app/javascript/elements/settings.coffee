@@ -132,4 +132,3 @@ class Utility.Settings
         desktop: 20
       }
     }
-

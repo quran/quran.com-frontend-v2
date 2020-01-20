@@ -6,52 +6,52 @@
 #
 ---
 tr:
-  tafsir_select: 
+  tafsir_select:
   date:
     day_names:
-    - Pazar
-    - Pazartesi
-    - Salı
-    - Çarşamba
-    - Perşembe
-    - Cuma
-    - Cumartesi
+      - Pazar
+      - Pazartesi
+      - Salı
+      - Çarşamba
+      - Perşembe
+      - Cuma
+      - Cumartesi
     abbr_day_names:
-    - Pzr
-    - Pzt
-    - Sal
-    - Çrş
-    - Prş
-    - Cum
-    - Cts
+      - Pzr
+      - Pzt
+      - Sal
+      - Çrş
+      - Prş
+      - Cum
+      - Cts
     month_names:
-    - 
-    - Ocak
-    - Şubat
-    - Mart
-    - Nisan
-    - Mayıs
-    - Haziran
-    - Temmuz
-    - Ağustos
-    - Eylül
-    - Ekim
-    - Kasım
-    - Aralık
+      -
+      - Ocak
+      - Şubat
+      - Mart
+      - Nisan
+      - Mayıs
+      - Haziran
+      - Temmuz
+      - Ağustos
+      - Eylül
+      - Ekim
+      - Kasım
+      - Aralık
     abbr_month_names:
-    - 
-    - Oca
-    - Şub
-    - Mar
-    - Nis
-    - May
-    - Haz
-    - Tem
-    - Ağu
-    - Eyl
-    - Eki
-    - Kas
-    - Ara
+      -
+      - Oca
+      - Şub
+      - Mar
+      - Nis
+      - May
+      - Haz
+      - Tem
+      - Ağu
+      - Eyl
+      - Eki
+      - Kas
+      - Ara
   time:
     am: öğleden önce
     pm: öğleden sonra
@@ -66,8 +66,8 @@ tr:
           mb: MB
           gb: GB
           tb: TB
-          pb: 
-          eb: 
+          pb:
+          eb:
       decimal_units:
         units:
           thousand: Bin
@@ -78,7 +78,7 @@ tr:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 'Doğrulama başarısız oldu: %{errors}'
+      model_invalid: "Doğrulama başarısız oldu: %{errors}"
       inclusion: kabul edilen bir kelime değil
       exclusion: kullanılamaz
       invalid: geçersiz
@@ -108,17 +108,17 @@ tr:
       even: çift olmalı
       required: doldurulmalı
       taken: hali hazırda kullanılmakta
-    not_found: 
-    invalid_verse: 
-    invalid_chapter: 
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    not_found:
+    invalid_verse:
+    invalid_chapter:
+    no_script:
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
   activerecord:
     errors:
       messages:
-        record_invalid: 'Doğrulama başarısız oldu: %{errors}'
+        record_invalid: "Doğrulama başarısız oldu: %{errors}"
         restrict_dependent_destroy:
           has_one: Bağlı bir kayıt %{record} bulunduğu için kayıt silinemedi
           has_many: Bağlı kayıtlar %{record} bulunduğu için kayıt silinemedi
@@ -172,120 +172,120 @@ tr:
       create: "%{model} Ekle"
       update: "%{model} Güncelle"
       submit: "%{model} Kaydet"
-  local: 
-  site_local: 
-  change_local: 
+  local:
+  site_local:
+  change_local:
   local_native_name: Turkey
-  language: 
+  language:
   settings:
-    label: 
-    chapters: 
-    reciters: 
-    translations: 
-    remove_all: 
+    label:
+    chapters:
+    reciters:
+    translations:
+    remove_all:
     translation_english: Türkçe
-    translation_other: 
-    reading: 
+    translation_other:
+    reading:
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label:
+      arabic:
+      translation:
     tooltip:
-      label: 
-      translation: 
-      transliteration: 
+      label:
+      translation:
+      transliteration:
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
-    reset: 
+      label:
+      day_tip:
+      night_tip:
+    reset:
   verses:
-    media: 
-    go: 
-    not_found: 
+    media:
+    go:
+    not_found:
   chapters:
-    label: 
-    next: 
-    previous: 
-    verses: 
-    pages: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
-    invalid: 
-    revelation_place: 
-  footnote: 
+    label:
+    next:
+    previous:
+    verses:
+    pages:
+    info:
+    continue:
+    quick_links:
+    go_to_beginning:
+    read_full:
+    invalid:
+    revelation_place:
+  footnote:
   action:
-    play: 
-    pause: 
-    tafsir: 
+    play:
+    pause:
+    tafsir:
     bookmark:
-      label: 
-      done: 
+      label:
+      done:
     copy:
-      label: 
-      done: 
-    share: 
-    addNote: 
+      label:
+      done:
+    share:
+    addNote:
   search:
-    placeholder: 
-    result: 
-    error: 
-    no_query: 
-    no_result: 
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
-    al_kahf: 
-    al_muzammil: 
-    label: 
+    placeholder:
+    result:
+    error:
+    no_query:
+    no_result:
+    popular:
+    ayatul_kursi:
+    yaseen:
+    al_mulk:
+    ar_rahman:
+    al_waqiah:
+    al_kahf:
+    al_muzammil:
+    label:
   player:
-    current_verse: 
-    next_verse: 
-    previous_verse: 
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    current_verse:
+    next_verse:
+    previous_verse:
+    repeat_title:
+    repeat_single:
+    repeat_range:
+    repeat_from:
+    repeat_to:
+    repeat_times:
+    repeat_loop:
+    scroll:
+  loading:
   nav:
-    title: 
-    settings: 
-    contribute: 
-    about_us: 
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
-    about_project: 
-    rights: 
-    mobilea_apps: 
-    navigate: 
-    legacy_site: 
-    blog: 
-    forum: 
-  juz: 
-  click_here: 
-  download: 
-  home: 
-  noble_quran: 
+    title:
+    settings:
+    contribute:
+    about_us:
+    developers:
+    useful_sites:
+    other_links:
+    contact_us:
+    help:
+    about_project:
+    rights:
+    mobilea_apps:
+    navigate:
+    legacy_site:
+    blog:
+    forum:
+  juz:
+  click_here:
+  download:
+  home:
+  noble_quran:
   related_sites:
-    label: 
-    sunnah: 
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
-  close: 
-  page: 
+    label:
+    sunnah:
+    sunnah_description:
+    salah:
+    salah_description:
+    audio:
+    audio_description:
+  close:
+  page:

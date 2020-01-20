@@ -6,52 +6,52 @@
 #
 ---
 bn-BD:
-  noble_quran: 
+  noble_quran:
   date:
     day_names:
-    - রবিবার
-    - সোমবার
-    - মঙ্গলবার
-    - বুধবার
-    - বৃহস্পতিবার
-    - শুক্রবার
-    - শনিবার
+      - রবিবার
+      - সোমবার
+      - মঙ্গলবার
+      - বুধবার
+      - বৃহস্পতিবার
+      - শুক্রবার
+      - শনিবার
     abbr_day_names:
-    - রবিবার
-    - সোমবার
-    - মঙ্গলবার
-    - বুধবার
-    - বৃহস্পতিবার
-    - শুক্রবার
-    - শনিবার
+      - রবিবার
+      - সোমবার
+      - মঙ্গলবার
+      - বুধবার
+      - বৃহস্পতিবার
+      - শুক্রবার
+      - শনিবার
     month_names:
-    - 
-    - জানুয়ারী
-    - ফেব্রুয়ারি
-    - মার্চ
-    - এপ্রিল
-    - মে
-    - জুন
-    - জুলাই
-    - অগাস্ট
-    - সেপ্টেম্বর
-    - অক্টোবর
-    - নভেম্বর
-    - ডিসেম্বর
+      -
+      - জানুয়ারী
+      - ফেব্রুয়ারি
+      - মার্চ
+      - এপ্রিল
+      - মে
+      - জুন
+      - জুলাই
+      - অগাস্ট
+      - সেপ্টেম্বর
+      - অক্টোবর
+      - নভেম্বর
+      - ডিসেম্বর
     abbr_month_names:
-    - 
-    - জানুয়ারী
-    - ফেব্রুয়ারী
-    - মার্চ
-    - এপ্রিল
-    - মে
-    - জুন
-    - জুলাই
-    - আগস্ট
-    - সেপ্টেম্বর
-    - অক্টোবর
-    - নভেম্বর
-    - ডিসেম্বর
+      -
+      - জানুয়ারী
+      - ফেব্রুয়ারী
+      - মার্চ
+      - এপ্রিল
+      - মে
+      - জুন
+      - জুলাই
+      - আগস্ট
+      - সেপ্টেম্বর
+      - অক্টোবর
+      - নভেম্বর
+      - ডিসেম্বর
   time:
     am: am
     pm: pm
@@ -66,19 +66,19 @@ bn-BD:
           mb: MB
           gb: GB
           tb: TB
-          pb: 
-          eb: 
+          pb:
+          eb:
       decimal_units:
         units:
           thousand: হাজার
-          million: 
-          billion: 
-          trillion: 
-          quadrillion: 
+          million:
+          billion:
+          trillion:
+          quadrillion:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 
+      model_invalid:
       inclusion: লিস্টে অন্তর্ভুক্ত নয়
       exclusion: রিসার্ভ করা অাছে
       invalid: সঠিক নয়
@@ -86,47 +86,47 @@ bn-BD:
       accepted: গ্রাহ্য করতে হবে
       empty: খালি রাখা যাবে না
       blank: ফাঁকা রাখা যাবে না
-      present: 
+      present:
       too_long:
-        one: 
-        other: 
+        one:
+        other:
       too_short:
-        one: 
-        other: 
+        one:
+        other:
       wrong_length:
-        one: 
-        other: 
+        one:
+        other:
       not_a_number: নম্বর নয়
-      not_an_integer: 
+      not_an_integer:
       greater_than: "%{count} থেকে বড়ো হতে হবে"
       greater_than_or_equal_to: "%{count} থেকে বড়ো অথবা তার সমান হতে হবে"
       equal_to: "%{count} এর সঙ্গে সমান হতে হবে"
       less_than: "%{count} থেকে ছোটো হতে হবে"
       less_than_or_equal_to: "%{count} থেকে ছোটো অথবা তার সমান হতে হবে"
-      other_than: 
+      other_than:
       odd: বেজোড় হতে হবে
       even: জোড় হতে হবে
-      required: 
+      required:
       taken: অাগেই নিয়ে নেওয়া হয়েছে
-    not_found: 
-    invalid_verse: 
-    invalid_chapter: 
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    not_found:
+    invalid_verse:
+    invalid_chapter:
+    no_script:
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
   activerecord:
     errors:
       messages:
-        record_invalid: 
+        record_invalid:
         restrict_dependent_destroy:
-          has_one: 
-          has_many: 
+          has_one:
+          has_many:
   datetime:
     distance_in_words:
       half_a_minute: অার্ধেক মিনিট
       less_than_x_seconds:
-        one: '১ সেকেন্ডর কম '
+        one: "১ সেকেন্ডর কম "
         other: "%{count} সেকেন্ডের কম"
       x_seconds:
         one: ১ সেকেন্ড
@@ -157,7 +157,7 @@ bn-BD:
         other: "%{count} বছরের বেশি"
       almost_x_years:
         one: প্রায় 1 বছর
-        other: 
+        other:
     prompts:
       year: বছর
       month: মাস
@@ -167,56 +167,56 @@ bn-BD:
       second: সেকেন্ড
   helpers:
     select:
-      prompt: 
+      prompt:
     submit:
-      create: 
-      update: 
-      submit: 
-  local: 
-  site_local: 
-  change_local: 
+      create:
+      update:
+      submit:
+  local:
+  site_local:
+  change_local:
   local_native_name: বাংলা
-  language: 
+  language:
   settings:
-    label: 
-    chapters: 
-    reciters: 
+    label:
+    chapters:
+    reciters:
     translations: অনুবাদ
-    remove_all: 
+    remove_all:
     translation_english: ইংরেজি
     translation_other: অন্যান্য ভাষাসমূহ
-    reading: 
-    reset: 
+    reading:
+    reset:
     font_size:
-      label: 
-      arabic: 
-      translation: 
+      label:
+      arabic:
+      translation:
     tooltip:
-      label: 
+      label:
       translation: অনুবাদ
-      transliteration: 
+      transliteration:
     night_mode:
-      label: 
-      day_tip: 
-      night_tip: 
+      label:
+      day_tip:
+      night_tip:
   verses:
-    media: 
-    go: 
-    not_found: 
+    media:
+    go:
+    not_found:
   chapters:
     label: সূরা
     next: পরবর্তী সূরা
     previous: পূর্ববর্তী সূরা
     verses: আয়াত
-    pages: 
-    revelation_place: 
-    info: 
-    continue: 
-    quick_links: 
-    go_to_beginning: 
-    read_full: 
-    invalid: 
-  footnote: 
+    pages:
+    revelation_place:
+    info:
+    continue:
+    quick_links:
+    go_to_beginning:
+    read_full:
+    invalid:
+  footnote:
   action:
     play: তিলাওয়াত শুনুন
     pause: বিরতি
@@ -230,62 +230,62 @@ bn-BD:
       label: কপি
       done: কপি করা হয়েছে
   search:
-    label: 
-    placeholder: 
-    result: 
-    error: 
-    no_query: 
-    no_result: 
-    popular: 
-    ayatul_kursi: 
-    yaseen: 
-    al_mulk: 
-    ar_rahman: 
-    al_waqiah: 
+    label:
+    placeholder:
+    result:
+    error:
+    no_query:
+    no_result:
+    popular:
+    ayatul_kursi:
+    yaseen:
+    al_mulk:
+    ar_rahman:
+    al_waqiah:
     al_kahf: সূরা আল কাহফ
-    al_muzammil: 
+    al_muzammil:
   player:
-    current_verse: 
+    current_verse:
     next_verse: পরবর্তী আয়াত
     previous_verse: পূর্ববর্তী আয়াত
-    repeat_title: 
-    repeat_single: 
-    repeat_range: 
-    repeat_from: 
-    repeat_to: 
-    repeat_times: 
-    repeat_loop: 
-    scroll: 
-  loading: 
+    repeat_title:
+    repeat_single:
+    repeat_range:
+    repeat_from:
+    repeat_to:
+    repeat_times:
+    repeat_loop:
+    scroll:
+  loading:
   nav:
     title: কুরআন
     settings: সেটিংস
-    contribute: 
+    contribute:
     about_us: আমাদের সম্পর্কে
-    developers: 
-    useful_sites: 
-    other_links: 
-    contact_us: 
-    help: 
-    about_project: 
-    rights: 
+    developers:
+    useful_sites:
+    other_links:
+    contact_us:
+    help:
+    about_project:
+    rights:
     mobilea_apps: মোবাইল অ্যাপস
-    navigate: 
-    legacy_site: 
+    navigate:
+    legacy_site:
     blog: ব্লগ
     forum: ফোরাম
-  juz: 
+  juz:
   click_here: এখানে ক্লিক করুন
-  tafsir_select: 
-  download: 
-  home: 
+  tafsir_select:
+  download:
+  home:
   related_sites:
-    label: 
+    label:
     sunnah: সুন্নাহ
-    sunnah_description: 
-    salah: 
-    salah_description: 
-    audio: 
-    audio_description: 
-  close: 
+    sunnah_description:
+    salah:
+    salah_description:
+    audio:
+    audio_description:
+  close:
   page: পৃষ্ঠা

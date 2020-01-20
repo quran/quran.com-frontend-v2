@@ -44,10 +44,10 @@ NOTE: which components we'll need?
   max-width: 100%;
 }
 
-.dropdown-toggle{
-  &:after{
-    content: '\f107';
-    font-family: 'icons';
+.dropdown-toggle {
+  &:after {
+    content: "\f107";
+    font-family: "icons";
     color: $color-primary;
   }
 }

@@ -194,4 +194,3 @@ Released under the MIT License
         data[option].apply(data, args)
 
 ) $, window
-

@@ -9,49 +9,49 @@ ur:
   tafsir_select: تفسیر منتخب کریں
   date:
     day_names:
-    - اتوار
-    - سوموار
-    - منگل
-    - بدھ
-    - جمعرات
-    - جمعہ
-    - ہفتہ
+      - اتوار
+      - سوموار
+      - منگل
+      - بدھ
+      - جمعرات
+      - جمعہ
+      - ہفتہ
     abbr_day_names:
-    - اتوار
-    - سوموار
-    - منگل
-    - بدھ
-    - جمعرات
-    - جمعہ
-    - ہفتہ
+      - اتوار
+      - سوموار
+      - منگل
+      - بدھ
+      - جمعرات
+      - جمعہ
+      - ہفتہ
     month_names:
-    - 
-    - جنوری
-    - فروری
-    - مارچ
-    - اپریل
-    - مئی
-    - جون
-    - جولائی
-    - اگست
-    - ستمبر
-    - اکتوبر
-    - نومبر
-    - دسمبر
+      -
+      - جنوری
+      - فروری
+      - مارچ
+      - اپریل
+      - مئی
+      - جون
+      - جولائی
+      - اگست
+      - ستمبر
+      - اکتوبر
+      - نومبر
+      - دسمبر
     abbr_month_names:
-    - 
-    - جنوری
-    - فروری
-    - مارچ
-    - اپریل
-    - مئی
-    - جون
-    - جولائی
-    - اگست
-    - ستمبر
-    - اکتوبر
-    - نومبر
-    - دسمبر
+      -
+      - جنوری
+      - فروری
+      - مارچ
+      - اپریل
+      - مئی
+      - جون
+      - جولائی
+      - اگست
+      - ستمبر
+      - اکتوبر
+      - نومبر
+      - دسمبر
   time:
     am: صبح
     pm: شام
@@ -66,8 +66,8 @@ ur:
           mb: MB
           gb: GB
           tb: TB
-          pb: 
-          eb: 
+          pb:
+          eb:
       decimal_units:
         units:
           thousand: ہزار
@@ -78,7 +78,7 @@ ur:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 'توثیق میں نا کا می: %{errors}'
+      model_invalid: "توثیق میں نا کا می: %{errors}"
       inclusion: فہرست میں شامل نہیں ہے
       exclusion: مخصوص ہے
       invalid: باطل ہے
@@ -106,29 +106,32 @@ ur:
       other_than: "%{count} کے علاوہ کسی اور کا ہونا لازمی ہے"
       odd: طاق ہونا ضروری ہے
       even: جفت ہونا ضروری ہے
-      required: 
+      required:
       taken: پہلے سے ہی استعمال میں ہے
     not_found: افسوس، یہ صفحہ موجود نہیں ہے
-    invalid_verse: 'آیت رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+    invalid_verse: "آیت رینج سے باہر ہے. براہ مہربانی <a href='/'> صفحۂ اول</a>
       پر جائیں اور درست سوره/آیت منتخب کریں
 
-      '
-    invalid_chapter: 'سورہ رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+      "
+    invalid_chapter:
+      "سورہ رینج سے باہر ہے. براہ مہربانی <a href='/'> صفحۂ اول</a>
       پر جائیں اور درست سوره منتخب کریں
 
-      '
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+      "
+    no_script:
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
   activerecord:
     errors:
       messages:
-        record_invalid: 'توثیق میں نا کا می: %{errors}'
+        record_invalid: "توثیق میں نا کا می: %{errors}"
         restrict_dependent_destroy:
-          has_one: ایک منحصر %{record} کی موجودگی کے باعث اس ریکارڈ کو حذف نہیں کیا
+          has_one:
+            ایک منحصر %{record} کی موجودگی کے باعث اس ریکارڈ کو حذف نہیں کیا
             جا سکتا
-          has_many: چند منحصر %{record}  کی موجودگی کے باعث اس ریکارڈ کو حذف نہیں
+          has_many:
+            چند منحصر %{record}  کی موجودگی کے باعث اس ریکارڈ کو حذف نہیں
             کیا جا سکتا
   datetime:
     distance_in_words:
@@ -239,7 +242,7 @@ ur:
     addNote: نوٹ شامل کریں
   search:
     placeholder: " تلاش کریں (نوح)"
-    result: 
+    result:
     error: معذرت، آپ کی تلاش میں ایک خرابی تھی.
     no_query: تلاش کے لئے کچھ لکھئے
     no_result: کوئی نتیجہ نہیں ملا
@@ -263,9 +266,9 @@ ur:
     repeat_to: تک
     repeat_times: کتنی بار
     repeat_loop: چلاتے رہو
-    scroll: 'جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
+    scroll: "جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
 
-      '
+      "
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
@@ -292,7 +295,7 @@ ur:
   related_sites:
     label: متعلقہ سائٹس
     sunnah: سنت
-    sunnah_description: 'نبی صلی اللہ علیہ وسلم کی حدیث '
+    sunnah_description: "نبی صلی اللہ علیہ وسلم کی حدیث "
     salah: نماز کا وقت
     salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
     audio: آڈیو میں نوبل قرآن

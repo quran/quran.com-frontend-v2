@@ -1,5 +1,29 @@
-inherit_gem:
-  rubocop-rails_config:
-    - config/rails.yml
+require:
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rails
+
 AllCops:
-  TargetRubyVersion: 2.6.1
+  DisabledByDefault: false
+  TargetRubyVersion: 2.7.0
+  DisplayCopNames: true
+  StyleGuideCopsOnly: false
+  Exclude:
+    - "tmp/**/*"
+    - "db/schema.rb"
+    - "vendor/**/*"
+    - "node_modules/**/*"
+
+Style/TrivialAccessors:
+  Enabled: true
+
+Performance:
+  Enabled: true
+Performance/FlatMap:
+  Enabled: true
+Performance/RedundantMerge:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always

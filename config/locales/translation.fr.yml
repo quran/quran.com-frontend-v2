@@ -9,49 +9,49 @@ fr:
   tafsir_select: Sélectionnez un tafsir
   date:
     day_names:
-    - dimanche
-    - lundi
-    - mardi
-    - mercredi
-    - jeudi
-    - vendredi
-    - samedi
+      - dimanche
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
     abbr_day_names:
-    - dim
-    - lun
-    - mar
-    - mer
-    - jeu
-    - ven
-    - sam
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
     month_names:
-    - 
-    - janvier
-    - février
-    - mars
-    - avril
-    - mai
-    - juin
-    - juillet
-    - août
-    - septembre
-    - octobre
-    - novembre
-    - décembre
+      -
+      - janvier
+      - février
+      - mars
+      - avril
+      - mai
+      - juin
+      - juillet
+      - août
+      - septembre
+      - octobre
+      - novembre
+      - décembre
     abbr_month_names:
-    - 
-    - jan.
-    - fév.
-    - mar.
-    - avr.
-    - mai
-    - juin
-    - juil.
-    - août
-    - sept.
-    - oct.
-    - nov.
-    - déc.
+      -
+      - jan.
+      - fév.
+      - mar.
+      - avr.
+      - mai
+      - juin
+      - juil.
+      - août
+      - sept.
+      - oct.
+      - nov.
+      - déc.
   time:
     am: am
     pm: pm
@@ -78,7 +78,7 @@ fr:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: 'Validation échouée : %{errors}'
+      model_invalid: "Validation échouée : %{errors}"
       inclusion: n'est pas inclus(e) dans la liste
       exclusion: n'est pas disponible
       invalid: n'est pas valide
@@ -109,24 +109,28 @@ fr:
       required: doit exister
       taken: n'est pas disponible
     not_found: Désolé, cette page n'existe pas
-    invalid_verse: 'L''ayah est hors de portée. Accédez à la page d''accueil et sélectionnez
+    invalid_verse:
+      "L'ayah est hors de portée. Accédez à la page d'accueil et sélectionnez
       un(e) Surah / Ayah
 
-      '
-    invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
+      "
+    invalid_chapter:
+      La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
-    no_script: 
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    no_script:
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
   activerecord:
     errors:
       messages:
-        record_invalid: 'La validation a échoué : %{errors}'
+        record_invalid: "La validation a échoué : %{errors}"
         restrict_dependent_destroy:
-          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
+          has_one:
+            Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
             dépendant(e) existe
-          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
+          has_many:
+            Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
             dépendants existent
   datetime:
     distance_in_words:
@@ -179,9 +183,9 @@ fr:
       update: Modifier ce(tte) %{model}
       submit: Enregistrer ce(tte) %{model}
   local: french
-  site_local: 'Langue du Site
+  site_local: "Langue du Site
 
-    '
+    "
   change_local: Choisir la langue du site
   local_native_name: Français
   language: Langue
@@ -223,7 +227,7 @@ fr:
     go_to_beginning: Début de la Sourate
     read_full: Lire la sourate complète
     invalid: Aucune sourate trouvée
-    revelation_place: 
+    revelation_place:
   footnote: note de bas de page
   action:
     play: Lecture
@@ -239,16 +243,17 @@ fr:
     addNote: Ajouter une note
   search:
     placeholder: Chercher "Noah"
-    result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
+    result:
+      "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
       <span>{query}</span>"
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
     popular: Recherches populaires
     ayatul_kursi: Ayatul Kursi
-    yaseen: 'Sourate Yaseen
+    yaseen: "Sourate Yaseen
 
-      '
+      "
     al_mulk: Sourate Al Mulk
     ar_rahman: Sourate Ar-Rahman
     al_waqiah: Sourate Al Waqiah
@@ -278,7 +283,8 @@ fr:
     other_links: Autre liens
     contact_us: Contacter nous
     help: Aide et feedback
-    about_project: Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
+    about_project:
+      Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
       Quran, Koran) est un projet à but non-lucratif.
     rights: Tous droits réservés
     mobilea_apps: Applications Mobile
@@ -300,4 +306,4 @@ fr:
     audio: Le Noble Coran en audio
     audio_description: Apprendre et écouter en même temps
   close: Fermer
-  page: 
+  page:

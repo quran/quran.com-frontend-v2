@@ -1,0 +1,12 @@
+all:
+  exclude:
+    - "spec/**/*"
+# exclude files for single runner
+eslint:
+  exclude:
+    - "app/assets/**/*"
+github:
+  slug: prontolabs/pronto
+  access_token: 73f6ac62fa2c768b73e45265fbe244f45ab2c93b
+  api_endpoint: https://api.github.com/
+  web_endpoint: https://github.com/

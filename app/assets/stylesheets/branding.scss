@@ -7,11 +7,10 @@
   --peach: #ee6723;
 }
 
-$color-primary:  #00acc1 !default;
+$color-primary: #00acc1 !default;
 $color-secondary: #b0bec5 !default;
 $color-border: #eceff1;
-$white:    #fff !default;
-
+$white: #fff !default;
 
 $link-color: $color-secondary !default;
 $link-hover-color: $color-primary !default;
@@ -35,16 +34,12 @@ $tooltip-padding-y: 8px !default;
 $tooltip-padding-x: 20px !default;
 
 $theme-colors: (
-        primary: $color-primary,
-        secondary: $color-secondary,
-
+  primary: $color-primary,
+  secondary: $color-secondary
 ) !default;
 
-$embed-responsive-aspect-ratios: (
-                (16 9),
-) !default;
+$embed-responsive-aspect-ratios: ((16 9)) !default;
 
-$font-regular: 'SFProText-Regular';
-$font-bold: 'SFProText-Bold';
-$font-medium: 'SFProText-Medium';
-
+$font-regular: "SFProText-Regular";
+$font-bold: "SFProText-Bold";
+$font-medium: "SFProText-Medium";

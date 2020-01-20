@@ -376,7 +376,7 @@ class Utility.Player
       $(document).off 'click', hidePopover
     )
 
-    # switch disable/enable 
+    # switch disable/enable
     _this = @
     $("#repeat-popover-switch").change( ->
       checked = $(this).is(":checked")

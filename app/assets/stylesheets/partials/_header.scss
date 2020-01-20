@@ -33,8 +33,8 @@ header {
       }
 
       .dropdown-menu {
-        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
       }
     }
   }
@@ -140,14 +140,13 @@ header {
   }
 }
 
-
 .surah-actionas {
   min-height: 4rem;
 
   .navbar-nav-scroll {
     max-width: 100%;
     height: 2.5rem;
-    margin-top: .25rem;
+    margin-top: 0.25rem;
     overflow: hidden;
 
     .navbar-nav {
@@ -166,8 +165,8 @@ header {
 
   .navbar-nav {
     .nav-link {
-      padding-right: .5rem;
-      padding-left: .5rem;
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
 
       &.active,
       &:hover {

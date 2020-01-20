@@ -58,7 +58,7 @@
       <li class="list-inline-item border-left d-flex align-items-center">
         <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class:"d-flex" do %>
           <span class="fa fa-book text-info"></span>
-          <%= _t('settings.reading') %>   
+          <%= _t('settings.reading') %>
         <%end %>
       </li>
 
@@ -75,7 +75,7 @@
 
       <li class="list-inline-item d-flex align-items-center">
         <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader}, class:"d-flex text-nowrap" do %>
-          <i class="fa fa-info text-info"></i> 
+          <i class="fa fa-info text-info"></i>
           <%= _t("chapters.info") %>
         <% end %>
       </li>
@@ -84,6 +84,6 @@
 </section>
 
 <style type="text/css">
-  
+
 
 </style>

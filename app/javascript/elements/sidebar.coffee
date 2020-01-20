@@ -12,4 +12,3 @@ class Utility.Sidebar
   close: =>
     $('.right-navbar').removeClass('open');
     $('body').removeClass('active');
-
