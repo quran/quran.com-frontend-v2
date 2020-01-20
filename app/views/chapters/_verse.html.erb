@@ -1,8 +1,8 @@
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>">
   <div class="row">
-    <div class="col-md-2 verse-actions">
+    <div class="col-1 verse-actions">
       <div class="actions">
-        <a class="play play-verse">
+        <a class="play play-verse d-flex justify-content-center align-items-center">
           <i class="fa fa-play"></i>
         </a>
 
@@ -19,7 +19,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-11">
       <div class="arabic">
         <% verse.words.each do |w| %>
             <span class="<%= w.char_type_name %> w" id="w-<%= w.id %>" data-local='<%= w.word_translation&.language_name %>' data-id=<%= w.id %> data-audio="<%= w.audio_url %>" data-t="<%= w.word_translation&.text %>" data-tr="<%= w.transliteration&.text %>" data-position="<%= w.position %>">
@@ -34,13 +34,13 @@
   </div>
 
   <div class="row translations">
-    <div class="col-md-1">
+    <div class="col-1">
       <% if @presenter.render_translations? %>
         <div class="verse-actions">
           <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
           <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
 
-          <div class="hidden-md-up">
+          <!-- <div class="hidden-md-up">
             <a class="play play-verse">
               <i class="fa fa-play"></i>
             </a>
@@ -48,11 +48,11 @@
             <span>
              <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
             </span>
-          </div>
+          </div> -->
         </div>
       <% end %>
     </div>
-    <div class="col-md-11">
+    <div class="col-11">
       <div class="translation">
         <% if media = VerseMedia.get_media(verse.id) %>
           <small>

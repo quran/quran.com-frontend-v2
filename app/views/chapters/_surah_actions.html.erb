@@ -1,26 +1,21 @@
-<section class="surah-actions navbar-nav-scroll">
-  <div class="container">
-    <ul class="navbar-nav flex-row" id="surah-actions">
-      <li class="nav-item dropdown" id="reciter-dropdown">
-        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-mic"></i>
-          <%= _t('settings.reciters') %>
-        </a>
-
-        <div class="dropdown-menu keep-open single"  id='reciter-dropdown-menu' aria-labelledby="reciter-dropdown">
+<section class="">
+  <div class="container surah-actions overflow-auto mt-4 mt-md-0">
+    <ul class=" d-flex flex-row flex-nowrap list-inline mb-0" id="surah-actions">
+      <li class="list-inline-item d-flex align-items-center" id="reciter-dropdown">
+        <i class="fa fa-mic text-info"></i>
+        <span class="text-muted">Reciters:</span>
+        <select class="p-1 rounded-lg bg-light border-info text-info" id="reciter-dropdown-menu" placeholder="<%= _t('settings.reciters')%>">
           <% recitations.each do |recitation| %>
-              <div class="dropdown-item" data-recitation="<%= recitation.id %>">
-                <%= recitation.reciter_name %>
-                <% if recitation.style %>
-                  - <%= recitation.style %>
-                <% end %>
-              </div>
+                <option value="<%= recitation.reciter_name %>">
+                  <%= recitation.reciter_name %>
+                </option>
           <% end %>
-        </div>
+        </select>
+
       </li>
 
-      <li class="nav-item" id="translation-dropdown">
-        <select id="translations" placeholder="Translation">
+      <li class="list-inline-item d-flex align-items-center" id="translation-dropdown">
+        <select class="p-1 rounded-lg bg-light border-info text-info" id="translations" placeholder="Translation">
           <% ordered_translations.each do |language, list| %>
             <optgroup label="<%= language.humanize %>">
               <% list.each do |trans| %>
@@ -33,57 +28,62 @@
         </select>
       </li>
 
-      <li class="nav-item dropdown" id="tooltip">
-        <a class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tooltip-dropdown">
-          <i class="fa fa-commenting-o"></i>
-          <%= _t('settings.tooltip.label') %>
-        </a>
-
-        <div class="dropdown-menu keep-open" aria-labelledby="tooltip-dropdown">
-          <div class="dropdown-item word-tooltip" data-tooltip="translation">
-            <%= _t('settings.tooltip.translation') %>
-          </div>
-
-          <div class="dropdown-item word-tooltip" data-tooltip="transliteration">
-            <%= _t('settings.tooltip.transliteration') %>
-          </div>
-        </div>
+      <li class="list-inline-item d-flex align-items-center text-nowrap" id="tooltip">
+        <i class="fa fa-commenting-o text-info"></i>
+        <span class="text-muted text-nowrap">Tooltip Display: </span>
+        <select class="p-1 rounded-lg bg-light border-info text-info" id="translation-dropdown" placeholder="<%= _t('settings.tooltip.label')%>">
+                <option value="settings.tooltip.translation">
+                  Translation
+                </option>
+                <option value="settings.tooltip.transliteration">
+                  Transliteration
+                </option>
+        </select>
       </li>
 
-      <li class='nav-item border-left' id="arabic-font" data-target=".word">
-        <i class="fa fa-text-width"></i>
+      <li class='list-inline-item border-left d-flex align-items-center' id="arabic-font" data-target=".word">
+        <i class="fa fa-text-width text-info"></i>
         <%= _t('settings.font_size.arabic') %>
 
         <a href="" class="font-size increase">+</a>
         <a href="" class="font-size decrease">-</a>
       </li>
 
-      <li class='nav-item' id="translation-font" data-target=".translation">
+      <li class='list-inline-item d-flex align-items-center' id="translation-font" data-target=".translation">
         <%= _t('settings.font_size.translation') %>
         <a href="" class="font-size increase">+</a>
         <a href="" class="font-size decrease">-</a>
       </li>
 
-      <li class="nav-item border-left">
-        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode' do %>
-          <span class="fa fa-book"></span>
-          <%= _t('settings.reading') %>
+      <li class="list-inline-item border-left d-flex align-items-center">
+        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class:"d-flex" do %>
+          <span class="fa fa-book text-info"></span>
+          <%= _t('settings.reading') %>   
         <%end %>
       </li>
 
-      <li class="nav-item">
-        <a id="toggle-nightmode" class="fa fa-lightbulb-1"><%= _t('settings.night_mode.label') %></a>
+      <li class="list-inline-item d-flex align-items-center">
+        <a id="toggle-nightmode" class="d-flex text-nowrap">
+          <i class="fa fa-lightbulb-1 text-info"></i>
+          <%= _t('settings.night_mode.label') %>
+        </a>
       </li>
 
-      <li class="nav-item">
-        <a id="reset-setting" class="fa fa-close" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
+      <li class="list-inline-item d-flex align-items-center">
+        <a id="reset-setting" class="fa fa-close text-info" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
       </li>
 
-      <li class="nav-item">
-        <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader} do %>
-          <i class="fa fa-info"></i> <%= _t("chapters.info") %>
+      <li class="list-inline-item d-flex align-items-center">
+        <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader}, class:"d-flex text-nowrap" do %>
+          <i class="fa fa-info text-info"></i> 
+          <%= _t("chapters.info") %>
         <% end %>
       </li>
     </ul>
   </div>
 </section>
+
+<style type="text/css">
+  
+
+</style>
