@@ -3240,6 +3240,14 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+glob-all@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/glob-all/-/glob-all-3.1.0.tgz#8913ddfb5ee1ac7812656241b03d5217c64b02ab"
+  integrity sha1-iRPd+17hrHgSZWJBsD1SF8ZLAqs=
+  dependencies:
+    glob "^7.0.5"
+    yargs "~1.2.6"
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -3260,7 +3268,7 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.1.2, glob@^7.1.3, glob@~7.1.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.1.4, glob@^7.1.6:
+glob@^7.0.5, glob@^7.1.4, glob@^7.1.6:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
@@ -3462,6 +3470,11 @@ hosted-git-info@^2.1.4:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
   integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+
+howler@2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/howler/-/howler-2.1.3.tgz#07c88618f8767e879407a4d647fe2d6d5f15f121"
+  integrity sha512-PSGbOi1EYgw80C5UQbxtJM7TmzD+giJunIMBYyH3RVzHZx2fZLYBoes0SpVVHi/SFa1GoNtgXj/j6I7NOKYBxQ==
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -4546,6 +4559,11 @@ minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
   integrity sha1-hX/Kv8M5fSYluCKCYuhqp6ARsF0=
+
+minimist@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.1.0.tgz#99df657a52574c21c9057497df742790b2b4c0de"
+  integrity sha1-md9lelJXTCHJBXSX33QnkLK0wN4=
 
 minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
@@ -7958,3 +7976,10 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+yargs@~1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-1.2.6.tgz#9c7b4a82fd5d595b2bf17ab6dcc43135432fe34b"
+  integrity sha1-nHtKgv1dWVsr8Xq23MQxNUMv40s=
+  dependencies:
+    minimist "^0.1.0"

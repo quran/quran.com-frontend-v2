@@ -101,6 +101,6 @@ class BasePresenter
   end
 
   def language
-    @language ||= Language.find_by(id_or_iso_code: I18n.locale) || Language.default
+    @language ||= Language.find_by(iso_code: I18n.locale) || Language.default
   end
 end

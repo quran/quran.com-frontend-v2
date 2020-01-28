@@ -1,6 +1,4 @@
-window.Utility ||= {}
-
-class Utility.Settings
+class Settings
   @settings = {}
 
   constructor: ->

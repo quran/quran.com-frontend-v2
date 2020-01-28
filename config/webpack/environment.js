@@ -1,9 +1,11 @@
 const { environment } = require("@rails/webpacker");
+const webpack = require("webpack");
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
 // Configure PurgeCSS
 const PurgecssPlugin = require("purgecss-webpack-plugin");
+
 const fs = require("fs");
 const glob = require("glob-all");
 const path = require("path");
@@ -24,12 +26,7 @@ environment.plugins.append(
     paths: glob.sync([
       path.join(__dirname, "../../app/javascript/**/*.js"),
       path.join(__dirname, "../../app/views/**/*.erb")
-    ]),
-    extractors: [
-      {
-        extensions: ["html", "js", "vue", "erb"]
-      }
-    ]
+    ])
   })
 );
 

@@ -12,11 +12,16 @@
  *
  */
 @import "branding";
+@import "custom-bootstrap";
+@import "bootstrap-slider.min";
+
+@import "select2/dist/css/select2";
+@import "custom/select2/select2-cust";
+
 @import "partials/header";
 @import "partials/footer";
 @import "partials/fonts";
 @import "partials/icons";
-@import "custom-bootstrap";
 @import "partials/common";
 @import "partials/sidebar";
 @import "partials/search";
@@ -27,8 +32,6 @@
 @import "partials/player";
 @import "partials/verse";
 @import "partials/dark";
-@import "bootstrap-slider.min";
-@import "select2/dist/css/select2";
 
 @import "pages";
 @import "chapters";

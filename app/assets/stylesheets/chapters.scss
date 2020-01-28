@@ -34,7 +34,7 @@
   .banner {
     width: 100%;
     max-width: 440px;
-    font-family: $font-medium;
+    font-family: $font-regular;
     font-size: 16px;
     color: #b0bec5;
     margin: 0 auto 50px;
@@ -170,7 +170,7 @@
         }
 
         .translatedName {
-          font-family: $font-medium;
+          font-family: $font-regular;
           font-size: 15px;
           color: $color-primary;
         }
@@ -237,7 +237,7 @@
     color: #607d8b;
     padding: 5px;
     font-size: 95% !important;
-    font-family: $font-medium;
+    font-family: $font-regular;
 
     .fa {
       color: #b0bec5;
@@ -395,7 +395,7 @@
 
       .resource {
         display: block;
-        font-family: $font-medium;
+        font-family: $font-regular;
         font-size: 16px;
         color: $color-primary;
       }
@@ -454,7 +454,7 @@
     left: 0px;
     background: rgba(0, 172, 193, 0.7);
     border-radius: 10px;
-    font-family: $font-medium;
+    font-family: $font-regular;
     font-size: 16px;
     color: #fff;
     padding: 0 30px;
@@ -539,7 +539,7 @@
 
     #verses .verse {
       .translation {
-        font-family: $font-medium;
+        font-family: $font-regular;
         font-size: 17px;
       }
 
