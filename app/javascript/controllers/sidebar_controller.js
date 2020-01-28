@@ -10,17 +10,23 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["trigger"];
+  static targets = ["trigger", "close"];
 
   connect() {
     $(this.triggerTarget).on("click", e => {
+      e.preventDefault();
       this.toggle(e);
     });
+
+    $(this.closeTarget).on("click", e => {
+      e.preventDefault();
+      this.toggle(e);
+    });
+
   }
 
-  toggle(event) {
-    event.preventDefault();
-    $(this.element).toggleClass("open");
+  toggle() {
     $("body").toggleClass("active");
+    $('.right-sidebar').toggleClass('open');
   }
 }

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class FootNoteController < ApplicationController
-  include PartialReplacement::Redirection
-
   def show
     @foot_note = FootNote.find(params[:id])
 

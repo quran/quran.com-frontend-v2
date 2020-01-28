@@ -1,0 +1,733 @@
+// Place all the styles related to the chapters controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chapters {
+  &.index {
+    header {
+      border: none;
+    }
+  }
+
+  &.show {
+    main {
+      padding: 110px 0;
+    }
+
+    .search-form .fa-search {
+      display: none;
+    }
+  }
+
+  .top-section {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .logo-wrap {
+    width: 100%;
+    max-width: 257px;
+    height: auto;
+    margin: 40px auto;
+  }
+
+  .banner {
+    width: 100%;
+    max-width: 440px;
+    font-family: $font-regular;
+    font-size: 16px;
+    color: #b0bec5;
+    margin: 0 auto 50px;
+
+    h1 {
+      font-family: $font-bold;
+      font-size: 36px;
+      color: $color-primary;
+      margin-bottom: 30px;
+    }
+  }
+
+  .popular-search {
+    font-family: $font-regular;
+    color: #607d8b;
+
+    p {
+      font-size: 14px;
+      margin-left: 20px;
+      text-align: left;
+    }
+
+    ul li {
+      display: inline-block;
+      font-size: 14px;
+      margin: 0 14px;
+    }
+  }
+
+  .related-sites-section {
+    padding: 25px 0px;
+
+    .site {
+      position: relative;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      white-space: initial;
+    }
+
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  .chapter-list {
+    padding-bottom: 30px;
+
+    .nav-tabs {
+      border: 0;
+      border-radius: 0px;
+      margin-bottom: 50px;
+
+      .nav-item {
+        margin-right: 40px;
+      }
+
+      .nav-link {
+        font-size: 24px;
+        color: #607d8b;
+        border: 0;
+        border-bottom: 3px solid transparent;
+        padding: 0px;
+
+        &.active,
+        &:hover {
+          color: $color-primary;
+          border: 0px;
+          border-bottom: 3px solid $color-primary;
+        }
+      }
+    }
+
+    .items {
+      counter-reset: order;
+      column-count: 3;
+
+      ul li {
+        a {
+          &:hover {
+            box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
+
+            &:before {
+              color: $color-primary;
+            }
+
+            .name {
+              color: #263238;
+            }
+          }
+        }
+
+        &:hover {
+          &:before {
+            color: $color-primary;
+          }
+        }
+
+        position: relative;
+        border-radius: 6px;
+        padding: 10px 30px;
+        margin-bottom: 20px;
+
+        &:before {
+          position: absolute;
+          top: 11px;
+          left: 2px;
+          counter-increment: order;
+          content: counter(order);
+          font-family: $font-regular;
+          font-size: 14px;
+          color: #b0bec5;
+        }
+
+        .name {
+          font-family: $font-regular;
+          font-size: 20px;
+          color: #607d8b;
+
+          .badge-secondary {
+            background-color: #eceff1;
+            font-size: 10px;
+          }
+
+          span {
+            font-size: 14px;
+          }
+        }
+
+        .icon {
+          font-size: 22px;
+          color: $color-primary;
+          text-align: right;
+        }
+
+        .translatedName {
+          font-family: $font-regular;
+          font-size: 15px;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  .dropdown-item {
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    overflow: hidden;
+
+    //for localized strings inside dropdown-item
+    span {
+      display: block;
+      text-align: left;
+    }
+
+    &.active {
+      &:after {
+        content: "✓";
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        width: 25px;
+        height: 25px;
+        line-height: 22px;
+        border: solid 1px #80deea;
+        background-color: #e0f7fa;
+        border-radius: 50%;
+        font-size: 16px;
+        color: #80deea;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.surah-actions {
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  right: 0px;
+  float: left;
+  width: 100%;
+  z-index: 8;
+}
+.border-info {
+  border: 1px solid #00acc1;
+}
+
+.surah-actions,
+.info-heading {
+  background: #fafafa;
+  padding: 15px 0;
+
+  li {
+    color: #607d8b;
+    padding: 5px;
+    font-size: 95% !important;
+    font-family: $font-regular;
+
+    .fa {
+      color: #b0bec5;
+      margin-right: 3px;
+    }
+  }
+
+  .font-size {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 17px;
+    font-size: 14px;
+    color: $color-primary;
+    border-radius: 14px;
+    border: solid 1px #cfd8dc;
+    background-color: #fff;
+    text-align: center;
+    margin-left: 5px;
+
+    &:hover {
+      background: $color-primary;
+      color: #fff;
+    }
+  }
+
+  .dropdown-toggle::after {
+    margin-left: 5px;
+  }
+}
+
+.info-heading {
+  background: #fafafa;
+  padding: 15px 0;
+
+  h1 {
+    font-family: $font-regular;
+    font-size: 24px;
+    color: #607d8b;
+    margin: 0px;
+  }
+
+  li {
+    padding: 0 25px;
+
+    span.info {
+      display: block;
+      font-size: 18px;
+      color: $color-primary;
+    }
+
+    .close {
+      position: relative;
+    }
+
+    .fa-close {
+      color: $color-primary;
+    }
+  }
+}
+
+#verses {
+  .verse {
+    padding: 30px 0px 0px;
+
+    &.verse-highlight {
+      background-color: #f5fbf7;
+    }
+
+    .ayah-number {
+      display: inline-block;
+      background: url("../images/ayah.png") no-repeat;
+      background-size: contain;
+      width: 53px;
+      height: 55px;
+      line-height: 55px;
+      text-align: center;
+      font-size: 22px;
+      margin-top: 14px;
+    }
+
+    .w {
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      direction: rtl;
+      margin: 0 5px;
+
+      &.word-highlight {
+        color: $color-primary !important;
+      }
+
+      &:hover {
+        color: $color-primary !important;
+      }
+
+      .glyph {
+        user-select: none;
+      }
+
+      .text {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: transparent;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+        color: transparent;
+      }
+    }
+
+    .actions {
+      padding-top: 14px;
+
+      .play {
+        width: 45px;
+        height: 45px;
+        line-height: 43px;
+        font-size: 18px;
+        color: $color-primary;
+        border-radius: 50px;
+        border: solid 1px #b0bec5;
+        margin-right: 40px;
+
+        &:hover {
+          background: $color-primary;
+          color: $white;
+        }
+      }
+    }
+
+    .arabic {
+      line-height: normal;
+      font-size: 50px;
+      color: #000;
+      text-align: right;
+      float: right;
+
+      span {
+        cursor: pointer;
+        float: right;
+      }
+    }
+
+    .translation {
+      font-size: 20px;
+      color: #607d8b;
+
+      sup {
+        color: $color-primary;
+        cursor: pointer;
+      }
+
+      .resource {
+        display: block;
+        font-family: $font-regular;
+        font-size: 16px;
+        color: $color-primary;
+      }
+
+      small {
+        a {
+          font-size: 14px;
+          color: #607d8b;
+        }
+
+        i {
+          font-size: 11px;
+          color: $color-primary;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .verse-actions {
+      a {
+        display: block;
+        color: #b0bec5;
+        margin-bottom: 28px;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+.scrolled-section {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.chapters {
+  .juz-list {
+    a {
+      padding: 10px 0;
+    }
+  }
+
+  .caption {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 172, 193, 0.7);
+    border-radius: 10px;
+    font-family: $font-regular;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 30px;
+
+    h3 {
+      font-family: $font-regular;
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 7px;
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .caption {
+      font-size: 14px;
+      line-height: normal;
+      padding: 0 20px;
+
+      h3 {
+        font-size: 22px;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .scrolled-section {
+      .row {
+        width: 1300px;
+
+        .col-md-4 {
+          -ms-flex: 0 0 33.333333%;
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+        }
+      }
+    }
+
+    .caption h3 {
+      font-size: 18px;
+    }
+
+    .popular-search ul li {
+      margin: 0 8px;
+
+      a {
+        padding: 8px 20px;
+      }
+    }
+
+    #verses .verse {
+      .translation {
+        line-height: normal;
+      }
+
+      .arabic {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .items {
+      column-count: 1 !important;
+    }
+
+    .caption {
+      font-size: 16px;
+
+      h3 {
+        font-size: 26px;
+      }
+    }
+
+    .popular-search ul li {
+      margin: 0px;
+
+      a.btn-outline-primary {
+        font-size: 12px;
+        padding: 5px 18px;
+      }
+    }
+
+    #verses .verse {
+      .translation {
+        font-family: $font-regular;
+        font-size: 17px;
+      }
+
+      .resource {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .arabic {
+        font-size: 40px;
+      }
+    }
+  }
+
+  @media (max-width: 479px) {
+    .caption {
+      font-size: 14px;
+
+      h3 {
+        font-size: 23px;
+      }
+    }
+
+    #verses .verse {
+      padding: 0px;
+
+      .col-md-10,
+      .col-md-2 {
+        width: 100%;
+      }
+
+      .col-md-2 {
+        margin-bottom: 15px;
+      }
+
+      .ayah-number {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  @media (max-width: 610px) {
+    .items {
+      .col-sm-7.name {
+        float: left;
+        width: 67%;
+      }
+
+      .col-sm-5.icon {
+        float: right;
+        width: 33%;
+        padding: 0;
+      }
+    }
+
+    #verses {
+      .verse {
+        .arabic {
+          font-size: 30px;
+        }
+
+        .play-verse {
+          width: 35px;
+          height: 35px;
+          line-height: 33px;
+          font-size: 13px;
+        }
+      }
+
+      .ayah-number {
+        margin-top: 7px;
+      }
+    }
+
+    .popular-search ul li {
+      margin-bottom: 10px;
+
+      a.btn-outline-primary {
+        display: block;
+        font-size: 14px;
+        padding: 8px 18px;
+      }
+    }
+
+    .info-heading {
+      padding: 0;
+
+      ul li {
+        border-left: 0px solid #eceff1;
+        border-bottom: 1px solid #eceff1;
+        width: 50%;
+        padding: 20px 0px;
+
+        &:first-child {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.page {
+  .line {
+    line-height: normal;
+    font-size: 50px;
+    color: #000;
+    direction: rtl;
+    padding: 0 !important;
+
+    .verse {
+      position: relative;
+      display: inline-block;
+      padding: 0 !important;
+    }
+  }
+  h4 {
+    text-align: left;
+  }
+}
+
+.dropdown-menu {
+  height: 400px;
+  overflow-y: scroll;
+  max-width: 400px;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav-scroll {
+    max-width: 100%;
+    height: 2.5rem;
+    margin-top: 0.25rem;
+    overflow: hidden;
+
+    .navbar-nav {
+      padding-bottom: 2rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dropdown {
+      position: static !important;
+    }
+  }
+
+  #translation-dropdown-menu {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-nav-scroll {
+    height: fit-content;
+    padding-bottom: 0px;
+    margin-top: 20px;
+  }
+
+  #surah-actions {
+    align-items: center;
+    // justify-content: center;
+  }
+  .surah-actions {
+    /*li:nth-last-child(2), li:nth-last-child(1) {
+      padding-bottom: 0px;
+    }*/
+
+    .border-left {
+      border: 0px !important;
+    }
+  }
+  .surah-actions,
+  .info-heading {
+    padding: 11px 0 0px 0;
+
+    li {
+      padding: 0px 3px 11px 3px;
+    }
+  }
+}
+
+.lang-ur,
+.lang-ar {
+  .surah-actions {
+    li {
+      padding: 5px 10px;
+    }
+  }
+}

@@ -20,7 +20,7 @@ window.addEventListener("beforeinstallprompt", function(e) {
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/service-worker.js", { scope: "./" })
+    .register("/serviceworker.js", { scope: "./" })
     .then(registration => {
       console.log("Quran.com SW Registered:", registration);
     })

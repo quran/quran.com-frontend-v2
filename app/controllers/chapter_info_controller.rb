@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ChapterInfoController < ApplicationController
-  include PartialReplacement::Redirection
-
   def show
     @presenter = ChapterInfoPresenter.new(self)
 

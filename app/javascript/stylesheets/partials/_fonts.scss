@@ -1,0 +1,82 @@
+@font-face {
+  font-family: $font-regular;
+  src: local('SFProText Regular'),
+  local('SFProText-Regular'),
+  local('SF Pro Text Regular'),
+  url('../../fonts/SFProText-Regular.woff2'),
+  url('../../fonts/SFProText-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/SFProText-Regular.woff') format('woff'),
+  url('../../fonts/SFProText-Regular.ttf') format('truetype'),
+  url('../../fonts/SFProText-Regular.svg#SFProText-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: $font-medium;
+  src: local('SFProText Medium'),
+  local('SFProText-Medium'),
+  local('SF Pro Text Medium'),
+  url('../../fonts/SFProText-Medium.woff2'),
+  url('../../fonts/SFProText-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/SFProText-Medium.woff') format('woff'),
+  url('../../fonts/SFProText-Medium.ttf') format('truetype'),
+  url('../../fonts/SFProText-Medium.svg#SFProText-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: $font-bold;
+  src: local('SFProText Bold'),
+  local('SFProText-Bold'),
+  local('SF Pro Text Bold'),
+  url('../../fonts/SFProText-Bold.woff2'),
+  url('../../fonts/SFProText-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/SFProText-Bold.woff') format('woff'),
+  url('../../fonts/SFProText-Bold.ttf') format('truetype'),
+  url('../../fonts/SFProText-Bold.svg#SFProText-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'nafees';
+  src: local('Nafees'),
+  local('Nafees Regular'),
+  url('../../fonts/nafees/nafees-nastaleeq-webfont.woff2'),
+  url('../../fonts/nafees/nafees-nastaleeq-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/nafees/nafees-nastaleeq-webfont.woff') format('woff'),
+  url('../../fonts/nafees/nafees-nastaleeq-webfont.ttf') format('truetype'),
+  url('../../fonts/nafees/nafees-nastaleeq-webfont.svg#SFProText-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'bismillah';
+  src: url('../../fonts/bismillah/bismillah.woff2'),
+  url('../../fonts/bismillah/bismillah.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/bismillah/bismillah.woff') format('woff'),
+  url('../../fonts/bismillah/bismillah.ttf') format('truetype'),
+  url('../../fonts/bismillah/bismillah.svg#bismillah') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'pdms';
+  src: local('_PDMS_Saleem_QuranFont Regular'),
+  url("../../fonts/quran_fonts/pdms/pdms-saleem-quranfont.ttf");
+  font-display: auto;
+}
+
+.indopak {
+  font-family: 'pdms';
+  font-size: 25px;
+}

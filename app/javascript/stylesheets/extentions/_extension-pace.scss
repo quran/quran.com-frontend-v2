@@ -1,0 +1,148 @@
+$pace-height: 3px;
+$pace-incontent-height: 13px;
+$nav-width: 16.875rem !default;
+$page-bg: desaturate(lighten($primary-500, 41.7%), 5%) !default; //#f9f9fc
+
+@mixin translate3d($x:0,$y:0,$z:0) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+
+
+body:not(.mod-pace-custom) {
+  .pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    .pace-progress {
+      background: $color-primary;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: $pace-height;
+    }
+  }
+
+  .pace-inactive {
+    display: none;
+  }
+}
+
+body.mod-pace-custom {
+  .pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    z-index: 2000;
+    position: fixed;
+    margin: auto;
+    top: 45vh;
+    left: 0;
+    right: 0;
+    //right: unquote("calc( (100% - #{$nav-width}) / 2 )")
+    height: $pace-incontent-height;
+    border: 2px solid $white;
+    width: $nav-width / 1.111;
+    background: $white;
+    overflow: hidden;
+
+    .pace-progress {
+      box-sizing: border-box;
+
+      @include translate3d(0, 0, 0);
+
+      max-width: $nav-width / 1.111;
+      z-index: 2000;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      height: 100%;
+      width: 100%;
+      background-color: $color-primary;
+      background-image: linear-gradient(
+        135deg,
+        $color-primary 0%,
+        $color-primary 25%,
+        darken($color-primary, 10%) 25%,
+        darken($color-primary, 10%) 50%,
+        $color-primary 50%,
+        $color-primary 75%,
+        darken($color-primary, 10%) 75%,
+        darken($color-primary, 10%) 100%
+      );
+      background-repeat: repeat;
+      background-position: 0 0;
+      background-size: $pace-incontent-height $pace-incontent-height;
+      background-clip: content-box;
+
+      animation: loading 0.5s linear infinite;
+      -o-animation: loading 0.5s linear infinite;
+      -moz-animation: loading 0.5s linear infinite;
+      -webkit-animation: loading 0.5s linear infinite;
+    }
+  }
+
+  .pace-inactive {
+    display: none;
+  }
+
+  &.pace-running {
+    .page-content {
+      &:before {
+        content: "";
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $page-bg;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -$pace-incontent-height 0;
+  }
+}
+@-webkit-keyframes loading {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -$pace-incontent-height 0;
+  }
+}
+@-moz-keyframes loading {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -$pace-incontent-height 0;
+  }
+}
+@-o-keyframes loading {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -$pace-incontent-height 0;
+  }
+}

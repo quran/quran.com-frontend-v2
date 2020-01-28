@@ -13,7 +13,7 @@ export default class extends Controller {
   connect() {
     let el = $(this.element);
 
-    let options = {};
+    let options = {allowClear: true};
 
     if (el.data("multiple")) {
       options["multiple"] = true;
@@ -49,7 +49,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    const select = this.select.data("select2");
+    const select = this.select.data('select2');
     if (select) select.destroy();
   }
 }

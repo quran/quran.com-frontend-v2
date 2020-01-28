@@ -1,0 +1,72 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@import "variables";
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+//@import "~bootstrap/code";
+@import "~bootstrap/scss/grid";
+//@import "~bootstrap/tables";
+//@import "~bootstrap/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+//@import "~bootstrap/button-group";
+//@import "~bootstrap/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+//@import "~bootstrap/breadcrumb";
+//@import "~bootstrap/pagination";
+@import "~bootstrap/scss/badge";
+//@import "~bootstrap/jumbotron";
+//@import "~bootstrap/alert";
+//@import "~bootstrap/progress";
+//@import "~bootstrap/media";
+//@import "~bootstrap/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/toasts";
+//@import "~bootstrap/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+//@import "~bootstrap/carousel";
+//@import "~bootstrap/spinners";
+//@import "~bootstrap/scss/utilities";
+
+@import "~bootstrap/scss/utilities/align";
+@import "~bootstrap/scss/utilities/background";
+@import "~bootstrap/scss/utilities/borders";
+@import "~bootstrap/scss/utilities/clearfix";
+@import "~bootstrap/scss/utilities/display";
+//@import "~bootstrap/scss/utilities/embed";
+@import "~bootstrap/scss/utilities/flex";
+@import "~bootstrap/scss/utilities/float";
+@import "~bootstrap/scss/utilities/overflow";
+@import "~bootstrap/scss/utilities/position";
+@import "~bootstrap/scss/utilities/screenreaders";
+@import "~bootstrap/scss/utilities/shadows";
+@import "~bootstrap/scss/utilities/sizing";
+@import "~bootstrap/scss/utilities/stretched-link";
+@import "~bootstrap/scss/utilities/spacing";
+@import "~bootstrap/scss/utilities/text";
+@import "~bootstrap/scss/utilities/visibility";
+
+@import "~bootstrap/scss/print";
+
+.container {
+  width: 1300px !important;
+  max-width: 100%;
+}
+
+.dropdown-toggle {
+  &:after {
+    content: "\f107";
+    font-family: "icons";
+    color: $color-primary;
+  }
+}

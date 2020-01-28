@@ -11,12 +11,12 @@
 
     <%= csrf_meta_tags %>
     <%#= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', 'nonce': true %>
   </head>
 
 
-  <body class="<%= page_classes %>" id="<%= page_id %>">
+  <body class="<%= page_classes %>" id="<%= page_id %>" data-controller="sidebar page">
   <script>
       window.locale = '<%= I18n.locale %>';
   </script>
@@ -38,19 +38,5 @@
     </main>
 
     <%= render "shared/footer" %>
-
-
-    <div class="modal fade hidden" id="modal" tabindex="-1" role="dialog"  aria-hidden=true data-backdrop='static' data-keyboard=false>
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>

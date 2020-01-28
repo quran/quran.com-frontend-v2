@@ -1,0 +1,84 @@
+/* Custom Webkit Scrollbar */
+/* http://css-tricks.com/custom-scrollbars-in-webkit/ */
+
+$trackPieceColor: #efefef;
+$handleBar: $fusion-100;
+$handleBarHover: darken($handleBar, 10%);
+$modalScrollSize: 8px;
+
+body:not(.mobile-detected),
+body:not(.mobile-detected).modal-open .modal {
+  &::-webkit-scrollbar {
+    height: $modalScrollSize;
+    width: $modalScrollSize;
+  }
+
+  &::-webkit-scrollbar:hover {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background-color: $trackPieceColor;
+  }
+
+  &::-webkit-scrollbar-track-piece:hover {
+    background-color: darken($trackPieceColor, 12%);
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: $handleBar;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: $handleBarHover;
+  }
+}
+
+.slimScrollBar {
+  border-radius: 3px !important;
+}
+
+body:not(.no-slimscroll) {
+  .custom-scroll {
+    overflow: hidden;
+  }
+}
+
+%custom-scroll {
+  &::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: #666;
+  }
+
+  &::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    width: 40px;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: #666;
+  }
+
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-scroll,
+.custom-scrollbar {
+  @extend %custom-scroll;
+}
+
+.day .slimScrollBar{
+   opacity: 0 !important;
+ }
+.day:hover .slimScrollBar{
+  opacity: .4 !important
+ }

@@ -2,7 +2,7 @@ import { Howl, Howler } from 'howler'
 window.Utility ||= {}
 
 class Utility.Player
-  AUDIO_CDN = "https://audio.qurancdn.com/"
+  AUDIO_CDN = "https://verses.quran.com/"
   HTML5 = true # TODO: should set to false to use web audio instead, but this requires CORS
   @chapter = null
   @firstVerse = null
@@ -206,7 +206,7 @@ class Utility.Player
       onplay: =>
         @setInterval()
         @setAlignHighlight()
-        thisVerse.find(".play .fa").removeClass('fa-play').addClass('fa-pause')
+        thisVerse.find(".play .fa").removeClass('fa-play1').addClass('fa-pause1')
         @updatePlayCtrls()
 
         # preload next @track is using web audio
@@ -218,14 +218,14 @@ class Utility.Player
       onpause: =>
         @removeInterval()
         @removeAlignTimers()
-        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
+        thisVerse.find(".play .fa").removeClass('fa-pause1').addClass('fa-play1')
         @updatePlayCtrls()
 
       onstop: =>
         @removeInterval()
         @removeAlignTimers()
         @updatePlayCtrls()
-        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
+        thisVerse.find(".play .fa").removeClass('fa-pause1').addClass('fa-play1')
 
       onseek: =>
         if @track.howl.playing()
@@ -242,7 +242,7 @@ class Utility.Player
         @removeSegmentHighlight()
         @progressBar.slider('setValue', 0)
         @updatePlayCtrls()
-        thisVerse.find(".play .fa").removeClass('fa-pause').addClass('fa-play')
+        thisVerse.find(".play .fa").removeClass('fa-pause1').addClass('fa-play1')
         $("#player .timer").text("00:00")
 
         # what to play next ?

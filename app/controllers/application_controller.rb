@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include PartialReplacement::Response
+
   before_action :set_locale
 
   protected
@@ -15,6 +17,7 @@ class ApplicationController < ActionController::Base
     unless I18n.available_locales.include?(requested_locale.to_sym)
       requested_locale = I18n.default_locale
     end
+
     session[:locale] = requested_locale
     I18n.locale = requested_locale
   end

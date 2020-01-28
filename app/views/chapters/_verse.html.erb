@@ -1,9 +1,9 @@
-<div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>">
+<div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse">
   <div class="row">
     <div class="col-1 verse-actions">
       <div class="actions">
         <a class="play play-verse d-flex justify-content-center align-items-center">
-          <i class="fa fa-play"></i>
+          <i class="fa fa-play1"></i>
         </a>
 
         <span>
@@ -21,13 +21,7 @@
 
     <div class="col-11">
       <div class="arabic">
-        <% verse.words.each do |w| %>
-            <span class="<%= w.char_type_name %> w" id="w-<%= w.id %>" data-local='<%= w.word_translation&.language_name %>' data-id=<%= w.id %> data-audio="<%= w.audio_url %>" data-t="<%= w.word_translation&.text %>" data-tr="<%= w.transliteration&.text %>" data-position="<%= w.position %>">
-              <span class="glyph p<%= w.page_number %>-<%= @presenter.font %>"><%= w.send(@presenter.font_method).html_safe %></span>
-              <span class="text"><%= w.text_madani %> </span>
-            </span>
-        <% end %>
-
+        <%= render partial: 'word', collection: verse.words %>
         <!--<span class="ayah-number"><%#= verse.verse_number %></span>-->
       </div>
     </div>
@@ -37,30 +31,14 @@
     <div class="col-1">
       <% if @presenter.render_translations? %>
         <div class="verse-actions">
-          <a class="fa fa-docs copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a href="#" class="fa fa-share" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
-
-          <!-- <div class="hidden-md-up">
-            <a class="play play-verse">
-              <i class="fa fa-play"></i>
-            </a>
-
-            <span>
-             <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
-            </span>
-          </div> -->
+          <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
+          <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share') %>"></a>
         </div>
       <% end %>
     </div>
+
     <div class="col-11">
       <div class="translation">
-        <% if media = VerseMedia.get_media(verse.id) %>
-          <small>
-            <a class="media" data-media="<%= media %>"><i class="fa fa-play"></i> <%= _t('verses.media', from: 'Bayyinah') %>
-            </a>
-          </small>
-        <% end %>
-
         <% if @presenter.render_translations? %>
           <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translation %>
         <% end %>

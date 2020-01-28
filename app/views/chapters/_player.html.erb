@@ -1,4 +1,4 @@
-<div id="player">
+<div id="player" data-controller="player">
   <div class="container">
     <div class="audio-left-col">
       <ul class="d-flex align-items-center justify-content-between">
@@ -8,7 +8,7 @@
 
         <li class="play-ctrls play">
           <button class="play-btn">
-            <i class="fa fa-play" ></i>
+            <i class="fa fa-play1" ></i>
           </button>
           <button class="pause-btn">
             <i class="fa fa-pause"></i>
@@ -70,7 +70,7 @@
                   </select>
 
                   <%= _t("player.repeat_times") %>
-                  <select id="repeat-popover-single-repeat" class="form-control custom-select repeat-popover-repeat-value">
+                  <select id="repeat-popover-single-repeat" class="form-control custom-select repeat-popover-repeat-value" data-controller="select2">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
@@ -99,7 +99,7 @@
                   </div>
 
                   <%= _t("player.repeat_times") %>
-                  <select id="repeat-popover-range-repeat" class="form-control custom-select repeat-popover-repeat-value">
+                  <select id="repeat-popover-range-repeat" class="form-control custom-select repeat-popover-repeat-value" data-controller="select2">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>

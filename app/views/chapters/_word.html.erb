@@ -1,0 +1,4 @@
+<span class="<%= word.char_type_name %> w" id="w-<%= word.id %>" data-local='<%= word.word_translation&.language_name %>' data-id=<%= word.id %> data-audio="<%= word.audio_url %>" data-t="<%= word.word_translation&.text %>" data-tr="<%= word.transliteration&.text %>" data-position="<%= word.position %>" data-controller="word">
+  <span class="glyph p<%= word.page_number %>-<%= @presenter.font %>"><%= word.send(@presenter.font_method).html_safe %></span>
+  <span class="text"><%= word.text_madani %> </span>
+</span>
