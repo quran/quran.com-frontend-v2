@@ -8,12 +8,15 @@ default: &default
   adapter: postgresql
   timeout: 5000
   host: localhost
+  username: postgres
+  password: postgres
   schema_search_path: quran,"$user",content,audio,i18n,public
 
 development:
   <<: *default
   database: quran_dev
-
+  username: postgres
+  password: postgres
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.

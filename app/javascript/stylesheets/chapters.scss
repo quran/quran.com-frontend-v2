@@ -222,7 +222,7 @@
   right: 0px;
   float: left;
   width: 100%;
-  z-index: 8;
+  z-index: 100;
 }
 .border-info {
   border: 1px solid #00acc1;
@@ -230,7 +230,7 @@
 
 .surah-actions,
 .info-heading {
-  background: #fafafa;
+  background: #eeeeee;
   padding: 15px 0;
 
   li {
@@ -564,7 +564,7 @@
     }
 
     #verses .verse {
-      padding: 0px;
+      /*padding-top: 20px;*/
 
       .col-md-10,
       .col-md-2 {
