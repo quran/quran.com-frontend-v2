@@ -20,7 +20,7 @@
     <a href="#contact"><strong>Join the Slack Channel »</strong></a>
     <br />
     <br />
-    <a href="https://quran.com">View Quran.com</a>
+    <a href="https://quran.com">Visit Quran.com</a>
     ·
     <a href="https://github.com/quran/quran.com-frontend-v2/issues">Report Bug</a>
     ·
