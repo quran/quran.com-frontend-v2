@@ -5,14 +5,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -23,12 +15,12 @@
   <h3 align="center">The Noble Quran</h3>
 
   <p align="center">
-    The source code for the Quran.com website.
+    The official source code repository for Quran.com
     <br />
-    <a href="#contact"><strong>Join Slack Channel »</strong></a>
+    <a href="#contact"><strong>Join the Slack Channel »</strong></a>
     <br />
     <br />
-    <a href="https://quran.com">View Site</a>
+    <a href="https://quran.com">View Quran.com</a>
     ·
     <a href="https://github.com/quran/quran.com-frontend-v2/issues">Report Bug</a>
     ·
@@ -36,14 +28,20 @@
   </p>
 </p>
 
+<!-- PROJECT SHIELDS -->
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
-
-- [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Built With](#built-with)
 - [Getting Started](#getting-started)
+  - [Development Stack](#development-stack)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Roadmap](#roadmap)
@@ -60,34 +58,39 @@
 <img src="./app/assets/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
-["The Noble Quran"](https://quran.com) project has served millions of visitors from all corners of the world - and we continue to grow everyday.
+Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) project serves millions of visitors from all around the world. And, al-hamdu Lillaah, the project continues to grow.
 
-This, with the blessing of Allah, is powered by a handful of volunteers who are working hard on their spare time to keep this project as beneficial and useful to people all around the world. Any help or contribution of yours will surely go a long way.
+This success is only with the blessings of Allah, and we're thankful for the dedicated volunteers who work diligently to keep this project as beneficial and useful.
 
-### Built With
-
-The tech stack for this project:
-
-- [Ruby](https://www.ruby-lang.org/en/)
-- [Rails](https://rubyonrails.org/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Coffeescript](https://coffeescript.org/)
-- [jQuery](https://jquery.com/)
-- [Bootstrap](https://getbootstrap.com/)
+Continue reading to learn more on how you can contribute to ["the Noble Quran"](https://quran.com). Any help or contribution of yours will surely go a long way, In Sha'a Allah.
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-To get a local copy up and running please follow these simple steps.
+Version 2 of ["the Noble Quran"](https://quran.com) project is developed with Ruby on Rails. Ruby is an interpreted, high-level, general-purpose programming language. Rails, is a server-side web application and a model–view–controller framework. The Rails framework is written in the Ruby programming language, and it providing default structures for a database, a web service, and web pages.
+
+To contribute, you'll first need to set up your developed environment by installing prerequisites. And, you'll need to sync a local copy of ["the Noble Quran"](https://quran.com) repository to your machine.
+
+### Development Stack
+
+Our tech stack:
+
+- [Ruby 2.6.2](https://www.ruby-lang.org/en/)
+- [Rails 6.0.2.1](https://rubyonrails.org/)
+- [jQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Rails Webpacker](https://github.com/rails/webpacker)
 
 ### Prerequisites
 
-- [Make sure Node.js is installed](https://nodejs.org/en/)
-- [Make sure Yarn is installed](https://yarnpkg.com/en/)
-- [Follow this guide install Ruby, Rails & and PostgreSQL](https://gorails.com/setup) (select your OS from the options). Please try to install ruby with rvm, otherwise there might be problems later on.
-- Make sure you install ruby version `2.6.2`; you can update later on.
-- Install [pgAdmin](https://www.pgadmin.org/), a GUI for postgreSQL. (You can do this later on).
+Please install the following
+
+- [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser.
+- [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it is an Apache Hadoop technology.
+- Follow (this guide)[https://gorails.com/setup] to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select ruby version `2.6.2`. 
+- [pgAdmin](https://www.pgadmin.org/) is a GUI for postgreSQL.
+- You're strongly encouraged to install ruby with **Ruby Version Manager (RVM)**. (RVM)[https://rvm.io/] is a command-line tool that allows you to easily install and manage multiple ruby environments.
 
 ### Installation
 
@@ -176,3 +179,9 @@ Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) w
 ## End Note:
 
 This project is for the sake of Allah and we all have good intentions while working with this project. But we must stress that copying the code/project unethically or using this for any material gains is unacceptable.
+<!--
+*** Thanks for checking out this Quran.com repo. If you have a suggestion that would
+*** make this better, please fork the repo and create a pull request or simply open
+*** an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+-->
