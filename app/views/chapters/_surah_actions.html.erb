@@ -31,9 +31,9 @@
       </li>
 
       <li class="list-inline-item d-flex align-items-center text-nowrap " id="tooltip">
-        <i class="fa fa-commenting-o text-info lines-heights"></i>
+        <i class="fa fa-comment-alt text-info lines-heights"></i>
         <span class="text-muted text-nowrap"><%= _t('settings.tooltip.label') %>: </span>
-        <select class="p-1 rounded-lg bg-light border-info text-info" id="translation-dropdown" placeholder="<%= _t('settings.tooltip.label') %>">
+        <select class="p-1 rounded-lg bg-light border-info text-info" id="tooltip-dropdown" placeholder="<%= _t('settings.tooltip.label') %>">
           <option value="translation">
             <%= _t('settings.tooltip.translation') %>
           </option>
@@ -59,7 +59,7 @@
 
       <li class="list-inline-item border-left d-flex align-items-center">
         <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class: "d-flex align-items-center" do %>
-          <span class="fa fa-book1 text-info lines-heights"></span>
+          <span class="fa fa-book text-info lines-heights"></span>
           <%= _t('settings.reading') %>
         <% end %>
       </li>
@@ -72,7 +72,7 @@
       </li>
 
       <li class="list-inline-item d-flex align-items-center">
-        <a id="reset-setting" class="fa fa-close text-info lines-heights" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
+        <a id="reset-setting" class="fa fa-times-circle text-info lines-heights" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
       </li>
 
       <li class="list-inline-item d-flex align-items-center">

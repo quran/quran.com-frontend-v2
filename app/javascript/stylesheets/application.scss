@@ -19,6 +19,7 @@
 @import "partials/header";
 @import "partials/footer";
 @import "partials/fonts";
+@import "partials/font_sizes";
 @import "partials/common";
 @import "partials/sidebar";
 @import "partials/search";
@@ -52,7 +53,6 @@
 .tooltip-inner {
   box-shadow: 0px 10px 35px 0 rgba(0, 172, 193, 0.2);
 }
-
 
 /* horizontal scrolling */
 .scrolling-wrapper {

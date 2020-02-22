@@ -14,6 +14,7 @@ require("../utility/jquery-extends");
 require("../utility/infinite-scrolling-page");
 
 import "custom-bootstrap";
+import "../utility/trubolink-patch";
 
 import GoogleAnalytic from "../utility/analytic";
 global.GoogleAnalytic = GoogleAnalytic;

@@ -1,0 +1,25 @@
+/* font sizes */
+.fs-nano {
+  font-size: rem_to_px($fs-nano) !important;
+} /* 10px */
+.fs-xs {
+  font-size: rem_to_px($fs-xs) !important;
+} /* 12px */
+.fs-sm {
+  font-size: rem_to_px($fs-sm) !important;
+} /* 12.5px */
+.fs-b {
+  font-size: rem_to_px($fs-base) !important;
+} /* 13px */
+.fs-md {
+  font-size: rem_to_px($fs-md) !important;
+} /* 14px */
+.fs-lg {
+  font-size: rem_to_px($fs-lg) !important;
+} /* 15px */
+.fs-xl {
+  font-size: rem_to_px($fs-xl) !important;
+} /* 16px */
+.fs-xxl {
+  font-size: rem_to_px($fs-xxl) !important;
+}

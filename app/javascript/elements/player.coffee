@@ -2,7 +2,7 @@ import { Howl, Howler } from 'howler'
 window.Utility ||= {}
 
 class Utility.Player
-  AUDIO_CDN = "https://verses.quran.com/"
+  AUDIO_CDN = "z"
   HTML5 = true # TODO: should set to false to use web audio instead, but this requires CORS
   @chapter = null
   @firstVerse = null

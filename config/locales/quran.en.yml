@@ -49,9 +49,11 @@ en:
   action:
     play: Play
     pause: Pause
-    tafsir: Tafsirs
     share: Share ayah
     addNote: Add Note
+    tafsir:
+      label: Tafsirs
+      select: Select Tafsir
     bookmark:
       label: Bookmark
       done: Bookmarked

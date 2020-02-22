@@ -6,37 +6,106 @@
 // <div data-controller="hello">
 //   <h1 data-target="hello.output"></h1>
 // </div>
-/*
+
 import { Controller } from "stimulus";
-let settings = {}
+import LocalStore from "../utility/local-store";
+
+let settings = {};
 
 export default class extends Controller {
   static targets = [
-    'fontSize',
-    'wordTooltip',
-    'reset',
-    'readingMode',
-    'translations',
-    'recitation'
+    "wordTooltip",
+    "reset",
+    "readingMode",
+    "translations",
+    "recitation"
   ];
 
   connect() {
-    $(document).on('click', '.font-size', this.handleFontSize);
-    $(document).on("click", '.word-tooltip', this.handleTooltip);
-    $(document).on('click', '#reset-setting', this.resetSetting);
-    $(document).on('click', '#toggle-readingmode', this.toggleReadingMode);
-    $(document).on('hide.bs.dropdown', '#translation-dropdown', this.reloadTranslations);
-    $(document).on('hide.bs.dropdown', '#reciter-dropdown', this.updateReciter);
+    this.element[this.identifier] = this;
+    this.store = new LocalStore();
+
+    $(document).on("click", ".font-size", e => {
+      e.preventDefault();
+      this.handleFontSize(e);
+    });
+
+    $(document).on("click", "#toggle-nightmode", e => {
+      e.preventDefault();
+      this.toggleNightMode();
+    });
+
+    $(document).on("change", "#tooltip-dropdown", e => {
+      e.preventDefault();
+      this.handleTooltip(e);
+    });
+    $(document).on("click", "#reset-setting", e => {
+      e.preventDefault();
+      this.resetSetting();
+    });
+    $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
+    $(document).on(
+      "hide.bs.dropdown",
+      "#translation-dropdown",
+      this.reloadTranslations
+    );
+    $(document).on("hide.bs.dropdown", "#reciter-dropdown", this.updateReciter);
+
+    this.loadSettings();
+
+    let mobileDetect = window.matchMedia("(max-width: 610px)");
+    this.mobile = mobileDetect.matches;
+
+    mobileDetect.addListener(match => {
+      this.mobile = match.matches;
+      this.updatePage();
+    });
+
+    this.updatePage();
+  }
+
+  toggleReadingMode() {
+    $("#toggle-readingmode").toggleClass("text-primary");
+  }
+
+  loadSettings() {
+    let saved;
+
+    try {
+      saved = JSON.parse(this.store.get("setting") || "{}");
+    } catch {
+      saved = {};
+    }
+
+    this.settings = Object.assign(this.defaultSetting(), saved);
+  }
+
+  getTooltipType() {
+    if (this.get("tooltip") == "translation") {
+      return "t";
+    } else {
+      return "tr";
+    }
+  }
+
+  saveSettings() {
+    let setting = JSON.stringify(this.settings);
+    this.store.set("setting", setting);
   }
 
   defaultSetting() {
     return {
-      font: 'qcf_v2',
-      tooltip: 'translation',
-      recitation:  7,
+      font: "qcf_v2",
+      tooltip: "translation",
+      recitation: 7,
+      nightMode: false,
       readingMode: false,
       translations: [],
-      arabicFontSize: {
+      repeatEnabled: false,
+      repeatType: "single",
+      repeatCount: 1,
+      repeatIteration: 1,
+      wordFontSize: {
         mobile: 30,
         desktop: 50
       },
@@ -47,140 +116,127 @@ export default class extends Controller {
     };
   }
 
-  reset(event) {
-    event.preventDefault();
+  updateFontSize() {
+    $("style.setting").remove();
 
-    this.settings = this.defaultSetting();
-    this.resetPage();
-    this.save();
-  }
-}
+    let fontStylesheet = document.createElement("style");
+    fontStylesheet.classList.add("setting");
+    document.head.appendChild(fontStylesheet);
 
-class Settings {
-  constructor() {
-    $(document).on('click', '.font-size', this.handleFontSize);
-    $(document).on("click", '.word-tooltip', this.handleTooltip);
-    $(document).on('click', '#reset-setting', this.resetSetting);
-    $(document).on('click', '#toggle-readingmode', this.toggleReadingMode);
-    $(document).on('hide.bs.dropdown', '#translation-dropdown', this.reloadTranslations);
+    let device = this.mobile ? "mobile" : "desktop";
 
-    this.updatePage();
-  }
+    let wordFontSize = this.get("wordFontSize")[device];
+    let translationFontSize = this.get("translationFontSize")[device];
 
-  updateReciter() {
-    const activeRecitation = $("#reciter-dropdown-menu .dropdown-item.active");
-    return player.setRecitation(activeRecitation.data('recitation'));
-  }
-
-  reloadTranslations() {
-    const activeTranslations = $("#translation-dropdown-menu .dropdown-item.active");
-    const translationIds = [];
-    activeTranslations.each((i, t) => translationIds.push($(t).data('translation')));
-    return $.get(`${$('#verses-pagination').data('url')}`, {translations: translationIds.join(',')}, function(response) {
-      $("#verses").html(response);
-      return $this.bindWordTooltip($('.word'));
-    });
-  }
-
-  get(key) {
-    return this.settings[key];
-  }
-
-  toggleNightMode(e) {
-    e.preventDefault();
-    const isNightMode = $("body").hasClass('night');
-    $("body").toggleClass('night');
-    $('#toggle-nightmode').toggleClass('text-primary');
-    this.settings.nightMode =  !isNightMode;
-    return this.saveSettings();
-  }
-
-  handleTooltip(e) {
-    e.preventDefault();
-    const target = $(e.target);
-    target.parent('.dropdown-menu');
-    target.toggleClass('active');
-    return this.settings.tooltip = target.data('tooltip') || target.parent().data('tooltip');
-  }
-
-  handleFontSize(e) {
-    e.preventDefault();
-    const that = $(e.target);
-    const target = that.closest('li').data('target');
-    const targetDom = $(target);
-
-    let size = parseInt(targetDom.css('font-size'), 10);
-    size = that.hasClass('increase') ? size + 1 : size - 1;
-
-    return this.changeFontSize(targetDom, size);
-  }
-
-  getTooltipType() {
-    if (this.settings.tooltip === 'transliteration') {
-      return 'tr';
-    } else {
-      return 't';
-    }
-  }
-
-  changeFontSize(target, size) {
-    target.css('font-size', size );
-    return window.matchMedia("(max-width: 610px)");
-  }
-
-  resetSetting(e) {
-    e.preventDefault();
-    $('body').removeClass('night');
-    this.settings = this.defaultSetting();
-    this.resetPage();
-    return this.saveSettings();
-  }
-
-  resetPage() {
-    $(".translation").css('font-size', '20px');
-    return $(".word").css('font-size', '50px');
+    fontStylesheet.sheet.insertRule(
+      `.word {font-size: ${wordFontSize}px !important}`
+    );
+    fontStylesheet.sheet.insertRule(
+      `.translation {font-size: ${translationFontSize}px !important}`
+    );
   }
 
   updatePage() {
-    const isNightMode = this.get('nightMode');
+    this.updateFontSize();
+    const isNightMode = this.get("nightMode");
+
     const setDark = function(e) {
-      if (e.matches) {
-        return $("body").addClass('night');
+      if (e && e.matches) {
+        $("body").addClass("night");
       } else {
         if (isNightMode) {
-          return $('body').addClass('night');
+          $("body").addClass("night");
         } else {
-          return $('body').removeClass('night');
+          $("body").removeClass("night");
         }
       }
     };
 
     const nightMode = window.matchMedia("(prefers-color-scheme: dark)");
     setDark(nightMode);
-    return document.addEventListener("DOMContentLoaded", () => setDark(mql));
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setDark(window.matchMedia("(prefers-color-scheme: dark)"));
+    });
   }
 
-  saveSettings() {
-    return localStorage.setItem("settings", JSON.stringify(this.settings));
+  updateReciter() {
+    const activeRecitation = $("#reciter-dropdown-menu .dropdown-item.active");
+    return player.setRecitation(activeRecitation.data("recitation"));
   }
 
-  defaultSetting() {
-    return {
-      font: 'qcf_v2',
-      tooltip: 'translation',
-      recitation:  7,
-      nightMode: false,
-      readingMode: false,
-      translations: [],
-      arabicFontSize: {
-        mobile: 30,
-        desktop: 50
-      },
-      translationFontSize: {
-        mobile: 17,
-        desktop: 20
+  reloadTranslations() {
+    const activeTranslations = $(
+      "#translation-dropdown-menu .dropdown-item.active"
+    );
+    const translationIds = [];
+    activeTranslations.each((i, t) =>
+      translationIds.push($(t).data("translation"))
+    );
+    return $.get(
+      `${$("#verses-pagination").data("url")}`,
+      { translations: translationIds.join(",") },
+      function(response) {
+        $("#verses").html(response);
+        return $this.bindWordTooltip($(".word"));
       }
-    };
+    );
+  }
+
+  get(key) {
+    return this.settings[key];
+  }
+
+  set(key, value) {
+    this.settings[key] = value;
+    this.saveSettings();
+  }
+
+  toggleNightMode(e) {
+    const isNightMode = $("body").hasClass("night");
+    $("body").toggleClass("night");
+    $("#toggle-nightmode").toggleClass("text-primary");
+    this.set("nightMode", !isNightMode);
+  }
+
+  handleTooltip(e) {
+    const target = $(e.target);
+    this.set("tooltip", target.val());
+  }
+
+  handleFontSize(e) {
+    const that = $(e.target);
+
+    const target = that.closest("li").data("target");
+    const targetDom = $(target);
+
+    let size = parseInt(targetDom.css("font-size"), 10);
+    size = that.hasClass("increase") ? size + 1 : size - 1;
+
+    let device = this.mobile ? "mobile" : "desktop";
+
+    if (target == ".word") {
+      let sizes = this.get("wordFontSize");
+      sizes[device] = size;
+      this.set("wordFontSize", sizes);
+    } else {
+      let sizes = this.get("translationFontSize");
+      sizes[device] = size;
+      this.set("translationFontSize", sizes);
+    }
+
+    this.updateFontSize();
+  }
+
+  resetSetting(e) {
+    $("body").removeClass("night");
+    this.settings = this.defaultSetting();
+    this.saveSettings();
+
+    this.resetPage();
+  }
+
+  resetPage() {
+    $("style.setting").remove();
   }
 }
-*/
