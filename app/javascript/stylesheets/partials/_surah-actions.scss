@@ -1,4 +1,7 @@
 .surah-actions {
+  .lines-heights{
+    line-height: 0;
+  }
   .container {
     display: flex;
     justify-content: center;
@@ -21,6 +24,25 @@
         padding: 0px 3px 11px 3px;
       }
     }
+  }
+  #translation-dropdown{
+    span.select2-container{
+      width: 193px !important;
+      height: 45px;
+      display: block !important;
+      overflow-y: hidden;
+      ul{
+        margin-right: 27px;
+        span.select2-selection__clear{
+          left:167px;
+          position: absolute;
+          margin-top: 0px !important;
+          padding: 11px 7px 12px 10px;
+          background: white;
+          border-top-right-radius: 6px;
+        }
+      }
+    }  
   }
 }
 

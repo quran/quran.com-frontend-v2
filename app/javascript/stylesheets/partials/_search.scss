@@ -12,15 +12,16 @@
 
     .form-control {
       border: 0;
-      color: #b0bec5;
+      color: #8b8b8b;
     }
 
-    .fa-search {
+    .search1 {
       position: absolute;
       color: #b0bec5;
-      top: 15px;
+      top: 23px;
       left: 7px;
     }
+
 
     button {
       position: absolute;
@@ -37,6 +38,13 @@
       padding: 10px 22px;
       top: 7px;
       right: 7px;
+      .search2 {
+        display: none;
+        position: absolute;
+        color: #ffffff;
+        top: 12px;
+        left: 9px;
+      }
     }
   }
 }
@@ -66,4 +74,27 @@ textarea.form-control {
   height: 130px;
   resize: none;
   padding: 10px 15px;
+}
+
+@media only screen and (max-width: 414px) {
+  .search-form {
+    form {
+      .search1 {
+        display: none;
+      }
+      button{
+        padding: 17px 22px;
+        top: 12px;
+        right: 7px;
+        .search2 {
+          display: block !important;
+          top: 6px !important;
+          left: 4px !important;
+          font-size: 10px !important;
+        }
+      }
+    }
+  }
+
+
 }

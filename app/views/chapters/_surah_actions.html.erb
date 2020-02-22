@@ -2,7 +2,7 @@
   <div class="container surah-actions overflow-auto mt-4 mt-md-0 scrolling-wrapper">
     <ul class=" d-flex flex-row flex-nowrap list-inline mb-0" id="surah-actions">
       <li class="list-inline-item d-flex align-items-center" id="reciter-dropdown">
-        <i class="fa fa-microphone-alt text-info"></i>
+        <i class="fa fa-microphone-alt text-info lines-heights"></i>
         <span class="text-muted text-nowrap"><%= _t('settings.reciters') %></span>
         <select id="reciter-dropdown-menu" data-placeholder="<%= t('settings.reciters') %>" data-controller="select2">
           <% recitations.each do |recitation| %>
@@ -13,8 +13,8 @@
         </select>
       </li>
 
-      <li class="list-inline-item d-flex align-items-center" id="translation-dropdown">
-        <i class="fa fa-columns text-info"></i>
+      <li class="list-inline-item d-flex align-items-center translation-li" id="translation-dropdown">
+        <i class="fa fa-columns lines-heights text-info"></i>
         <span class="text-muted text-nowrap"><%= _t('settings.translations') %></span>
 
         <select id="translations" data-placeholder="<%= t('settings.translations') %>" data-controller="select2" multiple>
@@ -30,10 +30,10 @@
         </select>
       </li>
 
-      <li class="list-inline-item d-flex align-items-center text-nowrap" id="tooltip">
-        <i class="fa fa-commenting-o text-info"></i>
+      <li class="list-inline-item d-flex align-items-center text-nowrap " id="tooltip">
+        <i class="fa fa-comment-alt text-info lines-heights"></i>
         <span class="text-muted text-nowrap"><%= _t('settings.tooltip.label') %>: </span>
-        <select class="p-1 rounded-lg bg-light border-info text-info" id="translation-dropdown" placeholder="<%= _t('settings.tooltip.label') %>">
+        <select class="p-1 rounded-lg bg-light border-info text-info" id="tooltip-dropdown" placeholder="<%= _t('settings.tooltip.label') %>">
           <option value="translation">
             <%= _t('settings.tooltip.translation') %>
           </option>
@@ -44,7 +44,7 @@
       </li>
 
       <li class='list-inline-item border-left d-flex align-items-center' id="arabic-font" data-target=".word">
-        <i class="fa fa-text-width text-info"></i>
+        <i class="fa fa-text-width text-info lines-heights"></i>
         <%= _t('settings.font_size.arabic') %>
 
         <a href="" class="font-size increase">+</a>
@@ -58,26 +58,26 @@
       </li>
 
       <li class="list-inline-item border-left d-flex align-items-center">
-        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class: "d-flex" do %>
-          <span class="fa fa-book1 text-info"></span>
+        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class: "d-flex align-items-center" do %>
+          <span class="fa fa-book text-info lines-heights"></span>
           <%= _t('settings.reading') %>
         <% end %>
       </li>
 
       <li class="list-inline-item d-flex align-items-center">
-        <a id="toggle-nightmode" class="d-flex text-nowrap">
-          <i class="fa fa-lightbulb text-info"></i>
+        <a id="toggle-nightmode" class="d-flex align-items-center text-nowrap">
+          <i class="fa fa-lightbulb text-info lines-heights"></i>
           <%= _t('settings.night_mode.label') %>
         </a>
       </li>
 
       <li class="list-inline-item d-flex align-items-center">
-        <a id="reset-setting" class="fa fa-close text-info" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
+        <a id="reset-setting" class="fa fa-times-circle text-info lines-heights" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
       </li>
 
       <li class="list-inline-item d-flex align-items-center">
-        <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader}, class: "d-flex text-nowrap" do %>
-          <i class="fa fa-info-circle text-info"></i>
+        <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader}, class: "d-flex align-items-center text-nowrap" do %>
+          <i class="fa fa-info-circle text-info lines-heights"></i>
           <%= _t("chapters.info") %>
         <% end %>
       </li>

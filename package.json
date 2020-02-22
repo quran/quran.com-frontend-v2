@@ -26,8 +26,5 @@
   "devDependencies": {
     "glob-all": "^3.1.0",
     "webpack-dev-server": "^3.10.1"
-  },
-  "scripts": {
-    "format": "prettier-standard --format"
   }
 }

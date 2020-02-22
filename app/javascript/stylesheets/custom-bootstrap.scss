@@ -2,6 +2,7 @@
 @import "~bootstrap/scss/variables";
 
 @import "variables";
+@import "mixins";
 
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
@@ -65,7 +66,6 @@
 
 .dropdown-toggle {
   &:after {
-    content: "\f107";
     font-family: "icons";
     color: $color-primary;
   }

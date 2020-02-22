@@ -23,7 +23,7 @@ class LocalStore {
   }
 
   transformKey(key) {
-    return `rc-${key}`;
+    return `quran-${key}`;
   }
 
   getStore() {
