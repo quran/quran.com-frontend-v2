@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 class FootNoteController < ApplicationController
-  include PartialReplacement::Redirection
-
   def show
     @foot_note = FootNote.find(params[:id])
 
-    render partial: "foot_note/show", change: "#{view_context.dom_id(@foot_note.resource)} #footnote"
+    render partial: 'foot_note/show', change: "#{view_context.dom_id(@foot_note.resource)} #footnote"
    end
 end

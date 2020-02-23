@@ -5,14 +5,15 @@
 
 <link href="https://cdn.qurancdn.com" rel="preconnect" crossorigin>
 <link href="https://audio.qurancdn.com" rel="preconnect" crossorigin>
+<link href="https://verses.quran.com" rel="preconnect" crossorigin>
 
 <link rel="manifest" href="<%= static_manifest_path(format: :json) %>">
 <link rel="search" type="application/opensearchdescription+xml" title="search Quran.com" href="<%= static_opensearch_path format: 'xml' %>">
 
-<%= favicon_link_tag 'icons/favicon.ico', title: 'Quran.com' %>
-<%= favicon_link_tag 'icons/android-chrome-256x256.png', rel: 'fluid-icon', type: 'image/png', title: 'Quran.com' %>
-<%= favicon_link_tag 'icons/safari-pinned-tab.svg', rel: 'mask-icon', color: 'theme-color', title: 'Quran.com' %>
-<%= favicon_link_tag 'icons/apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png', title: 'Quran.com' %>
+<link href="<%= asset_pack_url('media/images/icons/favicon.ico') %>" title="Quran.com" type="image/x-icon" rel="shortcut icon" />
+<link href="<%= asset_pack_url('media/images/icons/android-chrome-256x256.png') %>" title="Quran.com" type="image/png" rel="fluid-icon" />
+<link href="<%= asset_pack_url('media/images/icons/safari-pinned-tab.svg') %>" title="Quran.com" type="image/x-icon" rel="mask-icon" color="theme-color" />
+<link href="<%= asset_pack_url('media/images/icons/apple-touch-icon.png') %>" title="Quran.com" type="image/png" rel="apple-touch-icon" color="theme-color" />
 
 <%
   set_meta_tags @presenter.open_graph_hash
@@ -44,3 +45,21 @@
 <meta name="rating" content="General">
 <meta name="robots" content="all, index, follow, archive">
 <meta name="revisit-after" content="30 days">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8496014-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-8496014-1');
+    document.addEventListener('turbolinks:load', function (event) {
+        if (typeof gtag === 'function') {
+            gtag('config', 'UA-8496014-1', {
+                'page_location': event.data.url
+            });
+        }
+    });
+</script>

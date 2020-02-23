@@ -17,9 +17,9 @@ bn-BD:
       long: "%e de %B de %Y"
       short: "%e de %b"
     order:
-    - :year
-    - :month
-    - :day
+      - :year
+      - :month
+      - :day
   number:
     currency:
       format:
@@ -40,9 +40,9 @@ bn-BD:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 1
         significant: true
         strip_insignificant_zeros: true
@@ -50,10 +50,10 @@ bn-BD:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: ", এবং "

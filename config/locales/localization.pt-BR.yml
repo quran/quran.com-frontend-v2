@@ -17,9 +17,9 @@ pt-BR:
       long: "%d de %B de %Y"
       short: "%d de %B"
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   number:
     currency:
       format:
@@ -40,9 +40,9 @@ pt-BR:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true

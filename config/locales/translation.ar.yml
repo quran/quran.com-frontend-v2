@@ -8,49 +8,49 @@
 ar:
   date:
     day_names:
-    - الأحد
-    - الإثنين
-    - الثّلاثاء
-    - الأربعاء
-    - الخميس
-    - الجمعة
-    - السّبت
+      - الأحد
+      - الإثنين
+      - الثّلاثاء
+      - الأربعاء
+      - الخميس
+      - الجمعة
+      - السّبت
     abbr_day_names:
-    - الأحد
-    - الإثنين
-    - الثّلاثاء
-    - الأربعاء
-    - الخميس
-    - الجمعة
-    - السّبت
+      - الأحد
+      - الإثنين
+      - الثّلاثاء
+      - الأربعاء
+      - الخميس
+      - الجمعة
+      - السّبت
     month_names:
-    - 
-    - يناير
-    - فبراير
-    - مارس
-    - أبريل
-    - مايو
-    - يونيو
-    - يوليو
-    - أغسطس
-    - سبتمبر
-    - أكتوبر
-    - نوفمبر
-    - ديسمبر
+      -
+      - يناير
+      - فبراير
+      - مارس
+      - أبريل
+      - مايو
+      - يونيو
+      - يوليو
+      - أغسطس
+      - سبتمبر
+      - أكتوبر
+      - نوفمبر
+      - ديسمبر
     abbr_month_names:
-    - 
-    - يناير
-    - فبراير
-    - مارس
-    - أبريل
-    - مايو
-    - يونيو
-    - يوليو
-    - أغسطس
-    - سبتمبر
-    - أكتوبر
-    - نوفمبر
-    - ديسمبر
+      -
+      - يناير
+      - فبراير
+      - مارس
+      - أبريل
+      - مايو
+      - يونيو
+      - يوليو
+      - أغسطس
+      - سبتمبر
+      - أكتوبر
+      - نوفمبر
+      - ديسمبر
   time:
     am: صباحًا
     pm: مساءً
@@ -65,8 +65,8 @@ ar:
           mb: MB
           gb: GB
           tb: TB
-          pb: 
-          eb: 
+          pb:
+          eb:
       decimal_units:
         units:
           thousand: ألفّ
@@ -77,7 +77,7 @@ ar:
   errors:
     format: "%{message}"
     messages:
-      model_invalid: 'فشل التحقّق من: %{errors}'
+      model_invalid: "فشل التحقّق من: %{errors}"
       inclusion: "%{attribute} غير وارد في القائمة"
       exclusion: حقل %{attribute} محجوز
       invalid: محتوى %{attribute} غير صالح
@@ -107,18 +107,19 @@ ar:
       even: يجب أن يكون عدد %{attribute} زوجياً
       required: يتطلب الخروج
       taken: حقل %{attribute} محجوز مسبقاً
-    unavailable_session: 
-    unacceptable_request: 
-    connection_refused: 
+    unavailable_session:
+    unacceptable_request:
+    connection_refused:
     not_found: عذرا، صفحة غير متواجدة
     invalid_verse: الآية المطلوب خارج النطاق. يرجى الذهاب للصفحة الرئيسية
     invalid_chapter: الجزء المطلوب خارج النطاق. يرجى الذهاب للصفحة الرئيسية
-    no_script: يبدو أن متصفحك لا يدعم جافا سكريبت أو معطل. Quran.com يعمل بشكل أفضل
+    no_script:
+      يبدو أن متصفحك لا يدعم جافا سكريبت أو معطل. Quran.com يعمل بشكل أفضل
       مع تمكين JavaScript. لمزيد من التعليمات حول كيفية تمكين جافا سكريبت
   activerecord:
     errors:
       messages:
-        record_invalid: 'فشل التحقّق من: %{errors}'
+        record_invalid: "فشل التحقّق من: %{errors}"
         restrict_dependent_destroy:
           has_one: لا يمكن حذف السجل لوجود سجل يعتمد عليه %{record}
           has_many: لا يمكن حذف السجل لوجود سجلات تعتمد عليه %{record}
@@ -201,7 +202,7 @@ ar:
       night_tip: التبديل إلى الوضع الليلي
     reset: إعادة الضبط لما كان
   verses:
-    media: 
+    media:
     go: إذهب إلى الآية
     not_found: الآية غير موجودة
   chapters:
@@ -216,7 +217,7 @@ ar:
     go_to_beginning: بداية الجزء
     read_full: قراءة الجزء كاملا
     invalid: سورة غير موجودة
-    revelation_place: 'مكان النزول '
+    revelation_place: "مكان النزول "
   footnote: حاشية
   action:
     play: تشغيل
@@ -229,12 +230,12 @@ ar:
       label: نسخ
       done: تم النسخ
     share: مشاركة آية
-    addNote: 'أضف ملاحظة
+    addNote: "أضف ملاحظة
 
-      '
+      "
   search:
     placeholder: البحث عن "نوح"
-    result: 
+    result:
     error: عذرا ، حدث خطأ في بحثك.
     no_query: لا يوجد بحث
     no_result: لا توجد نتائج.
@@ -270,7 +271,7 @@ ar:
     other_links: روابط اخرى
     contact_us: تواصل معنا
     help: مساعدة وردود الفعل
-    about_project: 
+    about_project:
     rights: كل الحقوق محفوظة
     mobilea_apps: تطبيقات الموبايل
     navigate: التنقل
@@ -291,4 +292,4 @@ ar:
     audio: القرآن الكريم صوتيا
     audio_description: التعلم والاستماع في نفس الوقت
   close: غلق
-  page: 
+  page:

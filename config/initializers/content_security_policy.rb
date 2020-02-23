@@ -7,7 +7,7 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
-  # policy.default_src :self, :https, 'audio.qurancdn.com', 'localhost:3001', 'cdn.qurancdn.com', 'beta.quran.com'
+  # policy.default_src :self, :https, 'audio.qurancdn.com', 'localhost:3001', 'cdn.qurancdn.com', 'beta.quran.com', 'verses.quran.com'
   # policy.font_src :self, :https, :data, 'cdn.qurancdn.com', 'localhost:3001'
   #   policy.img_src     :self, :https, :data
   #   policy.object_src  :none

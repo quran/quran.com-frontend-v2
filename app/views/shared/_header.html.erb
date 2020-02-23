@@ -29,7 +29,7 @@
     <div class="head-right">
       <%= link_to _t('download'), pages_apps_path, class: 'btn btn-primary download' %>
 
-      <a href="javascript:void(0)" class="nav-btn fa-menu"></a>
+      <a href="javascript:void(0)" class="nav-btn fa fa-align-justify" data-target="sidebar.trigger"></a>
     </div>
   </div>
 </header>
@@ -37,38 +37,38 @@
 <div class="right-sidebar">
   <div class="sidebar-head">
     <span class="logo">Quran<span>.com</span></span>
-    <i class="fa-cancel close-menu"></i>
+    <i class="fa fa-times-circle close-menu" data-target="sidebar.close"></i>
   </div>
 
   <ul class="main-menu">
     <li>
       <%= link_to root_path do %>
-        <i class="fa-home"></i> <%= _t('home') %>
+        <i class="fa fa-home"></i> <%= _t('home') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_apps_path do %>
-        <i class="fa-mobile"></i> <%= _t('nav.mobile_apps') %>
+        <i class="fa fa-mobile-alt"></i> <%= _t('nav.mobile_apps') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_about_us_path do %>
-        <i class="fa-info"> </i> <%= _t('nav.about_us') %>
+        <i class="fa fa-info-circle"> </i> <%= _t('nav.about_us') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_donations_path do %>
-        <i class="fa-money"></i> <%= _t('nav.contribute') %>
+        <i class="fa fa-hand-receiving"></i> <%= _t('nav.contribute') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_help_and_feedback_path do %>
-        <i class="fa-help-circled"></i> <%= _t('nav.help') %>
+        <i class="fa fa-question-circle"></i> <%= _t('nav.help') %>
       <% end %>
     </li>
     <li>
       <%= link_to pages_developers_path do %>
-        <i class="fa-desktop"></i> <%= _t('nav.developers') %>
+        <i class="fa fa-code"></i> <%= _t('nav.developers') %>
       <% end %>
     </li>
   </ul>
@@ -91,4 +91,3 @@
     </ul>
   </div>
 </div>
-

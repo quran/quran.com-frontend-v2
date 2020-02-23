@@ -3,18 +3,18 @@ FROM ruby:2.6.2-alpine
 RUN apk add --no-cache curl postgresql-dev tzdata git make gcc g++ python linux-headers binutils-gold gnupg libstdc++ yarn
 
 ENV RAILS_ROOT /var/www/quran
-RUN mkdir -p $RAILS_ROOT 
+RUN mkdir -p $RAILS_ROOT
 WORKDIR $RAILS_ROOT
 
 # Setting env up
 ENV RAILS_ENV='production'
-ENV RACK_ENV='production' 
+ENV RACK_ENV='production'
 
 # Adding gems
 RUN gem install bundler
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install --jobs 20 --retry 5 --without development test 
+RUN bundle install --jobs 20 --retry 5 --without development test
 
 # Adding project files
 COPY . .

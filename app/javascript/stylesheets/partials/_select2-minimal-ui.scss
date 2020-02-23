@@ -1,0 +1,11 @@
+.dropdown {
+  .select2-container--default .select2-selection--single {
+    border: none !important;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+
+    .select2-selection__rendered {
+      color: #8a8a8a !important;
+    }
+  }
+}

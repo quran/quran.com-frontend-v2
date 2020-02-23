@@ -1,0 +1,87 @@
+.right-sidebar {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  bottom: 0;
+  text-align: left;
+  z-index: 1031;
+  visibility: hidden;
+  background: #fff;
+  width: 300px;
+  transition: right 0.35s cubic-bezier(0.24, 1, 0.32, 1), visibility 0.2s;
+
+  &.open {
+    right: 0;
+    visibility: visible;
+    z-index: 200;
+  }
+
+  .sidebar-head {
+    position: relative;
+    border-bottom: 1px solid #eceff1;
+    padding: 28px 25px 25px;
+
+    .logo {
+      font-size: 26px;
+      margin-left: 0;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 42%;
+      right: 25px;
+      color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
+  ul.main-menu {
+    li a {
+      display: block;
+      font-size: 16px;
+      color: #b0bec5;
+      border-bottom: 1px solid #eceff1;
+      padding: 10px 25px;
+
+      &.active,
+      &:focus,
+      &:hover {
+        background: $color-primary;
+        color: #fff;
+      }
+      i {
+        width: 15px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .more-links {
+    line-height: 28px;
+    padding: 20px 25px;
+  }
+}
+
+@media (max-width: 479px) {
+  .right-sidebar {
+    right: -100%;
+    width: 100%;
+  }
+}
+
+// When sidebar is visible
+body.active {
+  &:before {
+    content: "";
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+
+  .surah-actions {
+    z-index: 1;
+  }
+}

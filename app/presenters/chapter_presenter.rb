@@ -4,7 +4,7 @@ class ChapterPresenter < BasePresenter
   def initialize(context)
     super context
 
-    @range_start, @range_end = params[:range].to_s.split("-")
+    @range_start, @range_end = params[:range].to_s.split('-')
   end
 
   def chapter
@@ -24,8 +24,8 @@ class ChapterPresenter < BasePresenter
 
     _font = (
     params[:font].presence ||
-        session[:font] || "v1"
-    )
+        session[:font] || 'v1'
+  )
 
     session[:font] = _font
     @font = _font
@@ -85,7 +85,6 @@ class ChapterPresenter < BasePresenter
   def total_pages
     total = (range_end - range_start)
 
-
     (total / per_page).ceil
   end
 
@@ -133,12 +132,12 @@ class ChapterPresenter < BasePresenter
     list = Word.where(verse_id: verse.id)
 
     list
-        .where(word_translations: {language_id: language.id})
-        .or(
-            list.where(word_translations: {language_id: Language.default.id})
-        )
-        .eager_load(:transliteration, :word_translation).
-        order("word_translations.priority ASC, words.position ASC")
+      .where(word_translations: { language_id: language.id })
+      .or(
+        list.where(word_translations: { language_id: Language.default.id })
+      )
+      .eager_load(:transliteration, :word_translation)
+      .order('word_translations.priority ASC, words.position ASC')
   end
 
   def load_translations(verse)
@@ -148,10 +147,10 @@ class ChapterPresenter < BasePresenter
   protected
 
   def meta_keyword
-    chapter.translated_names.pluck(:name) + ["القران الكريم",
-                                             "القرآن",
-                                             "قران",
-                                             "quran"]
+    chapter.translated_names.pluck(:name) + ['القران الكريم',
+                                             'القرآن',
+                                             'قران',
+                                             'quran']
   end
 
   def meta_description
@@ -176,22 +175,21 @@ class ChapterPresenter < BasePresenter
     verse_end = verse_pagination_end(verse_start, per)
 
     list = Verse
-               .where(chapter_id: chapter.id)
-               .where("verse_number >= ? AND verse_number <= ?", verse_start.to_i, verse_end.to_i)
+           .where(chapter_id: chapter.id)
+           .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
 
-    list = list.where(word_translations: {language_id: language.id})
-               .or(list.where(word_translations: {language_id: Language.default.id}))
+    list = list.where(word_translations: { language_id: language.id })
+               .or(list.where(word_translations: { language_id: Language.default.id }))
                .eager_load(words: eager_load_words)
 
-    list.order("verses.verse_index ASC, words.position ASC, word_translations.priority ASC")
+    list.order('verses.verse_index ASC, words.position ASC, word_translations.priority ASC')
   end
-
 
   def eager_load_words
     %i[
-          word_translation
-          transliteration
-        ]
+      word_translation
+      transliteration
+    ]
   end
 
   def range_end
@@ -234,15 +232,15 @@ class ChapterPresenter < BasePresenter
     translations = (
     params[:translation].presence ||
         params[:translations].presence ||
-        session[:translation] || "131"
-    )
+        session[:translation] || '131'
+  )
 
     session[:translation] = translations
 
-    if translations == 'no'
-      @trans = []
-    else
-      @trans = translations.to_s.split(",")
-    end
+    @trans = if translations == 'no'
+               []
+             else
+               translations.to_s.split(',')
+             end
   end
 end

@@ -14,7 +14,7 @@ class PagesController < ApplicationController
 
   protected
 
-    def set_presenter
-      @presenter = StaticPagePresenter.new(self)
-    end
+  def set_presenter
+    @presenter = StaticPagePresenter.new(self)
+  end
 end

@@ -1,29 +1,29 @@
-<div id="player">
+<div id="player" data-controller="player">
   <div class="container">
     <div class="audio-left-col">
       <ul class="d-flex align-items-center justify-content-between">
         <li>
-          <button class="previous-btn"><i class="fa fa-to-start"></i></button>
+          <button class="previous-btn"><i class="fa fa-step-backward1"></i></button>
         </li>
 
         <li class="play-ctrls play">
           <button class="play-btn">
-            <i class="fa fa-play" ></i>
+            <i class="fa fa-play-solid d-flex align-items-center justify-content-center"></i>
           </button>
           <button class="pause-btn">
-            <i class="fa fa-pause"></i>
+            <i class="fa fa-pause d-flex align-items-center justify-content-center"></i>
           </button>
           <button class="pause-loading">
-            <i class="fa fa-spinner animate-spin"></i>
+            <i class="fa fa-spinner1 animate-spin"></i>
           </button>
         </li>
 
         <li>
-          <button class="next-btn"><i class="fa fa-to-end"></i></button>
+          <button class="next-btn"><i class="fa fa-step-forward1"></i></button>
         </li>
 
         <li>
-          <button class="repeat-btn"><i class="fa fa-loop"></i></button>
+          <button class="repeat-btn"><i class="fa fa-repeat"></i></button>
 
           <div class="repeat-popover-container" style="display:none;">
             <div class="repeat-popover-title text-center mt-1">
@@ -118,48 +118,66 @@
         </li>
 
         <li>
-          <button class="auto-scroll-btn active" data-toggle="tooltip" data-placement="top" data-html="true" title="<%= _t("player.scroll") %>"><i class="fa fa-link"></i></button>
+          <button class="auto-scroll-btn" data-toggle="tooltip" data-placement="top" data-html="true" title="<%= _t("player.scroll") %>">
+            <i class="fa fa-link"></i></button>
         </li>
 
         <li class="text-primary timer">00:00</li>
 
         <li class="lg-audio">
-          <div class="bar">
+          <div id="player-bar">
             <div class="progress"></div>
           </div>
         </li>
 
         <li class="dropdown">
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            <%= @presenter.chapter.name_complex %>
-          </a>
+          <% if false %>
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+              <%= @presenter.chapter.name_complex %>
+            </a>
 
-          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
+              <% Chapter.find_each do |chapter| %>
+                <div class="dropdown-item <%= 'active' if chapter.id == @presenter.chapter.id %>">
+                  <%= link_to chapter.name_simple, chapter_path(chapter) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <select id="chapter-select">
             <% Chapter.find_each do |chapter| %>
-              <div class="dropdown-item <%= 'active' if chapter.id == @presenter.chapter.id %>">
-                <%= link_to chapter.name_simple, chapter_path(chapter) %>
-              </div>
+              <option val=<%= chapter.chapter_number %>  <%= "selected='selected'" if chapter.id == @presenter.chapter.id %>>
+                <%= chapter.name_simple %>
+              </option>
             <% end %>
-          </div>
+          </select>
         </li>
 
         <li class="dropdown dropdown-verse">
+
           <%
             current_verse = @presenter.paginate.first.verse_number
             verse_i18n = t('player.current_verse')
           %>
 
-          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <%= verse_i18n %> <%= current_verse %>
-          </a>
+          <select class="d-none" id="player-verse-dropdown"
+                  data-i18n-label="<%= verse_i18n %>"
+                  x-placement="bottom-start"></select>
 
-          <div
-            class="dropdown-menu"
-            id="player-verse-dropdown"
-            data-i18n-label="<%=  verse_i18n %>"
-            x-placement="bottom-start"
-            style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
-          </div>
+          <% if false %>
+
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="verse-dropdown">
+              <%= verse_i18n %> <%= current_verse %>
+            </a>
+
+            <div
+              class="dropdown-menu"
+              id="player-verse-dropdown"
+              data-i18n-label="<%= verse_i18n %>"
+              x-placement="bottom-start"
+              style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
+            </div>
+          <% end %>
         </li>
       </ul>
     </div>

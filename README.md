@@ -17,7 +17,7 @@
 <br />
 <p align="center">
   <a href="https://quran.com">
-    <img src="app/assets/images/icons/android-chrome-256x256.png" alt="Logo" width="80" height="80">
+    <img src="app/javascript/images/icons/android-chrome-256x256.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">The Noble Quran</h3>

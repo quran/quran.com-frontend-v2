@@ -8,13 +8,8 @@
       <div class="line arabic">
         <div class="text-center">
           <% line.each do |verse_number, words| %>
-            <div class="verse" data-verse-number="<%= verse_number %>">
-            <% words.each do |w| %>
-            <span class="<%= w.char_type_name %> w" id="w-<%= w.id %>" data-local='<%= w.word_translation&.language_name %>' data-id=<%= w.id %> data-audio="<%= w.audio_url %>" data-t="<%= w.word_translation&.text %>" data-tr="<%= w.transliteration&.text %>" data-position="<%= w.position %>">
-              <span class="glyph p<%= w.page_number %>-<%= @presenter.font %>"><%= w.send(@presenter.font_method).html_safe %></span>
-              <span class="text"><%= w.text_madani %> </span>
-            </span>
-            <% end %>
+            <div class="verse" data-verse-number="<%= verse_number %>" data-controller="verse">
+              <%= render partial: 'word', collection: words %>
             </div>
           <% end %>
         </div>

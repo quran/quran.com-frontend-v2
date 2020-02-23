@@ -6,13 +6,13 @@
 
 <%= render "surah_actions" %>
 
-<div id="chapter-info"></div>
+<div id="chapter-info" class="mt-4"></div>
 
 <div class="container">
   <% if @presenter.show_bismillah? %>
     <%= render "bismillah" %>
   <% end %>
-  <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>">
+  <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="slim-scroller infinite-page">
     <%= render "verses" %>
   </div>
 </div>

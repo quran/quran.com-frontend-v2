@@ -1,0 +1,15 @@
+#player {
+  @media (max-width: 767px) {
+    .lg-audio {
+      position: absolute;
+      top: -23%;
+      left: 3px;
+      background-color: white;
+      width: 100%;
+    }
+    .slider.slider-horizontal {
+      width: 100%;
+      left: 13px;
+    }
+  }
+}
