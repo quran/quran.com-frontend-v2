@@ -534,7 +534,7 @@ class Utility.Player
   setAlignHighlight: (currentOnly) =>
     @removeAlignTimers()
     segments = @audioData[@track.verse].segments
-    seek = @track.howl.seek()z
+    seek = @track.howl.seek()
 
     if typeof seek != 'number' # TODO: try to fix that bug
       @removeSegmentHighlight()

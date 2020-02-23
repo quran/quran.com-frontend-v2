@@ -15,7 +15,7 @@ if (workbox) {
       cacheName: "quran-cdn",
       plugins: [
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200]
+          statuses: [0, 1000]
         }),
         new workbox.expiration.Plugin({
           maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year

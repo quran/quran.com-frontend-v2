@@ -48,7 +48,7 @@
   padding: $input-padding-x;
 
   &:before {
-    content: "\e826";
+    content: "\f002";
     font-family: "icons";
     position: absolute;
     left: calc(1rem + #{$input-padding-x});
