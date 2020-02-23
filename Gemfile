@@ -30,8 +30,6 @@ gem 'translation'
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags'
 
-gem 'newrelic_rpm'
-
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
 

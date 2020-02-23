@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def spinning_loader
-    "<i class='fa-spin6 animate-spin'></i> #{_t('loading')}".html_safe
+    "<i class='fa-spinner1 animate-spin'></i> #{_t('loading')}".html_safe
   end
 end

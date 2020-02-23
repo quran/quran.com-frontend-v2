@@ -48,11 +48,23 @@ export default class extends Controller {
   }
 
   play() {
-    alert("play");
+    let player,
+      playerDom = document.getElementById("player");
+
+    if (playerDom) player = playerDom.player;
+    if (player) {
+      return player.playWord(this.el.data("audio"));
+    }
   }
 
   dbClick() {
-    alert("dbclick");
+    let player,
+      playerDom = document.getElementById("player");
+
+    if (playerDom) player = playerDom.player;
+    if (player) {
+      return player.seekToWord(this.el.data("position"));
+    }
   }
 
   disconnect() {

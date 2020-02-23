@@ -10,7 +10,7 @@ export default class extends Controller {
     else context = window;
 
     $(`#${containerId}`).infinitePages({
-      debug: true,
+      debug: false,
       buffer: 1000, // load new page when within 200px of nav link
       nextSelector: `#${containerId}_pagination a[rel=next]:first`,
       context: context,
@@ -20,6 +20,7 @@ export default class extends Controller {
         $(`#${containerId}_pagination`).remove();
         const newItems = $(data);
         $(`#${containerId}`).append(newItems);
+        $(`#${containerId}`).trigger("items:added");
       },
       error(error) {
         return $(`#${containerId}`)
