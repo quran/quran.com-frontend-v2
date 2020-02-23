@@ -1,3 +1,8 @@
+.fa-spinner2 {
+  &:before {
+    content: $fa-spinner2;
+  }
+}
 .fa-moon-stroke {
   &:before {
     content: $fa-moon-stroke;
@@ -58,14 +63,39 @@
     content: $fa-print;
   }
 }
+.fa-step-backward {
+  &:before {
+    content: $fa-step-backward;
+  }
+}
+.fa-play {
+  &:before {
+    content: $fa-play;
+  }
+}
 .fa-pause {
   &:before {
     content: $fa-pause;
   }
 }
-.fa-play1 {
+.fa-pause-solid {
   &:before {
-    content: $fa-play1;
+    content: $fa-pause-solid;
+  }
+}
+.fa-play-solid {
+  &:before {
+    content: $fa-play-solid;
+  }
+}
+.fa-fast-forward1 {
+  &:before {
+    content: $fa-fast-forward1;
+  }
+}
+.fa-step-forward {
+  &:before {
+    content: $fa-step-forward;
   }
 }
 .fa-gift {
@@ -121,6 +151,11 @@
 .fa-youtube {
   &:before {
     content: $fa-youtube;
+  }
+}
+.fa-pause-circle1 {
+  &:before {
+    content: $fa-pause-circle1;
   }
 }
 .fa-discourse {
@@ -226,6 +261,11 @@
 .fa-angle-up {
   &:before {
     content: $fa-angle-up;
+  }
+}
+.fa-arrow-alt-from-right {
+  &:before {
+    content: $fa-arrow-alt-from-right;
   }
 }
 .fa-arrow-circle-down {
@@ -583,11 +623,6 @@
     content: $fa-pause-circle;
   }
 }
-.fa-play {
-  &:before {
-    content: $fa-play;
-  }
-}
 .fa-question-circle {
   &:before {
     content: $fa-question-circle;
@@ -683,6 +718,16 @@
     content: $fa-sort-down;
   }
 }
+.fa-spinner-third {
+  &:before {
+    content: $fa-spinner-third;
+  }
+}
+.fa-spinner {
+  &:before {
+    content: $fa-spinner;
+  }
+}
 .fa-text-height {
   &:before {
     content: $fa-text-height;
@@ -703,6 +748,11 @@
     content: $fa-times;
   }
 }
+.fa-video {
+  &:before {
+    content: $fa-video;
+  }
+}
 .fa-home1 {
   &:before {
     content: $fa-home1;
@@ -711,5 +761,20 @@
 .fa-lightbulb1 {
   &:before {
     content: $fa-lightbulb1;
+  }
+}
+.fa-spinner1 {
+  &:before {
+    content: $fa-spinner1;
+  }
+}
+.fa-step-backward1 {
+  &:before {
+    content: $fa-step-backward1;
+  }
+}
+.fa-step-forward1 {
+  &:before {
+    content: $fa-step-forward1;
   }
 }

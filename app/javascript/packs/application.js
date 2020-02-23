@@ -5,6 +5,7 @@
 
 require("turbolinks").start();
 require("node-waves/dist/waves");
+require("jquery-ujs/index");
 require("partial_replacement");
 require("bootstrap_slider");
 require("howler");

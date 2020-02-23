@@ -1,10 +1,10 @@
 <div id="<%= dom_id @foot_note.resource %>">
-  <div id="footnote" class="footnote">
-    <div class="alert alert-dismissible fade show" role="alert">
+  <div id="footnote" class="footnote rounded-lg">
+    <div class="alert alert-dismissible p-3" role="alert">
       <span class="resource"><%= _t("footnote") %></span>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <i class="fa fa-circle-with-cross text-danger"></i>
-      </button>
+      <a class="text-info close" rel="tooltip" data-dismiss="alert" aria-label="Close">
+        <i class="fa fa-times-circle"></i>
+      </a>
 
       <div class="<%= @foot_note.language_name %>">
         <%= @foot_note.text.html_safe %>

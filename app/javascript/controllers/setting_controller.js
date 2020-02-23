@@ -105,6 +105,7 @@ export default class extends Controller {
       repeatType: "single",
       repeatCount: 1,
       repeatIteration: 1,
+      autoScroll: true,
       wordFontSize: {
         mobile: 30,
         desktop: 50

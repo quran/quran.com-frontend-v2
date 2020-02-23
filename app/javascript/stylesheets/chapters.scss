@@ -217,12 +217,14 @@
 
 .surah-actions {
   position: fixed;
-  top: 70px;
+  top: 80px;
   left: 0px;
   right: 0px;
   float: left;
   width: 100%;
   z-index: 100;
+
+  border-radius: 25px;
 }
 .border-info {
   border: 1px solid #00acc1;
@@ -300,11 +302,13 @@
 }
 
 #verses {
+  margin-top: 20px;
   .verse {
-    padding: 30px 0px 0px;
+    padding: 30px 10px;
 
     &.verse-highlight {
       background-color: #f5fbf7;
+      border-radius: 50px;
     }
 
     .ayah-number {

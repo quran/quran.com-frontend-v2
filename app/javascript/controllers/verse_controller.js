@@ -31,6 +31,27 @@ export default class extends Controller {
       let id = $(e.target).attr("foot_note");
       $.get(`/foot_note/${id}`);
     });
+
+    this.playButton = this.el.find(".play-verse");
+
+    this.playButton.on("click", event => {
+      event.preventDefault();
+
+      let player,
+        playerDom = document.getElementById("player");
+
+      if (playerDom) player = playerDom.player;
+
+      if (this.playButton.find(".fa").hasClass("fa-play-solid")) {
+        if (player) {
+          player.play(this.el.data("verseNumber"));
+        }
+      } else {
+        if (player) {
+          player.handlePauseBtnClick();
+        }
+      }
+    });
   }
 
   disconnect() {}

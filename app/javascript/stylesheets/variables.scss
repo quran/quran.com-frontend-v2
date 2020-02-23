@@ -288,7 +288,7 @@ $custom-control-indicator-bg-size: 0.5rem;
 
 /*border radius*/
 $border-radius: 4px;
-$border-radius-lg: $border-radius;
+$border-radius-lg: 10px;
 $border-radius-sm: $border-radius;
 $border-radius-plus: 10px;
 
@@ -476,6 +476,6 @@ $tooltip-padding-y: 8px;
 $tooltip-padding-x: 20px;
 
 $theme-colors: (
-        primary: $color-primary,
-        secondary: $color-secondary
+  primary: $color-primary,
+  secondary: $color-secondary
 );

@@ -9,7 +9,7 @@ if (workbox) {
 
   workbox.routing.registerRoute(
     new RegExp(
-      "^https://(cdnjs|fonts|oss|maxcdn|cdn|audio).(?:googleapis|gstatic|cloudflare|maxcdn|bootstrapcdn|ravenjs|qurancdn|quran).com/(.*)"
+      "^https://(cdnjs|fonts|oss|maxcdn|cdn|audio|download).(?:googleapis|gstatic|cloudflare|maxcdn|bootstrapcdn|ravenjs|qurancdn|quran|quranicaudio).com/(.*)"
     ),
     new workbox.strategies.CacheFirst({
       cacheName: "quran-cdn",
