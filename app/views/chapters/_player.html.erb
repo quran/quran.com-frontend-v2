@@ -146,7 +146,7 @@
           <% end %>
           <select id="chapter-select">
             <% Chapter.find_each do |chapter| %>
-              <option val=<%= chapter.chapter_number %>  <%= "selected='selected'" if chapter.id == @presenter.chapter.id %>>
+              <option value=<%= chapter.chapter_number %>  <% if chapter.id == @presenter.chapter.id %> selected='selected' <% end %>>
                 <%= chapter.name_simple %>
               </option>
             <% end %>
