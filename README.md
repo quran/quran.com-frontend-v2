@@ -45,9 +45,9 @@
   - [Prerequisites](#prerequisites)
   - [Set-up](#set-up)
 - [Contribute](#contribute)
+- [Important Note](#important-note)
 - [License](#license)
 - [Contact](#contact)
-- [End Note:](#end-note)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -67,9 +67,9 @@ Continue reading to learn more on how you can contribute to ["the Noble Quran"](
 
 ## Getting Started
 
-The second version of ["the Noble Quran"](https://quran.com) project is developed with Ruby on Rails. Ruby is an interpreted, high-level, general-purpose programming language. Rails, is a server-side web application and a model–view–controller framework. The Rails framework is written in the Ruby programming language, and it providing default structures for a database, web service, and web pages.
+The second version of ["the Noble Quran"](https://quran.com) project is developed with Ruby on Rails. Ruby is an interpreted, high-level, general-purpose programming language. Rails, is a server-side web application and a model–view–controller framework. The Rails framework is written in the Ruby programming language, and it provides default structures for a database, web service, and web pages.
 
-To contribute, you'll first need to installing prerequisites and set up a local Git repository.
+To contribute, you'll first need to install prerequisites and set up a local Git repository.
 
 ### Development Stack
 
@@ -88,10 +88,10 @@ Our team would like to keep development libraries up to date. Please refer to th
 Please install the following:
 
 - [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser.
-- [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it is an Apache Hadoop technology.
-- Follow (this guide)[https://gorails.com/setup] to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select ruby version `2.6.2`.
+- [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it's an Apache Hadoop technology.
+- Follow (this guide)[https://gorails.com/setup] to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.6.2`.
 - [pgAdmin](https://www.pgadmin.org/) is a GUI for postgreSQL.
-- Also, you're strongly encouraged to install ruby with _Ruby Version Manager_ (RVM). (RVM)[https://rvm.io/] is a command-line tool that lets you easily install and manage multiple ruby environments.
+- Also, you're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). (RVM)[https://rvm.io/] is a command-line tool that lets you easily install and manage multiple ruby environments.
 
 ### Set-up
 
@@ -157,7 +157,7 @@ psql -cxq --quiet -d quran_dev -f dump.sql
 rake db:create
 ```
 
-9. To start the local server with rails, run:
+9. To start the local server with Rails, run:
 
 ```sh
 rails s
@@ -171,7 +171,7 @@ In Sha'a Allah, after properly going through these, you'll see the web applicati
 
 - Review the [open issues](https://github.com/quran/quran.com-frontend-v2/issues) for a list of known issues and proposed features
 
-- Pull the latest changes from "upstream" and push these changes to your forked "origin". This syncs your fork of the repository with the live upstream repository.
+- Pull the latest changes from "upstream" and push these changes to your forked "origin". You'll need to repeat this step each time you plan to contribute.
 
 ```sh
 git pull upstream master
@@ -186,7 +186,20 @@ git checkout -b branchName
 
 - Employ your technical chops to resolve an issue or develop a proposed feature. Be sure your code follows our practices.
 
-- Push your branch to the origin. The following command will create a branch on your GitHub project. The `-u` flag links this branch with the remote branch, so that in the future you can simply type `git push origin`.
+- If you need to switch to your master branch or another branch, then use:
+
+```sh
+git checkout master
+```
+
+- Run the following commands before you switch from your current branch to a new branch, to prevent leaking the changes on your current branch to another branch.
+
+```
+git add .
+git commit -m "this is a comment"
+```
+
+- When you're done making changes, push your branch to the origin. The following command will create a branch on your GitHub project. The `-u` flag links this branch with the remote branch, so that in the future you can simply type `git push origin`.
 
 ```sh
 git push -u origin branchName
@@ -194,9 +207,15 @@ git push -u origin branchName
 
 - Navigate to the ["the Noble Quran"](https://quran.com) project. Click on the "Pull Request" button in the project header. Enter a title and description of your pull request, and click on the green "Send pull request" button.
 
-- Then, you'll see an open pull request. Your code will be reviewed, and you can discuss with the team. You can also continue to push to your branch in light of discussion and feedback about your commits.
+- Your code will be reviewed. You can also continue to push to your branch in light of discussion and feedback about your commits.
 
 Contributions are what make the open source community an amazing place to learn, inspire, and develop together. The contributions you make are _appreciated_.
+
+<!-- IMPORTANT NOTE -->
+
+## Important Note
+
+This project is for the sake of Allah Subhana Wa Tala, and our team has good intentions while working on this project. When using our project code or contributing to the project, you agree to abide by the teachings and guidlines of the Quran. You are not allowed to use or copy the project code for any material gains or improper use, as defined by the Quran's teachings and guidelines.
 
 <!-- LICENSE -->
 
@@ -208,7 +227,7 @@ Distributed under the GNU GPLv3 License. See [LICENSE](./LICENSE) for more infor
 
 ## Contact
 
-Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our slack channel where we can discuss ideas, issues, features and so much more. We will try to add you as soon as possible.
+Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our slack channel, and we'll try to add you as soon as possible. On slack, we can discuss ideas, issues, features and so much more. 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -224,7 +243,3 @@ Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) w
 [license-shield]: https://img.shields.io/github/license/quran/quran.com-frontend-v2?style=for-the-badge
 [license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
-
-## End Note:
-
-This project is for the sake of Allah and we all have good intentions while working with this project. But we must stress that copying the code/project unethically or using this for any material gains is unacceptable.
