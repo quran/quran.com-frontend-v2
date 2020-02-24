@@ -137,7 +137,7 @@ gem install bundler
 bundle install
 ```
 
-5. [Contact us](#contact) about the database dump.
+5. Download the (mini database dump)[https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy]. This dump has the first 15 Ayahs of each surah, two translations, two audio recitation, and few other required data, for all the Surahs.
 
 6. Check that postgreSQL is up and running on your machine. For Linux, use:
 
