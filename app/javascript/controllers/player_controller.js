@@ -9,7 +9,8 @@
 import {Controller} from "stimulus";
 import {Howl, Howler} from "howler";
 
-const AUDIO_CDN = "https://download.quranicaudio.com/";
+const AUDIO_CDN = "https://audio.qurancdn.com/";
+//"https://download.quranicaudio.com/";
 // TODO: should set to false to use web audio instead, but that requires CORS
 const USE_HTML5 = true;
 
