@@ -44,12 +44,6 @@ export default class extends Controller {
       this.resetSetting();
     });
     $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
-    $(document).on(
-      "hide.bs.dropdown",
-      "#translation-dropdown",
-      this.reloadTranslations
-    );
-    $(document).on("hide.bs.dropdown", "#reciter-dropdown", this.updateReciter);
 
     this.loadSettings();
 
@@ -179,7 +173,6 @@ export default class extends Controller {
       { translations: translationIds.join(",") },
       function(response) {
         $("#verses").html(response);
-        return $this.bindWordTooltip($(".word"));
       }
     );
   }

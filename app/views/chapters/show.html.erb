@@ -12,7 +12,7 @@
   <% if @presenter.show_bismillah? %>
     <%= render "bismillah" %>
   <% end %>
-  <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="slim-scroller infinite-page">
+  <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="slim-scroller infinite-page chapter">
     <%= render "verses" %>
   </div>
 </div>

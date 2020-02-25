@@ -9,10 +9,28 @@ if (workbox) {
 
   workbox.routing.registerRoute(
     new RegExp(
-      "^https://(cdnjs|fonts|oss|maxcdn|cdn|audio|download).(?:googleapis|gstatic|cloudflare|maxcdn|bootstrapcdn|ravenjs|qurancdn|quran|quranicaudio).com/(.*)"
+      "^https://(cdn|audio|download).(?:qurancdn|quran|quranicaudio).com/(.*)"
     ),
     new workbox.strategies.CacheFirst({
-      cacheName: "quran-cdn",
+      cacheName: "quran-audio",
+      plugins: [
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 1000]
+        }),
+        new workbox.expiration.Plugin({
+          maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
+          maxEntries: 500
+        })
+      ]
+    })
+  );
+
+  workbox.routing.registerRoute(
+    new RegExp(
+      "^https://(cdnjs|fonts|oss|maxcdn).(?:googleapis|gstatic|cloudflare|maxcdn|bootstrapcdn|ravenjs).com/(.*)"
+    ),
+    new workbox.strategies.CacheFirst({
+      cacheName: "quran-external-libs",
       plugins: [
         new workbox.cacheableResponse.Plugin({
           statuses: [0, 1000]
@@ -36,7 +54,7 @@ if (workbox) {
         }),
         new workbox.expiration.Plugin({
           maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
-          maxEntries: 50
+          maxEntries: 1000
         })
       ]
     })
@@ -62,12 +80,13 @@ if (workbox) {
       cacheName: "quran-pwa",
       plugins: [
         new workbox.expiration.Plugin({
-          maxEntries: 200,
-          maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+          maxEntries: 2000,
+          maxAgeSeconds: 6 * 30 * 24 * 60 * 60 // 6 month
         })
       ]
     })
   );
+
   console.log("Workbox is ready");
 } else {
   console.log("Boo! Workbox didn't load 😬");

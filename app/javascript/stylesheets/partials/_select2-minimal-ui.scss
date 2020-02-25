@@ -1,5 +1,6 @@
 .dropdown {
-  .select2-container--default .select2-selection--single {
+  .select2-container--default
+    .select2-selection--single[aria-expanded="false"] {
     border: none !important;
     background-color: transparent !important;
     border-radius: 0 !important;
@@ -7,5 +8,8 @@
     .select2-selection__rendered {
       color: #8a8a8a !important;
     }
+  }
+
+  .select2-search__field {
   }
 }

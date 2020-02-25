@@ -8,8 +8,18 @@ body.night {
   .footnote,
   .verse-highlight,
   .popover-header,
-  .right-sidebar {
+  .right-sidebar,
+  .select2-dropdown {
     background: #32312c !important;
+  }
+
+  .select2-selection,
+  .select2-search__field {
+    background-color: #1d1f21 !important;
+
+    &:focus {
+      border-color: $color-primary !important;
+    }
   }
 
   .verse .w,
