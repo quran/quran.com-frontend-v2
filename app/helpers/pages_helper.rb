@@ -2,7 +2,7 @@
 
 module PagesHelper
   def group_ayah_by_lines(verses)
-    #      This method words of each ayah by line number, and return words with following schema
+    #      This method group words ayah by line number, and return words with following schema
     #      {
     #       page_number1: [
     #        {verse_number: [words]}
