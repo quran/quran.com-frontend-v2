@@ -9,49 +9,49 @@ sq:
   tafsir_select:
   date:
     day_names:
-      - E Diel
-      - E Hënë
-      - E Martë
-      - E Mërkurë
-      - E Enjte
-      - E Premte
-      - E Shtunë
+    - E Diel
+    - E Hënë
+    - E Martë
+    - E Mërkurë
+    - E Enjte
+    - E Premte
+    - E Shtunë
     abbr_day_names:
-      - E Diel
-      - E Hënë
-      - E Martë
-      - E Mërkurë
-      - E Enjte
-      - E Premte
-      - E Shtunë
+    - E Diel
+    - E Hënë
+    - E Martë
+    - E Mërkurë
+    - E Enjte
+    - E Premte
+    - E Shtunë
     month_names:
-      -
-      - Janar
-      - Shkurt
-      - Mars
-      - Prill
-      - Maj
-      - Qershor
-      - Korrik
-      - Gusht
-      - Shtator
-      - Tetor
-      - Nëntor
-      - Dhjetor
+    -
+    - Janar
+    - Shkurt
+    - Mars
+    - Prill
+    - Maj
+    - Qershor
+    - Korrik
+    - Gusht
+    - Shtator
+    - Tetor
+    - Nëntor
+    - Dhjetor
     abbr_month_names:
-      -
-      - Janar
-      - Shkurt
-      - Mars
-      - Prill
-      - Maj
-      - Qershor
-      - Korrik
-      - Gusht
-      - Shtator
-      - Tetor
-      - Nëntor
-      - Dhjetor
+    -
+    - Janar
+    - Shkurt
+    - Mars
+    - Prill
+    - Maj
+    - Qershor
+    - Korrik
+    - Gusht
+    - Shtator
+    - Tetor
+    - Nëntor
+    - Dhjetor
   time:
     am: në mëngjes
     pm: mbasdite
@@ -78,7 +78,7 @@ sq:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: "Validimi dështoi: %{errors}"
+      model_invalid: 'Validimi dështoi: %{errors}'
       inclusion: nuk është i përfshirë në list
       exclusion: është i rezervuar
       invalid: është e palejuar
@@ -118,10 +118,9 @@ sq:
   activerecord:
     errors:
       messages:
-        record_invalid: "Validimi dështoi: %{errors}"
+        record_invalid: 'Validimi dështoi: %{errors}'
         restrict_dependent_destroy:
-          has_one:
-            Nuk mund të fshini rekordin për shkak se një %{record} i varur
+          has_one: Nuk mund të fshini rekordin për shkak se një %{record} i varur
             ekziston
           has_many: Nuk mund të fshini rekordin për shkak se %{record} të varura ekzistojnë
   datetime:
@@ -222,7 +221,6 @@ sq:
   action:
     play:
     pause:
-    tafsir:
     bookmark:
       label:
       done:
@@ -231,6 +229,9 @@ sq:
       done:
     share:
     addNote:
+    tafsir:
+      label:
+      select:
   search:
     placeholder:
     result:

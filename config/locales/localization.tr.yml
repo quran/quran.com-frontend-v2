@@ -17,9 +17,9 @@ tr:
       long: "%e %B %Y, %A"
       short: "%e %b"
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   number:
     currency:
       format:
@@ -40,7 +40,7 @@ tr:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
         delimiter: "."
         precision: 3
@@ -50,7 +50,7 @@ tr:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%%n"
     precision:
       format:

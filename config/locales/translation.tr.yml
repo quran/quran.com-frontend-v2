@@ -9,49 +9,49 @@ tr:
   tafsir_select:
   date:
     day_names:
-      - Pazar
-      - Pazartesi
-      - Salı
-      - Çarşamba
-      - Perşembe
-      - Cuma
-      - Cumartesi
+    - Pazar
+    - Pazartesi
+    - Salı
+    - Çarşamba
+    - Perşembe
+    - Cuma
+    - Cumartesi
     abbr_day_names:
-      - Pzr
-      - Pzt
-      - Sal
-      - Çrş
-      - Prş
-      - Cum
-      - Cts
+    - Pzr
+    - Pzt
+    - Sal
+    - Çrş
+    - Prş
+    - Cum
+    - Cts
     month_names:
-      -
-      - Ocak
-      - Şubat
-      - Mart
-      - Nisan
-      - Mayıs
-      - Haziran
-      - Temmuz
-      - Ağustos
-      - Eylül
-      - Ekim
-      - Kasım
-      - Aralık
+    -
+    - Ocak
+    - Şubat
+    - Mart
+    - Nisan
+    - Mayıs
+    - Haziran
+    - Temmuz
+    - Ağustos
+    - Eylül
+    - Ekim
+    - Kasım
+    - Aralık
     abbr_month_names:
-      -
-      - Oca
-      - Şub
-      - Mar
-      - Nis
-      - May
-      - Haz
-      - Tem
-      - Ağu
-      - Eyl
-      - Eki
-      - Kas
-      - Ara
+    -
+    - Oca
+    - Şub
+    - Mar
+    - Nis
+    - May
+    - Haz
+    - Tem
+    - Ağu
+    - Eyl
+    - Eki
+    - Kas
+    - Ara
   time:
     am: öğleden önce
     pm: öğleden sonra
@@ -78,7 +78,7 @@ tr:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: "Doğrulama başarısız oldu: %{errors}"
+      model_invalid: 'Doğrulama başarısız oldu: %{errors}'
       inclusion: kabul edilen bir kelime değil
       exclusion: kullanılamaz
       invalid: geçersiz
@@ -118,7 +118,7 @@ tr:
   activerecord:
     errors:
       messages:
-        record_invalid: "Doğrulama başarısız oldu: %{errors}"
+        record_invalid: 'Doğrulama başarısız oldu: %{errors}'
         restrict_dependent_destroy:
           has_one: Bağlı bir kayıt %{record} bulunduğu için kayıt silinemedi
           has_many: Bağlı kayıtlar %{record} bulunduğu için kayıt silinemedi
@@ -220,7 +220,6 @@ tr:
   action:
     play:
     pause:
-    tafsir:
     bookmark:
       label:
       done:
@@ -229,6 +228,9 @@ tr:
       done:
     share:
     addNote:
+    tafsir:
+      label:
+      select:
   search:
     placeholder:
     result:

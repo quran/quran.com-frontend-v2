@@ -17,9 +17,9 @@ fr:
       long: "%e %B %Y"
       short: "%e %b"
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   i18n:
     transliterate:
       rule:
@@ -59,9 +59,9 @@ fr:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -69,11 +69,11 @@ fr:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   spree:
     date_picker:
       first_day: 0

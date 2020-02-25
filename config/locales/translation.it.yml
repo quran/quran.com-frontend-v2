@@ -9,49 +9,49 @@ it:
   tafsir_select:
   date:
     day_names:
-      - domenica
-      - lunedì
-      - martedì
-      - mercoledì
-      - giovedì
-      - venerdì
-      - sabato
+    - domenica
+    - lunedì
+    - martedì
+    - mercoledì
+    - giovedì
+    - venerdì
+    - sabato
     abbr_day_names:
-      - dom
-      - lun
-      - mar
-      - mer
-      - gio
-      - ven
-      - sab
+    - dom
+    - lun
+    - mar
+    - mer
+    - gio
+    - ven
+    - sab
     month_names:
-      -
-      - gennaio
-      - febbraio
-      - marzo
-      - aprile
-      - maggio
-      - giugno
-      - luglio
-      - agosto
-      - settembre
-      - ottobre
-      - novembre
-      - dicembre
+    -
+    - gennaio
+    - febbraio
+    - marzo
+    - aprile
+    - maggio
+    - giugno
+    - luglio
+    - agosto
+    - settembre
+    - ottobre
+    - novembre
+    - dicembre
     abbr_month_names:
-      -
-      - gen
-      - feb
-      - mar
-      - apr
-      - mag
-      - giu
-      - lug
-      - ago
-      - set
-      - ott
-      - nov
-      - dic
+    -
+    - gen
+    - feb
+    - mar
+    - apr
+    - mag
+    - giu
+    - lug
+    - ago
+    - set
+    - ott
+    - nov
+    - dic
   time:
     am: am
     pm: pm
@@ -78,7 +78,7 @@ it:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: "Validazione fallita: %{errors}"
+      model_invalid: 'Validazione fallita: %{errors}'
       inclusion: non è compreso tra le opzioni disponibili
       exclusion: è riservato
       invalid: non è valido
@@ -118,13 +118,11 @@ it:
   activerecord:
     errors:
       messages:
-        record_invalid: "Validazione fallita: %{errors}"
+        record_invalid: 'Validazione fallita: %{errors}'
         restrict_dependent_destroy:
-          has_one:
-            Il record non può essere cancellato perchè esiste un %{record}
+          has_one: Il record non può essere cancellato perchè esiste un %{record}
             dipendente
-          has_many:
-            Il record non può essere cancellato perchè esistono %{record}
+          has_many: Il record non può essere cancellato perchè esistono %{record}
             dipendenti
   datetime:
     distance_in_words:
@@ -224,7 +222,6 @@ it:
   action:
     play:
     pause:
-    tafsir:
     bookmark:
       label:
       done:
@@ -233,6 +230,9 @@ it:
       done:
     share:
     addNote:
+    tafsir:
+      label:
+      select:
   search:
     placeholder:
     result:

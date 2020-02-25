@@ -9,49 +9,49 @@ id:
   tafsir_select:
   date:
     day_names:
-      - Minggu
-      - Senin
-      - Selasa
-      - Rabu
-      - Kamis
-      - Jumat
-      - Sabtu
+    - Minggu
+    - Senin
+    - Selasa
+    - Rabu
+    - Kamis
+    - Jumat
+    - Sabtu
     abbr_day_names:
-      - Min
-      - Sen
-      - Sel
-      - Rab
-      - Kam
-      - Jum
-      - Sab
+    - Min
+    - Sen
+    - Sel
+    - Rab
+    - Kam
+    - Jum
+    - Sab
     month_names:
-      -
-      - Januari
-      - Februari
-      - Maret
-      - April
-      - Mei
-      - Juni
-      - Juli
-      - Agustus
-      - September
-      - Oktober
-      - November
-      - Desember
+    -
+    - Januari
+    - Februari
+    - Maret
+    - April
+    - Mei
+    - Juni
+    - Juli
+    - Agustus
+    - September
+    - Oktober
+    - November
+    - Desember
     abbr_month_names:
-      -
-      - Jan
-      - Feb
-      - Mar
-      - Apr
-      - Mei
-      - Jun
-      - Jul
-      - Agu
-      - Sep
-      - Okt
-      - Nov
-      - Des
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - Mei
+    - Jun
+    - Jul
+    - Agu
+    - Sep
+    - Okt
+    - Nov
+    - Des
   time:
     am: am
     pm: pm
@@ -78,7 +78,7 @@ id:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      model_invalid: "Validasi gagal: %{errors}"
+      model_invalid: 'Validasi gagal: %{errors}'
       inclusion: tidak termasuk
       exclusion: sudah digunakan
       invalid: tidak valid
@@ -109,11 +109,9 @@ id:
       required: harus ada
       taken: sudah digunakan
     not_found:
-    invalid_verse:
-      Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
-    invalid_chapter:
-      Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih sebuah Surah
     no_script:
     unavailable_session:
@@ -122,10 +120,9 @@ id:
   activerecord:
     errors:
       messages:
-        record_invalid: "Validasi gagal: %{errors}"
+        record_invalid: 'Validasi gagal: %{errors}'
         restrict_dependent_destroy:
-          has_one:
-            Tidak bisa menghapus record karena terdapat satu %{record} yang
+          has_one: Tidak bisa menghapus record karena terdapat satu %{record} yang
             bergantung
           has_many: Tidak bisa menghapus record karena terdapat %{record} yang bergantung
   datetime:
@@ -206,9 +203,9 @@ id:
       night_tip: Ganti ke mode malam
     reset:
   verses:
-    media: "Lihat kuliah dari %{from}
+    media: 'Lihat kuliah dari %{from}
 
-      "
+      '
     go:
     not_found: Ayat tidak ditemukan
   chapters:
@@ -228,7 +225,6 @@ id:
   action:
     play: Putar
     pause: Jeda
-    tafsir:
     bookmark:
       label: Tandai
       done: Ditandai
@@ -237,6 +233,9 @@ id:
       done: Tersalin!
     share:
     addNote:
+    tafsir:
+      label:
+      select:
   search:
     placeholder: Cari "Nuh"
     result:
@@ -275,8 +274,7 @@ id:
     other_links: Tautan lainnya
     contact_us: Hubungi kami
     help: Bantuan & umpan balik
-    about_project:
-      Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
     mobilea_apps: Aplikasi Ponsel
