@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 class BasePresenter
+  include QuranUtils::StrongMemoize
+
   HOST = 'https://www.quran.com'
+  DEFAULT_RECITATION = 7
+  DEFAULT_TRANSLATION = 131
+
   attr_reader :context, :resource_class
 
   def initialize(context)

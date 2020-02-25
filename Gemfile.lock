@@ -15,8 +15,9 @@ GIT
       multi_json (~> 1.11)
       rails (>= 5.2)
 
-PATH
-  remote: ../quran-core
+GIT
+  remote: https://github.com/quran/quran-core.git
+  revision: 9a1cd59469832599b1b3227da3a21bd550133b7a
   specs:
     quran-core (0.4.0)
       activerecord (~> 6.0.0.beta1)
