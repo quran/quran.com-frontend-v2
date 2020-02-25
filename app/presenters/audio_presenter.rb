@@ -52,12 +52,12 @@ class AudioPresenter < BasePresenter
 
     recitation = (
     params[:recitation].presence ||
-        session[:recitation] || '7'
-  )
+        session[:recitation] || DEFAULT_RECITATION
+  ).to_i
 
     session[:recitation] = recitation
 
-    recitation.to_i
+    recitation
   end
 
   def chapter_id

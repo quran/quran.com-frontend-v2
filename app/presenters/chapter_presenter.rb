@@ -25,7 +25,7 @@ class ChapterPresenter < BasePresenter
     _font = (
     params[:font].presence ||
         session[:font] || 'v1'
-  )
+    )
 
     session[:font] = _font
     @font = _font
@@ -128,20 +128,28 @@ class ChapterPresenter < BasePresenter
     valid_translations.present?
   end
 
+  def recitation_selected?(id)
+    id == (session[:recitation] || DEFAULT_RECITATION)
+  end
+
+  def translation_selected?(id)
+    valid_translations.include?(id.to_s)
+  end
+
   def load_words(verse)
     list = Word.where(verse_id: verse.id)
 
     list
-      .where(word_translations: { language_id: language.id })
-      .or(
-        list.where(word_translations: { language_id: Language.default.id })
-      )
-      .eager_load(:transliteration, :word_translation)
-      .order('word_translations.priority ASC, words.position ASC')
+        .where(word_translations: {language_id: language.id})
+        .or(
+            list.where(word_translations: {language_id: Language.default.id})
+        )
+        .eager_load(:transliteration, :word_translation)
+        .order('word_translations.priority DESC, words.position ASC')
   end
 
   def load_translations(verse)
-    verse.translations.where(resource_content_id: valid_translations)
+    verse.translations.where(resource_content_id: valid_translations).order('translations.priority DESC')
   end
 
   protected
@@ -175,11 +183,11 @@ class ChapterPresenter < BasePresenter
     verse_end = verse_pagination_end(verse_start, per)
 
     list = Verse
-           .where(chapter_id: chapter.id)
-           .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+               .where(chapter_id: chapter.id)
+               .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
 
-    list = list.where(word_translations: { language_id: language.id })
-               .or(list.where(word_translations: { language_id: Language.default.id }))
+    list = list.where(word_translations: {language_id: language.id})
+               .or(list.where(word_translations: {language_id: Language.default.id}))
                .eager_load(words: eager_load_words)
 
     list.order('verses.verse_index ASC, words.position ASC, word_translations.priority ASC')
@@ -227,20 +235,20 @@ class ChapterPresenter < BasePresenter
 
   def valid_translations
     # 131 default translation
-    return @trans if @trans
+    strong_memoize :valid_translations do
+      translations = (
+      params[:translation].presence ||
+          params[:translations].presence ||
+          session[:translation] || DEFAULT_TRANSLATION
+      )
 
-    translations = (
-    params[:translation].presence ||
-        params[:translations].presence ||
-        session[:translation] || '131'
-  )
+      session[:translation] = translations
 
-    session[:translation] = translations
-
-    @trans = if translations == 'no'
-               []
-             else
-               translations.to_s.split(',')
-             end
+      if translations == 'no'
+        []
+      else
+        translations.to_s.split(',')
+      end
+    end
   end
 end

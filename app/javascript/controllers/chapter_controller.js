@@ -24,6 +24,20 @@ export default class extends Controller {
     return Promise.resolve(request);
   }
 
+  changeTranslations(newTranslationIds) {
+    let path = $("#verses_pagination").data("url");
+
+    fetch(`${path}?${$.param({ translations: newTranslationIds.join(",") })}`)
+      .then(response => response.text())
+      .then(verses => {
+        $("#verses").html(
+          $(verses)
+            .find("#verses")
+            .html()
+        );
+      });
+  }
+
   insertVerses(newVerses) {
     let dom = $("<div>").html(newVerses);
     let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");

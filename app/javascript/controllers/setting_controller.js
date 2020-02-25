@@ -44,6 +44,12 @@ export default class extends Controller {
       this.resetSetting();
     });
     $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
+    $(document).on("select2:select", "#reciter-dropdown-menu", e => {
+      this.updateReciter(e.currentTarget.value);
+    });
+    $(document).on("select2:select", "#translations", e => {
+      this.updateTranslations($(e.target).val());
+    });
 
     this.loadSettings();
 
@@ -60,6 +66,19 @@ export default class extends Controller {
 
   toggleReadingMode() {
     $("#toggle-readingmode").toggleClass("text-primary");
+  }
+
+  updateReciter(newRecitation) {
+    let playerDom = document.getElementById("player");
+    let player = playerDom.player;
+
+    player.setRecitation(newRecitation);
+  }
+
+  updateTranslations(newTranslationIds) {
+    let controller = document.getElementById("verses");
+
+    controller.chapter.changeTranslations(newTranslationIds);
   }
 
   loadSettings() {
@@ -153,11 +172,6 @@ export default class extends Controller {
     document.addEventListener("DOMContentLoaded", () => {
       setDark(window.matchMedia("(prefers-color-scheme: dark)"));
     });
-  }
-
-  updateReciter() {
-    const activeRecitation = $("#reciter-dropdown-menu .dropdown-item.active");
-    return player.setRecitation(activeRecitation.data("recitation"));
   }
 
   reloadTranslations() {

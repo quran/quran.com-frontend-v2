@@ -391,6 +391,18 @@
     .translation {
       color: #607d8b;
 
+      .txt {
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+        //border-bottom: 1px solid;
+
+        &:last-child {
+          // border-bottom: none;
+          padding-bottom: 0;
+          margin-bottom: 0;
+        }
+      }
+
       sup {
         color: $color-primary;
         cursor: pointer;

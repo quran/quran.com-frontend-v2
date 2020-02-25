@@ -6,7 +6,7 @@
         <span class="text-muted text-nowrap"><%= _t('settings.reciters') %></span>
         <select id="reciter-dropdown-menu" data-placeholder="<%= t('settings.reciters') %>" data-controller="select2">
           <% recitations.each do |recitation| %>
-            <option value="<%= recitation.reciter_name %>">
+            <option value="<%= recitation.id %>" <% if @presenter.recitation_selected?(recitation.id) %> selected="selected"<% end %>>
               <%= recitation.reciter_name %>
             </option>
           <% end %>
@@ -21,7 +21,7 @@
           <% ordered_translations.each do |language, list| %>
             <optgroup label="<%= language.humanize %>">
               <% list.each do |trans| %>
-                <option value="<%= trans[0] %>">
+                <option value="<%= trans[0] %>" <% if @presenter.translation_selected?(trans[0]) %> selected="selected"<% end %>>
                   <%= trans[1] %>
                 </option>
               <% end %>
