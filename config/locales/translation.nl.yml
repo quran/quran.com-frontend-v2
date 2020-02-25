@@ -181,7 +181,7 @@ nl:
     label: 'Instellingen
 
       '
-    chapters:
+    chapters: hoofdstukken
     reciters: Reciteurs
     translations: Vertalingen
     remove_all: Verwijder alles

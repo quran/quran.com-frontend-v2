@@ -201,7 +201,7 @@ ar:
       night_tip: التبديل إلى الوضع الليلي
     reset: إعادة الضبط لما كان
   verses:
-    media:
+    media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية
     not_found: الآية غير موجودة
   chapters:
@@ -233,10 +233,10 @@ ar:
       '
     tafsir:
       label: تفسير
-      select:
+      select: اختر التفسير
   search:
     placeholder: البحث عن "نوح"
-    result:
+    result: "%{from} - %{to} من <span>{total}</span> نتائج البحث لـ: <span>{query}</span>"
     error: عذرا ، حدث خطأ في بحثك.
     no_query: لا يوجد بحث
     no_result: لا توجد نتائج.
@@ -272,7 +272,8 @@ ar:
     other_links: روابط اخرى
     contact_us: تواصل معنا
     help: مساعدة وردود الفعل
-    about_project:
+    about_project: Quran.com هو مشروع مجاني لقراءة ودراسة القرآن الكريم (المعروف أيضًا
+      باسم القرآن الكريم ، القرآن الكريم ، القرآن الكريم ، القرآن الكريم).
     rights: كل الحقوق محفوظة
     mobilea_apps: تطبيقات الموبايل
     navigate: التنقل
@@ -293,4 +294,4 @@ ar:
     audio: القرآن الكريم صوتيا
     audio_description: التعلم والاستماع في نفس الوقت
   close: غلق
-  page:
+  page: صفحة

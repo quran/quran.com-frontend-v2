@@ -117,7 +117,9 @@ ur:
       پر جائیں اور درست سوره منتخب کریں
 
       '
-    no_script:
+    no_script: ایسا لگتا ہے کہ آپ کے براؤزر جاوا اسکرپٹ یا اس کی غیر فعال کی حمایت
+      نہیں کرتا. قرآن کریم جاوا اسکرپٹ کے ساتھ بہترین کام کرتا ہے. جاوا سکرپٹ کو کس
+      طرح فعال کرنے کے بارے میں مزید ہدایات کے لئے
     unavailable_session:
     unacceptable_request:
     connection_refused:
@@ -238,10 +240,10 @@ ur:
     addNote: نوٹ شامل کریں
     tafsir:
       label: تفسیر
-      select:
+      select: تفسیر منتخب کریں
   search:
     placeholder: " تلاش کریں (نوح)"
-    result:
+    result: "%{from} - %{to} <span>{total} کے</span> لئے تلاش کے نتائج کے لئے: <span>{query}</span>"
     error: معذرت، آپ کی تلاش میں ایک خرابی تھی.
     no_query: تلاش کے لئے کچھ لکھئے
     no_result: کوئی نتیجہ نہیں ملا

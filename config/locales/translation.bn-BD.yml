@@ -6,7 +6,7 @@
 #
 ---
 bn-BD:
-  noble_quran:
+  noble_quran: পবিত্র কোরআন
   date:
     day_names:
     - রবিবার
@@ -108,10 +108,12 @@ bn-BD:
       even: জোড় হতে হবে
       required:
       taken: অাগেই নিয়ে নেওয়া হয়েছে
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
+    not_found: দুঃখিত, এই পৃষ্ঠাটি বিদ্যমান নেই
+    invalid_verse: শ্লোকটি সীমার বাইরে। হোম পেজে যান
+    invalid_chapter: অধ্যায় পরিসীমা বাইরে। হোম পেজে যান দয়া করে
+    no_script: দেখে মনে হচ্ছে আপনার ব্রাউজারটি জাভাস্ক্রিপ্ট সমর্থন করে না বা এটি
+      অক্ষম করেছে। কুরআন ডট কম জাভাস্ক্রিপ্ট সক্ষম করার সাথে সর্বোত্তম কাজ করে। কীভাবে
+      জাভাস্ক্রিপ্ট সক্ষম করবেন সে সম্পর্কে আরও নির্দেশের জন্য
     unavailable_session:
     unacceptable_request:
     connection_refused:
@@ -167,56 +169,56 @@ bn-BD:
       second: সেকেন্ড
   helpers:
     select:
-      prompt:
+      prompt: অনুগ্রহ করে নির্বাচন করুন
     submit:
       create:
       update:
       submit:
-  local:
-  site_local:
+  local: ইংরেজি
+  site_local: সাইট ভাষা
   change_local:
   local_native_name: বাংলা
-  language:
+  language: ভাষা
   settings:
-    label:
-    chapters:
-    reciters:
+    label: সেটিংস
+    chapters: অধ্যায়
+    reciters: ক্বারী
     translations: অনুবাদ
-    remove_all:
+    remove_all: সব মুছে ফেলুন
     translation_english: ইংরেজি
     translation_other: অন্যান্য ভাষাসমূহ
-    reading:
-    reset:
+    reading: পড়া
+    reset: সেটিং রিসেট
     font_size:
-      label:
-      arabic:
-      translation:
-    tooltip:
-      label:
+      label: অক্ষরের আকার
+      arabic: আরবি
       translation: অনুবাদ
-      transliteration:
+    tooltip:
+      label: সরঞ্জামদণ্ড প্রদর্শন
+      translation: অনুবাদ
+      transliteration: লিপ্যন্তর
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: রাত মোড
+      day_tip: দিন মোডে স্যুইচ করুন
+      night_tip: নাইট মোডে স্যুইচ করুন
   verses:
-    media:
-    go:
-    not_found:
+    media: "%{from} এর ভিডিও মন্তব্য দেখুন"
+    go: শ্লোক যান
+    not_found: শ্লোক পাওয়া যায় নি
   chapters:
     label: সূরা
     next: পরবর্তী সূরা
     previous: পূর্ববর্তী সূরা
     verses: আয়াত
-    pages:
-    revelation_place:
-    info:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-  footnote:
+    pages: পেজ
+    revelation_place: প্রকাশিত বাক্য
+    info: অধ্যায় তথ্য
+    continue: চালিয়ে
+    quick_links: দ্রুত লিঙ্ক
+    go_to_beginning: অধ্যায়ের সূচনা
+    read_full: পুরো অধ্যায় পড়ুন
+    invalid: অবৈধ সূরা
+  footnote: পাদটীকা
   action:
     play: তিলাওয়াত শুনুন
     pause: বিরতি
@@ -230,64 +232,77 @@ bn-BD:
       done: কপি করা হয়েছে
     tafsir:
       label: তাফসীর
-      select:
+      select: তাফসির নির্বাচন করুন
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
+    label: অনুসন্ধান
+    placeholder: '"নূহ" অনুসন্ধান করুন'
+    result: "%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>\n"
+    error: দুঃখিত, আপনার অনুসন্ধানে একটি ত্রুটি ছিল।
+    no_query: কোনও অনুসন্ধানের জিজ্ঞাসা নেই।
+    no_result: কোন ফলাফল পাওয়া যায়নি.
+    popular: জনপ্রিয় অনুসন্ধানসমূহ
+    ayatul_kursi: 'Ayatul Kursi
+
+      '
+    yaseen: 'Surah Yaseen
+
+      '
+    al_mulk: 'Surah Al Mulk
+
+      '
+    ar_rahman: 'Surah Ar-Rahman
+
+      '
+    al_waqiah: 'Surah Al Waqiah
+
+      '
     al_kahf: সূরা আল কাহফ
-    al_muzammil:
+    al_muzammil: 'Surah Al Muzzammil
+
+      '
   player:
-    current_verse:
+    current_verse: শ্লোক
     next_verse: পরবর্তী আয়াত
     previous_verse: পূর্ববর্তী আয়াত
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    scroll:
-  loading:
+    repeat_title: আয়াত পুনরাবৃত্তি করুন
+    repeat_single: একক
+    repeat_range: পরিসর
+    repeat_from: থেকে
+    repeat_to: থেকে
+    repeat_times: টাইমস
+    repeat_loop: লুপ
+    scroll: স্বয়ংক্রিয়ভাবে বর্তমানে প্লে আইয়ায় স্ক্রোল করে
+  loading: লোড হচ্ছে ...
   nav:
     title: কুরআন
     settings: সেটিংস
-    contribute:
+    contribute: অবদান
     about_us: আমাদের সম্পর্কে
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
+    developers: ডেভেলপারগণ
+    useful_sites: দরকারী সাইট
+    other_links: অন্যান্য লিঙ্ক
+    contact_us: আমাদের সাথে যোগাযোগ করুন
+    help: সহায়তা এবং প্রতিক্রিয়া
+    about_project: কুরআন ডট কম কুরআন পড়ার এবং অধ্যয়নের জন্য একটি প্রো বোন প্রকল্প
+      (এটি নোবেল কুরআন, আল কুরআন, পবিত্র কোরআন, কোরান হিসাবেও পরিচিত)।
+    rights: সমস্ত অধিকার সংরক্ষিত
     mobilea_apps: মোবাইল অ্যাপস
-    navigate:
-    legacy_site:
+    navigate: নেভিগেট করুন
+    legacy_site: লিগ্যাসি কুরআন
     blog: ব্লগ
     forum: ফোরাম
-  juz:
+  juz: পারার
   click_here: এখানে ক্লিক করুন
-  tafsir_select:
-  download:
-  home:
+  tafsir_select: একটি tafsir নির্বাচন করুন
+  download: ডাউনলোড
+  home: বাড়ি
   related_sites:
-    label:
+    label: সম্পর্কিত সাইট
     sunnah: সুন্নাহ
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
+    sunnah_description: হযরত মুহাম্মদ (সাঃ) এর হাদীস
+    salah: সালাহ
+    salah_description: যে কোনও অবস্থানের জন্য প্রার্থনার সময় সন্ধান করুন
+    audio: অডিওতে নোবেল কোরআন
+    audio_description: একই সাথে শেখা এবং শুনা
+  close: ঘনিষ্ঠ
   page: পৃষ্ঠা

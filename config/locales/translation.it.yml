@@ -6,7 +6,7 @@
 #
 ---
 it:
-  tafsir_select:
+  tafsir_select: Seleziona un tafsir
   date:
     day_names:
     - domenica
@@ -108,10 +108,12 @@ it:
       even: deve essere pari
       required: deve esistere
       taken: è già presente
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
+    not_found: Siamo spiacenti, questa pagina non esiste
+    invalid_verse: Il verso è fuori portata. Per favore vai alla home page
+    invalid_chapter: Il capitolo è fuori portata. Per favore vai alla home page
+    no_script: Sembra che il tuo browser non supporti Javascript o sia disabilitato.
+      Quran.com funziona meglio con JavaScript abilitato. Per ulteriori istruzioni
+      su come abilitare JavaScript
     unavailable_session:
     unacceptable_request:
     connection_refused:
@@ -169,127 +171,129 @@ it:
       second: Secondi
   helpers:
     select:
-      prompt: Seleziona...
+      prompt: seleziona
     submit:
       create: Crea %{model}
       update: Aggiorna %{model}
       submit: Invia %{model}
-  local:
-  site_local:
-  change_local:
+  local: Inglese
+  site_local: la lingua del sito
+  change_local: Scegli la lingua in cui visualizzare il sito
   local_native_name: Italiano
-  language:
+  language: lingua
   settings:
-    label:
-    chapters:
-    reciters:
-    translations:
-    remove_all:
+    label: Impostazioni
+    chapters: Capitoli
+    reciters: Reciters
+    translations: Traduzioni
+    remove_all: Rimuovi tutto
     translation_english: Italiano
-    translation_other:
-    reading:
+    translation_other: Altre lingue
+    reading: Lettura
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Font
+      arabic: Arabo
+      translation: Traduzioni
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Visualizzazione della descrizione comandi
+      translation: Traduzione
+      transliteration: Traslitterazione
     night_mode:
-      label:
-      day_tip:
-      night_tip:
-    reset:
+      label: Modalità notturna
+      day_tip: Passa alla modalità giorno
+      night_tip: Passa alla modalità notte
+    reset: Ripristinare le impostazioni
   verses:
-    media:
-    go:
-    not_found:
+    media: Guarda il commento video di %{from}
+    go: Vai al verso
+    not_found: Versi non trovato
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    info:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-    revelation_place:
-  footnote:
+    label: Sura
+    next: Next Surah
+    previous: Sura precedente
+    verses: versi
+    pages: pagine
+    info: Informazioni sul capitolo
+    continue: proseguire
+    quick_links: Link veloci
+    go_to_beginning: Inizio del capitolo
+    read_full: Leggi il capitolo completo
+    invalid: non è valido
+    revelation_place: Luogo dell'Apocalisse
+  footnote: Nota
   action:
-    play:
-    pause:
+    play: Giocare
+    pause: Pausa
     bookmark:
-      label:
-      done:
+      label: Segnalibro
+      done: Aggiunto
     copy:
-      label:
-      done:
-    share:
-    addNote:
+      label: Copia
+      done: Copiato!
+    share: Condividi ayah
+    addNote: Aggiungi nota
     tafsir:
-      label:
-      select:
+      label: Seleziona un tafsir
+      select: Seleziona un tafsir
   search:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    placeholder: Cerca "Noah"
+    result: "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:
+      <span>{query}</span>"
+    error: Siamo spiacenti, si è verificato un errore durante la ricerca.
+    no_query: Nessuna query di ricerca.
+    no_result: Nessun risultato trovato.
+    popular: Ricerche popolari
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Sura Yaseen
+    al_mulk: Sura Al Mulk
+    ar_rahman: Sura Ar-Rahman
+    al_waqiah: Sura Al Waqiah
+    al_kahf: Sura Al Kahf
+    al_muzammil: Sura Al Muzzammil
+    label: Ricerca
   player:
-    current_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    scroll:
-  loading:
+    current_verse: Versi
+    next_verse: Verso successivo
+    previous_verse: Versetto precedente
+    repeat_title: Ripeti Ayah
+    repeat_single: singolo
+    repeat_range: Gamma
+    repeat_from: Da
+    repeat_to: A
+    repeat_times: Volte
+    repeat_loop: ciclo continuo
+    scroll: Scorre automaticamente fino all'ayah attualmente in riproduzione
+  loading: Caricamento in corso...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobilea_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
-  noble_quran:
+    title: Quran
+    settings: Impostazioni
+    contribute: Contribuire
+    about_us: Riguardo a noi
+    developers: Sviluppatori
+    useful_sites: Siti utili
+    other_links: Altri link
+    contact_us: Contattaci
+    help: Aiuto e feedback
+    about_project: Quran.com è un progetto pro bono per la lettura e lo studio del
+      Corano (noto anche come The Noble Quran, Al Quran, Holy Quran, Koran).
+    rights: Tutti i diritti riservati
+    mobilea_apps: App mobili
+    navigate: Navigare
+    legacy_site: Legacy Quran.com
+    blog: blog
+    forum: Forum
+  juz: Juz
+  click_here: clicca qui
+  download: Scarica
+  home: Casa
+  noble_quran: Il nobile Corano
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
-  page:
+    label: Siti correlati
+    sunnah: Sunnah
+    sunnah_description: L'Hadith del profeta Maometto (pace su di lui)
+    salah: Salah
+    salah_description: Cerca il tempo di preghiera per qualsiasi luogo
+    audio: Nobel Corano in audio
+    audio_description: Imparare e ascoltare allo stesso tempo
+  close: Chiudere
+  page: Pagina

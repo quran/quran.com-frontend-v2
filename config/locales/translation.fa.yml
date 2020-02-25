@@ -6,7 +6,7 @@
 #
 ---
 fa:
-  tafsir_select:
+  tafsir_select: یک تفسیر را انتخاب کنید
   date:
     day_names:
     - یکشنبه
@@ -108,10 +108,12 @@ fa:
       even: باید زوج باشد
       required: باید وجود داشته باشد
       taken: پیشتر گرفته شده
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
+    not_found: متأسفیم ، این صفحه وجود ندارد
+    invalid_verse: آیه خارج از محدوده است. لطفا به صفحه اصلی بروید
+    invalid_chapter: فصل خارج از محدوده است. لطفا به صفحه اصلی بروید
+    no_script: به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
+      کند. Quran.com با جاوا اسکریپت فعال بهترین کار می کند. برای اطلاعات بیشتر در
+      مورد نحوه فعال کردن جاوا اسکریپت
     unavailable_session:
     unacceptable_request:
     connection_refused:
@@ -173,122 +175,125 @@ fa:
       create: ایجاد %{model}
       update: بروز رسانی %{model}
       submit: ذخیره‌ی %{model}
-  local:
-  site_local:
-  change_local:
+  local: انگلیسی
+  site_local: زبان سایت
+  change_local: زبانی را که می خواهید سایت در آن نمایش داده شود را انتخاب کنید
   local_native_name: فارسی
-  language:
+  language: زبان
   settings:
-    label:
-    chapters:
-    reciters:
-    translations:
-    remove_all:
+    label: تنظیمات
+    chapters: سوره
+    reciters: Reciters
+    translations: ترجمه ها
+    remove_all: همه را حذف کنید
     translation_english: فارسی
-    translation_other:
-    reading:
+    translation_other: زبان های دیگر
+    reading: خواندن
     font_size:
-      label:
-      arabic:
-      translation:
+      label: اندازه فونت
+      arabic: عربی
+      translation: ترجمه ها
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: نمایش راهنمای ابزار
+      translation: ترجمه
+      transliteration: انتقال
     night_mode:
-      label:
-      day_tip:
-      night_tip:
-    reset:
+      label: حالت شب
+      day_tip: به حالت روز تغییر دهید
+      night_tip: به حالت شبانه بروید
+    reset: تنظیم مجدد تنظیم کنید
   verses:
-    media:
-    go:
-    not_found:
+    media: تماشای تفسیر ویدیویی از %{from}
+    go: برو به آیه
+    not_found: آیه یافت نشد
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    info:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-    revelation_place:
-  footnote:
+    label: سوره
+    next: سوره بعدی
+    previous: سوره قبلی
+    verses: آیات
+    pages: صفحات
+    info: اطلاعات مربوط به فصل
+    continue: ادامه دهید
+    quick_links: لینک های سریع
+    go_to_beginning: آغاز فصل
+    read_full: فصل کامل را بخوانید
+    invalid: سوره نامعتبر است
+    revelation_place: مکان مکاشفه
+  footnote: پاورقی
   action:
-    play:
-    pause:
+    play: بازی
+    pause: مکث کنید
     bookmark:
-      label:
-      done:
+      label: نشانک
+      done: نشانه گذاری شده
     copy:
-      label:
-      done:
-    share:
-    addNote:
+      label: کپی
+      done: کپی شد!
+    share: آیه را به اشتراک بگذار
+    addNote: یادداشت را اضافه کنید
     tafsir:
-      label:
-      select:
+      label: تفسیرها
+      select: تفسیر را انتخاب کنید
   search:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    placeholder: جستجو کردن
+    result: "%{to}%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>\n"
+    error: متأسفیم ، در جستجوی شما خطایی روی داد.
+    no_query: جستجوی جستجو وجود ندارد
+    no_result: نتیجه ای پیدا نشد.
+    popular: جستجوهای محبوب
+    ayatul_kursi: آیت الكرسی
+    yaseen: سوره یاسین
+    al_mulk: سوره ملک
+    ar_rahman: سوره رحمان
+    al_waqiah: سوره واقیه
+    al_kahf: سوره کهف
+    al_muzammil: سوره معظمیل
+    label: جستجو کردن
   player:
-    current_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
+    current_verse: آیه
+    next_verse: آیه بعدی
+    previous_verse: آیه قبلی
+    repeat_title: آیه را تکرار کنید
+    repeat_single: تنها
+    repeat_range: دامنه
     repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    scroll:
-  loading:
+    repeat_to: به
+    repeat_times: بار
+    repeat_loop: حلقه
+    scroll: به صورت خودکار به ayah در حال پخش پیمایش می شود
+  loading: در حال بارگذاری ...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobilea_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
-  noble_quran:
+    title: قرآن
+    settings: تنظیمات
+    contribute: مشارکت
+    about_us: دربارهی ما
+    developers: توسعه دهندگان
+    useful_sites: سایتهای مفید
+    other_links: پیوندهای دیگر
+    contact_us: با ما تماس بگیرید
+    help: راهنما و بازخورد
+    about_project: Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
+      به عنوان قرآن شریف ، القرآن ، قرآن کریم ، قرآن نیز شناخته می شود).
+    rights: کلیه حقوق محفوظ است
+    mobilea_apps: برنامه های موبایل
+    navigate: حرکت کنید
+    legacy_site: 'Legacy Quran.com
+
+      '
+    blog: وبلاگ
+    forum: انجمن
+  juz: جوز
+  click_here: اینجا کلیک کنید
+  download: دانلود
+  home: خانه
+  noble_quran: قرآن شریف
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
-  page:
+    label: سایتهای مرتبط
+    sunnah: سنت
+    sunnah_description: حدیث پیامبر اکرم (ص)
+    salah: صلاح
+    salah_description: زمان دعا را برای هر مکان جستجو کنید
+    audio: نوبل قرآن به صورت صوتی
+    audio_description: یادگیری و گوش دادن همزمان
+  close: نزدیک
+  page: صفحه

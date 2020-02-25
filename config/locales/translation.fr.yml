@@ -115,7 +115,9 @@ fr:
       '
     invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
-    no_script:
+    no_script: On dirait que votre navigateur ne supporte pas Javascript ou qu'il
+      est désactivé. Coran.com fonctionne mieux avec JavaScript activé. Pour plus
+      d'instructions sur l'activation de javascript
     unavailable_session:
     unacceptable_request:
     connection_refused:
@@ -223,7 +225,7 @@ fr:
     go_to_beginning: Début de la Sourate
     read_full: Lire la sourate complète
     invalid: Aucune sourate trouvée
-    revelation_place:
+    revelation_place: Lieu de révélation
   footnote: note de bas de page
   action:
     play: Lecture
@@ -238,7 +240,7 @@ fr:
     addNote: Ajouter une note
     tafsir:
       label: Tafsirs
-      select:
+      select: Sélectionnez Tafsir
   search:
     placeholder: Chercher "Noah"
     result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
@@ -302,4 +304,4 @@ fr:
     audio: Le Noble Coran en audio
     audio_description: Apprendre et écouter en même temps
   close: Fermer
-  page:
+  page: Page
