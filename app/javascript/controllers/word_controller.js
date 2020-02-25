@@ -48,6 +48,8 @@ export default class extends Controller {
   }
 
   play() {
+    GoogleAnalytic.trackEvent("Play Word", "Play", this.el.data("key"), 1);
+
     let player,
       playerDom = document.getElementById("player");
 

@@ -1,3 +1,7 @@
+.select2-results__options {
+  -webkit-overflow-scrolling: touch;
+}
+
 .select2-results__option,
 .select2-selection__rendered {
   img {
@@ -11,29 +15,29 @@
 }
 
 .select2-container--default
-.select2-selection--single
-.select2-selection__rendered {
+  .select2-selection--single
+  .select2-selection__rendered {
   line-height: calc(
-          #{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
+    #{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
   );
   padding: 0 $input-padding-x;
 }
 
 .select2-container .select2-selection--single {
   height: calc(
-          #{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
+    #{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
   );
 }
 
 .select2-container .select2-selection--multiple {
   min-height: calc(
-          #{$line-height-base * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
+    #{$line-height-base * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
   );
 }
 
 .select2-container--default
-.select2-selection--single
-.select2-selection__arrow {
+  .select2-selection--single
+  .select2-selection__arrow {
   height: auto;
   top: 0;
   bottom: 0;
@@ -62,7 +66,7 @@
 }
 
 .select2-search.select2-search--dropdown:not(.select2-search--hide)
-+ .select2-results {
+  + .select2-results {
   padding-top: 0;
 }
 
@@ -80,7 +84,7 @@
   display: block;
   width: 100%;
   height: calc(
-          #{$line-height-base * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
+    #{$line-height-base * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
   );
   padding: $input-padding-y $input-padding-x;
   padding-left: 2.5rem;
@@ -109,7 +113,7 @@
 }
 
 .select2-container--default
-.select2-results__option--highlighted[aria-selected] {
+  .select2-results__option--highlighted[aria-selected] {
   background-color: $primary-500;
   color: $white;
 }
@@ -121,56 +125,56 @@
 }
 
 .select2-container--default.select2-container--open.select2-container--below
-.select2-selection--single,
+  .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--below
-.select2-selection--multiple,
+  .select2-selection--multiple,
 .select2-container--default.select2-container--open.select2-container--above
-.select2-selection--single,
+  .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--above
-.select2-selection--multiple {
+  .select2-selection--multiple {
   position: relative;
   z-index: 1051 + 100;
   border-color: $input-focus-border-color;
 }
 
 .select2-container--default.select2-container--open.select2-container--below
-.select2-selection--single,
+  .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--below
-.select2-selection--multiple {
+  .select2-selection--multiple {
   border-bottom-color: transparent;
   border-bottom: 0; //gets rid of the ugly gap
 }
 
 .select2-container--default.select2-container--open.select2-container--above
-.select2-selection--single,
+  .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--above
-.select2-selection--multiple {
+  .select2-selection--multiple {
   border-top-color: transparent;
   border-top: 0; //gets rid of the ugly gap
 }
 
 .select2-container--default.select2-container--focus .select2-selection--single,
 .select2-container--default.select2-container--focus
-.select2-selection--multiple {
+  .select2-selection--multiple {
   border-color: $input-focus-border-color;
 }
 
 .select2-container--default.select2-container--focus
-.select2-selection--multiple {
+  .select2-selection--multiple {
   display: flex;
   align-items: center;
 }
 .select2-container--default
-.select2-selection--multiple
-.select2-selection__rendered {
+  .select2-selection--multiple
+  .select2-selection__rendered {
   display: flex;
   padding: 0 0.5rem;
   //clear: both;
   flex-wrap: wrap;
 }
 .select2-container--default
-.select2-selection--multiple
-.select2-selection__choice {
+  .select2-selection--multiple
+  .select2-selection__choice {
   //margin-right: 7px;
   //margin-top: 6px;
   margin: 5px 3px;
@@ -208,7 +212,7 @@
   margin-top: 0;
   margin-left: 0;
   height: calc(
-          #{$line-height-base * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
+    #{$line-height-base * 1em} + #{$input-padding-y * 2} + #{$input-height-border}
   );
   padding: $input-padding-y 0.3rem;
   min-width: 100px;
@@ -220,8 +224,8 @@ span.select2-selection.select2-selection--multiple {
 }
 
 .select2-container--default
-.select2-selection--single
-.select2-selection__clear {
+  .select2-selection--single
+  .select2-selection__clear {
   padding: 0 15px;
   margin-right: 8px;
   font-size: 1rem;
@@ -235,8 +239,8 @@ span.select2-selection.select2-selection--multiple {
 /* this is not a permanent solution... hopefully IE will die by the time we release version 5.... */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .select2-container--default
-  .select2-selection--single
-  .select2-selection__clear {
+    .select2-selection--single
+    .select2-selection__clear {
     line-height: normal;
     margin-top: 8px;
   }
@@ -253,19 +257,19 @@ table th .select2 {
   min-width: 201px;
 }
 
-#translation-dropdown{
-ul.select2-selection__rendered{
-  overflow-x: scroll !important;
-  flex-wrap: unset !important;
-}
-.select2-container {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    display: none;
+#translation-dropdown {
+  ul.select2-selection__rendered {
+    overflow-x: scroll !important;
+    flex-wrap: unset !important;
   }
-}
+  .select2-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

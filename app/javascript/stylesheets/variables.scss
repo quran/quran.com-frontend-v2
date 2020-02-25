@@ -285,6 +285,9 @@ $custom-control-indicator-size: 1.125rem;
 $custom-checkbox-indicator-border-radius: 2px;
 $custom-control-indicator-border-width: 2px;
 $custom-control-indicator-bg-size: 0.5rem;
+$custom-control-indicator-checked-bg: $color-primary;
+$custom-control-indicator-checked-border-color: $primary-800;
+$custom-control-indicator-focus-box-shadow: none;
 
 /*border radius*/
 $border-radius: 4px;
@@ -305,6 +308,8 @@ $input-btn-padding-x-lg: 1.5rem;
 /* nav link */
 $nav-link-padding-y: $input-btn-padding-y;
 $nav-link-padding-x: $input-btn-padding-x;
+$nav-tabs-link-active-bg: $color-primary;
+$nav-pills-link-active-bg: $color-primary;
 
 /* nav, tabs, pills */
 $nav-tabs-border-color: rgba($black, 0.1);

@@ -35,7 +35,7 @@ class ChaptersController < ApplicationController
     #  /2:8-9 => 2/
     #  /120 => invalid-surah
     #  /1/8 => invalid ayah
-    #
+    #  /1/0 => /1
 
     range = params[:range]
     chapter = params[:id][/\d+/]
@@ -69,11 +69,18 @@ class ChaptersController < ApplicationController
       valid_start = start.to_i.abs
       valid_end = finish.to_i.abs
 
-      return valid_start.to_s unless finish
+      unless finish
+        return valid_start.zero? ? nil : valid_start.to_s
+      end
 
       valid_start, valid_end = valid_end, valid_start if valid_start > valid_end
+      valid_end = valid_start if valid_end.zero?
 
-      "#{valid_start}-#{valid_end}"
+      if valid_start > 0
+        "#{valid_start}-#{valid_end}"
+      else
+        nil
+      end
     end
   end
 end
