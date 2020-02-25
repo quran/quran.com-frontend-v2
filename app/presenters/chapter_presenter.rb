@@ -141,7 +141,7 @@ class ChapterPresenter < BasePresenter
   end
 
   def load_translations(verse)
-    verse.translations.where(resource_content_id: valid_translations)
+    verse.translations.where(resource_content_id: valid_translations).order('translations.priority DESC')
   end
 
   protected

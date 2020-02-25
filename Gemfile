@@ -33,7 +33,7 @@ gem 'meta-tags'
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
 
-gem 'quran-core', github: 'quran/quran-core'
+gem 'quran-core', path: '../quran-core'#github: 'quran/quran-core'
 
 gem 'sentry-raven'
 

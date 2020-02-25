@@ -333,8 +333,8 @@ export default class extends Controller {
       verses.push(`<option value='${verse}'>${verse}</option>`);
 
       /*  dropDownVerses.push(
-                        `<div class='dropdown-item'  data-verse='${verse}'> <a href='/${chapter}/${verse}'>${i18nLabel} ${verse}</a></div>`
-                    );*/
+                              `<div class='dropdown-item'  data-verse='${verse}'> <a href='/${chapter}/${verse}'>${i18nLabel} ${verse}</a></div>`
+                          );*/
       verseSelect2Data.push({
         id: verse,
         text: `${i18nLabel} ${verse}`
@@ -754,6 +754,24 @@ export default class extends Controller {
     this.lastVerse = verses.last().data("verse-number");
 
     return this.fetchAudioData(this.firstVerse, this.lastVerse);
+  }
+
+  setRecitation(recitationId) {
+    this.config.recitation = recitationId;
+    this.settings.set("recitation", recitationId);
+    this.preloadTrack = {};
+    this.audioData = {};
+
+    this.updateVerses().then(() => {
+      // set first track to play
+      // clear the loaded tracks
+
+      let wasPlaying = this.isPlaying();
+      wasPlaying && this.handlePauseBtnClick();
+      this.track.howl = null;
+
+      wasPlaying && this.play(this.track.currentVerse);
+    });
   }
 
   fetchAudioData(firstVerse, lastVerse) {

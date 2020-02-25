@@ -6,7 +6,7 @@
   <%= render partial: 'verse', collection: @presenter.paginate, as: :verse %>
 <% end %>
 
-<div class="text-center" id="verses_pagination">
+<div class="text-center" id="verses_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range)%>">
   <% if @presenter.next_page %>
     <%= chapter_next_page_link %>
   <% end %>

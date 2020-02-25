@@ -16,7 +16,7 @@ module ChaptersHelper
   end
 
   def ordered_translations
-    translations = ResourceContent.one_verse.translations.order('priority desc').pluck(:id, :name, :language_name)
+    translations = ResourceContent.one_verse.translations.order('priority ASC').pluck(:id, :name, :language_name)
 
     translations.group_by do |trans|
       trans[2]

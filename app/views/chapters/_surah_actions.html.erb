@@ -6,7 +6,7 @@
         <span class="text-muted text-nowrap"><%= _t('settings.reciters') %></span>
         <select id="reciter-dropdown-menu" data-placeholder="<%= t('settings.reciters') %>" data-controller="select2">
           <% recitations.each do |recitation| %>
-            <option value="<%= recitation.reciter_name %>">
+            <option value="<%= recitation.id %>">
               <%= recitation.reciter_name %>
             </option>
           <% end %>

@@ -15,9 +15,8 @@ GIT
       multi_json (~> 1.11)
       rails (>= 5.2)
 
-GIT
-  remote: https://github.com/quran/quran-core.git
-  revision: 7fbb1abf8f7cd9291e154924512556d066a6ba70
+PATH
+  remote: ../quran-core
   specs:
     quran-core (0.4.0)
       activerecord (~> 6.0.0.beta1)
@@ -144,7 +143,7 @@ GEM
       smart_properties
     erubi (1.9.0)
     erubis (2.7.0)
-    excon (0.71.1)
+    excon (0.72.0)
     faraday (0.17.3)
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
