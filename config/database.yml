@@ -23,7 +23,7 @@ test:
 
 production:
   <<: *default
-  database: one_quran
+  database: quran_dev
 
 quran_core:
   <<: *default
