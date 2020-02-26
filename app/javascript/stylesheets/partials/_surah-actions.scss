@@ -28,11 +28,11 @@
   #translation-dropdown {
     span.select2-container {
       width: 193px !important;
-      height: 45px;
+      height: 36px;
       display: block !important;
       overflow-y: hidden;
-
-      ul {
+      border-radius: 6px !important;
+      ul{
         margin-right: 27px;
         span.select2-selection__clear {
           left: 167px;
