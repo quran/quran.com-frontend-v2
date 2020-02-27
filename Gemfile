@@ -46,6 +46,8 @@ gem 'dalli'
 gem 'dalli-ui', github: 'naveed-ahmad/dalli-ui'
 gem 'memcachier'
 
+gem 'sitemap_generator'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

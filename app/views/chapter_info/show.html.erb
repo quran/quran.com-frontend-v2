@@ -1,1 +1,7 @@
 <%= render 'info' %>
+
+<% unless request.xhr? %>
+  <div class="text-center mt-4">
+  <%= link_to "Back to Surah", "/#{@presenter.chapter.chapter_number}", class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,12 +1,27 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # surah in url for seo
+  get '/surah/:id/info', to: 'chapter_info#show'
+  get '/surah-info/:id', to: 'chapter_info#show'
+  get '/:id/tafsirs', to: 'verses#select_tafsirs', as: :verse_tafsirs
+  get '/:id/tafsirs/:tafsir_id', to: 'verses#tafsir', as: :verse_tafsir
+
   resources :chapter_info, only: :show
   resources :foot_note, only: :show
 
   get :search, to: 'search#search', as: :search
   get '/audio', to: 'audio_files#index'
   get '/ayatul-kursi', to: 'chapters#show', id: '2', range: '255'
+  get "آیت الکرسی/", to: 'chapters#show', id: '2', range: '255'
+
+  resources :verses, only: :show do
+    member do
+      get :share
+      get :select_tafsirs
+      get :tafsir
+    end
+  end
 
   namespace :pages do
     get :about_us
@@ -27,6 +42,23 @@ Rails.application.routes.draw do
 
   get :sw, to: 'static#serviceworker'
   get :serviceworker, to: 'static#serviceworker'
+
+  ['sitemap.xml','sitemap.xml.gz', 'sitemap:number.xml.gz'].each do |path|
+    get "/sitemaps/#{path}" => proc { |req|
+      filename = req['PATH_INFO'].gsub('sitemaps', '').gsub(/\//, '')
+
+      [
+          200,
+          {
+              'Pragma'        => 'public',
+              'Cache-Control' => "max-age=#{1.day.to_i}",
+              'Expires'       => 1.day.from_now.to_s(:rfc822),
+              'Content-Type'  => 'text/html'
+          },
+          [open(Rails.root.join('public', 'sitemaps', filename)).read]
+      ]
+    }
+  end
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 

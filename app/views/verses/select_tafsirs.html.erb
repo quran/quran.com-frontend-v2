@@ -1,0 +1,16 @@
+<div id="title">
+  <%= t('tafsir_select') %>
+</div>
+<% verse = @presenter.verse %>
+
+<div id="modal">
+  <div class="modal-body">
+    <ul>
+      <% @approved_tafsirs.each do |tafsir| %>
+        <li class="mb-3 border-bottom pb-2">
+          <%= link_to tafsir.name, verse_tafsir_path(verse.verse_key, tafsir_id: tafsir.slug || tafsir.id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

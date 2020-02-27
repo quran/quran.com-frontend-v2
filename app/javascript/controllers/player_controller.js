@@ -69,6 +69,14 @@ export default class extends Controller {
 
     //unload all tracks
     Howler.unload();
+
+    this.progressBar.slider("destroy");
+
+    if (this.verseDropdown.data("select2"))
+      this.verseDropdown.data("select2").destroy();
+
+    if (this.chapterDropdown.data("select2"))
+      this.chapterDropdown.data("select2").destroy();
   }
 
   isPlaying() {
@@ -90,7 +98,8 @@ export default class extends Controller {
       title: $("#player .repeat-popover-title"),
       content: $("#player .repeat-popover-content"),
       html: true,
-      placement: "top"
+      placement: "top",
+      container: "body"
     });
 
     if (this.config.repeat.enabled) {
@@ -98,9 +107,7 @@ export default class extends Controller {
     }
 
     // activate the repeat tabs
-    $(`#repeat-popover-pills-${this.config.repeat.type}-tab`).addClass(
-      "active"
-    );
+    $(`#repeat-popover-pills-${this.config.repeat.type}-tab`).trigger("click");
 
     // auto scroll component
     this.scrollButton = $(".auto-scroll-btn");
