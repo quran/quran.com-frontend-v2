@@ -451,7 +451,7 @@ export default class extends Controller {
           .stop(true, true)
           .animate(
             {
-              scrollTop: verseTopOffset - headerHeight
+              scrollTop: verseTopOffset - headerHeight + 50
             },
             500
           );
