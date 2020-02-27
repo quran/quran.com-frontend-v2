@@ -245,16 +245,21 @@ class ChapterPresenter < BasePresenter
       translations = (
       params[:translation].presence ||
           params[:translations].presence ||
-          session[:translation] || DEFAULT_TRANSLATION
+          session[:translation].presence || DEFAULT_TRANSLATION
       )
 
-      session[:translation] = translations
+      translations = if translations == 'no'
+                       []
+                     else
+                       ResourceContent
+                           .where(
+                               slug: translations.to_s.split(',')
+                           ).or(
+                           ResourceContent.where(id: translations.to_s.split(','))
+                       ).pluck(:id)
+                     end
 
-      if translations == 'no'
-        []
-      else
-        translations.to_s.split(',')
-      end
+      session[:translation] = translations
     end
   end
 end
