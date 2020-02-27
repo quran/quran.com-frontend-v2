@@ -125,7 +125,13 @@ class ChapterPresenter < BasePresenter
   end
 
   def render_translations?
-    valid_translations.present?
+    strong_memoize :render_translation do
+      valid_translations.present?
+    end
+  end
+
+  def show_verse_actions?
+    true
   end
 
   def recitation_selected?(id)

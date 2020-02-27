@@ -11,30 +11,32 @@
          </span>
       </div>
 
-      <% unless @presenter.render_translations? %>
-        <div class="verse-actions">
-          <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>"></a>
-          <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>"></a>
-        </div>
+      <% if @presenter.show_verse_actions? %>
+        <% unless @presenter.render_translations? %>
+          <div class="verse-actions">
+            <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
+            <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>"></a>
+            <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>"></a>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
     <div class="col-11">
       <div class="arabic">
-        <%= render partial: 'word', collection: verse.words %>
-        <!--<span class="ayah-number"><%#= verse.verse_number %></span>-->
+        <%= render partial: 'chapters/word', collection: verse.words %>
+        <span class="fade position-absolute"><%= verse.text_madani %></span>
       </div>
     </div>
   </div>
 
   <div class="row translations">
     <div class="col-1">
-      <% if @presenter.render_translations? %>
+      <% if @presenter.render_translations? && @presenter.show_verse_actions? %>
         <div class="verse-actions">
           <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>"></a>
-          <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>"></a>
+          <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= select_tafsirs_verse_path(verse.id) %>"></a>
+          <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>"></a>
         </div>
       <% end %>
     </div>

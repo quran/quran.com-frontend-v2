@@ -13,9 +13,7 @@ class BasePresenter
     @context = context
   end
 
-  delegate :params, to: :context
-
-  delegate :session, to: :context
+  delegate :params, :session, to: :context
 
   def open_graph_hash
     {
@@ -44,10 +42,18 @@ class BasePresenter
               }
             },
       twitter: {
-        title: meta_title,
-        description: meta_description,
-        image: meta_image
+        #title: meta_title,
+        #description: meta_description,
+        #image: meta_image,
+        creator: '@app_quran',
+        site: '@app_auran',
+        card: 'summary_large_image'
       },
+      fb:{
+          app_id: '342185219529773',
+          pages: '603289706669016',
+          article_style: 'quran'
+    },
       title: meta_title,
       description: meta_description,
       keywords: meta_keyword,

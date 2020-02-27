@@ -25,7 +25,7 @@
         <li>
           <button class="repeat-btn"><i class="fa fa-repeat"></i></button>
 
-          <div class="repeat-popover-container" style="display:none;">
+          <div class="repeat-popover-container d-none">
             <div class="repeat-popover-title text-center mt-1">
               <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="repeat-popover-switch">
@@ -62,14 +62,16 @@
 
               <div class="tab-content">
                 <div id="repeat-popover-pills-single-content" class="tab-pane fade show active" role="tabpanel" aria-labelledby="repeat-popover-pills-single-tab">
-                  <div class="h6">
+                  <div class="h6 text-muted">
                     <%= _t("player.current_verse") %>
                   </div>
 
                   <select id="repeat-popover-single" class="form-control custom-select">
                   </select>
 
-                  <%= _t("player.repeat_times") %>
+                  <span class="text-muted">
+                    <%= _t("player.repeat_times") %>
+                  </span>
                   <select id="repeat-popover-single-repeat" class="form-control custom-select repeat-popover-repeat-value">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
@@ -85,20 +87,23 @@
                 </div>
 
                 <div id="repeat-popover-pills-range-content" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="repeat-popover-pills-range-tab">
-                  <div class="row">
-                    <div class="col-6">
+                  <div class="row no-gutters">
+                    <div class="col-6 text-muted">
                       <%= _t("player.repeat_from") %>
                       <select id="repeat-popover-range-from" class="form-control">
                       </select>
                     </div>
-                    <div class="col-6">
+
+                    <div class="col-6 text-muted">
                       <%= _t("player.repeat_to") %>
                       <select id="repeat-popover-range-to" class="form-control custom-select">
                       </select>
                     </div>
                   </div>
 
-                  <%= _t("player.repeat_times") %>
+                  <span class="text-muted">
+                    <%= _t("player.repeat_times") %>
+                  </span>
                   <select id="repeat-popover-range-repeat" class="form-control custom-select repeat-popover-repeat-value">
                     <option value="2" selected>2</option>
                     <option value="3">3</option>
@@ -154,7 +159,6 @@
         </li>
 
         <li class="dropdown dropdown-verse">
-
           <%
             current_verse = @presenter.paginate.first.verse_number
             verse_i18n = t('player.current_verse')

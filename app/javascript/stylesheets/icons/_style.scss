@@ -1,6 +1,91 @@
-.fa-spinner2 {
+.fa-discourse {
   &:before {
-    content: $fa-spinner2;
+    content: $fa-discourse;
+  }
+}
+.fa-facebook {
+  &:before {
+    content: $fa-facebook;
+  }
+}
+.fa-messenger {
+  &:before {
+    content: $fa-messenger;
+  }
+}
+.fa-get-pocket {
+  &:before {
+    content: $fa-get-pocket;
+  }
+}
+.fa-line {
+  &:before {
+    content: $fa-line;
+  }
+}
+.fa-linkedin {
+  &:before {
+    content: $fa-linkedin;
+  }
+}
+.fa-pinterest {
+  &:before {
+    content: $fa-pinterest;
+  }
+}
+.fa-reddit {
+  &:before {
+    content: $fa-reddit;
+  }
+}
+.fa-skype {
+  &:before {
+    content: $fa-skype;
+  }
+}
+.fa-slack {
+  &:before {
+    content: $fa-slack;
+  }
+}
+.fa-stumbleupon {
+  &:before {
+    content: $fa-stumbleupon;
+  }
+}
+.fa-telegram {
+  &:before {
+    content: $fa-telegram;
+  }
+}
+.fa-twitch {
+  &:before {
+    content: $fa-twitch;
+  }
+}
+.fa-twitter {
+  &:before {
+    content: $fa-twitter;
+  }
+}
+.fa-viber {
+  &:before {
+    content: $fa-viber;
+  }
+}
+.fa-vk {
+  &:before {
+    content: $fa-vk;
+  }
+}
+.fa-weibo {
+  &:before {
+    content: $fa-weibo;
+  }
+}
+.fa-whatsapp {
+  &:before {
+    content: $fa-whatsapp;
   }
 }
 .fa-moon-stroke {
@@ -108,11 +193,6 @@
     content: $fa-random;
   }
 }
-.fa-facebook-square {
-  &:before {
-    content: $fa-facebook-square;
-  }
-}
 .fa-thumbtack {
   &:before {
     content: $fa-thumbtack;
@@ -121,11 +201,6 @@
 .fa-thumbtack1 {
   &:before {
     content: $fa-thumbtack1;
-  }
-}
-.fa-twitter {
-  &:before {
-    content: $fa-twitter;
   }
 }
 .fa-play-circle {
@@ -158,11 +233,6 @@
     content: $fa-pause-circle1;
   }
 }
-.fa-discourse {
-  &:before {
-    content: $fa-discourse;
-  }
-}
 .fa-google-play {
   &:before {
     content: $fa-google-play;
@@ -186,16 +256,6 @@
 .fa-address-book {
   &:before {
     content: $fa-address-book;
-  }
-}
-.fa-address-card {
-  &:before {
-    content: $fa-address-card;
-  }
-}
-.fa-adjust {
-  &:before {
-    content: $fa-adjust;
   }
 }
 .fa-alarm-clock {
@@ -226,21 +286,6 @@
 .fa-angle-double-down {
   &:before {
     content: $fa-angle-double-down;
-  }
-}
-.fa-angle-double-left {
-  &:before {
-    content: $fa-angle-double-left;
-  }
-}
-.fa-angle-double-right {
-  &:before {
-    content: $fa-angle-double-right;
-  }
-}
-.fa-angle-double-up {
-  &:before {
-    content: $fa-angle-double-up;
   }
 }
 .fa-angle-down {
@@ -528,6 +573,11 @@
     content: $fa-ellipsis-v;
   }
 }
+.fa-envelope {
+  &:before {
+    content: $fa-envelope;
+  }
+}
 .fa-external-link-alt {
   &:before {
     content: $fa-external-link-alt;
@@ -553,34 +603,14 @@
     content: $fa-file-pdf;
   }
 }
-.fa-flag-checkered {
-  &:before {
-    content: $fa-flag-checkered;
-  }
-}
 .fa-gift1 {
   &:before {
     content: $fa-gift1;
   }
 }
-.fa-graduation-cap {
-  &:before {
-    content: $fa-graduation-cap;
-  }
-}
-.fa-headphones {
-  &:before {
-    content: $fa-headphones;
-  }
-}
 .fa-home {
   &:before {
     content: $fa-home;
-  }
-}
-.fa-id-card {
-  &:before {
-    content: $fa-id-card;
   }
 }
 .fa-images {
@@ -678,19 +708,9 @@
     content: $fa-share-all;
   }
 }
-.fa-share-alt-square {
-  &:before {
-    content: $fa-share-alt-square;
-  }
-}
 .fa-share-alt {
   &:before {
     content: $fa-share-alt;
-  }
-}
-.fa-sign-language {
-  &:before {
-    content: $fa-sign-language;
   }
 }
 .fa-sign-out-alt {
@@ -776,5 +796,10 @@
 .fa-step-forward1 {
   &:before {
     content: $fa-step-forward1;
+  }
+}
+.fa-spinner2 {
+  &:before {
+    content: $fa-spinner2;
   }
 }

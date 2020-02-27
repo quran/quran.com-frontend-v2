@@ -1,0 +1,69 @@
+<style>
+  <% page = @presenter.verse.page_number %>
+  @font-face {
+    font-family: 'p<%= page %>-v2';
+    src: local(QCF200<%=page%>),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff2/p#{page}.woff2" %>') format('woff2'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff/p#{page}.woff" %>') format('woff');
+    font-display: block;
+  }
+
+  @font-face {
+    font-family: 'p<%= page %>-v1';
+    src: url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff2/p#{page}.woff2"%>'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff/p#{page}.woff" %>') format('woff'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/ttf/p#{page}.ttf" %>') format('truetype');
+  }
+
+  .p<%= page %>-v2 {
+    font-family: 'p<%=page%>-v2';
+  }
+
+  .p<%= page %>-v1 {
+    font-family: 'p<%=page%>-v1';
+  }
+</style>
+
+
+<div class="container" id="verses" data-chapter-id="<%= @presenter.verse.chapter_id %>">
+  <%= render "chapters/verse", verse: @presenter.verse %>
+
+  <h2>
+    <%= @presenter.tafsir_name %>
+  </h2>
+  <div class="tafsir <%= @presenter.language_name %>">
+    <%= @presenter.tafsir_text %>
+  </div>
+
+  <div class="text-center my-4">
+    <%= link_to "Back to ayah", "/#{@presenter.verse.verse_key}", class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div id="player" data-controller="player player-manager">
+  <div class="container">
+    <div class="audio-left-col">
+      <ul class="d-flex align-items-center justify-content-between">
+        <li class="play-ctrls play">
+          <button class="play-btn">
+            <i class="fa fa-play-solid d-flex align-items-center justify-content-center"></i>
+          </button>
+          <button class="pause-btn">
+            <i class="fa fa-pause d-flex align-items-center mleft"></i>
+          </button>
+          <button class="pause-loading">
+            <i class="fa fa-spinner1 animate-spin"></i>
+          </button>
+        </li>
+
+        <li class="text-primary timer">00:00</li>
+
+        <li class="lg-audio">
+          <div id="player-bar">
+            <div class="progress"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
