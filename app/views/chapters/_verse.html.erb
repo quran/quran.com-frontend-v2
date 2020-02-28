@@ -1,8 +1,8 @@
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
   <div class="row">
-    <div class="col-1 verse-actions">
+    <div class="col-2 verse-actions text-center">
       <div class="actions">
-        <a class="play play-verse d-flex align-items-center">
+        <a class="play play-verse d-flex align-items-center mx-auto">
           <i class="fa fa-play-solid d-flex ml-2 align-items-center"></i>
         </a>
 
@@ -22,7 +22,7 @@
       <% end %>
     </div>
 
-    <div class="col-11">
+    <div class="col-10">
       <div class="arabic">
         <%= render partial: 'chapters/word', collection: verse.words %>
       </div>
@@ -30,7 +30,7 @@
   </div>
 
   <div class="row translations">
-    <div class="col-1">
+    <div class="col-2 text-center">
       <% if @presenter.render_translations? && @presenter.show_verse_actions? %>
         <div class="verse-actions">
           <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
@@ -40,7 +40,7 @@
       <% end %>
     </div>
 
-    <div class="col-11">
+    <div class="col-10">
       <div class="translation">
         <% if @presenter.render_translations? %>
           <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translation %>
