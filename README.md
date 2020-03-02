@@ -54,7 +54,7 @@
 ## About The Project
 
 <a href="https://quran.com">
-<img src="./app/assets/images/thumbnail.png" alt="Quran.com Thumbnail">
+<img src="app/javascript/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
 Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) project serves millions of visitors from all around the world. And, al-hamdu Lillaah, the project continues to grow.
