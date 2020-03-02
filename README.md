@@ -89,9 +89,9 @@ Please install the following:
 
 - [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser.
 - [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it's an Apache Hadoop technology.
-- Follow (this guide)[https://gorails.com/setup] to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.6.2`.
+- Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.6.2`.
 - [pgAdmin](https://www.pgadmin.org/) is a GUI for postgreSQL.
-- Also, you're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). (RVM)[https://rvm.io/] is a command-line tool that lets you easily install and manage multiple ruby environments.
+- Also, you're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). [RVM](https://rvm.io/) is a command-line tool that lets you easily install and manage multiple ruby environments.
 
 ### Set-up
 
@@ -137,7 +137,7 @@ gem install bundler
 bundle install
 ```
 
-5. Download the (mini database dump)[https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy]. This dump has the first 15 Ayahs of each surah, two translations, two audio recitation, and few other required data, for all the Surahs.
+5. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, two translations, two audio recitation, and few other required data, for all the Surahs.
 
 6. Check that postgreSQL is up and running on your machine. For Linux, use:
 
