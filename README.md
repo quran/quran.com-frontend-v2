@@ -5,14 +5,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -23,12 +15,12 @@
   <h3 align="center">The Noble Quran</h3>
 
   <p align="center">
-    The source code for the Quran.com website.
+    The official source code repository for Quran.com
     <br />
-    <a href="#contact"><strong>Join Slack Channel »</strong></a>
+    <a href="#contact"><strong>Join the Slack Channel »</strong></a>
     <br />
     <br />
-    <a href="https://quran.com">View Site</a>
+    <a href="https://quran.com">Visit Quran.com</a>
     ·
     <a href="https://github.com/quran/quran.com-frontend-v2/issues">Report Bug</a>
     ·
@@ -36,76 +28,107 @@
   </p>
 </p>
 
+<!-- PROJECT SHIELDS -->
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Issues][issues-shield]][issues-url]
+[![Stargazers][stars-shield]][stars-url]
+[![MIT License][license-shield]][license-url]
+
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
-
-- [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
-  - [Built With](#built-with)
 - [Getting Started](#getting-started)
+  - [Development Stack](#development-stack)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
+  - [Set-up](#set-up)
+- [Contribute](#contribute)
+- [Important Note](#important-note)
 - [License](#license)
 - [Contact](#contact)
-- [End Note:](#end-note)
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
 <a href="https://quran.com">
-<img src="./app/assets/images/thumbnail.png" alt="Quran.com Thumbnail">
+<img src="app/javascript/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
-["The Noble Quran"](https://quran.com) project has served millions of visitors from all corners of the world - and we continue to grow everyday.
+Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) project serves millions of visitors from all around the world. And, al-hamdu Lillaah, the project continues to grow.
 
-This, with the blessing of Allah, is powered by a handful of volunteers who are working hard on their spare time to keep this project as beneficial and useful to people all around the world. Any help or contribution of yours will surely go a long way.
+This success is _only_ with the blessings of **Allah** Subhana Wa Tala. We're also thankful for the dedicated professionals who volunteer diligently to keep this project beneficial.
 
-### Built With
-
-The tech stack for this project:
-
-- [Ruby](https://www.ruby-lang.org/en/)
-- [Rails](https://rubyonrails.org/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Coffeescript](https://coffeescript.org/)
-- [jQuery](https://jquery.com/)
-- [Bootstrap](https://getbootstrap.com/)
+Continue reading to learn more on how you can contribute to ["the Noble Quran"](https://quran.com). Any help or contribution of yours will surely go a long way, In Sha'a Allah.
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-To get a local copy up and running please follow these simple steps.
+The second version of ["the Noble Quran"](https://quran.com) project is developed with Ruby on Rails. Ruby is an interpreted, high-level, general-purpose programming language. Rails, is a server-side web application and a model–view–controller framework. The Rails framework is written in the Ruby programming language, and it provides default structures for a database, web service, and web pages.
+
+To contribute, you'll first need to install prerequisites and set up a local Git repository.
+
+### Development Stack
+
+Our stack:
+
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Rails](https://rubyonrails.org/)
+- [jQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Rails Webpacker](https://github.com/rails/webpacker)
+
+Our team would like to keep development libraries up to date. Please refer to the _packages.json_ file for the versions of the project dependences.
 
 ### Prerequisites
 
-- [Make sure Node.js is installed](https://nodejs.org/en/)
-- [Make sure Yarn is installed](https://yarnpkg.com/en/)
-- [Follow this guide install Ruby, Rails & and PostgreSQL](https://gorails.com/setup) (select your OS from the options). Please try to install ruby with rvm, otherwise there might be problems later on.
-- Make sure you install ruby version `2.6.2`; you can update later on.
-- Install [pgAdmin](https://www.pgadmin.org/), a GUI for postgreSQL. (You can do this later on).
+Please install the following:
 
-### Installation
+- [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser.
+- [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it's an Apache Hadoop technology.
+- Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.6.2`.
+- [pgAdmin](https://www.pgadmin.org/) is a GUI for postgreSQL.
+- Also, you're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). [RVM](https://rvm.io/) is a command-line tool that lets you easily install and manage multiple ruby environments.
 
-1. Clone the repo
+### Set-up
+
+The setup instructions assume that you're using [Git Bash](https://git-scm.com/).
+
+1. To begin, fork the ["the Noble Quran"](https://quran.com) project.
+
+1. Clone the repository of your fork. Launch Git Bash, and use the following command. Replace `<your-username>` with your GitHub user name:
 
 ```sh
-git clone https://github.com/quran/quran.com-frontend-v2.git
+git clone https://github.com/<your-username>/quran.com-frontend-v2.git
+```
+2. Move into the `quran.com-frontend-v2` directory with the following command:
+
+```sh
+cd quran.com-frontend-v2
 ```
 
-2. Move into quran.com-frontend-v2 with `cd quran.com-frontend-v2`
+1. Assign the forked repository to a remote called "origin".
 
-3. Install frontend packages with yarn
+```sh
+git remote add origin git://github.com/<your-username>/quran.com-frontend-v2.git
+```
+
+1. Assign the original repository to a remote called "upstream".
+
+```sh
+git remote add upstream https://github.com/quran/quran.com-frontend-v2
+```
+
+3. Install frontend packages with yarn:
 
 ```sh
 yarn
 ```
 
-4. Install the ruby bundles with this series of commands
+4. Install the ruby bundles with the following series of commands:
 
 ```sh
 rvm gemset create quran
@@ -114,37 +137,85 @@ gem install bundler
 bundle install
 ```
 
-5. [Contact us](#contact) to get the database dump.
+5. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, two translations, two audio recitation, and few other required data, for all the Surahs.
 
-6. Make sure postgreSQL is up and running (this command is for Linux, this might differ on other OSes)
+6. Check that postgreSQL is up and running on your machine. For Linux, use:
 
 ```sh
 sudo service postgresql status
 ```
 
-7. Load dump in database (the process might vary based on OS)
+7. Load the dump in the postgreSQL database. This process may vary for different operating systems. For Linux, use:
 
 ```sh
 psql -cxq --quiet -d quran_dev -f dump.sql
 ```
 
-8. Run `rake db:create` inside `quran.com-fronted-v2` directory
+8. Inside the `quran.com-fronted-v2` directory, run:
 
-9. Run `rails s` to start the local server with rails.
+```sh
+rake db:create
+```
 
-Inshallah, after going through these steps properly you should see the web app running on localhost:3000
+9. To start the local server with Rails, run:
 
-<!-- ROADMAP -->
+```sh
+rails s
+```
 
-## Roadmap
-
-See the [open issues](https://github.com/quran/quran.com-frontend-v2/issues) for a list of proposed features (and known issues).
+In Sha'a Allah, after properly going through these, you'll see the web application running on `localhost:3000`
 
 <!-- CONTRIBUTING -->
 
-## Contributing
+## Contribute
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please go through the brief [contribution guidelines](./.github/CONTRIBUTING.md) to learn how to contribute to this project.
+- Review the [open issues](https://github.com/quran/quran.com-frontend-v2/issues) for a list of known issues and proposed features
+
+- Pull the latest changes from "upstream" and push these changes to your forked "origin". You'll need to repeat this step each time you plan to contribute.
+
+```sh
+git pull upstream master
+git push origin master
+```
+
+- Make a branch for your feature or fix. It's a good practice to make a separate branch for each feature or fix.
+
+```sh
+git checkout -b branchName
+```
+
+- Employ your technical chops to resolve an issue or develop a proposed feature. Be sure your code follows our practices.
+
+- If you need to switch to your master branch or another branch, then use:
+
+```sh
+git checkout master
+```
+
+- Run the following commands before you switch from your current branch to a new branch, to prevent leaking the changes on your current branch to another branch.
+
+```
+git add .
+git commit -m "this is a comment"
+```
+
+- When you're done making changes, push your branch to the origin. The following command will create a branch on your GitHub project. The `-u` flag links this branch with the remote branch, so that in the future you can simply type `git push origin`.
+
+```sh
+git push -u origin branchName
+```
+
+- Navigate to the ["the Noble Quran"](https://quran.com) project. Click on the "Pull Request" button in the project header. Enter a title and description of your pull request, and click on the green "Send pull request" button.
+
+- Your code will be reviewed. You can also continue to push to your branch in light of discussion and feedback about your commits.
+
+Contributions are what make the open source community an amazing place to learn, inspire, and develop together. The contributions you make are _appreciated_.
+
+<!-- IMPORTANT NOTE -->
+
+## Important Note
+
+This project is for the sake of Allah Subhana Wa Tala, and our team has good intentions while working on this project. When using our project code or contributing to the project, you agree to abide by the teachings and guidlines of the Quran. You are not allowed to use or copy the project code for any material gains or improper use, as defined by the Quran's teachings and guidelines.
 
 <!-- LICENSE -->
 
@@ -156,7 +227,7 @@ Distributed under the GNU GPLv3 License. See [LICENSE](./LICENSE) for more infor
 
 ## Contact
 
-Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our slack channel where we can discuss ideas, issues, features and so much more. We will try to add you as soon as possible.
+Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our slack channel, and we'll try to add you as soon as possible. On slack, we can discuss ideas, issues, features and so much more. 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -172,7 +243,3 @@ Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) w
 [license-shield]: https://img.shields.io/github/license/quran/quran.com-frontend-v2?style=for-the-badge
 [license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
-
-## End Note:
-
-This project is for the sake of Allah and we all have good intentions while working with this project. But we must stress that copying the code/project unethically or using this for any material gains is unacceptable.
