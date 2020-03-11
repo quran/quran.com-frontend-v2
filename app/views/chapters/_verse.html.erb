@@ -1,8 +1,8 @@
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
   <div class="row">
-    <div class="col-2 verse-actions text-center">
+    <div class="col-md-1 col-2 verse-actions text-center">
       <div class="actions">
-        <a class="play play-verse d-flex align-items-center justify-content-center">
+        <a class="play play-verse d-flex align-items-center justify-content-center mx-auto">
           <i class="fa fa-play-solid d-flex align-items-center"></i>
         </a>
 
@@ -13,7 +13,7 @@
 
       <% if @presenter.show_verse_actions? %>
         <% unless @presenter.render_translations? %>
-          <div class="verse-actions">
+          <div class="verse-actions d-flex justify-content-between">
             <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
             <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>"></a>
             <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>"></a>
@@ -22,7 +22,7 @@
       <% end %>
     </div>
 
-    <div class="col-10">
+    <div class="col-md-11 col-10">
       <div class="arabic">
         <%= render partial: 'chapters/word', collection: verse.words %>
       </div>
@@ -30,7 +30,7 @@
   </div>
 
   <div class="row translations">
-    <div class="col-2 text-center">
+    <div class="col-md-1 col-2 text-center">
       <% if @presenter.render_translations? && @presenter.show_verse_actions? %>
         <div class="verse-actions">
           <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
@@ -40,7 +40,7 @@
       <% end %>
     </div>
 
-    <div class="col-10">
+    <div class="col-md-11 col-10">
       <div class="translation">
         <% if @presenter.render_translations? %>
           <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translation %>

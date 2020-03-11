@@ -105,7 +105,7 @@ export default class extends Controller {
       .join(", ");
 
     this.shareButtons.append(
-      `<span class='share-icon ${icon} mr-6 mb-4'><a target='_blank' rel='noopener' title='Share on ${name}' class='fa align-items-center d-flex justify-content-center pt-2 pr-1 fa-${icon}' ${linkOptions}></a><span class='text-muted fs-sm'>${name}</span></span>`
+      `<span class='share-icon ${icon} mr-6 mb-4'><a target='_blank' rel='noopener' title='Share on ${name}' class='fa align-items-center d-flex justify-content-center fa-${icon}' ${linkOptions}></a><span class='text-muted fs-sm'>${name}</span></span>`
     );
   }
 

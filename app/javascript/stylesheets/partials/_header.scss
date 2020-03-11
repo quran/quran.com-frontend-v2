@@ -98,6 +98,9 @@ header {
 }
 
 @media (max-width: 767px) {
+  .header{
+    position: absolute;
+  }
   #local-switcher {
     margin: 7px 2px !important;
   }

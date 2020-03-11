@@ -24,11 +24,11 @@
       <i class="fa-angle-left"></i> <%= _t('chapters.previous') %>
     <% end if @presenter.previous_surah? %>
 
-    <%= link_to chapter_path(@presenter.chapter), class: 'btn btn-outline-primary' do %>
+    <%= link_to chapter_path(@presenter.chapter), class: 'btn btn-outline-primary mt-4' do %>
       <%= _t('chapters.go_to_beginning') %> <i class="fa-angle-up"></i>
     <% end %>
 
-    <%= link_to chapter_path(@presenter.chapter.chapter_number + 1), class: 'btn btn-outline-primary' do %>
+    <%= link_to chapter_path(@presenter.chapter.chapter_number + 1), class: 'btn btn-outline-primary mt-4' do %>
       <%= _t('chapters.next') %><i class="fa-angle-right"></i>
     <% end if @presenter.next_surah? %>
   <% end %>

@@ -225,6 +225,16 @@
   z-index: 10;
 
   border-radius: 25px;
+  #tooltip-dropdown{
+    height: 36px;
+  }
+  .text-muted.text-nowrap{
+    margin-right: 5px;
+  }
+  .fa:before{
+    padding: 15px 0px 11px 0px;
+    margin-right: 5px;
+  }
 }
 .border-info {
   border: 1px solid #00acc1;
@@ -367,7 +377,12 @@
         border-radius: 50px;
         border: solid 1px #b0bec5;
         margin-right: 40px;
-
+        i::before{
+          margin: 5px 0px 2px 3px;
+        }
+        .fa-pause-solid::before {
+            margin: 7px 5px 2px 3px;
+        }
         &:hover {
           background: $color-primary;
           color: $white;
@@ -720,6 +735,7 @@
     // justify-content: center;
   }
   .surah-actions {
+    position: absolute;
     /*li:nth-last-child(2), li:nth-last-child(1) {
       padding-bottom: 0px;
     }*/
