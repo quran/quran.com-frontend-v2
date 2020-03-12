@@ -57,18 +57,17 @@
 <img src="app/javascript/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
-Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) project serves millions of visitors from all around the world. Al-hamdu Lillaah, the project continues to grow.
+Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) application serves millions of visitors from all around the world. Al-hamdu Lillaah, the project continues to grow.
 
 This success is _only_ with the blessings of **Allah** Subhana Wa Tala. We're also thankful for the dedicated professionals who volunteer diligently to keep this project beneficial.
 
-Continue reading to learn more about how you can contribute to ["the Noble Quran GitHub repository"](https://github.com/quran/quran.com-frontend-v2
-https://quran.com). Your help will surely go a long way, In Sha'a Allah.
+Continue reading to learn more about how you can contribute to ["the Noble Quran GitHub repository"](https://github.com/quran/quran.com-frontend-v2). Your help will surely go a long way, In Sha'a Allah.
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
-The second version of ["the Noble Quran"](https://quran.com) project is developed using Ruby on Rails. Ruby is an interpreted, high-level, general-purpose programming language. Rails, is a server-side web application and a model–view–controller framework. The Rails framework is written in the Ruby programming language, and it provides default structures for a database, web service, and web pages. For more information about Ruby on Rails, see the [Ruby on Rails Guide](https://guides.rubyonrails.org/).
+The second version of ["the Noble Quran"](https://quran.com) application is developed using Ruby on Rails. Ruby is an interpreted, high-level, general-purpose programming language. Rails, is a server-side web application and a model–view–controller framework. The Rails framework is written in the Ruby programming language, and it provides default structures for a database, web service, and web pages. For more information about Ruby on Rails, see the [Ruby on Rails Guide](https://guides.rubyonrails.org/).
 
 ### Development Stack
 
@@ -80,28 +79,24 @@ Our stack:
 - [Bootstrap](https://getbootstrap.com/)
 - [Rails Webpacker](https://github.com/rails/webpacker)
 
-
-If you're new to [Git](https://git-scm.com/docs),
 Our team would like to keep development libraries up to date. Please refer to the _packages.json_ file for the versions of the project dependences. To start contributing, you'll first need to install the prerequisites and set up a local Git repository, as outlined in the next sections.
 
 ### Prerequisites
 
 You'll need:
 
-- [Git](https://git-scm.com/downloads) for source code version control. If you want you, you may use another Version Control Software, such as SVN.
+- [Git](https://git-scm.com/downloads) for source code version control. If you want, you may use another Version Control Software, such as SVN.
 - [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser
 - [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it's an Apache Hadoop technology
 - Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.6.2`
 - [pgAdmin](https://www.pgadmin.org/) is a GUI for postgreSQL
-
-Also, you're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). [RVM](https://rvm.io/) is a command-line tool that lets you easily install and manage multiple ruby environments.
+- You're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). [RVM](https://rvm.io/) is a command-line tool that lets you easily install and manage multiple ruby environments.
 
 ### Set-up
 
-The setup instructions assume that you're using [Git Bash](https://git-scm.com/), but the concepts are the same if you're using [Git GUI](https://git-scm.com/downloads/guis). 
+The setup instructions assume that you're using [Git Bash](https://git-scm.com/), but the concepts are the same if you're using [Git GUI](https://git-scm.com/downloads/guis) or another version control software. 
 
-1. To begin, fork the current ["Noble Quran project repository"](https://github.com/quran/quran.com-frontend-v2
-https://quran.com) on GitHub.
+1. To begin, fork the current ["Noble Quran project repository"](https://github.com/quran/quran.com-frontend-v2) on GitHub.
 
 1. Clone the repository of your fork. Launch Git Bash, and use the following command. Replace `<your-username>` with your GitHub user name:
 
@@ -141,7 +136,7 @@ https://quran.com) on GitHub.
   bundle install
   ```
 
-7. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, two translations, two audio recitation, and few other required data, for all the Surahs.
+7. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitation, and few other required data.
 
 8. Check that postgreSQL is up and running on your machine. For Linux, use:
 
@@ -212,8 +207,7 @@ If you're new to Git, see the [Git references](https://git-scm.com/docs) and the
   git push -u origin branchName
   ```
 
-- Navigate to the  ["Noble Quran project repository"](https://github.com/quran/quran.com-frontend-v2
-https://quran.com) on GitHub. Click on the "Pull Request" button in the project header. Enter a title and description of your pull request, and click on the green "Send pull request" button.
+- Navigate to the  ["Noble Quran project repository"](https://github.com/quran/quran.com-frontend-v2) on GitHub. Click on the "Pull Request" button in the project header. Enter a title and description of your pull request, and click on the green "Send pull request" button.
 
 - Your code will be reviewed. You can also continue to push to your branch in light of discussion and feedback about your commits.
 
