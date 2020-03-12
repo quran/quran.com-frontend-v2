@@ -97,14 +97,14 @@ class BasePresenter
      'koran',
      'kareem',
      'surah',
+     'Allah',
      'yasin',
      'yaseen',
      'kahf',
      'mulk',
      'rahman',
      'muslim',
-     'islam',
-     'Allah'].freeze
+     'islam'].freeze
   end
 
   def meta_image
