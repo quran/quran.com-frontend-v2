@@ -381,8 +381,12 @@
           margin: 5px 0px 2px 3px;
         }
         .fa-pause-solid::before {
-            margin: 7px 5px 2px 3px;
+          margin: 7px 5px 2px 3px;
+          @media (max-width: 767px) {
+            margin: 5px 5px 2px 3px;
+          }
         }
+
         &:hover {
           background: $color-primary;
           color: $white;
