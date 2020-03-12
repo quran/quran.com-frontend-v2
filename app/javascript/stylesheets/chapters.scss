@@ -546,6 +546,27 @@
   }
 
   @media (max-width: 767px) {
+    .no-transaltion{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .actions{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        a{
+          margin-right: 34% !important;
+          margin-left: unset !important;
+        }
+      }
+      .verse-actions{
+        flex: 1;
+        align-items: center;
+         a {
+          margin-bottom: 6px !important;
+        }
+      }
+    }
     .items {
       column-count: 1 !important;
     }
