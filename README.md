@@ -57,7 +57,7 @@
 <img src="app/javascript/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
-Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) application serves millions of visitors from all around the world. Al-hamdu Lillaah, the project continues to grow.
+Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) application serves millions of visitors from all around the world. Al-hamdu Lillah, the project continues to grow.
 
 This success is _only_ with the blessings of **Allah** Subhana Wa Tala. We're also thankful for the dedicated professionals who volunteer diligently to keep this project beneficial.
 
