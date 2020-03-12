@@ -201,7 +201,7 @@ If you're new to Git, see the [Git references](https://git-scm.com/docs) and the
   git commit -m "this is a comment"
   ```
 
-- When you're done making changes, push your branch to the origin. The `-u` flag links this branch with the remote branch, so that in the future you can simply type `git push origin`.
+- When you're done making changes, push your branch to the "origin". The `-u` flag links this branch with the remote branch, so that in the future you can simply type `git push origin`.
 
   ```sh
   git push -u origin branchName
