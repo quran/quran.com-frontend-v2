@@ -11,6 +11,15 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
   connect() {
+    $('.mobile-search').on('click', function (e) {
+      $(this).hide()
+      $('.expanded-search').show()
+    });
+
+    $('.btn-search-close').on('click', function (e) {
+      $('.mobile-search').show()
+      $('.expanded-search').hide()
+    });
     let el = $(this.element);
 
     let options = {allowClear: true};
