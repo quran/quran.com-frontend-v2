@@ -163,6 +163,10 @@ class ChapterPresenter < BasePresenter
 
   protected
 
+  def meta_page_type
+    'article'
+  end
+
   def meta_keyword
     chapter.translated_names.pluck(:name) + ['القران الكريم',
                                              'القرآن',

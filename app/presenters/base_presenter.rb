@@ -21,7 +21,7 @@ class BasePresenter
         title: meta_title,
         description: meta_description,
         url: meta_url,
-        type: 'website',
+        type: meta_page_type,
         image: meta_image,
         'image:alt': 'Quran.com',
         see_also: related_links
@@ -72,6 +72,10 @@ class BasePresenter
     ]
   end
 
+  def meta_page_type
+    'website'
+  end
+
   def meta_title
     'Quran.com'
   end
@@ -79,7 +83,7 @@ class BasePresenter
   def related_links; end
 
   def meta_url
-    context.url_for locale: I18n.locale
+    context.url_for(locale: I18n.locale, protocol: 'https')
   end
   alias canonical_href meta_url
 

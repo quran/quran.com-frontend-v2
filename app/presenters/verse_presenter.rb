@@ -53,6 +53,10 @@ class VersePresenter < BasePresenter
     tafsir.text
   end
 
+  def meta_page_type
+    'article'
+  end
+
   def language_name
     tafsir.language_name
   end
