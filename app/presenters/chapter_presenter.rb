@@ -139,7 +139,7 @@ class ChapterPresenter < BasePresenter
   end
 
   def translation_selected?(id)
-    valid_translations.include?(id.to_s)
+    valid_translations.include?(id)
   end
 
   def load_words(verse)
@@ -156,9 +156,41 @@ class ChapterPresenter < BasePresenter
 
   def load_translations(verse, default_translation = nil)
     translations_to_load = valid_translations
+
     translations_to_load = [default_translation] if default_translation && translations_to_load.blank?
 
     verse.translations.where(resource_content_id: translations_to_load).order('translations.priority DESC')
+  end
+
+  def valid_translations
+    # 131 default translation
+    #return @valid_translation if @valid_translation
+
+    strong_memoize :valid_translations do
+      translations = (
+      params[:translations].presence ||
+          params[:translations].presence ||
+          session[:translations].presence || DEFAULT_TRANSLATION
+      )
+
+      if translations.is_a?(String)
+        translations = translations.to_s.split(',')
+      end
+
+      if 'no' == translations
+        context.session[:translations] = 'no'
+        []
+      else
+        translations = ResourceContent
+                           .where(
+                               slug: translations
+                           ).or(
+            ResourceContent.where(id: translations)
+        ).pluck(:id)
+
+        context.session[:translations] = translations
+      end
+    end
   end
 
   protected
@@ -179,7 +211,7 @@ class ChapterPresenter < BasePresenter
       first_verse = paginate.first
       translation = load_translations(first_verse, DEFAULT_TRANSLATION).first
 
-      "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{translation.text}"
+      "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{sanitize_meta_description_text(translation.text)}"
     end
   end
 
@@ -249,29 +281,5 @@ class ChapterPresenter < BasePresenter
 
   def min(a, b)
     a < b ? a : b
-  end
-
-  def valid_translations
-    # 131 default translation
-    strong_memoize :valid_translations do
-      translations = (
-      params[:translation].presence ||
-          params[:translations].presence ||
-          session[:translation].presence || DEFAULT_TRANSLATION
-      )
-
-      translations = if translations == 'no'
-                       []
-                     else
-                       ResourceContent
-                           .where(
-                               slug: translations.to_s.split(',')
-                           ).or(
-                           ResourceContent.where(id: translations.to_s.split(','))
-                       ).pluck(:id)
-                     end
-
-      session[:translation] = translations
-    end
   end
 end

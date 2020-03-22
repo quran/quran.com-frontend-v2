@@ -39,15 +39,23 @@ export default class extends Controller {
       e.preventDefault();
       this.handleTooltip(e);
     });
+
     $(document).on("click", "#reset-setting", e => {
       e.preventDefault();
       this.resetSetting();
     });
+
     $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
+
     $(document).on("select2:select", "#reciter-dropdown-menu", e => {
       this.updateReciter(e.currentTarget.value);
     });
+
     $(document).on("select2:select", "#translations", e => {
+      this.updateTranslations($(e.target).val());
+    });
+
+    $(document).on("select2:unselecting", "#translations", e => {
       this.updateTranslations($(e.target).val());
     });
 
@@ -172,23 +180,6 @@ export default class extends Controller {
     document.addEventListener("DOMContentLoaded", () => {
       setDark(window.matchMedia("(prefers-color-scheme: dark)"));
     });
-  }
-
-  reloadTranslations() {
-    const activeTranslations = $(
-      "#translation-dropdown-menu .dropdown-item.active"
-    );
-    const translationIds = [];
-    activeTranslations.each((i, t) =>
-      translationIds.push($(t).data("translation"))
-    );
-    return $.get(
-      `${$("#verses-pagination").data("url")}`,
-      { translations: translationIds.join(",") },
-      function(response) {
-        $("#verses").html(response);
-      }
-    );
   }
 
   get(key) {

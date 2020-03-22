@@ -26,8 +26,15 @@ export default class extends Controller {
 
   changeTranslations(newTranslationIds) {
     let path = $("#verses_pagination").data("url");
+    let translationsToLoad;
 
-    fetch(`${path}?${$.param({ translations: newTranslationIds.join(",") })}`)
+    if (0 == newTranslationIds.length) {
+      translationsToLoad = "no";
+    } else {
+      translationsToLoad = newTranslationIds.join(",");
+    }
+
+    fetch(`${path}?${$.param({ translations: translationsToLoad })}`)
       .then(response => response.text())
       .then(verses => {
         $("#verses").html(
