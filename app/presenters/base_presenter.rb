@@ -84,7 +84,7 @@ class BasePresenter
   alias canonical_href meta_url
 
   def meta_description
-    'The Quran translated into many languages in a simple and easy interface'
+    'The Quran and the explanation of the Quran in many language, available in a simple and easy application'
   end
 
   def meta_keyword
