@@ -112,13 +112,13 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 3. Assign the forked repository to a remote called "origin".
 
   ```sh
-  git remote add origin git://github.com/<your-username>/quran.com-frontend-v2.git
+  git remote add origin git://github.com:<your-username>/quran.com-frontend-v2.git
   ```
 
 4. Assign the original repository to a remote called "upstream".
 
   ```sh
-  git remote add upstream https://github.com/quran/quran.com-frontend-v2
+  git remote add upstream git@github.com:quran/quran.com-frontend-v2.git
   ```
 
 5. Install frontend packages with yarn:
