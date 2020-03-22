@@ -143,7 +143,7 @@ export default class extends Controller {
     let translationFontSize = this.get("translationFontSize")[device];
 
     fontStylesheet.sheet.insertRule(
-      `.word {font-size: ${wordFontSize}px !important}`
+      `.w {font-size: ${wordFontSize}px !important}`
     );
     fontStylesheet.sheet.insertRule(
       `.translation {font-size: ${translationFontSize}px !important}`
