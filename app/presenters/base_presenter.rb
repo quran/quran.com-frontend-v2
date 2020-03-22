@@ -6,6 +6,7 @@ class BasePresenter
   HOST = 'https://www.quran.com'
   DEFAULT_RECITATION = 7
   DEFAULT_TRANSLATION = 131
+  TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   attr_reader :context, :resource_class
 
@@ -117,5 +118,9 @@ class BasePresenter
 
   def language
     @language ||= Language.find_by(iso_code: I18n.locale) || Language.default
+  end
+
+  def sanitize_meta_description_text(text)
+    context.view_context.truncate(TEXT_SANITIZER.sanitize(text.to_s), length: 160, separator: '.')
   end
 end
