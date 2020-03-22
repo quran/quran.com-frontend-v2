@@ -1,11 +1,11 @@
 <header class="header">
-  <div class="container d-flex justify-content-between">
+  <div class="container d-flex justify-content-between align-items-center">
     <div class="header-left">
       <%= link_to root_path, class: 'logo' do %>
         Quran<span>.com</span>
       <% end %>
 
-      <div id="local-switcher">
+      <div id="local-switcher" class="d-none d-md-block">
         <div class="dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= _t('local_native_name') %> <i class="fa fa-fadown-open"></i>

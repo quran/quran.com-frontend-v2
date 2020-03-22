@@ -8,11 +8,18 @@
   padding: 0;
   text-align: center;
   color: #fff;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
-  line-height: 2em;
+  line-height: 1em;
   border-radius: 27px;
 
+  .fa:before{
+    height: 46px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   a {
   }
 
@@ -50,6 +57,9 @@
 
   &.envelope {
     background: #0b2e13;
+    .fa:before{
+      height: 53px;
+    }
   }
 
   &.messenger {

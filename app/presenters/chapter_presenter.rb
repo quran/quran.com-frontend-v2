@@ -154,8 +154,11 @@ class ChapterPresenter < BasePresenter
         .order('word_translations.priority DESC, words.position ASC')
   end
 
-  def load_translations(verse)
-    verse.translations.where(resource_content_id: valid_translations).order('translations.priority DESC')
+  def load_translations(verse, default_translation = nil)
+    translations_to_load = valid_translations
+    translations_to_load = [default_translation] if default_translation && translations_to_load.blank?
+
+    verse.translations.where(resource_content_id: translations_to_load).order('translations.priority DESC')
   end
 
   protected
@@ -168,7 +171,12 @@ class ChapterPresenter < BasePresenter
   end
 
   def meta_description
-    "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{paginate.first.text_madani}"
+    strong_memoize :meta_description do
+      first_verse = paginate.first
+      translation = load_translations(first_verse, DEFAULT_TRANSLATION).first
+
+      "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{translation.text}"
+    end
   end
 
   def meta_url

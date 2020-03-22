@@ -177,7 +177,8 @@
   .select2-selection__choice {
   //margin-right: 7px;
   //margin-top: 6px;
-  margin: 5px 3px;
+  margin: 9px 3px;
+  height: 27px;
   display: inline-flex;
   padding-right: 0;
   align-items: center;
@@ -186,7 +187,9 @@
   border-color: $primary-400;
 
   color: $dropdown-link-active-color;
-
+  @media (max-width: 768px) {
+    margin: 4px 3px;
+  }
   .select2-selection__choice__remove {
     margin: 0;
     padding-left: 7px;

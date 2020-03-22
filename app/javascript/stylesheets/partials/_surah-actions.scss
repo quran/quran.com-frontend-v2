@@ -35,12 +35,19 @@
       ul{
         margin-right: 27px;
         span.select2-selection__clear {
-          left: 168px;
+          left: 164px;
           position: absolute;
-          margin-top: 0px !important;
-          padding: 11px 7px 12px 10px;
-          border-top-right-radius: 6px;
-          background-color: white;
+          margin-top: 7px;
+          padding: 1px 1px 2px 7px;
+          border-radius: 50%;
+          height: 21px;
+          background-color: #00acc1;
+          width: 21px;
+          color: white;
+          margin-top: 12px;
+          @media (max-width: 767px) {
+            margin-top: 7px;
+          }
         }
       }
     }
