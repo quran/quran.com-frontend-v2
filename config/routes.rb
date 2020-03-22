@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   get :search, to: 'search#search', as: :search
   get '/audio', to: 'audio_files#index'
-  get '/ayatul-kursi', to: 'chapters#show', id: '2', range: '255'
-  get "آیت الکرسی/", to: 'chapters#show', id: '2', range: '255'
+  get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
+  get "آیت الکرسی/", to: 'chapters#ayatul_kursi', id: '2', range: '255'
 
   resources :verses, only: :show do
     member do
@@ -43,22 +43,47 @@ Rails.application.routes.draw do
   get :sw, to: 'static#serviceworker'
   get :serviceworker, to: 'static#serviceworker'
 
-  ['sitemap.xml','sitemap.xml.gz', 'sitemap:number.xml.gz'].each do |path|
-    get "/sitemaps/#{path}" => proc { |req|
-      filename = req['PATH_INFO'].gsub('sitemaps', '').gsub(/\//, '')
+  get "/sitemap.xml" => proc { |req|
+    [
+        200,
+        {
+            'Pragma' => 'public',
+            'Cache-Control' => "max-age=#{1.day.to_i}",
+            'Expires' => 1.day.from_now.to_s(:rfc822),
+            'Content-Type' => 'text/html'
+        },
+        [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml')).read]
+    ]
+  }
 
-      [
-          200,
-          {
-              'Pragma'        => 'public',
-              'Cache-Control' => "max-age=#{1.day.to_i}",
-              'Expires'       => 1.day.from_now.to_s(:rfc822),
-              'Content-Type'  => 'text/html'
-          },
-          [open(Rails.root.join('public', 'sitemaps', filename)).read]
-      ]
-    }
-  end
+  get "/sitemap.xml.gz" => proc { |req|
+    [
+        200,
+        {
+            'Pragma' => 'public',
+            'Cache-Control' => "max-age=#{1.day.to_i}",
+            'Expires' => 1.day.from_now.to_s(:rfc822),
+            'Content-Type' => 'text/html'
+        },
+        [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
+    ]
+  }
+
+
+  get "/sitemaps/sitemap:number.xml.gz" => proc { |req|
+    filename = req['PATH_INFO'].gsub('sitemaps', '').gsub(/\//, '')
+
+    [
+        200,
+        {
+            'Pragma' => 'public',
+            'Cache-Control' => "max-age=#{1.day.to_i}",
+            'Expires' => 1.day.from_now.to_s(:rfc822),
+            'Content-Type' => 'text/html'
+        },
+        [open(Rails.root.join('public', 'sitemaps', filename)).read]
+    ]
+  }
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 
