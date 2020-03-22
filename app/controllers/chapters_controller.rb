@@ -17,6 +17,20 @@ class ChaptersController < ApplicationController
     render partial: 'verses', layout: false if request.xhr?
   end
 
+  def ayatul_kursi
+    @presenter = AyatulKursirPresenter.new(self)
+
+    unless @presenter.chapter
+      return redirect_to root_path, error: t('chapters.invalid')
+    end
+
+    if request.xhr?
+      render partial: 'verses', layout: false
+    else
+      render action: :show
+    end
+  end
+
   def load_verses
     start = params[:verse].to_i
     params[:range] = "#{start}-#{start + 10}"
