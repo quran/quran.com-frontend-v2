@@ -11,3 +11,9 @@ $browser-context: 16;
 
   @return $pixels / $context * 1rem;
 }
+
+@mixin action-button {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+}

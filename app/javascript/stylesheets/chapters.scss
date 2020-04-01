@@ -369,17 +369,11 @@
       padding-top: 14px;
 
       .play {
-        width: 45px;
-        height: 45px;
-        line-height: 43px;
-        font-size: 18px;
+        @include action-button;
         color: $color-primary;
-        border-radius: 50px;
         border: solid 1px #b0bec5;
         margin-right: 40px;
-        i::before{
-          margin: 5px 0px 2px 3px;
-        }
+
         .fa-pause-solid::before {
           margin: 7px 5px 2px 3px;
           @media (max-width: 767px) {
@@ -662,8 +656,6 @@
         .play-verse {
           width: 35px;
           height: 35px;
-          line-height: 33px;
-          font-size: 13px;
         }
       }
 

@@ -22,7 +22,6 @@
       }
 
       i {
-        font-size: 14px;
         color: #b0bec5;
       }
 
@@ -44,41 +43,30 @@
         }
 
         .play-btn {
-          width: 45px;
-          height: 45px;
-          font-size: 18px;
-          border-radius: 50px;
+          @include action-button;
           background: #00acc1;
 
           i {
-            font-size: 18px;
             color: $white;
-            &:before{
+
+            &::before{
               padding: 15px 0;
             }
           }
         }
         .pause-btn {
-          width: 45px;
-          height: 45px;
-          font-size: 18px;
-          border-radius: 50px;
+          @include action-button;
           background: #00acc1;
 
           i {
-            margin-left: 2px;
-            font-size: 18px;
             color: $white;
-            &:before{
+            padding: 0 6px;
+
+            &::before{
               padding: 15px 0;
             }
           }
         }
-      }
-
-      &.timer {
-        font-size: 14px;
-        margin-left: 20px;
       }
     }
 
