@@ -18,7 +18,7 @@ class ChaptersController < ApplicationController
   end
 
   def ayatul_kursi
-    @presenter = AyatulKursirPresenter.new(self)
+    @presenter = AyatulKursiPresenter.new(self)
 
     unless @presenter.chapter
       return redirect_to root_path, error: t('chapters.invalid')
