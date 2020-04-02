@@ -165,12 +165,10 @@ export default class extends Controller {
     const setDark = function(e) {
       if (e && e.matches) {
         $("body").addClass("night");
+      } else if (isNightMode) {
+        $("body").addClass("night");
       } else {
-        if (isNightMode) {
-          $("body").addClass("night");
-        } else {
-          $("body").removeClass("night");
-        }
+        $("body").removeClass("night");
       }
     };
 
@@ -195,6 +193,9 @@ export default class extends Controller {
     const isNightMode = $("body").hasClass("night");
     $("body").toggleClass("night");
     $("#toggle-nightmode").toggleClass("text-primary");
+    var text = $("li a#toggle-nightmode span").text();
+    $("li a#toggle-nightmode span").text(
+      text === "Night Mode" ? "Day Mode" : "Night Mode");
     this.set("nightMode", !isNightMode);
   }
 
