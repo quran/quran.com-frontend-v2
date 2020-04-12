@@ -16,10 +16,14 @@ module TranslationSearchable
       "#{verse.chapter_id}/#{verse.verse_number}"
     end
 
+    def language_code
+      language.iso_code
+    end
+
     def as_indexed_json(options = {})
       hash = self.as_json(
           only: [:id, :resource_name, :verse_id],
-          methods: :verse_path
+          methods: [:verse_path, :language_code]
       )
 
       hash[:resource_id] = resource_content_id
@@ -30,29 +34,22 @@ module TranslationSearchable
 
     mappings dynamic: 'false' do
       indexes :verse_id, type: 'integer'
-      indexes :verse_path, type: 'text' do
-        indexes :keyword, type: 'keyword'
-      end
+      indexes :verse_path, type: 'text'
+      indexes :language_code, type: 'keyword'
 
-      #languages = Translation.where(resource_type: 'Verse').pluck(:language_id).uniq
-      #available_languages = Language.where(id: languages)
+      es_analyzer = language.es_analyzer_default.presence
 
-      false && available_languages.each do |lang|
-        es_analyzer = lang.es_analyzer_default.present? ? lang.es_analyzer_default : nil
+      indexes :text,
+              type: 'text',
+              similarity: 'my_bm25',
+              term_vector: 'with_positions_offsets',
+              analyzer: es_analyzer || 'standard'
 
-        indexes "trans_#{lang.iso_code}", type: 'nested' do
-          indexes :text,
-                  type: 'text',
-                  similarity: 'my_bm25',
-                  term_vector: 'with_positions_offsets',
-                  analyzer: es_analyzer || 'standard'
-          indexes :stemmed,
-                  type: 'text',
-                  similarity: 'my_bm25',
-                  term_vector: 'with_positions_offsets_payloads',
-                  analyzer: es_analyzer || 'english'
-        end
-      end
+      indexes :stemmed,
+              type: 'text',
+              similarity: 'my_bm25',
+              term_vector: 'with_positions_offsets_payloads',
+              analyzer: es_analyzer || 'english'
     end
   end
 end

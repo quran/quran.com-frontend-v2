@@ -1,10 +1,9 @@
-=begin
 options = if ENV['ELASTICSEARCH_HOST']
             {host: ENV['ELASTICSEARCH_HOST']}
           else
             {
                 host: 'staging.quran.com',
-                port: 32783,
+                port: 32785,
                 adapter: :typhoeus,
                 scheme: :http
 
@@ -12,4 +11,3 @@ options = if ENV['ELASTICSEARCH_HOST']
           end
 
 Elasticsearch::Model.client = Elasticsearch::Client.new(options)
-=end

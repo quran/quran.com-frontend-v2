@@ -17,11 +17,11 @@
 #
 
 class Translation < ApiCoreRecord
-  include LanguageFilterable
-  include TranslationSearchable
-
   belongs_to :verse
   belongs_to :resource_content
 
   has_many :foot_notes, as: :resource
+
+  include LanguageFilterable
+  include TranslationSearchable
 end
