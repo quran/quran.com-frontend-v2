@@ -44,8 +44,7 @@ class SearchController < ApplicationController
 
   def is_quran_text_search?
     detected_lang = CLD.detect_language(query)
-
-    'ar' == detected_lang[:code] && detected_lang[:reliable]
+    'ar' == detected_lang[:code]
   rescue
     false
   end
@@ -55,7 +54,8 @@ class SearchController < ApplicationController
   end
 
   def query
-    (params[:q] || params[:query]).to_s.strip
+    query = (params[:q] || params[:query]).to_s.strip.first(150)
+    params[:q] = query
   end
 
   def size(default = 20)

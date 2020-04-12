@@ -79,11 +79,23 @@
   font-display: auto;
 }
 
+@font-face {
+  font-family: "Qalam";
+  src: url("../../fonts/quran_fonts/qalam/al_qalam.ttf");
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "me_quran";
+  src: url("../../fonts/quran_fonts/me_quran/me_quran_volt_newmet.ttf");
+  font-display: auto;
+}
+
 .indopak {
   font-family: "pdms";
   font-size: 25px;
 }
 
 .madani {
-  font-family: Kitab;
+  font-family: me_quran;
 }

@@ -27,7 +27,7 @@ class SearchPresenter < BasePresenter
   end
 
   def query
-    (params[:query] || params[:q]).presence
+    params[:q].presence
   end
 
   def items

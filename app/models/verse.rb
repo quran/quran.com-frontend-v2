@@ -37,8 +37,8 @@ class Verse < ApiCoreRecord
 
   has_many :tafsirs
   has_many :words
-  has_many :media_contents, as: :resource
-  has_many :translations, as: :resource
+  #has_many :media_contents, as: :resource
+  has_many :translations
   has_many :audio_files, as: :resource
   has_many :recitations, through: :audio_files
   has_many :roots, through: :words
