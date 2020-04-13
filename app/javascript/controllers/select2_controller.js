@@ -22,10 +22,11 @@ export default class extends Controller {
     });
     let el = $(this.element);
 
-    let options = {allowClear: true};
+    let options = {};
 
     if (el.data("multiple")) {
       options["multiple"] = true;
+      options["allowClear"] = true;
     }
 
     if (el.data("tags")) {
