@@ -157,7 +157,7 @@ bundle exec rails db:create
 11. Load the dump in the postgreSQL database. This process may vary for different operating systems. For Linux, use:
 
 ```sh
-psql -cxq --quiet -d quran_dev -f dump.sql
+psql -cxq --quiet -d quran_dev -f mini_dump.sql
 ```
 
 12. To start the local server with Rails, run:
