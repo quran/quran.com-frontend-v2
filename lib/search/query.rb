@@ -8,14 +8,27 @@ module Search
 
     def initialize(query)
       @query = query.to_s.force_encoding('ASCII-8BIT').
-               force_encoding('UTF-8').
-               strip.
-               gsub(/[:\/\\]+/, ':').
-               gsub(REGEXP) { |m| "\\#{m}" }
+          force_encoding('UTF-8').
+          strip.
+          gsub(/[:\/\\]+/, ':').
+          gsub(REGEXP) { |m| "\\#{m}" }
     end
 
     def is_arabic?
-      @query.arabic?
+      'ar' == detect_language_code
+    end
+
+    def detect_languages
+      query.split(/\s/).map do |token|
+        CLD.detect_language(token)[:code] rescue nil
+      end.compact.uniq
+    end
+
+    def detect_language_code
+      return @detect_language if @detect_language
+      detected_lang = CLD.detect_language(query)
+      @detect_language = detected_lang[:code]
+    rescue
     end
 
     def query

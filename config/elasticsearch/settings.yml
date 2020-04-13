@@ -1,5 +1,8 @@
 index:
   number_of_shards: 5
+  mapping:
+    nested_fields:
+      limit: 200
   #    query:
   #        default_field: text
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html
@@ -52,7 +55,7 @@ index:
         max_gram: 6
       arabic_stop:
         type: stop
-        stopwords: _arabic_
+        stopwords: analysis/stop.text-token.to.text-lemma.txt
       arabic_stemmer:
         type: stemmer
         language: arabic

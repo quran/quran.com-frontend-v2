@@ -2,6 +2,7 @@ class SearchPresenter < BasePresenter
   def add_search_results(search_response)
     @search = search_response
     @results = @search.results
+    @translations = []
   end
 
   def no_results?
@@ -18,8 +19,12 @@ class SearchPresenter < BasePresenter
     end
   end
 
-  def render_translations?
-    false
+  def render_translations?(verse)
+    @results[verse.id][:translations].present?
+  end
+
+  def load_translations(verse)
+    @results[verse.id][:translations]
   end
 
   def show_verse_actions?
@@ -32,12 +37,16 @@ class SearchPresenter < BasePresenter
 
   def items
     strong_memoize :items do
-      Verse.where(id: @results.keys).each do |v|
-        highlights = @results[v.id]
-        if highlights && highlights['text_madani.text']
-          v.highlighted_text = highlights['text_madani.text'][0].html_safe
-        else
-          v.highlighted_text = v.text_madani
+      if :navigation == @search.result_type
+        @results
+      else
+        Verse.where(id: @results.keys).each do |v|
+          highlights = @results[v.id]
+          if highlights[:text].present?
+            v.highlighted_text = highlights[:text].html_safe
+          else
+            v.highlighted_text = v.text_madani
+          end
         end
       end
     end

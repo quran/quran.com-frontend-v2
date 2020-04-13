@@ -1,3 +1,4 @@
+=begin
 options = if ENV['ELASTICSEARCH_HOST']
             {host: ENV['ELASTICSEARCH_HOST']}
           else
@@ -11,3 +12,4 @@ options = if ENV['ELASTICSEARCH_HOST']
           end
 
 Elasticsearch::Model.client = Elasticsearch::Client.new(options)
+=end

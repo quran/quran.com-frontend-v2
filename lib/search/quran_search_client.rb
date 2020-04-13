@@ -19,7 +19,12 @@ module Search
 
     def search
       results = Verse.search(search_defination)
-      Search::Results.new(results, page)
+
+      if results.empty?
+        Search::NavigationClient.new(query.query).search
+      else
+        Search::Results.new(results, page)
+      end
     end
 
     protected
@@ -35,9 +40,19 @@ module Search
     end
 
     def search_query
+      match_any = []
+
+      query.detect_languages.each do |lang|
+        if QuranSearchable::TRANSLATION_LANGUAGE_CODES.include?(lang)
+          match_any << nested_translation_query(lang)
+        end
+      end
+
+      match_any << quran_text_query
+
       {
           bool: {
-              should: quran_text_query,
+              should: match_any,
               filter: filters
           }
 
@@ -47,8 +62,40 @@ module Search
     def quran_text_query
       {
           multi_match: {
-              query: query.query.remove_dialectic,
+              query: query.query,
               fields: QURAN_SEARCH_ATTRS
+          }
+      }
+    end
+
+    def nested_translation_query(language_code)
+      {
+          nested: {
+              path: "trans_#{language_code}",
+              score_mode: "max",
+              query: {
+                  bool: {
+                      should: [
+                          {
+                              match: {
+                                  "trans_#{language_code}.text.stemmed": query.query
+                              }
+                          }
+                      ],
+                      minimum_should_match: '85%'
+                  }
+              },
+              inner_hits: {
+                  _source: ["*.resource_name", "*.resource_id", "*.language"],
+                  highlight: {
+                      tags_schema: 'styled',
+                      fields: {
+                          "trans_#{language_code}.text.*": {
+                              fragment_size: 500
+                          }
+                      }
+                  }
+              }
           }
       }
     end
@@ -71,6 +118,7 @@ module Search
           tags_schema: 'styled'
       }
     end
+
 
     def filters
       query_filters = {}

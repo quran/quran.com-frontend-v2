@@ -17,11 +17,15 @@
 #
 
 class Translation < ApiCoreRecord
-  belongs_to :verse
-  belongs_to :resource_content
-
-  has_many :foot_notes, as: :resource
-
   include LanguageFilterable
   include TranslationSearchable
+
+  belongs_to :verse
+  belongs_to :resource_content
+  belongs_to :language
+  has_many :foot_notes, as: :resource
+
+  def es_analyzer
+
+  end
 end

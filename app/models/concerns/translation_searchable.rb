@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 module TranslationSearchable
   extend ActiveSupport::Concern
   ES_TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
+=begin
 
   included do
     include Elasticsearch::Model
@@ -37,19 +38,24 @@ module TranslationSearchable
       indexes :verse_path, type: 'text'
       indexes :language_code, type: 'keyword'
 
-      es_analyzer = language.es_analyzer_default.presence
+      available_languages = Language.where(id: Translation.select('DISTINCT(language_id)').map(&:language_id).uniq)
 
-      indexes :text,
-              type: 'text',
-              similarity: 'my_bm25',
-              term_vector: 'with_positions_offsets',
-              analyzer: es_analyzer || 'standard'
+      available_languages.each do |language|
+        es_analyzer = language.es_analyzer_default.presence
 
-      indexes :stemmed,
-              type: 'text',
-              similarity: 'my_bm25',
-              term_vector: 'with_positions_offsets_payloads',
-              analyzer: es_analyzer || 'english'
+        indexes :text,
+                type: 'text',
+                similarity: 'my_bm25',
+                term_vector: 'with_positions_offsets',
+                analyzer: es_analyzer || 'standard'
+
+        indexes :stemmed,
+                type: 'text',
+                similarity: 'my_bm25',
+                term_vector: 'with_positions_offsets_payloads',
+                analyzer: es_analyzer || 'english'
+      end
     end
   end
+=end
 end

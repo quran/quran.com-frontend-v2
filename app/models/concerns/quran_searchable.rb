@@ -1,10 +1,14 @@
 require 'elasticsearch/model'
 
 module QuranSearchable
+  TRANSLATION_LANGUAGES = Language.where(id: Translation.select('DISTINCT(language_id)').map(&:language_id).uniq)
+  TRANSLATION_LANGUAGE_CODES = TRANSLATION_LANGUAGES.pluck(:iso_code)
+
   extend ActiveSupport::Concern
 
   included do
     include Elasticsearch::Model
+    ES_TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
     settings YAML.load(
         File.read("config/elasticsearch/settings.yml")
@@ -29,6 +33,19 @@ module QuranSearchable
         {id: w.id, madani: w.text_madani, simple: w.text_simple}
       end
 
+      translations.includes(:language).each do |trans|
+        doc = {
+            translation_id: trans.id,
+            text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
+            language: trans.language_name,
+            resource_id: trans.resource_content_id,
+            resource_name: trans.resource_name
+        }
+
+        hash["trans_#{trans.language.iso_code}"] ||= []
+        hash["trans_#{trans.language.iso_code}"] << doc
+      end
+
       hash
     end
 
@@ -41,7 +58,7 @@ module QuranSearchable
       end
 
       [:text_madani_simple, :text_imlaei_simple, :text_madani].each do |text_type|
-        indexes text_type, type: 'text' do
+        indexes text_type, type: "text" do
           indexes :text,
                   type: 'text',
                   similarity: 'my_bm25',
@@ -62,11 +79,12 @@ module QuranSearchable
                   term_vector: 'with_positions_offsets',
                   search_analyzer: 'arabic_stemmed',
                   analyzer: 'arabic_ngram'
-          #indexes :autocomplete,
-          #        type: 'string',
-          #        analyzer: 'autocomplete_arabic',
-          #        search_analyzer: 'arabic_normalized',
-          #        index_options: 'offsets'
+
+          indexes :autocomplete,
+                  type: 'text',
+                  analyzer: 'autocomplete_arabic',
+                  search_analyzer: 'arabic_normalized',
+                  index_options: 'offsets'
         end
       end
 
@@ -86,23 +104,31 @@ module QuranSearchable
                 search_analyzer: 'arabic_synonym_normalized'
       end
 
-      #languages = Translation.where(resource_type: 'Verse').pluck(:language_id).uniq
-      #available_languages = Language.where(id: languages)
-
-      false && available_languages.each do |lang|
+      TRANSLATION_LANGUAGES.each do |lang|
         es_analyzer = lang.es_analyzer_default.present? ? lang.es_analyzer_default : nil
 
         indexes "trans_#{lang.iso_code}", type: 'nested' do
-          indexes :text,
-                  type: 'text',
-                  similarity: 'my_bm25',
-                  term_vector: 'with_positions_offsets',
-                  analyzer: es_analyzer || 'standard'
-          indexes :stemmed,
-                  type: 'text',
-                  similarity: 'my_bm25',
-                  term_vector: 'with_positions_offsets_payloads',
-                  analyzer: es_analyzer || 'english'
+          indexes :text, type: 'text' do
+            indexes :text,
+                    type: 'text',
+                    similarity: 'my_bm25',
+                    term_vector: 'with_positions_offsets',
+                    analyzer: es_analyzer || 'standard',
+                    search_analyzer: es_analyzer || 'standard'
+
+            indexes :stemmed,
+                    type: 'text',
+                    similarity: 'my_bm25',
+                    term_vector: 'with_positions_offsets_payloads',
+                    analyzer: es_analyzer || 'english',
+                    search_analyzer: es_analyzer || 'english'
+
+            indexes :autocomplete,
+                    type: 'text',
+                    search_analyzer: 'standard',
+                    analyzer: es_analyzer || 'english',
+                    index_options: 'offsets'
+          end
         end
       end
     end

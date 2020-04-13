@@ -42,7 +42,7 @@ module Search
     def quran_text_query
       {
           multi_match: {
-              query: query.query.remove_dialectic,
+              query: query.query,
               fields: SEARCH_ATTRS
           }
       }
