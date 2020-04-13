@@ -1,4 +1,4 @@
-class AyatulKursirPresenter < ChapterPresenter
+class AyatulKursiPresenter < ChapterPresenter
   def meta_url
     'https://quran.com/ayatul-kursi'
   end
