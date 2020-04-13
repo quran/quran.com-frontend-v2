@@ -1,0 +1,5 @@
+<% if item.is_a?(Verse) %>
+  <%= render 'verse', verse: item %>
+<% else %>
+  <%= render 'link', item: item %>
+<% end %>

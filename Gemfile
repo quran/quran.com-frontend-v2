@@ -33,12 +33,20 @@ gem 'meta-tags', '>= 2.13.0'
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
 
-gem 'quran-core', github: 'quran/quran-core'
+#gem 'quran-core', github: 'quran/quran-core'
 
 gem 'sentry-raven'
 
+# Detect language from text
+gem "cld"
+
+# Elasticsearch
+gem 'excon' # using excon as faraday adapter (net::http breaks)
+gem 'elasticsearch-model'
+gem "typhoeus"
+
 # Pagination
-gem 'pagy', '= 3.7.2'
+gem 'pagy', '= 3.7.3'
 
 # Cache
 gem 'connection_pool'

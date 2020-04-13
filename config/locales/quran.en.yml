@@ -63,7 +63,7 @@ en:
   search:
     label: Search
     placeholder: 'Search "Noah"'
-    result: "%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Sorry, there was an error with your search.
     no_query: No search query.
     no_result: No results found.

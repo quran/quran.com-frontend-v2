@@ -1,0 +1,10 @@
+<p class="badge badge badge-primary">Found <%= translations[:texts].length %> results in <%= translations[:language] %> translations</p>
+
+<% translations[:texts].each do |translation| %>
+  <div class="txt <%= translation[:language] %>" id="<%#= dom_id translation %>">
+    <span class="resource"><%= translation[:resource_name] %></span>
+    <%= translation[:text].html_safe %>
+
+    <div id="footnote"></div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<%= render partial: 'item', collection: @presenter.items, as: :item %>
+
+<div class="text-center" id="verses_pagination">
+  <% if @presenter.next_page %>
+    <%= link_to 'load more', search_path(q: @presenter.query, page: @presenter.next_page), rel: 'next' %>
+  <% end %>
+</div>

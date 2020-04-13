@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Pagy::Frontend
+
   def page_classes
     "#{controller_name} #{action_name} lang-#{I18n.locale}"
   end
