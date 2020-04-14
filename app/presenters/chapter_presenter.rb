@@ -159,7 +159,7 @@ class ChapterPresenter < BasePresenter
 
     translations_to_load = [default_translation] if default_translation && translations_to_load.blank?
 
-    verse.translations.where(resource_content_id: translations_to_load).order('translations.priority DESC')
+    verse.translations.where(resource_content_id: translations_to_load).order('translations.priority ASC')
   end
 
   def valid_translations

@@ -24,14 +24,6 @@ export default class extends Controller {
 
     this.copyDom = copyDom;
 
-    let foodnotes = this.el.find(".translation sup");
-
-    foodnotes.click(e => {
-      e.preventDefault();
-      let id = $(e.target).attr("foot_note");
-      $.get(`/foot_note/${id}`);
-    });
-
     this.playButton = this.el.find(".play-verse");
 
     this.playButton.on("click", event => {
@@ -73,6 +65,4 @@ export default class extends Controller {
 
     GoogleAnalytic.trackEvent("Copy", "Verse", this.el.data("key"), 1);
   }
-
-  share() {}
 }

@@ -6,7 +6,7 @@
         <i class="fa fa-times-circle"></i>
       </a>
 
-      <div class="<%= @foot_note.language_name %>">
+      <div class="<%= @foot_note.language_name %>" data-controller="translation">
         <%= @foot_note.text.html_safe %>
       </div>
     </div>
