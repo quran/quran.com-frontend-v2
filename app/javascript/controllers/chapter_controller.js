@@ -7,7 +7,6 @@
 // </div>
 
 import { Controller } from "stimulus";
-import copyToClipboard from "copy-to-clipboard";
 
 export default class extends Controller {
   connect() {
