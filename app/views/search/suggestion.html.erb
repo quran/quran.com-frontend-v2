@@ -1,0 +1,5 @@
+<div class="search-result" data-controller="search-suggestions">
+  <ul role="menu" data-controller="slim-scroller">
+    <%= render partial: 'suggestion', collection: @presenter.items, as: :item %>
+  </ul>
+</div>
