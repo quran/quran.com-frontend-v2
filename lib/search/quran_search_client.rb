@@ -20,9 +20,10 @@ module Search
     def search
       results = Verse.search(search_defination)
 
-      File.open("last_query.json", "wb") do |f|
-        f << search_defination.to_json
-      end
+      # For debugging, copy the query and paste in kibana for debugging
+      # File.open("last_query.json", "wb") do |f|
+      #  f << search_defination.to_json
+      # end
 
       if results.empty?
         Search::NavigationClient.new(query.query).search
