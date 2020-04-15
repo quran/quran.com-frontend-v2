@@ -125,7 +125,7 @@ module QuranSearchable
                     similarity: 'my_bm25',
                     term_vector: 'with_positions_offsets_payloads',
                     analyzer: es_analyzer || 'english',
-                    search_analyzer: es_analyzer || 'english'
+                    search_analyzer: 'shingle_analyzer'
 
             indexes :autocomplete,
                     type: 'completion',

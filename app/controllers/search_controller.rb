@@ -15,6 +15,18 @@ class SearchController < ApplicationController
     render partial: 'results/error', layout: false if request.xhr?
   end
 
+  def suggestion
+    client = Search::QuranSearchClient.new(
+      query,
+      page: page, size: size, lanugage: language
+    )
+
+    @presenter = SearchPresenter.new(self)
+    @presenter.add_search_results(client.suggest)
+
+   render layout: false
+  end
+
   protected
 
   def language

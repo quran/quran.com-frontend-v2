@@ -20,11 +20,13 @@ index:
       english_keywords:
         type: keyword_marker
         keywords:
-          - allah
-          - moses
-          - musa
-          - isa
-          - jesus
+          - Allah
+          - God
+          - Moses
+          - Musa
+          - Isa
+          - Jesus
+          - Noah
       arabic_keywords:
         type: keyword_marker
         keywords:
@@ -35,6 +37,7 @@ index:
           - يوسف
           - ابراهيم
           - اسماعيل
+          - نوح
       english_stemmer:
         type: stemmer
         language: english

@@ -1,0 +1,41 @@
+<li class="d-flex justify-content-between">
+  <% if item.is_a?(Verse) %>
+    <% has_translation = @presenter.render_translations?(item) %>
+    <div class="link">
+      <a href="/<%= item.verse_path %>">
+        <%= item.verse_key %>
+      </a>
+    </div>
+
+    <div class="ayat">
+      <a href="/<%= item.verse_path %>">
+        <b class="madani rtl">
+          <%= item.highlighted_text.html_safe %>
+        </b>
+
+        <% if has_translation %>
+          <% translation = @presenter.load_translations(item)[0][:texts][0] %>
+         <br/>
+          <p class="fs-sm">
+            <%= translation[:text].to_s.html_safe %>
+          </p>
+        <% end %>
+      </a>
+    </div>
+  <% else %>
+    <div class="link">
+      <a href="<%= item[0] %>">
+        <%= item[0] %>
+      </a>
+    </div>
+
+    <div class="ayat">
+      <a href="<%= item[0] %>">
+        <b>
+          <%= item[1].html_safe %>
+        </b>
+      </a>
+    </div>
+  <% end %>
+</li>
+
