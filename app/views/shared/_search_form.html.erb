@@ -1,4 +1,5 @@
 <% query = (params[:q] || params[:query]).presence %>
+
 <% if expanded %>
   <div class="d-md-none">
     <i class="fa-search search1 mobile-search"></i>
@@ -8,31 +9,38 @@
         <a href="#" class="btn-danger btn-search-close js-waves-off" data-action="toggle" data-class="mobile-search-on">
           <i class="fal fa-times"></i>
         </a>
-        <%= render 'shared/search_result' %>
+
+        <div class="suggestions">
+
+        </div>
       </form>
     </div>
   </div>
 
   <div class="search-form d-none d-md-block">
-    <form class="form-search" action="/search">
+    <form class="form-search" action="/search" data-controller="search-form">
       <input class="form-control <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
       <button class="search-btn d-none d-md-block" type="submit"><%= _t('search.label') %></button>
       <button class="search-btn d-md-none" type="submit">
         <i class="fa fa-search search2"></i>
       </button>
-      <%= render 'shared/search_result' %>
+      <div class="suggestions">
+
+      </div>
     </form>
   </div>
 <% else %>
   <div class="search-form">
-    <form class="form-search" action="/search">
+    <form class="form-search" action="/search" data-controller="search-form">
       <i class="fa-search search1"></i>
       <input class="form-control <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
       <button class="search-btn d-none d-md-block" type="submit"><%= _t('search.label') %></button>
       <button class="search-btn d-md-none" type="submit">
         <i class="fa fa-search search2"></i>
       </button>
-    <%= render 'shared/search_result' %>
+      <div class="suggestions">
+
+      </div>
     </form>
   </div>
 <% end %>

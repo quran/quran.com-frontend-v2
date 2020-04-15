@@ -20,6 +20,20 @@ module Search
     def search
       results = Verse.search(search_defination)
 
+      File.open("last_query.json", "wb") do |f|
+        f << search_defination.to_json
+      end
+
+      if results.empty?
+        Search::NavigationClient.new(query.query).search
+      else
+        Search::Results.new(results, page)
+      end
+    end
+
+    def suggest
+      results = Verse.search(search_defination(100, 10))
+
       if results.empty?
         Search::NavigationClient.new(query.query).search
       else
@@ -29,22 +43,22 @@ module Search
 
     protected
 
-    def search_defination
+    def search_defination(highlight_size=500, result_size=VERSES_PER_PAGE)
       {
           _source: source_attributes,
           query: search_query,
-          highlight: highlight,
-          from: page * VERSES_PER_PAGE,
-          size: VERSES_PER_PAGE
+          highlight: highlight(highlight_size),
+          from: page * result_size,
+          size: result_size
       }
     end
 
-    def search_query
+    def search_query(highlight_size=500)
       match_any = []
 
       query.detect_languages.each do |lang|
         if QuranSearchable::TRANSLATION_LANGUAGE_CODES.include?(lang)
-          match_any << nested_translation_query(lang)
+          match_any << nested_translation_query(lang, highlight_size)
         end
       end
 
@@ -68,7 +82,7 @@ module Search
       }
     end
 
-    def nested_translation_query(language_code)
+    def nested_translation_query(language_code, highlight_size)
       {
           nested: {
               path: "trans_#{language_code}",
@@ -77,9 +91,10 @@ module Search
                   bool: {
                       should: [
                           {
-                              match: {
-                                  "trans_#{language_code}.text.stemmed": query.query
-                              }
+                            "multi_match": {
+                              "query": query.query,
+                              "fields": ["trans_#{language_code}.text.*"]
+                            }
                           }
                       ],
                       minimum_should_match: '85%'
@@ -91,7 +106,7 @@ module Search
                       tags_schema: 'styled',
                       fields: {
                           "trans_#{language_code}.text.*": {
-                              fragment_size: 500
+                              fragment_size: highlight_size
                           }
                       }
                   }
@@ -104,12 +119,12 @@ module Search
       QURAN_SOURCE_ATTRS
     end
 
-    def highlight
+    def highlight(highlight_size=500)
       {
           fields: {
               "text_madani.text": {
                   type: 'fvh',
-                  fragment_size: 500
+                  fragment_size: highlight_size
               },
               chapter_names: {},
               'verse_key.keyword': {},

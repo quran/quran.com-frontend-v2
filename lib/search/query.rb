@@ -20,8 +20,11 @@ module Search
 
     def detect_languages
       query.split(/\s/).map do |token|
-        CLD.detect_language(token)[:code] rescue nil
-      end.compact.uniq
+        [
+          CLD.detect_language(token.to_s.humanize)[:code],
+          CLD.detect_language(token.to_s)[:code]
+        ] rescue nil
+      end.compact.flatten.uniq
     end
 
     def detect_language_code

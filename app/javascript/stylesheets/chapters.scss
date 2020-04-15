@@ -1,59 +1,6 @@
 // Place all the styles related to the chapters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-  .form-search:before {
-    content: "";
-    position: absolute;
-    top: 111%;
-    left: 1em;
-    width: 0;
-    height: 0;
-    padding: .4em;
-    background: #fff;
-    border: inherit;
-    border-right: 0;
-    border-bottom: 0;
-    border: 1px solid rgba(0,0,0,.3);
-    box-shadow: 0.05em 0.2em 0.6em rgba(0,0,0,.2);
-    transform: rotate(45deg);
-  }
-  .search-result{
-    height: 300px;
-    overflow: auto;
-    z-index: 9999;
-    position: absolute;
-    background: white;
-    width: 100%;
-    left: 0;
-    top: 123%;
-    border-radius: 3px;
-    background: #fff;
-    border: 1px solid rgba(0,0,0,.3);
-    box-shadow: 0.05em 0.2em 0.6em rgba(0,0,0,.2);
-    text-shadow: none;
-    a{
-      color: #2ca4ab;
-      text-decoration: none;
-    }
-    .ayat{
-      width: 94%
-    }
-    b{
-      display: flex;
-      overflow: hidden;
-      word-wrap: break-word;
-      white-space: nowrap;
-    }
-    li{
-       padding: 7.5px 10px;
-    }
-    li:hover{
-      background-color: rgba(44,164,171,.5);
-      a{
-       color: #939598;
-      }
-    }
-  }
  .pagination-section{
     .en{
       font-size: 13px;
