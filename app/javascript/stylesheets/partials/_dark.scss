@@ -31,6 +31,7 @@ body.night {
   .select2-selection,
   .select2-search__field {
     background-color: #1d1f21 !important;
+    border-color: #2d2d2d;
 
     &:focus {
       border-color: $color-primary !important;
@@ -97,12 +98,13 @@ body.night {
   }
 
   .search-form {
-    border-color: white;
+    border-color: #2d2d2d;
+    background-color: #1c1f21;
     input {
-      background: #32312c;
-      color: white;
+      background: transparent;
     }
   }
+
   .top-section {
     .search-form input {
       background: #1c1f21;
@@ -133,5 +135,24 @@ body.night {
 
   .nav-tabs .nav-link {
     background: transparent !important;
+  }
+
+  // Sidebar
+  .right-sidebar .sidebar-head {
+    border-color: #2d2d2d;
+  }
+
+  .border-left {
+    border-left-color: #1c1f21 !important;
+  }
+
+  .main-menu li {
+    a {
+      border-color: #2d2d2d;
+
+      &:hover {
+        background-color: #3a3636;
+      }
+    }
   }
 }
