@@ -58,7 +58,7 @@ index:
         max_gram: 6
       arabic_stop:
         type: stop
-        stopwords: analysis/arabic_stop.txt
+        stopwords: _arabic_
       arabic_stemmer:
         type: stemmer
         language: arabic
