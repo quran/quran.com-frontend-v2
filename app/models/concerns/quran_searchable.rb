@@ -128,10 +128,9 @@ module QuranSearchable
                     search_analyzer: es_analyzer || 'english'
 
             indexes :autocomplete,
-                    type: 'text',
+                    type: 'completion',
                     search_analyzer: 'standard',
-                    analyzer: es_analyzer || 'english',
-                    index_options: 'offsets'
+                    analyzer: es_analyzer || 'english'
           end
         end
       end
