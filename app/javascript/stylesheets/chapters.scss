@@ -45,11 +45,13 @@
       white-space: nowrap;
     }
     li{
-       padding: 7px 10px;
+       padding: 7.5px 10px;
     }
     li:hover{
       background-color: rgba(44,164,171,.5);
-      color: #939598;
+      a{
+       color: #939598;
+      }
     }
   }
  .pagination-section{
