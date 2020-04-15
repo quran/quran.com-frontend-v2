@@ -5,9 +5,9 @@ module Search
     QURAN_SOURCE_ATTRS = ['verse_path', 'verse_id'].freeze
     QURAN_SEARCH_ATTRS = [
         "text_madani.*^4",
+        "text_simple.*^3",
         "text_imlaei_simple*^3",
         "text_madani_simple.*^2",
-        "words.text_simple^2",
         "verse_key.keyword",
         "verse_path",
         "chapter_names"
@@ -64,6 +64,7 @@ module Search
       end
 
       match_any << quran_text_query
+      match_any << words_query
 
       {
           bool: {
@@ -72,6 +73,32 @@ module Search
           }
 
       }
+    end
+
+    def words_query
+      [{
+        nested: {
+          path: 'words',
+          query: {
+            multi_match: {
+              query: query.query.remove_dialectic,
+              fields: ['words.simple']
+            }
+          }
+        }
+      },
+       {
+         nested: {
+           path: 'words',
+           query: {
+             multi_match: {
+               query: query.query,
+               fields: ['words.madani']
+             }
+           }
+         }
+       }
+      ]
     end
 
     def quran_text_query
@@ -123,7 +150,7 @@ module Search
     def highlight(highlight_size=500)
       {
           fields: {
-              "text_madani.text": {
+              "text_madani.*": {
                   type: 'fvh',
                   fragment_size: highlight_size
               },

@@ -11,7 +11,7 @@ module QuranSearchable
     ES_TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
     settings YAML.load(
-        File.read("config/elasticsearch/settings.yml")
+      File.read("config/elasticsearch/settings.yml")
     )
 
     alias_method :verse_id, :id
@@ -22,8 +22,8 @@ module QuranSearchable
 
     def as_indexed_json(options = {})
       hash = self.as_json(
-          only: [:id, :verse_key, :text_madani, :text_imlaei, :chapter_id],
-          methods: [:verse_path, :verse_id]
+        only: [:id, :verse_key, :text_madani, :text_imlaei, :chapter_id],
+        methods: [:verse_path, :verse_id]
       )
 
       hash[:text_madani_simple] = text_madani.remove_dialectic
@@ -35,11 +35,11 @@ module QuranSearchable
 
       translations.includes(:language).each do |trans|
         doc = {
-            translation_id: trans.id,
-            text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
-            language: trans.language_name,
-            resource_id: trans.resource_content_id,
-            resource_name: trans.resource_name
+          translation_id: trans.id,
+          text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
+          language: trans.language_name,
+          resource_id: trans.resource_content_id,
+          resource_name: trans.resource_name
         }
 
         hash["trans_#{trans.language.iso_code}"] ||= []
@@ -81,10 +81,9 @@ module QuranSearchable
                   analyzer: 'arabic_ngram'
 
           indexes :autocomplete,
-                  type: 'text',
-                  analyzer: 'autocomplete_arabic',
-                  search_analyzer: 'arabic_normalized',
-                  index_options: 'offsets'
+                  type: 'completion',
+                  analyzer: 'arabic_synonym_normalized',
+                  search_analyzer: 'arabic_synonym_normalized'
         end
       end
 
@@ -94,7 +93,12 @@ module QuranSearchable
                 term_vector: 'with_positions_offsets',
                 analyzer: 'arabic_synonym_normalized',
                 similarity: 'my_bm25',
-                search_analyzer: 'arabic_stemmed'
+                search_analyzer: 'arabic_stemmed' do
+          indexes :autocomplete,
+                  type: 'completion',
+                  analyzer: 'arabic_synonym_normalized',
+                  search_analyzer: 'arabic_synonym_normalized'
+        end
 
         indexes :simple,
                 type: 'text',
@@ -124,10 +128,9 @@ module QuranSearchable
                     search_analyzer: 'shingle_analyzer'
 
             indexes :autocomplete,
-                    type: 'text',
+                    type: 'completion',
                     search_analyzer: 'standard',
-                    analyzer: es_analyzer || 'english',
-                    index_options: 'offsets'
+                    analyzer: es_analyzer || 'english'
           end
         end
       end

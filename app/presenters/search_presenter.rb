@@ -40,7 +40,7 @@ class SearchPresenter < BasePresenter
       if :navigation == @search.result_type
         @results
       else
-        Verse.where(id: @results.keys).each do |v|
+        Verse.unscoped.where(id: @results.keys).each do |v|
           highlights = @results[v.id]
           if highlights[:text].present?
             v.highlighted_text = highlights[:text].html_safe

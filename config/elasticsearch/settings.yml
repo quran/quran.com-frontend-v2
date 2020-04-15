@@ -58,12 +58,13 @@ index:
         max_gram: 6
       arabic_stop:
         type: stop
-        stopwords: analysis/stop.text-token.to.text-lemma.txt
+        stopwords: analysis/arabic_stop.txt
       arabic_stemmer:
         type: stemmer
         language: arabic
       quran_word_synonym:
         type: synonym
+        expand: true
         synonyms_path: analysis/quran_word_synonym.txt
       shingle_filter:
         type: shingle
@@ -80,11 +81,14 @@ index:
           - autocomplete
           - arabic_keywords
       arabic_synonym_normalized:
-        tokenizer: whitespace
+        tokenizer: icu_tokenizer
         filter:
-          - arabic_normalization
-          - quran_word_synonym
           - arabic_keywords
+          - quran_word_synonym
+          - arabic_normalization
+          - arabic_stemmer
+          - arabic_stop
+          - icu_folding
 
       arabic_normalized:
         tokenizer: whitespace

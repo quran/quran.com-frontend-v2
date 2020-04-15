@@ -11,6 +11,8 @@ class SearchController < ApplicationController
     @presenter.add_search_results(client.search)
 
     render partial: 'results', layout: false if request.xhr?
+  rescue Faraday::Error::ConnectionFailed => e
+    render partial: 'results/error', layout: false if request.xhr?
   end
 
   def suggestion
