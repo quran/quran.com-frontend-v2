@@ -1,7 +1,22 @@
 body.night {
   background: #1d1f21;
   color: #9e9e9e;
-
+  .arabic{
+    color: white !important;
+  }
+  .pagination-section{
+    .en{
+      color: white;
+    }
+    .pagy-nav{
+      span{
+        color: white;
+        a{
+          color: white;
+        }
+      }
+    }
+  }
   header,
   footer,
   .dropdown-menu,

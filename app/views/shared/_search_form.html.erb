@@ -14,7 +14,6 @@
 
   <div class="search-form d-none d-md-block">
     <form action="/search">
-      <i class="fa-search search1"></i>
       <input class="form-control <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
       <button class="search-btn d-none d-md-block" type="submit"><%= _t('search.label') %></button>
       <button class="search-btn d-md-none" type="submit">

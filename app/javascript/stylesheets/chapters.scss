@@ -2,6 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+ .pagination-section{
+    .en{
+      font-size: 13px;
+      text-transform: uppercase;
+      color: black;
+      span{
+        color: #00acc1;
+      }
+      .text-success{
+        color: #00acc1;
+      }
+    }
+    .pagy-nav{
+      .disabled{
+        padding: 15px;
+      }
+      .active{
+        color:  #00acc1;
+        padding: 15px;
+      }
+      .gap{
+        padding: 15px;
+      }
+      span{
+        color: black;
+        font-size: 13px;
+        text-transform: uppercase;
+        a{
+          padding: 15px;
+          color: black;
+        }
+      }
+    }
+  }
 .chapters {
   &.index {
     header {
@@ -397,7 +431,7 @@
 
     .arabic {
       line-height: normal;
-      font-size: 50px;
+      font-size: 45px;
       color: #000;
       text-align: right;
       float: right;
@@ -501,7 +535,6 @@
       margin-bottom: 7px;
     }
   }
-
   @media only screen and (max-width: 1199px) {
     .caption {
       font-size: 14px;
@@ -778,6 +811,29 @@
       padding: 0px 3px 11px 3px;
     }
   }
+  .search{
+    .arabic {
+      font-size: 27px !important;
+    }
+  }
+  .pagination-section{
+    .pagy-nav{
+      .disabled{
+        padding: 10px;
+      }
+      .active{
+        padding: 10px;
+      }
+      .gap{
+        padding: 10px;
+      }
+      span{
+        a{
+          padding: 10px;
+        }
+      }
+    }
+  }
 }
 
 .lang-ur,
@@ -785,6 +841,49 @@
   .surah-actions {
     li {
       padding: 5px 10px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+
+  .pagination-section{
+    .pagy-nav{
+      .disabled{
+        padding: 7px;
+      }
+      .active{
+        padding: 7px;
+      }
+      .gap{
+        padding: 7px;
+      }
+      span{
+        a{
+          padding: 7px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 360px) {
+
+  .pagination-section{
+    .pagy-nav{
+      .disabled{
+        padding: 6px;
+      }
+      .active{
+        padding: 6px;
+      }
+      .gap{
+        padding: 6px;
+      }
+      span{
+        a{
+          padding: 6px;
+        }
+      }
     }
   }
 }
