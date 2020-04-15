@@ -13,6 +13,7 @@ module Search
       @language = options[:language]
     end
 
+=begin
     def search
       search = Elasticsearch::Model.search(search_defination, [Verse, Translation, Chapter, Juz]).results.to_a.map(&:to_hash)
 
@@ -20,6 +21,7 @@ module Search
     end
 
     protected
+
     def search_defination
       {
        _source: source_attributes,
@@ -120,5 +122,6 @@ module Search
         size: 500
       }
     end
+=end
   end
 end

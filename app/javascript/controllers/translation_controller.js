@@ -2,7 +2,8 @@ import { Controller } from "stimulus";
 
 var PRE_DEFINED_FOOTNOTES = {
   sg: "Singular",
-  pl: "Plural"
+  pl: "Plural",
+  dl: "Dual"
 };
 
 export default class extends Controller {
