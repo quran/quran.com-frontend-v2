@@ -29,10 +29,6 @@ module Search
       @search.empty?
     end
 
-    def successful?
-      binding.pry
-    end
-
     def timed_out?
       @search.timed_out
     end
