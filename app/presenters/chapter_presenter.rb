@@ -130,7 +130,7 @@ class ChapterPresenter < BasePresenter
 
   def params_for_verse_link
     strong_memoize :verse_link_params do
-      if(translation = valid_translations).present?
+      if (translation = valid_translations).present?
         "?translations=#{translation.join(',')}"
       end
     end
@@ -197,7 +197,16 @@ class ChapterPresenter < BasePresenter
   end
 
   def meta_url
-    context.chapter_url(chapter)
+    first_verse = paginate.first
+
+    translations = valid_translations
+
+    # TODO: change this to www before final build
+    if translations.present?
+      "https://beta.quran.com/#{first_verse.verse_key.sub(':', '/')}?translations=#{translations.join(',')}"
+    else
+      "https://beta.quran.com/#{first_verse.verse_key.sub(':', '/')}"
+    end
   end
 
   def meta_title
