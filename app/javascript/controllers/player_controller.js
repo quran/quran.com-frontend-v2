@@ -99,7 +99,8 @@ export default class extends Controller {
       content: $("#player .repeat-popover-content"),
       html: true,
       placement: "top",
-      container: "body"
+      container: "body",
+      boundary: "window"
     });
 
     if (this.config.repeat.enabled) {
@@ -111,7 +112,7 @@ export default class extends Controller {
 
     // auto scroll component
     this.scrollButton = $(".auto-scroll-btn");
-    this.scrollButton.tooltip();
+    this.scrollButton.tooltip({ placement: "top", boundary: "window" });
 
     if (this.config.autoScroll) {
       this.scrollButton.addClass("active");

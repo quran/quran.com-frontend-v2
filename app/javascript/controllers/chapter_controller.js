@@ -10,33 +10,33 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
   connect() {
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({ boundary: "window" });
     this.element[this.identifier] = this;
-    this.dragActionBar()
+    this.dragActionBar();
   }
 
-  dragActionBar(){
-    const slider = document.querySelector('.surah-actions');
+  dragActionBar() {
+    const slider = document.querySelector(".surah-actions");
     let isDown = false;
     let startX;
     let scrollLeft;
 
-    slider.addEventListener('mousedown', (e) => {
+    slider.addEventListener("mousedown", e => {
       isDown = true;
-      slider.classList.add('active');
+      slider.classList.add("active");
       startX = e.pageX - slider.offsetLeft;
       scrollLeft = slider.scrollLeft;
     });
-    slider.addEventListener('mouseleave', () => {
+    slider.addEventListener("mouseleave", () => {
       isDown = false;
-      slider.classList.remove('active');
+      slider.classList.remove("active");
     });
-    slider.addEventListener('mouseup', () => {
+    slider.addEventListener("mouseup", () => {
       isDown = false;
-      slider.classList.remove('active');
+      slider.classList.remove("active");
     });
-    slider.addEventListener('mousemove', (e) => {
-      if(!isDown) return;
+    slider.addEventListener("mousemove", e => {
+      if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
       const walk = (x - startX) * 3; //scroll-fast

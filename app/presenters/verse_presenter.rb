@@ -16,10 +16,10 @@ class VersePresenter < BasePresenter
   end
 
   def share_url
-    translations = session[:translation].to_s
+    translations = valid_translations
 
     if translations.present?
-      "https://www.quran.com/#{verse.verse_key.sub(':', '/')}?translations=#{translations}"
+      "https://www.quran.com/#{verse.verse_key.sub(':', '/')}?translations=#{translations.join(',')}"
     else
       "https://www.quran.com/#{verse.verse_key.sub(':', '/')}"
     end

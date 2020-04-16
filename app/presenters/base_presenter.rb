@@ -123,4 +123,40 @@ class BasePresenter
   def sanitize_meta_description_text(text)
     context.view_context.truncate(TEXT_SANITIZER.sanitize(text.to_s), length: 160, separator: '.')
   end
+
+  def valid_translations
+    # 131 default translation
+    #return @valid_translation if @valid_translation
+
+    strong_memoize :valid_translations do
+      translations = (
+      params[:translations].presence ||
+        params[:translations].presence ||
+        session[:translations].presence || DEFAULT_TRANSLATION
+      )
+
+      if translations.is_a?(String)
+        translations = translations.to_s.split(',')
+      end
+
+      if 'no' == translations
+        context.session[:translations] = 'no'
+        []
+      else
+        approved_translations = ResourceContent
+                                  .approved
+                                  .translations
+                                  .one_verse
+
+        translations = approved_translations
+                         .where(
+                           slug: translations
+                         ).or(
+          approved_translations.where(id: translations)
+        ).pluck(:id)
+
+        context.session[:translations] = translations
+      end
+    end
+  end
 end
