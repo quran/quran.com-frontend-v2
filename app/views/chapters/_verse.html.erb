@@ -7,7 +7,7 @@
         </a>
 
         <span>
-          <%= link_to verse.verse_key, range_path(@presenter.chapter.id, verse.verse_number), target: :blank %>
+          <%= link_to verse.verse_key, "/#{verse.chapter_id}/#{verse.verse_number}#{@presenter.params_for_verse_link}", target: :blank %>
          </span>
       </div>
 

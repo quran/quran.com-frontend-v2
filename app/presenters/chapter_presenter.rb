@@ -24,7 +24,7 @@ class ChapterPresenter < BasePresenter
 
     _font = (
     params[:font].presence ||
-        session[:font] || 'v1'
+      session[:font] || 'v1'
     )
 
     session[:font] = _font
@@ -128,6 +128,14 @@ class ChapterPresenter < BasePresenter
     chapter.chapter_number + 1 if chapter.chapter_number < 114
   end
 
+  def params_for_verse_link
+    strong_memoize :verse_link_params do
+      if(translation = valid_translations).present?
+        "?translations=#{translation.join(',')}"
+      end
+    end
+  end
+
   def render_translations?
     strong_memoize :render_translation do
       valid_translations.present?
@@ -150,12 +158,12 @@ class ChapterPresenter < BasePresenter
     list = Word.where(verse_id: verse.id)
 
     list
-        .where(word_translations: {language_id: language.id})
-        .or(
-            list.where(word_translations: {language_id: Language.default.id})
-        )
-        .eager_load(:transliteration, :word_translation)
-        .order('word_translations.priority DESC, words.position ASC')
+      .where(word_translations: {language_id: language.id})
+      .or(
+        list.where(word_translations: {language_id: Language.default.id})
+      )
+      .eager_load(:transliteration, :word_translation)
+      .order('word_translations.priority DESC, words.position ASC')
   end
 
   def load_translations(verse, default_translation = nil)
@@ -164,37 +172,6 @@ class ChapterPresenter < BasePresenter
     translations_to_load = [default_translation] if default_translation && translations_to_load.blank?
 
     verse.translations.where(resource_content_id: translations_to_load).order('translations.priority ASC')
-  end
-
-  def valid_translations
-    # 131 default translation
-    #return @valid_translation if @valid_translation
-
-    strong_memoize :valid_translations do
-      translations = (
-      params[:translations].presence ||
-          params[:translations].presence ||
-          session[:translations].presence || DEFAULT_TRANSLATION
-      )
-
-      if translations.is_a?(String)
-        translations = translations.to_s.split(',')
-      end
-
-      if 'no' == translations
-        context.session[:translations] = 'no'
-        []
-      else
-        translations = ResourceContent
-                           .where(
-                               slug: translations
-                           ).or(
-            ResourceContent.where(id: translations)
-        ).pluck(:id)
-
-        context.session[:translations] = translations
-      end
-    end
   end
 
   protected
@@ -237,12 +214,12 @@ class ChapterPresenter < BasePresenter
     verse_end = verse_pagination_end(verse_start, per)
 
     list = Verse
-               .where(chapter_id: chapter.id)
-               .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+             .where(chapter_id: chapter.id)
+             .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
 
     list = list.where(word_translations: {language_id: language.id})
-               .or(list.where(word_translations: {language_id: Language.default.id}))
-               .eager_load(words: eager_load_words)
+             .or(list.where(word_translations: {language_id: Language.default.id}))
+             .eager_load(words: eager_load_words)
 
     list.order('verses.verse_index ASC, words.position ASC, word_translations.priority ASC')
   end

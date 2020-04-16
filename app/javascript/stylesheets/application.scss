@@ -56,13 +56,13 @@
 .tooltip-inner {
   box-shadow: 0px 10px 35px 0 rgba(0, 172, 193, 0.2);
 }
+.tooltip { pointer-events: none}
 
 /* horizontal scrolling */
 .scrolling-wrapper {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-
   -webkit-overflow-scrolling: touch;
 
   .card {
