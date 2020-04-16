@@ -1,15 +1,17 @@
 <li class="d-flex justify-content-between">
   <% if item.is_a?(Verse) %>
-    <% has_translation = @presenter.render_translations?(item) %>
+    <%
+      has_translation = @presenter.render_translations?(item)
+      verse_link = "/#{item.chapter_id}/#{item.verse_number}#{@presenter.params_for_verse_link(item)}"
+    %>
+
     <div class="link">
-      <a href="/<%= item.verse_path %>">
-        <%= item.verse_key %>
-      </a>
+      <%= link_to item.verse_key,verse_link , class: 'ayah-badge', target: :blank %>
     </div>
 
     <div class="ayat">
-      <a href="/<%= item.verse_path %>">
-        <b class="madani rtl">
+      <a href="<%= verse_link %>">
+        <b class="madani">
           <%= item.highlighted_text.html_safe %>
         </b>
 

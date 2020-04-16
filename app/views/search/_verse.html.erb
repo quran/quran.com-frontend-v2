@@ -5,44 +5,27 @@
     <div class="col-md-1 verse-actions text-center <%= show_translations ? 'col-2' : 'no-transaltion col-12' %>">
       <div class="actions">
         <span>
-          <%= link_to verse.verse_key, range_path(verse.verse_key), target: :blank %>
+          <%= link_to verse.verse_key, "/#{verse.chapter_id}/#{verse.verse_number}#{@presenter.params_for_verse_link(verse)}", class: 'ayah-badge', target: :blank %>
          </span>
       </div>
-
-      <% if @presenter.show_verse_actions? %>
-        <% unless show_translations %>
-          <div class="verse-actions d-flex justify-content-center">
-            <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          </div>
-        <% end %>
-      <% end %>
     </div>
 
-    <div class="col-md-11 <%= show_translations ? 'col-10' : 'col-12' %>">
+    <div class="col-11">
       <div class="arabic madani">
         <%= verse.highlighted_text.html_safe %>
       </div>
     </div>
   </div>
 
-  <div class="row translations">
-    <div class="col-md-1 col-2 text-center">
-      <% if show_translations %>
-        <div class="verse-actions">
-          <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
-          <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>"></a>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="col-md-11 col-10">
-      <div class="translation">
-        <% if show_translations %>
+  <% if show_translations %>
+    <div class="row translations">
+      <div class="col-12">
+        <div class="translation">
           <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translations %>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <div class="row d-flex justify-content-end row-border">

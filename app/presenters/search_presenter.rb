@@ -35,6 +35,18 @@ class SearchPresenter < BasePresenter
     params[:q].presence
   end
 
+  def params_for_verse_link(verse)
+    if (translation = load_translations(verse)).present?
+      translations_ids = translation.map do |trans|
+        trans[:texts].map { |a| a[:resource_id] }
+      end.flatten.uniq
+
+      if translations_ids.present?
+        "?translations=#{translations_ids.join(',')}"
+      end
+    end
+  end
+
   def items
     strong_memoize :items do
       if :navigation == @search.result_type
