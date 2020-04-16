@@ -41,6 +41,10 @@ class ChapterPresenter < BasePresenter
     @verses ||= verses(verse_pagination_start, per_page)
   end
 
+  def all
+    verses(verse_pagination_start, range_end - range_start)
+  end
+
   def per_page
     10.0
   end

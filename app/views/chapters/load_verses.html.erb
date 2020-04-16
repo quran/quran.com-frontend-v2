@@ -1,8 +1,9 @@
-<%= render "fonts" %>
+<% verses =  @presenter.all %>
+<%= render 'fonts', verses: verses %>
 
 <% if @presenter.reading_mode? %>
-  <% pages = @presenter.paginate.group_by(&:page_number) %>
+  <% pages = verses.group_by(&:page_number) %>
   <%= render partial: 'page', collection: pages, as: :verses %>
 <% else %>
-  <%= render partial: 'verse', collection: @presenter.paginate, as: :verse %>
+  <%= render partial: 'verse', collection: verses, as: :verse %>
 <% end %>

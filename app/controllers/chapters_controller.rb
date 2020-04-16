@@ -33,7 +33,10 @@ class ChaptersController < ApplicationController
 
   def load_verses
     start = params[:verse].to_i
-    params[:range] = "#{start}-#{start + 10}"
+    from = params[:from] || start
+    to = params[:to] || start + 10
+
+    params[:range] = "#{from}-#{to}"
     @presenter = ChapterPresenter.new(self)
 
     render layout: false
