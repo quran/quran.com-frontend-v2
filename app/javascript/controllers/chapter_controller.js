@@ -33,7 +33,6 @@ export default class extends Controller {
       to = firstVerse;
     }
 
-    debugger;
     let request = fetch(
       `/${chapter}/load_verses?${$.param({ from, to, verse })}`
     )
