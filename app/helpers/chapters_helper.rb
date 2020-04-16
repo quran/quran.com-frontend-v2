@@ -30,4 +30,16 @@ module ChaptersHelper
   def font_ids(verses)
     verses.map(&:page_number).uniq
   end
+
+  def popular_searches
+    [
+     ['/ayatul-kursi',  _t('search.ayatul_kursi')],
+     ['/surah-ya-sin',  _t('search.yaseen')],
+     ['/surah-al-mulk', _t('search.al_mulk')],
+     ['/surah-ar-rahman', _t('search.ar_rahman')],
+     ['/surah-al-waqiah', _t('search.al_waqiah')],
+     ['/surah-al-kahf', _t('search.al_kahf')],
+     ['/surah-al-muzzammil', _t('search.al_muzammil')]
+    ]
+  end
 end

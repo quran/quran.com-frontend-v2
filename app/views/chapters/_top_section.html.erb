@@ -16,33 +16,11 @@
       </p>
 
       <ul class="scrolled-section">
-        <li>
-          <%= link_to _t('search.ayatul_kursi'), '/ayatul-kursi', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.yaseen'), '/surah-ya-sin', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.al_mulk'), '/surah-al-mulk', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.ar_rahman'), '/surah-ar-rahman', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.al_waqiah'), '/surah-al-waqiah', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.al_kahf'), '/surah-al-kahf', class: 'btn btn-outline-primary' %>
-        </li>
-
-        <li>
-          <%= link_to _t('search.al_muzammil'), '/surah-al-muzzammil', class: 'btn btn-outline-primary' %>
-        </li>
+        <% popular_searches.each do |poplar_search| %>
+          <li>
+            <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -1,8 +1,8 @@
 class SearchPresenter < BasePresenter
   def add_search_results(search_response)
     @search = search_response
-    @results = @search.results
     @translations = []
+    @results = @search.results
   end
 
   def no_results?
@@ -33,6 +33,18 @@ class SearchPresenter < BasePresenter
 
   def query
     params[:q].presence
+  end
+
+  def params_for_verse_link(verse)
+    if (translation = load_translations(verse)).present?
+      translations_ids = translation.map do |trans|
+        trans[:texts].map { |a| a[:resource_id] }
+      end.flatten.uniq
+
+      if translations_ids.present?
+        "?translations=#{translations_ids.join(',')}"
+      end
+    end
   end
 
   def items
