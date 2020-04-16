@@ -9,8 +9,6 @@
 
 import { Controller } from "stimulus";
 
-require("jquery-slimscroll/jquery.slimscroll");
-
 export default class extends Controller {
   connect() {
     let dom = $(this.element);

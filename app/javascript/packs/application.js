@@ -9,6 +9,7 @@ require("jquery-ujs/index");
 require("partial_replacement");
 require("bootstrap_slider");
 require("howler");
+require("slim-scroller");
 require("../utility/link-events");
 require("../utility/async-render");
 require("../utility/jquery-extends");

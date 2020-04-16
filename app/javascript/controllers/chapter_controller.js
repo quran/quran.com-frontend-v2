@@ -13,10 +13,30 @@ export default class extends Controller {
     this.element[this.identifier] = this;
   }
 
-  loadVerses(start) {
-    let chapter = this.element.dataset.chapterId;
+  loadVerses(verse) {
+    // If this ayah is already loaded, scroll to it
+    if ($(`#verses .verse[data-verse-number=${verse}]`).length > 0) {
+      return Promise.resolve([]);
+    }
 
-    let request = fetch(`/${chapter}/load_verses?${$.param({ verse: start })}`)
+    const chapter = this.element.dataset.chapterId;
+    const lastVerse = $("#verses .verse:last").data().verseNumber;
+    const firstVerse = $("#verses .verse:first").data().verseNumber;
+
+    let from, to;
+
+    if (verse > lastVerse) {
+      from = lastVerse;
+      to = verse;
+    } else {
+      from = verse;
+      to = firstVerse;
+    }
+
+    debugger;
+    let request = fetch(
+      `/${chapter}/load_verses?${$.param({ from, to, verse })}`
+    )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses));
 
