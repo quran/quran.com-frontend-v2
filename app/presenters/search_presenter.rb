@@ -1,8 +1,8 @@
 class SearchPresenter < BasePresenter
   def add_search_results(search_response)
     @search = search_response
-    @results = @search.results
     @translations = []
+    @results = @search.results
   end
 
   def no_results?

@@ -1,0 +1,8 @@
+<div class="search-result" data-controller="search-suggestions">
+  <h6 class="mx-2 mt-2 text-left">
+    Sorry there was a problem with search. <br/><small>Here are some popular searches</small>
+  </h6>
+  <ul role="menu" data-controller="slim-scroller">
+    <%= render partial: 'suggestion', collection: popular_searches, as: :item %>
+  </ul>
+</div>
