@@ -26,6 +26,9 @@ gem 'oj'
 # i18n
 gem 'translation'
 
+# Run any code in parallel Processes
+gem 'parallel', require: false
+
 # seo
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags', '>= 2.13.0'
@@ -38,12 +41,14 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'sentry-raven'
 
 # Detect language from text
-gem "cld"
+gem "cld3"
+#gem 'cld2', github: 'taf2/cld2', require: 'cld'
+#gem "whatlanguage"
 
 # Elasticsearch
 gem 'excon' # using excon as faraday adapter (net::http breaks)
 gem 'elasticsearch-model'
-gem "typhoeus"
+gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
 # Pagination
 gem 'pagy', '= 3.7.3'

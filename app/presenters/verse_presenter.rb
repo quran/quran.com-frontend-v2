@@ -15,6 +15,10 @@ class VersePresenter < BasePresenter
     verse.chapter
   end
 
+  def params_for_verse_link
+    {}
+  end
+
   def share_url
     translations = valid_translations
 

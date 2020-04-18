@@ -8,6 +8,10 @@
   z-index: 100;
   padding: 7px 0;
 
+  .container {
+    overflow-x: auto;
+  }
+
   ul {
     margin-bottom: 0.3rem;
 
@@ -53,7 +57,7 @@
           i {
             font-size: 18px;
             color: $white;
-            &:before{
+            &:before {
               padding: 15px 0;
             }
           }
@@ -69,7 +73,7 @@
             margin-left: 2px;
             font-size: 18px;
             color: $white;
-            &:before{
+            &:before {
               padding: 15px 0;
             }
           }

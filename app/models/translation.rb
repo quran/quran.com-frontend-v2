@@ -25,6 +25,8 @@ class Translation < ApiCoreRecord
   belongs_to :language
   has_many :foot_notes, as: :resource
 
+  scope :approved, -> {joins(:resource_content).where('resource_contents.approved = ?', true)}
+
   def es_analyzer
 
   end

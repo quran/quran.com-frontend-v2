@@ -45,7 +45,7 @@ class SearchPresenter < BasePresenter
           if highlights[:text].present?
             v.highlighted_text = highlights[:text].html_safe
           else
-            v.highlighted_text = v.text_madani
+            v.highlighted_text = v.text_imlaei
           end
         end
       end

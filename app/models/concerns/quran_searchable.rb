@@ -2,8 +2,9 @@ require 'elasticsearch/model'
 
 module QuranSearchable
   TRANSLATION_LANGUAGES = Language.where(id: Translation.select('DISTINCT(language_id)').map(&:language_id).uniq)
-  TRANSLATION_LANGUAGE_CODES = TRANSLATION_LANGUAGES.pluck(:iso_code)
-
+  TRANSLATION_LANGUAGE_CODES = TRANSLATION_LANGUAGES.pluck(:iso_code) + ['default']
+  VERSE_TEXTS_ATTRIBUTES = [:text_uthmani, :text_uthmani_simple, :text_imlaei, :text_imlaei_simple, :text_indopak, :text_indopak_simple]
+  DEFAULT_TRANSLATIONS = [131, 149] # Translation we'll always search, regardless of language of queried text
   extend ActiveSupport::Concern
 
   included do
@@ -22,18 +23,37 @@ module QuranSearchable
 
     def as_indexed_json(options = {})
       hash = self.as_json(
-        only: [:id, :verse_key, :text_madani, :text_imlaei, :chapter_id],
+        only: [:id, :verse_key, :chapter_id],
         methods: [:verse_path, :verse_id]
       )
 
-      hash[:text_madani_simple] = text_madani.remove_dialectic
-      hash[:text_imlaei_simple] = text_imlaei.remove_dialectic
+      # text_madani is Uthmani script
+      # text_uthmani_simple is same without harq'at
+      # text_imlaei is imlaei script
+      # text_simple is imlaei without harq'at
+      # We need to fix the naming in DB.
+      #  - text_imlaei And text_imlaei_simple
+      #  - text_uthmani And text_uthmani_simple
+
+      hash[:text_uthmani] = text_madani
+      hash[:text_uthmani_simple] = text_uthmani_simple
+
+      hash[:text_imlaei] = text_imlaei
+      hash[:text_imlaei_simple] = text_imlaei_change #text_imlaei.remove_dialectic
+
+      hash[:text_indopak] = text_indopak
+      hash[:text_indopak_simple] = text_indopak.remove_dialectic
 
       hash[:words] = words.where.not(text_madani: nil).map do |w|
-        {id: w.id, madani: w.text_madani, simple: w.text_simple}
+        {
+          id: w.id,
+          madani: w.text_madani, # uthmani script
+          simple: w.text_simple, # uthmani simple
+          text_imlaei: w.text_imlaei
+        }
       end
 
-      translations.includes(:language).each do |trans|
+      translations.where.not(resource_content_id: DEFAULT_TRANSLATIONS).includes(:language).each do |trans|
         doc = {
           translation_id: trans.id,
           text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
@@ -44,6 +64,19 @@ module QuranSearchable
 
         hash["trans_#{trans.language.iso_code}"] ||= []
         hash["trans_#{trans.language.iso_code}"] << doc
+      end
+
+      translations.where(resource_content_id: DEFAULT_TRANSLATIONS).each do |trans|
+        doc = {
+          translation_id: trans.id,
+          text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
+          language: trans.language_name,
+          resource_id: trans.resource_content_id,
+          resource_name: trans.resource_name
+        }
+
+        hash["trans_default"] ||= []
+        hash["trans_default"] << doc
       end
 
       hash
@@ -57,7 +90,7 @@ module QuranSearchable
         indexes :keyword, type: 'keyword'
       end
 
-      [:text_madani_simple, :text_imlaei_simple, :text_madani].each do |text_type|
+      VERSE_TEXTS_ATTRIBUTES.each do |text_type|
         indexes text_type, type: "text" do
           indexes :text,
                   type: 'text',
@@ -80,10 +113,10 @@ module QuranSearchable
                   search_analyzer: 'arabic_stemmed',
                   analyzer: 'arabic_ngram'
 
-          indexes :autocomplete,
-                  type: 'completion',
-                  analyzer: 'arabic_synonym_normalized',
-                  search_analyzer: 'arabic_synonym_normalized'
+          #indexes :autocomplete,
+          #        type: 'completion',
+          #        analyzer: 'arabic_synonym_normalized',
+          #        search_analyzer: 'arabic_synonym_normalized'
         end
       end
 
@@ -93,12 +126,14 @@ module QuranSearchable
                 term_vector: 'with_positions_offsets',
                 analyzer: 'arabic_synonym_normalized',
                 similarity: 'my_bm25',
-                search_analyzer: 'arabic_stemmed' do
-          indexes :autocomplete,
-                  type: 'completion',
-                  analyzer: 'arabic_synonym_normalized',
-                  search_analyzer: 'arabic_synonym_normalized'
-        end
+                search_analyzer: 'arabic_stemmed'
+
+        indexes :text_imlaei,
+                type: 'text',
+                term_vector: 'with_positions_offsets',
+                analyzer: 'arabic_synonym_normalized',
+                similarity: 'my_bm25',
+                search_analyzer: 'arabic_stemmed'
 
         indexes :simple,
                 type: 'text',
@@ -127,11 +162,29 @@ module QuranSearchable
                     analyzer: es_analyzer || 'english',
                     search_analyzer: 'shingle_analyzer'
 
-            indexes :autocomplete,
-                    type: 'completion',
-                    search_analyzer: 'standard',
-                    analyzer: es_analyzer || 'english'
+            #indexes :autocomplete,
+            #        type: 'completion',
+            #        search_analyzer: 'standard',
+            #        analyzer: es_analyzer || 'english'
           end
+        end
+      end
+
+      indexes "trans_default", type: 'nested' do
+        indexes :text, type: 'text' do
+          indexes :text,
+                  type: 'text',
+                  similarity: 'my_bm25',
+                  term_vector: 'with_positions_offsets',
+                  analyzer: 'english',
+                  search_analyzer: 'english'
+
+          indexes :stemmed,
+                  type: 'text',
+                  similarity: 'my_bm25',
+                  term_vector: 'with_positions_offsets_payloads',
+                  analyzer: 'english',
+                  search_analyzer: 'shingle_analyzer'
         end
       end
     end
