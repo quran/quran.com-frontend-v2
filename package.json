@@ -2,7 +2,7 @@
   "name": "quran",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.2.2",
+    "@rails/webpacker": "5.0.1",
     "bootstrap": "4.3.1",
     "bootstrap-slider": "^10.6.2",
     "copy-to-clipboard": "^3.0.8",
@@ -11,6 +11,7 @@
     "howler": "2.1.3",
     "jquery": "^3.5.0",
     "lodash-es": "^4.17.15",
+    "minimist": "1.2.3",
     "node-waves": "^0.7.6",
     "popper.js": "1.14.7",
     "purgecss-webpack-plugin": "^1.6.0",

@@ -154,18 +154,6 @@ class ChapterPresenter < BasePresenter
     valid_translations.include?(id)
   end
 
-  def load_words(verse)
-    list = Word.where(verse_id: verse.id)
-
-    list
-      .where(word_translations: {language_id: language.id})
-      .or(
-        list.where(word_translations: {language_id: Language.default.id})
-      )
-      .eager_load(:transliteration, :word_translation)
-      .order('word_translations.priority DESC, words.position ASC')
-  end
-
   def load_translations(verse, default_translation = nil)
     translations_to_load = valid_translations
 
