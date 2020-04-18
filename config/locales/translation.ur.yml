@@ -7,181 +7,25 @@
 ---
 ur:
   tafsir_select: تفسیر منتخب کریں
-  date:
-    day_names:
-    - اتوار
-    - سوموار
-    - منگل
-    - بدھ
-    - جمعرات
-    - جمعہ
-    - ہفتہ
-    abbr_day_names:
-    - اتوار
-    - سوموار
-    - منگل
-    - بدھ
-    - جمعرات
-    - جمعہ
-    - ہفتہ
-    month_names:
-    -
-    - جنوری
-    - فروری
-    - مارچ
-    - اپریل
-    - مئی
-    - جون
-    - جولائی
-    - اگست
-    - ستمبر
-    - اکتوبر
-    - نومبر
-    - دسمبر
-    abbr_month_names:
-    -
-    - جنوری
-    - فروری
-    - مارچ
-    - اپریل
-    - مئی
-    - جون
-    - جولائی
-    - اگست
-    - ستمبر
-    - اکتوبر
-    - نومبر
-    - دسمبر
-  time:
-    am: صبح
-    pm: شام
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: ہزار
-          million: ملین
-          billion: بلین
-          trillion: ٹریلن
-          quadrillion: کواڈریلن
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'توثیق میں نا کا می: %{errors}'
-      inclusion: فہرست میں شامل نہیں ہے
-      exclusion: مخصوص ہے
-      invalid: باطل ہے
-      confirmation: "%{attribute} میل نہیں رکھتا"
-      accepted: قبول کرنا لازمی ہے
-      empty: خالی نہیں ہوسکتی
-      blank: خالی نہیں ہوسکتی
-      present: خالی ہونا ضروری ہے
-      too_long:
-        one: بہت طویل ہے (زیادہ سے زیادہ ایک حرف)
-        other: iبہت طویل ہے (زیادہ سے زیادہ %{count} حروف)
-      too_short:
-        one: بہت چھوٹا ہے (کم از کم اکی حرف)
-        other: بہت چھوٹا ہے (کم از کم %{count} حروف)
-      wrong_length:
-        one: غلط طوالت (ایک حرف ہونا چاہئے)
-        other: غلط طوالت (%{count} حروف ہونے چاہئے)
-      not_a_number: ایک نمبر نہیں ہے
-      not_an_integer: ایک عدد صحیح ہونا ضروری ہے
-      greater_than: "%{count} سے زیادہ ہونا چاہیے"
-      greater_than_or_equal_to: "%{count} سے بڑا یا برابر ہونا چاہیے"
-      equal_to: "%{count} کے برابر ہونا چاہیے"
-      less_than: "%{count} سے کم ہونا چاہیے"
-      less_than_or_equal_to: "%{count} سے کم یا اس کے برابر ہونا چاہیے"
-      other_than: "%{count} کے علاوہ کسی اور کا ہونا لازمی ہے"
-      odd: طاق ہونا ضروری ہے
-      even: جفت ہونا ضروری ہے
-      required:
-      taken: پہلے سے ہی استعمال میں ہے
     not_found: افسوس، یہ صفحہ موجود نہیں ہے
-    invalid_verse: 'آیت رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+    invalid_verse: "آیت رینج سے باہر ہے. براہ مہربانی <a href='/'> صفحۂ اول</a>
       پر جائیں اور درست سوره/آیت منتخب کریں
 
-      '
-    invalid_chapter: 'سورہ رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+      "
+    invalid_chapter:
+      "سورہ رینج سے باہر ہے. براہ مہربانی <a href='/'> صفحۂ اول</a>
       پر جائیں اور درست سوره منتخب کریں
 
-      '
-    no_script: ایسا لگتا ہے کہ آپ کے براؤزر جاوا اسکرپٹ یا اس کی غیر فعال کی حمایت
+      "
+    no_script:
+      ایسا لگتا ہے کہ آپ کے براؤزر جاوا اسکرپٹ یا اس کی غیر فعال کی حمایت
       نہیں کرتا. قرآن کریم جاوا اسکرپٹ کے ساتھ بہترین کام کرتا ہے. جاوا سکرپٹ کو کس
       طرح فعال کرنے کے بارے میں مزید ہدایات کے لئے
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'توثیق میں نا کا می: %{errors}'
-        restrict_dependent_destroy:
-          has_one: ایک منحصر %{record} کی موجودگی کے باعث اس ریکارڈ کو حذف نہیں کیا
-            جا سکتا
-          has_many: چند منحصر %{record}  کی موجودگی کے باعث اس ریکارڈ کو حذف نہیں
-            کیا جا سکتا
-  datetime:
-    distance_in_words:
-      half_a_minute: آدھا منٹ
-      less_than_x_seconds:
-        one: ایک سیکنڈ سے کم
-        other: "%{count} سیکنڈوں سے کم"
-      x_seconds:
-        one: ایک سیکنڈ
-        other: "%{count} سیکنڈ"
-      less_than_x_minutes:
-        one: ایک مںٹ سے کم
-        other: "%{count} مںٹوں سے کم"
-      x_minutes:
-        one: ایک منٹ
-        other: "%{count} منٹ"
-      about_x_hours:
-        one: تقریبا ایک گھنٹہ
-        other: تقریبا %{count} گھنٹے
-      x_days:
-        one: ایک دن
-        other: "%{count} دن"
-      about_x_months:
-        one: تقریبا ایک مہینہ
-        other: تقریبا %{count} مہینہ
-      x_months:
-        one: ایک ماہ
-        other: "%{count} ماہ"
-      about_x_years:
-        one: تقریبا ایک سال
-        other: تقریبا %{count} سال
-      over_x_years:
-        one: ایک سال سے زیادہ
-        other: "%{count} سالوں سے زیادہ"
-      almost_x_years:
-        one: تقریبا ایک سال
-        other: تقریبا %{count} سال
-    prompts:
-      year: سال
-      month: ماہ
-      day: دن
-      hour: گھنٹہ
-      minute: منٹ
-      second: سیکنڈ
-  helpers:
-    select:
-      prompt: منتخب کیجیے
-    submit:
-      create: "%{model} تشکیل دیں"
-      update: اپ ڈیٹ %{model}
-      submit: "%{model} محفوظ کریں"
   local: urdu
   site_local: سائٹ کی زبان
   change_local: جس زبان میں سایٹ دیکھنا چاہتے ہیں اس زبان کا انتخاب کریں
@@ -267,9 +111,9 @@ ur:
     repeat_to: تک
     repeat_times: کتنی بار
     repeat_loop: چلاتے رہو
-    scroll: 'جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
+    scroll: "جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
 
-      '
+      "
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
@@ -296,7 +140,7 @@ ur:
   related_sites:
     label: متعلقہ سائٹس
     sunnah: سنت
-    sunnah_description: 'نبی صلی اللہ علیہ وسلم کی حدیث '
+    sunnah_description: "نبی صلی اللہ علیہ وسلم کی حدیث "
     salah: نماز کا وقت
     salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
     audio: آڈیو میں نوبل قرآن

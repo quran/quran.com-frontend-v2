@@ -7,111 +7,13 @@
 ---
 th:
   noble_quran: อัลกุรอาน
-  date:
-    day_names:
-    - อาทิตย์
-    - จันทร์
-    - อังคาร
-    - พุธ
-    - พฤหัสบดี
-    - ศุกร์
-    - เสาร์
-    abbr_day_names:
-    - อา
-    - จ
-    - อ
-    - พ
-    - พฤ
-    - ศ
-    - ส
-    month_names:
-    -
-    - มกราคม
-    - กุมภาพันธ์
-    - มีนาคม
-    - เมษายน
-    - พฤษภาคม
-    - มิถุนายน
-    - กรกฎาคม
-    - สิงหาคม
-    - กันยายน
-    - ตุลาคม
-    - พฤศจิกายน
-    - ธันวาคม
-    abbr_month_names:
-    -
-    - ม.ค.
-    - ก.พ.
-    - มี.ค.
-    - เม.ย.
-    - พ.ค.
-    - มิ.ย.
-    - ก.ค.
-    - ส.ค.
-    - ก.ย.
-    - ต.ค.
-    - พ.ย.
-    - ธ.ค.
-  time:
-    am: ก่อนเที่ยง
-    pm: หลังเที่ยง
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: ไบต์
-            other: ไบต์
-          kb: กิโลไบต์
-          mb: เมกะไบต์
-          gb: จิกะไบต์
-          tb: เทระไบต์
-          pb: เพตะไบต์
-          eb: เอกซะไบต์
-      decimal_units:
-        units:
-          thousand: พัน
-          million: ล้าน
-          billion: พันล้าน
-          trillion: ล้านล้าน
-          quadrillion: พันล้านล้าน
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'ตรวจสอบข้อมูลไม่ผ่าน: %{errors}'
-      inclusion: ไม่ได้อยู่ในรายการ
-      exclusion: ถูกสงวนไว้
-      invalid: ไม่ถูกต้อง
-      confirmation: ไม่ตรงกับ %{attribute}
-      accepted: ต้องถูกยอมรับ
-      empty: ต้องไม่เว้นว่างเอาไว้
-      blank: ต้องไม่เว้นว่างเอาไว้
-      present: ต้องเว้นว่างเอาไว้
-      too_long:
-        one: ยาวเกินไป (สูงสุดคือ 1 ตัวอักษร)
-        other: ยาวเกินไป (สูงสุดคือ %{count} ตัวอักษร)
-      too_short:
-        one: สั้นเกินไป (อย่างน้อยต้อง 1 ตัวอักษร)
-        other: สั้นเกินไป (อย่างน้อยต้อง %{count} ตัวอักษร)
-      wrong_length:
-        one: มีความยาวที่ไ​​ม่ถูกต้อง (ควรจะมี 1 ตัวอักษร)
-        other: มีความยาวที่ไ​​ม่ถูกต้อง (ควรจะมี %{count} ตัวอักษร)
-      not_a_number: ไม่ใช่ตัวเลข
-      not_an_integer: ต้องเป็นจำนวนเต็ม
-      greater_than: ต้องมากกว่า %{count}
-      greater_than_or_equal_to: ต้องมากกว่าหรือเท่ากับ %{count}
-      equal_to: ต้องมีค่าเท่ากับ %{count}
-      less_than: ต้องมีค่าน้อยกว่า %{count}
-      less_than_or_equal_to: ต้องมีค่าน้อยกว่าหรือเท่ากับ %{count}
-      other_than: ต้องไม่ใช่ %{count}
-      odd: ต้องเป็นจำนวนคี่
-      even: ต้องเป็นจำนวนคู่
-      required: จะต้องมีอยู่
-      taken: ถูกใช้ไปแล้ว
     not_found: ขออภัย ไม่พบหน้าดังกล่าว
     invalid_verse: ไม่พบอายะห์ดังกล่าว. กรุณากลับไปยังหน้าหลัก
     invalid_chapter: ไม่พบซูเราะห์ดังกล่าว. กรุณากลับไปยังหน้าหลัก
-    no_script: ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
+    no_script:
+      ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
       Quran.com ทำงานได้ดีที่สุดเมื่อเปิดใช้งาน JavaScript. สำหรับคำแนะนำเพิ่มเติมเกี่ยวกับวิธีเปิดใช้งาน
       JavaScript
     unavailable_session: |
@@ -123,63 +25,6 @@ th:
     connection_refused: |-
       อุปส์! การเชื่อมต่อกับ Web Console middleware ล้มเหลว.
       กรุณาตรวจสอบให้แน่ใจว่าเซิฟเวอร์ rails ทำงานอยู่.
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'ไม่ผ่านการตรวจสอบ: %{errors}'
-        restrict_dependent_destroy:
-          has_one: 'ไม่สามารถลบข้อมูลได้ เนื่องจากมีข้อมูลเหล่านี้อยู่ %{record} '
-          has_many: ไม่สามารถลบข้อมูลได้ เนื่องจากมีข้อมูล %{record} อยู่
-  datetime:
-    distance_in_words:
-      half_a_minute: ครึ่งนาที
-      less_than_x_seconds:
-        one: น้อยกว่า 1 วินาที
-        other: น้อยกว่า %{count} วินาที
-      x_seconds:
-        one: 1 วินาที
-        other: "%{count} วินาที"
-      less_than_x_minutes:
-        one: ไม่กี่วินาที
-        other: น้อยกว่า %{count} นาที
-      x_minutes:
-        one: 1 นาที
-        other: "%{count} นาที"
-      about_x_hours:
-        one: ประมาณ 1 ชั่วโมง
-        other: ประมาณ %{count} ชั่วโมง
-      x_days:
-        one: 1 วัน
-        other: "%{count} วัน"
-      about_x_months:
-        one: ประมาณ 1 เดือน
-        other: ประมาณ %{count} เดือน
-      x_months:
-        one: 1 เดือน
-        other: "%{count} เดือน"
-      about_x_years:
-        one: ประมาณ 1 ปี
-        other: ประมาณ %{count} ปี
-      over_x_years:
-        one: มากกว่า 1 ปี
-        other: มากกว่า %{count} ปี
-      almost_x_years:
-        one: เกือบ 1 ปี
-        other: เกือบ %{count} ปี
-    prompts:
-      year: ปี
-      month: เดือน
-      day: วัน
-      hour: ชั่วโมง
-      minute: นาที
-      second: วินาที
-  helpers:
-    select:
-      prompt: โปรดเลือก
-    submit:
-      create: สร้าง %{model}
-      update: ปรับปรุง %{model}
-      submit: บันทึก %{model}
   local: ภาษาอังกฤษ
   site_local: ภาษาของเว็บไซต์
   change_local: เลือกภาษาที่คุณต้องการให้แสดงผล

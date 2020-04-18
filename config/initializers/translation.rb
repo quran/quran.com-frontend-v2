@@ -21,6 +21,8 @@ TranslationIO.configure do |config|
     'activerecord',
     'date',
     'datetime',
-    'number'
+    'number',
+    'time',
+    'helpers'
   ]
 end

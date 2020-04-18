@@ -6,16 +6,6 @@ GIT
       rails (>= 4.1, < 6.1)
 
 GIT
-  remote: https://github.com/naveed-ahmad/dalli-ui.git
-  revision: 2d8a28d2b9e1650868ef33815d7cec63505076f5
-  specs:
-    dalli-ui (0.1.2)
-      dalli (~> 2.7)
-      hashie (>= 3.4.6)
-      multi_json (~> 1.11)
-      rails (>= 5.2)
-
-GIT
   remote: https://github.com/naveed-ahmad/typhoeus.git
   revision: a6a31209c5152ef8d0c6b5c6ab27a0c779f7e768
   specs:
@@ -383,7 +373,6 @@ DEPENDENCIES
   cld3
   connection_pool
   dalli
-  dalli-ui!
   elasticsearch-model
   excon
   fast_blank

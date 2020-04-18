@@ -11,15 +11,23 @@
 #
 ---
 it:
+  spree:
+    date_picker:
+      first_day: 1
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
   date:
     formats:
       default: "%d/%m/%Y"
       long: "%d %B %Y"
       short: "%d %b"
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   number:
     currency:
       format:
@@ -40,9 +48,9 @@ it:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -50,19 +58,11 @@ it:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
-  spree:
-    date_picker:
-      first_day: 1
-  support:
-    array:
-      last_word_connector: " e "
-      two_words_connector: " e "
-      words_connector: ", "
+        delimiter: ""
   time:
     formats:
       default: "%a %d %b %Y, %H:%M:%S %z"

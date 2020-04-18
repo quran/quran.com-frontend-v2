@@ -56,7 +56,6 @@ gem 'pagy', '= 3.7.3'
 # Cache
 gem 'connection_pool'
 gem 'dalli'
-gem 'dalli-ui', github: 'naveed-ahmad/dalli-ui'
 gem 'memcachier'
 
 gem 'sitemap_generator'

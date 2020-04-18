@@ -11,15 +11,20 @@
 #
 ---
 tr:
+  support:
+    array:
+      last_word_connector: " ve "
+      two_words_connector: " ve "
+      words_connector: ", "
   date:
     formats:
       default: "%d.%m.%Y"
       long: "%e %B %Y, %A"
       short: "%e %b"
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   number:
     currency:
       format:
@@ -40,7 +45,7 @@ tr:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
         delimiter: "."
         precision: 3
@@ -50,16 +55,11 @@ tr:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%%n"
     precision:
       format:
         delimiter: "."
-  support:
-    array:
-      last_word_connector: " ve "
-      two_words_connector: " ve "
-      words_connector: ", "
   time:
     formats:
       default: "%a %d.%b.%y %H:%M"

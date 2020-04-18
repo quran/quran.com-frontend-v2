@@ -7,173 +7,18 @@
 ---
 bn-BD:
   noble_quran: পবিত্র কোরআন
-  date:
-    day_names:
-    - রবিবার
-    - সোমবার
-    - মঙ্গলবার
-    - বুধবার
-    - বৃহস্পতিবার
-    - শুক্রবার
-    - শনিবার
-    abbr_day_names:
-    - রবিবার
-    - সোমবার
-    - মঙ্গলবার
-    - বুধবার
-    - বৃহস্পতিবার
-    - শুক্রবার
-    - শনিবার
-    month_names:
-    -
-    - জানুয়ারী
-    - ফেব্রুয়ারি
-    - মার্চ
-    - এপ্রিল
-    - মে
-    - জুন
-    - জুলাই
-    - অগাস্ট
-    - সেপ্টেম্বর
-    - অক্টোবর
-    - নভেম্বর
-    - ডিসেম্বর
-    abbr_month_names:
-    -
-    - জানুয়ারী
-    - ফেব্রুয়ারী
-    - মার্চ
-    - এপ্রিল
-    - মে
-    - জুন
-    - জুলাই
-    - আগস্ট
-    - সেপ্টেম্বর
-    - অক্টোবর
-    - নভেম্বর
-    - ডিসেম্বর
-  time:
-    am: am
-    pm: pm
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: হাজার
-          million:
-          billion:
-          trillion:
-          quadrillion:
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid:
-      inclusion: লিস্টে অন্তর্ভুক্ত নয়
-      exclusion: রিসার্ভ করা অাছে
-      invalid: সঠিক নয়
-      confirmation: অনুমোদনের সঙ্গে মিলছে না
-      accepted: গ্রাহ্য করতে হবে
-      empty: খালি রাখা যাবে না
-      blank: ফাঁকা রাখা যাবে না
-      present:
-      too_long:
-        one:
-        other:
-      too_short:
-        one:
-        other:
-      wrong_length:
-        one:
-        other:
-      not_a_number: নম্বর নয়
-      not_an_integer:
-      greater_than: "%{count} থেকে বড়ো হতে হবে"
-      greater_than_or_equal_to: "%{count} থেকে বড়ো অথবা তার সমান হতে হবে"
-      equal_to: "%{count} এর সঙ্গে সমান হতে হবে"
-      less_than: "%{count} থেকে ছোটো হতে হবে"
-      less_than_or_equal_to: "%{count} থেকে ছোটো অথবা তার সমান হতে হবে"
-      other_than:
-      odd: বেজোড় হতে হবে
-      even: জোড় হতে হবে
-      required:
-      taken: অাগেই নিয়ে নেওয়া হয়েছে
     not_found: দুঃখিত, এই পৃষ্ঠাটি বিদ্যমান নেই
     invalid_verse: শ্লোকটি সীমার বাইরে। হোম পেজে যান
     invalid_chapter: অধ্যায় পরিসীমা বাইরে। হোম পেজে যান দয়া করে
-    no_script: দেখে মনে হচ্ছে আপনার ব্রাউজারটি জাভাস্ক্রিপ্ট সমর্থন করে না বা এটি
+    no_script:
+      দেখে মনে হচ্ছে আপনার ব্রাউজারটি জাভাস্ক্রিপ্ট সমর্থন করে না বা এটি
       অক্ষম করেছে। কুরআন ডট কম জাভাস্ক্রিপ্ট সক্ষম করার সাথে সর্বোত্তম কাজ করে। কীভাবে
       জাভাস্ক্রিপ্ট সক্ষম করবেন সে সম্পর্কে আরও নির্দেশের জন্য
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid:
-        restrict_dependent_destroy:
-          has_one:
-          has_many:
-  datetime:
-    distance_in_words:
-      half_a_minute: অার্ধেক মিনিট
-      less_than_x_seconds:
-        one: '১ সেকেন্ডর কম '
-        other: "%{count} সেকেন্ডের কম"
-      x_seconds:
-        one: ১ সেকেন্ড
-        other: "%{count} সেকেন্ড"
-      less_than_x_minutes:
-        one: ১ মিনিটের কম
-        other: "%{count} মিনিটের কম"
-      x_minutes:
-        one: ১ মিনিট
-        other: "%{count} মিনিট"
-      about_x_hours:
-        one: প্রায় ১ ঘন্টা
-        other: প্রায় %{count} ঘন্টা
-      x_days:
-        one: ১ দিন
-        other: "%{count} দিন"
-      about_x_months:
-        one: প্রায় ১ মাস
-        other: প্রায় %{count} মাস
-      x_months:
-        one: ১ মাস
-        other: "%{count} মাস"
-      about_x_years:
-        one: প্রায় ১ বছর
-        other: প্রায় %{count} বছর
-      over_x_years:
-        one: ১ বছরের বেশি
-        other: "%{count} বছরের বেশি"
-      almost_x_years:
-        one: প্রায় 1 বছর
-        other:
-    prompts:
-      year: বছর
-      month: মাস
-      day: দিন
-      hour: ঘন্টা
-      minute: মিনিট
-      second: সেকেন্ড
-  helpers:
-    select:
-      prompt: অনুগ্রহ করে নির্বাচন করুন
-    submit:
-      create:
-      update:
-      submit:
   local: ইংরেজি
   site_local: সাইট ভাষা
   change_local:
@@ -241,25 +86,25 @@ bn-BD:
     no_query: কোনও অনুসন্ধানের জিজ্ঞাসা নেই।
     no_result: কোন ফলাফল পাওয়া যায়নি.
     popular: জনপ্রিয় অনুসন্ধানসমূহ
-    ayatul_kursi: 'Ayatul Kursi
+    ayatul_kursi: "Ayatul Kursi
 
-      '
-    yaseen: 'Surah Yaseen
+      "
+    yaseen: "Surah Yaseen
 
-      '
-    al_mulk: 'Surah Al Mulk
+      "
+    al_mulk: "Surah Al Mulk
 
-      '
-    ar_rahman: 'Surah Ar-Rahman
+      "
+    ar_rahman: "Surah Ar-Rahman
 
-      '
-    al_waqiah: 'Surah Al Waqiah
+      "
+    al_waqiah: "Surah Al Waqiah
 
-      '
+      "
     al_kahf: সূরা আল কাহফ
-    al_muzammil: 'Surah Al Muzzammil
+    al_muzammil: "Surah Al Muzzammil
 
-      '
+      "
   player:
     current_verse: শ্লোক
     next_verse: পরবর্তী আয়াত
@@ -283,7 +128,8 @@ bn-BD:
     other_links: অন্যান্য লিঙ্ক
     contact_us: আমাদের সাথে যোগাযোগ করুন
     help: সহায়তা এবং প্রতিক্রিয়া
-    about_project: কুরআন ডট কম কুরআন পড়ার এবং অধ্যয়নের জন্য একটি প্রো বোন প্রকল্প
+    about_project:
+      কুরআন ডট কম কুরআন পড়ার এবং অধ্যয়নের জন্য একটি প্রো বোন প্রকল্প
       (এটি নোবেল কুরআন, আল কুরআন, পবিত্র কোরআন, কোরান হিসাবেও পরিচিত)।
     rights: সমস্ত অধিকার সংরক্ষিত
     mobilea_apps: মোবাইল অ্যাপস

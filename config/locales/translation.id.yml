@@ -7,174 +7,19 @@
 ---
 id:
   tafsir_select:
-  date:
-    day_names:
-    - Minggu
-    - Senin
-    - Selasa
-    - Rabu
-    - Kamis
-    - Jumat
-    - Sabtu
-    abbr_day_names:
-    - Min
-    - Sen
-    - Sel
-    - Rab
-    - Kam
-    - Jum
-    - Sab
-    month_names:
-    -
-    - Januari
-    - Februari
-    - Maret
-    - April
-    - Mei
-    - Juni
-    - Juli
-    - Agustus
-    - September
-    - Oktober
-    - November
-    - Desember
-    abbr_month_names:
-    -
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - Mei
-    - Jun
-    - Jul
-    - Agu
-    - Sep
-    - Okt
-    - Nov
-    - Des
-  time:
-    am: am
-    pm: pm
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Byte
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: Ribu
-          million: Juta
-          billion: Miliar
-          trillion: Triliun
-          quadrillion: Quadriliun
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'Validasi gagal: %{errors}'
-      inclusion: tidak termasuk
-      exclusion: sudah digunakan
-      invalid: tidak valid
-      confirmation: tidak sesuai dengan %{attribute}
-      accepted: harus diterima
-      empty: tidak boleh kosong
-      blank: tidak boleh kosong
-      present: harus kosong
-      too_long:
-        one: terlalu panjang (maksimum 1 karakter)
-        other: terlalu panjang (maksimum %{count} karakter)
-      too_short:
-        one: terlalu pendek (minimum 1 karakter)
-        other: terlalu pendek (minimum %{count} karakter)
-      wrong_length:
-        one: jumlah karakter salah (seharusnya 1 karakter)
-        other: jumlah karakter salah (seharusnya %{count} karakter)
-      not_a_number: bukan angka
-      not_an_integer: harus bilangan bulat
-      greater_than: harus lebih besar dari %{count}
-      greater_than_or_equal_to: harus sama atau lebih besar dari %{count}
-      equal_to: harus sama dengan %{count}
-      less_than: harus lebih kecil dari %{count}
-      less_than_or_equal_to: harus sama atau lebih kecil dari %{count}
-      other_than: harus selain %{count}
-      odd: harus ganjil
-      even: harus genap
-      required: harus ada
-      taken: sudah digunakan
     not_found:
-    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_verse:
+      Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
-    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_chapter:
+      Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih sebuah Surah
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'Validasi gagal: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Tidak bisa menghapus record karena terdapat satu %{record} yang
-            bergantung
-          has_many: Tidak bisa menghapus record karena terdapat %{record} yang bergantung
-  datetime:
-    distance_in_words:
-      half_a_minute: setengah menit
-      less_than_x_seconds:
-        one: kurang dari 1 detik
-        other: kurang dari %{count} detik
-      x_seconds:
-        one: satu detik
-        other: "%{count} detik"
-      less_than_x_minutes:
-        one: kurang dari 1 menit
-        other: kurang dari  %{count} menit
-      x_minutes:
-        one: satu menit
-        other: "%{count} menit"
-      about_x_hours:
-        one: sekitar satu jam
-        other: sekitar %{count} jam
-      x_days:
-        one: sehari
-        other: "%{count} hari"
-      about_x_months:
-        one: sekitar sebulan
-        other: sekitar %{count} bulan
-      x_months:
-        one: sebulan
-        other: "%{count} bulan"
-      about_x_years:
-        one: sekitar setahun
-        other: sekitar %{count} tahun
-      over_x_years:
-        one: lebih dari setahun
-        other: lebih dari %{count} tahun
-      almost_x_years:
-        one: hampir setahun
-        other: hampir %{count} tahun
-    prompts:
-      year: Tahun
-      month: Bulan
-      day: Hari
-      hour: Jam
-      minute: Menit
-      second: Detik
-  helpers:
-    select:
-      prompt: Silakan pilih
-    submit:
-      create: Buat %{model}
-      update: Perbarui %{model}
-      submit: Simpan %{model}
   local: indonesian
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
@@ -203,9 +48,9 @@ id:
       night_tip: Ganti ke mode malam
     reset:
   verses:
-    media: 'Lihat kuliah dari %{from}
+    media: "Lihat kuliah dari %{from}
 
-      '
+      "
     go:
     not_found: Ayat tidak ditemukan
   chapters:
@@ -274,7 +119,8 @@ id:
     other_links: Tautan lainnya
     contact_us: Hubungi kami
     help: Bantuan & umpan balik
-    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+    about_project:
+      Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
     mobilea_apps: Aplikasi Ponsel

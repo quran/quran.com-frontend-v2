@@ -7,175 +7,18 @@
 ---
 it:
   tafsir_select: Seleziona un tafsir
-  date:
-    day_names:
-    - domenica
-    - lunedì
-    - martedì
-    - mercoledì
-    - giovedì
-    - venerdì
-    - sabato
-    abbr_day_names:
-    - dom
-    - lun
-    - mar
-    - mer
-    - gio
-    - ven
-    - sab
-    month_names:
-    -
-    - gennaio
-    - febbraio
-    - marzo
-    - aprile
-    - maggio
-    - giugno
-    - luglio
-    - agosto
-    - settembre
-    - ottobre
-    - novembre
-    - dicembre
-    abbr_month_names:
-    -
-    - gen
-    - feb
-    - mar
-    - apr
-    - mag
-    - giu
-    - lug
-    - ago
-    - set
-    - ott
-    - nov
-    - dic
-  time:
-    am: am
-    pm: pm
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Byte
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: Mila
-          million: Milioni
-          billion: Miliardi
-          trillion: Bilioni
-          quadrillion: Biliardi
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'Validazione fallita: %{errors}'
-      inclusion: non è compreso tra le opzioni disponibili
-      exclusion: è riservato
-      invalid: non è valido
-      confirmation: non coincide con %{attribute}
-      accepted: deve essere accettata
-      empty: non può essere vuoto
-      blank: non può essere lasciato in bianco
-      present: deve essere lasciato in bianco
-      too_long:
-        one: è troppo lungo (il massimo è 1 carattere)
-        other: è troppo lungo (il massimo è %{count} caratteri)
-      too_short:
-        one: è troppo corto (il minimo è 1 carattere)
-        other: è troppo corto (il minimo è %{count} caratteri)
-      wrong_length:
-        one: è della lunghezza sbagliata (deve essere di 1 carattere)
-        other: è della lunghezza sbagliata (deve essere di %{count} caratteri)
-      not_a_number: non è un numero
-      not_an_integer: non è un numero intero
-      greater_than: deve essere maggiore di %{count}
-      greater_than_or_equal_to: deve essere maggiore o uguale a %{count}
-      equal_to: deve essere uguale a %{count}
-      less_than: deve essere minore di %{count}
-      less_than_or_equal_to: deve essere minore o uguale a %{count}
-      other_than: devono essere di numero diverso da %{count}
-      odd: deve essere dispari
-      even: deve essere pari
-      required: deve esistere
-      taken: è già presente
     not_found: Siamo spiacenti, questa pagina non esiste
     invalid_verse: Il verso è fuori portata. Per favore vai alla home page
     invalid_chapter: Il capitolo è fuori portata. Per favore vai alla home page
-    no_script: Sembra che il tuo browser non supporti Javascript o sia disabilitato.
+    no_script:
+      Sembra che il tuo browser non supporti Javascript o sia disabilitato.
       Quran.com funziona meglio con JavaScript abilitato. Per ulteriori istruzioni
       su come abilitare JavaScript
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'Validazione fallita: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Il record non può essere cancellato perchè esiste un %{record}
-            dipendente
-          has_many: Il record non può essere cancellato perchè esistono %{record}
-            dipendenti
-  datetime:
-    distance_in_words:
-      half_a_minute: mezzo minuto
-      less_than_x_seconds:
-        one: meno di un secondo
-        other: meno di %{count} secondi
-      x_seconds:
-        one: 1 secondo
-        other: "%{count} secondi"
-      less_than_x_minutes:
-        one: meno di un minuto
-        other: meno di %{count} minuti
-      x_minutes:
-        one: 1 minuto
-        other: "%{count} minuti"
-      about_x_hours:
-        one: circa un'ora
-        other: circa %{count} ore
-      x_days:
-        one: 1 giorno
-        other: "%{count} giorni"
-      about_x_months:
-        one: circa un mese
-        other: circa %{count} mesi
-      x_months:
-        one: 1 mese
-        other: "%{count} mesi"
-      about_x_years:
-        one: circa un anno
-        other: circa %{count} anni
-      over_x_years:
-        one: oltre un anno
-        other: oltre %{count} anni
-      almost_x_years:
-        one: circa 1 anno
-        other: circa %{count} anni
-    prompts:
-      year: Anno
-      month: Mese
-      day: Giorno
-      hour: Ora
-      minute: Minuto
-      second: Secondi
-  helpers:
-    select:
-      prompt: seleziona
-    submit:
-      create: Crea %{model}
-      update: Aggiorna %{model}
-      submit: Invia %{model}
   local: Inglese
   site_local: la lingua del sito
   change_local: Scegli la lingua in cui visualizzare il sito
@@ -237,7 +80,8 @@ it:
       select: Seleziona un tafsir
   search:
     placeholder: Cerca "Noah"
-    result: "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:
+    result:
+      "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:
       <span>{query}</span>"
     error: Siamo spiacenti, si è verificato un errore durante la ricerca.
     no_query: Nessuna query di ricerca.
@@ -274,7 +118,8 @@ it:
     other_links: Altri link
     contact_us: Contattaci
     help: Aiuto e feedback
-    about_project: Quran.com è un progetto pro bono per la lettura e lo studio del
+    about_project:
+      Quran.com è un progetto pro bono per la lettura e lo studio del
       Corano (noto anche come The Noble Quran, Al Quran, Holy Quran, Koran).
     rights: Tutti i diritti riservati
     mobilea_apps: App mobili

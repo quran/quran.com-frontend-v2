@@ -7,183 +7,28 @@
 ---
 fr:
   tafsir_select: Sélectionnez un tafsir
-  date:
-    day_names:
-    - dimanche
-    - lundi
-    - mardi
-    - mercredi
-    - jeudi
-    - vendredi
-    - samedi
-    abbr_day_names:
-    - dim
-    - lun
-    - mar
-    - mer
-    - jeu
-    - ven
-    - sam
-    month_names:
-    -
-    - janvier
-    - février
-    - mars
-    - avril
-    - mai
-    - juin
-    - juillet
-    - août
-    - septembre
-    - octobre
-    - novembre
-    - décembre
-    abbr_month_names:
-    -
-    - jan.
-    - fév.
-    - mar.
-    - avr.
-    - mai
-    - juin
-    - juil.
-    - août
-    - sept.
-    - oct.
-    - nov.
-    - déc.
-  time:
-    am: am
-    pm: pm
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: octet
-            other: octets
-          kb: ko
-          mb: Mo
-          gb: Go
-          tb: To
-          pb: Po
-          eb: Eo
-      decimal_units:
-        units:
-          thousand: millier
-          million: million
-          billion: milliard
-          trillion: billion
-          quadrillion: million de milliards
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'Validation échouée : %{errors}'
-      inclusion: n'est pas inclus(e) dans la liste
-      exclusion: n'est pas disponible
-      invalid: n'est pas valide
-      confirmation: ne concorde pas avec %{attribute}
-      accepted: doit être accepté(e)
-      empty: doit être rempli(e)
-      blank: doit être rempli(e)
-      present: doit être vide
-      too_long:
-        one: est trop long (pas plus d'un caractère)
-        other: est trop long (pas plus de %{count} caractères)
-      too_short:
-        one: est trop court (au moins un caractère)
-        other: est trop court (au moins %{count} caractères)
-      wrong_length:
-        one: ne fait pas la bonne longueur (doit comporter un seul caractère)
-        other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
-      not_a_number: n'est pas un nombre
-      not_an_integer: doit être un nombre entier
-      greater_than: doit être supérieur à %{count}
-      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
-      equal_to: doit être égal à %{count}
-      less_than: doit être inférieur à %{count}
-      less_than_or_equal_to: doit être inférieur ou égal à %{count}
-      other_than: doit être différent de %{count}
-      odd: doit être impair
-      even: doit être pair
-      required: doit exister
-      taken: n'est pas disponible
     not_found: Désolé, cette page n'existe pas
-    invalid_verse: 'L''ayah est hors de portée. Accédez à la page d''accueil et sélectionnez
+    invalid_verse:
+      "L'ayah est hors de portée. Accédez à la page d'accueil et sélectionnez
       un(e) Surah / Ayah
 
-      '
-    invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
+      "
+    invalid_chapter:
+      La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
-    no_script: On dirait que votre navigateur ne supporte pas Javascript ou qu'il
+    no_script:
+      On dirait que votre navigateur ne supporte pas Javascript ou qu'il
       est désactivé. Coran.com fonctionne mieux avec JavaScript activé. Pour plus
       d'instructions sur l'activation de javascript
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'La validation a échoué : %{errors}'
-        restrict_dependent_destroy:
-          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
-            dépendant(e) existe
-          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
-            dépendants existent
-  datetime:
-    distance_in_words:
-      half_a_minute: une demi-minute
-      less_than_x_seconds:
-        one: moins d'une seconde
-        other: moins de %{count} secondes
-      x_seconds:
-        one: 1 seconde
-        other: "%{count} secondes"
-      less_than_x_minutes:
-        one: moins d'une minute
-        other: moins de %{count} minutes
-      x_minutes:
-        one: 1 minute
-        other: "%{count} minutes"
-      about_x_hours:
-        one: environ une heure
-        other: environ %{count} heures
-      x_days:
-        one: 1 jour
-        other: "%{count} jours"
-      about_x_months:
-        one: environ un mois
-        other: environ %{count} mois
-      x_months:
-        one: 1 mois
-        other: "%{count} mois"
-      about_x_years:
-        one: environ un an
-        other: environ %{count} ans
-      over_x_years:
-        one: plus d'un an
-        other: plus de %{count} ans
-      almost_x_years:
-        one: presqu'un an
-        other: presque %{count} ans
-    prompts:
-      year: Année
-      month: Mois
-      day: Jour
-      hour: Heure
-      minute: Minute
-      second: Seconde
-  helpers:
-    select:
-      prompt: Veuillez sélectionner
-    submit:
-      create: Créer un(e) %{model}
-      update: Modifier ce(tte) %{model}
-      submit: Enregistrer ce(tte) %{model}
   local: french
-  site_local: 'Langue du Site
+  site_local: "Langue du Site
 
-    '
+    "
   change_local: Choisir la langue du site
   local_native_name: Français
   language: Langue
@@ -243,16 +88,17 @@ fr:
       select: Sélectionnez Tafsir
   search:
     placeholder: Chercher "Noah"
-    result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
+    result:
+      "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
       <span>{query}</span>"
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
     popular: Recherches populaires
     ayatul_kursi: Ayatul Kursi
-    yaseen: 'Sourate Yaseen
+    yaseen: "Sourate Yaseen
 
-      '
+      "
     al_mulk: Sourate Al Mulk
     ar_rahman: Sourate Ar-Rahman
     al_waqiah: Sourate Al Waqiah
@@ -282,7 +128,8 @@ fr:
     other_links: Autre liens
     contact_us: Contacter nous
     help: Aide et feedback
-    about_project: Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
+    about_project:
+      Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
       Quran, Koran) est un projet à but non-lucratif.
     rights: Tous droits réservés
     mobilea_apps: Applications Mobile

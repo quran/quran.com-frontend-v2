@@ -11,15 +11,20 @@
 #
 ---
 nl:
+  support:
+    array:
+      last_word_connector: " en "
+      two_words_connector: " en "
+      words_connector: ", "
   date:
     formats:
       default: "%d-%m-%Y"
       long: "%e %B %Y"
       short: "%e %b"
     order:
-    - :day
-    - :month
-    - :year
+      - :day
+      - :month
+      - :year
   number:
     currency:
       format:
@@ -40,9 +45,9 @@ nl:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -50,16 +55,11 @@ nl:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
-  support:
-    array:
-      last_word_connector: " en "
-      two_words_connector: " en "
-      words_connector: ", "
+        delimiter: ""
   time:
     formats:
       default: "%a %d %b %Y %H:%M:%S %Z"
