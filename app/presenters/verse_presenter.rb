@@ -1,9 +1,13 @@
 class VersePresenter < BasePresenter
   def verse
+    verses = Verse.where(word_translations: {language_id: language.id})
+             .or(Verse.where(word_translations: {language_id: Language.default.id}))
+             .eager_load(words: :word_translation)
+
     if params[:id].to_s.include?(':')
-      Verse.find_by_verse_key(params[:id])
+      verses.find_by_verse_key(params[:id])
     else
-      Verse.find_by_id_or_key(params[:id])
+      verses.find_by_id_or_key(params[:id])
     end
   end
 
