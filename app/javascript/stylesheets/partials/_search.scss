@@ -147,6 +147,12 @@
   }
 }
 
+.ayah-badge {
+  @include badge-variant($primary-400);
+  padding: 0.65em 1.1em;
+  color: #fff !important;
+}
+
 .mobile-search {
   padding: 10px 10px 6px 7px;
   background: #00acc1;

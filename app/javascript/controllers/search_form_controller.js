@@ -18,13 +18,17 @@ export default class extends Controller {
       );
   }
 
-  getSuggestions(text){
-    fetch(`/search/suggestion?query=${text}`)
-      .then(response => response.text())
-      .then(suggestions => {
-        $(".suggestions").html(suggestions)
-      })
-      .catch(error => callback([]));
+  getSuggestions(text) {
+    if (text && text.length > 0) {
+      fetch(`/search/suggestion?query=${text}`)
+        .then(response => response.text())
+        .then(suggestions => {
+          $(".suggestions").html(suggestions)
+        })
+        .catch(error => callback([]));
+    } else {
+      $(".suggestions").empty()
+    }
   }
 
   handleItemKeyDown(event, item) {
