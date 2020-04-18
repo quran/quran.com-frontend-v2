@@ -22,7 +22,7 @@ options.implementation = require("sass");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 
 const fs = require("fs");
-const glob = require("glob-all");
+//const glob = require("glob-all");
 const path = require("path");
 
 var whitelist_path = "config/whitelist.json";
