@@ -44,7 +44,7 @@ en:
     quick_links: Quick links
     go_to_beginning: Beginning of chapter
     read_full: Read full chapter
-    invalid: Invalid Surah
+    invalid: Surah not found during the search" or "could not find results
   footnote: Footnote
   action:
     play: Play
@@ -56,7 +56,7 @@ en:
       select: Select Tafsir
     bookmark:
       label: Bookmark
-      done: Bookmarked
+      done: Bookmarked!
     copy:
       label: Copy
       done: Copied!
@@ -72,7 +72,7 @@ en:
     yaseen: Surah Yaseen
     al_mulk: Surah Al Mulk
     ar_rahman: Surah Ar-Rahman
-    al_waqiah: Surah Al Waqiah
+    al_waqiah: Surah Al Waqi'ah
     al_kahf: Surah Al Kahf
     al_muzammil: Surah Al Muzzammil
   player:
@@ -98,7 +98,7 @@ en:
     other_links: Other links
     contact_us: Contact us
     help: Help & feedback
-    about_project: Quran.com is a pro bono project for reading and studying the Quran (also known as The Noble Quran, Al Quran, Holy Quran, Koran).
+    about_project: Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone to read, study, and learn The Noble Quran. The Noble Quran has many names including Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr, and Al-Noor.
     rights: All Rights Reserved
     mobilea_apps: Mobile Apps
     navigate: Navigate
@@ -108,8 +108,8 @@ en:
   juz: Juz
   errors:
     not_found: Sorry, this page does not exist
-    invalid_verse: Verse is out of range. Please go to home page
-    invalid_chapter: Chapter is out of range. Please go to home page
+    invalid_verse: Check your Ayah selection. It's out of range.
+    invalid_chapter: Check your Surah selection. It's out of range.
     no_script: Looks like either your browser does not support Javascript or its disabled. Quran.com workes best with JavaScript enabled. For more instruction on how to enable javascript
   click_here: Click here
   tafsir_select: Select a tafsir
