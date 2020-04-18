@@ -49,7 +49,7 @@ class SearchController < ApplicationController
     begin
       results = client.search
       @presenter.add_search_results(results)
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::ConnectionFailed => e
       false
     rescue Elasticsearch::Transport::Transport::ServerError => e
       # Index not ready yet? or other ES server errors
@@ -67,7 +67,7 @@ class SearchController < ApplicationController
       results = client.suggest
       @presenter = SearchPresenter.new(self)
       @presenter.add_search_results(results)
-    rescue Faraday::Error::ConnectionFailed => e
+    rescue Faraday::ConnectionFailed => e
       false
     rescue Elasticsearch::Transport::Transport::ServerError => e
       # Index not ready yet? or other ES server errors

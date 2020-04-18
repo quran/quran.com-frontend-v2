@@ -48,12 +48,12 @@ class Word < ApiCoreRecord
   has_many :word_roots
   has_many :roots, through: :word_roots
 
-  has_one  :audio, class_name: 'AudioFile', as: :resource
+  has_one :audio, class_name: 'AudioFile', as: :resource
   has_one :word_corpus
 
   # For eager loading
   has_one :word_translation
-  has_one :transliteration, as: :resource
+  has_one :transliteration, -> { where(language_id: 38) }, as: :resource
 
   default_scope { order 'position asc' }
 

@@ -53,4 +53,8 @@ class Verse < ApiCoreRecord
   def self.find_by_id_or_key(id)
     where(verse_key: id).or(where(id: id)).first
   end
+
+  def highlighted_text
+    @highlighted_text || text_madani
+  end
 end

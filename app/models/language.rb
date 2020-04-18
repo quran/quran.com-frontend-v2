@@ -15,6 +15,7 @@
 #
 
 class Language < ApiCoreRecord
+  serialize :es_indexes
   has_many :translated_names, as: :resource
 
   class << self
