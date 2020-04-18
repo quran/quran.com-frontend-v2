@@ -6,109 +6,10 @@
 #
 ---
 id:
-  tafsir_select:
-  date:
-    day_names:
-    - Minggu
-    - Senin
-    - Selasa
-    - Rabu
-    - Kamis
-    - Jumat
-    - Sabtu
-    abbr_day_names:
-    - Min
-    - Sen
-    - Sel
-    - Rab
-    - Kam
-    - Jum
-    - Sab
-    month_names:
-    -
-    - Januari
-    - Februari
-    - Maret
-    - April
-    - Mei
-    - Juni
-    - Juli
-    - Agustus
-    - September
-    - Oktober
-    - November
-    - Desember
-    abbr_month_names:
-    -
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - Mei
-    - Jun
-    - Jul
-    - Agu
-    - Sep
-    - Okt
-    - Nov
-    - Des
-  time:
-    am: am
-    pm: pm
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Byte
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: Ribu
-          million: Juta
-          billion: Miliar
-          trillion: Triliun
-          quadrillion: Quadriliun
+  tafsir_select: Pilih tafsir
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'Validasi gagal: %{errors}'
-      inclusion: tidak termasuk
-      exclusion: sudah digunakan
-      invalid: tidak valid
-      confirmation: tidak sesuai dengan %{attribute}
-      accepted: harus diterima
-      empty: tidak boleh kosong
-      blank: tidak boleh kosong
-      present: harus kosong
-      too_long:
-        one: terlalu panjang (maksimum 1 karakter)
-        other: terlalu panjang (maksimum %{count} karakter)
-      too_short:
-        one: terlalu pendek (minimum 1 karakter)
-        other: terlalu pendek (minimum %{count} karakter)
-      wrong_length:
-        one: jumlah karakter salah (seharusnya 1 karakter)
-        other: jumlah karakter salah (seharusnya %{count} karakter)
-      not_a_number: bukan angka
-      not_an_integer: harus bilangan bulat
-      greater_than: harus lebih besar dari %{count}
-      greater_than_or_equal_to: harus sama atau lebih besar dari %{count}
-      equal_to: harus sama dengan %{count}
-      less_than: harus lebih kecil dari %{count}
-      less_than_or_equal_to: harus sama atau lebih kecil dari %{count}
-      other_than: harus selain %{count}
-      odd: harus ganjil
-      even: harus genap
-      required: harus ada
-      taken: sudah digunakan
-    not_found:
+    not_found: Maaf, halaman ini tidak ada
     invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
     invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
@@ -117,74 +18,16 @@ id:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'Validasi gagal: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Tidak bisa menghapus record karena terdapat satu %{record} yang
-            bergantung
-          has_many: Tidak bisa menghapus record karena terdapat %{record} yang bergantung
-  datetime:
-    distance_in_words:
-      half_a_minute: setengah menit
-      less_than_x_seconds:
-        one: kurang dari 1 detik
-        other: kurang dari %{count} detik
-      x_seconds:
-        one: satu detik
-        other: "%{count} detik"
-      less_than_x_minutes:
-        one: kurang dari 1 menit
-        other: kurang dari  %{count} menit
-      x_minutes:
-        one: satu menit
-        other: "%{count} menit"
-      about_x_hours:
-        one: sekitar satu jam
-        other: sekitar %{count} jam
-      x_days:
-        one: sehari
-        other: "%{count} hari"
-      about_x_months:
-        one: sekitar sebulan
-        other: sekitar %{count} bulan
-      x_months:
-        one: sebulan
-        other: "%{count} bulan"
-      about_x_years:
-        one: sekitar setahun
-        other: sekitar %{count} tahun
-      over_x_years:
-        one: lebih dari setahun
-        other: lebih dari %{count} tahun
-      almost_x_years:
-        one: hampir setahun
-        other: hampir %{count} tahun
-    prompts:
-      year: Tahun
-      month: Bulan
-      day: Hari
-      hour: Jam
-      minute: Menit
-      second: Detik
-  helpers:
-    select:
-      prompt: Silakan pilih
-    submit:
-      create: Buat %{model}
-      update: Perbarui %{model}
-      submit: Simpan %{model}
   local: indonesian
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
   local_native_name: Indonesia
-  language:
+  language: Bahasa Situs
   settings:
     label: Pengaturan
-    chapters:
-    reciters:
-    translations:
+    chapters: Awal Surat
+    reciters: Qari
+    translations: Terjemahan
     remove_all: Buang semua
     translation_english: Bahasa Inggris
     translation_other: Bahasa Lainnya
@@ -192,36 +35,36 @@ id:
     font_size:
       label: Ukuran huruf
       arabic: Arab
-      translation:
+      translation: Terjemahan
     tooltip:
-      label:
+      label: Tampilan tooltip
       translation: Terjemahan
       transliteration: Transliterasi
     night_mode:
       label: Mode Malam
       day_tip: Ganti ke mode terang
       night_tip: Ganti ke mode malam
-    reset:
+    reset: Atur Ulang Pengaturan
   verses:
     media: 'Lihat kuliah dari %{from}
 
       '
-    go:
+    go: Pergi ke ayat
     not_found: Ayat tidak ditemukan
   chapters:
-    label:
+    label: Surat
     next: BERIKUTNYA
     previous: SEBELUMNYA
-    verses:
-    pages:
+    verses: Ayat
+    pages: Halaman
     info: Info Surat
-    continue:
-    quick_links:
+    continue: Terus
+    quick_links: Tautan langsung
     go_to_beginning: Awal Surat
     read_full: Baca lengkap Surah
-    invalid:
-    revelation_place:
-  footnote:
+    invalid: Surah tidak ditemukan selama pencarian
+    revelation_place: Tempat Penyingkapan
+  footnote: Catatan kaki
   action:
     play: Putar
     pause: Jeda
@@ -231,31 +74,31 @@ id:
     copy:
       label: Salin
       done: Tersalin!
-    share:
-    addNote:
+    share: Bagikan ayah
+    addNote: Menambahkan catatan
     tafsir:
-      label:
-      select:
+      label: Tafsir
+      select: Pilih Tafsir
   search:
     placeholder: Cari "Nuh"
-    result:
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Maaf, terdapat kesalahan dalam pencarian Anda.
     no_query: Tidak ada kata yang dicari.
     no_result: Tidak ada hasil yang ditemukan.
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    popular: Pencarian Populer
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Surah Al Mulk
+    ar_rahman: Surah Ar-Rahman
+    al_waqiah: Surah Al Waqi'ah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Surah Al Muzzammil
+    label: Cari "Nuh"
   player:
     current_verse: Ayat
     next_verse: Ayat Berikutnya
     previous_verse: Ayat Sebelumnya
-    repeat_title:
+    repeat_title: Ulangi Ayah
     repeat_single: Satu ayat
     repeat_range: Rentang
     repeat_from: Dari
@@ -281,19 +124,19 @@ id:
     navigate: Telusuri
     legacy_site: Quran.com versi lama
     blog: Blog
-    forum:
+    forum: Forum
   juz: Juz
-  click_here:
-  download:
-  home:
-  noble_quran:
+  click_here: Klik disini
+  download: Download
+  home: Rumah
+  noble_quran: Alquran yang Mulia
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
+    label: Situs Terkait
+    sunnah: Sunnah
+    sunnah_description: Hadits Nabi Muhammad (SAW)
+    salah: Salah
+    salah_description: Cari waktu sholat untuk lokasi mana pun
     audio:
-    audio_description:
-  close:
-  page:
+    audio_description: Belajar & mendengarkan secara bersamaan
+  close: Dekat
+  page: Halaman

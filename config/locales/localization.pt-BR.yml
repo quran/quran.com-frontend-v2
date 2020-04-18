@@ -11,6 +11,33 @@
 #
 ---
 pt-BR:
+  spree:
+    date_picker:
+      first_day: 0
+    say_no: false
+    say_yes: true
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
+  i18n:
+    transliterate:
+      rule:
+        á: a
+        à: a
+        ã: a
+        â: a
+        ª: a
+        æ: Ae
+        ç: c
+        é: e
+        ê: e
+        í: i
+        ó: o
+        õ: o
+        º: o
+        ú: u
   date:
     formats:
       default: "%d/%m/%Y"
@@ -56,35 +83,8 @@ pt-BR:
     precision:
       format:
         delimiter: "."
-  spree:
-    date_picker:
-      first_day: 0
-    say_no: false
-    say_yes: true
-  support:
-    array:
-      last_word_connector: " e "
-      two_words_connector: " e "
-      words_connector: ", "
   time:
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
-  i18n:
-    transliterate:
-      rule:
-        á: a
-        à: a
-        ã: a
-        â: a
-        ª: a
-        æ: Ae
-        ç: c
-        é: e
-        ê: e
-        í: i
-        ó: o
-        õ: o
-        º: o
-        ú: u

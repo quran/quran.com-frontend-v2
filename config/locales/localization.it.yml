@@ -11,6 +11,14 @@
 #
 ---
 it:
+  spree:
+    date_picker:
+      first_day: 1
+  support:
+    array:
+      last_word_connector: " e "
+      two_words_connector: " e "
+      words_connector: ", "
   date:
     formats:
       default: "%d/%m/%Y"
@@ -55,14 +63,6 @@ it:
     precision:
       format:
         delimiter: ''
-  spree:
-    date_picker:
-      first_day: 1
-  support:
-    array:
-      last_word_connector: " e "
-      two_words_connector: " e "
-      words_connector: ", "
   time:
     formats:
       default: "%a %d %b %Y, %H:%M:%S %z"

@@ -6,246 +6,93 @@
 #
 ---
 ar:
-  date:
-    day_names:
-    - الأحد
-    - الإثنين
-    - الثّلاثاء
-    - الأربعاء
-    - الخميس
-    - الجمعة
-    - السّبت
-    abbr_day_names:
-    - الأحد
-    - الإثنين
-    - الثّلاثاء
-    - الأربعاء
-    - الخميس
-    - الجمعة
-    - السّبت
-    month_names:
-    -
-    - يناير
-    - فبراير
-    - مارس
-    - أبريل
-    - مايو
-    - يونيو
-    - يوليو
-    - أغسطس
-    - سبتمبر
-    - أكتوبر
-    - نوفمبر
-    - ديسمبر
-    abbr_month_names:
-    -
-    - يناير
-    - فبراير
-    - مارس
-    - أبريل
-    - مايو
-    - يونيو
-    - يوليو
-    - أغسطس
-    - سبتمبر
-    - أكتوبر
-    - نوفمبر
-    - ديسمبر
-  time:
-    am: صباحًا
-    pm: مساءً
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: ألفّ
-          million: مليون
-          billion: مليار
-          trillion: تريليون
-          quadrillion: كدريليون
   errors:
-    format: "%{message}"
-    messages:
-      model_invalid: 'فشل التحقّق من: %{errors}'
-      inclusion: "%{attribute} غير وارد في القائمة"
-      exclusion: حقل %{attribute} محجوز
-      invalid: محتوى %{attribute} غير صالح
-      confirmation: محتوى %{attribute} لا يتوافق مع %{attribute}
-      accepted: يجب أن تقبل %{attribute}
-      empty: لا يمكن أن يكون محتوى %{attribute} فارغاً
-      blank: لا يمكن أن يكون محتوى %{attribute} فارغاً
-      present: يجب ترك حقل %{attribute} فارغاً
-      too_long:
-        one: محتوى %{attribute} أطول من اللّازم (الحد الأقصى هو حرف واحد)
-        other: محتوى %{attribute} أطول من اللّازم (الحد الأقصى هو %{count} حرف)
-      too_short:
-        one: محتوى %{attribute} أقصر من اللّازم (الحد الأدنى هو حرف واحد)
-        other: محتوى %{attribute} أقصر من اللّازم (الحد الأدنى هو %{count} حرف)
-      wrong_length:
-        one: طول %{attribute} غير مطابق للحد المطلوب (يجب أن يكون حرف واحد)
-        other: طول %{attribute} غير مطابق للحد المطلوب (يجب أن يكون %{count} حرف)
-      not_a_number: يجب أن يكون محتوى %{attribute} رقماً
-      not_an_integer: يجب أن يكون عدد %{attribute} عدد صحيحاً
-      greater_than: يجب أن يكون عدد %{attribute} أكبر من %{count}
-      greater_than_or_equal_to: يجب أن يكون عدد %{attribute} أكبر أو يساوي %{count}
-      equal_to: يجب أن يساوي طول %{attribute} %{count}
-      less_than: يجب أن يكون عدد %{attribute} أصغر من %{count}
-      less_than_or_equal_to: يجب أن يكون عدد %{attribute} أصغر أو  يساوي %{count}
-      other_than: يجب ان يكون غير %{count}
-      odd: يجب أن يكون عدد %{attribute} عدداً فردياً
-      even: يجب أن يكون عدد %{attribute} زوجياً
-      required: يتطلب الخروج
-      taken: حقل %{attribute} محجوز مسبقاً
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
-    not_found: عذرا، صفحة غير متواجدة
-    invalid_verse: الآية المطلوب خارج النطاق. يرجى الذهاب للصفحة الرئيسية
-    invalid_chapter: الجزء المطلوب خارج النطاق. يرجى الذهاب للصفحة الرئيسية
-    no_script: يبدو أن متصفحك لا يدعم جافا سكريبت أو معطل. Quran.com يعمل بشكل أفضل
-      مع تمكين JavaScript. لمزيد من التعليمات حول كيفية تمكين جافا سكريبت
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'فشل التحقّق من: %{errors}'
-        restrict_dependent_destroy:
-          has_one: لا يمكن حذف السجل لوجود سجل يعتمد عليه %{record}
-          has_many: لا يمكن حذف السجل لوجود سجلات تعتمد عليه %{record}
-  datetime:
-    distance_in_words:
-      half_a_minute: نصف دقيقة
-      less_than_x_seconds:
-        one: أقل من ثانية
-        other: أقل من %{count} ثانية
-      x_seconds:
-        one: ثانية واحدة
-        other: "%{count} ثانية"
-      less_than_x_minutes:
-        one: أقل من دقيقة
-        other: أقل من %{count} دقيقة
-      x_minutes:
-        one: دقيقة واحدة
-        other: "%{count} دقيقة"
-      about_x_hours:
-        one: حوالي ساعة واحدة
-        other: حوالي %{count} ساعة
-      x_days:
-        one: يوم واحد
-        other: "%{count} يوم"
-      about_x_months:
-        one: حوالي شهر واحد
-        other: حوالي %{count} شهر
-      x_months:
-        one: شهر واحد
-        other: "%{count} شهر"
-      about_x_years:
-        one: حوالي سنة
-        other: حوالي %{count} سنة
-      over_x_years:
-        one: أكثر من سنة
-        other: أكثر من %{count} سنة
-      almost_x_years:
-        one: تقريبا سنة واحدة
-        other: ما يقرب من %{count} سنة
-    prompts:
-      year: السنة
-      month: الشهر
-      day: اليوم
-      hour: ساعة
-      minute: دقيقة
-      second: ثانية
-  helpers:
-    select:
-      prompt: يُرجى الاختيار
-    submit:
-      create: "%{model} إنشاء"
-      update: "%{model} تحديث"
-      submit: "%{model} حِفظ"
+    format: "%{message} %{attribute}"
+    unavailable_session: |-
+      جلسة الاستخدام %{id} لم تعد متوفرا في الذاكرة.
+
+      لن يتم تخزين %{id} في الذاكرة إذا كنت تستخدم خادمًا متعدد العمليات (مثل Unicorn أو Puma) لمعالجة نتيجة الطلب. ضع في اعتبارك تحويل عدد العمليات / العمال إلى واحد (1) أو استخدام خادم مختلف خلال التطوير.
+    unacceptable_request: من المتوقع وجود نسخة مدعومة في رأس القبول
+    connection_refused: عفوا! فشل الاتصال بالبرمجيات الوسيطة لوحدة تحكم الويب. لو
+      سمحت تأكد من تشغيل خادم تطوير ريلز.
+    not_found: عذراً، الصفحة غير موجودة
+    invalid_verse: الآية المطلوبة خارج نطاق البحث. يرجى الذهاب للصفحة الرئيسية.
+    invalid_chapter: السورة المطلوبة خارج نطاق البحث. يرجى الذهاب للصفحة الرئيسية.
+    no_script: يبدو أن متصفحك لا يدعم جافا سكريبت أو جافا سكريبت معطلة. Quran.com
+      يعمل بشكل أفضل مع تفعيل جافا سكريبت. لمزيد من التعليمات حول كيفية تفعيل جافا
+      سكريبت
   tafsir_select: اختر التفسير
   local: الإنجليزية
   site_local: لغة الموقع
   change_local: أختر اللغة المرجو أظهار الموقع بها
-  local_native_name: العربية
+  local_native_name: الإنجليزية
   language: اللغة
   settings:
-    label: إعدادات
-    chapters: الأجزاء
+    label: الإعدادات
+    chapters: السورة
     reciters: القرآء
     translations: ترجمة
-    remove_all: حذف الكل
-    translation_english: العربية
+    remove_all: أحذف الكل
+    translation_english: الإنجليزية
     translation_other: لغات اخرى
     reading: قراءة
     font_size:
       label: حجم الخط
       arabic: العربية
-      translation: ترجمة
+      translation: الترجمة
     tooltip:
       label: عرض تلميح الأدوات
-      translation: ترجمة
+      translation: الترجمة
       transliteration: الترجمة الحرفية
     night_mode:
       label: الوضع الليلي
       day_tip: التبديل إلى وضع اليوم
-      night_tip: التبديل إلى الوضع الليلي
-    reset: إعادة الضبط لما كان
+      night_tip: التبديل إلى الوضع الوضع  الليلي
+    reset: ارجع الإعدادات للوضع الافتراضي
   verses:
     media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية
-    not_found: الآية غير موجودة
+    not_found: لم يتم العثور على آية أثناء البحث
   chapters:
     label: سورة
     next: السورة التالية
     previous: السورة السابقة
     verses: الآيات
     pages: الصفحات
-    info: معلومات عن الجزء
-    continue: استمرار
+    info: معلومات عن السورة
+    continue: استمر
     quick_links: روابط سريعة
-    go_to_beginning: بداية الجزء
-    read_full: قراءة الجزء كاملا
-    invalid: سورة غير موجودة
-    revelation_place: 'مكان النزول '
+    go_to_beginning: بداية السورة
+    read_full: اقرأ السورة كاملة
+    invalid: لم يتم العثور على السورة خلال البحث
+    revelation_place: مكان النزول
   footnote: حاشية
   action:
-    play: تشغيل
+    play: شغل
     pause: توقف
     bookmark:
-      label: إشارة مرجعية
-      done: تمت الإشارة المرجعية
+      label: ضع إشارة مرجعية
+      done: تم وضع الإشارة المرجعية
     copy:
-      label: نسخ
-      done: تم النسخ
-    share: مشاركة آية
-    addNote: 'أضف ملاحظة
-
-      '
+      label: انسخ
+      done: تم النسخ!
+    share: شارك الآية
+    addNote: أضف ملاحظة
     tafsir:
       label: تفسير
-      select: اختر التفسير
+      select: اختر تفسير
   search:
-    placeholder: البحث عن "نوح"
+    placeholder: البحث عن سورة "نوح"
     result: "%{from} - %{to} من <span>{total}</span> نتائج البحث لـ: <span>{query}</span>"
-    error: عذرا ، حدث خطأ في بحثك.
-    no_query: لا يوجد بحث
-    no_result: لا توجد نتائج.
+    error: عذرا ، يوجد خطأ في بحثك
+    no_query: لا يوجد طلب بحث
+    no_result: لا توجد نتائج
     popular: عمليات البحث الشائعة
     ayatul_kursi: آية الكرسي
-    yaseen: سورة ياسين
+    yaseen: سورة يس
     al_mulk: سورة الملك
     ar_rahman: سورة الرحمن
-    al_waqiah: سورة الوقيه
+    al_waqiah: سورة الواقعة
     al_kahf: سورة الكهف
     al_muzammil: سورة المزمل
     label: البحث
@@ -253,14 +100,14 @@ ar:
     current_verse: آية
     next_verse: الآية التالية
     previous_verse: الآية السابقة
-    repeat_title: كرر
+    repeat_title: كرر الآية
     repeat_single: مرة
     repeat_range: نطاق
     repeat_from: بداية من
     repeat_to: إلى
     repeat_times: مرات
     repeat_loop: عدد التكرار
-    scroll: التمرير تلقائيًا إلى الآية التي تستمع لها حاليًا
+    scroll: تمرير تلقائيًا إلى الآية التي تستمع لها حاليًا
   loading: جار التحميل...
   nav:
     title: القرآن
@@ -272,8 +119,9 @@ ar:
     other_links: روابط اخرى
     contact_us: تواصل معنا
     help: مساعدة وردود الفعل
-    about_project: Quran.com هو مشروع مجاني لقراءة ودراسة القرآن الكريم (المعروف أيضًا
-      باسم القرآن الكريم ، القرآن الكريم ، القرآن الكريم ، القرآن الكريم).
+    about_project: تطبيق quran.com هو صدقة جارية. ونتمنى أن يسهل على الجميع قراءة
+      ودراسة وتدبر القرآن الكريم. للقرآن الكريم أسماء كثيرة من ضمنها القرآن، الكتاب،
+      الفرقان، الموعظة، الذكر، و النور.
     rights: كل الحقوق محفوظة
     mobilea_apps: تطبيقات الموبايل
     navigate: التنقل
@@ -290,8 +138,8 @@ ar:
     sunnah: السنة
     sunnah_description: حديث النبي محمد (صلى الله عليه وسلم)
     salah: الصلاة
-    salah_description: بحث وقت الصلاة عن أي مكان
+    salah_description: ابحث عن أوقات الصلاة في أي مكان
     audio: القرآن الكريم صوتيا
     audio_description: التعلم والاستماع في نفس الوقت
-  close: غلق
+  close: أغلق
   page: صفحة

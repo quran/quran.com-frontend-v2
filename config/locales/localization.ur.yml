@@ -11,6 +11,11 @@
 #
 ---
 ur:
+  support:
+    array:
+      last_word_connector: "، اور "
+      two_words_connector: " اور "
+      words_connector: "، "
   date:
     formats:
       default: "%d %B %Y"
@@ -55,11 +60,6 @@ ur:
     precision:
       format:
         delimiter: ''
-  support:
-    array:
-      last_word_connector: "، اور "
-      two_words_connector: " اور "
-      words_connector: "، "
   time:
     formats:
       default: "%a، %d %b %Y، %p %l:%M %Z"
