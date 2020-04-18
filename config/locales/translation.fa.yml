@@ -12,8 +12,7 @@ fa:
     not_found: متأسفیم ، این صفحه وجود ندارد
     invalid_verse: آیه خارج از محدوده است. لطفا به صفحه اصلی بروید
     invalid_chapter: فصل خارج از محدوده است. لطفا به صفحه اصلی بروید
-    no_script:
-      به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
+    no_script: به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
       کند. Quran.com با جاوا اسکریپت فعال بهترین کار می کند. برای اطلاعات بیشتر در
       مورد نحوه فعال کردن جاوا اسکریپت
     unavailable_session:
@@ -100,7 +99,7 @@ fa:
     repeat_title: آیه را تکرار کنید
     repeat_single: تنها
     repeat_range: دامنه
-    repeat_from:
+    repeat_from: از جانب
     repeat_to: به
     repeat_times: بار
     repeat_loop: حلقه
@@ -116,15 +115,14 @@ fa:
     other_links: پیوندهای دیگر
     contact_us: با ما تماس بگیرید
     help: راهنما و بازخورد
-    about_project:
-      Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
+    about_project: Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
       به عنوان قرآن شریف ، القرآن ، قرآن کریم ، قرآن نیز شناخته می شود).
     rights: کلیه حقوق محفوظ است
     mobilea_apps: برنامه های موبایل
     navigate: حرکت کنید
-    legacy_site: "Legacy Quran.com
+    legacy_site: 'Legacy Quran.com
 
-      "
+      '
     blog: وبلاگ
     forum: انجمن
   juz: جوز

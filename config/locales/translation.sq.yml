@@ -6,132 +6,135 @@
 #
 ---
 sq:
-  tafsir_select:
+  tafsir_select: Zgjidhni një tefsir
   errors:
     format: "%{attribute} %{message}"
     not_found:
-    invalid_verse:
-    invalid_chapter:
+    invalid_verse: Kontrolloni zgjedhjen tuaj Ayah. Outshtë jashtë nivelit.
+    invalid_chapter: Kontrolloni zgjedhjen tuaj të sures. Outshtë jashtë nivelit.
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  local:
-  site_local:
-  change_local:
+  local: anglisht
+  site_local: Gjuha e sitit
+  change_local: Zgjidhni gjuhën që dëshironi të shfaqet faqja
   local_native_name: Shqip
-  language:
+  language: Gjuhe
   settings:
-    label:
-    chapters:
-    reciters:
-    translations:
-    remove_all:
+    label: Cilësimet
+    chapters: kapitujt
+    reciters: recitues
+    translations: përkthime
+    remove_all: Hiq të gjitha
     translation_english: Shqip
-    translation_other:
-    reading:
+    translation_other: Gjuhe te tjera
+    reading: lexim
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Përmasa e germave
+      arabic: Arabic
+      translation: përkthime
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Ekrani i udhëzuesve
+      translation: përkthim
+      transliteration: transliterim
     night_mode:
-      label:
-      day_tip:
-      night_tip:
-    reset:
+      label: Mënyra e natës
+      day_tip: Kaloni në modalitetin e ditës
+      night_tip: Kaloni në modalitetin e natës
+    reset: Rivendosja e Vendosjes
   verses:
     media:
-    go:
-    not_found:
+    go: Shkoni në vargje
+    not_found: Vargu nuk u gjet
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    info:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-    revelation_place:
-  footnote:
+    label: Surah
+    next: Sureja tjetër
+    previous: Sureja e mëparshme
+    verses: vargjet
+    pages: Faqet
+    info: Informacioni i Kapitullit
+    continue: vazhdoj
+    quick_links: Lidhjet e Shpejta
+    go_to_beginning: Fillimi i kapitullit
+    read_full: Lexoni kapitullin e plotë
+    invalid: Sureja nuk u gjet gjatë kontrollit
+    revelation_place: Vendi i Zbulesës
+  footnote: fusnota
   action:
-    play:
-    pause:
+    play: Luaj
+    pause: pushim
     bookmark:
-      label:
-      done:
+      label: Marcado
+      done: Marcado!
     copy:
-      label:
-      done:
-    share:
-    addNote:
+      label: Copiar
+      done: Copiado!
+    share: Ndani ajetin
+    addNote: Adcionar uma nota
     tafsir:
-      label:
-      select:
+      label: Tafsirs
+      select: Zgjidhni Tafsir
   search:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    placeholder: Kërko "Noah"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    error: Na vjen keq, pati një gabim në kërkimin tuaj.
+    no_query: Asnjë pyetje kërkimi.
+    no_result: Nuk u gjet asnjë rezultat
+    popular: Kërkime popullore
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Sure Al Mulk
+    ar_rahman: Sure Ar-Rahman
+    al_waqiah: Sure El Waqi'ah
+    al_kahf: Sure Al Kahf
+    al_muzammil: Sure Al Muzzammil
+    label: kërkim
   player:
-    current_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    scroll:
-  loading:
+    current_verse: varg
+    next_verse: Vargu tjetër
+    previous_verse: Vargu i mëparshëm
+    repeat_title: Përsëriteni Ajetin
+    repeat_single: i vetëm
+    repeat_range: varg
+    repeat_from: nga
+    repeat_to: në
+    repeat_times: kohët
+    repeat_loop: lak
+    scroll: Automatikisht lëviz nëpër ajetin që luan aktualisht
+  loading: Loading ...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobilea_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
-  noble_quran:
+    title: Quran
+    settings: Cilësimet
+    contribute: kontribuoj
+    about_us: Rreth nesh
+    developers: Zhvilluesit
+    useful_sites: Faqet e dobishme
+    other_links: Lidhje të tjera
+    contact_us: Na kontaktoni
+    help: Ndihmë & reagime
+    about_project: Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
+      gjithë për të lexuar, studiuar dhe mësuar Kuranin Fisnik. Kurani Fisnik ka shumë
+      emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
+      dhe Al-Noor.
+    rights: Të gjitha të drejtat e rezervuara
+    mobilea_apps: Aplikacione celulare
+    navigate: Navigate
+    legacy_site: Trashëgimia quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  click_here: Kliko këtu
+  download: Shkarko
+  home: shtëpi
+  noble_quran: The Noble Quran
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
-  page:
+    label: Sitet e ngjashme
+    sunnah: Suneti
+    sunnah_description: Hadithi i Profetit Muhamed (as)
+    salah: Salah
+    salah_description: Kërkoni kohën e lutjes për çdo vend
+    audio: Noble Quran in audio
+    audio_description: Mësoni dhe dëgjoni në të njëjtën kohë
+  close: afër
+  page: faqe

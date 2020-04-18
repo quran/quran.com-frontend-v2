@@ -6,11 +6,11 @@
 #
 ---
 nl:
-  tafsir_select:
+  tafsir_select: Selecteer een tafsir
   errors:
     format: "%{attribute} %{message}"
-    not_found:
-    invalid_verse:
+    not_found: Sorry, deze pagina bestaat niet
+    invalid_verse: Controleer je Ayah-selectie. Het is buiten bereik.
     invalid_chapter:
     no_script:
     unavailable_session:
@@ -20,11 +20,11 @@ nl:
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
   local_native_name: Nederlands
-  language:
+  language: Site Taal
   settings:
-    label: "Instellingen
+    label: 'Instellingen
 
-      "
+      '
     chapters: hoofdstukken
     reciters: Reciteurs
     translations: Vertalingen
@@ -44,7 +44,7 @@ nl:
       label: Nachtmodus
       day_tip: Overschakelen naar de dagmodus
       night_tip: Overschakelen naar nachtmodus
-    reset:
+    reset: Reset instelling
   verses:
     media: Bekijk video commentaar van %{from}
     go: Ga naar vers
@@ -53,16 +53,16 @@ nl:
     label: Soeras
     next: VOLGENDE
     previous: VORIGE
-    verses:
-    pages:
+    verses: Ayah
+    pages: pagina's
     info: Soera Info
-    continue:
-    quick_links:
-    go_to_beginning:
+    continue: Voortzetten
+    quick_links: Snelle links
+    go_to_beginning: Begin van hoofdstuk
     read_full: Lees de volledige Soera
-    invalid:
-    revelation_place:
-  footnote:
+    invalid: Surah niet gevonden tijdens het zoeken 'of' kon geen resultaten vinden
+    revelation_place: Openbaring plaats
+  footnote: Voetnoot
   action:
     play: Afspelen
     pause: Pauze
@@ -72,26 +72,26 @@ nl:
     copy:
       label: Kopiëren
       done: Gekopieerd!
-    share:
-    addNote:
+    share: Deel ayah
+    addNote: Notitie
     tafsir:
-      label:
-      select:
+      label: Tafsirs
+      select: Selecteer Tafsir
   search:
     placeholder: Zoek "Noah"
-    result:
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Sorry, er is een fout opgetreden bij uw zoekopdracht.
-    no_query:
+    no_query: Geen zoekopdracht.
     no_result: Geen resultaten gevonden.
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    popular: Populaire zoekopdrachten
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Surah Al Mulk
+    ar_rahman: Surah Ar-Rahman
+    al_waqiah: Surah Al Waqi'ah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Surah Al Muzzammil
+    label: Zoek "Noah"
   player:
     current_verse: Ayah
     next_verse: Volgende Ayah
@@ -99,43 +99,48 @@ nl:
     repeat_title: HERHALING
     repeat_single: Single
     repeat_range: Bereik
-    repeat_from:
-    repeat_to:
+    repeat_from: uit
+    repeat_to: Naar
     repeat_times: Keer
     repeat_loop: lus
     scroll: Scroll automatisch naar de huidige ayah
-  loading:
+  loading: Laden ...
   nav:
-    title:
-    settings: "Instellingen
+    title: Koran
+    settings: 'Instellingen
 
-      "
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobilea_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
-  noble_quran:
+      '
+    contribute: Bijdragen
+    about_us: Over ons
+    developers: ontwikkelaars
+    useful_sites: Handige sites
+    other_links: Andere links
+    contact_us: Contacteer ons
+    help: Hulp en feedback
+    about_project: Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
+      te maken om The Noble Quran te lezen, bestuderen en leren. De Edele Koran heeft
+      veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
+      Al-Thikr en Al-Noor.
+    rights: Alle rechten voorbehouden
+    mobilea_apps: Mobiele apps
+    navigate: Navigeren
+    legacy_site: Legacy Quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  click_here: Klik hier
+  download: te downloaden
+  home: Thuis
+  noble_quran: 'De edele Koran
+
+    '
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
-  page:
+    label: Gerelateerde sites
+    sunnah: Sunnah
+    sunnah_description: De hadith van de profeet Mohammed (vzmh)
+    salah: Salah
+    salah_description: Zoek gebedstijd voor elke locatie
+    audio: Edele Koran in audio
+    audio_description: Tegelijkertijd leren en luisteren
+  close: Dicht
+  page: Pagina

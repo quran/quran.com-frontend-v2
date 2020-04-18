@@ -22,9 +22,9 @@ ur:
       long: "%B %d، %Y"
       short: "%d %b"
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   number:
     currency:
       format:
@@ -47,7 +47,7 @@ ur:
         units:
           unit: Rs
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 0
         significant: true
         strip_insignificant_zeros: true
@@ -55,11 +55,11 @@ ur:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n فیصد"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%a، %d %b %Y، %p %l:%M %Z"

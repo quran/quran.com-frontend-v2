@@ -39,12 +39,12 @@ en:
     verses: Verses
     pages: Pages
     revelation_place: Revelation Place
-    info: Chapter Info
+    info: Surah Info
     continue: Continue
     quick_links: Quick links
-    go_to_beginning: Beginning of chapter
-    read_full: Read full chapter
-    invalid: Surah not found during the search" or "could not find results
+    go_to_beginning: Beginning of Surah
+    read_full: Read full Surah
+    invalid: Surah not found during the search
   footnote: Footnote
   action:
     play: Play
