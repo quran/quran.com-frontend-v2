@@ -6,289 +6,135 @@
 #
 ---
 sq:
-  tafsir_select:
-  date:
-    day_names:
-    - E Diel
-    - E Hënë
-    - E Martë
-    - E Mërkurë
-    - E Enjte
-    - E Premte
-    - E Shtunë
-    abbr_day_names:
-    - E Diel
-    - E Hënë
-    - E Martë
-    - E Mërkurë
-    - E Enjte
-    - E Premte
-    - E Shtunë
-    month_names:
-    -
-    - Janar
-    - Shkurt
-    - Mars
-    - Prill
-    - Maj
-    - Qershor
-    - Korrik
-    - Gusht
-    - Shtator
-    - Tetor
-    - Nëntor
-    - Dhjetor
-    abbr_month_names:
-    -
-    - Janar
-    - Shkurt
-    - Mars
-    - Prill
-    - Maj
-    - Qershor
-    - Korrik
-    - Gusht
-    - Shtator
-    - Tetor
-    - Nëntor
-    - Dhjetor
-  time:
-    am: në mëngjes
-    pm: mbasdite
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: Mijë
-          million: Milion
-          billion: Bilion
-          trillion: Trilion
-          quadrillion: Kuadrilion
+  tafsir_select: Zgjidhni një tefsir
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'Validimi dështoi: %{errors}'
-      inclusion: nuk është i përfshirë në list
-      exclusion: është i rezervuar
-      invalid: është e palejuar
-      confirmation: nuk përputhet me %{attribute}
-      accepted: duhet të pranohet
-      empty: nuk mund të jetë bosh
-      blank: nuk mund të jetë bosh
-      present: duhet të jetë bosh
-      too_long:
-        one: është shumë i gjatë (maksimumi është 1 shkronjë)
-        other: është shumë i gjatë (maksimumi është %{count} shkronja)
-      too_short:
-        one: është shumë i shkurtër (minimumi është 1 shkronjë)
-        other: është shumë i shkurtër (minimumi është %{count} shkronja)
-      wrong_length:
-        one: është gjatësia e gabuar (duhet të jetë 1 shkronjë)
-        other: është gjatësia e gabuar (duhet të jetë %{count} shkronja)
-      not_a_number: nuk është numër
-      not_an_integer: duhet të jetë numër
-      greater_than: duhet të jetë më shumë se %{count}
-      greater_than_or_equal_to: duhet të jetë më shumë ose i barabartë me %{count}
-      equal_to: duhet të përputhet me %{count}
-      less_than: duhet të jetë më pak se %{count}
-      less_than_or_equal_to: duhet të jetë më pak ose i barabartë me %{count}
-      other_than: duhet të jetë më shumë se %{count}
-      odd: duhet të jetë tek
-      even: duhet të jetë i barabartë
-      required: duhet të ekzistojë
-      taken: është marrë tashmë
     not_found:
-    invalid_verse:
-    invalid_chapter:
+    invalid_verse: Kontrolloni zgjedhjen tuaj Ayah. Outshtë jashtë nivelit.
+    invalid_chapter: Kontrolloni zgjedhjen tuaj të sures. Outshtë jashtë nivelit.
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'Validimi dështoi: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Nuk mund të fshini rekordin për shkak se një %{record} i varur
-            ekziston
-          has_many: Nuk mund të fshini rekordin për shkak se %{record} të varura ekzistojnë
-  datetime:
-    distance_in_words:
-      half_a_minute: gjysëm minute
-      less_than_x_seconds:
-        one: më pak se 1 sekond
-        other: më pak se %{count} sekonda
-      x_seconds:
-        one: 1 sekond
-        other: "%{count} sekonda"
-      less_than_x_minutes:
-        one: më pak se një minutë
-        other: më pak se %{count} minuta
-      x_minutes:
-        one: 1 minutë
-        other: "%{count} minuta"
-      about_x_hours:
-        one: rreth 1 orë
-        other: rreth %{count} orë
-      x_days:
-        one: 1 ditë
-        other: "%{count} ditë"
-      about_x_months:
-        one: rreth 1 muaj
-        other: rreth %{count} muaj
-      x_months:
-        one: 1 muaj
-        other: "%{count} muaj"
-      about_x_years:
-        one: rreth 1 vit
-        other: rreth %{count} vite
-      over_x_years:
-        one: mbi 1 vit
-        other: mbi %{count} vite
-      almost_x_years:
-        one: gati 1 vit
-        other: gati %{count} vite
-    prompts:
-      year: Vit
-      month: Muaj
-      day: Ditë
-      hour: Orë
-      minute: Minutë
-      second: Sekond
-  helpers:
-    select:
-      prompt: Ju lutem zgjidhni
-    submit:
-      create: Krijo %{model}
-      update: Ndrysho %{model}
-      submit: Ruaj %{model}
-  local:
-  site_local:
-  change_local:
+  local: anglisht
+  site_local: Gjuha e sitit
+  change_local: Zgjidhni gjuhën që dëshironi të shfaqet faqja
   local_native_name: Shqip
-  language:
+  language: Gjuhe
   settings:
-    label:
-    chapters:
-    reciters:
-    translations:
-    remove_all:
+    label: Cilësimet
+    chapters: kapitujt
+    reciters: recitues
+    translations: përkthime
+    remove_all: Hiq të gjitha
     translation_english: Shqip
-    translation_other:
-    reading:
+    translation_other: Gjuhe te tjera
+    reading: lexim
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Përmasa e germave
+      arabic: Arabic
+      translation: përkthime
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Ekrani i udhëzuesve
+      translation: përkthim
+      transliteration: transliterim
     night_mode:
-      label:
-      day_tip:
-      night_tip:
-    reset:
+      label: Mënyra e natës
+      day_tip: Kaloni në modalitetin e ditës
+      night_tip: Kaloni në modalitetin e natës
+    reset: Rivendosja e Vendosjes
   verses:
     media:
-    go:
-    not_found:
+    go: Shkoni në vargje
+    not_found: Vargu nuk u gjet
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    info:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-    revelation_place:
-  footnote:
+    label: Surah
+    next: Sureja tjetër
+    previous: Sureja e mëparshme
+    verses: vargjet
+    pages: Faqet
+    info: Informacioni i Kapitullit
+    continue: vazhdoj
+    quick_links: Lidhjet e Shpejta
+    go_to_beginning: Fillimi i kapitullit
+    read_full: Lexoni kapitullin e plotë
+    invalid: Sureja nuk u gjet gjatë kontrollit
+    revelation_place: Vendi i Zbulesës
+  footnote: fusnota
   action:
-    play:
-    pause:
+    play: Luaj
+    pause: pushim
     bookmark:
-      label:
-      done:
+      label: Marcado
+      done: Marcado!
     copy:
-      label:
-      done:
-    share:
-    addNote:
+      label: Copiar
+      done: Copiado!
+    share: Ndani ajetin
+    addNote: Adcionar uma nota
     tafsir:
-      label:
-      select:
+      label: Tafsirs
+      select: Zgjidhni Tafsir
   search:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    placeholder: Kërko "Noah"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    error: Na vjen keq, pati një gabim në kërkimin tuaj.
+    no_query: Asnjë pyetje kërkimi.
+    no_result: Nuk u gjet asnjë rezultat
+    popular: Kërkime popullore
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Sure Al Mulk
+    ar_rahman: Sure Ar-Rahman
+    al_waqiah: Sure El Waqi'ah
+    al_kahf: Sure Al Kahf
+    al_muzammil: Sure Al Muzzammil
+    label: kërkim
   player:
-    current_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    scroll:
-  loading:
+    current_verse: varg
+    next_verse: Vargu tjetër
+    previous_verse: Vargu i mëparshëm
+    repeat_title: Përsëriteni Ajetin
+    repeat_single: i vetëm
+    repeat_range: varg
+    repeat_from: nga
+    repeat_to: në
+    repeat_times: kohët
+    repeat_loop: lak
+    scroll: Automatikisht lëviz nëpër ajetin që luan aktualisht
+  loading: Loading ...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobilea_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
-  noble_quran:
+    title: Quran
+    settings: Cilësimet
+    contribute: kontribuoj
+    about_us: Rreth nesh
+    developers: Zhvilluesit
+    useful_sites: Faqet e dobishme
+    other_links: Lidhje të tjera
+    contact_us: Na kontaktoni
+    help: Ndihmë & reagime
+    about_project: Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
+      gjithë për të lexuar, studiuar dhe mësuar Kuranin Fisnik. Kurani Fisnik ka shumë
+      emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
+      dhe Al-Noor.
+    rights: Të gjitha të drejtat e rezervuara
+    mobilea_apps: Aplikacione celulare
+    navigate: Navigate
+    legacy_site: Trashëgimia quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  click_here: Kliko këtu
+  download: Shkarko
+  home: shtëpi
+  noble_quran: The Noble Quran
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
-  page:
+    label: Sitet e ngjashme
+    sunnah: Suneti
+    sunnah_description: Hadithi i Profetit Muhamed (as)
+    salah: Salah
+    salah_description: Kërkoni kohën e lutjes për çdo vend
+    audio: Noble Quran in audio
+    audio_description: Mësoni dhe dëgjoni në të njëjtën kohë
+  close: afër
+  page: faqe

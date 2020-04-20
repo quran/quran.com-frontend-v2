@@ -11,6 +11,11 @@
 #
 ---
 sq:
+  support:
+    array:
+      last_word_connector: ", dhe "
+      two_words_connector: " dhe "
+      words_connector: ", "
   date:
     formats:
       default: "%d-%m-%Y"
@@ -29,7 +34,7 @@ sq:
         separator: "."
         significant: false
         strip_insignificant_zeros: false
-        unit: LEK
+        unit: ALL
     format:
       delimiter: ","
       precision: 3
@@ -55,11 +60,6 @@ sq:
     precision:
       format:
         delimiter: ''
-  support:
-    array:
-      last_word_connector: ", dhe "
-      two_words_connector: " dhe "
-      words_connector: ", "
   time:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"

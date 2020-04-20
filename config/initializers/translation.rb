@@ -16,4 +16,13 @@ TranslationIO.configure do |config|
   #
   # Project
   # https://translation.io/quran/quran
+  config.ignored_key_prefixes = [
+    'errors.messages',
+    'activerecord',
+    'date',
+    'datetime',
+    'number',
+    'time',
+    'helpers'
+  ]
 end

@@ -6,288 +6,137 @@
 #
 ---
 tr:
-  tafsir_select:
-  date:
-    day_names:
-    - Pazar
-    - Pazartesi
-    - Salı
-    - Çarşamba
-    - Perşembe
-    - Cuma
-    - Cumartesi
-    abbr_day_names:
-    - Pzr
-    - Pzt
-    - Sal
-    - Çrş
-    - Prş
-    - Cum
-    - Cts
-    month_names:
-    -
-    - Ocak
-    - Şubat
-    - Mart
-    - Nisan
-    - Mayıs
-    - Haziran
-    - Temmuz
-    - Ağustos
-    - Eylül
-    - Ekim
-    - Kasım
-    - Aralık
-    abbr_month_names:
-    -
-    - Oca
-    - Şub
-    - Mar
-    - Nis
-    - May
-    - Haz
-    - Tem
-    - Ağu
-    - Eyl
-    - Eki
-    - Kas
-    - Ara
-  time:
-    am: öğleden önce
-    pm: öğleden sonra
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: Bayt
-            other: Bayt
-          kb: KB
-          mb: MB
-          gb: GB
-          tb: TB
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: Bin
-          million: Milyon
-          billion: Milyar
-          trillion: Trilyon
-          quadrillion: Katrilyon
+  tafsir_select: Bir tefsir seçin
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: 'Doğrulama başarısız oldu: %{errors}'
-      inclusion: kabul edilen bir kelime değil
-      exclusion: kullanılamaz
-      invalid: geçersiz
-      confirmation: "%{attribute} teyidiyle uyuşmuyor"
-      accepted: kabul edilmeli
-      empty: doldurulmalı
-      blank: doldurulmalı
-      present: boş bırakılmalı
-      too_long:
-        one: çok uzun (en fazla 1 karakter)
-        other: çok uzun (en fazla %{count} karakter)
-      too_short:
-        one: çok kısa (en az 1 karakter)
-        other: çok kısa (en az %{count} karakter)
-      wrong_length:
-        one: hatalı uzunlukta (1 karakter olmalı)
-        other: hatalı uzunlukta (%{count} karakter olmalı)
-      not_a_number: geçerli bir sayı değil
-      not_an_integer: tam sayı olmalı
-      greater_than: "%{count} sayısından büyük olmalı"
-      greater_than_or_equal_to: "%{count} sayısına eşit veya büyük olmalı"
-      equal_to: tam olarak %{count} olmalı
-      less_than: "%{count} sayısından küçük olmalı"
-      less_than_or_equal_to: "%{count} sayısına eşit veya küçük olmalı"
-      other_than: "%{count} karakterden oluşamaz"
-      odd: tek olmalı
-      even: çift olmalı
-      required: doldurulmalı
-      taken: hali hazırda kullanılmakta
     not_found:
-    invalid_verse:
-    invalid_chapter:
+    invalid_verse: Ayah seçiminizi kontrol edin. Kapsama alanı dışında.
+    invalid_chapter: Suresi seçiminizi kontrol edin. Kapsama alanı dışında.
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'Doğrulama başarısız oldu: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Bağlı bir kayıt %{record} bulunduğu için kayıt silinemedi
-          has_many: Bağlı kayıtlar %{record} bulunduğu için kayıt silinemedi
-  datetime:
-    distance_in_words:
-      half_a_minute: yarım dakika
-      less_than_x_seconds:
-        one: 1 saniyeden az
-        other: "%{count} saniyeden az"
-      x_seconds:
-        one: 1 saniye
-        other: "%{count} saniye"
-      less_than_x_minutes:
-        one: 1 dakikadan az
-        other: "%{count} dakikadan az"
-      x_minutes:
-        one: 1 dakika
-        other: "%{count} dakika"
-      about_x_hours:
-        one: yaklaşık 1 saat
-        other: yaklaşık %{count} saat
-      x_days:
-        one: 1 gün
-        other: "%{count} gün"
-      about_x_months:
-        one: yaklaşık 1 ay
-        other: yaklaşık %{count} ay
-      x_months:
-        one: 1 ay
-        other: "%{count} ay"
-      about_x_years:
-        one: yaklaşık 1 yıl
-        other: yaklaşık %{count} yıl
-      over_x_years:
-        one: 1 yıldan fazla
-        other: "%{count} yıldan fazla"
-      almost_x_years:
-        one: neredeyse 1 yıl
-        other: neredeyse %{count} yıl
-    prompts:
-      year: Yıl
-      month: Ay
-      day: Gün
-      hour: Saat
-      minute: Dakika
-      second: Saniye
-  helpers:
-    select:
-      prompt: Lütfen seçiniz
-    submit:
-      create: "%{model} Ekle"
-      update: "%{model} Güncelle"
-      submit: "%{model} Kaydet"
-  local:
-  site_local:
-  change_local:
+  local: İngilizce
+  site_local: Site Dilini
+  change_local: Sitenin görüntülenmesini istediğiniz dili seçin
   local_native_name: Turkey
-  language:
+  language: Dil, Lisan
   settings:
-    label:
-    chapters:
-    reciters:
-    translations:
-    remove_all:
+    label: Ayarlar
+    chapters: Sureler
+    reciters: reciters
+    translations: Çeviriler
+    remove_all: Hepsini kaldır
     translation_english: Türkçe
-    translation_other:
-    reading:
+    translation_other: Diğer diller
+    reading: Okuma
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Yazı Boyutu
+      arabic: Arapça
+      translation: Çeviriler
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: İpucu görüntüleme
+      translation: Tercüme
+      transliteration: başka alfabeyle yazma
     night_mode:
-      label:
-      day_tip:
-      night_tip:
-    reset:
+      label: Gece modu
+      day_tip: Gündüz moduna geç
+      night_tip: Gece moduna geç
+    reset: Ayarı Sıfırla
   verses:
     media:
-    go:
-    not_found:
+    go: Sonraki ayet
+    not_found: Ayet bulunamadı
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    info:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-    revelation_place:
-  footnote:
+    label: Surat
+    next: Sonraki Surat
+    previous: Önceki Surat
+    verses: Ayetler
+    pages: Sayfalar
+    info: Bölüm Bilgisi
+    continue: Devam et
+    quick_links: Hızlı Linkler
+    go_to_beginning: Bölümün başlangıcı
+    read_full: Surenin tamamını okuyun
+    invalid: '"Veya" arama sırasında Surat sonuç bulunamadı'
+    revelation_place: Vahiy Yeri
+  footnote: dipnot
   action:
-    play:
-    pause:
+    play: Oyna
+    pause: Duraklat
     bookmark:
-      label:
-      done:
+      label: Yer imi
+      done: Yer işaretli!
     copy:
-      label:
-      done:
-    share:
-    addNote:
+      label: kopya
+      done: Kopyalandı!
+    share: Paylaş ayah
+    addNote: Not ekle
     tafsir:
-      label:
-      select:
+      label: 'Tafsirs
+
+        '
+      select: Tefsir'i seçin
   search:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
-    label:
+    placeholder: Arama "Noah"
+    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-success>%{query}</span>"
+    error: Üzgünüz, aramanızla ilgili bir hata oluştu.
+    no_query: Arama sorgusu yok.
+    no_result: Sonuç bulunamadı.
+    popular: popüler aramalar
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Surah Al Mulk
+    ar_rahman: Surah Ar-Rahman
+    al_waqiah: Surah Al Waqi'ah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Surah Al Muzzammil
+    label: Arama
   player:
-    current_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    scroll:
-  loading:
+    current_verse: Ayetler
+    next_verse: Sonraki ayet
+    previous_verse: Önceki ayet
+    repeat_title: Tekrarla Ayah
+    repeat_single: Tek
+    repeat_range: Aralık
+    repeat_from: itibaren
+    repeat_to: için
+    repeat_times: Zamanlar
+    repeat_loop: döngü
+    scroll: O anda çalan ayah'a otomatik olarak kayar
+  loading: Yükleniyor...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobilea_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
-  noble_quran:
+    title: Kuran
+    settings: Ayarlar
+    contribute: Katkıda bulunmak
+    about_us: Hakkımızda
+    developers: Geliştiriciler
+    useful_sites: Yararlı siteler
+    other_links: Diğer bağlantılar
+    contact_us: Bizimle iletişime geçin
+    help: Yardım ve geri bildirim
+    about_project: Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
+      okumasını ve öğrenmesini kolaylaştırmayı umuyoruz. Kur'an-ı Kerim, Kur'an-ı
+      Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
+      birçok isme sahiptir.
+    rights: Tüm hakları Saklıdır
+    mobilea_apps: Mobil uygulamalar
+    navigate: Gezin
+    legacy_site: Eski Kur'an-ı Quran.com
+    blog: Blog
+    forum: forum
+  juz: Cüz
+  click_here: buraya Tıkla
+  download: indir
+  home: Ev
+  noble_quran: Kur'an-ı Kerim
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
-  page:
+    label: İlgili Siteler
+    sunnah: Sünnet
+    sunnah_description: Hz.Muhammed (asv) 'in Hadisleri
+    salah: Salah
+    salah_description: Herhangi bir yer için namaz vakti arayın
+    audio: Soylu Kur'an-ı Kerim
+    audio_description: Aynı anda öğrenme ve dinleme
+  close: Kapat
+  page: Sayfa

@@ -11,6 +11,11 @@
 #
 ---
 id:
+  support:
+    array:
+      last_word_connector: ", dan "
+      two_words_connector: " dan "
+      words_connector: ", "
   date:
     formats:
       default: "%d %B %Y"
@@ -55,11 +60,6 @@ id:
     precision:
       format:
         delimiter: ''
-  support:
-    array:
-      last_word_connector: ", dan "
-      two_words_connector: " dan "
-      words_connector: ", "
   time:
     formats:
       default: "%a, %d %b %Y %H.%M.%S %z"

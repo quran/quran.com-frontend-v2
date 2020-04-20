@@ -7,107 +7,8 @@
 ---
 fa:
   tafsir_select: یک تفسیر را انتخاب کنید
-  date:
-    day_names:
-    - یکشنبه
-    - دوشنبه
-    - سه‌شنبه
-    - چهارشنبه
-    - پنج‌شنبه
-    - جمعه
-    - شنبه
-    abbr_day_names:
-    - ی
-    - د
-    - س
-    - چ
-    - پ
-    - ج
-    - ش
-    month_names:
-    -
-    - ژانویه
-    - فوریه
-    - مارس
-    - آوریل
-    - مه
-    - ژوئن
-    - ژوئیه
-    - اوت
-    - سپتامبر
-    - اکتبر
-    - نوامبر
-    - دسامبر
-    abbr_month_names:
-    -
-    - ژانویه
-    - فوریه
-    - مارس
-    - آوریل
-    - مه
-    - ژوئن
-    - ژوئیه
-    - اوت
-    - سپتامبر
-    - اکتبر
-    - نوامبر
-    - دسامبر
-  time:
-    am: قبل از ظهر
-    pm: بعد از ظهر
-  number:
-    human:
-      storage_units:
-        units:
-          byte:
-            one: بایت
-            other: بایت
-          kb: کیلوبایت
-          mb: مگابایت
-          gb: گیگابایت
-          tb: ترابایت
-          pb:
-          eb:
-      decimal_units:
-        units:
-          thousand: هزار
-          million: میلیون
-          billion: میلیارد
-          trillion: تریلیون
-          quadrillion: کادریلیون
   errors:
     format: "%{attribute} %{message}"
-    messages:
-      model_invalid: رکورد نامعتبر است %{errors}
-      inclusion: در لیست موجود نیست
-      exclusion: رزرو است
-      invalid: نامعتبر است
-      confirmation: با تایید نمی‌خواند
-      accepted: باید پذیرفته شود
-      empty: نمی‌تواند خالی باشد
-      blank: نباید خالی باشد
-      present: باید خالی باشد
-      too_long:
-        one:
-        other:
-      too_short:
-        one:
-        other:
-      wrong_length:
-        one:
-        other:
-      not_a_number: عدد نیست
-      not_an_integer: عدد صحیح نیست
-      greater_than: باید بزرگتر از %{count} باشد
-      greater_than_or_equal_to: باید بزرگتر یا برابر %{count} باشد
-      equal_to: باید برابر %{count} باشد
-      less_than: باید کمتر از %{count} باشد
-      less_than_or_equal_to: باید کمتر یا برابر %{count} باشد
-      other_than: باید غیر از %{count} باشد
-      odd: باید فرد باشد
-      even: باید زوج باشد
-      required: باید وجود داشته باشد
-      taken: پیشتر گرفته شده
     not_found: متأسفیم ، این صفحه وجود ندارد
     invalid_verse: آیه خارج از محدوده است. لطفا به صفحه اصلی بروید
     invalid_chapter: فصل خارج از محدوده است. لطفا به صفحه اصلی بروید
@@ -117,64 +18,6 @@ fa:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: رکورد نامعتبر است %{errors}
-        restrict_dependent_destroy:
-          has_one: نمی توان رکورد را حذف کرد بخاطر اینکه یک %{record} وابسته وجود
-            دارد
-          has_many: نمی توان رکورد را حذف کرد بخاطر اینکه %{record} وابسته وجود دارد
-  datetime:
-    distance_in_words:
-      half_a_minute: نیم دقیقه
-      less_than_x_seconds:
-        one: یک ثانیه
-        other: کمتر  از %{count} ثانیه
-      x_seconds:
-        one: یک ثانیه
-        other: "%{count} ثانیه"
-      less_than_x_minutes:
-        one: کمتر از یک دقیقه
-        other: کمتر از %{count} دقیقه
-      x_minutes:
-        one: یک دقیقه
-        other: "%{count} دقیقه"
-      about_x_hours:
-        one: حدود یک ساعت
-        other: حدود %{count} ساعت
-      x_days:
-        one: یک روز
-        other: "%{count} روز"
-      about_x_months:
-        one: حدود یک ماه
-        other: حدود %{count} ماه
-      x_months:
-        one: یک ماه
-        other: "%{count} ماه"
-      about_x_years:
-        one: حدود یک سال
-        other: حدود %{count} سال
-      over_x_years:
-        one: بیش از یک سال
-        other: بیش از %{count} سال
-      almost_x_years:
-        one: حدود یک سال
-        other: حدود %{count} سال
-    prompts:
-      year: سال
-      month: ماه
-      day: روز
-      hour: ساعت
-      minute: دقیقه
-      second: ثانیه
-  helpers:
-    select:
-      prompt: لطفا انتخاب کنید
-    submit:
-      create: ایجاد %{model}
-      update: بروز رسانی %{model}
-      submit: ذخیره‌ی %{model}
   local: انگلیسی
   site_local: زبان سایت
   change_local: زبانی را که می خواهید سایت در آن نمایش داده شود را انتخاب کنید
@@ -256,7 +99,7 @@ fa:
     repeat_title: آیه را تکرار کنید
     repeat_single: تنها
     repeat_range: دامنه
-    repeat_from:
+    repeat_from: از جانب
     repeat_to: به
     repeat_times: بار
     repeat_loop: حلقه

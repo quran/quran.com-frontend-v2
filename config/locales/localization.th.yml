@@ -11,6 +11,11 @@
 #
 ---
 th:
+  support:
+    array:
+      last_word_connector: ", และ "
+      two_words_connector: " และ "
+      words_connector: ", "
   date:
     formats:
       default: "%d-%m-%Y"
@@ -54,11 +59,6 @@ th:
     precision:
       format:
         delimiter: ''
-  support:
-    array:
-      last_word_connector: ", และ "
-      two_words_connector: " และ "
-      words_connector: ", "
   time:
     formats:
       default: "%a %d %b %Y %H:%M:%S %z"
