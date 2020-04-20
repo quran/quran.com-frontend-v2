@@ -3,27 +3,27 @@
     <div class="audio-left-col overflow-auto">
       <ul class="d-flex align-items-center justify-content-between">
         <li>
-          <button class="previous-btn"><i class="fa fa-step-backward1"></i></button>
+          <button class="previous-btn" name="previous"><i class="fa fa-step-backward1"></i></button>
         </li>
 
         <li class="play-ctrls play">
-          <button class="play-btn">
+          <button class="play-btn" name="play">
             <i class="fa fa-play-solid d-flex align-items-center justify-content-center"></i>
           </button>
-          <button class="pause-btn">
+          <button class="pause-btn" name="pause">
             <i class="fa fa-pause d-flex align-items-center"></i>
           </button>
-          <button class="pause-loading">
+          <button class="pause-loading" name="loading">
             <i class="fa fa-spinner1 animate-spin"></i>
           </button>
         </li>
 
         <li>
-          <button class="next-btn"><i class="fa fa-step-forward1"></i></button>
+          <button class="next-btn" name="next"><i class="fa fa-step-forward1"></i></button>
         </li>
 
         <li>
-          <button class="repeat-btn"><i class="fa fa-repeat"></i></button>
+          <button class="repeat-btn" name="repeat"><i class="fa fa-repeat"></i></button>
 
           <div class="repeat-popover-container d-none">
             <div class="repeat-popover-title text-center mt-1">
@@ -123,7 +123,7 @@
         </li>
 
         <li>
-          <button class="auto-scroll-btn" data-html="true" data-placement='top' title="<%= _t("player.scroll") %>">
+          <button class="auto-scroll-btn" data-html="true" data-placement='top' name="autoscroll" title="<%= _t("player.scroll") %>">
             <i class="fa fa-link"></i>
           </button>
         </li>

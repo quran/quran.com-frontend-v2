@@ -1,4 +1,4 @@
-<div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
+<div class="verse p-<%= verse.page_number %>" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
   <div class="row">
     <div class="col-md-1 verse-actions text-center <%= @presenter.render_translations? ?  'col-2' : 'no-transaltion col-12' %>">
       <div class="actions">

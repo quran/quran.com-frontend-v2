@@ -1,13 +1,13 @@
 <% verses = @presenter.paginate %>
 
-<%= render 'fonts', verses: verses %>
-
 <% if @presenter.reading_mode? %>
   <% pages = verses.group_by(&:page_number) %>
   <%= render partial: 'page', collection: pages, as: :verses %>
 <% else %>
   <%= render partial: 'verse', collection: verses, as: :verse %>
 <% end %>
+
+<%= render 'fonts', verses: verses %>
 
 <div class="text-center" id="verses_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
   <% if @presenter.next_page %>

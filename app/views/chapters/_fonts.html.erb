@@ -1,27 +1,46 @@
+<%
+  font_type = @presenter.font
+  pages = font_ids(verses)
+%>
+
+<script>
+    if ("fonts" in document) {
+        <% pages.each do |page| %>
+        document.querySelectorAll('.p-<%= page %>').forEach(function(verse){verse.classList.add('show-text')})
+
+        var font = new FontFace(
+            "p<%= page %>-<%= font_type %>",
+            "url(<%= asset_pack_url "media/fonts/quran_fonts/#{font_type}/woff2/p#{page}.woff2" %>) format('woff2'), url(<%= asset_pack_url "media/fonts/quran_fonts/#{font_type}/woff/p#{page}.woff" %>) format('woff')"
+        );
+
+        font.page = <%= page %>;
+
+        Promise.all([
+            font.load(),
+        ]).then(function (loadedFonts) {
+            // Render them at the same time
+            loadedFonts.forEach(function (font) {
+                document.fonts.add(font);
+                document.querySelectorAll('.p-'+font.page).forEach(function(verse){verse.classList.remove('show-text')})
+            });
+        });
+        <% end %>
+    } else {
+       //maybe add font face via css in page here and remove the below style tag
+    }
+</script>
+
 <style>
-<% font_ids(verses).each do |i| %>
+  <% pages.each do |i| %>
   @font-face {
-    font-family: 'p<%= i %>-v2';
-    src: local(QCF200<%=i%>),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff2/p#{i}.woff2" %>') format('woff2'),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff/p#{i}.woff" %>') format('woff');
+    font-family: 'p<%= i %>-<%= font_type %>';
+    src: url('<%= asset_pack_url "media/fonts/quran_fonts/#{font_type}/woff2/p#{i}.woff2" %>') format('woff2'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/#{font_type}/woff/p#{i}.woff" %>') format('woff');
     font-display: swap;
   }
 
-  @font-face {
-    font-family: 'p<%= i %>-v1';
-    src: url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff2/p#{i}.woff2"%>'),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff/p#{i}.woff" %>') format('woff'),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/ttf/p#{i}.ttf" %>') format('truetype');
-    font-display: swap;
+  .p<%= i %>-<%= font_type %> {
+    font-family: 'p<%=i%>-<%= font_type %>';
   }
-
-  .p<%= i %>-v2{
-    font-family: 'p<%=i%>-v2';
-  }
-
-  .p<%= i %>-v1{
-    font-family: 'p<%=i%>-v1';
-  }
-<% end %>
+  <% end %>
 </style>
