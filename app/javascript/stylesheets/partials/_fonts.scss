@@ -8,7 +8,7 @@
     url("../../fonts/SFProText-Regular.svg#SFProText-Regular") format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
@@ -21,7 +21,7 @@
     url("../../fonts/SFProText-Medium.svg#SFProText-Medium") format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
@@ -34,7 +34,7 @@
     url("../../fonts/SFProText-Bold.svg#SFProText-Bold") format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
@@ -47,33 +47,33 @@
     url("../../fonts/bismillah/bismillah.svg#bismillah") format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "pdms";
   src: local("_PDMS_Saleem_QuranFont Regular"),
     url("../../fonts/quran_fonts/pdms/pdms-saleem-quranfont.ttf");
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Kitab";
   src: url("../../fonts/quran_fonts/kitab/kitab.woff2"),
     url("../../fonts/quran_fonts/kitab/kitab.woff") format("woff");
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Qalam";
   src: url("../../fonts/quran_fonts/qalam/al_qalam.ttf");
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "me_quran";
   src: url("../../fonts/quran_fonts/me_quran/me_quran.ttf");
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
@@ -88,11 +88,12 @@
   format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "divehi";
   src: url("../../fonts/languages/dhivehi/akuru/DhivehiAkuru.woff"),
   url("../../fonts/languages/dhivehi/akuru/DhivehiAkuru.otf");
+  font-display: swap;
 }
