@@ -7,17 +7,18 @@
 default: &default
   adapter: postgresql
   timeout: 5000
-  host: localhost
   schema_search_path: quran,"$user",content,audio,i18n,public
 
 development:
   <<: *default
+  host: localhost
   database: quran_dev
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
   database: one_quran_test
 
 production:
@@ -32,10 +33,10 @@ quran_core:
   port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] %>
   database: quran_dev
   username: quran_dev
-
+  
 quran_core_development:
   <<: *default
-  adapter: postgresql
   host: localhost
+  adapter: postgresql
   encoding: unicode
   database: quran_dev
