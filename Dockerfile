@@ -15,6 +15,7 @@ RUN gem install bundler
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 RUN bundle install --jobs 20 --retry 5 --without development test
+COPY /gen-sitemaps-and-run.sh /app/gen-sitemaps-and-run.sh
 
 # Adding project files
 COPY . .
@@ -23,6 +24,8 @@ COPY . .
 #running this stops assets from compiling - but perhaps in the future
 #can remove some of these for a slightly smaller image.
 #RUN apk del curl git make gcc g++ python linux-headers binutils-gold gnupg
+
+CMD ["./gen-sitemaps-and-run.sh"]
 
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "--early-hints", "-C", "config/puma.rb"]

@@ -34,5 +34,5 @@ config/database.yml
 lib/tasks/download_font.rake
 
 /config/credentials/development.key
-
 /config/credentials/production.key
+/public/sitemaps
