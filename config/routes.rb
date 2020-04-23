@@ -63,7 +63,7 @@ Rails.application.routes.draw do
         200,
         {
             'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{1.days.to_i}",
+            'Cache-Control' => "max-age=#{7.days.to_i}",
             'Expires' => 1.days.from_now.to_s(:rfc822),
             'Content-Type' => 'text/html'
         },
@@ -79,8 +79,8 @@ Rails.application.routes.draw do
         200,
         {
             'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{1.day.to_i}",
-            'Expires' => 1.days.from_now.to_s(:rfc822),
+            'Cache-Control' => "max-age=#{7.day.to_i}",
+            'Expires' => 7.days.from_now.to_s(:rfc822),
             'Content-Type' => 'text/html'
         },
         [open(Rails.root.join('public', 'sitemaps', filename)).read]
