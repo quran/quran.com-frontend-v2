@@ -25,7 +25,7 @@ COPY . .
 #can remove some of these for a slightly smaller image.
 #RUN apk del curl git make gcc g++ python linux-headers binutils-gold gnupg
 
-CMD ["./gen-sitemaps-and-run.sh"]
+run /app/gen-sitemaps-and-run.sh
 
 EXPOSE 3000
 CMD ["bundle", "exec", "puma", "--early-hints", "-C", "config/puma.rb"]
