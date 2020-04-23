@@ -58,13 +58,13 @@ Rails.application.routes.draw do
     ]
   }
 
-  get "/sitemap.xml.gz" => proc { |req|
+  get "sitemap.xml.gz" => proc { |req|
     [
         200,
         {
             'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{1.day.to_i}",
-            'Expires' => 1.day.from_now.to_s(:rfc822),
+            'Cache-Control' => "max-age=#{7.days.to_i}",
+            'Expires' => 1.days.from_now.to_s(:rfc822),
             'Content-Type' => 'text/html'
         },
         [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
@@ -72,15 +72,15 @@ Rails.application.routes.draw do
   }
 
 
-  get "/sitemaps/sitemap:number.xml.gz" => proc { |req|
+  get "sitemaps/sitemap:number.xml.gz" => proc { |req|
     filename = req['PATH_INFO'].gsub('sitemaps', '').gsub(/\//, '')
 
     [
         200,
         {
             'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{1.day.to_i}",
-            'Expires' => 1.day.from_now.to_s(:rfc822),
+            'Cache-Control' => "max-age=#{7.day.to_i}",
+            'Expires' => 7.days.from_now.to_s(:rfc822),
             'Content-Type' => 'text/html'
         },
         [open(Rails.root.join('public', 'sitemaps', filename)).read]
