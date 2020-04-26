@@ -357,23 +357,39 @@ export default class extends Controller {
       this.jumpToVerse(Number(e.currentTarget.value));
     });
 
+    const surahNameTemplate = (surah) => {
+      if (surah.loading) return surah.text;
+      const data = surah.element.dataset;
+      return `<div class='row select2-result'>
+                <div class="col-2">${surah.element.value}</div>
+                <div class="col-7">
+                  ${data.nameSimple}
+                </div>
+                <div class="col-3">
+                  ${data.arabic}
+                </div>
+                <div class="col-12 text-center">
+                  ${data.translatedName}
+                </div>
+              </div>`;
+    };
+
     const matchChapterName = (params, data) => {
-      const query = params.term;
+      const query = $.trim(params.term).toLowerCase();
+      if (!query) return data;
       let translatedName = data.element.getAttribute("data-translated-name");
       let arabicName = data.element.getAttribute("data-arabic");
+      let simpleName = data.element.text;
 
-      if ($.trim(params.term) === "") {
+      if (simpleName.toLowerCase().indexOf(query) > -1) {
         return data;
       }
-
-      if (
-        data.text.indexOf(params.term) > -1 ||
-        translatedName.indexOf(query) > -1 ||
-        arabicName.indexOf(query) > -1
-      ) {
+      if (translatedName.toLowerCase().indexOf(query) > -1) {
         return data;
       }
-
+      if (arabicName.indexOf(query) > -1) {
+        return data;
+      }
       return null;
     };
 
