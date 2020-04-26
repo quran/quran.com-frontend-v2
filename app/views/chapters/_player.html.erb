@@ -137,20 +137,20 @@
 
         <li class="dropdown">
           <% if false %>
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-              <%= @presenter.chapter.name_complex %>
-            </a>
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+            <%= @presenter.chapter.name_complex %>
+          </a>
 
-            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
-              <% Chapter.find_each do |chapter| %>
-                <div class="dropdown-item <%= 'active' if chapter.id == @presenter.chapter.id %>">
-                  <%= link_to "#{chapter.chapter_number} #{chapter.name_simple}", chapter_path(chapter), data: {arabic: chapter.name_arabic} %>
-                </div>
-              <% end %>
+          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <% @presenter.chapters.find_each do |chapter| %>
+            <div class="dropdown-item <%= 'active' if chapter.id == @presenter.chapter.id %>">
+              <%= link_to "#{chapter.chapter_number} #{chapter.name_simple}", chapter_path(chapter), data: {arabic: chapter.name_arabic} %>
             </div>
+            <% end %>
+          </div>
           <% end %>
           <select id="chapter-select">
-            <% Chapter.find_each do |chapter| %>
+            <% @presenter.chapters.find_each do |chapter| %>
             <option value=<%= chapter.chapter_number %> data-translated-name="<%= chapter.translated_name.name %>" data-arabic="<%= chapter.name_arabic %>" <% if chapter.id == @presenter.chapter.id %> selected='selected' <% end %>>
               <%= chapter.chapter_number %> <%= chapter.name_simple %>
             </option>
