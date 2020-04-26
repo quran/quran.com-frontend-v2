@@ -366,6 +366,10 @@ export default class extends Controller {
         return data;
       }
 
+      if (data.text.indexOf(params.term) > -1) {
+        return data;
+      }
+
       if (translatedName.indexOf(query) > -1) {
         return data;
       }
