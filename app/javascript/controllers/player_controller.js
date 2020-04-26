@@ -395,7 +395,9 @@ export default class extends Controller {
 
     this.chapterDropdown = $("#chapter-select").select2({
       width: "200px",
+      templateResult: surahNameTemplate,
       matcher: matchChapterName,
+      escapeMarkup: (text) => text,
     });
 
     this.chapterDropdown.on("select2:select", e => {
