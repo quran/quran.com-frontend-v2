@@ -151,9 +151,9 @@
           <% end %>
           <select id="chapter-select">
             <% Chapter.find_each do |chapter| %>
-              <option value=<%= chapter.chapter_number %> data-arabic="<%= chapter.name_arabic %>" <% if chapter.id == @presenter.chapter.id %> selected='selected' <% end %>>
-                <%= chapter.chapter_number %> <%= chapter.name_simple %>
-              </option>
+            <option value=<%= chapter.chapter_number %> data-translated-name="<%= chapter.translated_name.name %>" data-arabic="<%= chapter.name_arabic %>" <% if chapter.id == @presenter.chapter.id %> selected='selected' <% end %>>
+              <%= chapter.chapter_number %> <%= chapter.name_simple %>
+            </option>
             <% end %>
           </select>
         </li>

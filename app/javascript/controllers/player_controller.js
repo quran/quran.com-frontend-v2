@@ -357,8 +357,39 @@ export default class extends Controller {
       this.jumpToVerse(Number(e.currentTarget.value));
     });
 
+    const matchChapterName = (params, data) => {
+      if ($.trim(params.term) === "") {
+        return data;
+      }
+
+      if (typeof data.text === "undefined") {
+        return null;
+      }
+
+      if (
+        data.element
+          .getAttribute("data-translated-name")
+          .toUpperCase()
+          .indexOf(params.term.toUpperCase()) > -1
+      ) {
+        return data;
+      }
+
+      if (
+        data.element
+          .getAttribute("data-arabic")
+          .toUpperCase()
+          .indexOf(params.term.toUpperCase()) > -1
+      ) {
+        return data;
+      }
+
+      return null;
+    };
+
     this.chapterDropdown = $("#chapter-select").select2({
-      width: "200px"
+      width: "200px",
+      matcher: matchChapterName,
     });
 
     this.chapterDropdown.on("select2:select", e => {
