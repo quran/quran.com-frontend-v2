@@ -358,6 +358,9 @@ export default class extends Controller {
     });
 
     const matchChapterName = (params, data) => {
+      let translatedName = data.element.getAttribute("data-translated-name");
+      let arabicName = data.element.getAttribute("data-arabic");
+
       if ($.trim(params.term) === "") {
         return data;
       }
@@ -367,20 +370,12 @@ export default class extends Controller {
       }
 
       if (
-        data.element
-          .getAttribute("data-translated-name")
-          .toUpperCase()
-          .indexOf(params.term.toUpperCase()) > -1
+        translatedName.toUpperCase().indexOf(params.term.toUpperCase()) > -1
       ) {
         return data;
       }
 
-      if (
-        data.element
-          .getAttribute("data-arabic")
-          .toUpperCase()
-          .indexOf(params.term.toUpperCase()) > -1
-      ) {
+      if (arabicName.toUpperCase().indexOf(params.term.toUpperCase()) > -1) {
         return data;
       }
 
