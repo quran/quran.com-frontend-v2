@@ -358,8 +358,47 @@ export default class extends Controller {
       this.jumpToVerse(Number(e.currentTarget.value));
     });
 
+    const surahNameTemplate = (surah) => {
+      if (surah.loading) return surah.text;
+      const data = surah.element.dataset;
+      return `<div class='row select2-result'>
+                <div class="col-2">${surah.element.value}</div>
+                <div class="col-7">
+                  ${data.nameSimple}
+                </div>
+                <div class="col-3">
+                  ${data.arabic}
+                </div>
+                <div class="col-12 text-center">
+                  ${data.translatedName}
+                </div>
+              </div>`;
+    };
+
+    const matchChapterName = (params, data) => {
+      const query = $.trim(params.term).toLowerCase();
+      if (!query) return data;
+      let translatedName = data.element.getAttribute("data-translated-name");
+      let arabicName = data.element.getAttribute("data-arabic");
+      let simpleName = data.element.text;
+
+      if (simpleName.toLowerCase().indexOf(query) > -1) {
+        return data;
+      }
+      if (translatedName.toLowerCase().indexOf(query) > -1) {
+        return data;
+      }
+      if (arabicName.indexOf(query) > -1) {
+        return data;
+      }
+      return null;
+    };
+
     this.chapterDropdown = $("#chapter-select").select2({
-      width: "200px"
+      width: "200px",
+      templateResult: surahNameTemplate,
+      matcher: matchChapterName,
+      escapeMarkup: (text) => text,
     });
 
     this.chapterDropdown.on("select2:select", e => {

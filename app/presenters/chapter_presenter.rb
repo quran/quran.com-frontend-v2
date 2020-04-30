@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ChapterPresenter < BasePresenter
+class ChapterPresenter < HomePresenter
   def initialize(context)
     super context
 
