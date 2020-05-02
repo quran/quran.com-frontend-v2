@@ -28,7 +28,7 @@ gem 'translation'
 
 # Run any code in parallel Processes
 gem 'parallel', require: false
-
+gem 'ruby-progressbar', require: false
 # seo
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags', '>= 2.13.0'

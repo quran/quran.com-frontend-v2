@@ -401,6 +401,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails (~> 2.3.2)
   rubocop-rspec
+  ruby-progressbar
   scss_lint
   selenium-webdriver
   sentry-raven
