@@ -1,5 +1,5 @@
 <div id="<%= dom_id @foot_note.resource %>">
-  <div id="footnote" class="footnote rounded-lg">
+  <div id="footnote" class="footnote rounded-lg <%= @foot_note.language_name %>">
     <div class="alert alert-dismissible p-3" role="alert">
       <span class="resource"><%= _t("footnote") %></span>
       <a class="text-info close" rel="tooltip" data-dismiss="alert" aria-label="Close">
@@ -7,7 +7,7 @@
       </a>
 
       <div class="<%= @foot_note.language_name %>" data-controller="translation">
-        <%= @foot_note.text.html_safe %>
+        <%= simple_format @foot_note.text.html_safe %>
       </div>
     </div>
   </div>
