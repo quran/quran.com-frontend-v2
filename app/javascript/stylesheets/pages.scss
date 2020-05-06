@@ -61,11 +61,11 @@
 .accordion-box {
   border: 1px solid #eceff1;
   border-radius: 0.25rem;
-  padding: 0 15px;
   margin-bottom: 80px;
 
   .card {
     border: 0px;
+    padding: 0 15px;
     border-bottom: 1px solid #f1f1f1 !important;
 
     &:last-child {
