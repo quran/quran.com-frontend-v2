@@ -260,7 +260,7 @@ $colors: (
 );
 
 /* usage: theme-colors("primary"); */
-$theme-colors: (
+/*$theme-colors: (
   "primary": $color-primary,
   "secondary": $gray-600,
   "success": $color-success,
@@ -269,7 +269,7 @@ $theme-colors: (
   "danger": $color-danger,
   "light": $white,
   "dark": $fusion-500
-);
+);*/
 
 /* forms */
 /*$input-height:							calc(2.25rem + 1px); //I had to add this because the input gruops was having improper height for some reason... */
