@@ -161,8 +161,11 @@ export default class extends Controller {
   updatePage() {
     this.updateFontSize();
     const isNightMode = this.get("nightMode");
+    const darkModeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
 
-    const setDark = function(e) {
+    const setDark = function (e) {
       if (e && e.matches) {
         $("body").addClass("night");
       } else {
@@ -173,13 +176,13 @@ export default class extends Controller {
         }
       }
     };
-
-    const nightMode = window.matchMedia("(prefers-color-scheme: dark)");
-    setDark(nightMode);
-
     document.addEventListener("DOMContentLoaded", () => {
-      setDark(window.matchMedia("(prefers-color-scheme: dark)"));
+      setDark(darkModeMediaQuery);
     });
+    darkModeMediaQuery.addListener((event) => {
+      setDark(event);
+    });
+    setDark(darkModeMediaQuery);
   }
 
   get(key) {
