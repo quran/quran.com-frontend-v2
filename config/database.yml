@@ -13,13 +13,6 @@ development:
   <<: *default
   host: localhost
   database: quran_dev
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  host: localhost
-  database: one_quran_test
 
 production:
   <<: *default
@@ -30,6 +23,24 @@ production:
   database: quran_dev
   username: quran_dev
   password: dev_quran
+
+staging:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] %>
+  database: quran_dev
+  username: quran_dev
+  password: dev_quran
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  host: localhost
+  database: one_quran_test
 
 quran_core:
   <<: *default

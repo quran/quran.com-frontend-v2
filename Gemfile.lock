@@ -191,6 +191,7 @@ GEM
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    ngrok-tunnel (2.1.1)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -240,6 +241,9 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.4)
     puma (3.12.4)
+    puma-ngrok-tunnel (1.0.0)
+      ngrok-tunnel (~> 2.1, >= 2.1.1)
+      puma (>= 3, < 5)
     rack (2.2.2)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -394,6 +398,7 @@ DEPENDENCIES
   pronto-scss
   pry-rails
   puma (~> 3.12.4)
+  puma-ngrok-tunnel
   rack-cors
   rails (~> 6.0.2.2)
   rails_real_favicon (>= 0.0.13)
