@@ -5,3 +5,7 @@ Rails.application.config.hosts += [
   '.qurancdn.com',
   'localhost'
 ]
+
+if Rails.env.development?
+  Rails.application.config.hosts << '.ngrok.io'
+end
