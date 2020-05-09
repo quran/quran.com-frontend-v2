@@ -3,25 +3,33 @@ importScripts(
 );
 
 if (workbox) {
+  var WORKBOX_DEBUG=false;
+
+  workbox.setConfig({debug: WORKBOX_DEBUG});
+
   workbox.googleAnalytics.initialize();
   // Enable navigation preload.
   // workbox.navigationPreload.enable();
 
   workbox.routing.registerRoute(
     new RegExp(
-      "^https://(cdn|audio|download).(?:qurancdn|quran|quranicaudio).com/(.*)"
+      "^https://(cdn|audio|download|verses).(?:qurancdn|quran|quranicaudio).com/(.*)"
     ),
     new workbox.strategies.CacheFirst({
       cacheName: "quran-audio",
       plugins: [
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 1000]
+          statuses: [0, 200, 206, 304]
         }),
         new workbox.expiration.Plugin({
           maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
           maxEntries: 500
-        })
-      ]
+        }),
+        new workbox.rangeRequests.Plugin()
+      ],
+      matchOptions: {
+        ignoreSearch: true,
+      }
     })
   );
 
@@ -33,7 +41,7 @@ if (workbox) {
       cacheName: "quran-external-libs",
       plugins: [
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 1000]
+          statuses: [0, 200, 206, 304]
         }),
         new workbox.expiration.Plugin({
           maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
@@ -50,7 +58,7 @@ if (workbox) {
       cacheName: "quran-static",
       plugins: [
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200]
+          statuses: [0, 200, 206, 304]
         }),
         new workbox.expiration.Plugin({
           maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
@@ -61,7 +69,7 @@ if (workbox) {
   );
 
   workbox.routing.registerRoute(
-    /\.(?:png|gif|jpg|jpeg|svg|mp3|ogg)$/,
+    /\.(?:png|gif|jpg|jpeg|svg|ogg)$/,
     new workbox.strategies.CacheFirst({
       cacheName: "images",
       plugins: [
@@ -74,7 +82,7 @@ if (workbox) {
   );
 
   workbox.routing.registerRoute(
-    new RegExp("^https://(www|beta)?.(?:quran).com/(.*)"),
+    new RegExp("^https://(www|beta|staging)?.(?:quran).com/(.*)"),
 
     new workbox.strategies.NetworkFirst({
       cacheName: "quran-pwa",
