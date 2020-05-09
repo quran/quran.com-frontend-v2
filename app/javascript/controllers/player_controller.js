@@ -12,7 +12,7 @@ import { Howl, Howler } from "howler";
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
 // TODO: should set to false to use web audio instead, but that requires CORS
-const USE_HTML5 = true;
+const USE_HTML5 = false;
 
 export default class extends Controller {
   connect() {
@@ -544,11 +544,14 @@ export default class extends Controller {
 
   setProgressBarInterval() {
     clearInterval(this.playerProgressInterval);
+    const totalDuration = this.track.howl.duration();
+
+    $("#player .total-time").removeClass('d-none').text(this.formatTime(totalDuration));
 
     this.playerProgressInterval = setInterval(() => {
       let currentTime = this.track.howl.seek();
       let progressPercentage =
-        Math.floor((currentTime / this.track.howl.duration()) * 1000) / 10;
+        Math.floor((currentTime / totalDuration) * 1000) / 10;
       this.progressBar.slider("setValue", progressPercentage);
 
       $("#player .timer").text(this.formatTime(currentTime));

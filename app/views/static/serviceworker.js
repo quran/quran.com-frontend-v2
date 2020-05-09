@@ -10,7 +10,6 @@ function swlog(message, object) {
   }
 }
 
-
 if (workbox) {
   workbox.setConfig({debug: WORKBOX_DEBUG});
 
@@ -26,17 +25,14 @@ if (workbox) {
       cacheName: "quran-audio",
       plugins: [
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200, 206, 304]
+          statuses: [0, 200]
         }),
+
         new workbox.expiration.Plugin({
           maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
           maxEntries: 500
-        }),
-        new workbox.rangeRequests.Plugin()
-      ],
-      matchOptions: {
-        ignoreSearch: true,
-      }
+        })
+      ]
     })
   );
 
