@@ -1,10 +1,17 @@
+var WORKBOX_DEBUG=true;
+
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
 );
 
-if (workbox) {
-  var WORKBOX_DEBUG=false;
+function swlog(message, object) {
+  if(WORKBOX_DEBUG){
+    console.log(`[Service Worker] ${message}`, object ? object : '');
+  }
+}
 
+
+if (workbox) {
   workbox.setConfig({debug: WORKBOX_DEBUG});
 
   workbox.googleAnalytics.initialize();
@@ -95,7 +102,7 @@ if (workbox) {
     })
   );
 
-  console.log("Workbox is ready");
+  swlog("Workbox is ready");
 } else {
-  console.log("Boo! Workbox didn't load 😬");
+  swlog("Boo! Workbox didn't load 😬");
 }
