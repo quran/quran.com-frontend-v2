@@ -1,12 +1,17 @@
-<li>
-  <%= link_to chapter_path(chapter), class: 'row d-flex align-items-center' do %>
-    <div class="col-sm-7 name">
-      <h5 class="name"><%= chapter.name_simple %></h5>
-      <span class="translatedName <%=  chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
-    </div>
-    <div class="col-sm-5 icon">
-      <span class="icon-surah icon-surah<%= chapter.chapter_number %>"></span>
-      <span class="icon-surah icon-surah-surah"></span>
+<li class="list-group-item align-content-around">
+  <%= link_to chapter_path(chapter) do %>
+    <div class="row d-flex">
+      <div class="col-1 p-1">
+        <p class="number"><%= chapter.id %></p>
+      </div>
+      <div class="col-7 col-sm-7">
+        <h5 class="name"><%= chapter.name_simple %></h5>
+        <span class="translatedName <%= chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
+      </div>
+      <div class="col-4 col-sm-4 icon">
+        <span class="icon-surah icon-surah<%= chapter.chapter_number %>"></span>
+        <span class="icon-surah icon-surah-surah"></span>
+      </div>
     </div>
   <% end %>
 </li>

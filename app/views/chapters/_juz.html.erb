@@ -1,16 +1,15 @@
-<li>
+<li class="list-group-item">
   <% juz.verse_mapping.each do |chapter_number, verses| %>
-    <% chapter = @presenter.chapters[chapter_number.to_i - 1] %>
-
-    <%= link_to range_path(chapter, verses), class: 'row d-flex align-items-center' do %>
-      <div class="col-sm-7 name">
+    <%= link_to range_path(chapter = @presenter.chapters[chapter_number.to_i - 1], verses), class: 'd-flex flex-row mb-4' do %>
+      <div class="col-8 col-sm-8">
         <h5 class="name">
           <%= chapter.name_simple %>
           <span class="badge badge-primary"><%= verses %></span>
         </h5>
         <span class="translatedName <%= chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
       </div>
-      <div class="col-sm-5 icon">
+
+      <div class="col-4 col-sm-4 icon">
         <span class="icon-surah icon-surah<%= chapter.chapter_number %>"></span>
       </div>
     <% end %>

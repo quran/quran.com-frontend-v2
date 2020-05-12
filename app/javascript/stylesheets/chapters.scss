@@ -112,38 +112,18 @@
       column-count: 3;
 
       ul li {
-        a {
-          &:hover {
-            box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
-
-            &:before {
-              color: $color-primary;
-            }
-
-            .name {
-              color: #263238;
-            }
-          }
-        }
-
-        &:hover {
-          &:before {
-            color: $color-primary;
-          }
-        }
-
         position: relative;
+        padding: 15px 25px;
         border-radius: 6px;
         padding: 10px 30px;
         margin-bottom: 20px;
         break-inside: avoid-column;
 
-        &:before {
-          position: absolute;
-          top: 11px;
-          left: 2px;
-          counter-increment: order;
-          content: counter(order);
+        &:hover {
+          box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.1);
+        }
+
+        .number {
           font-family: $font-regular;
           font-size: 14px;
           color: #b0bec5;
@@ -153,15 +133,6 @@
           font-family: $font-regular;
           font-size: 20px;
           color: #607d8b;
-
-          .badge-secondary {
-            background-color: #eceff1;
-            font-size: 10px;
-          }
-
-          span {
-            font-size: 14px;
-          }
         }
 
         .icon {
@@ -642,12 +613,17 @@
 
   @media (max-width: 610px) {
     .items {
-      .col-sm-7.name {
+      col.sm-1 {
+        float: left;
+        width: 10%;
+      }
+
+      .col-sm-7 {
         float: left;
         width: 67%;
       }
 
-      .col-sm-5.icon {
+      .col-sm-4.icon {
         float: right;
         width: 33%;
         padding: 0;

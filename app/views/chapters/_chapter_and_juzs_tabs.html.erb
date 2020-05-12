@@ -2,7 +2,7 @@
   <div class="container">
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#surrah"><%= _t('chapters.label') %></a>
+        <a class="nav-link active" data-toggle="tab" href="#surah"><%= _t('chapters.label') %></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#juz"><%= _t('juz') %></a>
@@ -10,21 +10,21 @@
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="surrah">
+      <div class="tab-pane fade show active " id="surah">
         <div class="items">
-          <ul>
+          <ul class="list-group">
             <%= render @presenter.chapters %>
           </ul>
         </div>
       </div>
 
       <div class="tab-pane fade" id="juz">
-        <div class="items juz-list">
-          <ul>
-           <%= render partial: 'juz', collection: @presenter.juz %>
+        <div class="items">
+          <ul class="list-group">
+            <%= render partial: 'juz', collection: @presenter.juz %>
           </ul>
         </div>
       </div>
     </div>
- </div>
+  </div>
 </div>
