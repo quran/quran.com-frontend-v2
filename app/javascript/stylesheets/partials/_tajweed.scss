@@ -1,0 +1,110 @@
+tajweed {
+  cursor: pointer;
+
+  &.ham_wasl,
+  &.slnt,
+  &.laam_shamsiyah {
+    color: #aaaaaa;
+
+    &:hover {
+      background-color: #d7d7d7;
+    }
+  }
+
+  &.madda_normal {
+    color: #537fff;
+  }
+
+  &.madda_permissible {
+    color: #4050ff;
+  }
+
+  &.madda_necessary {
+    color: #000ebc;
+  }
+
+  &.madda_obligatory {
+    color: #2144c1;
+  }
+
+  &.qalaqah {
+    color: #dd0008;
+
+    &:hover {
+      background-color: #f3a6a9;
+      color: #dd0008;
+    }
+  }
+
+  &.ikhafa_shafawi {
+    color: #d500b7;
+
+    &:hover {
+      background-color: #f0a6e6;
+      color: #d500b7;
+    }
+  }
+
+  &.ikhafa {
+    color: #9400a8;
+
+    &:hover {
+      background-color: #daa6e1;
+      color: #9400a8;
+    }
+  }
+
+  &.iqlab {
+    color: #26bffd;
+
+    &:hover {
+      background-color: #92e5ff;
+      color: #0099c5;
+    }
+  }
+
+  &.idgham_shafawi {
+    color: #58b800;
+
+    &:hover {
+      background-color: #bae890;
+      color: #58b800;
+    }
+  }
+
+  &.idgham_ghunnah {
+    color: #169200;
+
+    &:hover {
+      background-color: #9ce58e;
+      color: #169200;
+    }
+  }
+
+  &.idgham_wo_ghunnah {
+    color: #169200;
+
+    &:hover {
+      background-color: #9ce58e;
+      color: #169200;
+    }
+  }
+
+  &.idgham_mutajanisayn,
+  &.idgham_mutaqaribayn {
+    color: #a1a1a1;
+
+    &:hover {
+      background-color: #d7d7d7;
+    }
+  }
+
+  &.ghunnah {
+    color: #ff7e1e;
+
+    &:hover {
+      background-color: #ff7e1e;
+      color: black;
+    }
+  }
+}

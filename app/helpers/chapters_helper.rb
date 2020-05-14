@@ -9,6 +9,17 @@ module ChaptersHelper
     ]
   end
 
+  def quran_script_types
+    [
+      ['KFGQPC Font v1', 'v1'],
+      ['KFGQPC Font v2', 'v2'],
+      ['Uthmani Script', 'uthmani'],
+      ['Imlaei Script', 'imlaei'],
+      ['Indopak Script', 'indopak'],
+      ['Uthmani with tajweed', 'tajweed'],
+    ]
+  end
+
   def chapter_next_page_link
     if @presenter.next_page
       link_to 'load more', range_path(@presenter.chapter.id, @presenter.range, page: @presenter.next_page, translations: @presenter.valid_translations), rel: 'next'

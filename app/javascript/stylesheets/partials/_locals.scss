@@ -5,20 +5,26 @@
   direction: rtl;
   text-align: right;
 
-  .alert-dismissible{
+  .alert-dismissible {
     float: left;
   }
 }
 
-.divehi, .dhivehi, .maldivian{
+.divehi,
+.dhivehi,
+.maldivian {
   font-family: "divehi";
 }
 
-.indopak {
+.indopak,
+.text_indopak {
   font-family: "pdms";
   font-size: 25px;
 }
 
-.madani {
+.madani,
+.text_uthmani_tajweed,
+.text_imlaei,
+.text_madani {
   font-family: me_quran;
 }

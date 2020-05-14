@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 class ChapterPresenter < HomePresenter
+  WORD_TEXT_TYPES = ['code', 'code_v2', 'text_indopak', 'uthmani', 'text_imlaei', 'text_madani'].freeze
+
+  FONT_METHODS = {
+    'v1' => 'code',
+    'v2' => 'code_v2',
+    'uthmani' => 'text_madani',
+    'imlaei' => 'text_imlaei',
+    'indopak' => 'text_indopak',
+    'tajweed' => 'text_uthmani_tajweed',
+  }.freeze
+
   def initialize(context)
     super context
 
@@ -20,21 +31,22 @@ class ChapterPresenter < HomePresenter
   end
 
   def font
-    return @font if @font
+    strong_memoize :font do
+      _font = params[:font].presence || session[:font] || 'v1'
 
-    _font = (
-    params[:font].presence ||
-      session[:font] || 'v1'
-    )
-
-    session[:font] = _font
-    @font = _font
+      _font = FONT_METHODS.key?(_font) ? _font : 'v1'
+      session[:font] = _font
+    end
   end
 
   def font_method
     return @font_method if @font_method
 
-    @font_method = font == 'v1' ? 'code' : 'code_v2'
+    @font_method = FONT_METHODS[font].presence || 'code'
+  end
+
+  def render_verse_words?
+    WORD_TEXT_TYPES.include?(font_method)
   end
 
   def paginate
