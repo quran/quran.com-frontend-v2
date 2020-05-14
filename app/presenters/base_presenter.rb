@@ -121,7 +121,7 @@ class BasePresenter
   end
 
   def sanitize_meta_description_text(text)
-    context.view_context.truncate(TEXT_SANITIZER.sanitize(text.to_s), length: 160, separator: '.')
+    context.view_context.truncate(TEXT_SANITIZER.sanitize(text.to_s, tags: []), length: 160, separator: '.')
   end
 
   def valid_translations
