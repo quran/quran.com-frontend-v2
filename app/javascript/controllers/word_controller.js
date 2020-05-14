@@ -7,7 +7,6 @@
 // </div>
 
 import { Controller } from "stimulus";
-import LocalStore from "utility/local-store";
 
 export default class extends Controller {
   connect() {

@@ -1,6 +1,6 @@
-<div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
+<div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>" data-text="<%= verse.text_imlaei %>">
   <div class="row">
-    <div class="col-md-1 verse-actions text-center <%= @presenter.render_translations? ?  'col-2' : 'no-transaltion col-12' %>">
+    <div class="col-md-1 verse-actions text-center <%= @presenter.render_translations? ? 'col-2' : 'no-transaltion col-12' %>">
       <div class="actions">
         <a class="play play-verse d-flex align-items-center justify-content-center mx-auto">
           <i class="fa fa-play-solid d-flex align-items-center"></i>
@@ -22,9 +22,13 @@
       <% end %>
     </div>
 
-    <div class="col-md-11 <%= @presenter.render_translations? ?  'col-10' : 'col-12' %>">
-      <div class="arabic">
-        <%= render partial: 'chapters/word', collection: verse.words %>
+    <div class="col-md-11 <%= @presenter.render_translations? ? 'col-10' : 'col-12' %>">
+      <div class="arabic <%= @presenter.font_method %>">
+        <% if @presenter.render_verse_words? %>
+          <%= render partial: 'chapters/word', collection: verse.words %>
+        <% else %>
+          <%= verse.send(@presenter.font_method).to_s.html_safe %>
+        <% end %>
       </div>
     </div>
   </div>

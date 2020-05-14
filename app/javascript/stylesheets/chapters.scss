@@ -1,40 +1,48 @@
 // Place all the styles related to the chapters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
- .pagination-section{
-    .en{
+.pagination-section {
+  .en {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: black;
+
+    span {
+      color: #00acc1;
+    }
+
+    .text-success {
+      color: #00acc1;
+    }
+  }
+
+  .pagy-nav {
+    .disabled {
+      padding: 15px;
+    }
+
+    .active {
+      color: #00acc1;
+      padding: 15px;
+    }
+
+    .gap {
+      padding: 15px;
+    }
+
+    span {
+      color: black;
       font-size: 13px;
       text-transform: uppercase;
-      color: black;
-      span{
-        color: #00acc1;
-      }
-      .text-success{
-        color: #00acc1;
-      }
-    }
-    .pagy-nav{
-      .disabled{
+
+      a {
         padding: 15px;
-      }
-      .active{
-        color:  #00acc1;
-        padding: 15px;
-      }
-      .gap{
-        padding: 15px;
-      }
-      span{
         color: black;
-        font-size: 13px;
-        text-transform: uppercase;
-        a{
-          padding: 15px;
-          color: black;
-        }
       }
     }
   }
+}
+
 .chapters {
   &.index {
     header {
@@ -259,17 +267,21 @@
   z-index: 10;
 
   border-radius: 25px;
-  #tooltip-dropdown{
+
+  #tooltip-dropdown {
     height: 36px;
   }
-  .text-muted.text-nowrap{
+
+  .text-muted.text-nowrap {
     margin-right: 5px;
   }
-  .fa:before{
+
+  .fa:before {
     padding: 15px 0px 11px 0px;
     margin-right: 5px;
   }
 }
+
 .border-info {
   border: 1px solid #00acc1;
 }
@@ -347,6 +359,7 @@
 
 #verses {
   margin-top: 20px;
+
   .verse {
     padding: 30px 10px;
 
@@ -381,7 +394,8 @@
         color: $color-primary !important;
       }
 
-      .glyph {
+      .v1,
+      .v2 {
         user-select: none;
       }
 
@@ -411,9 +425,11 @@
         border-radius: 50px;
         border: solid 1px #b0bec5;
         margin-right: 40px;
-        i::before{
+
+        i::before {
           margin: 5px 0px 2px 3px;
         }
+
         .fa-pause-solid::before {
           margin: 7px 5px 2px 3px;
           @media (max-width: 767px) {
@@ -534,6 +550,7 @@
       margin-bottom: 7px;
     }
   }
+
   @media only screen and (max-width: 1199px) {
     .caption {
       font-size: 14px;
@@ -583,23 +600,27 @@
   }
 
   @media (max-width: 767px) {
-    .no-transaltion{
+    .no-transaltion {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .actions{
+
+      .actions {
         flex: 1;
         display: flex;
         align-items: center;
-        a{
+
+        a {
           margin-right: 34% !important;
           margin-left: unset !important;
         }
       }
-      .verse-actions{
+
+      .verse-actions {
         flex: 1;
         align-items: center;
-         a {
+
+        a {
           margin-bottom: 6px !important;
         }
       }
@@ -746,6 +767,7 @@
       padding: 0 !important;
     }
   }
+
   h4 {
     text-align: left;
   }
@@ -810,24 +832,27 @@
       padding: 0px 3px 11px 3px;
     }
   }
-  .search{
+  .search {
     .arabic {
       font-size: 27px !important;
     }
   }
-  .pagination-section{
-    .pagy-nav{
-      .disabled{
+  .pagination-section {
+    .pagy-nav {
+      .disabled {
         padding: 10px;
       }
-      .active{
+
+      .active {
         padding: 10px;
       }
-      .gap{
+
+      .gap {
         padding: 10px;
       }
-      span{
-        a{
+
+      span {
+        a {
           padding: 10px;
         }
       }
@@ -845,41 +870,46 @@
 }
 
 @media (max-width: 375px) {
+  .pagination-section {
+    .pagy-nav {
+      .disabled {
+        padding: 7px;
+      }
 
-  .pagination-section{
-    .pagy-nav{
-      .disabled{
+      .active {
         padding: 7px;
       }
-      .active{
+
+      .gap {
         padding: 7px;
       }
-      .gap{
-        padding: 7px;
-      }
-      span{
-        a{
+
+      span {
+        a {
           padding: 7px;
         }
       }
     }
   }
 }
-@media (max-width: 360px) {
 
-  .pagination-section{
-    .pagy-nav{
-      .disabled{
+@media (max-width: 360px) {
+  .pagination-section {
+    .pagy-nav {
+      .disabled {
         padding: 6px;
       }
-      .active{
+
+      .active {
         padding: 6px;
       }
-      .gap{
+
+      .gap {
         padding: 6px;
       }
-      span{
-        a{
+
+      span {
+        a {
           padding: 6px;
         }
       }
