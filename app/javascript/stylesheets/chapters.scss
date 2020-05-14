@@ -477,6 +477,18 @@
         cursor: pointer;
       }
 
+      inline-comment{
+        color: $color-primary;
+
+        &:before{
+          content: '(';
+        }
+
+        &:after{
+          content: ')';
+        }
+      }
+
       .resource {
         display: block;
         font-family: $font-regular;
