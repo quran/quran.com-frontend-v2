@@ -1,7 +1,7 @@
 var WORKBOX_DEBUG=true;
 
 importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
+  "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
 );
 
 function swlog(message, object) {
@@ -12,10 +12,7 @@ function swlog(message, object) {
 
 if (workbox) {
   workbox.setConfig({debug: WORKBOX_DEBUG});
-
   workbox.googleAnalytics.initialize();
-  // Enable navigation preload.
-  // workbox.navigationPreload.enable();
 
   workbox.routing.registerRoute(
     new RegExp(
@@ -24,14 +21,15 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: "quran-audio",
       plugins: [
-        new workbox.cacheableResponse.Plugin({
+        new workbox.cacheableResponse.CacheableResponse({
           statuses: [0, 200]
         }),
-
-        new workbox.expiration.Plugin({
-          maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
-          maxEntries: 500
-        })
+        new workbox.expiration.CacheExpiration(
+          'quran-audio',
+          {
+            maxEntries: 500
+          }),
+        new workbox.rangeRequests.RangeRequestsPlugin()
       ]
     })
   );
@@ -43,12 +41,8 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: "quran-external-libs",
       plugins: [
-        new workbox.cacheableResponse.Plugin({
+        new workbox.cacheableResponse.CacheableResponse({
           statuses: [0, 200, 206, 304]
-        }),
-        new workbox.expiration.Plugin({
-          maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
-          maxEntries: 50
         })
       ]
     })
@@ -60,13 +54,14 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: "quran-static",
       plugins: [
-        new workbox.cacheableResponse.Plugin({
+        new workbox.cacheableResponse.CacheableResponse({
           statuses: [0, 200, 206, 304]
         }),
-        new workbox.expiration.Plugin({
-          maxAgeSeconds: 12 * 30 * 24 * 60 * 60, //one year
-          maxEntries: 1000
-        })
+        new workbox.expiration.CacheExpiration(
+          'quran-static',
+          {
+            maxEntries: 500
+          })
       ]
     })
   );
@@ -74,13 +69,7 @@ if (workbox) {
   workbox.routing.registerRoute(
     /\.(?:png|gif|jpg|jpeg|svg|ogg)$/,
     new workbox.strategies.CacheFirst({
-      cacheName: "images",
-      plugins: [
-        new workbox.expiration.Plugin({
-          maxEntries: 200,
-          maxAgeSeconds: 12 * 30 * 24 * 60 * 60 // 1 year
-        })
-      ]
+      cacheName: "images"
     })
   );
 
@@ -90,13 +79,23 @@ if (workbox) {
     new workbox.strategies.NetworkFirst({
       cacheName: "quran-pwa",
       plugins: [
-        new workbox.expiration.Plugin({
+        new workbox.expiration.CacheExpiration(
+          'quran-pwa',
+          {
           maxEntries: 2000,
           maxAgeSeconds: 6 * 30 * 24 * 60 * 60 // 6 month
         })
       ]
     })
   );
+
+  workbox.routing.setCatchHandler(({event}) => {
+    return fetch(event.request);
+  });
+
+  // This immediately deploys the service worker w/o requiring a refresh
+  workbox.core.skipWaiting();
+  workbox.core.clientsClaim();
 
   swlog("Workbox is ready");
 } else {
