@@ -354,7 +354,7 @@ export default class extends Controller {
 
     this.verseDropdown = $("#player-verse-dropdown").select2({
       data: verseSelect2Data,
-      width: "200px"
+      width: "150px"
     });
 
     this.verseDropdown.on("select2:select", e => {
@@ -372,7 +372,7 @@ export default class extends Controller {
                 <div class="col-3">
                   ${data.arabic}
                 </div>
-                <div class="col-12 text-center">
+                <div class="col-10 offset-2">
                   ${data.translatedName}
                 </div>
               </div>`;
@@ -398,7 +398,7 @@ export default class extends Controller {
     };
 
     this.chapterDropdown = $("#chapter-select").select2({
-      width: "200px",
+      width: "250px",
       templateResult: surahNameTemplate,
       matcher: matchChapterName,
       escapeMarkup: text => text
