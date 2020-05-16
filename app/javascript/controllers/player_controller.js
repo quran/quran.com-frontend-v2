@@ -62,6 +62,8 @@ export default class extends Controller {
       // new ayah are added to page. Refresh the play first and last ayah
       this.updateVerses();
     });
+
+     setTimeout(()=> this.scrollToVerse(this.config.firstVerse), 100)
   }
 
   disconnect() {
