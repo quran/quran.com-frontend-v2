@@ -63,7 +63,7 @@ export default class extends Controller {
       this.updateVerses();
     });
 
-     setTimeout(()=> this.scrollToVerse(this.config.firstVerse), 100)
+    setTimeout(() => this.scrollToVerse(this.config.firstVerse), 100);
   }
 
   disconnect() {
@@ -290,6 +290,7 @@ export default class extends Controller {
       this.config.repeat.count = Number(
         $(`#repeat-popover-${this.config.repeat.type}-repeat`).val()
       );
+
       //  set repeat range
       this.config.repeat.from = Number($("#repeat-popover-range-from").val());
       this.config.repeat.to = Number($("#repeat-popover-range-to").val());
@@ -360,7 +361,7 @@ export default class extends Controller {
       this.jumpToVerse(Number(e.currentTarget.value));
     });
 
-    const surahNameTemplate = (surah) => {
+    const surahNameTemplate = surah => {
       if (surah.loading) return surah.text;
       const data = surah.element.dataset;
       return `<div class='row select2-result'>
@@ -400,7 +401,7 @@ export default class extends Controller {
       width: "200px",
       templateResult: surahNameTemplate,
       matcher: matchChapterName,
-      escapeMarkup: (text) => text,
+      escapeMarkup: text => text
     });
 
     this.chapterDropdown.on("select2:select", e => {
@@ -471,6 +472,16 @@ export default class extends Controller {
   }
 
   scrollToVerse(verse) {
+    $("#repeat-popover-range-from")
+      .val(verse)
+      .trigger("change");
+    $("#repeat-popover-range-to")
+      .val(verse)
+      .trigger("change");
+    $("#repeat-popover-single")
+      .val(verse)
+      .trigger("change");
+
     let verseElement = $(`#verses .verse[data-verse-number=${verse}]`);
 
     if (verseElement.length > 0) {
@@ -548,7 +559,9 @@ export default class extends Controller {
     clearInterval(this.playerProgressInterval);
     const totalDuration = this.track.howl.duration();
 
-    $("#player .total-time").removeClass('d-none').text(this.formatTime(totalDuration));
+    $("#player .total-time")
+      .removeClass("d-none")
+      .text(this.formatTime(totalDuration));
 
     this.playerProgressInterval = setInterval(() => {
       let currentTime = this.track.howl.seek();
