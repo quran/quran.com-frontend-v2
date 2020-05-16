@@ -17,6 +17,7 @@
             <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
             <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>"></a>
             <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>"></a>
+            <a href="#" data-url="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}" %>?approved=true" class="fa fa-comments comments" data-toggle="tooltip" data-placement="left" title="<%= t('action.quran_reflect', default: 'QuranReflect') %>"></a>
           </div>
         <% end %>
       <% end %>
@@ -40,6 +41,7 @@
           <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>"></a>
           <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= select_tafsirs_verse_path(verse.id) %>"></a>
           <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>"></a>
+          <a href="#" class="fa fa-comments comments" data-toggle="tooltip" data-placement="left" data-url="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}" %>?approved=true" title="<%= t('action.quran_reflect', default: 'QuranReflect') %>"></a>
         </div>
       <% end %>
     </div>

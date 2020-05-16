@@ -66,6 +66,17 @@ export default class extends Controller {
 
     this.copyDom = copyDom;
 
+    let comments = this.el.find(".comments");
+
+    comments.click((e) => {
+      e.preventDefault();
+      let target = $(e.currentTarget);
+      let url = target.data("url");
+
+      GoogleAnalytic.trackEvent("Clicked", "QuranReflect", "Clicked", url);
+      window.location = url;
+    });
+
     this.playButton = this.el.find(".play-verse");
 
     this.playButton.on("click", event => {
