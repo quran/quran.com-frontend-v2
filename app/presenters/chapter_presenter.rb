@@ -174,8 +174,6 @@ class ChapterPresenter < HomePresenter
     verse.translations.where(resource_content_id: translations_to_load).order('translations.priority ASC')
   end
 
-  protected
-
   def meta_page_type
     'article'
   end
@@ -201,12 +199,14 @@ class ChapterPresenter < HomePresenter
 
     translations = valid_translations
 
-    # TODO: change this to www before final build
-    if translations.present?
-      "https://beta.quran.com/#{first_verse.verse_key.sub(':', '/')}?translations=#{translations.join(',')}"
-    else
-      "https://beta.quran.com/#{first_verse.verse_key.sub(':', '/')}"
-    end
+    query_hash = {}
+    query_hash[:font] = params[:font]
+    query_hash[:translations] = translations.join(',').presence
+    query_hash.compact!
+
+    query_string = query_hash.present? ? "?#{query_hash.to_query}" : ''
+
+    "https://quran.com/#{first_verse.verse_key.sub(':', '/')}#{query_string}"
   end
 
   def meta_title
@@ -216,6 +216,8 @@ class ChapterPresenter < HomePresenter
   def meta_image
     "https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
   end
+
+  protected
 
   def verses(verse_start, per)
     return @verses if @verses

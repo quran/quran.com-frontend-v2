@@ -43,9 +43,6 @@ class BasePresenter
               }
             },
       twitter: {
-        #title: meta_title,
-        #description: meta_description,
-        #image: meta_image,
         creator: '@app_quran',
         site: '@app_auran',
         card: 'summary_large_image'
@@ -60,17 +57,8 @@ class BasePresenter
       keywords: meta_keyword,
       image: meta_image,
       canonical: canonical_href,
-      alternate: alternate_links,
       'apple-itunes-app': 'app-id=1118663303',
-      amphtml: canonical_href + '.amp'
     }
-  end
-
-  def alternate_links
-    [
-      { hreflang: 'x-default', href: canonical_href }
-
-    ]
   end
 
   def meta_page_type
@@ -84,7 +72,7 @@ class BasePresenter
   def related_links; end
 
   def meta_url
-    context.url_for(locale: I18n.locale, protocol: 'https')
+    context.url_for(protocol: 'https')
   end
   alias canonical_href meta_url
 

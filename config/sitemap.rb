@@ -56,6 +56,9 @@ SitemapGenerator::Sitemap.create do
 
     add "/#{verse_path}", priority: 0.8, changefreq: CHANGE_FREQUENCY
 
+    add "/#{verse_path}?font=indopak", priority: 0.8, changefreq: CHANGE_FREQUENCY
+    add "/#{verse_path}?font=uthmani", priority: 0.8, changefreq: CHANGE_FREQUENCY
+
     # Add available translation for each verse
     available_translations.each do |trans|
       add "/#{verse_path}?translations=#{trans.slug || trans.id}", priority: 0.8, changefreq: CHANGE_FREQUENCY
