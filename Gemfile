@@ -50,6 +50,9 @@ gem 'excon' # using excon as faraday adapter (net::http breaks)
 gem 'elasticsearch-model'
 gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
+gem 'actionpack-action_caching'
+gem "actionpack-page_caching"
+
 # Pagination
 gem 'pagy', '= 3.7.3'
 

@@ -2,6 +2,7 @@
 
 class ChaptersController < ApplicationController
   before_action :check_routes, only: :show
+  caches_action :index, :show, :ayatul_kursi, expires_in: 7.days, cache_path: :action_cache_key
 
   def index
     @presenter = HomePresenter.new(self)
@@ -99,5 +100,9 @@ class ChaptersController < ApplicationController
         nil
       end
     end
+  end
+
+  def action_cache_key
+    "#{action_name}-#{request.xhr?}-#{params[:id]}-#{params[:range]}-#{params[:translations]}-#{I18n.locale}"
   end
 end
