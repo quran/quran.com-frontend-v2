@@ -77,6 +77,7 @@ it:
     tafsir:
       label: Seleziona un tafsir
       select: Seleziona un tafsir
+    quran_reflect:
   search:
     placeholder: Cerca "Noah"
     result: "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:

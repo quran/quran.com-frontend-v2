@@ -83,6 +83,7 @@ ur:
     tafsir:
       label: تفسیر
       select: تفسیر منتخب کریں
+    quran_reflect:
   search:
     placeholder: " تلاش کریں (نوح)"
     result: "%{from} - %{to} <span>{total} کے</span> لئے تلاش کے نتائج کے لئے: <span>{query}</span>"

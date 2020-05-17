@@ -77,6 +77,7 @@ fa:
     tafsir:
       label: تفسیرها
       select: تفسیر را انتخاب کنید
+    quran_reflect:
   search:
     placeholder: جستجو کردن
     result: "%{to}%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>\n"

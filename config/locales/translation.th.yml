@@ -84,6 +84,7 @@ th:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร
+    quran_reflect:
   search:
     label: ค้นหา
     placeholder: ค้นหา "นุห์"

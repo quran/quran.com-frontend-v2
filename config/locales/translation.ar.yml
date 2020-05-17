@@ -25,7 +25,7 @@ ar:
   local: الإنجليزية
   site_local: لغة الموقع
   change_local: أختر اللغة المرجو أظهار الموقع بها
-  local_native_name: الإنجليزية
+  local_native_name: العربية
   language: اللغة
   settings:
     label: الإعدادات
@@ -81,6 +81,7 @@ ar:
     tafsir:
       label: تفسير
       select: اختر تفسير
+    quran_reflect:
   search:
     placeholder: البحث عن سورة "نوح"
     result: "%{from} - %{to} من <span>{total}</span> نتائج البحث لـ: <span>{query}</span>"

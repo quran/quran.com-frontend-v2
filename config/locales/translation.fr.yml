@@ -83,6 +83,7 @@ fr:
     tafsir:
       label: Tafsirs
       select: Sélectionnez Tafsir
+    quran_reflect:
   search:
     placeholder: Chercher "Noah"
     result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:

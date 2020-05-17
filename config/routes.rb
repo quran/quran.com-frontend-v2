@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get :sw, to: 'static#serviceworker'
   get :serviceworker, to: 'static#serviceworker'
 
-  get "/sitemap.xml" => proc { |req|
+  get "/sitemap.xml.gz" => proc { |req|
     [
         200,
         {
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
             'Expires' => 1.day.from_now.to_s(:rfc822),
             'Content-Type' => 'text/html'
         },
-        [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml')).read]
+        [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
     ]
   }
 

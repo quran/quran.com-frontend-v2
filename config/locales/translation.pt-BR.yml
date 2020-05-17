@@ -89,6 +89,7 @@ pt-BR:
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
+    quran_reflect:
   search:
     label: Pesquisar
     placeholder: Pesquisar "

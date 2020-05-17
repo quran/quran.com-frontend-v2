@@ -79,6 +79,7 @@ id:
     tafsir:
       label: Tafsir
       select: Pilih Tafsir
+    quran_reflect:
   search:
     placeholder: Cari "Nuh"
     result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"

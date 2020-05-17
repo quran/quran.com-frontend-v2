@@ -75,6 +75,7 @@ sq:
     tafsir:
       label: Tafsirs
       select: Zgjidhni Tafsir
+    quran_reflect:
   search:
     placeholder: Kërko "Noah"
     result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
