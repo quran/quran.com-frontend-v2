@@ -6,7 +6,7 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 
 const TAJWEED_RULE_DESCRIPTION = {
@@ -52,6 +52,7 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     this.el = $(this.element);
+    this.trackActions();
 
     $(this.el)
       .find("[data-toggle=tooltip]")
@@ -70,7 +71,7 @@ export default class extends Controller {
 
     this.playButton.on("click", event => {
       event.preventDefault();
-      event.stopImmediatePropagation();
+      //event.stopImmediatePropagation();
 
       let player,
         playerDom = document.getElementById("player");
@@ -93,7 +94,8 @@ export default class extends Controller {
     }
   }
 
-  disconnect() {}
+  disconnect() {
+  }
 
   copy() {
     copyToClipboard(this.el.data("text"));
@@ -108,8 +110,17 @@ export default class extends Controller {
     this.copyDom.on("hidden.bs.tooltip", () =>
       this.copyDom.attr("title", title).tooltip("_fixTitle")
     );
+  }
 
-    GoogleAnalytic.trackEvent("Copy", "Verse", this.el.data("key"), 1);
+  trackActions() {
+    let key = this.el.data('key');
+
+    this.el.find('[data-tack]').on('click', (e) => {
+      const target = $(e.target)
+      const action = target.data('track');
+
+      GoogleAnalytic.trackEvent(action, "AyahAction", "Clicked", key);
+    })
   }
 
   bindTajweedTooltip() {
