@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   include LanguageBoost
+  caches_action :search, :suggestion, expires_in: 7.days, cache_path: :action_cache_key
 
   def search
     if do_search
@@ -73,5 +74,9 @@ class SearchController < ApplicationController
       # Index not ready yet? or other ES server errors
       false
     end
+  end
+
+  def action_cache_key
+    "#{action_name}-#{request.xhr?}-#{params[:query]}-#{params[:page]}-#{I18n.locale}"
   end
 end

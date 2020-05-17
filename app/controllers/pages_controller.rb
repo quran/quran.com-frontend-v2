@@ -2,6 +2,8 @@
 
 class PagesController < ApplicationController
   before_action :set_presenter
+  caches_action :about_us, :apps, :donations, :help_and_feedback, :developers, expires_in: 7.days
+
   def about_us; end
 
   def apps; end

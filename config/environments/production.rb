@@ -57,6 +57,8 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  dalli_pool_size = ENV.fetch('‘RAILS_MAX_THREADS’'){5}
+  config.cache_store = :dalli_store, ENV['MEMCACHE_SERVERS'], { namespace: 'quran', expires_in: 30.days, compress: true, pool_size: dalli_pool_size}
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
