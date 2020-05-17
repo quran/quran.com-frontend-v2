@@ -27,10 +27,9 @@
                   <div class="card-body">
                     It would help us a lot to keep the bugs and translation changes organized. You can fill out this
                     simple and quick for to help us streamline the process. Visit the form at:
-                    <a href="http://goo.gl/forms/fmAVLhGVtO" target="_blank">
-                      http://goo.gl/forms/fmAVLhGVtO
+                    <a href="https://quran.zendesk.com/hc/en-us/requests/new" target="_blank">
+                      https://quran.zendesk.com/hc/en-us/requests/new
                     </a>
-
                   </div>
                 </div>
               </div>
@@ -108,7 +107,7 @@
               <div class="card">
                 <div class="card-header" id="headingSix">
                   <h2 class="mb-0">
-                    <a class="btn btn-link collapsed"  data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Does
+                    <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Does
                       Quran.com have an app?
                     </a>
                   </h2>
@@ -145,7 +144,9 @@
                   </h2>
                 </div>
                 <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample2">
-                  <div class="card-body"> Yes, we do have some Tafsirs. Click on Tafisr Icon (<i class="fa fa-archive fs-xl"></i>) app will show you list of available tafsirs. Then select the tafsir you want to read.
+                  <div class="card-body"> Yes, we do have some Tafsirs. Click on Tafisr Icon
+                    (<i class="fa fa-archive fs-xl"></i>) app will show you list of available tafsirs. Then select the
+                    tafsir you want to read.
                   </div>
                 </div>
               </div>
@@ -172,47 +173,54 @@
   <div class="row d-flex justify-content-center">
     <div class="col-lg-8 col-md-12">
       <div class="text-center">
-        <h2>Can't find what you're looking for? <span>Submit Your Question.</span></h2>
+        <h3 class="text-primary">Can't find what you're looking for?
+          <span>
+          Submit Your Question <%= link_to 'here', 'https://quran.zendesk.com/hc/en-us/requests/new', target: '_blank' %></span>
+        </h3>
 
-        <form action="https://contact.qurancdn.com/contact" method="post" data-remote="true" data-controller="contact-us">
-          <div class="row">
-            <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Full Name" name="contact[name]" required>
-            </div>
 
-            <div class="col-md-4">
-              <input type="email" class="form-control" placeholder="Email Address" name="contact[email]" required>
-            </div>
-            <div class="col-md-4">
-              <select class="form-control" name="contact[subject]" required>
-                <option>Subject</option>
-                <option value="feedback">Feedback &amp; Suggestions</option>
-                <option value="translation-bug">Translation Error</option>
-                <option value="bug">Site Bug</option>
-                <option value="talent">Contributing (monetary or talent)</option>
-                <option value="help">Help</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <textarea class="form-control" placeholder="Question" name="contact[detail]" required></textarea>
-              <small class="form-text text-muted">
-                Please be as concise as possible and include screenshots where applicable to help us help you as quickly
-                as we can.
-              </small>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="alert alert-dismissible alert-primary d-none">
+        <% if false %>
+          <form action="https://contact.qurancdn.com/contact" method="post" data-remote="true" data-controller="contact-us">
+            <div class="row">
+              <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Full Name" name="contact[name]" required>
               </div>
 
-              <button type="submit" class="btn btn-primary" data-disable-with="Please wait..">Send Question</button>
+              <div class="col-md-4">
+                <input type="email" class="form-control" placeholder="Email Address" name="contact[email]" required>
+              </div>
+              <div class="col-md-4">
+                <select class="form-control" name="contact[subject]" required>
+                  <option>Subject</option>
+                  <option value="feedback">Feedback &amp; Suggestions</option>
+                  <option value="translation-bug">Translation Error</option>
+                  <option value="bug">Site Bug</option>
+                  <option value="talent">Contributing (monetary or talent)</option>
+                  <option value="help">Help</option>
+                </select>
+              </div>
             </div>
-          </div>
-        </form>
+            <div class="row">
+              <div class="col-md-12">
+                <textarea class="form-control" placeholder="Question" name="contact[detail]" required></textarea>
+                <small class="form-text text-muted">
+                  Please be as concise as possible and include screenshots where applicable to help us help you as
+                  quickly
+                  as we can.
+                </small>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="alert alert-dismissible alert-primary d-none">
+                </div>
+
+                <button type="submit" class="btn btn-primary" data-disable-with="Please wait..">Send Question</button>
+              </div>
+            </div>
+          </form>
+        <% end %>
       </div>
     </div>
   </div>
