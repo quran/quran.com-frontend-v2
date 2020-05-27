@@ -1,6 +1,6 @@
 <!--
-*** Thanks for checking out this Quran.com repo. If you have a suggestion that would
-*** make this better, please fork the repo and create a pull request or simply open
+*** Thanks for checking out the quran.com repo. If you have a suggestion that would
+*** make this repo  better, please fork the repo and create a pull request or simply open
 *** an issue with the tag "enhancement".
 *** Thanks again! Now go create something AMAZING! :D
 -->
@@ -143,6 +143,10 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 8. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and other required data.
 
 9. Check that PostgreSQL is up and running on your machine. For Linux, use:
+
+  ```sh
+  sudo service postgresql status
+  ```
 
 10. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and a other required data.
 
