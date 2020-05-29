@@ -42,11 +42,10 @@ gem 'sentry-raven'
 
 # Detect language from text
 gem "cld3"
-#gem 'cld2', github: 'taf2/cld2', require: 'cld'
-#gem "whatlanguage"
 
 # Elasticsearch
-gem 'excon' # using excon as faraday adapter (net::http breaks)
+# using excon as faraday adapter (net::http breaks)
+gem 'excon'
 gem 'elasticsearch-model'
 gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
