@@ -499,14 +499,17 @@ export default class extends Controller {
         currentScroll + windowHeight - playerHeight;
       let topOffsetCheck = verseTopOffset < currentScroll + headerHeight;
 
+      const scrollLength = verseTopOffset - (headerHeight + 50);
+      const scrollTime = Math.min(500, scrollLength * 10);
+
       if (bottomOffsetCheck || topOffsetCheck) {
         $("html, body")
           .stop(true, true)
           .animate(
             {
-              scrollTop: verseTopOffset - (headerHeight + 50)
+              scrollTop: scrollLength
             },
-            500
+            scrollTime
           );
       }
     }

@@ -51,11 +51,8 @@ class AudioPresenter < BasePresenter
     # 7 is default recitation
 
     recitation = (
-    params[:recitation].presence ||
-        session[:recitation] || DEFAULT_RECITATION
+    params[:recitation].presence || DEFAULT_RECITATION
   ).to_i
-
-    session[:recitation] = recitation
 
     recitation
   end
