@@ -24,6 +24,7 @@ export default class extends Controller {
   connect() {
     this.element[this.identifier] = this;
     this.store = new LocalStore();
+    this.loadSettings();
 
     $(document).on("click", ".font-size", e => {
       e.preventDefault();
@@ -47,9 +48,16 @@ export default class extends Controller {
 
     $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
 
+    $("#reciter-dropdown-menu")
+      .val(this.get("recitation"))
+      .trigger("change");
     $(document).on("select2:select", "#reciter-dropdown-menu", e => {
       this.updateReciter(e.currentTarget.value);
     });
+
+    $("#translations")
+      .val(this.get("translations"))
+      .trigger("change");
 
     $(document).on("select2:select", "#translations", e => {
       this.updateTranslations($(e.target).val());
@@ -58,8 +66,6 @@ export default class extends Controller {
     $(document).on("select2:unselecting", "#translations", e => {
       this.updateTranslations($(e.target).val());
     });
-
-    this.loadSettings();
 
     let mobileDetect = window.matchMedia("(max-width: 610px)");
     this.mobile = mobileDetect.matches;
@@ -98,7 +104,12 @@ export default class extends Controller {
       saved = {};
     }
 
-    this.settings = Object.assign(this.defaultSetting(), saved);
+    let defaultsSettings = this.defaultSetting();
+    this.settings = Object.assign(defaultsSettings, saved);
+
+    if (this.settings.translations.length == 0) {
+      this.settings.translations = defaultsSettings.translations;
+    }
   }
 
   getTooltipType() {
@@ -121,7 +132,7 @@ export default class extends Controller {
       recitation: 7,
       nightMode: false,
       readingMode: false,
-      translations: [],
+      translations: [131],
       repeatEnabled: false,
       repeatType: "single",
       repeatCount: 1,
@@ -165,7 +176,7 @@ export default class extends Controller {
       "(prefers-color-scheme: dark)"
     );
 
-    const setDark = function (e) {
+    const setDark = function(e) {
       if (e && e.matches) {
         $("body").addClass("night");
       } else {
@@ -179,7 +190,7 @@ export default class extends Controller {
     document.addEventListener("DOMContentLoaded", () => {
       setDark(darkModeMediaQuery);
     });
-    darkModeMediaQuery.addListener((event) => {
+    darkModeMediaQuery.addListener(event => {
       setDark(event);
     });
     setDark(darkModeMediaQuery);

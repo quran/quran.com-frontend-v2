@@ -17,7 +17,9 @@
             <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>" data-tack="ayah-action-copy"></a>
             <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>" data-tack="ayah-action-tafsir"></a>
             <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>" data-tack="ayah-action-share"></a>
-            <a class="fa fa-comments comments" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?approved=true&feed=true" target="_blank" data-tack="ayah-action-quranreflect"></a>
+            <a class="reflection" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank" data-tack="ayah-action-quranreflect">
+              <%= lazy_image_tag 'media/images/QR-icon.png', height: '30px', alt: 'Quran.com mobile apps' %>
+            </a>
           </div>
         <% end %>
       <% end %>
@@ -41,7 +43,9 @@
           <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>" data-tack="ayah-action-copy"></a>
           <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>" data-tack="ayah-action-tafsir"></a>
           <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>" data-tack="ayah-action-share"></a>
-          <a class="fa fa-comments comments" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?approved=true&feed=true" target="_blank" data-tack="ayah-action-quranreflect"></a>
+          <a class="reflection" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank" data-tack="ayah-action-quranreflect">
+            <%= lazy_image_tag 'media/images/QR-icon.png', height: '30px', alt: 'Quran.com mobile apps' %>
+          </a>
         </div>
       <% end %>
     </div>

@@ -23,7 +23,7 @@ export default class extends Controller {
       let id = target.getAttribute("foot_note");
 
       if (id && id.length > 0) {
-        $.get(`/foot_note/${id}`);
+        $.rails.ajax(`/foot_note/${id}`);
       }
     });
 
