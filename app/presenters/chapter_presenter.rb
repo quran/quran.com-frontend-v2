@@ -33,7 +33,6 @@ class ChapterPresenter < HomePresenter
   def font
     strong_memoize :font do
       _font = params[:font].presence || session[:font] || 'v1'
-
       _font = FONT_METHODS.key?(_font) ? _font : 'v1'
       session[:font] = _font
     end
@@ -156,14 +155,6 @@ class ChapterPresenter < HomePresenter
 
   def show_verse_actions?
     true
-  end
-
-  def recitation_selected?(id)
-    id == (session[:recitation] || DEFAULT_RECITATION)
-  end
-
-  def translation_selected?(id)
-    valid_translations.include?(id)
   end
 
   def load_translations(verse, default_translation = nil)

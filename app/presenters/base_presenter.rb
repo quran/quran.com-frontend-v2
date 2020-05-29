@@ -5,7 +5,7 @@ class BasePresenter
 
   HOST = 'https://www.quran.com'
   DEFAULT_RECITATION = 7
-  DEFAULT_TRANSLATION = 131
+  DEFAULT_TRANSLATION = 131 # Clear Quran with footnotes is default translation
   TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   attr_reader :context, :resource_class
@@ -29,29 +29,29 @@ class BasePresenter
       },
       # FB Applinks meta tags
       al:
-            {
-              web: { url: meta_url },
-              ios: {
-                url: 'https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303',
-                app_store_id: '1118663303',
-                app_name: 'Quran - by Quran.com - قرآن'
-              },
-              android: {
-                url: 'https://play.google.com/store/apps/details?id=com.quran.labs.androidquran',
-                app_name: 'Quran for Android',
-                package: 'com.quran.labs.androidquran'
-              }
-            },
+        {
+          web: {url: meta_url},
+          ios: {
+            url: 'https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303',
+            app_store_id: '1118663303',
+            app_name: 'Quran - by Quran.com - قرآن'
+          },
+          android: {
+            url: 'https://play.google.com/store/apps/details?id=com.quran.labs.androidquran',
+            app_name: 'Quran for Android',
+            package: 'com.quran.labs.androidquran'
+          }
+        },
       twitter: {
         creator: '@app_quran',
         site: '@app_auran',
         card: 'summary_large_image'
       },
-      fb:{
-          app_id: '342185219529773',
-          pages: '603289706669016',
-          article_style: 'quran'
-    },
+      fb: {
+        app_id: '342185219529773',
+        pages: '603289706669016',
+        article_style: 'quran'
+      },
       title: meta_title,
       description: meta_description,
       keywords: meta_keyword,
@@ -69,11 +69,13 @@ class BasePresenter
     'Quran.com'
   end
 
-  def related_links; end
+  def related_links;
+  end
 
   def meta_url
     context.url_for(protocol: 'https')
   end
+
   alias canonical_href meta_url
 
   def meta_description
@@ -113,9 +115,6 @@ class BasePresenter
   end
 
   def valid_translations
-    # 131 default translation
-    #return @valid_translation if @valid_translation
-
     strong_memoize :valid_translations do
       translations = (
       params[:translations].presence ||

@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   include LanguageBoost
-  caches_action :search, :suggestion, expires_in: 7.days, cache_path: :action_cache_key
+  # caches_action :search, :suggestion, expires_in: 7.days, cache_path: :action_cache_key
 
   def search
     if do_search
