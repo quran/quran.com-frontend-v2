@@ -244,7 +244,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.4)
-    puma (3.12.4)
+    puma (3.12.6)
     puma-ngrok-tunnel (1.0.0)
       ngrok-tunnel (~> 2.1, >= 2.1.1)
       puma (>= 3, < 5)
@@ -403,7 +403,7 @@ DEPENDENCIES
   pronto-rubocop
   pronto-scss
   pry-rails
-  puma (~> 3.12.4)
+  puma (~> 3.12.6)
   puma-ngrok-tunnel
   rack-cors
   rails (~> 6.0.2.2)
