@@ -12,7 +12,7 @@ gem 'rails', '~> 6.0.2.2'
 gem 'puma', '~> 3.12.4'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '>= 4.2.2'
+gem 'webpacker', '>= 5.0.1'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -34,7 +34,7 @@ gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags', '>= 2.13.0'
 
 # For managing cros
-gem 'rack-cors', require: 'rack/cors'
+gem 'rack-cors', '>= 1.1.1', require: 'rack/cors'
 
 #gem 'quran-core', github: 'quran/quran-core'
 
@@ -49,8 +49,8 @@ gem 'excon'
 gem 'elasticsearch-model'
 gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
-gem 'actionpack-action_caching'
-gem "actionpack-page_caching"
+gem 'actionpack-action_caching', '>= 1.2.1'
+gem "actionpack-page_caching", ">= 1.2.2"
 
 # Pagination
 gem 'pagy', '= 3.7.3'
@@ -77,7 +77,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'annotate', '= 2.7.4'
-  gem 'rails_real_favicon', '>= 0.0.13'
+  gem 'rails_real_favicon', '>= 0.1.0'
   gem 'rubocop', '>= 0.79', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', '~> 2.3.2'
@@ -101,7 +101,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.32.1'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
