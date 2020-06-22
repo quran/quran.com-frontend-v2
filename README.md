@@ -139,26 +139,24 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
   gem install bundler
   bundle install
   ```
+  
+8. Check that PostgreSQL is up and running on your machine. For Linux, use:
 
-8. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and other required data.
+9. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and a other required data.
 
-9. Check that PostgreSQL is up and running on your machine. For Linux, use:
-
-10. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and a other required data.
-
-11. Inside the `quran.com-fronted-v2` directory, run:
+10. Inside the `quran.com-fronted-v2` directory, run:
 
   ```sh
   bundle exec rails db:create
   ```
 
-12. Load the dump in the PostgreSQL database. This process may vary for different operating systems. For Linux, use:
+11. Load the dump in the PostgreSQL database. This process may vary for different operating systems. For Linux, use:
 
   ```sh
   psql -cxq --quiet -d quran_dev -f dump.sql
   ```
 
-13. To start the local server with Rails, run:
+12. To start the local server with Rails, run:
 
   ```sh
   rails s
