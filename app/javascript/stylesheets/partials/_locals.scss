@@ -1,13 +1,28 @@
+.uighur,
+.uyghur,
+.ur,
+.urdu,
+.persian,
+.hebrew,
+.pashto,
+.arabic,
+divehi,
+.dhivehi {
+  direction: rtl;
+  text-align: right;
+  line-height: normal;
+
+  .alert-dismissible {
+    .close {
+      left: 0;
+      right: auto;
+    }
+  }
+}
+
 .ur,
 .urdu {
   font-family: nafees !important;
-
-  direction: rtl;
-  text-align: right;
-
-  .alert-dismissible {
-    float: left;
-  }
 }
 
 .divehi,
