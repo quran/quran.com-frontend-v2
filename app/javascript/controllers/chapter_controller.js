@@ -45,6 +45,18 @@ export default class extends Controller {
     });
   }
 
+  updatePagination(dom) {
+    const lastVerse = $(dom.find(".verse").last()).data("verseNumber");
+
+    // Update next page ref if it exists.
+    const nextPage = $("#verses_pagination a[rel=next]");
+    if (nextPage.length > 0) {
+      let ref = nextPage.attr('href');
+      const updatedRef = ref.replace(/page=\d+/, `page=${Math.ceil(lastVerse / 10) + 1}`);
+      nextPage.attr('href', updatedRef);
+    }
+  }
+
   loadVerses(verse) {
     // If this ayah is already loaded, scroll to it
     if ($(`#verses .verse[data-verse-number=${verse}]`).length > 0) {
@@ -59,7 +71,7 @@ export default class extends Controller {
 
     if (verse > lastVerse) {
       from = lastVerse;
-      to = verse;
+      to = Math.ceil(verse / 10) * 10;
     } else {
       from = verse;
       to = firstVerse;
@@ -69,7 +81,8 @@ export default class extends Controller {
       `/${chapter}/load_verses?${$.param({ from, to, verse })}`
     )
       .then(response => response.text())
-      .then(verses => this.insertVerses(verses));
+      .then(verses => this.insertVerses(verses))
+      .then(dom => this.updatePagination(dom));
 
     return Promise.resolve(request);
   }
@@ -121,5 +134,7 @@ export default class extends Controller {
       let targetDom = $(`#verses .verse[data-verse-number=${nextVerse}]`);
       targetDom.before(newVerses);
     }
+
+    return Promise.resolve(dom);
   }
 }
