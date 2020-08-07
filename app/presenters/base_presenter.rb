@@ -115,7 +115,6 @@ class BasePresenter
   end
 
   def valid_translations
-    session.clear
     strong_memoize :valid_translations do
       translations = (
       params[:translations].presence ||
