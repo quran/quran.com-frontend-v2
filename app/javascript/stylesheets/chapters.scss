@@ -445,11 +445,16 @@
     }
 
     .arabic {
-      line-height: normal;
+      line-height: 1.5;
       font-size: 45px;
       color: #000;
       text-align: right;
       float: right;
+      position: relative;
+      text-align: justify;
+      -moz-text-align-last: center;
+      text-align-last: center;
+      word-wrap: break-word;
 
       span {
         cursor: pointer;
@@ -463,10 +468,8 @@
       .txt {
         padding-bottom: 1rem;
         margin-bottom: 1rem;
-        //border-bottom: 1px solid;
 
         &:last-child {
-          // border-bottom: none;
           padding-bottom: 0;
           margin-bottom: 0;
         }
