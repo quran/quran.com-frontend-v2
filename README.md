@@ -107,62 +107,62 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
     
 3. Move into the `quran.com-frontend-v2` directory with the following command:
 
-  ```sh
-  cd quran.com-frontend-v2
-  ```
+    ```sh
+    cd quran.com-frontend-v2
+    ```
 
 4. Assign the forked repository to a remote called "origin".
 
-  ```sh
-  git remote add origin git://github.com:<your-username>/quran.com-frontend-v2.git
-  ```
+    ```sh
+    git remote add origin git://github.com:<your-username>/quran.com-frontend-v2.git
+    ```
 
 5. Assign the original repository to a remote called "upstream".
 
-  ```sh
-  git remote add upstream git@github.com:quran/quran.com-frontend-v2.git
-  ```
+    ```sh
+    git remote add upstream git@github.com:quran/quran.com-frontend-v2.git
+    ```
 
 6. Install the frontend packages with yarn:
 
-  ```sh
-  yarn
-  ```
+    ```sh
+    yarn
+    ```
 
 7. Install the Ruby bundles with the following series of commands:
 
-  ```sh
-  rvm gemset create quran
-  rvm gemset use quran
-  gem install bundler
-  bundle install
-  ```
+    ```sh
+    rvm gemset create quran
+    rvm gemset use quran
+    gem install bundler
+    bundle install
+    ```
 
 8. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and other required data.
 
 9. Check that PostgreSQL is up and running on your machine. For Linux, use:
 
-  ```sh
-  sudo service postgresql status
-  ```
+    ```sh
+    sudo service postgresql status
+    ```
 
 11. Inside the `quran.com-fronted-v2` directory, run:
 
-  ```sh
-  bundle exec rails db:create
-  ```
+    ```sh
+    bundle exec rails db:create
+    ```
 
 12. Load the dump in the PostgreSQL database. This process may vary for different operating systems. For Linux, use:
 
-  ```sh
-  psql -cxq --quiet -d quran_dev -f dump.sql
-  ```
+    ```sh
+    psql -cxq --quiet -d quran_dev -f dump.sql
+    ```
 
 13. To start the local server with Rails, run:
 
-  ```sh
-  rails s
-  ```
+    ```sh
+    rails s
+    ```
 
 In Sha'a Allah, after going through these successfully, you'll see the web application running on `localhost:3000`
 
