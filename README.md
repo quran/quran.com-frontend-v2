@@ -58,9 +58,9 @@
 <img src="app/javascript/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
-Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) application serves millions of visitors from all around the world. Al-hamdu Lillah, the project continues to grow.
+Ma Sha'a Allah, Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) application serves millions of visitors from all around the world. Al-hamdu Lillah, the project continues to grow. This success is _only_ with the blessings of **Allah** Subhana Wa Tala. 
 
-This success is _only_ with the blessings of **Allah** Subhana Wa Tala. We're also thankful for the dedicated professionals who volunteer diligently to keep this project beneficial.
+We're thankful for the dedicated professionals who volunteer diligently to keep this project beneficial. 
 
 Continue reading to learn more about how you can contribute to ["the Noble Quran GitHub repository"](https://github.com/quran/quran.com-frontend-v2). Your help will surely go a long way, In Sha'a Allah.
 
@@ -95,18 +95,16 @@ You'll need:
 
 ### Set-Up
 
-The setup instructions assume that you're using [Git Bash](https://git-scm.com/), but the concepts are the same if you're using [Git GUI](https://git-scm.com/downloads/guis) or another version control software.
+The setup instructions assume that you're using [Git Bash](https://git-scm.com/), but the concepts are the same, if you're using [Git GUI](https://git-scm.com/downloads/guis) or another version control software. To execute the commands in the instructions, please replace `<your-username>` with your GitHub account user name.
 
 1. To begin, fork the current ["Noble Quran project repository"](https://github.com/quran/quran.com-frontend-v2) on GitHub.
 
-2. Clone the repository of your fork. Launch your terminal, and enter the following command:
+2. Clone the repository of your fork. Launch your terminal, and enter the following command. 
 
-  ```sh
-  git clone https://github.com/<your-username>/quran.com-frontend-v2.git
-  ```
-
-  Replace `<your-username>` with your GitHub user name.
-
+    ```sh
+    git clone https://github.com/<your-username>/quran.com-frontend-v2.git
+    ```
+    
 3. Move into the `quran.com-frontend-v2` directory with the following command:
 
   ```sh
@@ -144,7 +142,9 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 
 9. Check that PostgreSQL is up and running on your machine. For Linux, use:
 
-10. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and a other required data.
+  ```sh
+  sudo service postgresql status
+  ```
 
 11. Inside the `quran.com-fronted-v2` directory, run:
 
@@ -174,7 +174,7 @@ If you're new to Git, see the [Git references](https://git-scm.com/docs) and the
 
 - Review the [open issues](https://github.com/quran/quran.com-frontend-v2/issues) for a list of known issues and proposed features.
 
-- Pull the latest changes from "upstream" and push these changes to your forked "origin". You'll need to repeat this step each time you plan to contribute.
+- Pull the latest changes from "upstream" and push these changes to your forked "origin". You'll need to repeat these steps each time you plan to contribute.
 
   ```sh
   git checkout master
@@ -191,7 +191,7 @@ If you're new to Git, see the [Git references](https://git-scm.com/docs) and the
 
 - Employ your technical chops to resolve an issue or develop a proposed feature. Be sure your code follows our practices, as observed in our source code.
 
-- Run the following commands before you switch from your current branch to a new branch, to prevent leaking the changes on your current branch to another branch. The `git status` commands shows you the modified files, and `git add .` adds all the changed files to the staging area. The`git commit` command moves the files from the staging area and makes a commit in the branch. Only the committed changes can be pushed.
+- Run the following commands before you switch from your current branch to a new branch, to prevent leaking the changes in your current branch to another branch. The `git status` commands shows you the modified files, and `git add .` adds all the changed files to the staging area. The`git commit` command moves the files from the staging area and makes a commit in the branch. Only the committed changes can be pushed.
 
   ```sh
   git status
