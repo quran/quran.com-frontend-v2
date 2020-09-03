@@ -10,8 +10,15 @@
     top: 46%;
   }
   @media #{$tablet-md}{
-    .verse-dropdown{
+    .verse-dropdown, .surah-dropdown{
       position: unset;
+      .dropdown-menu{
+        max-height: unset;
+        position: fixed !important;
+        bottom: 0px;
+        transform: unset !important;
+        z-index: 9999;
+      }
     }
     .actions-row{
       position: relative;
