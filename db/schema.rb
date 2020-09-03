@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_131540) do
     t.integer "position_y"
     t.float "zoom"
     t.string "ur_translation"
+    t.boolean "continuous"
     t.index ["verse_id"], name: "index_arabic_transliterations_on_verse_id"
     t.index ["word_id"], name: "index_arabic_transliterations_on_word_id"
   end
@@ -572,6 +573,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_131540) do
     t.integer "verse_stem_id"
     t.string "text_imlaei"
     t.string "text_uthmani_simple"
+    t.text "text_uthmani_tajweed"
     t.index ["chapter_id"], name: "index_verses_on_chapter_id"
     t.index ["verse_index"], name: "index_verses_on_verse_index"
     t.index ["verse_key"], name: "index_verses_on_verse_key"

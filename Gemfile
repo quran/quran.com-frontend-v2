@@ -3,19 +3,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2.2'
+gem 'rails', '~> 6.0.3.2'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12.4'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '>= 4.2.2'
+gem 'webpacker', '>= 5.2.1'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.2.1'
 
 gem 'fast_blank'
 gem 'pg'
@@ -29,15 +29,13 @@ gem 'translation'
 # Run any code in parallel Processes
 gem 'parallel', require: false
 gem 'ruby-progressbar', require: false
+
 # seo
 gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags', '>= 2.13.0'
 
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
-
-#gem 'quran-core', github: 'quran/quran-core'
-
 gem 'sentry-raven'
 
 # Detect language from text
