@@ -1,12 +1,12 @@
 <li class="d-block pt-1 position-relative">
-  <div class="custom-shadow mt-2">
+  <div class="border rounded mt-2 juzz-container">
    <span class="position-absolute para-number"><%= key %></span>
    <% juz.verse_mapping.each do |chapter_number, verses| %>
      <% chapter = @presenter.chapters[chapter_number.to_i - 1] %>
 
-      <%= link_to range_path(chapter, verses), class: 'row d-flex align-items-center border-bottom py-3 m-0' do %>
+      <%= link_to range_path(chapter, verses), class: 'row d-flex align-items-center border-bottom py-4 m-0 juzz-number-box' do %>
         <div class="col-8 name text-truncate">
-          <h5 class="name"><%= chapter.name_simple %></h5>
+          <h5 class="name text-muted"><%= chapter.name_simple %></h5>
           <span class="badge rounded-pill bg-secondary"><%= verses %></span>
           <span class="text-nowrap <%= chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
         </div>

@@ -51,23 +51,6 @@ body{
   cursor: pointer;
 }
 
-/*buttons*/
-/*$sss: #00ACC2;
-.btn-primary-500{
-   $ss: #00ACC2;
-   background: rgba($ss ,0.7);
-       button-variant(
-    $background,
-    $border,
-    $color: color-contrast($background),
-    $hover-background: darken($background, 7.5%),
-    $hover-border: darken($border, 10%),
-    $hover-color: color-contrast($hover-background),
-    $active-background: darken($background, 10%),
-    $active-border: darken($border, 12.5%),
-    $active-color: color-contrast($active-background)
-  )
-}*/
 /*custom shadow*/
 .custom-shadow{
   border-radius: 5px;
@@ -100,7 +83,7 @@ body{
       width: 100%;
       height: 60px;
       margin: 0;
-      z-index: 10;
+      z-index: 1;
     }
   }
 
@@ -116,17 +99,17 @@ body{
     cursor: pointer;
     line-height: 60px;
     background: white;
-    z-index: 90;
+    z-index: 1;
   }
   .form-group.sb-search-open {
     width: 100%;
     .search-label {
       background: $color-primary;
       color: #fff;
-      z-index: 111;
+      z-index: 1;
     }
     .form-control-submit {
-      z-index: 90;
+      z-index: 1;
     }
   }
   .no-js {
@@ -137,19 +120,19 @@ body{
       .search-label {
         background: $color-primary;
         color: #fff;
-        z-index: 11;
+        z-index: 1;
       }
     }
     .form-control {
       .form-control-submit {
-        z-index: 90;
+        z-index: 1;
       }
     }
   }
 }
 .rounded-search{
   .form-control, .form-control-submit, .search-label,{
-    border-radius: 50px;
+    border-radius: 50px !important;
     border: 1px solid $color-primary;
     height: 44px !important;
   }
@@ -163,7 +146,7 @@ body{
     position: absolute;
     right: 2%;
     &.sb-search-open{
-        width: 77%;
+      width: 77%;
     }
   }
   .form-control-submit, .search-label{
@@ -218,3 +201,124 @@ body{
     }
   }
 }
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 140px;
+  height: 40px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid white;
+    background: black;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "\f186";
+    padding: 6px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    background: black;
+    color: white;
+    border: 2px solid white;
+  }
+
+  input:checked + .slider::before {
+    content: '\f185';
+    background: #48a3b8;
+    color: #f9d71c;
+    border: 2px solid #48a3b8;
+  }
+
+  .slider::after{
+    content: 'Night Mode';
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-21%, -50%);
+    width: 100%;
+    position: absolute;
+    font-family: sans-serif;
+  }
+  input:checked + .slider::after {
+    content: 'Day Mode';
+    color: #48a3b8;
+    right: 50%;
+    left: unset;
+    top: 50%;
+    transform: translate(64%, -50%);
+  }
+
+  input:checked + .slider {
+    background-color: white;
+    border: 1px solid $color-primary;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(98px);
+    -ms-transform: translateX(98px);
+    transform: translateX(98px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+@media ($tablet) {
+  .switch {
+    width: 55px;
+    height: 29px;
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(22px);
+      -ms-transform: translateX(22px);
+      transform: translateX(22px);
+    }
+    input:checked + .slider::after {
+      content: '';
+    }
+    input:checked + .slider::before {
+      border-width: 1px;
+    }
+    .slider::after{
+      content: '';
+    }
+
+    .slider:before {
+      padding: 2px;
+      border-width: 1px;
+      bottom: 3px;
+    }
+  }
+}
+/*End Switch*/
