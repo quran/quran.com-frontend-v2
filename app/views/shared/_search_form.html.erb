@@ -1,47 +1,25 @@
 <% query = (params[:q] || params[:query]).presence %>
 
-<% if expanded %>
-  <div class="d-md-none">
-    <i class="fa-search search1 mobile-search"></i>
-    <div class="expanded-search">
-      <form class="form-search" class="hidden-xs-down" role="search" action="/search" autocomplete="off">
-        <input type="text" id="search-field" class="form-control <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" tabindex="1" name="query" value="<%= query %>">
-        <a href="#" class="btn-danger btn-search-close js-waves-off" data-action="toggle" data-class="mobile-search-on">
-          <i class="fal fa-times"></i>
-        </a>
-
-        <div class="suggestions">
-
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="search-form d-none d-md-block">
-    <form class="form-search" action="/search" data-controller="search-form">
-      <input class="form-control <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
-      <button class="search-btn d-none d-md-block" type="submit"><%= _t('search.label') %></button>
-      <button class="search-btn d-md-none" type="submit">
-        <i class="fa fa-search search2"></i>
-      </button>
-      <div class="suggestions">
-
-      </div>
+<div class="search-form d-md-flex d-none flex-fill">
+   <form class="form-search form-group sb-search-open" action="/search" data-controller="search-form">
+      <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
+      <button type="submit" class="form-control form-control-submit search-btn"></button>
+      <span class="search-label">
+        <i class="fa fa-search"></i>
+      </span>
+      <div class="suggestions"></div>
     </form>
-  </div>
-<% else %>
-  <div class="search-form">
-    <form class="form-search" action="/search" data-controller="search-form">
-      <i class="fa-search search1"></i>
-      <input class="form-control <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
-      <button class="search-btn d-none d-md-block" type="submit"><%= _t('search.label') %></button>
-      <button class="search-btn d-md-none" type="submit">
-        <i class="fa fa-search search2"></i>
-      </button>
-      <div class="suggestions">
 
-      </div>
+</div>
+
+<div class="search-form d-md-none d-flex flex-fill">
+   <form class="form-search form-group <%= mobile_expand ? 'expand-collapse' : 'sb-search-open' %>" action="/search" data-controller="search-form" id="search">
+      <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
+      <button type="submit" class="form-control form-control-submit search-btn"></button>
+      <span class="search-label">
+        <i class="fa fa-search"></i>
+      </span>
+      <div class="suggestions"></div>
     </form>
-  </div>
-<% end %>
+</div>
 

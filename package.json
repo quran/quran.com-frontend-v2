@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "5.0.1",
-    "bootstrap": "4.3.1",
+    "bootstrap": "^5.0.0-alpha1",
     "bootstrap-slider": "^10.6.2",
     "copy-to-clipboard": "^3.0.8",
     "es6-promise": "^4.2.8",

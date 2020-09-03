@@ -12,66 +12,48 @@
  *
  */
 
+/*@import "custom-bootstrap";*/
+
 @import "custom-bootstrap";
 @import "bootstrap-slider.min";
-
+@import "./pages/home";
+@import "./pages/chapter";
+@import "./pages/common";
 @import "icons";
-@import "partials/header";
+/*@import "partials/header";*/
 @import "partials/footer";
 @import "partials/fonts";
-@import "partials/font_sizes";
-@import "partials/common";
+/*@import "partials/font_sizes";*/
+/*@import "partials/common";*/
 @import "partials/sidebar";
-@import "partials/search";
+/*@import "partials/search";
 @import "partials/locals";
-@import "partials/animation";
+@import "partials/animation";*/
+
 @import "partials/surah_names";
-@import "partials/surah-actions";
-@import "partials/player";
-@import "partials/verse";
+
+/*@import "partials/surah-actions";*/
+/*@import "partials/player";*/
+/*@import "partials/verse";
 @import "partials/dark";
 @import "partials/share";
 @import "partials/highlighting";
-@import "partials/tajweed";
-
+@import "partials/tajweed";*/
+/*
 @import "partials/select2-minimal-ui";
 @import "extentions/extension-pace";
 @import "extentions/extension-waves";
-@import "extentions/extension-slimscroll";
+@import "extentions/extension-slimscroll";*/
 
-@import "pages";
+/*@import "pages";
 @import "chapters";
 @import "chapter_infos";
 @import "footnote";
-@import "reading-mode";
-@import "player";
+@import "reading-mode";*/
+/*@import "player";*/
 
-@import "select2/dist/css/select2";
-@import "select2-cust";
+/*@import "select2/dist/css/select2";
+@import "select2-cust";*/
 
-.turbolinks-progress-bar {
-  height: 5px;
-  background-color: $color-primary;
-}
 
-.tooltip-inner {
-  box-shadow: 0px 10px 35px 0 rgba(0, 172, 193, 0.2);
-}
-.tooltip {
-  pointer-events: none;
-}
 
-/* horizontal scrolling */
-.scrolling-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-
-  .card {
-    flex: 0 0 auto;
-  }
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}

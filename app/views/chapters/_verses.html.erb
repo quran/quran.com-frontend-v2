@@ -15,15 +15,15 @@
   <% end %>
 
   <% if @presenter.continue? %>
-    <%= link_to chapter_path(@presenter.chapter), class: 'btn btn-outline-primary' do %>
+    <%= link_to chapter_path(@presenter.chapter), class: 'btn btn-outline-primary mt-4' do %>
       <%= _t('chapters.read_full') %>
     <% end %>
 
-    <%= link_to @presenter.continue_range, class: 'btn btn-outline-primary' do %>
+    <%= link_to @presenter.continue_range, class: 'btn btn-outline-primary mt-4' do %>
       <%= _t('chapters.continue') %> <i class="fa-angle-down"></i>
     <% end %>
   <% else %>
-    <%= link_to chapter_path(@presenter.chapter.chapter_number - 1), class: 'btn btn-outline-primary' do %>
+    <%= link_to chapter_path(@presenter.chapter.chapter_number - 1), class: 'btn btn-outline-primary mt-4' do %>
       <i class="fa-angle-left"></i> <%= _t('chapters.previous') %>
     <% end if @presenter.previous_surah? %>
 

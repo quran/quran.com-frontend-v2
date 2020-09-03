@@ -50,8 +50,16 @@ const TAJWEED_RULES = [
 ];
 
 export default class extends Controller {
+  static targets = [ "actions"]
   connect() {
     this.el = $(this.element);
+
+    if (this.el.find(".arabic").height() + this.el.find(".translation").height() < 320) {
+      this.actionsTarget.classList.add("col-md-12", "order-md-1")
+      this.actionsTarget.children[0].classList.remove("flex-md-column")
+      this.actionsTarget.children[0].classList.add("justify-content-md-evenly")
+      this.element.classList.add("pb-md-2")
+    }
     this.trackActions();
 
     $(this.el)

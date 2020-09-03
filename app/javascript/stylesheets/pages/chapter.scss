@@ -1,0 +1,47 @@
+.surah-actions{
+  .dropdown-menu.show {
+    overflow: auto;
+    width: 300px;
+    max-height: 350px;
+  }
+  .dropdown-toggle::after {
+    position: absolute;
+    right: 12px;
+    top: 46%;
+  }
+  @media #{$tablet-md}{
+    .verse-dropdown{
+      position: unset;
+    }
+    .actions-row{
+      position: relative;
+    }
+
+  }
+}
+#chapter-page{
+  .verse-actions-below{
+     @media #{$tablet-md}{
+        img{
+          height: 22px;
+        }
+     }
+  }
+  .font-size-box{
+    height: 45px;
+    width: 45px;
+  }
+}
+
+.chapter-header ~.download-btn{
+  display: none !important;
+}
+#player{
+  .slider-handle{
+    background: $color-primary;
+    border: 2px solid white;
+    width: 20px;
+    height: 20px;
+    top: -4px
+  }
+}

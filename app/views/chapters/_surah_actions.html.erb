@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
   <div class="container surah-actions overflow-auto mt-4 mt-md-0 scrolling-wrapper">
     <ul class=" d-flex flex-row flex-nowrap list-inline mb-0" id="surah-actions">
       <li class="list-inline-item d-flex align-items-center" id="reciter-dropdown">
@@ -84,3 +84,71 @@
     </ul>
   </div>
 </section>
+ -->
+<%= render 'chapters/setting' %>
+ <section class="bg-info surah-actions">
+    <div class="container">
+      <div class="row align-items-center actions-row">
+        <div class="col-md-2 col-5">
+          <div class="dropdown">
+            <button class="btn btn-white dropdown-toggle position-relative border-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="text-left pr-md-5 pr-3">
+                <strong><%= @presenter.chapter.name_complex %></strong>
+                <p class="text-muted mb-0"><%= @presenter.chapter.translated_name.name %></p>
+              </div>
+            </button>
+            <div class="dropdown-menu border-0 custom-shadow pt-0" aria-labelledby="dropdownMenuButton">
+              <div class="rounded-search d-flex justify-content-end col-5 dropdown-item sticky-top bg-white pt-2">
+                  <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+              </div>
+              <% @presenter.chapters.find_each do |chapter| %>
+                <div class="dropdown-item">
+                  <%= link_to "#{chapter.chapter_number} #{chapter.name_simple}", chapter_path(chapter), data: {arabic: chapter.name_arabic} %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1 col-4">
+          <div class="dropdown verse-dropdown">
+            <button class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="text-left pr-md-5 pr-3">
+                <strong> Verse <%= @presenter.paginate.first.verse_number %></strong>
+              </div>
+            </button>
+            <div class="dropdown-menu border-0 custom-shadow pt-0" aria-labelledby="verseDropdown">
+              <div class="rounded-search d-flex justify-content-end col-5 dropdown-item sticky-top bg-white pt-2">
+                  <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+              </div>
+              <% @presenter.paginate.find_each do |verse| %>
+                <div class="dropdown-item">
+                  <%= link_to "Verse #{verse.verse_number}", verse_path(verse) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 d-md-block d-none">
+          <ul class="nav nav-pills mb-0 justify-content-end" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pill-translation-tab" data-toggle="pill" href="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="true">Translation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pill-reading-tab" data-toggle="pill" href="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">Reading</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pill-surha-tab" data-toggle="pill" href="#pill-surha" role="tab" aria-controls="pill-surha" aria-selected="false">Surah Info</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col text-right">
+          <button class="btn btn-outline-secondary" data-target="sidebar.setting">
+              <%= lazy_image_tag 'media/images/icons/setting.svg' %>
+              <span class="d-md-inline d-none">Setting</span>
+          </button>
+        </div>
+      </div>
+    </div>
+ </section>

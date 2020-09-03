@@ -1563,10 +1563,10 @@ bootstrap-slider@^10.6.2:
   resolved "https://registry.yarnpkg.com/bootstrap-slider/-/bootstrap-slider-10.6.2.tgz#7341f468c012bdaa6a1d8625d989fdeb8ed7dd38"
   integrity sha512-8JTPZB9QVOdrGzYF3YgC3YW6ssfPeBvBwZnXffiZ7YH/zz1D0EKlZvmQsm/w3N0XjVNYQEoQ0ax+jHrErV4K1Q==
 
-bootstrap@4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
-  integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
+bootstrap@^5.0.0-alpha1:
+  version "5.0.0-alpha1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.0-alpha1.tgz#cd35be4282bc930322bcbf1db23a8729c60a31cb"
+  integrity sha512-iwKneP2pLXl8lN0YpnOuOARiNPTzmh/4cw+Un86u4OqrMLuQpyMC7nO07hvivvcg0B/ektJPjuPnS1s+YmRK9A==
 
 brace-expansion@^1.1.7:
   version "1.1.11"

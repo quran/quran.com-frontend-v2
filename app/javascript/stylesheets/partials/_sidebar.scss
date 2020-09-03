@@ -1,6 +1,6 @@
-.right-sidebar {
+.right-sidebar, .left-sidebar {
   position: fixed;
-  right: -300px;
+  left: -300px;
   top: 0;
   bottom: 0;
   text-align: left;
@@ -8,18 +8,19 @@
   visibility: hidden;
   background: #fff;
   width: 300px;
-  transition: right 0.35s cubic-bezier(0.24, 1, 0.32, 1), visibility 0.2s;
+  transition: left 0.35s cubic-bezier(0.24, 1, 0.32, 1), visibility 0.2s;
 
   &.open {
-    right: 0;
+    left: 0;
     visibility: visible;
-    z-index: 200;
+    z-index: 9999;
+    overflow: auto;
   }
 
   .sidebar-head {
     position: relative;
     border-bottom: 1px solid #eceff1;
-    padding: 28px 25px 25px;
+    padding: 17px;
 
     .logo {
       font-size: 26px;
@@ -60,10 +61,20 @@
     padding: 20px 25px;
   }
 }
+.right-sidebar{
+  right: -500px;
+  width: 500px;
+  transition: right 0.35s cubic-bezier(0.24, 1, 0.32, 1), visibility 0.2s;
+
+  &.open {
+    left: unset;
+    right: 0;
+  }
+}
 
 @media (max-width: 479px) {
   .right-sidebar {
-    right: -100%;
+    left: -100%;
     width: 100%;
   }
 }

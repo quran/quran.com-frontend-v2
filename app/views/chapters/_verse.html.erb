@@ -1,32 +1,12 @@
-<div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>" data-text="<%= verse.text_madani %>">
+<div class="verse py-md-5 pt-3 border-bottom" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>" data-text="<%= verse.text_madani %>">
   <div class="row">
-    <div class="col-md-1 verse-actions text-center <%= @presenter.render_translations? ? 'col-2' : 'no-transaltion col-12' %>">
-      <div class="actions">
-        <a class="play play-verse d-flex align-items-center justify-content-center mx-auto">
-          <i class="fa fa-play-solid d-flex align-items-center"></i>
-        </a>
-
-        <span>
-          <%= link_to verse.verse_key, "/#{verse.chapter_id}/#{verse.verse_number}#{@presenter.params_for_verse_link}", target: :blank %>
-         </span>
-      </div>
-
-      <% if @presenter.show_verse_actions? %>
-        <% unless @presenter.render_translations? %>
-          <div class="verse-actions d-flex justify-content-between">
-            <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>" data-tack="ayah-action-copy"></a>
-            <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>" data-tack="ayah-action-tafsir"></a>
-            <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>" data-tack="ayah-action-share"></a>
-            <a class="reflection" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank" data-tack="ayah-action-quranreflect">
-              <%= lazy_image_tag 'media/images/QR-icon.png', height: '30px', alt: 'Quran.com mobile apps' %>
-            </a>
-          </div>
-        <% end %>
-      <% end %>
+    <div class="col-1 verse-actions-below-above text-center">
+      <span>
+        <%= link_to verse.verse_key, "/#{verse.chapter_id}/#{verse.verse_number}#{@presenter.params_for_verse_link}", target: :blank %>
+      </span>
     </div>
-
-    <div class="col-md-11 <%= @presenter.render_translations? ? 'col-10' : 'col-12' %>">
-      <div class="arabic <%= @presenter.font_method %>">
+    <div class="col-11">
+      <div class="arabic text-right <%= @presenter.font_method %>">
         <% if @presenter.render_verse_words? %>
           <%= render partial: 'chapters/word', collection: verse.words %>
         <% else %>
@@ -35,33 +15,41 @@
       </div>
     </div>
   </div>
+  <div class="row verse-actions-below">
+    <div class="col-md-1 order-1 order-md-0" data-target="verse.actions">
+      <div class="d-flex flex-md-column justify-content-between justify-content-md-center align-items-center py-2 py-md-0">
+        <a class="my-3 text-muted play play-verses">
+          <%= lazy_image_tag 'media/images/icons/player.svg', alt: 'Quran.com mobile apps' %>
+          <small class="d-md-none d-block ff-r mt-2 lh-n">Play</small>
+        </a>
+        <a class="my-3 text-muted text-center" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>" data-tack="ayah-action-copy">
+          <%= lazy_image_tag 'media/images/icons/copy.svg', alt: 'Quran.com mobile apps' %>
+          <small class="d-md-none d-block ff-r mt-2 lh-n">Copy</small>
+        </a>
 
-  <div class="row translations">
-    <div class="col-md-1 col-2 text-center">
-      <% if @presenter.render_translations? && @presenter.show_verse_actions? %>
-        <div class="verse-actions">
-          <a class="fa fa-copy copy" data-toggle="tooltip" data-placement="left" title="<%= t('action.copy.label') %>" done="<%= t('action.copy.done') %>" data-tack="ayah-action-copy"></a>
-          <a class="fa fa-archive fs-xl" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>" data-tack="ayah-action-tafsir"></a>
-          <a href="#" class="fa fa-share-alt" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>" data-tack="ayah-action-share"></a>
-          <a class="reflection" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank" data-tack="ayah-action-quranreflect">
-            <%= lazy_image_tag 'media/images/QR-icon.png', height: '30px', alt: 'Quran.com mobile apps' %>
-          </a>
-        </div>
-      <% end %>
+        <a class="my-3 text-muted text-center" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>" data-tack="ayah-action-tafsir">
+          <%= lazy_image_tag 'media/images/icons/book.svg', alt: 'Quran.com mobile apps' %>
+          <small class="d-md-none d-block ff-r mt-2 lh-n">Tafsir</small>
+        </a>
+
+        <a href="#" class="my-3 text-muted text-center" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>" data-tack="ayah-action-share">
+          <%= lazy_image_tag 'media/images/icons/share.svg', alt: 'Quran.com mobile apps' %>
+          <small class="d-md-none d-block ff-r mt-2 lh-n">Share</small>
+        </a>
+
+        <a class="reflection text-center text-muted my-2" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank" data-tack="ayah-action-quranreflect">
+          <%= lazy_image_tag 'media/images/icons/quranreflect.svg', alt: 'Quran.com mobile apps' %>
+          <small class="d-md-none d-block ff-r lh-n mt-2">Quranreflect</small>
+        </a>
+      </div>
     </div>
 
-    <div class="col-md-11 col-10">
+    <div class="col-md-11">
       <div class="translation">
         <% if @presenter.render_translations? %>
           <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translation %>
         <% end %>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="row d-flex justify-content-end row-border">
-  <div class="col-md-11">
-    <hr class="hr-border">
   </div>
 </div>

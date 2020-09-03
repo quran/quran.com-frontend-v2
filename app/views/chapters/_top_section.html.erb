@@ -1,27 +1,27 @@
-<div class="top-section">
-  <div class="container">
-    <div class="logo-wrap">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-4">
       <%= lazy_image_tag 'media/images/logo-lg-w.png', class: 'img-fluid', alt: 'Quran.com logo' %>
     </div>
-
-    <div class="banner">
-      <h1><%= _t('noble_quran') %></h1>
+  </div>
+  <div class="row my-3">
+    <div class="col text-center">
+      <h1 class="ff-b text-primary"><%= _t('noble_quran') %></h1>
     </div>
+  </div>
 
-    <%= render 'shared/search_form', expanded: false %>
+  <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
 
-    <div class="popular-search">
-      <p>
-        <%= _t('search.popular') %>
-      </p>
-
-      <ul class="scrolled-section">
-        <% popular_searches.each do |poplar_search| %>
-          <li>
-            <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary' %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="popular-search mt-5">
+    <p class="text-muted mb-1">
+      <%= _t('search.popular') %>
+    </p>
+    <ul class="scrolled-section overflow-auto text-nowrap d-flex">
+      <% popular_searches.each do |poplar_search| %>
+        <li class="d-block mx-2">
+          <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary rounded-pill px-4 py-2' %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
