@@ -1,18 +1,20 @@
-a{
+a {
   text-decoration: none;
 }
-body{
+
+body {
   font-family: SFProText-Regular;
 }
 /*Font Family FF*/
-.ff-b{
-   font-family: SFProText-Bold;
+.ff-b {
+  font-family: SFProText-Bold;
 }
-.ff-m{
-   font-family:SFProText-Medium;
+
+.ff-m {
+  font-family: SFProText-Medium;
 }
-.ff-r{
-  font-family:SFProText-Regular;
+.ff-r {
+  font-family: SFProText-Regular;
 }
 
 /* font sizes */
@@ -43,36 +45,21 @@ body{
 
 /*Line Height*/
 
-.lh-n{
+.lh-n {
   line-height: normal;
 }
+
 /*Pointer*/
-.c-pointer{
+.c-pointer {
   cursor: pointer;
 }
 
-/*buttons*/
-/*$sss: #00ACC2;
-.btn-primary-500{
-   $ss: #00ACC2;
-   background: rgba($ss ,0.7);
-       button-variant(
-    $background,
-    $border,
-    $color: color-contrast($background),
-    $hover-background: darken($background, 7.5%),
-    $hover-border: darken($border, 10%),
-    $hover-color: color-contrast($hover-background),
-    $active-background: darken($background, 10%),
-    $active-border: darken($border, 12.5%),
-    $active-color: color-contrast($active-background)
-  )
-}*/
 /*custom shadow*/
-.custom-shadow{
+.custom-shadow {
   border-radius: 5px;
-  box-shadow: 0px 1px 20px rgba(0,0,0,0.15);
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.15);
 }
+
 /*Search box*/
 .search-form {
   .form-group {
@@ -85,6 +72,7 @@ body{
       }
     }
   }
+
   .form-group {
     position: relative;
     width: 0%;
@@ -104,7 +92,8 @@ body{
     }
   }
 
-  .search-label , .form-control-submit {
+  .search-label,
+  .form-control-submit {
     width: 60px;
     height: 60px;
     position: absolute;
@@ -118,6 +107,7 @@ body{
     background: white;
     z-index: 90;
   }
+
   .form-group.sb-search-open {
     width: 100%;
     .search-label {
@@ -129,10 +119,12 @@ body{
       z-index: 90;
     }
   }
+
   .no-js {
     .sb-search-open {
       width: 100%;
     }
+
     .sb-search {
       .search-label {
         background: $color-primary;
@@ -140,6 +132,7 @@ body{
         z-index: 11;
       }
     }
+
     .form-control {
       .form-control-submit {
         z-index: 90;
@@ -147,36 +140,40 @@ body{
     }
   }
 }
-.rounded-search{
-  .form-control, .form-control-submit, .search-label,{
+
+.rounded-search {
+  .form-control,
+  .form-control-submit,
+  .search-label {
     border-radius: 50px;
     border: 1px solid $color-primary;
     height: 44px !important;
   }
-  .search-form{
+  .search-form {
     height: 44px;
-    .form-group{
+    .form-group {
       min-width: 44px;
     }
   }
-  .expand-collapse{
+  .expand-collapse {
     position: absolute;
     right: 2%;
-    &.sb-search-open{
-        width: 77%;
+    &.sb-search-open {
+      width: 77%;
     }
   }
-  .form-control-submit, .search-label{
+  .form-control-submit,
+  .search-label {
     width: 44px;
     padding: 0;
     line-height: 44px;
   }
-  .search-label{
+  .search-label {
     padding: 5px;
   }
 }
 
- /*checboxes*/
+/*checboxes*/
 .custom-label {
   display: flex;
   cursor: pointer;
@@ -189,7 +186,7 @@ body{
     left: -9999px;
     &:checked + span {
       background-color: mix(#fff, $color-primary, 84%);
-      color:  $color-primary;
+      color: $color-primary;
       &:before {
         box-shadow: inset 0 0 0 0.4375em $color-primary;
       }
@@ -202,7 +199,7 @@ body{
     transition: 0.25s ease;
     &:hover {
       background-color: mix(#fff, $color-primary, 84%);
-      color:  $color-primary;
+      color: $color-primary;
     }
     &:before {
       display: flex;

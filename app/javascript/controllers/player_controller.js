@@ -8,7 +8,7 @@
 
 import { Controller } from "stimulus";
 import { Howl, Howler } from "howler";
-
+import Slider from "bootstrap-slider";
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
 // TODO: should set to false to use web audio instead, but that requires CORS
@@ -87,7 +87,8 @@ export default class extends Controller {
 
   buildPlayer() {
     let that = this;
-    this.progressBar = $("#player #player-bar").slider({
+
+    this.progressBar = new Slider("#player #player-bar", {
       min: 0,
       max: 100,
       step: 0.1,

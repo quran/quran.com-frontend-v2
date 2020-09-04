@@ -4,25 +4,18 @@
 // that code so it'll be compiled.
 
 require("turbolinks").start();
-require("node-waves/dist/waves");
-require("jquery-ujs/index");
 require("partial_replacement");
-require("bootstrap_slider");
 require("howler");
 require("slim-scroller");
-require("../utility/link-events");
 require("../utility/async-render");
-require("../utility/jquery-extends");
 require("../utility/infinite-scrolling-page");
 
-import "custom-bootstrap";
 import "../utility/trubolink-patch";
 
 import GoogleAnalytic from "../utility/analytic";
 global.GoogleAnalytic = GoogleAnalytic;
 
 require("service-worker-companion");
-require("select2/dist/js/select2.full");
 
 import "controllers";
 
@@ -34,11 +27,6 @@ $(document).on("turbolinks:load", function() {
   $("body").popover({
     selector: '[data-toggle="popover"]'
   });
-
-  Waves.attach(".btn:not(.js-waves-off):not(.btn-switch), .js-waves-on", [
-    "waves-themed"
-  ]);
-  Waves.init();
 
   $(document).on("click", "[data-dismiss=dropdown]", e => {
     e.preventDefault();
@@ -66,24 +54,27 @@ require("../stylesheets/application.scss");
 require.context("../fonts/quran_fonts", true);
 require.context("../images", true);
 
-$(document).ready(function(){
-  $('#search').on("click",(function(e){
-  $(".expand-collapse").addClass("sb-search-open");
-    e.stopPropagation()
-    console.log("open")
-  }));
-   $(document).on("click", function(e) {
-    if ($(e.target).is("#search") === false && $(".form-control").val().length == 0) {
+$(document).ready(function() {
+  $("#search").on("click", function(e) {
+    $(".expand-collapse").addClass("sb-search-open");
+    e.stopPropagation();
+    console.log("open");
+  });
+  $(document).on("click", function(e) {
+    if (
+      $(e.target).is("#search") === false &&
+      $(".form-control").val().length == 0
+    ) {
       $(".expand-collapse").removeClass("sb-search-open");
-      console.log("close")
+      console.log("close");
     }
   });
-    $(".form-control-submit").click(function(e){
-      $(".form-control").each(function(){
-        if($(".form-control").val().length == 0){
-          e.preventDefault();
-          $(this).css('border', '2px solid red');
-        }
-    })
-  })
-})
+  $(".form-control-submit").click(function(e) {
+    $(".form-control").each(function() {
+      if ($(".form-control").val().length == 0) {
+        e.preventDefault();
+        $(this).css("border", "2px solid red");
+      }
+    });
+  });
+});

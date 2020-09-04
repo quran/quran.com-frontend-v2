@@ -26,29 +26,24 @@ export default class extends Controller {
     this.store = new LocalStore();
     this.loadSettings();
 
-    $(document).on("click", ".font-size", e => {
-      e.preventDefault();
-      this.handleFontSize(e);
-    });
-
-    $(document).on("click", "#toggle-nightmode", e => {
+    /*$(document).on("click", "#toggle-nightmode", e => {
       e.preventDefault();
       this.toggleNightMode();
-    });
+    });*/
 
-    $(document).on("change", "#tooltip-dropdown", e => {
+    /*$(document).on("change", "#tooltip-dropdown", e => {
       e.preventDefault();
       this.handleTooltip(e);
-    });
+    });*/
 
-    $(document).on("click", "#reset-setting", e => {
+    /*$(document).on("click", "#reset-setting", e => {
       e.preventDefault();
       this.resetSetting();
-    });
+    });*/
 
-    $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
+    //$(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
 
-    $("#reciter-dropdown-menu")
+    /*$("#reciter-dropdown-menu")
       .val(this.get("recitation"))
       .trigger("change");
     $(document).on("select2:select", "#reciter-dropdown-menu", e => {
@@ -65,7 +60,7 @@ export default class extends Controller {
 
     $(document).on("select2:unselecting", "#translations", e => {
       this.updateTranslations($(e.target).val());
-    });
+    });*/
 
     let mobileDetect = window.matchMedia("(max-width: 610px)");
     this.mobile = mobileDetect.matches;
@@ -177,16 +172,19 @@ export default class extends Controller {
     );
 
     const setDark = function(e) {
+      let bodyClasses = document.body.classList;
+
       if (e && e.matches) {
-        $("body").addClass("night");
+        bodyClasses.add("night");
       } else {
         if (isNightMode) {
-          $("body").addClass("night");
+          bodyClasses.add("night");
         } else {
-          $("body").removeClass("night");
+          bodyClasses.remove("night");
         }
       }
     };
+
     document.addEventListener("DOMContentLoaded", () => {
       setDark(darkModeMediaQuery);
     });
@@ -207,8 +205,7 @@ export default class extends Controller {
 
   toggleNightMode(e) {
     const isNightMode = $("body").hasClass("night");
-    $("body").toggleClass("night");
-    $("#toggle-nightmode").toggleClass("text-primary");
+    document.body.classList.toggle("night");
     this.set("nightMode", !isNightMode);
   }
 
@@ -218,6 +215,7 @@ export default class extends Controller {
   }
 
   handleFontSize(e) {
+    e.preventDefault();
     const that = $(e.target);
 
     const target = that.closest("li").data("target");

@@ -6,7 +6,7 @@ $color-border: #eceff1;
 
 $color-primary: #00acc1;
 $color-success: #1dc9b7;
-$color-info: #F3F3F4;
+$color-info: #f3f3f4;
 $color-warning: #ffc241;
 $color-danger: #fd3995;
 $color-secondary: #8a8a8a;
@@ -24,7 +24,6 @@ $fs-lg: $fs-base + 2; /* 15px   */
 $fs-xl: $fs-base + 3; /* 16px   */
 $fs-xxl: $fs-base + 15; /* 28px   */
 
-
 /*Media Variables*/
 $phone: "screen and (max-width: 480px)";
 $tablet: "screen and (max-width: 768px)";
@@ -32,5 +31,3 @@ $tablet-md: "screen and (max-width: 992px)";
 $tablet-lg: "screen and (max-width: 1024px)";
 $desktop: "screen and (min-width: 1200px)";
 $desktop-md: "screen and (min-width: 1200px) and (max-width: 1400px)";
-
-

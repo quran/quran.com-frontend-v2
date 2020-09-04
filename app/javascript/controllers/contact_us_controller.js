@@ -12,7 +12,6 @@ export default class extends Controller {
         .html(xhr.message || defaultThankYouMsg)
         .removeClass("d-none");
 
-      $(".waves-ripple").remove();
       form[0].reset();
     });
 
@@ -22,8 +21,6 @@ export default class extends Controller {
         .html("Sorry, something went wrong. We'll fix this issue soon.")
         .addClass("alert-danger")
         .removeClass("d-none");
-
-      $(".waves-ripple").remove();
     });
   }
 }

@@ -9,11 +9,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js defer"></script>
     <![endif]-->
     <%= csrf_meta_tags %>
-    <%#= csp_meta_tag %>
+    <%= csp_meta_tag %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js" async></script>
-    <script src="https://use.fontawesome.com/64d08ba8e6.js"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', 'nonce': true, defer: true %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body class="<%= page_classes %>" id="<%= page_id %>" data-controller="sidebar setting">
@@ -32,7 +31,7 @@
     </noscript>
     <%= render "shared/header" %>
 
-    <main>
+    <main data-controller="slim-scroller">
       <%= yield %>
     </main>
 

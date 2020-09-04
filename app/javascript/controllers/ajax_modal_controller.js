@@ -7,12 +7,11 @@
 // </div>
 
 import { Controller } from "stimulus";
+import { Modal } from "bootstrap";
 
 export default class extends Controller {
   connect() {
-    $(this.element).on("click", e => {
-      if ($(e.target).hasClass("disabled")) return;
-
+    this.element.addEventListener("click", e => {
       this.loadModal(e);
     });
   }
@@ -47,14 +46,13 @@ export default class extends Controller {
   }
 
   createModel(classes) {
-    if ($(".modal").length > 0) {
-      $(".modal").remove();
-      $(".modal-backdrop").remove();
-    }
+    let ajaxModal = document.getElementById("#ajax-modal");
+
+    this.removeModal(ajaxModal);
 
     let modal = `
-        <div class="modal" tabindex="-1" role="dialog" id="ajax-modal">
-  <div class='modal-dialog ${classes}' role="document">
+    <div class="modal" tabindex="-1" id="ajax-modal">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modal-title">Loading</h5>
@@ -62,28 +60,32 @@ export default class extends Controller {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div id="modal-body">
       <div class="modal-body" id="modal-body">
         <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
       </div>
-        <div class="modal-footer" id="modal-footer">
-          <a data-dismiss="modal" class="btn btn-secondary" href="#">Close</a>
-        </div>
+      <div class="modal-footer" id="modal-footer>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div>
-`;
+</div>`;
 
-    this.dialog = $(modal);
-    this.dialog.appendTo("body");
+    document.body.append(modal);
 
-    $("#ajax-modal").on("hidden.bs.modal", function(e) {
-      $("#ajax-modal")
-        .empty()
-        .remove();
+    ajaxModal.addEventListener("hidden.bs.modal", () => {
+      this.removeModal(ajaxModal);
     });
 
-    this.dialog.modal({ backdrop: "static" });
+    this.dialog = new Modal(ajaxModal, { backdrop: "static" });
+  }
+
+  removeModal(modal) {
+    if (modal) {
+      // can also use dom.remove, but parentNode.removeChild
+      document.body.removeChild(modal);
+
+      let backdrop = document.getElementsByClassName("modal-backdrop");
+      if (backdrop) document.body.removeChild(backdrop);
+    }
   }
 }

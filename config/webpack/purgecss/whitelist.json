@@ -1,0 +1,5 @@
+{
+  "whitelist": ["tajweed"],
+  "whitelistPatterns": ["hlt"],
+  "whitelistPatternsChildren": ["tajweed"]
+}
