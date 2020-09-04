@@ -1,9 +1,9 @@
 <li class="d-block pt-1">
-  <div class="custom-shadow p-3">
-    <span class="para-number"><%= key %></span>
+  <div class="border px-3 py-4 rounded chapter-number-box">
+    <span class="para-number position-absolute"><%= key %></span>
     <%= link_to chapter_path(chapter), class: 'row align-items-center' do %>
       <div class="col-7 name text-truncate">
-        <h5 class="name"><%= chapter.name_simple %></h5>
+        <h5 class="name text-muted"><%= chapter.name_simple %></h5>
         <span class="text-nowrap <%=  chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
       </div>
       <div class="col-5 icon">

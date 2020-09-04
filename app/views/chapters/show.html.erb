@@ -5,9 +5,10 @@
         <%= render 'shared/search_form', expanded: true, mobile_expand: true %>
       </div>
       <div class="d-md-block d-none">
-          <%= lazy_image_tag 'media/images/icons/day.svg', width: "20px", class: "mr-2", alt: 'Quran.com mobile apps' %>
-          <%= lazy_image_tag 'media/images/icons/night.svg', width: "20px", alt: 'Quran.com mobile apps' %>
-          <p class="ff-m mb-0 text-center">Mode</p>
+        <label class="switch my-0 mx-2">
+          <input type="checkbox">
+          <span class="slider round fa"></span>
+        </label>
       </div>
     </div>
   <% end %>

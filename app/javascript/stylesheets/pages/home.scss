@@ -40,9 +40,31 @@
       .para-number {
         background: $color-primary;
         padding: 0px 7px;
-        right: 0;
-        border-bottom-left-radius: 4px;
+        left: 1px;
+        border-bottom-right-radius: 4px;
         color: white;
+      }
+      .chapter-number-box {
+        .para-number {
+          top: 5px;
+        }
+        &:hover {
+          box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.15);
+          border: 1px solid $color-primary !important;
+        }
+      }
+      .juzz-container {
+        &:hover {
+          border: 1px solid $color-primary !important;
+        }
+        .juzz-number-box {
+          &:hover {
+            box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.15);
+          }
+          &:last-child {
+            border: unset !important;
+          }
+        }
       }
     }
   }

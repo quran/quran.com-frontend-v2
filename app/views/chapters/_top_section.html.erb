@@ -1,16 +1,20 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-4">
+    <div class="col-md-3 col-9">
       <%= lazy_image_tag 'media/images/logo-lg-w.png', class: 'img-fluid', alt: 'Quran.com logo' %>
     </div>
   </div>
-  <div class="row my-3">
+  <div class="row my-md-5 my-3">
     <div class="col text-center">
       <h1 class="ff-b text-primary"><%= _t('noble_quran') %></h1>
     </div>
   </div>
 
-  <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+ <div class="row">
+    <div class="col-md-8 offset-md-2">
+       <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+    </div>
+ </div>
 
   <div class="popular-search mt-5">
     <p class="text-muted mb-1">
@@ -19,7 +23,7 @@
     <ul class="scrolled-section overflow-auto text-nowrap d-flex">
       <% popular_searches.each do |poplar_search| %>
         <li class="d-block mx-2">
-          <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary rounded-pill px-4 py-2' %>
+          <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary rounded-pill px-2 py-2' %>
         </li>
       <% end %>
     </ul>

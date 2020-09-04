@@ -4,7 +4,7 @@
    <form class="form-search form-group sb-search-open" action="/search" data-controller="search-form">
       <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
       <button type="submit" class="form-control form-control-submit search-btn"></button>
-      <span class="search-label">
+      <span class="search-label rounded-right">
         <i class="fa fa-search"></i>
       </span>
       <div class="suggestions"></div>
@@ -16,7 +16,7 @@
    <form class="form-search form-group <%= mobile_expand ? 'expand-collapse' : 'sb-search-open' %>" action="/search" data-controller="search-form" id="search">
       <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
       <button type="submit" class="form-control form-control-submit search-btn"></button>
-      <span class="search-label">
+      <span class="search-label rounded-right">
         <i class="fa fa-search"></i>
       </span>
       <div class="suggestions"></div>
