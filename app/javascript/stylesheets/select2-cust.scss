@@ -57,7 +57,7 @@
     position: absolute;
     left: calc(1rem + #{$input-padding-x});
     top: calc(0.6rem + #{$input-padding-x});
-    color: $primary-500;
+    color: $color-primary;
   }
 }
 
@@ -114,7 +114,7 @@
 
 .select2-container--default
   .select2-results__option--highlighted[aria-selected] {
-  background-color: $primary-500;
+  background-color: $color-primary;
   color: $white;
 }
 
@@ -199,10 +199,10 @@
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     margin-left: 5px;
 
-    color: lighten($primary-500, 10%);
+    color: lighten($color-primary, 10%);
 
     &:hover {
-      color: $primary-500;
+      color: $color-primary;
     }
 
     &:active {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render "shared/meta_tags" %>
+    <%= render 'shared/meta_tags' %>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,12 +29,12 @@
         </a>.
       </div>
     </noscript>
-    <%= render "shared/header" %>
+    <%= render 'shared/header' %>
 
-    <main">
+    <main>
       <%= yield %>
     </main>
 
-    <%= render "shared/footer" %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

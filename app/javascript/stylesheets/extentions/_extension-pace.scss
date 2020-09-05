@@ -1,7 +1,7 @@
 $pace-height: 3px;
 $pace-incontent-height: 13px;
 $nav-width: 16.875rem !default;
-$page-bg: desaturate(lighten($primary-500, 41.7%), 5%) !default; //#f9f9fc
+$page-bg: desaturate(lighten($color-primary, 41.7%), 5%) !default; //#f9f9fc
 
 @mixin translate3d($x:0,$y:0,$z:0) {
   -webkit-transform: translate3d($x, $y, $z);

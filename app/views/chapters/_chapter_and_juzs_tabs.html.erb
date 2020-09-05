@@ -2,20 +2,43 @@
   <div class="container" role="tablist">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#surrah" role="tab" aria-selected="true" aria-controls="surrah" id="surrah-tab" tabindex="0"><%= _t('chapters.label') %></a>
+        <a
+          class="nav-link active"
+          data-toggle="tab"
+          href="#chapters"
+          role="tab"
+          aria-selected="true"
+          aria-controls="chapters"
+          id="chapters-tab"
+          tabindex="0"
+          data-controller="track"
+          data-name="chapters-tab"
+          data-name="home-tabs"
+          data-category="chapters"
+        >
+          <%= _t('chapters.label') %></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#juz"><%= _t('juz') %></a>
+        <a
+          class="nav-link"
+          data-toggle="tab"
+          href="#juz"
+          data-controller="track"
+          data-name="chapters-tab"
+          data-name="home-tabs"
+          data-category="juzs"
+        ><%= _t('juz') %>
+        </a>
       </li>
     </ul>
 
     <div class="tab-content mt-3">
-      <div class="tab-pane fade show active" id="surrah">
+      <div class="tab-pane fade show active" id="chapters">
         <div class="items">
           <ul class="p-0">
             <% @presenter.chapters.each_with_index do |chapter, key| %>
-              <%= render 'chapter', chapter: chapter, key: key + 1  %>
+              <%= render 'chapter', chapter: chapter, key: key + 1 %>
             <% end %>
           </ul>
         </div>
@@ -24,12 +47,12 @@
       <div class="tab-pane fade" id="juz">
         <div class="items juz-list">
           <ul class="p-0">
-           <% @presenter.juz.each_with_index do |juz, key| %>
-              <%= render 'juz', juz: juz, key: key + 1  %>
+            <% @presenter.juz.each_with_index do |juz, key| %>
+              <%= render 'juz', juz: juz, key: key + 1 %>
             <% end %>
           </ul>
         </div>
       </div>
     </div>
- </div>
+  </div>
 </div>

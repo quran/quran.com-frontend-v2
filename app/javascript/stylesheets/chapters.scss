@@ -381,7 +381,10 @@
     }
 
     .w {
+      /* Better Font Rendering */
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
       position: relative;
       direction: rtl;
       margin: 0 5px;

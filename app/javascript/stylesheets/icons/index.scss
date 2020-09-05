@@ -2,7 +2,7 @@
 @import "style";
 
 @font-face {
-  font-family: "icons";
+  font-family: "fac";
   src: url("../../fonts/icons/fa.eot");
   src: url("../../fonts/icons/fa.eot#iefix") format("embedded-opentype"),
     //url("../../fonts/icons/fa.woff2") format("woff2"),
@@ -23,9 +23,8 @@
 }
 */
 
-[class^="fa-"]:before,
-[class*=" fa-"]:before {
-  font-family: "icons";
+.fa:before {
+  font-family: "fac";
   font-style: normal;
   font-weight: normal;
   speak: none;

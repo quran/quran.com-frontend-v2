@@ -1,43 +1,6 @@
-<!-- <header class="header">
-  <div class="container d-flex justify-content-between align-items-center">
-    <div class="header-left">
-      <%= link_to root_path, class: 'logo' do %>
-        Quran<span>.com</span>
-      <% end %>
-
-      <div id="local-switcher" class="d-none d-md-block">
-        <div class="dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= _t('local_native_name') %> <i class="fa fa-fadown-open"></i>
-          </a>
-
-          <ul class="dropdown-menu">
-            <% available_locales.each do |locale, name| %>
-              <li role="presentation">
-                <%= link_to url_for(locale: locale), role: "menuitem", class: "dropdown-item #{'active' if I18n.locale.to_s == locale }" do %>
-                  <span class="<%= locale %>"><%= name %></span>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <%= yield :header %>
-
-    <div class="head-right">
-      <%= link_to _t('download'), pages_apps_path, class: 'btn btn-primary download' %>
-
-      <a href="javascript:void(0)" class="nav-btn fa fa-align-justify" data-target="sidebar.trigger"></a>
-    </div>
-  </div>
-</header> -->
-
 <%= render 'shared/left_side_bar' %>
 
 <div class="sticky-top">
-
   <nav class="navbar navbar-light bg-white custom-shadow">
     <div class="container">
       <div class="row">
@@ -66,17 +29,19 @@
             </div>
           </div>
         </div>
-         <%= yield :header %>
-        <div class="col-7 d-flex align-items-center justify-content-end download-btn">
-          <div class="navbar-expand-lg d-none d-md-block">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                  <%= link_to _t('download'), pages_apps_path, class: 'btn btn-primary text-white' %>
-              </li>
-            </ul>
-          </div>
+
+        <%= yield :header %>
+
+        <div class="col-2 justify-content-end d-md-block d-none">
+          <span class="theme-switch mr-2">
+            <%= lazy_image_tag "media/images/icon/light.svg" %>
+          </span>
+
+          <span class="theme-switch">
+            <%= lazy_image_tag "media/images/icon/night.svg" %>
+          </span>
         </div>
-        </div>
+      </div>
     </div>
   </nav>
 </div>

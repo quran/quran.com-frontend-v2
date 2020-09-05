@@ -14,12 +14,24 @@
 
 @import "custom-bootstrap";
 @import "bootstrap-slider.min";
+@import "partials/font_sizes";
+@import "partials/fonts";
+@import "partials/scrolling";
+@import "partials/search";
+@import "partials/toggle_switch";
+
 @import "./pages/home";
 @import "./pages/chapter";
 @import "./pages/common";
+
 @import "icons";
+
+@import "extentions/extension-pace";
+@import "extentions/extension-slimscroll";
 @import "partials/footer";
-@import "partials/fonts";
+@import "partials/animation";
 @import "partials/sidebar";
 @import "partials/surah_names";
+@import "partials/buttons";
 @import "partials/tajweed";
+@import "theme/dark";

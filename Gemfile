@@ -38,7 +38,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'sentry-raven'
 
 # Detect language from text
-# gem "cld3"
+gem "cld3"
 
 # Elasticsearch
 # using excon as faraday adapter (net::http breaks)

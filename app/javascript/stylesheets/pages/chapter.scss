@@ -4,11 +4,13 @@
     width: 300px;
     max-height: 350px;
   }
+
   .dropdown-toggle::after {
     position: absolute;
     right: 12px;
     top: 46%;
   }
+
   @media #{$tablet-md} {
     .verse-dropdown,
     .surah-dropdown {

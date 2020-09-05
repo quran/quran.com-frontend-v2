@@ -5,6 +5,12 @@ a {
 body {
   font-family: SFProText-Regular;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
 /*Font Family FF*/
 .ff-b {
   font-family: SFProText-Bold;
@@ -13,38 +19,12 @@ body {
 .ff-m {
   font-family: SFProText-Medium;
 }
+
 .ff-r {
   font-family: SFProText-Regular;
 }
 
-/* font sizes */
-.fs-nano {
-  font-size: rem_to_px($fs-nano) !important;
-} /* 10px */
-.fs-xs {
-  font-size: rem_to_px($fs-xs) !important;
-} /* 12px */
-.fs-sm {
-  font-size: rem_to_px($fs-sm) !important;
-} /* 12.5px */
-.fs-b {
-  font-size: rem_to_px($fs-base) !important;
-} /* 13px */
-.fs-md {
-  font-size: rem_to_px($fs-md) !important;
-} /* 14px */
-.fs-lg {
-  font-size: rem_to_px($fs-lg) !important;
-} /* 15px */
-.fs-xl {
-  font-size: rem_to_px($fs-xl) !important;
-} /* 16px */
-.fs-xxl {
-  font-size: rem_to_px($fs-xxl) !important;
-}
-
 /*Line Height*/
-
 .lh-n {
   line-height: normal;
 }
@@ -305,7 +285,7 @@ body {
     border-radius: 50%;
   }
 }
-
+/*
 @media ($tablet) {
   .switch {
     width: 55px;
@@ -333,4 +313,6 @@ body {
     }
   }
 }
+*/
 /*End Switch*/
+

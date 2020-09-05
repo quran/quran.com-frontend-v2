@@ -28,18 +28,18 @@
         </a>
 
         <a class="my-3 text-muted text-center" data-toggle="tooltip" data-placement="left" title="<%= t('action.tafsir.label', default: 'Tafsir') %>" data-controller="ajax-modal" data-url="<%= verse_tafsirs_path(verse.id) %>" data-tack="ayah-action-tafsir">
-          <%= lazy_image_tag 'media/images/icons/book.svg', alt: 'Quran.com mobile apps' %>
-          <small class="d-md-none d-block ff-r mt-2 lh-n">Tafsir</small>
+          <i class="fa fa-book"></i>
+          <small class="d-md-none d-block ff-r mt-2 lh-n"><%= t('action.tafsir.label', default: 'Tafsir') %> %></small>
         </a>
 
         <a href="#" class="my-3 text-muted text-center" data-toggle="tooltip" data-placement="left" title="<%= t('action.share', default: 'Share ayah') %>" data-controller="ajax-modal" data-url="<%= share_verse_path(verse.id) %>" data-tack="ayah-action-share">
-          <%= lazy_image_tag 'media/images/icons/share.svg', alt: 'Quran.com mobile apps' %>
+          <i class="fa fa-share-alt"></i>
           <small class="d-md-none d-block ff-r mt-2 lh-n">Share</small>
         </a>
 
         <a class="reflection text-center text-muted my-2" data-toggle="tooltip" data-placement="left"  title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>" href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank" data-tack="ayah-action-quranreflect">
-          <%= lazy_image_tag 'media/images/icons/quranreflect.svg', alt: 'Quran.com mobile apps' %>
-          <small class="d-md-none d-block ff-r lh-n mt-2">Quranreflect</small>
+          <%= lazy_image_tag 'media/images/icon/QR-icon.png', alt: 'Quran.com mobile apps' %>
+          <small class="d-md-none d-block ff-r lh-n mt-2">QuranReflact</small>
         </a>
       </div>
     </div>

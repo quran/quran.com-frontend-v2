@@ -14,6 +14,9 @@ $color-fusion: darken(desaturate(adjust-hue($color-primary, 5), 80%), 25%);
 $primary: $color-primary;
 $info: $color-info;
 
+// color variant
+$primary-400: lighten($color-primary, 5%) !default;
+
 /* font vars below will auto change to rem values using function rem($value)*/
 $fs-base: 13px;
 $fs-nano: $fs-base - 2; /* 11px   */

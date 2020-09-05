@@ -1,9 +1,10 @@
 <div class="right-sidebar px-4 py-4 border-left">
   <div class="d-flex justify-content-between align-items-center pb-2">
-      <%= lazy_image_tag 'media/images/icons/cancel.svg', width: '30px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
+      <i class="fa fa-times-circle", class="c-pointer" data-target="sidebar.settingClose"></i>
       <h4 class="mb-0 ff-b">Setting</h4>
       <button class="btn btn-primary text-white">Reset to default</button>
   </div>
+
   <div class="d-md-none d-flex justify-content-between pb-3 pt-2 align-items-center border-top">
     <h6 class="mb-0 ff-b">Mode</h6>
     <label class="switch my-0">
@@ -11,6 +12,7 @@
       <span class="slider round fa"></span>
     </label>
   </div>
+
   <div class="d-md-none d-block mt-3">
     <ul class="nav nav-pills mb-0 justify-content-between" id="pills-tab" role="tablist">
       <li class="nav-item">
@@ -24,13 +26,14 @@
       </li>
     </ul>
   </div>
+
   <div class="row bg-info p-3 border mt-5 rounded align-items-center c-pointer">
     <div class="col-11">
       <h6 class="mb-0 ff-b">Translation</h6>
       <small class="mb-0 text-muted">Sahih International</small>
     </div>
     <div class="col-1">
-        <%= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', data: {target: "sidebar.settingClose"} %>
+      <i class="fa fa-chevron-right" data-target="sidebar.settingClose"></i>
     </div>
   </div>
 
@@ -40,7 +43,7 @@
       <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
     </div>
     <div class="col-1">
-        <%= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', data: {target: "sidebar.settingClose"} %>
+      <i class="fa fa-chevron-right" data-target="sidebar.settingClose"></i>
     </div>
   </div>
 
@@ -73,7 +76,7 @@
           <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
         </div>
         <div class="col-1">
-            <%= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', data: {target: "sidebar.settingClose"} %>
+          <i class="fa fa-chevron-right" data-target="sidebar.settingClose"></i>
         </div>
       </div>
 
@@ -82,22 +85,22 @@
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <%= lazy_image_tag 'media/images/icons/plus.svg', width: '20px', data: {target: "sidebar.settingClose"} %>
+              <i class="fa fa-plus-circle" data-target="sidebar.settingClose"></i>
             </div>
             <h6 class="mb-0 ff-b">Arabic</h6>
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <%= lazy_image_tag 'media/images/icons/minus.svg', width: '20px', data: {target: "sidebar.settingClose"} %>
+              <i class="fa fa-minus-circle" data-target="sidebar.settingClose"></i>
             </div>
           </div>
         </div>
          <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <%= lazy_image_tag 'media/images/icons/plus.svg', width: '20px', data: {target: "sidebar.settingClose"} %>
+              <i class="fa fa-plus-circle" data-target="sidebar.settingClose"></i>
             </div>
             <h6 class="mb-0 ff-b">Translation</h6>
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <%= lazy_image_tag 'media/images/icons/minus.svg', width: '20px', data: {target: "sidebar.settingClose"} %>
+              <i class="fa fa-minus-circle" data-target="sidebar.settingClose"></i>
             </div>
           </div>
         </div>
@@ -190,13 +193,13 @@
 
 <!-- <div class="right-sidebar px-4 py-4 border-left translation-sidebar">
   <div class="d-flex justify-content-between align-items-center">
-      <%= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
+      <%#= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
       <h4 class="mb-0 ff-b">Setting</h4>
       <button class="btn btn-primary text-white">Clear all</button>
   </div>
   <div>
   <div class="rounded-search d-flex justify-content-end my-4">
-      <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+      <%#= render 'shared/search_form', expanded: true, mobile_expand: false %>
     </div>
   </div>
   <div class="py-4 border-bottom">

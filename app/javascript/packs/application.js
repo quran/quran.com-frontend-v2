@@ -10,10 +10,11 @@ require("slim-scroller");
 require("../utility/async-render");
 require("../utility/infinite-scrolling-page");
 
-import "../utility/trubolink-patch";
+import "../utility/trubolink-patch"
 
+// need google analytic is service worker, expose this globaly
 import GoogleAnalytic from "../utility/analytic";
-global.GoogleAnalytic = GoogleAnalytic;
+global.GoogleAnalytic = GoogleAnalytic
 
 require("service-worker-companion");
 
@@ -53,28 +54,3 @@ require("../stylesheets/application.scss");
 // page fonts
 require.context("../fonts/quran_fonts", true);
 require.context("../images", true);
-
-$(document).ready(function() {
-  $("#search").on("click", function(e) {
-    $(".expand-collapse").addClass("sb-search-open");
-    e.stopPropagation();
-    console.log("open");
-  });
-  $(document).on("click", function(e) {
-    if (
-      $(e.target).is("#search") === false &&
-      $(".form-control").val().length == 0
-    ) {
-      $(".expand-collapse").removeClass("sb-search-open");
-      console.log("close");
-    }
-  });
-  $(".form-control-submit").click(function(e) {
-    $(".form-control").each(function() {
-      if ($(".form-control").val().length == 0) {
-        e.preventDefault();
-        $(this).css("border", "2px solid red");
-      }
-    });
-  });
-});

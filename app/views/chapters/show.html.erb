@@ -1,14 +1,8 @@
 <div id="chapter-page">
   <% content_for :header do %>
-    <div class="col-7 d-flex align-items-center justify-content-md-between justify-content-end chapter-header">
-      <div class="rounded-search d-flex justify-content-end col-5">
+    <div class="col-5 align-items-center chapter-header">
+      <div class="rounded-search">
         <%= render 'shared/search_form', expanded: true, mobile_expand: true %>
-      </div>
-      <div class="d-md-block d-none">
-        <label class="switch my-0 mx-2">
-          <input type="checkbox">
-          <span class="slider round fa"></span>
-        </label>
       </div>
     </div>
   <% end %>
