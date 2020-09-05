@@ -19,6 +19,8 @@
 @import "partials/scrolling";
 @import "partials/search";
 @import "partials/toggle_switch";
+@import "partials/locals";
+@import "partials/sidebars";
 
 @import "./pages/home";
 @import "./pages/chapter";
@@ -30,7 +32,7 @@
 @import "extentions/extension-slimscroll";
 @import "partials/footer";
 @import "partials/animation";
-@import "partials/sidebar";
+//@import "partials/sidebar";
 @import "partials/surah_names";
 @import "partials/buttons";
 @import "partials/tajweed";

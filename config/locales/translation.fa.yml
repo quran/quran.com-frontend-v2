@@ -6,13 +6,12 @@
 #
 ---
 fa:
-  tafsir_select: یک تفسیر را انتخاب کنید
   errors:
-    format: "%{attribute} %{message}"
     not_found: متأسفیم ، این صفحه وجود ندارد
     invalid_verse: آیه خارج از محدوده است. لطفا به صفحه اصلی بروید
     invalid_chapter: فصل خارج از محدوده است. لطفا به صفحه اصلی بروید
-    no_script: به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
+    no_script:
+      به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
       کند. Quran.com با جاوا اسکریپت فعال بهترین کار می کند. برای اطلاعات بیشتر در
       مورد نحوه فعال کردن جاوا اسکریپت
     unavailable_session:
@@ -31,7 +30,6 @@ fa:
     remove_all: همه را حذف کنید
     translation_english: فارسی
     translation_other: زبان های دیگر
-    reading: خواندن
     font_size:
       label: اندازه فونت
       arabic: عربی
@@ -45,6 +43,8 @@ fa:
       day_tip: به حالت روز تغییر دهید
       night_tip: به حالت شبانه بروید
     reset: تنظیم مجدد تنظیم کنید
+    font_type:
+    sample_audio:
   verses:
     media: تماشای تفسیر ویدیویی از %{from}
     go: برو به آیه
@@ -55,7 +55,6 @@ fa:
     previous: سوره قبلی
     verses: آیات
     pages: صفحات
-    info: اطلاعات مربوط به فصل
     continue: ادامه دهید
     quick_links: لینک های سریع
     go_to_beginning: آغاز فصل
@@ -116,14 +115,15 @@ fa:
     other_links: پیوندهای دیگر
     contact_us: با ما تماس بگیرید
     help: راهنما و بازخورد
-    about_project: Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
+    about_project:
+      Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
       به عنوان قرآن شریف ، القرآن ، قرآن کریم ، قرآن نیز شناخته می شود).
     rights: کلیه حقوق محفوظ است
     mobilea_apps: برنامه های موبایل
     navigate: حرکت کنید
-    legacy_site: 'Legacy Quran.com
+    legacy_site: "Legacy Quran.com
 
-      '
+      "
     blog: وبلاگ
     forum: انجمن
   juz: جوز
@@ -141,3 +141,7 @@ fa:
     audio_description: یادگیری و گوش دادن همزمان
   close: نزدیک
   page: صفحه
+  reader_mode:
+    reading: خواندن
+    translation: ترجمه ها
+    info: اطلاعات مربوط به فصل

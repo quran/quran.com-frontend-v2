@@ -1,10 +1,4 @@
 <div class="right-sidebar px-4 py-4 border-left">
-  <div class="d-flex justify-content-between align-items-center pb-2">
-      <i class="fa fa-times-circle", class="c-pointer" data-target="sidebar.settingClose"></i>
-      <h4 class="mb-0 ff-b"><%= _t('settings.label') %></h4>
-      <button class="btn btn-primary text-white">Reset to default</button>
-  </div>
-
   <div class="d-md-none d-flex justify-content-between pb-3 pt-2 align-items-center border-top">
     <h6 class="mb-0 ff-b">Mode</h6>
     <label class="switch my-0">
@@ -94,7 +88,7 @@
             </div>
           </div>
         </div>
-         <div class="col my-2">
+        <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
               <i class="fa fa-plus-circle" data-target="sidebar.settingClose"></i>
@@ -110,15 +104,15 @@
     <div class="tab-pane fade" id="Repeat" role="tabpanel" aria-labelledby="Repeat-tab">
       <h6 class="ff-b mt-4">Play</h6>
       <div class="dropdown pb-4 border-bottom">
-          <button class="btn btn-outline-info border text-muted dropdown-toggle" type="button" id="play-dropdown" data-toggle="dropdown" aria-expanded="false">
-            Countinues
-          </button>
-          <ul class="dropdown-menu custom-shadow border-0 rounded" aria-labelledby="play-dropdown">
-            <li><a class="dropdown-item" href="#">Countinues</a></li>
-            <li><a class="dropdown-item" href="#">Chapter</a></li>
-            <li><a class="dropdown-item" href="#">Page</a></li>
-            <li><a class="dropdown-item" href="#">Juzz</a></li>
-          </ul>
+        <button class="btn btn-outline-info border text-muted dropdown-toggle" type="button" id="play-dropdown" data-toggle="dropdown" aria-expanded="false">
+          Countinues
+        </button>
+        <ul class="dropdown-menu custom-shadow border-0 rounded" aria-labelledby="play-dropdown">
+          <li><a class="dropdown-item" href="#">Countinues</a></li>
+          <li><a class="dropdown-item" href="#">Chapter</a></li>
+          <li><a class="dropdown-item" href="#">Page</a></li>
+          <li><a class="dropdown-item" href="#">Juzz</a></li>
+        </ul>
       </div>
 
       <div class="border-bottom py-4">
@@ -149,7 +143,7 @@
         </div>
       </div>
 
-       <div class="py-4">
+      <div class="py-4">
         <h6 class="ff-b">Set how long to pause before playing next Tajweed ruling</h6>
         <div class="form-check d-flex align-items-center text-muted">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="Tajweed-specifc">
@@ -167,7 +161,7 @@
         </div>
       </div>
 
-       <div class="py-4">
+      <div class="py-4">
         <h6 class="ff-b">Set how long to pause before playing next verse</h6>
         <div class="form-check d-flex align-items-center text-muted">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="verse-specifc">
@@ -190,8 +184,6 @@
 </div>
 
 <!-- I have created all other sider at bottom you can uncomment and check -->
-
-
 <!-- <div class="right-sidebar px-4 py-4 border-left translation-sidebar">
   <div class="d-flex justify-content-between align-items-center">
       <%#= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>

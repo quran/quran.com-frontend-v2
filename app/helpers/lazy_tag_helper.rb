@@ -7,4 +7,8 @@ module LazyTagHelper
     options[:class] = "#{options[:class]} lazyload"
     image_tag DEFAULT_IMG_DATA, options
   end
+
+  def loading_spinner
+    "<i class='fa fa-spinner fa-spin'></i> #{_t('loading')}".html_safe
+  end
 end

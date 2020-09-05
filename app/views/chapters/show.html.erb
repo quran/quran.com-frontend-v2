@@ -1,3 +1,23 @@
+<div id="right-sidebar" class="sidebar slide-right border-left d-none">
+  <div class="sidebar-head d-flex align-items-center">
+    <i class="fa fa-times-circle close-sidebar close-right-sidebar"></i>
+
+    <h4 class="mb-0 ff-b"><%= _t('settings.label') %></h4>
+    <button class="btn btn-primary text-white">Reset to default</button>
+  </div>
+
+  <div class="bg-faded outline" style="margin-top: -7px">
+    <%= render_async '/settings', lazy_load: true, lazy_load: {root: '#right-sidebar'} do %>
+      <p class="text-center p-3">
+        <%= loading_spinner %>
+      </p>
+    <% end.html_safe %>
+  </div>
+</div>
+
+<div class="slide-backdrop close-right-sidebar">
+</div>
+
 <div id="chapter-page">
   <% content_for :header do %>
     <div class="col-5 align-items-center chapter-header">
@@ -8,21 +28,34 @@
   <% end %>
 
   <%= render 'surah_actions' %>
+
   <div class="tab-content container" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pill-translation" role="tabpanel" aria-labelledby="pill-translation-tab">
-      <%= render 'verses' %>
-      <div id="chapter-info" class="mt-4"></div>
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
-      <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="slim-scroller infinite-page chapter">
+
+      <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="infinite-page chapter">
         <%= render 'verses' %>
       </div>
     </div>
-    <div class="tab-pane fade" id="pill-reading" role="tabpanel" aria-labelledby="pill-reading-tab">Reading Content</div>
-    <div class="tab-pane fade" id="pill-surha" role="tabpanel" aria-labelledby="pill-surha-tab">Surah Info</div>
+
+    <div class="tab-pane fade" id="pill-reading" role="tabpanel" aria-labelledby="pill-reading-tab">
+      <%= render_async url_for(reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
+        <p class="text-center p-3">
+          <%= loading_spinner %>
+        </p>
+      <% end.html_safe %>
+    </div>
+
+    <div class="tab-pane fade" id="pill-info" role="tabpanel" aria-labelledby="pill-info-tab">
+      <%= render_async chapter_info_path(@presenter.chapter), lazy_load: true, lazy_load: {root: '#pill-info'} do %>
+        <p class="text-center p-3">
+          <%= loading_spinner %>
+        </p>
+      <% end.html_safe %>
+    </div>
   </div>
 
   <%= render 'player' %>
-
 </div>

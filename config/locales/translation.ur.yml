@@ -6,19 +6,19 @@
 #
 ---
 ur:
-  tafsir_select: تفسیر منتخب کریں
   errors:
-    format: "%{attribute} %{message}"
     not_found: افسوس، یہ صفحہ موجود نہیں ہے
-    invalid_verse: 'آیت رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+    invalid_verse: "آیت رینج سے باہر ہے. براہ مہربانی <a href='/'> صفحۂ اول</a>
       پر جائیں اور درست سوره/آیت منتخب کریں
 
-      '
-    invalid_chapter: 'سورہ رینج سے باہر ہے. براہ مہربانی <a href=''/''> صفحۂ اول</a>
+      "
+    invalid_chapter:
+      "سورہ رینج سے باہر ہے. براہ مہربانی <a href='/'> صفحۂ اول</a>
       پر جائیں اور درست سوره منتخب کریں
 
-      '
-    no_script: ایسا لگتا ہے کہ آپ کے براؤزر جاوا اسکرپٹ یا اس کی غیر فعال کی حمایت
+      "
+    no_script:
+      ایسا لگتا ہے کہ آپ کے براؤزر جاوا اسکرپٹ یا اس کی غیر فعال کی حمایت
       نہیں کرتا. قرآن کریم جاوا اسکرپٹ کے ساتھ بہترین کام کرتا ہے. جاوا سکرپٹ کو کس
       طرح فعال کرنے کے بارے میں مزید ہدایات کے لئے
     unavailable_session:
@@ -37,7 +37,6 @@ ur:
     remove_all: سب کو ہٹا دیں
     translation_english: انگریزی
     translation_other: دوسری زبانیں
-    reading: پڑہائی
     font_size:
       label: حرف کا سائز
       arabic: عربی
@@ -51,6 +50,8 @@ ur:
       day_tip: دن موڈ پر سوئچ کریں
       night_tip: رات کے موڈ پر سوئچ کریں
     reset: ترتیب کو ہٹا دیں
+    font_type: فونٹ منتخب کریں
+    sample_audio: نمونہ سنیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں
@@ -61,7 +62,6 @@ ur:
     previous: پچھلی سورت
     verses: آیات
     pages: صفحات
-    info: سورہ کی معلومات
     continue: جاری رہے
     quick_links: فوری لنک
     go_to_beginning: سورہ کے شروع میں جائیں
@@ -83,7 +83,7 @@ ur:
     tafsir:
       label: تفسیر
       select: تفسیر منتخب کریں
-    quran_reflect:
+    quran_reflect: QuranReflect پر اس آیت کے متعلق لوگوں کے خیالات پڑہیں
   search:
     placeholder: " تلاش کریں (نوح)"
     result: "%{from} - %{to} <span>{total} کے</span> لئے تلاش کے نتائج کے لئے: <span>{query}</span>"
@@ -110,9 +110,9 @@ ur:
     repeat_to: تک
     repeat_times: کتنی بار
     repeat_loop: چلاتے رہو
-    scroll: 'جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
+    scroll: "جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
 
-      '
+      "
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
@@ -124,7 +124,10 @@ ur:
     other_links: دیگر لنکس
     contact_us: ہم سے رابطہ کریں
     help: مدد اور رائے
-    about_project: قرآن کریم ایک فلاح عامہ (عوامی بہبود کے لئے) منصوبہ ہے
+    about_project:
+      قرآن کریم ایک فلاح عامہ (عوامی بہبود کے لئے) منصوبہ ہے۔  ہم امید
+      کرتے ہیں کہ ہر ایک کے لئے نوبل قرآن کو پڑھنے ، مطالعہ کرنے اور سیکھنے میں آسانی
+      ہوگی۔
     rights: جملہ حقوق محفوظ ہیں
     mobilea_apps: موبائل ایپ
     navigate: تشریف لے جائیں
@@ -139,10 +142,14 @@ ur:
   related_sites:
     label: متعلقہ سائٹس
     sunnah: سنت
-    sunnah_description: 'نبی صلی اللہ علیہ وسلم کی حدیث '
+    sunnah_description: "نبی صلی اللہ علیہ وسلم کی حدیث "
     salah: نماز کا وقت
     salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
     audio: آڈیو میں نوبل قرآن
     audio_description: ایک ہی وقت میں سیکھنا اور سننا
   close: بند کریں
   page: صفحہ
+  reader_mode:
+    reading: پڑہائی
+    translation: ترجمے
+    info: سورہ کی معلومات

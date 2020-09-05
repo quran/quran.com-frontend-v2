@@ -5,12 +5,14 @@
     <div class="container">
       <div class="row">
         <div class="col-5 d-flex align-items-center">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="sidebar.trigger" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button class="navbar-toggler" type="button" data-controller="sidebar" data-target="#left-sidebar" data-close=".close-left-sidebar" >
+            <i class="fa fa-bars-regular"></i>
           </button>
+
           <%= link_to root_path, class: 'h2 ff-b mb-0 ml-3' do %>
             Quran<span class="ff-m h4 ml-0">.com</span>
           <% end %>
+
           <div id="local-switcher" class="d-none d-md-block">
             <div class="dropdown">
               <a class="nav-link dropdown-toggle pb-0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

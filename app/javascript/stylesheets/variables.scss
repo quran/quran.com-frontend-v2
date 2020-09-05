@@ -34,3 +34,16 @@ $tablet-md: "screen and (max-width: 992px)";
 $tablet-lg: "screen and (max-width: 1024px)";
 $desktop: "screen and (min-width: 1200px)";
 $desktop-md: "screen and (min-width: 1200px) and (max-width: 1400px)";
+
+/* z-index */
+
+/*  Z-INDEX declearation
+========================================================================== */
+$space: 1000 !default;
+$cloud: 950 !default;
+$air: 200 !default;
+$ground: 0 !default;
+$water: -99 !default;
+
+$zindex-sticky: $air !default;
+$zindex-fixed: $air !default;

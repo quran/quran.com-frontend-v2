@@ -6,26 +6,27 @@
 #
 ---
 fr:
-  tafsir_select: Sélectionnez un tafsir
   errors:
-    format: "%{attribute} %{message}"
     not_found: Désolé, cette page n'existe pas
-    invalid_verse: 'L''ayah est hors de portée. Accédez à la page d''accueil et sélectionnez
+    invalid_verse:
+      "L'ayah est hors de portée. Accédez à la page d'accueil et sélectionnez
       un(e) Surah / Ayah
 
-      '
-    invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
+      "
+    invalid_chapter:
+      La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
-    no_script: On dirait que votre navigateur ne supporte pas Javascript ou qu'il
+    no_script:
+      On dirait que votre navigateur ne supporte pas Javascript ou qu'il
       est désactivé. Coran.com fonctionne mieux avec JavaScript activé. Pour plus
       d'instructions sur l'activation de javascript
     unavailable_session:
     unacceptable_request:
     connection_refused:
   local: french
-  site_local: 'Langue du Site
+  site_local: "Langue du Site
 
-    '
+    "
   change_local: Choisir la langue du site
   local_native_name: Français
   language: Langue
@@ -37,7 +38,6 @@ fr:
     remove_all: Tout désélectionner
     translation_english: Anglais
     translation_other: Autres Langues
-    reading: Mode lecture
     font_size:
       label: Taille de la police
       arabic: Arabe
@@ -51,6 +51,8 @@ fr:
       day_tip: Passer en mode jour
       night_tip: Passer en mode nuit
     reset: Remettre les paramètres par défault
+    font_type:
+    sample_audio:
   verses:
     media: Regarder les commentaires de la vidéo depuis %{from}
     go: Aller au verset
@@ -61,7 +63,6 @@ fr:
     previous: PRECEDENT
     verses: VERSETS
     pages: PAGES
-    info: Info Sourate
     continue: Continuer
     quick_links: Liens rapides
     go_to_beginning: Début de la Sourate
@@ -86,16 +87,17 @@ fr:
     quran_reflect:
   search:
     placeholder: Chercher "Noah"
-    result: "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
+    result:
+      "%{from}-%{to} DE <span> {total} </span> RESULTATS DE LA RECHERCHE POUR:
       <span>{query}</span>"
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
     popular: Recherches populaires
     ayatul_kursi: Ayatul Kursi
-    yaseen: 'Sourate Yaseen
+    yaseen: "Sourate Yaseen
 
-      '
+      "
     al_mulk: Sourate Al Mulk
     ar_rahman: Sourate Ar-Rahman
     al_waqiah: Sourate Al Waqiah
@@ -125,7 +127,8 @@ fr:
     other_links: Autre liens
     contact_us: Contacter nous
     help: Aide et feedback
-    about_project: Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
+    about_project:
+      Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
       Quran, Koran) est un projet à but non-lucratif.
     rights: Tous droits réservés
     mobilea_apps: Applications Mobile
@@ -148,3 +151,7 @@ fr:
     audio_description: Apprendre et écouter en même temps
   close: Fermer
   page: Page
+  reader_mode:
+    reading: Mode lecture
+    translation: Traductions
+    info: Info Sourate

@@ -6,16 +6,21 @@ en:
   local_native_name: English
   language: Language
   page: Page
+  reader_mode:
+    reading: Reading
+    translation: Translations
+    info: Surah Info
   settings:
     label: Settings
-    chapters: Chapters
-    reciters: Reciters
-    translations: Translations
+    chapters: Select Surah
+    reciters: Choose Reciters
+    sample_audio: Play Sample
+    translations: Choose Translations
     remove_all: Remove all
     translation_english: English
     translation_other: Other Languages
-    reading: Reading
     reset: Reset Setting
+    font_type: Select font
     font_size:
       label: Font size
       arabic: Arabic
@@ -30,16 +35,15 @@ en:
       night_tip: Switch to night mode
   verses:
     media: "Watch video commentary from %{from}"
-    go: Go to verse
-    not_found: Verse not found
+    go: Go to Ayah
+    not_found: Ayah not found
   chapters:
     label: Surah
     next: Next Surah
     previous: Previous Surah
-    verses: Verses
+    verses: Ayahs
     pages: Pages
     revelation_place: Revelation Place
-    info: Surah Info
     continue: Continue
     quick_links: Quick links
     go_to_beginning: Beginning of Surah
@@ -49,8 +53,8 @@ en:
   action:
     play: Play
     pause: Pause
-    share: Share ayah
-    quran_reflect: Read Reflections for this ayah on QuranReflect
+    share: Share Ayah
+    quran_reflect: Read Reflections for this Ayah on QuranReflect
     addNote: Add Note
     tafsir:
       label: Tafsirs
@@ -113,7 +117,6 @@ en:
     invalid_chapter: Check your Surah selection. It's out of range.
     no_script: Looks like either your browser does not support Javascript or its disabled. Quran.com workes best with JavaScript enabled. For more instruction on how to enable javascript
   click_here: Click here
-  tafsir_select: Select a tafsir
   download: Download
   home: Home
   related_sites:

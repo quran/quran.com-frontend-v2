@@ -1,8 +1,8 @@
 <section id="chapter-info">
   <div class="container alert alert-dismissible fade show" role="alert">
     <ul class="d-flex align-items-center info-heading">
-      <li><h1>About Surah <%= @presenter.name_simple %></h1></li>
-      <li><%= _t("chapters.audio_files") %> <span class="info"><%= @presenter.verses_count %></span></li>
+      <li><h1>Surah <%= @presenter.name_simple %></h1></li>
+      <li><%= _t("chapters.verses") %> <span class="info"><%= @presenter.verses_count %></span></li>
       <li><%= _t("chapters.pages") %> <span class="info"><%= @presenter.pages.join('-') %></span></li>
       <li><%= _t("chapters.revelation_place") %> <span class="info"><%= @presenter.revelation_place.humanize %></span>
       </li>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-md-8 order-2">
-          <div class="text-col <%= I18n.locale %>" data-controller="slim-scroller">
+          <div class="lh-n <%= I18n.locale %>" data-controller="slim-scroller">
             <%= @presenter.info.text.html_safe %>
           </div>
         </div>

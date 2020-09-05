@@ -6,9 +6,7 @@
 #
 ---
 tr:
-  tafsir_select: Bir tefsir seçin
   errors:
-    format: "%{attribute} %{message}"
     not_found:
     invalid_verse: Ayah seçiminizi kontrol edin. Kapsama alanı dışında.
     invalid_chapter: Suresi seçiminizi kontrol edin. Kapsama alanı dışında.
@@ -29,7 +27,6 @@ tr:
     remove_all: Hepsini kaldır
     translation_english: Türkçe
     translation_other: Diğer diller
-    reading: Okuma
     font_size:
       label: Yazı Boyutu
       arabic: Arapça
@@ -43,6 +40,8 @@ tr:
       day_tip: Gündüz moduna geç
       night_tip: Gece moduna geç
     reset: Ayarı Sıfırla
+    font_type:
+    sample_audio:
   verses:
     media:
     go: Sonraki ayet
@@ -53,7 +52,6 @@ tr:
     previous: Önceki Surat
     verses: Ayetler
     pages: Sayfalar
-    info: Bölüm Bilgisi
     continue: Devam et
     quick_links: Hızlı Linkler
     go_to_beginning: Bölümün başlangıcı
@@ -73,11 +71,11 @@ tr:
     share: Paylaş ayah
     addNote: Not ekle
     tafsir:
-      label: 'Tafsirs
+      label: "Tafsirs
 
-        '
+        "
       select: Tefsir'i seçin
-    quran_reflect:
+    quran_reflect: fsdfdsfdfdfdsfsdf
   search:
     placeholder: Arama "Noah"
     result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-success>%{query}</span>"
@@ -116,7 +114,8 @@ tr:
     other_links: Diğer bağlantılar
     contact_us: Bizimle iletişime geçin
     help: Yardım ve geri bildirim
-    about_project: Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
+    about_project:
+      Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
       okumasını ve öğrenmesini kolaylaştırmayı umuyoruz. Kur'an-ı Kerim, Kur'an-ı
       Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
       birçok isme sahiptir.
@@ -141,3 +140,7 @@ tr:
     audio_description: Aynı anda öğrenme ve dinleme
   close: Kapat
   page: Sayfa
+  reader_mode:
+    reading: Okuma
+    translation: Çeviriler
+    info: Bölüm Bilgisi

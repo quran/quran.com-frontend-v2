@@ -1,3 +1,9 @@
+.fa-help {
+  &:before {
+    content: $fa-help;
+    color: #999ba3;
+  }
+}
 .fa-fb {
   &:before {
     content: $fa-fb;
@@ -41,6 +47,11 @@
 .fa-developer {
   &:before {
     content: $fa-developer;
+  }
+}
+.fa-bookmark {
+  &:before {
+    content: $fa-bookmark;
   }
 }
 .fa-caret-right {
@@ -118,6 +129,11 @@
     content: $fa-bars-light;
   }
 }
+.fa-bookmark1 {
+  &:before {
+    content: $fa-bookmark1;
+  }
+}
 .fa-clipboard-list {
   &:before {
     content: $fa-clipboard-list;
@@ -138,14 +154,44 @@
     content: $fa-copy;
   }
 }
+.fa-edit {
+  &:before {
+    content: $fa-edit;
+  }
+}
+.fa-ellipsis-h {
+  &:before {
+    content: $fa-ellipsis-h;
+  }
+}
+.fa-ellipsis-v-alt {
+  &:before {
+    content: $fa-ellipsis-v-alt;
+  }
+}
+.fa-ellipsis-v {
+  &:before {
+    content: $fa-ellipsis-v;
+  }
+}
 .fa-envelope {
   &:before {
     content: $fa-envelope;
   }
 }
+.fa-external-link-alt {
+  &:before {
+    content: $fa-external-link-alt;
+  }
+}
 .fa-home {
   &:before {
     content: $fa-home;
+  }
+}
+.fa-info-circle {
+  &:before {
+    content: $fa-info-circle;
   }
 }
 .fa-link-light {
@@ -163,9 +209,9 @@
     content: $fa-minus-circle;
   }
 }
-.fa-mobile-android {
+.fa-mobile {
   &:before {
-    content: $fa-mobile-android;
+    content: $fa-mobile;
   }
 }
 .fa-music {
@@ -193,6 +239,11 @@
     content: $fa-plus-circle;
   }
 }
+.fa-print {
+  &:before {
+    content: $fa-print;
+  }
+}
 .fa-repeat-light {
   &:before {
     content: $fa-repeat-light;
@@ -211,6 +262,16 @@
 .fa-share-square {
   &:before {
     content: $fa-share-square;
+  }
+}
+.fa-tag {
+  &:before {
+    content: $fa-tag;
+  }
+}
+.fa-tags {
+  &:before {
+    content: $fa-tags;
   }
 }
 .fa-times-circle {
@@ -239,46 +300,12 @@
     color: #b1bec5;
   }
 }
-.fa-night .p1 {
-  &:before {
-    content: $fa-night-path1;
-    color: rgb(197, 225, 230);
-  }
-}
-.fa-night .p2 {
-  &:before {
-    content: $fa-night-path2;
-    margin-left: -1em;
-    color: rgb(0, 0, 0);
-  }
-}
 .fa-book {
   &:before {
     content: $fa-book;
     color: #b1bec5;
   }
 }
-.fa-light .path-1 {
-  &:before {
-    content: $fa-light-path1;
-    color: rgb(255, 193, 7);
-  }
-}
-.fa-light .path-2 {
-  &:before {
-    content: $fa-light-path2;
-    margin-left: -1em;
-    color: rgb(96, 125, 139);
-  }
-}
-.fa-light .path-3 {
-  &:before {
-    content: $fa-light-path3;
-    margin-left: -1em;
-    color: rgb(0, 0, 0);
-  }
-}
-
 .fa-donate {
   &:before {
     content: $fa-donate;

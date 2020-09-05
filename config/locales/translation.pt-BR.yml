@@ -8,13 +8,15 @@
 pt-BR:
   noble_quran: O Nobre Alcorão
   errors:
-    format: "%{attribute} %{message}"
     not_found: Desculpe, esta página não existe
-    invalid_verse: O Ayah (verso) está fora de alcance. Por favor, vá para a página
+    invalid_verse:
+      O Ayah (verso) está fora de alcance. Por favor, vá para a página
       inicial
-    invalid_chapter: O capítulo está fora de alcance. Por favor, vá para a página
+    invalid_chapter:
+      O capítulo está fora de alcance. Por favor, vá para a página
       inicial
-    no_script: Parece que seu navegador não suporta Javascript ou está desativado.
+    no_script:
+      Parece que seu navegador não suporta Javascript ou está desativado.
       O Quran.com funciona melhor com o JavaScript ativado. Para obter mais instruções
       sobre como ativar o javascript
     unavailable_session: |
@@ -23,16 +25,17 @@ pt-BR:
       Se acontecer de você executar em um servidor multi-processo (como Unicorn ou Puma) o processo
       esta solicitação não armazena %{id} na memória. Considere transformar o número de
       processos para um (1) ou usando um servidor diferente em desenvolvimento.
-    unacceptable_request: 'Uma versão suportada é esperada no cabeçalho de aceite.
+    unacceptable_request:
+      "Uma versão suportada é esperada no cabeçalho de aceite.
 
-      '
+      "
     connection_refused: |
       Opa! Falha ao conectar-se ao middleware do console da Web.
       Por favor, certifique-se de que um servidor de desenvolvimento de trilhos está sendo executado.
   local: Inglês
   site_local: Idioma do Site
   change_local: Escolha o idioma que você deseja que o site seja exibido
-  local_native_name: Inglês
+  local_native_name: Português
   language: Idioma
   page: Página
   settings:
@@ -43,7 +46,6 @@ pt-BR:
     remove_all: Deletar tudo
     translation_english: Inglês
     translation_other: Outros Idiomas
-    reading: Leitura
     reset: Redefinir a configuração
     font_size:
       label: Tamanho da Fonte
@@ -57,6 +59,8 @@ pt-BR:
       label: Modo noturno
       day_tip: Mudar para modo diurno
       night_tip: Mudar para modo noturno
+    font_type:
+    sample_audio:
   verses:
     media: Assistir comentário do vídeo a partir de %{from}
     go: Vá para o verso
@@ -68,7 +72,6 @@ pt-BR:
     verses: Ayah(Versos)
     pages: Páginas
     revelation_place: Local da Revelação
-    info: Informações do capítulo
     continue: Continuar
     quick_links: Links Rápidos
     go_to_beginning: Início do capítulo
@@ -128,7 +131,8 @@ pt-BR:
     other_links: Outros links
     contact_us: Nos contate
     help: Ajuda e feedback
-    about_project: Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
+    about_project:
+      Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
       conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
     rights: Todos os direitos reservados
     mobilea_apps: Aplicativos móveis
@@ -138,7 +142,6 @@ pt-BR:
     forum: Fórum
   juz: Juz
   click_here: Clique aqui
-  tafsir_select: Selecione um tafsir
   download: baixar
   home: Início
   related_sites:
@@ -150,3 +153,7 @@ pt-BR:
     audio: Nobre Alcorão em áudio
     audio_description: Aprendendo e ouvindo ao mesmo tempo
   close: Fechar
+  reader_mode:
+    reading: Leitura
+    translation: Traduções
+    info: Informações do capítulo

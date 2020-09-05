@@ -25,9 +25,8 @@ class ChapterPresenter < HomePresenter
   def reading_mode?
     return @reading_mode unless @reading_mode.nil?
 
-    reading = params[:reading] || session[:reading]
-    session[:reading] = reading.to_s == 'true'
-    @reading_mode = session[:reading]
+    reading = params[:reading].presence
+    @reading_mode = reading.to_s == 'true'
   end
 
   def font

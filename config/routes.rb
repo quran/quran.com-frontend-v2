@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get :search, to: 'search#search', as: :search
   get 'search/suggestion', to: 'search#suggestion'
 
+  get '/settings', to: 'settings#show'
   get '/audio', to: 'audio_files#index'
   get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
   get "آیت الکرسی/", to: 'chapters#ayatul_kursi', id: '2', range: '255'

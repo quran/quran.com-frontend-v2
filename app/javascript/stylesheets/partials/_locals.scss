@@ -10,7 +10,6 @@ divehi,
 .dhivehi {
   direction: rtl;
   text-align: right;
-  line-height: normal;
 
   .alert-dismissible {
     .close {
@@ -42,4 +41,11 @@ divehi,
 .text_imlaei,
 .text_madani {
   font-family: me_quran;
+}
+
+.lang-ar,
+.lang-ur {
+  input {
+    direction: rtl;
+  }
 }

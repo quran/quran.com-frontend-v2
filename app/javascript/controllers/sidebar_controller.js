@@ -10,34 +10,31 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["trigger", 'setting', "close", "settingClose"];
-
   connect() {
-    $(this.triggerTarget).on("click", e => {
-      e.preventDefault();
-      this.toggle(e, '.left-sidebar');
-    });
-
-    $(this.settingTarget).on("click", e => {
-      e.preventDefault();
-      this.toggle(e, '.right-sidebar');
-    });
-
-    $(this.closeTarget).on("click", e => {
-      e.preventDefault();
-      this.toggle(e, ".left-sidebar");
-    });
-
-    $(this.settingCloseTarget).on("click", e => {
-      e.preventDefault();
-      this.toggle(e, '.right-sidebar');
-    });
-
+    this.element.addEventListener("click", e => this.toggle(e));
   }
 
-  toggle(e, className) {
-    console.log(className)
-    $("body").toggleClass("active");
-    $(className).toggleClass('open');
+  toggle(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    document.body.classList.toggle("disabled");
+    const { target, close } = this.element.dataset;
+    const sidebar = document.querySelector(target);
+
+    sidebar.classList.toggle("d-none");
+    const opened = sidebar.classList.toggle("open");
+
+    if (opened) {
+      document.querySelectorAll(close).forEach(closeTrigger => {
+        closeTrigger.addEventListener("click", e => this.toggle(e));
+      });
+    } else {
+      document.querySelectorAll(close).forEach(closeTrigger => {
+        closeTrigger.removeEventListener("click", () => {});
+      });
+    }
   }
+
+  removeListener() {}
 }
