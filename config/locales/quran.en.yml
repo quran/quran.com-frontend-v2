@@ -19,7 +19,7 @@ en:
     remove_all: Remove all
     translation_english: English
     translation_other: Other Languages
-    reset: Reset Setting
+    reset: Reset to default
     font_type: Select font
     font_size:
       label: Font size

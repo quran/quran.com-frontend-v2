@@ -1,0 +1,16 @@
+<div class="">
+  <% ["Umar Qarai Tajweeb", "Naveed Qari Tajweed-same", "Ahmed", "Umair", "Usman Ahmed", "Moshisn", "Taqi Usman"].each do |name| %>
+    <div class="form-check my-4">
+      <div>
+        <input class="form-check-input" type="checkbox" value="<%= name %>" id="<%= name %>">
+        <label class="form-check-label text-muted ff-m" for="<%= name %>">
+          <%= name %>
+        </label>
+        <h1 class="text-right">
+          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </h1>
+      </div>
+
+    </div>
+  <% end %>
+</div>

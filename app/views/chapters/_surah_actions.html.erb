@@ -1,5 +1,3 @@
-<%#= render 'chapters/setting' %>
-
 <section class="bg-info surah-actions sticky-top">
   <div class="container position-relative">
     <div class="row align-items-center actions-row">
@@ -16,12 +14,12 @@
 
           <div class="dropdown-menu border-0 custom-shadow pt-0" aria-labelledby="dropdownMenuButton">
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
-              <h6 class="mb-0 ff-b">Surah</h6>
-              <%= lazy_image_tag 'media/images/icons/cancel.svg', width: '20px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
+              <h6 class="mb-0 ff-b">Surah List</h6>
+              <i class="fa fa-times-circle c-pointer"></i>
             </div>
 
             <div class="rounded-search d-flex justify-content-end col-5 dropdown-item sticky-top bg-white pt-3">
-              <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+              <%= render 'shared/search_form' %>
             </div>
 
             <% @presenter.chapters.find_each do |chapter| %>
@@ -44,11 +42,13 @@
           <div class="dropdown-menu border-0 custom-shadow pt-0" aria-labelledby="verseDropdown">
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b">Verse</h6>
-              <%= lazy_image_tag 'media/images/icons/cancel.svg', width: '20px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
+              <i class="fa fa-times-circle c-pointer"></i>
             </div>
+
             <div class="rounded-search d-flex justify-content-end col-5 dropdown-item sticky-top bg-white pt-3">
-              <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
+              <%= render 'shared/search_form' %>
             </div>
+
             <% @presenter.paginate.find_each do |verse| %>
               <div class="dropdown-item">
                 <%= link_to "Verse #{verse.verse_number}", verse_path(verse) %>
@@ -82,7 +82,7 @@
 
       <div class="col text-right">
         <button class="btn btn-outline-secondary" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
-          <i class="fa fa-cog", class="c-pointer"></i>
+          <i class="fa fa-cog" , class="c-pointer"></i>
           <span class="d-md-inline d-none">
             <%= _t('settings.label') %>
           </span>

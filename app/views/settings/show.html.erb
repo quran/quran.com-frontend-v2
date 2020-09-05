@@ -12,47 +12,54 @@
       <li class="nav-item">
         <a class="nav-link px-2 px-md-3 active" id="pill-translation-tab" data-toggle="pill" href="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="true">Translation</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link px-2 px-md-3" id="pill-reading-tab" data-toggle="pill" href="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">Reading</a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link px-2 px-md-3" id="pill-surha-tab" data-toggle="pill" href="#pill-surha" role="tab" aria-controls="pill-surha" aria-selected="false">Surah Info</a>
+        <a class="nav-link px-2 px-md-3" id="pill-surha-tab" data-toggle="pill" href="#pill-surha" role="tab" aria-controls="pill-surha" aria-selected="false">Surah
+          Info</a>
       </li>
     </ul>
   </div>
 
-  <div class="row bg-info p-3 border mt-5 rounded align-items-center c-pointer">
+  <div class="row bg-info p-3 border mt-5 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#translations-sidebar" data-close=".close-translations-sidebar">
     <div class="col-11">
       <h6 class="mb-0 ff-b">Translation</h6>
       <small class="mb-0 text-muted">Sahih International</small>
     </div>
+
     <div class="col-1">
-      <i class="fa fa-chevron-right" data-target="sidebar.settingClose"></i>
+      <i class="fa fa-chevron-right"></i>
     </div>
   </div>
 
-  <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer">
+  <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#reciters-sidebar" data-close=".close-reciters-sidebar">
     <div class="col-11">
       <h6 class="mb-0 ff-b">Reciters</h6>
       <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
     </div>
+
     <div class="col-1">
-      <i class="fa fa-chevron-right" data-target="sidebar.settingClose"></i>
+      <i class="fa fa-chevron-right"></i>
     </div>
   </div>
 
   <ul class="nav nav-pills my-5 justify-content-center" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="Display-tab" data-toggle="pill" href="#Display" role="tab" aria-controls="Display" aria-selected="true">Display settings</a>
+      <a class="nav-link active" id="Display-tab" data-toggle="pill" href="#display" role="tab" aria-controls="Display" aria-selected="true">Display
+        settings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="Repeat-tab" data-toggle="pill" href="#Repeat" role="tab" aria-controls="Repeat" aria-selected="false">Repeat settings</a>
+      <a class="nav-link" id="Repeat-tab" data-toggle="pill" href="#Repeat" role="tab" aria-controls="Repeat" aria-selected="false">Repeat
+        settings</a>
     </li>
   </ul>
 
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="Display" role="tabpanel" aria-labelledby="Display-tab">
-      <h6  class="ff-b">Tooltip display</h6>
+    <div class="tab-pane fade show active" id="display" role="tabpanel" aria-labelledby="Display-tab">
+      <h6 class="ff-b">Tooltip display</h6>
       <div class="row">
         <label class="custom-label col">
           <input type="radio" name="radio" checked/>
@@ -62,16 +69,16 @@
           <input type="radio" name="radio"/>
           <span class="border border-muted d-flex w-100 rounded">Transliteration</span>
         </label>
-        <label>
       </div>
 
-      <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer">
+      <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#fonts-sidebar" data-close=".close-fonts-sidebar">
         <div class="col-11">
           <h6 class="mb-0 ff-b">Fonts</h6>
           <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
         </div>
+
         <div class="col-1">
-          <i class="fa fa-chevron-right" data-target="sidebar.settingClose"></i>
+          <i class="fa fa-chevron-right"></i>
         </div>
       </div>
 
@@ -80,27 +87,29 @@
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-plus-circle" data-target="sidebar.settingClose"></i>
+              <i class="fa fa-plus-circle"></i>
             </div>
             <h6 class="mb-0 ff-b">Arabic</h6>
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-minus-circle" data-target="sidebar.settingClose"></i>
+              <i class="fa fa-minus-circle"></i>
             </div>
           </div>
         </div>
+
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-plus-circle" data-target="sidebar.settingClose"></i>
+              <i class="fa fa-plus-circle"></i>
             </div>
             <h6 class="mb-0 ff-b">Translation</h6>
             <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-minus-circle" data-target="sidebar.settingClose"></i>
+              <i class="fa fa-minus-circle"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="tab-pane fade" id="Repeat" role="tabpanel" aria-labelledby="Repeat-tab">
       <h6 class="ff-b mt-4">Play</h6>
       <div class="dropdown pb-4 border-bottom">
@@ -178,112 +187,46 @@
           </label>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- I have created all other sider at bottom you can uncomment and check -->
-<!-- <div class="right-sidebar px-4 py-4 border-left translation-sidebar">
-  <div class="d-flex justify-content-between align-items-center">
-      <%#= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
-      <h4 class="mb-0 ff-b">Setting</h4>
-      <button class="btn btn-primary text-white">Clear all</button>
-  </div>
-  <div>
-  <div class="rounded-search d-flex justify-content-end my-4">
-      <%#= render 'shared/search_form', expanded: true, mobile_expand: false %>
-    </div>
-  </div>
-  <div class="py-4 border-bottom">
-    <h6 class="ff-b">
-      🇬🇧 English
-    </h6>
-    <% ["Umar", "Naveed", "Ahmed", "Umair", "Usman Ahmed", "Moshisn", "Taqi Usman"].each do |name| %>
-      <div class="form-check my-4 ml-4">
-        <input class="form-check-input" type="checkbox" value="<%= name %>" id="<%= name %>">
-        <label class="form-check-label text-muted ff-m" for="<%= name %>">
-          <%= name %>
-        </label>
-      </div>
-    <% end %>
-  </div>
-  <div class="py-4">
-    <h5 class="ff-b mb-3">Other Languages</h5>
-    <h6 class="ff-b">
-      🇦🇱 Albanian Language
-    </h6>
-    <% ["Umar", "Naveed", "Ahmed", "Umair", "Usman Ahmed", "Moshisn", "Taqi Usman"].shuffle.each do |name| %>
-      <div class="form-check my-4 ml-4">
-        <input class="form-check-input" type="checkbox" value="<%= name %>" id="<%= name %>">
-        <label class="form-check-label text-muted ff-m" for="<%= name %>">
-          <%= name %>
-        </label>
-      </div>
-    <% end %>
+<div class="sidebar slide-right px-4 py-4 border-left d-none" id="translations-sidebar">
+  <div class="sidebar-head d-flex align-items-center">
+    <i class="fa fa-long-arrow-left close-sidebar close-translations-sidebar"></i>
+    <h4 class="mb-0 ff-b">Translations</h4>
+    <button class="btn btn-primary text-white">Clear all</button>
   </div>
 
+  <%= render_async 'settings/translations', lazy_load: true, lazy_load: {root: '#translations-sidebar'} do %>
+    <p class="text-center p-3">
+      <%= loading_spinner %>
+    </p>
+  <% end.html_safe %>
 </div>
 
-
-<div class="right-sidebar px-4 py-4 border-left reciter-sidebar">
-  <div class="col-md-6 d-flex justify-content-between align-items-center">
-      <%= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
-      <h4 class="mb-0 ff-b">Reciters</h4>
-    </div>
-  <div>
-  <div class="rounded-search d-flex justify-content-end my-4">
-      <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
-    </div>
-  </div>
-  <div class="">
-    <% ["Umar Qarai Tajweeb", "Naveed Qari Tajweed-same", "Ahmed", "Umair", "Usman Ahmed", "Moshisn", "Taqi Usman"].each do |name| %>
-      <div class="form-check my-4">
-        <div>
-          <input class="form-check-input" type="checkbox" value="<%= name %>" id="<%= name %>">
-          <label class="form-check-label text-muted ff-m" for="<%= name %>">
-          <%= name %>
-          </label>
-        </div>
-        <button class="btn btn-info d-flex align-items-center mt-2">
-          <%= lazy_image_tag 'media/images/icons/player.svg', width: '20px', class: "c-pointer mr-2", data: {target: "sidebar.settingClose"} %>
-          Hear the Voice
-        </button>
-      </div>
-    <% end %>
+<div class="sidebar slide-right px-4 py-4 border-left d-none" id="reciters-sidebar">
+  <div class="sidebar-head d-flex align-items-center">
+    <i class="fa fa-long-arrow-left close-sidebar close-reciters-sidebar"></i>
+    <h4 class="mb-0 ff-b">Reciters</h4>
   </div>
 
+  <%= render_async 'settings/recitations', lazy_load: true, lazy_load: {root: '#reciters-sidebar'} do %>
+    <p class="text-center p-3">
+      <%= loading_spinner %>
+    </p>
+  <% end.html_safe %>
 </div>
 
-
-
-<div class="right-sidebar px-4 py-4 border-left font-sidebar">
-  <div class="row">
-    <div class="col-md-6 d-flex justify-content-between align-items-center">
-      <%= lazy_image_tag 'media/images/icons/right-arrow.svg', width: '10px', class: "c-pointer", data: {target: "sidebar.settingClose"} %>
-      <h4 class="mb-0 ff-b">Fonts</h4>
-    </div>
-  </div>
-  <div>
-  <div class="rounded-search d-flex justify-content-end my-4">
-      <%= render 'shared/search_form', expanded: true, mobile_expand: false %>
-    </div>
-  </div>
-  <div class="">
-    <% ["Umar Qarai Tajweeb", "Naveed Qari Tajweed-same", "Ahmed", "Umair", "Usman Ahmed", "Moshisn", "Taqi Usman"].each do |name| %>
-      <div class="form-check my-4">
-        <div>
-          <input class="form-check-input" type="checkbox" value="<%= name %>" id="<%= name %>">
-          <label class="form-check-label text-muted ff-m" for="<%= name %>">
-            <%= name %>
-          </label>
-          <h1 class="text-right">
-            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-          </h1>
-        </div>
-
-      </div>
-    <% end %>
+<div class="sidebar slide-right px-4 py-4 border-left d-none" id="fonts-sidebar">
+  <div class="sidebar-head d-flex align-items-center">
+    <i class="fa fa-long-arrow-left close-sidebar close-fonts-sidebar"></i>
+    <h4 class="mb-0 ff-b">Fonts</h4>
   </div>
 
-</div> -->
+  <%= render_async 'settings/fonts', lazy_load: true, lazy_load: {root: '#fonts-sidebar'} do %>
+    <p class="text-center p-3">
+      <%= loading_spinner %>
+    </p>
+  <% end.html_safe %>
+</div>

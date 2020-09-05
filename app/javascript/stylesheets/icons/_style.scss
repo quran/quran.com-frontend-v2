@@ -84,6 +84,11 @@
     content: $fa-step-forward;
   }
 }
+.fa-arrow-alt-left {
+  &:before {
+    content: $fa-arrow-alt-left;
+  }
+}
 .fa-bars-regular {
   &:before {
     content: $fa-bars-regular;
@@ -97,6 +102,11 @@
 .fa-link-regular {
   &:before {
     content: $fa-link-regular;
+  }
+}
+.fa-long-arrow-left {
+  &:before {
+    content: $fa-long-arrow-left;
   }
 }
 .fa-pause-circle-regular {
@@ -117,6 +127,11 @@
 .fa-repeat-regular {
   &:before {
     content: $fa-repeat-regular;
+  }
+}
+.fa-spinner {
+  &:before {
+    content: $fa-spinner;
   }
 }
 .fa-unlink-regular {

@@ -26,7 +26,7 @@ module ChaptersHelper
     end
   end
 
-  def ordered_translations
+  def approved_translations
     translations = ResourceContent.one_verse.translations.approved.order('priority ASC').pluck(:id, :name, :language_name)
 
     translations.group_by do |trans|
@@ -34,7 +34,7 @@ module ChaptersHelper
     end
   end
 
-  def recitations
+  def approved_recitations
     Recitation.approved.select(:id, :reciter_name, :style)
   end
 

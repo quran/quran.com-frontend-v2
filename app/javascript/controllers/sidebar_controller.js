@@ -18,8 +18,12 @@ export default class extends Controller {
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    document.body.classList.toggle("disabled");
-    const { target, close } = this.element.dataset;
+    const { target, close, isChild } = this.element.dataset;
+
+    if (isChild != "true") {
+      document.body.classList.toggle("disabled");
+    }
+
     const sidebar = document.querySelector(target);
 
     sidebar.classList.toggle("d-none");
