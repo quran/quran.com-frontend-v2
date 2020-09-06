@@ -7,24 +7,23 @@
 // </div>
 
 import { Controller } from "stimulus";
+import { Tooltip } from "bootstrap";
 
 export default class extends Controller {
   connect() {
     let el = $(this.element);
     let setting = document.body.setting;
 
-    el.tooltip({
+    new Tooltip(this.element, {
       trigger: "hover",
       placement: "top",
       html: true,
       template:
-        "<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>",
+        "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
       title: function(w) {
-        let word = $(this);
-
-        const local = word.data("local");
+        const local = el.data("local");
         const tooltip = setting.getTooltipType();
-        const text = word.data(tooltip);
+        const text = el.data(tooltip);
         return `<div class='${local}'>${text}</div>`;
       }
     });

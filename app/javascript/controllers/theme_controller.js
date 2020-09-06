@@ -1,0 +1,57 @@
+// Visit The Stimulus Handbook for more details
+// https://stimulusjs.org/handbook/introduction
+//
+// This example controller works with specially annotated HTML like:
+//
+// <div data-controller="hello">
+//   <h1 data-target="hello.output"></h1>
+// </div>
+
+import SettingController from "./setting_controller";
+import LocalStore from "../utility/local-store";
+
+export default class extends SettingController {
+  connect() {
+    super.connect();
+
+    $(document).on("click", ".theme-switch", e => {
+      e.preventDefault();
+      this.setTheme(e.target.dataset.theme);
+    });
+  }
+
+  updatePage() {
+    const isNightMode = this.get("nightMode");
+    const darkModeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+
+    const setDark = function(e) {
+      let bodyClasses = document.body.classList;
+
+      if (e && e.matches) {
+        bodyClasses.add("night");
+      } else {
+        if (isNightMode) {
+          bodyClasses.add("night");
+        } else {
+          bodyClasses.remove("night");
+        }
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setDark(darkModeMediaQuery);
+    });
+    darkModeMediaQuery.addListener(event => {
+      setDark(event);
+    });
+    setDark(darkModeMediaQuery);
+  }
+
+  setTheme(theme) {
+    const isNightMode = $("body").hasClass("night");
+    document.body.classList.toggle("night");
+    this.set("nightMode", !isNightMode);
+  }
+}

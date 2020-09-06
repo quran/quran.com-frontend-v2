@@ -22,15 +22,17 @@
     .verse-dropdown,
     .surah-dropdown {
       position: unset;
+
       .dropdown-menu {
         max-height: unset;
         position: fixed !important;
         bottom: 0px;
         top: -2px !important;
         transform: unset !important;
-        z-index: 9999;
+        z-index: $cloud - 100;
       }
     }
+
     .actions-row {
       position: relative;
     }
@@ -40,19 +42,64 @@
 #chapter-page {
   .verse-actions-below {
     @media #{$tablet-md} {
-      img {
-        height: 22px;
-      }
     }
   }
+
   .font-size-box {
     height: 45px;
     width: 45px;
   }
 }
 
-.chapter-header ~ .download-btn {
-  display: none !important;
+.verse {
+  .w {
+    margin: 0 5px;
+  }
+
+  .translation {
+    sup {
+      color: $color-primary;
+      cursor: pointer;
+    }
+
+    inline-comment {
+      color: $color-primary;
+
+      &:before {
+        content: "(";
+      }
+
+      &:after {
+        content: ")";
+      }
+    }
+
+    small {
+      a {
+        font-size: 14px;
+        color: #607d8b;
+      }
+
+      i {
+        font-size: 11px;
+        color: $color-primary;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.nav-item {
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
+}
+
+.dropdown-item.active {
+  a {
+    color: #fff;
+  }
 }
 
 #player {

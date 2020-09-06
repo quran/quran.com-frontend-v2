@@ -17,14 +17,13 @@ body.night {
       }
     }
   }
-  header,
+  .navbar,
   footer,
   .dropdown-menu,
   .footnote,
   .verse-highlight,
   .popover-header,
-  .right-sidebar,
-  .select2-dropdown,
+  .sidebar,
   .card {
     background: #32312c !important;
   }
@@ -56,6 +55,7 @@ body.night {
 
   .surah-actions,
   .info-heading,
+  .bg-info,
   .popover-body {
     li a,
     li,
@@ -85,8 +85,10 @@ body.night {
       }
     }
   }
+
   #player {
-    background: #2d2d2d;
+    background: #2d2d2d !important;
+    border-top: 1px solid lighten(#2d2d2d, 5%);
   }
 
   .surah-actions {
@@ -115,6 +117,7 @@ body.night {
   header,
   header.active {
     border-color: #2d2d2d;
+    background: #32312c;
   }
 
   // home page

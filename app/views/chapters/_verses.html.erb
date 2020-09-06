@@ -9,7 +9,7 @@
   <%= render partial: 'verse', collection: verses, as: :verse %>
 <% end %>
 
-<div class="text-center" id="verses_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
+<div class="text-center my-3" id="verses_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
   <% if @presenter.next_page %>
     <%= chapter_next_page_link %>
   <% end %>
@@ -20,19 +20,19 @@
     <% end %>
 
     <%= link_to @presenter.continue_range, class: 'btn btn-outline-primary mt-4' do %>
-      <%= _t('chapters.continue') %> <i class="fa-angle-down"></i>
+      <%= _t('chapters.continue') %>
     <% end %>
   <% else %>
     <%= link_to chapter_path(@presenter.chapter.chapter_number - 1), class: 'btn btn-outline-primary mt-4' do %>
-      <i class="fa-angle-left"></i> <%= _t('chapters.previous') %>
+      <%= _t('chapters.previous') %>
     <% end if @presenter.previous_surah? %>
 
     <%= link_to chapter_path(@presenter.chapter), class: 'btn btn-outline-primary mt-4' do %>
-      <%= _t('chapters.go_to_beginning') %> <i class="fa-angle-up"></i>
+      <%= _t('chapters.go_to_beginning') %>
     <% end %>
 
     <%= link_to chapter_path(@presenter.chapter.chapter_number + 1), class: 'btn btn-outline-primary mt-4' do %>
-      <%= _t('chapters.next') %><i class="fa-angle-right"></i>
+      <%= _t('chapters.next') %>
     <% end if @presenter.next_surah? %>
   <% end %>
 </div>

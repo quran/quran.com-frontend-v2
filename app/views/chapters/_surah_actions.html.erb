@@ -1,10 +1,13 @@
+<% current_chapter = @presenter.chapter.id %>
+<% verse_locale = _t('player.current_verse') %>
+
 <section class="bg-info surah-actions sticky-top">
   <div class="container position-relative">
     <div class="row align-items-center actions-row">
       <div class="col-md-2 col-5">
         <div class="dropdown surah-dropdown">
           <button class="btn btn-white dropdown-toggle position-relative border-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="text-left pr-md-5 pr-3">
+            <div class="text-left pr-md-5 pr-3 text-primary">
               <strong>
                 <%= @presenter.chapter.name_complex %>
               </strong>
@@ -12,21 +15,40 @@
             </div>
           </button>
 
-          <div class="dropdown-menu border-0 custom-shadow pt-0" aria-labelledby="dropdownMenuButton">
+          <div
+            class="dropdown-menu border-0 custom-shadow pt-0"
+            aria-labelledby="dropdownMenuButton"
+            data-controller="filter-list" data-list="#chapters" data-input="#filter-chapter"
+          >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b">Surah List</h6>
               <i class="fa fa-times-circle c-pointer"></i>
             </div>
 
-            <div class="rounded-search d-flex justify-content-end col-5 dropdown-item sticky-top bg-white pt-3">
-              <%= render 'shared/search_form' %>
+            <div class="rounded-search dropdown-item pt-3 mb-3">
+              <input class="form-control bg-light" type="search" id="filter-chapter"/>
             </div>
 
-            <% @presenter.chapters.find_each do |chapter| %>
-              <div class="dropdown-item">
-                <%= link_to "#{chapter.chapter_number} #{chapter.name_simple}", chapter_path(chapter), data: {arabic: chapter.name_arabic} %>
-              </div>
-            <% end %>
+            <div id=chapters>
+              <% @presenter.chapters.each do |chapter| %>
+                <div class="dropdown-item <%= 'active' if chapter.id == current_chapter %>" data-filter-tags="<%= chapter.chapter_number %> <%= chapter.name_simple.downcase %> <%= chapter.translated_name.name.downcase %> <%= chapter.name_arabic %>">
+                  <%= link_to chapter_path(chapter) do %>
+                    <div class='row'>
+                      <div class="col-2"><%= chapter.chapter_number %></div>
+                      <div class="col-7 text-muted">
+                        <%= chapter.name_simple %>
+                      </div>
+                      <div class="col-3">
+                        <%= chapter.name_arabic %>
+                      </div>
+                      <div class="col-10 offset-2">
+                        <%= chapter.translated_name.name %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -34,26 +56,33 @@
       <div class="col-md-1 col-4">
         <div class="dropdown verse-dropdown">
           <button class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="text-left pr-md-5 pr-3">
-              <strong> Verse <%= @presenter.paginate.first.verse_number %></strong>
+            <div class="text-left pr-md-5 pr-3 text-primary">
+              <strong> <%= verse_locale %> <%= @presenter.paginate.first.verse_number %></strong>
             </div>
           </button>
 
-          <div class="dropdown-menu border-0 custom-shadow pt-0" aria-labelledby="verseDropdown">
+          <div class="dropdown-menu border-0 custom-shadow pt-0"
+               aria-labelledby="verseDropdown"
+               data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah"
+          >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b">Verse</h6>
               <i class="fa fa-times-circle c-pointer"></i>
             </div>
 
-            <div class="rounded-search d-flex justify-content-end col-5 dropdown-item sticky-top bg-white pt-3">
-              <%= render 'shared/search_form' %>
+            <div class="rounded-search dropdown-item pt-3 mb-3">
+              <input class="form-control bg-light" type="search" id="filter-ayah"/>
             </div>
 
-            <% @presenter.paginate.find_each do |verse| %>
-              <div class="dropdown-item">
-                <%= link_to "Verse #{verse.verse_number}", verse_path(verse) %>
-              </div>
-            <% end %>
+            <div id="verse-list">
+              <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
+                <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
+                  <%= link_to chapter_path("#{current_chapter}/#{verse_num}"), data: {verse: verse_num} do %>
+                    <%= verse_locale %> <%= verse_num %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

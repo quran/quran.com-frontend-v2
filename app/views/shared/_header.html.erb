@@ -4,8 +4,8 @@
   <nav class="navbar navbar-light bg-white custom-shadow">
     <div class="container">
       <div class="row">
-        <div class="col-5 d-flex align-items-center">
-          <button class="navbar-toggler" type="button" data-controller="sidebar" data-target="#left-sidebar" data-close=".close-left-sidebar" >
+        <div class="col d-flex align-items-center">
+          <button class="navbar-toggler" type="button" data-controller="sidebar" data-target="#left-sidebar" data-close=".close-left-sidebar">
             <i class="fa fa-bars-regular"></i>
           </button>
 
@@ -14,6 +14,7 @@
           <% end %>
 
           <div id="local-switcher" class="d-none d-md-block">
+
             <div class="dropdown">
               <a class="nav-link dropdown-toggle pb-0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= _t('local_native_name') %> <i class="fa fa-fadown-open"></i>
@@ -21,8 +22,8 @@
 
               <ul class="dropdown-menu">
                 <% available_locales.each do |locale, name| %>
-                  <li role="presentation">
-                    <%= link_to url_for(locale: locale), role: "menuitem", class: "dropdown-item #{'active' if I18n.locale.to_s == locale }" do %>
+                  <li class="dropdown-item <%= 'active' if I18n.locale.to_s == locale %>">
+                    <%= link_to url_for(locale: locale) do %>
                       <span class="<%= locale %>"><%= name %></span>
                     <% end %>
                   </li>
@@ -34,13 +35,9 @@
 
         <%= yield :header %>
 
-        <div class="col-2 justify-content-end d-md-block d-none">
-          <span class="theme-switch mr-2">
+        <div class="col-2 justify-content-end d-md-block d-none" data-controller="theme">
+          <span class="theme-switch mr-2" data-theme="light">
             <%= lazy_image_tag "media/images/icon/light.svg" %>
-          </span>
-
-          <span class="theme-switch">
-            <%= lazy_image_tag "media/images/icon/night.svg" %>
           </span>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default class extends Controller {
 
   doFilter(text, list) {
     /* when user types more than 1 letter start search filter */
-    if (text.length > 1) {
+    if (text.length >= 1) {
       list
         .find("[data-filter-tags]:not([data-filter-tags*='" + text + "'])")
         .removeClass("filter-show")

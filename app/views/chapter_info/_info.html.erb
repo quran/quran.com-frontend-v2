@@ -1,16 +1,10 @@
 <section id="chapter-info">
-  <div class="container alert alert-dismissible fade show" role="alert">
-    <ul class="d-flex align-items-center info-heading">
+  <div class="container">
+    <ul class="d-flex align-items-center">
       <li><h1>Surah <%= @presenter.name_simple %></h1></li>
       <li><%= _t("chapters.verses") %> <span class="info"><%= @presenter.verses_count %></span></li>
       <li><%= _t("chapters.pages") %> <span class="info"><%= @presenter.pages.join('-') %></span></li>
       <li><%= _t("chapters.revelation_place") %> <span class="info"><%= @presenter.revelation_place.humanize %></span>
-      </li>
-
-      <li class="ml-auto">
-        <a class="text-info" rel="tooltip" data-dismiss="alert" title="Close Info">
-          <i class="fa fa-times-circle"></i>
-        </a>
       </li>
     </ul>
 

@@ -24,7 +24,7 @@
 
     <ul class="h-scrolled-section  d-flex">
       <% popular_searches.each_with_index do |poplar_search, i| %>
-        <li class="d-block mr-2">
+        <li class="d-block mr-4">
           <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary', data: {controller: 'track', name: 'popular-search', category: poplar_search[0] } %>
         </li>
       <% end %>

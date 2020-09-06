@@ -130,6 +130,9 @@
 
       .nav-item {
         margin-right: 40px;
+        &:focus {
+          outline: none;
+        }
       }
 
       .nav-link {
@@ -483,15 +486,15 @@
         cursor: pointer;
       }
 
-      inline-comment{
+      inline-comment {
         color: $color-primary;
 
-        &:before{
-          content: '(';
+        &:before {
+          content: "(";
         }
 
-        &:after{
-          content: ')';
+        &:after {
+          content: ")";
         }
       }
 
