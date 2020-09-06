@@ -160,10 +160,12 @@ ul {
   position: relative;
   overflow: hidden;
   margin-bottom: 0.375em;
+
   input {
     position: absolute;
     left: -9999px;
-    &:checked + span {
+
+    &:checked + p {
       background-color: mix(#fff, $color-primary, 84%);
       color: $color-primary;
       &:before {
@@ -171,15 +173,18 @@ ul {
       }
     }
   }
-  span {
+
+  p {
     display: flex;
     align-items: center;
     padding: 0.575em 0.75em 0.575em 0.375em;
     transition: 0.25s ease;
+
     &:hover {
       background-color: mix(#fff, $color-primary, 84%);
       color: $color-primary;
     }
+
     &:before {
       display: flex;
       flex-shrink: 0;

@@ -204,7 +204,10 @@ class ChapterPresenter < HomePresenter
   end
 
   def meta_image
-    "https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
+    #"https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
+
+    first = paginate.first
+    "https://quran-og-image.vercel.app/#{first.verse_key.gsub(':', '/')}?text=Hello"
   end
 
   protected

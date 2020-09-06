@@ -12,16 +12,15 @@ ar:
 
       لن يتم تخزين %{id} في الذاكرة إذا كنت تستخدم خادمًا متعدد العمليات (مثل Unicorn أو Puma) لمعالجة نتيجة الطلب. ضع في اعتبارك تحويل عدد العمليات / العمال إلى واحد (1) أو استخدام خادم مختلف خلال التطوير.
     unacceptable_request: من المتوقع وجود نسخة مدعومة في رأس القبول
-    connection_refused:
-      عفوا! فشل الاتصال بالبرمجيات الوسيطة لوحدة تحكم الويب. لو
+    connection_refused: عفوا! فشل الاتصال بالبرمجيات الوسيطة لوحدة تحكم الويب. لو
       سمحت تأكد من تشغيل خادم تطوير ريلز.
     not_found: عذراً، الصفحة غير موجودة
     invalid_verse: الآية المطلوبة خارج نطاق البحث. يرجى الذهاب للصفحة الرئيسية.
     invalid_chapter: السورة المطلوبة خارج نطاق البحث. يرجى الذهاب للصفحة الرئيسية.
-    no_script:
-      يبدو أن متصفحك لا يدعم جافا سكريبت أو جافا سكريبت معطلة. Quran.com
+    no_script: يبدو أن متصفحك لا يدعم جافا سكريبت أو جافا سكريبت معطلة. Quran.com
       يعمل بشكل أفضل مع تفعيل جافا سكريبت. لمزيد من التعليمات حول كيفية تفعيل جافا
       سكريبت
+    format: "%{message}"
   local: الإنجليزية
   site_local: لغة الموقع
   change_local: أختر اللغة المرجو إظهار الموقع بها
@@ -29,16 +28,16 @@ ar:
   language: اللغة
   settings:
     label: الإعدادات
-    chapters: السور
-    reciters: القرّاء
-    translations: التراجم
+    chapters: إختر السورة
+    reciters: إختر القارئ
+    translations: إختر الترجمة
     remove_all: إحذف الكل
     translation_english: الإنجليزية
-    translation_other: لغات اخرى
+    translation_other: لغات أخرى
     font_size:
       label: حجم الخط
       arabic: العربية
-      translation: الترجمة
+      translation: التراجم
     tooltip:
       label: عرض أدوات التلميح
       translation: الترجمة
@@ -46,10 +45,18 @@ ar:
     night_mode:
       label: الوضع الليلي
       day_tip: التبديل إلى وضع اليوم
-      night_tip: التبديل إلى الوضع الوضع  الليلي
+      night_tip: التبديل إلى الوضع الليلي
     reset: أرجع الإعدادات الى الوضع الافتراضي
     font_type: إختر الخط
-    sample_audio:
+    sample_audio: شغّل عينة
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
     media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية
@@ -72,20 +79,20 @@ ar:
     pause: أوقف
     bookmark:
       label: ضع إشارة مرجعية
-      done: تم وضع الإشارة المرجعية
+      done: تم وضع الإشارة المرجعية!
     copy:
-      label: انسخ
+      label: نسخ
       done: تم النسخ!
     share: شارك الآية
     addNote: أضف ملاحظة
     tafsir:
       label: تفاسير
-      select: اختر تفسير
+      select: اختر التفسير
     quran_reflect: إقرأ تأمّلات لهذه الآية على تأمّل القرآن
   search:
     placeholder: البحث عن سورة "نوح"
     result: "%{from} - %{to} من <span>{total}</span> نتائج البحث لـ: <span>{query}</span>"
-    error: عذرا، يوجد خطأ في بحثك
+    error: عذرا، يوجد خطأ في بحثك.
     no_query: لا يوجد طلب بحث
     no_result: لا توجد نتائج
     popular: عمليات البحث الشائعة
@@ -102,11 +109,11 @@ ar:
     next_verse: الآية التالية
     previous_verse: الآية السابقة
     repeat_title: كرّر الآية
-    repeat_single: مرة
+    repeat_single: مرّة
     repeat_range: نطاق
     repeat_from: بداية من
     repeat_to: إلى
-    repeat_times: مرات
+    repeat_times: مرّات
     repeat_loop: عدد التكرار
     scroll: تمرير تلقائيًا إلى الآية التي تستمع لها حاليًا
   loading: جار التحميل...
@@ -120,14 +127,13 @@ ar:
     other_links: روابط اخرى
     contact_us: تواصل معنا
     help: مساعدة وردود الفعل
-    about_project:
-      تطبيق quran.com هو صدقة جارية. ونتمنى أن يسهل على الجميع قراءة
+    about_project: تطبيق quran.com هو صدقة جارية. ونتمنى أن يسهل على الجميع قراءة
       ودراسة وتدبر القرآن الكريم. للقرآن الكريم أسماء كثيرة من ضمنها القرآن، الكتاب،
       الفرقان، الموعظة، الذكر، و النور.
     rights: كل الحقوق محفوظة
-    mobilea_apps: تطبيقات الموبايل
+    mobilea_apps: تطبيقات الهاتف
     navigate: التنقل
-    legacy_site: الموقع السابق quran.com
+    legacy_site: موقع quran.com القديم
     blog: مدونة
     forum: المنتدى
   juz: الجزء
@@ -137,7 +143,7 @@ ar:
   noble_quran: القرآن الكريم
   related_sites:
     label: مواقع ذات صلة
-    sunnah: السنة
+    sunnah: السنّة
     sunnah_description: حديث النبي محمد (صلى الله عليه وسلم)
     salah: الصلاة
     salah_description: ابحث عن أوقات الصلاة في أي مكان
@@ -147,5 +153,8 @@ ar:
   page: صفحة
   reader_mode:
     reading: قراءة
-    translation: الترجمة
+    translation: 'الترجمة
+
+      '
     info: معلومات عن السورة
+  share_ayah: شارك الآية

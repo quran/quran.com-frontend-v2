@@ -14,6 +14,7 @@ sq:
     unavailable_session:
     unacceptable_request:
     connection_refused:
+    format: "%{attribute} %{message}"
   local: anglisht
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet faqja
@@ -42,6 +43,14 @@ sq:
     reset: Rivendosja e Vendosjes
     font_type:
     sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
     media:
     go: Shkoni në vargje
@@ -112,8 +121,7 @@ sq:
     other_links: Lidhje të tjera
     contact_us: Na kontaktoni
     help: Ndihmë & reagime
-    about_project:
-      Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
+    about_project: Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
       gjithë për të lexuar, studiuar dhe mësuar Kuranin Fisnik. Kurani Fisnik ka shumë
       emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       dhe Al-Noor.
@@ -142,3 +150,4 @@ sq:
     reading: lexim
     translation: përkthime
     info: Informacioni i Kapitullit
+  share_ayah:

@@ -8,16 +8,15 @@
 id:
   errors:
     not_found: Maaf, halaman ini tidak ada
-    invalid_verse:
-      Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
-    invalid_chapter:
-      Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih sebuah Surah
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
+    format: "%{attribute} %{message}"
   local: indonesian
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
@@ -46,10 +45,18 @@ id:
     reset: Atur Ulang Pengaturan
     font_type:
     sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
-    media: "Lihat kuliah dari %{from}
+    media: 'Lihat kuliah dari %{from}
 
-      "
+      '
     go: Pergi ke ayat
     not_found: Ayat tidak ditemukan
   chapters:
@@ -118,8 +125,7 @@ id:
     other_links: Tautan lainnya
     contact_us: Hubungi kami
     help: Bantuan & umpan balik
-    about_project:
-      Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
     mobilea_apps: Aplikasi Ponsel
@@ -146,3 +152,4 @@ id:
     reading: Membaca
     translation: Terjemahan
     info: Info Surat
+  share_ayah:

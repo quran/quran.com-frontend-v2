@@ -1,4 +1,5 @@
 <div class="right-sidebar px-4 py-4 border-left">
+
   <div class="d-md-none d-flex justify-content-between pb-3 pt-2 align-items-center border-top">
     <h6 class="mb-0 ff-b">Mode</h6>
     <label class="switch my-0">
@@ -18,15 +19,15 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link px-2 px-md-3" id="pill-surha-tab" data-toggle="pill" href="#pill-surha" role="tab" aria-controls="pill-surha" aria-selected="false">Surah
-          Info</a>
+        <a class="nav-link px-2 px-md-3" id="pill-surha-tab" data-toggle="pill" href="#pill-surha" role="tab" aria-controls="pill-surha" aria-selected="false">
+          Surah Info</a>
       </li>
     </ul>
   </div>
 
   <div class="row bg-info p-3 border mt-5 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#translations-sidebar" data-close=".close-translations-sidebar">
     <div class="col-11">
-      <h6 class="mb-0 ff-b">Translation</h6>
+      <h6 class="mb-0 ff-b"><%= _t('settings.translations') %></h6>
       <small class="mb-0 text-muted">Sahih International</small>
     </div>
 
@@ -37,7 +38,7 @@
 
   <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#reciters-sidebar" data-close=".close-reciters-sidebar">
     <div class="col-11">
-      <h6 class="mb-0 ff-b">Reciters</h6>
+      <h6 class="mb-0 ff-b"><%= _t('settings.reciters') %></h6>
       <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
     </div>
 
@@ -48,32 +49,42 @@
 
   <ul class="nav nav-pills my-5 justify-content-center" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="Display-tab" data-toggle="pill" href="#display" role="tab" aria-controls="Display" aria-selected="true">Display
-        settings</a>
+      <a class="nav-link active" id="display-tab" data-toggle="pill" href="#display" role="tab" aria-controls="Display" aria-selected="true">
+        <%= _t('settings.display') %>
+      </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="Repeat-tab" data-toggle="pill" href="#Repeat" role="tab" aria-controls="Repeat" aria-selected="false">Repeat
-        settings</a>
+      <a class="nav-link" id="Repeat-tab" data-toggle="pill" href="#Repeat" role="tab" aria-controls="Repeat" aria-selected="false">
+        <%= _t('settings.audio') %>
+      </a>
     </li>
   </ul>
 
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="display" role="tabpanel" aria-labelledby="Display-tab">
-      <h6 class="ff-b">Tooltip display</h6>
+    <div class="tab-pane fade show active" id="display" role="tabpanel" aria-labelledby="display-tab">
+      <h6 class="ff-b">
+        <%= _t('settings.tooltip.label') %>
+      </h6>
       <div class="row">
         <label class="custom-label col">
           <input type="radio" name="radio" checked/>
-          <span class="border border-muted d-flex w-100 rounded">Translation</span>
+          <p class="border border-muted d-flex w-100 rounded">
+            <%= _t('settings.tooltip.translation') %>
+          </p>
         </label>
         <label class="custom-label col">
           <input type="radio" name="radio"/>
-          <span class="border border-muted d-flex w-100 rounded">Transliteration</span>
+          <p class="border border-muted d-flex w-100 rounded">
+            <%= _t('settings.tooltip.transliteration') %>
+          </p>
         </label>
       </div>
 
       <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#fonts-sidebar" data-close=".close-fonts-sidebar">
         <div class="col-11">
-          <h6 class="mb-0 ff-b">Fonts</h6>
+          <h6 class="mb-0 ff-b">
+            <%= _t('settings.font_type') %>
+          </h6>
           <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
         </div>
 
@@ -192,10 +203,12 @@
 </div>
 
 <div class="sidebar slide-right px-4 py-4 border-left d-none" id="translations-sidebar">
-  <div class="sidebar-head d-flex align-items-center">
+  <div class="sidebar-head d-flex align-items-center justify-content-between">
     <i class="fa fa-long-arrow-left close-sidebar close-translations-sidebar"></i>
-    <h4 class="mb-0 ff-b">Translations</h4>
-    <button class="btn btn-primary text-white">Clear all</button>
+    <h4 class="mb-0 ff-b"><%= _t('settings.translations') %></h4>
+    <button class="btn btn-primary text-white">
+      <%= _t('settings.remove_all') %>
+    </button>
   </div>
 
   <%= render_async 'settings/translations', lazy_load: true, lazy_load: {root: '#translations-sidebar'} do %>
@@ -206,9 +219,9 @@
 </div>
 
 <div class="sidebar slide-right px-4 py-4 border-left d-none" id="reciters-sidebar">
-  <div class="sidebar-head d-flex align-items-center">
+  <div class="sidebar-head d-flex align-items-center justify-content-between">
     <i class="fa fa-long-arrow-left close-sidebar close-reciters-sidebar"></i>
-    <h4 class="mb-0 ff-b">Reciters</h4>
+    <h4 class="mb-0 ff-b"><%= _t('settings.reciters') %></h4>
   </div>
 
   <%= render_async 'settings/recitations', lazy_load: true, lazy_load: {root: '#reciters-sidebar'} do %>
@@ -221,7 +234,7 @@
 <div class="sidebar slide-right px-4 py-4 border-left d-none" id="fonts-sidebar">
   <div class="sidebar-head d-flex align-items-center">
     <i class="fa fa-long-arrow-left close-sidebar close-fonts-sidebar"></i>
-    <h4 class="mb-0 ff-b">Fonts</h4>
+    <h4 class="mb-0 ff-b"><%= _t('settings.font_type') %></h4>
   </div>
 
   <%= render_async 'settings/fonts', lazy_load: true, lazy_load: {root: '#fonts-sidebar'} do %>

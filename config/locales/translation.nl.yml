@@ -14,15 +14,16 @@ nl:
     unavailable_session:
     unacceptable_request:
     connection_refused:
+    format: "%{attribute} %{message}"
   local: nederlands
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
   local_native_name: Nederlands
   language: Site Taal
   settings:
-    label: "Instellingen
+    label: 'Instellingen
 
-      "
+      '
     chapters: hoofdstukken
     reciters: Reciteurs
     translations: Vertalingen
@@ -44,6 +45,14 @@ nl:
     reset: Reset instelling
     font_type:
     sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
     media: Bekijk video commentaar van %{from}
     go: Ga naar vers
@@ -106,9 +115,9 @@ nl:
   loading: Laden ...
   nav:
     title: Koran
-    settings: "Instellingen
+    settings: 'Instellingen
 
-      "
+      '
     contribute: Bijdragen
     about_us: Over ons
     developers: ontwikkelaars
@@ -116,8 +125,7 @@ nl:
     other_links: Andere links
     contact_us: Contacteer ons
     help: Hulp en feedback
-    about_project:
-      Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
+    about_project: Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
       te maken om The Noble Quran te lezen, bestuderen en leren. De Edele Koran heeft
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
@@ -131,9 +139,9 @@ nl:
   click_here: Klik hier
   download: te downloaden
   home: Thuis
-  noble_quran: "De edele Koran
+  noble_quran: 'De edele Koran
 
-    "
+    '
   related_sites:
     label: Gerelateerde sites
     sunnah: Sunnah
@@ -148,3 +156,4 @@ nl:
     reading: Lezing
     translation: Vertalingen
     info: Soera Info
+  share_ayah:

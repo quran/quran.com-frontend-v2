@@ -7,21 +7,22 @@
 ---
 tr:
   errors:
-    not_found:
-    invalid_verse: Ayah seçiminizi kontrol edin. Kapsama alanı dışında.
+    not_found: Maalesef, bu sayfa mevcut değil
+    invalid_verse: Ayet seçiminizi kontrol edin. Kapsama alanı dışında.
     invalid_chapter: Suresi seçiminizi kontrol edin. Kapsama alanı dışında.
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
+    format: "%{attribute} %{message}"
   local: İngilizce
   site_local: Site Dilini
   change_local: Sitenin görüntülenmesini istediğiniz dili seçin
-  local_native_name: Turkey
-  language: Dil, Lisan
+  local_native_name: Türkçe
+  language: Dil
   settings:
     label: Ayarlar
-    chapters: Sureler
+    chapters: Sure Seç
     reciters: reciters
     translations: Çeviriler
     remove_all: Hepsini kaldır
@@ -42,54 +43,62 @@ tr:
     reset: Ayarı Sıfırla
     font_type:
     sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
     media:
     go: Sonraki ayet
     not_found: Ayet bulunamadı
   chapters:
-    label: Surat
-    next: Sonraki Surat
+    label: Sure
+    next: Sonraki Sure
     previous: Önceki Surat
     verses: Ayetler
     pages: Sayfalar
     continue: Devam et
     quick_links: Hızlı Linkler
-    go_to_beginning: Bölümün başlangıcı
+    go_to_beginning: Sure başlangıcı
     read_full: Surenin tamamını okuyun
-    invalid: '"Veya" arama sırasında Surat sonuç bulunamadı'
+    invalid: Arama sırasında Sure bulunamadı
     revelation_place: Vahiy Yeri
-  footnote: dipnot
+  footnote: Haşiye
   action:
-    play: Oyna
+    play: Çal
     pause: Duraklat
     bookmark:
-      label: Yer imi
-      done: Yer işaretli!
+      label: Yer işareti
+      done: İşaretlendi!
     copy:
-      label: kopya
+      label: Kopyala
       done: Kopyalandı!
-    share: Paylaş ayah
+    share: Paylaş ayet
     addNote: Not ekle
     tafsir:
-      label: "Tafsirs
+      label: 'Tefsirler
 
-        "
+        '
       select: Tefsir'i seçin
-    quran_reflect: fsdfdsfdfdfdsfsdf
+    quran_reflect:
   search:
     placeholder: Arama "Noah"
     result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-success>%{query}</span>"
     error: Üzgünüz, aramanızla ilgili bir hata oluştu.
     no_query: Arama sorgusu yok.
     no_result: Sonuç bulunamadı.
-    popular: popüler aramalar
-    ayatul_kursi: Ayatul Kursi
-    yaseen: Surah Yaseen
-    al_mulk: Surah Al Mulk
-    ar_rahman: Surah Ar-Rahman
-    al_waqiah: Surah Al Waqi'ah
-    al_kahf: Surah Al Kahf
-    al_muzammil: Surah Al Muzzammil
+    popular: Popüler Aramalar
+    ayatul_kursi: Ayetel Kürsi
+    yaseen: Yasin Suresi
+    al_mulk: Mülk Suresi
+    ar_rahman: Rahman Suresi
+    al_waqiah: Vakıa Suresi
+    al_kahf: Kehf Suresi
+    al_muzammil: Müzzemmil Suresi
     label: Arama
   player:
     current_verse: Ayetler
@@ -114,26 +123,25 @@ tr:
     other_links: Diğer bağlantılar
     contact_us: Bizimle iletişime geçin
     help: Yardım ve geri bildirim
-    about_project:
-      Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
+    about_project: Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
       okumasını ve öğrenmesini kolaylaştırmayı umuyoruz. Kur'an-ı Kerim, Kur'an-ı
       Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
       birçok isme sahiptir.
     rights: Tüm hakları Saklıdır
     mobilea_apps: Mobil uygulamalar
     navigate: Gezin
-    legacy_site: Eski Kur'an-ı Quran.com
+    legacy_site: Eski Quran.com
     blog: Blog
-    forum: forum
+    forum: Forum
   juz: Cüz
-  click_here: buraya Tıkla
-  download: indir
-  home: Ev
+  click_here: Buraya Tıkla
+  download: İndir
+  home: Anasayfa
   noble_quran: Kur'an-ı Kerim
   related_sites:
     label: İlgili Siteler
     sunnah: Sünnet
-    sunnah_description: Hz.Muhammed (asv) 'in Hadisleri
+    sunnah_description: Hz. Muhammed'in Hadisleri
     salah: Salah
     salah_description: Herhangi bir yer için namaz vakti arayın
     audio: Soylu Kur'an-ı Kerim
@@ -144,3 +152,4 @@ tr:
     reading: Okuma
     translation: Çeviriler
     info: Bölüm Bilgisi
+  share_ayah:

@@ -9,6 +9,8 @@
 import { Controller } from "stimulus";
 import { Howl, Howler } from "howler";
 import Slider from "bootstrap-slider";
+import {Tooltip} from "bootstrap";
+
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
 // TODO: should set to false to use web audio instead, but that requires CORS
@@ -56,7 +58,6 @@ export default class extends Controller {
     this.playerProgressInterval = null;
 
     this.buildPlayer();
-    this.populatePlayerVerses();
     container.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
       // new ayah are added to page. Refresh the play first and last ayah
@@ -71,15 +72,8 @@ export default class extends Controller {
 
     //unload all tracks
     Howler.unload();
-
-    this.progressBar.slider("destroy");
-
-    if (this.verseDropdown.data("select2"))
-      this.verseDropdown.data("select2").destroy();
-
-    if (this.chapterDropdown.data("select2"))
-      this.chapterDropdown.data("select2").destroy();
-  }
+    this.progressBar.destroy();
+ }
 
   isPlaying() {
     return this.track.howl && this.track.howl.playing();
@@ -96,26 +90,13 @@ export default class extends Controller {
       enabled: false
     });
 
-    //repeat popover
-    $("#player .repeat-btn").popover({
-      title: $("#player .repeat-popover-title"),
-      content: $("#player .repeat-popover-content"),
-      html: true,
-      placement: "top",
-      container: "body",
-      boundary: "window"
-    });
-
-    if (this.config.repeat.enabled) {
-      $("#player .repeat-btn .fa").addClass("text-primary");
-    }
-
-    // activate the repeat tabs
-    $(`#repeat-popover-pills-${this.config.repeat.type}-tab`).trigger("click");
-
     // auto scroll component
-    this.scrollButton = $(".auto-scroll-btn");
-    this.scrollButton.tooltip({ placement: "top", boundary: "window" });
+    this.scrollButton = $("#auto-scroll-btn");
+    new Tooltip(this.scrollButton[0], {
+      placement: "top",
+      boundary: "window",
+      title: "Hello"
+    })
 
     if (this.config.autoScroll) {
       this.scrollButton.addClass("active");
@@ -132,13 +113,6 @@ export default class extends Controller {
 
       this.settings.saveSettings();
     });
-
-    this.repeatButton = $(".repeat-btn");
-    if (this.config.repeat.enabled) {
-      this.repeatButton.addClass("active");
-      $("#repeat-popover-switch").attr("checked", true);
-      $(".repeat-popover-content .overlay").toggle(false);
-    }
 
     this.updateVerses().then(() => {
       // set first track to play
@@ -209,8 +183,8 @@ export default class extends Controller {
     verse = verse || this.track.currentVerse;
 
     // enable progress bar if disabled
-    this.progressBar.slider("enable");
-    this.progressBar.slider("setValue", 0);
+    this.progressBar.enable()
+    this.progressBar.setValue(0)
 
     this.removeSegmentHighlight();
     this.track.currentVerse = verse;
@@ -271,9 +245,9 @@ export default class extends Controller {
     });
 
     // slider
-    this.progressBar.slider("on", "change", value => {
+    this.progressBar.on('change', value => {
       this.handleProgressBarChange(value);
-    });
+    })
 
     const hidePopover = e => {
       if ($(e.target).closest(".popover").length == 0)
@@ -285,7 +259,7 @@ export default class extends Controller {
       $(document).on("click", hidePopover)
     );
 
-    this.repeatButton.on("hide.bs.popover", () => {
+   /* this.repeatButton.on("hide.bs.popover", () => {
       $(document).off("click", hidePopover);
 
       this.config.repeat.count = Number(
@@ -313,121 +287,7 @@ export default class extends Controller {
       this.settings.set("repeatCount", this.config.repeat.count);
       this.settings.set("repeatFrom", this.config.repeat.from);
       this.settings.set("repeatTo", this.config.repeat.to);
-    });
-
-    $("#repeat-popover-switch").change(event => {
-      let checked = $(event.target).is(":checked");
-      $(".repeat-popover-content .overlay").toggle(!checked);
-      this.repeatButton.toggleClass("active", checked);
-
-      this.config.repeat.enabled = checked;
-    });
-
-    $("#repeat-popover-pills-single-tab").on("show.bs.tab", () => {
-      this.config.repeat.type = "single";
-    });
-
-    $("#repeat-popover-pills-range-tab").on("show.bs.tab", () => {
-      this.config.repeat.type = "range";
-    });
-  }
-
-  populatePlayerVerses() {
-    let total = $("#verses").data("total-verses") + 1;
-    let verses = [];
-    //let dropDownVerses = [];
-    //let chapter = $("#verses").data("chapter-id");
-    let i18nLabel = $("#player-verse-dropdown").data("i18n-label");
-
-    let verseSelect2Data = [];
-
-    for (let verse = 1, end = total; verse < end; verse++) {
-      verses.push(`<option value='${verse}'>${verse}</option>`);
-
-      /*  dropDownVerses.push(
-                              `<div class='dropdown-item'  data-verse='${verse}'> <a href='/${chapter}/${verse}'>${i18nLabel} ${verse}</a></div>`
-                          );*/
-      verseSelect2Data.push({
-        id: verse,
-        text: `${i18nLabel} ${verse}`
-      });
-    }
-
-    this.verseDropdown = $("#player-verse-dropdown").select2({
-      data: verseSelect2Data,
-      width: "150px"
-    });
-
-    this.verseDropdown.on("select2:select", e => {
-      this.jumpToVerse(Number(e.currentTarget.value));
-    });
-
-    const surahNameTemplate = surah => {
-      if (surah.loading) return surah.text;
-      const data = surah.element.dataset;
-      return `<div class='row select2-result'>
-                <div class="col-2">${surah.element.value}</div>
-                <div class="col-7">
-                  ${data.nameSimple}
-                </div>
-                <div class="col-3">
-                  ${data.arabic}
-                </div>
-                <div class="col-10 offset-2">
-                  ${data.translatedName}
-                </div>
-              </div>`;
-    };
-
-    const matchChapterName = (params, data) => {
-      const query = $.trim(params.term).toLowerCase();
-      if (!query) return data;
-      let translatedName = data.element.getAttribute("data-translated-name");
-      let arabicName = data.element.getAttribute("data-arabic");
-      let simpleName = data.element.text;
-
-      if (simpleName.toLowerCase().indexOf(query) > -1) {
-        return data;
-      }
-      if (translatedName.toLowerCase().indexOf(query) > -1) {
-        return data;
-      }
-      if (arabicName.indexOf(query) > -1) {
-        return data;
-      }
-      return null;
-    };
-
-    this.chapterDropdown = $("#chapter-select").select2({
-      width: "250px",
-      templateResult: surahNameTemplate,
-      matcher: matchChapterName,
-      escapeMarkup: text => text
-    });
-
-    this.chapterDropdown.on("select2:select", e => {
-      Turbolinks.visit(`/${e.currentTarget.value}`);
-    });
-
-    verses = verses.join("");
-
-    $("#repeat-popover-single").html(verses);
-    $("#repeat-popover-range-from").html(verses);
-    $("#repeat-popover-range-to").html(verses);
-    // $("#player-verse-dropdown").html(dropDownVerses.join(''));
-
-    const selectConfig = {
-      width: "100px",
-      dropdownParent: $(".repeat-popover-content")
-    };
-
-    $("#repeat-popover-single").select2({
-      width: "100%",
-      dropdownParent: $(".repeat-popover-content")
-    });
-
-    $("#repeat-popover-range-from").select2(selectConfig);
-    $("#repeat-popover-range-to").select2(selectConfig);
+    });*/
   }
 
   handleProgressBarChange(value) {
@@ -571,7 +431,8 @@ export default class extends Controller {
       let currentTime = this.track.howl.seek();
       let progressPercentage =
         Math.floor((currentTime / totalDuration) * 1000) / 10;
-      this.progressBar.slider("setValue", progressPercentage);
+
+      this.progressBar.setValue(progressPercentage)
 
       $("#player .timer").text(this.formatTime(currentTime));
     }, 500);
@@ -671,8 +532,7 @@ export default class extends Controller {
     this.setSegmentInterval();
 
     this.preloadNextVerse();
-
-    this.verseDropdown.val(this.track.currentVerse).trigger("change");
+   // this.verseDropdown.val(this.track.currentVerse).trigger("change");
   }
 
   getNextTrackVerse() {
@@ -696,7 +556,7 @@ export default class extends Controller {
   }
 
   onVerseEnd() {
-    this.progressBar.slider("setValue", 0);
+    this.progressBar.setValue(0);
 
     if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type

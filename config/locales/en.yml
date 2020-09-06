@@ -1,32 +1,140 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
+---
 en:
+  local: english
+  site_local: Site Language
+  change_local: Choose the language you want the site to display in
+  local_native_name: English
+  language: Language
+  page: Page
+  reader_mode:
+    reading: Reading
+    translation: Translations
+    info: Surah Info
+  settings:
+    label: Settings
+    display: Display settings
+    audio: Audio Settings
+    chapters: Select Surah
+    reciters: Choose Reciters
+    sample_audio: Play Sample
+    translations: Choose Translations
+    remove_all: Remove all
+    translation_english: English
+    translation_other: Other Languages
+    reset: Reset to default
+    font_type: Select font
+    fonts:
+      tajweed: Tajweed Text
+      uthmani: Uthmani Text
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: IndoPak text
+    font_size:
+      label: Font size
+      arabic: Arabic
+      translation: Translations
+    tooltip:
+      label: Tooltip display
+      translation: Translation
+      transliteration: Transliteration
+    night_mode:
+      label: Night Mode
+      day_tip: Switch to day mode
+      night_tip: Switch to night mode
+  verses:
+    media: "Watch video commentary from %{from}"
+    go: Go to Ayah
+    not_found: Ayah not found
+  chapters:
+    label: Surah
+    next: Next Surah
+    previous: Previous Surah
+    verses: Ayahs
+    pages: Pages
+    revelation_place: Revelation Place
+    continue: Continue
+    quick_links: Quick links
+    go_to_beginning: Beginning of Surah
+    read_full: Read full Surah
+    invalid: Surah not found during the search
+  footnote: Footnote
+  share_ayah: Share ayah
+  action:
+    play: Play
+    pause: Pause
+    share: Share
+    quran_reflect: Read Reflections for this Ayah on QuranReflect
+    addNote: Add Note
+    tafsir:
+      label: Tafsirs
+      select: Select Tafsir
+    bookmark:
+      label: Bookmark
+      done: Bookmarked!
+    copy:
+      label: Copy
+      done: Copied!
+  search:
+    label: Search
+    placeholder: 'Search "Noah"'
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    error: Sorry, there was an error with your search.
+    no_query: No search query.
+    no_result: No results found.
+    popular: Popular Searches
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Surah Yaseen
+    al_mulk: Surah Al Mulk
+    ar_rahman: Surah Ar-Rahman
+    al_waqiah: Surah Al Waqi'ah
+    al_kahf: Surah Al Kahf
+    al_muzammil: Surah Al Muzzammil
+  player:
+    current_verse: Verse
+    next_verse: Next verse
+    previous_verse: Previous verse
+    repeat_title: Repeat Ayah
+    repeat_single: Single
+    repeat_range: Range
+    repeat_from: From
+    repeat_to: To
+    repeat_times: Times
+    repeat_loop: loop
+    scroll: Automatically scrolls to the currently playing ayah
+  loading: Loading...
+  nav:
+    title: Quran
+    settings: Settings
+    contribute: Contribute
+    about_us: About us
+    developers: Developers
+    useful_sites: Useful sites
+    other_links: Other links
+    contact_us: Contact us
+    help: Help & feedback
+    about_project: Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone to read, study, and learn The Noble Quran. The Noble Quran has many names including Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr, and Al-Noor.
+    rights: All Rights Reserved
+    mobilea_apps: Mobile Apps
+    navigate: Navigate
+    legacy_site: Legacy Quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  errors:
+    not_found: Sorry, this page does not exist
+    invalid_verse: Check your Ayah selection. It's out of range.
+    invalid_chapter: Check your Surah selection. It's out of range.
+    no_script: Looks like either your browser does not support Javascript or its disabled. Quran.com workes best with JavaScript enabled. For more instruction on how to enable javascript
+  click_here: Click here
+  download: Download
+  home: Home
+  related_sites:
+    label: Related Sites
+    sunnah: Sunnah
+    sunnah_description: The Hadith of Prophet Muhammad(PBUH)
+    salah: Salah
+    salah_description: Search prayer time for any location
+    audio: Noble Quran in audio
+    audio_description: Learning & listening at the same time
+  close: Close
+  noble_quran: The Noble Quran

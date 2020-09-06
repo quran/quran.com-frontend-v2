@@ -3,34 +3,31 @@
     <div class="row offset-md-2">
       <div class="col-md-3 d-flex justify-content-between mt-md-2 mt-3 order-md-0 order-1">
         <div class="previous-btn d-flex align-items-center order-md-0 order-2">
-          <i class="text-muted fa fa-step-backward1 c-pointer"></i>
+          <i class="text-muted fa fa-step-backward c-pointer"></i>
         </div>
+
         <div class="d-flex align-items-center order-md-1 order-3">
-          <i class="text-primary play-btn fa fa-play-solid c-pointer"></i>
-          <i class="text-primary pause-btn fa fa-pause c-pointer d-none"></i>
-          <i class="text-primary pause-loading fa fa-spinner1 c-pointer d-none"></i>
+          <i class="text-primary fa-play-circle fa fa-play-solid c-pointer"></i>
+          <i class="text-primary pause-btn fa fa-pause-circle-solid c-pointer d-none"></i>
+          <i class="text-primary pause-loading fa fa-spinner fa-spin c-pointer d-none"></i>
         </div>
+
         <div class="next-btn d-flex align-items-center order-md-2 order-4">
-          <i class="text-muted fa fa-step-forward1 c-pointer"></i>
+          <i class="text-muted fa fa-step-forward c-pointer"></i>
         </div>
+
         <div class="repeat-btn d-flex align-items-center  order-md-3 order-5">
-          <i class="text-muted fa fa-repeat c-pointer"></i>
-        </div>
-        <div class="auto-scroll-btn d-md-none d-flex" data-html="true" data-placement='top' title="<%= _t("player.scroll") %>">
-          <i class="fa fa-link c-pointer text-muted"></i>
+          <i class="text-muted fa fa-link-regular c-pointer"></i>
         </div>
       </div>
+
       <div class="col-9 d-flex align-items-center w-auto">
         <small class="text-primary timer mr-3">00:00</small>
         <div id="player-bar">
           <div class="progress bg-primary"></div>
         </div>
-        <small class="text-primary total-time d-nosne ml-2">00:00</small>
-        <div class="auto-scroll-btn ml-2 d-none d-md-flex" data-html="true" data-placement='top' title="<%= _t("player.scroll") %>">
-          <i class="fa fa-link c-pointer text-muted"></i>
-        </div>
+        <small class="text-primary total-time ml-2">00:00</small>
       </div>
-
     </div>
   </div>
 </div>
