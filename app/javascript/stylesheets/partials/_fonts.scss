@@ -79,13 +79,15 @@
 @font-face {
   font-family: "nafees";
   src: local("Nafees"), local("Nafees Regular"),
-  url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.woff2"),
-  url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.eot?#iefix")
-  format("embedded-opentype"),
-  url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.woff") format("woff"),
-  url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.ttf") format("truetype"),
-  url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.svg#SFProText-Bold")
-  format("svg");
+    url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.woff2"),
+    url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.woff")
+      format("woff"),
+    url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.ttf")
+      format("truetype"),
+    url("../../fonts/languages/urdu/nafees/nafees-nastaleeq-webfont.svg#SFProText-Bold")
+      format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -94,6 +96,20 @@
 @font-face {
   font-family: "divehi";
   src: url("../../fonts/languages/dhivehi/akuru/DhivehiAkuru.woff"),
-  url("../../fonts/languages/dhivehi/akuru/DhivehiAkuru.otf");
+    url("../../fonts/languages/dhivehi/akuru/DhivehiAkuru.otf");
   font-display: swap;
+}
+
+@font-face {
+  font-family: "UthmanicHafs1";
+  src: url("../../fonts/quran_fonts/UthmanicHafs1/UthmanicHafs1 Ex1 Ver12.otf");
+  font-display: swap;
+}
+
+.text_indopak,
+.text_madani {
+  .end * {
+    font-family: UthmanicHafs1;
+    font-size: 35px;
+  }
 }

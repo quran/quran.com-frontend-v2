@@ -16,8 +16,16 @@ export default class extends SettingController {
 
     $(document).on("click", ".theme-switch", e => {
       e.preventDefault();
-      this.setTheme(e.target.dataset.theme);
+      e.stopImmediatePropagation();
+
+      this.toggleNight();
     });
+
+    this.updatePage();
+  }
+
+  disconnect() {
+    $(document).off("click", ".theme-switch", e => {});
   }
 
   updatePage() {
@@ -49,9 +57,8 @@ export default class extends SettingController {
     setDark(darkModeMediaQuery);
   }
 
-  setTheme(theme) {
-    const isNightMode = $("body").hasClass("night");
-    document.body.classList.toggle("night");
-    this.set("nightMode", !isNightMode);
+  toggleNight() {
+    const isNightMode = document.body.classList.toggle("night");
+    this.set("nightMode", isNightMode);
   }
 }

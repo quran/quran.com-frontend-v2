@@ -121,12 +121,13 @@ sq:
     other_links: Lidhje të tjera
     contact_us: Na kontaktoni
     help: Ndihmë & reagime
-    about_project: Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
+    about_project:
+      Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
       gjithë për të lexuar, studiuar dhe mësuar Kuranin Fisnik. Kurani Fisnik ka shumë
       emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       dhe Al-Noor.
     rights: Të gjitha të drejtat e rezervuara
-    mobilea_apps: Aplikacione celulare
+    mobile_apps: Aplikacione celulare
     navigate: Navigate
     legacy_site: Trashëgimia quran.com
     blog: Blog

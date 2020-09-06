@@ -51,9 +51,12 @@ export default class extends Controller {
     // Update next page ref if it exists.
     const nextPage = $("#verses_pagination a[rel=next]");
     if (nextPage.length > 0) {
-      let ref = nextPage.attr('href');
-      const updatedRef = ref.replace(/page=\d+/, `page=${Math.ceil(lastVerse / 10) + 1}`);
-      nextPage.attr('href', updatedRef);
+      let ref = nextPage.attr("href");
+      const updatedRef = ref.replace(
+        /page=\d+/,
+        `page=${Math.ceil(lastVerse / 10) + 1}`
+      );
+      nextPage.attr("href", updatedRef);
     }
   }
 
@@ -85,6 +88,21 @@ export default class extends Controller {
       .then(dom => this.updatePagination(dom));
 
     return Promise.resolve(request);
+  }
+
+  changeFont(font) {
+    let path = $("#verses_pagination").data("url");
+    let translationsToLoad;
+
+    fetch(`${path}?${$.param({ font: font })}`)
+      .then(response => response.text())
+      .then(verses => {
+        $("#verses").html(
+          $(verses)
+            .find("#verses")
+            .html()
+        );
+      });
   }
 
   changeTranslations(newTranslationIds) {

@@ -1,13 +1,41 @@
 <% verse = Verse.find_by_verse_key('1:1') %>
-<div>
+
+<style>
+  @font-face {
+    font-family: 'p1-v2';
+    src: local(QCF2001),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff2/p1.woff2" %>') format('woff2'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff/p1.woff" %>') format('woff');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'p1-v1';
+    src: url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff2/p1.woff2"%>'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff/p1.woff" %>') format('woff'),
+    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/ttf/p1.ttf" %>') format('truetype');
+    font-display: swap;
+  }
+
+  .p1-v2{
+    font-family: 'p1-v2';
+  }
+
+  .p1-v1{
+    font-family: 'p1-v1';
+  }
+</style>
+
+
+<div data-controller="font">
   <div class="row">
     <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" name="font" value="indopak" id=indopak>
-      <label class="form-check-label text-muted ff-m" for="indopak">
+      <input class="form-check-input" type="radio" name="font" value="v1" id=v1>
+      <label class="form-check-label text-muted ff-m" for="v1">
         <%= _t('settings.fonts.qcf_v1') %>
       </label>
 
-      <h1 class="arabic p1-v1" style="font-size: 30px">
+      <h1 class="arabic" style="font-size: 30px">
         <% verse.words.each do |word| %>
         <span class="<%= word.char_type_name %>" id="w-<%= word.id %>">
   <span class="p1-v1">
@@ -19,12 +47,12 @@
     </div>
 
     <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" name="font" value="indopak" id=indopak>
-      <label class="form-check-label text-muted ff-m" for="indopak">
+      <input class="form-check-input" type="radio" name="font" value="v2" id=v2>
+      <label class="form-check-label text-muted ff-m" for="v2">
         <%= _t('settings.fonts.qcf_v2') %>
       </label>
 
-      <h1 class="arabic p1-v1" style="font-size: 30px">
+      <h1 class="arabic" style="font-size: 30px">
         <% verse.words.each do |word| %>
         <span class="<%= word.char_type_name %>" id="w-<%= word.id %>">
   <span class="p1-v2">
@@ -36,7 +64,7 @@
     </div>
 
     <div class="my-4 col-12">
-      <input class="form-check-input" type="radio"  checked=checked name="font" value="tajweed" id=uthmani>
+      <input class="form-check-input" type="radio"  checked=checked name="font" value="uthmani" id=uthmani>
       <label class="form-check-label text-muted ff-m" for="uthmani">
         <%= _t('settings.fonts.uthmani') %>
       </label>

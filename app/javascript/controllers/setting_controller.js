@@ -9,6 +9,7 @@
 
 import { Controller } from "stimulus";
 import LocalStore from "../utility/local-store";
+import DeviceDetector from "../utility/deviceDetector";
 
 let settings = {};
 
@@ -25,56 +26,17 @@ export default class extends Controller {
     this.element[this.identifier] = this;
     this.store = new LocalStore();
     this.loadSettings();
-
-    /*$(document).on("click", "#toggle-nightmode", e => {
-      e.preventDefault();
-      this.toggleNightMode();
-    });*/
-
-    /*$(document).on("change", "#tooltip-dropdown", e => {
-      e.preventDefault();
-      this.handleTooltip(e);
-    });*/
+    this.device = new DeviceDetector();
+    window.addEventListener("resize", () => this.resizeHandler());
 
     /*$(document).on("click", "#reset-setting", e => {
       e.preventDefault();
       this.resetSetting();
     });*/
-
-    //$(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
-
-    /*$("#reciter-dropdown-menu")
-      .val(this.get("recitation"))
-      .trigger("change");
-    $(document).on("select2:select", "#reciter-dropdown-menu", e => {
-      this.updateReciter(e.currentTarget.value);
-    });
-
-    $("#translations")
-      .val(this.get("translations"))
-      .trigger("change");
-
-    $(document).on("select2:select", "#translations", e => {
-      this.updateTranslations($(e.target).val());
-    });
-
-    $(document).on("select2:unselecting", "#translations", e => {
-      this.updateTranslations($(e.target).val());
-    });*/
-
-    let mobileDetect = window.matchMedia("(max-width: 610px)");
-    this.mobile = mobileDetect.matches;
-
-    mobileDetect.addListener(match => {
-      this.mobile = match.matches;
-      this.updatePage();
-    });
-
-    this.updatePage();
   }
 
-  toggleReadingMode() {
-    $("#toggle-readingmode").toggleClass("text-primary");
+  resizeHandler() {
+    this.mobile = this.device.isMobile();
   }
 
   updateReciter(newRecitation) {
@@ -82,12 +44,6 @@ export default class extends Controller {
     let player = playerDom.player;
 
     player.setRecitation(newRecitation);
-  }
-
-  updateTranslations(newTranslationIds) {
-    let controller = document.getElementById("verses");
-
-    controller.chapter.changeTranslations(newTranslationIds);
   }
 
   loadSettings() {
@@ -122,7 +78,7 @@ export default class extends Controller {
 
   defaultSetting() {
     return {
-      font: "qcf_v2",
+      font: "v1",
       tooltip: "translation",
       recitation: 7,
       nightMode: false,
@@ -162,36 +118,6 @@ export default class extends Controller {
     fontStylesheet.sheet.insertRule(
       `.translation {font-size: ${translationFontSize}px !important}`
     );
-  }
-
-  updatePage() {
-    this.updateFontSize();
-    const isNightMode = this.get("nightMode");
-    const darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
-
-    const setDark = function(e) {
-      let bodyClasses = document.body.classList;
-
-      if (e && e.matches) {
-        bodyClasses.add("night");
-      } else {
-        if (isNightMode) {
-          bodyClasses.add("night");
-        } else {
-          bodyClasses.remove("night");
-        }
-      }
-    };
-
-    document.addEventListener("DOMContentLoaded", () => {
-      setDark(darkModeMediaQuery);
-    });
-    darkModeMediaQuery.addListener(event => {
-      setDark(event);
-    });
-    setDark(darkModeMediaQuery);
   }
 
   get(key) {

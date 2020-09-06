@@ -39,19 +39,11 @@
   }
 }
 
-#chapter-page {
-  .verse-actions-below {
-    @media #{$tablet-md} {
-    }
-  }
-
-  .font-size-box {
-    height: 45px;
-    width: 45px;
-  }
-}
-
 .verse {
+  .arabic {
+    font-size: 30px;
+  }
+
   .w {
     margin: 0 5px;
   }

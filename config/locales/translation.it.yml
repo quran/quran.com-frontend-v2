@@ -10,7 +10,8 @@ it:
     not_found: Siamo spiacenti, questa pagina non esiste
     invalid_verse: Il verso è fuori portata. Per favore vai alla home page
     invalid_chapter: Il capitolo è fuori portata. Per favore vai alla home page
-    no_script: Sembra che il tuo browser non supporti Javascript o sia disabilitato.
+    no_script:
+      Sembra che il tuo browser non supporti Javascript o sia disabilitato.
       Quran.com funziona meglio con JavaScript abilitato. Per ulteriori istruzioni
       su come abilitare JavaScript
     unavailable_session:
@@ -87,7 +88,8 @@ it:
     quran_reflect:
   search:
     placeholder: Cerca "Noah"
-    result: "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:
+    result:
+      "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:
       <span>{query}</span>"
     error: Siamo spiacenti, si è verificato un errore durante la ricerca.
     no_query: Nessuna query di ricerca.
@@ -124,10 +126,11 @@ it:
     other_links: Altri link
     contact_us: Contattaci
     help: Aiuto e feedback
-    about_project: Quran.com è un progetto pro bono per la lettura e lo studio del
+    about_project:
+      Quran.com è un progetto pro bono per la lettura e lo studio del
       Corano (noto anche come The Noble Quran, Al Quran, Holy Quran, Koran).
     rights: Tutti i diritti riservati
-    mobilea_apps: App mobili
+    mobile_apps: App mobili
     navigate: Navigare
     legacy_site: Legacy Quran.com
     blog: blog

@@ -21,9 +21,9 @@ nl:
   local_native_name: Nederlands
   language: Site Taal
   settings:
-    label: 'Instellingen
+    label: "Instellingen
 
-      '
+      "
     chapters: hoofdstukken
     reciters: Reciteurs
     translations: Vertalingen
@@ -115,9 +115,9 @@ nl:
   loading: Laden ...
   nav:
     title: Koran
-    settings: 'Instellingen
+    settings: "Instellingen
 
-      '
+      "
     contribute: Bijdragen
     about_us: Over ons
     developers: ontwikkelaars
@@ -125,12 +125,13 @@ nl:
     other_links: Andere links
     contact_us: Contacteer ons
     help: Hulp en feedback
-    about_project: Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
+    about_project:
+      Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
       te maken om The Noble Quran te lezen, bestuderen en leren. De Edele Koran heeft
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
     rights: Alle rechten voorbehouden
-    mobilea_apps: Mobiele apps
+    mobile_apps: Mobiele apps
     navigate: Navigeren
     legacy_site: Legacy Quran.com
     blog: Blog
@@ -139,9 +140,9 @@ nl:
   click_here: Klik hier
   download: te downloaden
   home: Thuis
-  noble_quran: 'De edele Koran
+  noble_quran: "De edele Koran
 
-    '
+    "
   related_sites:
     label: Gerelateerde sites
     sunnah: Sunnah

@@ -1,26 +1,35 @@
 <div class="right-sidebar px-4 py-4 border-left">
 
   <div class="d-md-none d-flex justify-content-between pb-3 pt-2 align-items-center border-top">
-    <h6 class="mb-0 ff-b">Mode</h6>
-    <label class="switch my-0">
-      <input type="checkbox">
-      <span class="slider round fa"></span>
-    </label>
+    <h6 class="mb-0 ff-b">
+      <%= _t('settings.night_mode.label') %>
+    </h6>
+
+    <div class="col-2 justify-content-end" data-controller="theme">
+          <span class="theme-switch mr-2" data-theme="light">
+            <%= lazy_image_tag "media/images/icon/light.svg" %>
+          </span>
+    </div>
   </div>
 
   <div class="d-md-none d-block mt-3">
     <ul class="nav nav-pills mb-0 justify-content-between" id="pills-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link px-2 px-md-3 active" id="pill-translation-tab" data-toggle="pill" href="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="true">Translation</a>
+        <a class="nav-link px-2 px-md-3 active" id="pill-translation-tab" data-toggle="pill" href="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="true">
+          <%= _t('reader_mode.translation') %>
+        </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link px-2 px-md-3" id="pill-reading-tab" data-toggle="pill" href="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">Reading</a>
+        <a class="nav-link px-2 px-md-3" id="pill-reading-tab" data-toggle="pill" href="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">
+          <%= _t('reader_mode.reading') %>
+        </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link px-2 px-md-3" id="pill-surha-tab" data-toggle="pill" href="#pill-surha" role="tab" aria-controls="pill-surha" aria-selected="false">
-          Surah Info</a>
+        <a class="nav-link px-2 px-md-3" id="pill-surah-info-tab" data-toggle="pill" href="#pill-info" role="tab" aria-controls="pill-info" aria-selected="false">
+          <%= _t('reader_mode.info') %>
+        </a>
       </li>
     </ul>
   </div>
@@ -93,29 +102,24 @@
         </div>
       </div>
 
-      <h6 class="ff-b mt-4">Font sizes</h6>
+      <h6 class="ff-b mt-4">
+        <%= _t('settings.font_size.label') %>
+      </h6>
+
       <div class="row">
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
-            <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-plus-circle"></i>
-            </div>
-            <h6 class="mb-0 ff-b">Arabic</h6>
-            <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-minus-circle"></i>
-            </div>
+           <i class="fa fa-plus-circle c-pointer"></i>
+            <h6 class="mb-0 ff-b"><%= _t('settings.font_size.arabic') %></h6>
+           <i class="fa fa-minus-circle c-pointer"></i>
           </div>
         </div>
 
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
-            <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-plus-circle"></i>
-            </div>
-            <h6 class="mb-0 ff-b">Translation</h6>
-            <div class="rounded-circle bg-info border d-flex justify-content-center align-items-center font-size-box">
-              <i class="fa fa-minus-circle"></i>
-            </div>
+            <i class="fa fa-plus-circle c-pointer"></i>
+            <h6 class="mb-0 ff-b"><%= _t('settings.font_size.translation') %></h6>
+            <i class="fa fa-minus-circle c-pointer"></i>
           </div>
         </div>
       </div>

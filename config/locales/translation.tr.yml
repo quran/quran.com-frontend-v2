@@ -80,9 +80,9 @@ tr:
     share: Paylaş ayet
     addNote: Not ekle
     tafsir:
-      label: 'Tefsirler
+      label: "Tefsirler
 
-        '
+        "
       select: Tefsir'i seçin
     quran_reflect:
   search:
@@ -123,12 +123,13 @@ tr:
     other_links: Diğer bağlantılar
     contact_us: Bizimle iletişime geçin
     help: Yardım ve geri bildirim
-    about_project: Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
+    about_project:
+      Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
       okumasını ve öğrenmesini kolaylaştırmayı umuyoruz. Kur'an-ı Kerim, Kur'an-ı
       Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
       birçok isme sahiptir.
     rights: Tüm hakları Saklıdır
-    mobilea_apps: Mobil uygulamalar
+    mobile_apps: Mobil uygulamalar
     navigate: Gezin
     legacy_site: Eski Quran.com
     blog: Blog
