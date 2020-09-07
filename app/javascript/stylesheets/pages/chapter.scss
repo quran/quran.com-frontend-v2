@@ -48,9 +48,15 @@
 }
 
 .verse {
-  &.current {
+  &.highlight {
     background-color: #f5fbf7;
     border-radius: 50px;
+  }
+
+  .word{
+    &:hover, &.highlight{
+      color: $color-primary !important;
+    }
   }
 
   .w {

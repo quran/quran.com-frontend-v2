@@ -39,7 +39,7 @@
         <% if 'translation' == @presenter.active_tab %>
           <%= render 'verses' %>
         <% else %>
-          <%= render_async url_for(range: @presenter.range, reading: false), lazy_load: true, lazy_load: {root: '#pill-translation'} do %>
+          <%= render_async range_path(range: @presenter.range, reading: false), lazy_load: true, lazy_load: {root: '#pill-translation'} do %>
             <p class="text-center p-3">
               <%= loading_spinner %>
             </p>
@@ -57,7 +57,7 @@
         <% if 'reading' == @presenter.active_tab %>
           <%= render 'verses' %>
         <% else %>
-          <%= render_async url_for(range: @presenter.range, reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
+          <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
             <p class="text-center p-3">
               <%= loading_spinner %>
             </p>

@@ -6,10 +6,10 @@
 // <div data-controller="player">
 // </div>
 
-import { Controller } from "stimulus";
-import { Howl, Howler } from "howler";
+import {Controller} from "stimulus";
+import {Howl, Howler} from "howler";
 import Slider from "bootstrap-slider";
-import { Tooltip } from "bootstrap";
+import {Tooltip} from "bootstrap";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
@@ -27,7 +27,6 @@ export default class extends Controller {
 
     //TODO: eventually, we'll move word play to separate controller.
     // maybe one move player to utility, and have word and ayah player controller.
-
     this.playWordQueue = [];
     this.resumeOnWordPlayEnd = false;
 
@@ -39,7 +38,7 @@ export default class extends Controller {
       currentVerse: null,
       autoScroll: this.settings.get("autoScroll"),
       recitation: this.settings.get("recitation"),
-      showTooltip: true,
+      showTooltip: false,
       repeat: {
         enabled: this.settings.get("repeatEnabled"),
         verse: verseDomList.first().data("verseNumber"),
@@ -91,24 +90,33 @@ export default class extends Controller {
     });
 
     // auto scroll component
-    this.scrollButton = $("#auto-scroll-btn");
-    new Tooltip(this.scrollButton[0], {
+    this.scrollButton = this.element.querySelector("#auto-scroll-btn");
+
+    new Tooltip(this.scrollButton, {
       placement: "top",
       boundary: "window",
-      title: "Hello"
+      html: true,
+      title: this.scrollButton.dataset.title
     });
 
+    let scrollBtnClasses = this.scrollButton.classList
+
     if (this.config.autoScroll) {
-      this.scrollButton.addClass("active");
+      scrollBtnClasses.add("text-primary");
+      scrollBtnClasses.remove("text-muted");
     }
 
-    this.scrollButton.on("click", event => {
+    this.scrollButton.addEventListener("click", event => {
       event.preventDefault();
-      this.scrollButton.toggleClass("active");
       this.config.autoScroll = !this.config.autoScroll;
 
       if (this.config.autoScroll) {
+        scrollBtnClasses.add("text-primary");
+        scrollBtnClasses.remove("text-muted");
         this.scrollToCurrentVerse();
+      } else {
+        scrollBtnClasses.remove("text-primary");
+        scrollBtnClasses.add("text-muted");
       }
 
       this.settings.saveSettings();
@@ -200,7 +208,11 @@ export default class extends Controller {
   }
 
   handlePlayBtnClick() {
-    this.play(this.track.currentVerse);
+    if(this.isPlaying()){
+      this.track.howl.pause()
+    } else{
+      this.play(this.track.currentVerse);
+    }
   }
 
   handlePauseBtnClick() {
@@ -221,17 +233,11 @@ export default class extends Controller {
 
   bindPlayerEvents() {
     // unload the player when user navigate
-    //$(document).one 'turbolinks:visit', @unload
 
     // player controls
     $("#player .play-btn").on("click", event => {
       event.preventDefault();
       this.handlePlayBtnClick();
-    });
-
-    $("#player .pause-btn").on("click", event => {
-      event.preventDefault();
-      this.handlePauseBtnClick();
     });
 
     $("#player .previous-btn").on("click", event => {
@@ -322,16 +328,6 @@ export default class extends Controller {
   }
 
   scrollToVerse(verse) {
-    $("#repeat-popover-range-from")
-      .val(verse)
-      .trigger("change");
-    $("#repeat-popover-range-to")
-      .val(verse)
-      .trigger("change");
-    $("#repeat-popover-single")
-      .val(verse)
-      .trigger("change");
-
     let verseElement = $(`#verses .verse[data-verse-number=${verse}]`);
 
     if (verseElement.length > 0) {
@@ -375,8 +371,8 @@ export default class extends Controller {
   }
 
   setPlayCtrls(type) {
-    let p = $("#player .play-ctrls");
-    p.removeClass("play pause loading fa-spinner animate-spin");
+    let p = $("#player .play-btn");
+    p.removeClass("fa-play-circle fa-pause-circle fa-spinner fa-spin");
 
     let thisVerse = $(
       `#verses .verse[data-verse-number=${this.track.currentVerse}]`
@@ -385,11 +381,11 @@ export default class extends Controller {
     thisVerse.removeClass("fa-play-circle fa-pause-circle fa-spinner fa-spin");
 
     if ("loading" == type) {
-      p.addClass("fa-spinner1 animate-spin");
-      thisVerse.addClass("fa-spinner1 animate-spin");
+      p.addClass("fa-spinner fa-spin");
+      thisVerse.addClass("fa-spinner fa-spin");
     } else {
-      p.addClass(type);
-      thisVerse.addClass(`fa-${type}-solid`);
+      p.addClass(`fa-${type}-circle`);
+      thisVerse.addClass(`fa-${type}-circle`);
     }
   }
 
@@ -481,7 +477,7 @@ export default class extends Controller {
     );
 
     for (let word = start, end1 = end; word < end1; word++) {
-      words.eq(word - 1).addClass("word-highlight");
+      words.eq(word - 1).addClass("highlight");
       if (this.config.showTooltip) words.eq(word - 1).tooltip("show");
     }
   }
@@ -606,17 +602,17 @@ export default class extends Controller {
   highlightCurrentVerse() {
     this.removeVerseHighlight();
     $(`#verses .verse[data-verse-number=${this.track.currentVerse}]`).addClass(
-      "verse-highlight"
+      "highlight"
     );
   }
 
   removeVerseHighlight() {
-    $(".verse-highlight").removeClass("verse-highlight");
+    $(".verse.highlight").removeClass("highlight");
   }
 
   removeSegmentHighlight() {
-    if (this.config.showTooltip) $(".word-highlight").tooltip("hide");
-    $(".word-highlight").removeClass("word-highlight");
+    if (this.config.showTooltip) $(".highlight").tooltip("hide");
+    $(".word.highlight").removeClass("highlight");
   }
 
   createHowl(verse, autoplay) {

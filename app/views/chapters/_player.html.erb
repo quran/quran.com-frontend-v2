@@ -8,16 +8,18 @@
 
         <div class="d-flex align-items-center order-md-1 order-3" style="font-size: 30px">
           <i class="text-primary fa-play-circle c-pointer play-btn"></i>
-          <i class="text-primary pause-btn fa fa-pause-circle c-pointer d-none"></i>
-          <i class="text-primary pause-loading fa fa-spinner fa-spin c-pointer d-none"></i>
         </div>
 
         <div class="next-btn d-flex align-items-center order-md-2 order-4">
           <i class="text-muted fa fa-step-forward c-pointer"></i>
         </div>
 
-        <div class="repeat-btn d-flex align-items-center  order-md-3 order-5">
-          <i class="text-muted fa fa-link-regular c-pointer"></i>
+        <div class="d-flex align-items-center order-md-3 order-5">
+          <i
+            class="text-muted fa fa-link-regular c-pointer"
+            id="auto-scroll-btn"
+            data-title="<%= _t("player.scroll") %>"
+          ></i>
         </div>
       </div>
 

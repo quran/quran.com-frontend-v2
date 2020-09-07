@@ -5,9 +5,6 @@
 
 require("turbolinks").start();
 require("partial_replacement");
-require("howler");
-require("slim-scroller");
-require("../utility/async-render");
 require("../utility/infinite-scrolling-page");
 
 import "../utility/trubolink-patch";

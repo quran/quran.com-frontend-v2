@@ -5,11 +5,11 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
-  policy.default_src :self, :https, 'https://*.qurancdn.com', 'localhost:3000', 'https://*.quran.com'
-  policy.font_src :self, :https, 'cdn.qurancdn.com localhost:3000'
-  policy.img_src :self, :https, :data, :blob
-  policy.style_src :self, 'https://*.qurancdn.com localhost:3000 unsafe-inline'
-  policy.script_src :self, :https, 'https://*.qurancdn.com https://www.googletagmanager.com https://www.google-analytics.com http://cdnjs.cloudflare.com unsafe-inline'
+  #policy.default_src :self, :https, 'https://*.qurancdn.com', 'localhost:3000', 'https://*.quran.com'
+  #policy.font_src :self, :https, 'cdn.qurancdn.com localhost:3000'
+  #policy.img_src :self, :https, :data, :blob
+  #policy.style_src :self, 'https://*.qurancdn.com localhost:3000 unsafe-inline'
+  #policy.script_src :self, :https, 'https://*.qurancdn.com https://www.googletagmanager.com https://www.google-analytics.com http://cdnjs.cloudflare.com unsafe-inline'
 
   #   policy.default_src :self, :https
   #   policy.font_src    :self, :https, :data

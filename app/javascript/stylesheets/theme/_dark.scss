@@ -2,7 +2,7 @@ body.night {
   background: #1d1f21;
   color: #9e9e9e;
   .arabic {
-    color: white !important;
+    color: #fff;
   }
 
   .theme-switch {
@@ -22,11 +22,12 @@ body.night {
       }
     }
   }
+
   .navbar,
   footer,
   .dropdown-menu,
   .footnote,
-  .verse.current,
+  .verse.highlight,
   .popover-header,
   .sidebar,
   .card {
@@ -37,7 +38,7 @@ body.night {
   #bismillah,
   .ayah-number,
   .translation .txt {
-    color: #fff !important;
+    color: #fff;
   }
 
   .ayah-number {
