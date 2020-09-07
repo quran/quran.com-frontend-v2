@@ -22,6 +22,15 @@ class ChapterPresenter < HomePresenter
     @chapter ||= Chapter.find_using_slug(params[:id])
   end
 
+
+  def active_tab
+    if reading_mode?
+      'reading'
+    else
+      'translation'
+    end
+  end
+
   def reading_mode?
     return @reading_mode unless @reading_mode.nil?
 

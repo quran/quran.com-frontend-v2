@@ -5,10 +5,10 @@
     <% lines = group_ayah_by_lines(verses[1]) %>
 
     <% lines.each do |k, line| %>
-      <div class="line arabic">
+      <div class="line">
         <div class="text-center">
           <% line.each do |verse_number, words| %>
-            <div class="verse d-inline" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
+            <div class="arabic d-inline verse" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
               <%= render partial: 'word', collection: words %>
             </div>
           <% end %>

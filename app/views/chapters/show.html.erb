@@ -30,7 +30,7 @@
   <%= render 'surah_actions' %>
 
   <div class="tab-content container" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pill-translation" role="tabpanel" aria-labelledby="pill-translation-tab">
+    <div class="tab-pane fade <%= 'show active' if 'reading' != @presenter.active_tab %>" id="pill-translation" role="tabpanel" aria-labelledby="pill-translation-tab">
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
@@ -40,11 +40,12 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="pill-reading" role="tabpanel" aria-labelledby="pill-reading-tab">
+    <div class="tab-pane fade <%= 'show active' if 'reading' == @presenter.active_tab %>" id="pill-reading" role="tabpanel" aria-labelledby="pill-reading-tab">
       <%= render_async url_for(reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
         <p class="text-center p-3">
           <%= loading_spinner %>
         </p>
+
       <% end.html_safe %>
     </div>
 

@@ -39,9 +39,18 @@
   }
 }
 
-.verse {
+.verse,
+.line {
   .arabic {
     font-size: 30px;
+    line-height: normal;
+  }
+}
+
+.verse {
+  &.current {
+    background-color: #f5fbf7;
+    border-radius: 50px;
   }
 
   .w {

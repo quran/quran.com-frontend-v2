@@ -107,9 +107,15 @@
 }
 
 .text_indopak,
-.text_madani {
-  .end * {
+.text_madani,
+.text_uthmani_tajweed {
+  .end {
     font-family: UthmanicHafs1;
     font-size: 35px;
+
+    * {
+      font-family: UthmanicHafs1;
+      font-size: 35px;
+    }
   }
 }

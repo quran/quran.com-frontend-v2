@@ -90,19 +90,19 @@
       <div class="col-md-5 d-md-block d-none">
         <ul class="nav nav-pills mb-0 justify-content-end" id="pills-tab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="pill-translation-tab" data-toggle="pill" href="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="true">
+            <a class="nav-link active" id="pill-translation-tab" data-toggle="pill" href="<%= url_for(reading: false) %>" data-target="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="<%= 'reading' != @presenter.active_tab %>">
               <%= _t('reader_mode.translation') %>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" id="pill-reading-tab" data-toggle="pill" href="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">
+            <a class="nav-link" id="pill-reading-tab" data-toggle="pill" href="<%= url_for(reading: true) %>" data-target="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">
               <%= _t('reader_mode.reading') %>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" id="pill-surah-info-tab" data-toggle="pill" href="#pill-info" role="tab" aria-controls="pill-info" aria-selected="false">
+            <a class="nav-link" id="pill-surah-info-tab" data-toggle="pill" href="<%= chapter_info_path(@presenter.chapter.id, locale: I18n.locale) %>" data-target="#pill-info" role="tab" aria-controls="pill-info" aria-selected="<%= 'reading' == @presenter.active_tab %>">
               <%= _t('reader_mode.info') %>
             </a>
           </li>
