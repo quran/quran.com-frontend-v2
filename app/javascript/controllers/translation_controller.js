@@ -18,6 +18,8 @@ export default class extends Controller {
 
     foodnotes.click(e => {
       e.preventDefault();
+      e.stopImmediatePropagation();
+
       let target = e.target;
 
       let id = target.getAttribute("foot_note");
@@ -31,7 +33,7 @@ export default class extends Controller {
       let text = dom.innerText.replace(" ", "");
 
       if (PRE_DEFINED_FOOTNOTES[text]) {
-        $(dom).tooltip({ title: PRE_DEFINED_FOOTNOTES[text], html: true });
+        $(dom).tooltip({ title: PRE_DEFINED_FOOTNOTES[text], html: true, direction: 'top' });
       }
     });
   }

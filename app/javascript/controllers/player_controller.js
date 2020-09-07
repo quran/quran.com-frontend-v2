@@ -387,14 +387,14 @@ export default class extends Controller {
 
   setPlayCtrls(type) {
     let p = $("#player .play-ctrls");
-    p.removeClass("play pause loading fa-spinner1 animate-spin");
+    p.removeClass("play pause loading fa-spinner animate-spin");
 
     let thisVerse = $(
       `#verses .verse[data-verse-number=${this.track.currentVerse}]`
     ).find(".play .fa");
 
     thisVerse.removeClass(
-      "fa-play-solid fa-pause-solid fa-spinner1 animate-spin"
+      "fa-play-circle fa-pause-circle fa-spinner fa-spin"
     );
 
     if ("loading" == type) {

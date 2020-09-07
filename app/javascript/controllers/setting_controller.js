@@ -39,13 +39,6 @@ export default class extends Controller {
     this.mobile = this.device.isMobile();
   }
 
-  updateReciter(newRecitation) {
-    let playerDom = document.getElementById("player");
-    let player = playerDom.player;
-
-    player.setRecitation(newRecitation);
-  }
-
   loadSettings() {
     let saved;
 

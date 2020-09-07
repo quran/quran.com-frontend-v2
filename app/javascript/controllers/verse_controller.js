@@ -132,24 +132,14 @@ export default class extends Controller {
     );
   }
 
-  trackActions() {
-    let key = this.el.data("key");
-
-    this.el.find("[data-tack]").on("click", e => {
-      const target = $(e.target);
-      const action = target.data("track");
-
-      GoogleAnalytic.trackEvent(action, "AyahAction", "Clicked", key);
-    });
-  }
-
   bindTajweedTooltip() {
     let dom = this.el;
 
     TAJWEED_RULES.forEach(name => {
       this.el.find(`.${name}`).tooltip({
         title: TAJWEED_RULE_DESCRIPTION[name],
-        html: true
+        html: true,
+        direction: 'top'
       });
     });
   }
