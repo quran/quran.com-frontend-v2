@@ -22,7 +22,7 @@ module ChaptersHelper
 
   def chapter_next_page_link
     if @presenter.next_page
-      link_to 'load more', range_path(@presenter.chapter.id, @presenter.range, page: @presenter.next_page, translations: @presenter.valid_translations), rel: 'next'
+      link_to 'load more', range_path(@presenter.chapter.id, @presenter.range, page: @presenter.next_page, translations: @presenter.valid_translations, reading: @presenter.reading_mode?), rel: 'next'
     end
   end
 

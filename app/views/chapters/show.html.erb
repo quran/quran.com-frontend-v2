@@ -30,23 +30,40 @@
   <%= render 'surah_actions' %>
 
   <div class="tab-content container" id="pills-tabContent">
-    <div class="tab-pane fade <%= 'show active' if 'reading' != @presenter.active_tab %>" id="pill-translation" role="tabpanel" aria-labelledby="pill-translation-tab">
+    <div class="tab-pane fade <%= 'show active' if 'translation' == @presenter.active_tab %>" id="pill-translation" role="tabpanel" aria-labelledby="pill-translation-tab">
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
 
       <div id="verses" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="infinite-page chapter">
-        <%= render 'verses' %>
+        <% if 'translation' == @presenter.active_tab %>
+          <%= render 'verses' %>
+        <% else %>
+          <%= render_async url_for(range: @presenter.range, reading: false), lazy_load: true, lazy_load: {root: '#pill-translation'} do %>
+            <p class="text-center p-3">
+              <%= loading_spinner %>
+            </p>
+          <% end.html_safe %>
+        <% end %>
       </div>
     </div>
 
     <div class="tab-pane fade <%= 'show active' if 'reading' == @presenter.active_tab %>" id="pill-reading" role="tabpanel" aria-labelledby="pill-reading-tab">
-      <%= render_async url_for(reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
-        <p class="text-center p-3">
-          <%= loading_spinner %>
-        </p>
+      <% if @presenter.show_bismillah? %>
+        <%= render 'bismillah' %>
+      <% end %>
 
-      <% end.html_safe %>
+      <div id="page" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="infinite-page chapter">
+        <% if 'reading' == @presenter.active_tab %>
+          <%= render 'verses' %>
+        <% else %>
+          <%= render_async url_for(range: @presenter.range, reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
+            <p class="text-center p-3">
+              <%= loading_spinner %>
+            </p>
+          <% end.html_safe %>
+        <% end %>
+      </div>
     </div>
 
     <div class="tab-pane fade" id="pill-info" role="tabpanel" aria-labelledby="pill-info-tab">

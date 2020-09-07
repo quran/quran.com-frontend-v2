@@ -9,7 +9,7 @@
 import { Controller } from "stimulus";
 import { Howl, Howler } from "howler";
 import Slider from "bootstrap-slider";
-import {Tooltip} from "bootstrap";
+import { Tooltip } from "bootstrap";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
@@ -73,7 +73,7 @@ export default class extends Controller {
     //unload all tracks
     Howler.unload();
     this.progressBar.destroy();
- }
+  }
 
   isPlaying() {
     return this.track.howl && this.track.howl.playing();
@@ -96,7 +96,7 @@ export default class extends Controller {
       placement: "top",
       boundary: "window",
       title: "Hello"
-    })
+    });
 
     if (this.config.autoScroll) {
       this.scrollButton.addClass("active");
@@ -183,8 +183,8 @@ export default class extends Controller {
     verse = verse || this.track.currentVerse;
 
     // enable progress bar if disabled
-    this.progressBar.enable()
-    this.progressBar.setValue(0)
+    this.progressBar.enable();
+    this.progressBar.setValue(0);
 
     this.removeSegmentHighlight();
     this.track.currentVerse = verse;
@@ -245,22 +245,11 @@ export default class extends Controller {
     });
 
     // slider
-    this.progressBar.on('change', value => {
+    this.progressBar.on("change", value => {
       this.handleProgressBarChange(value);
-    })
+    });
 
-    const hidePopover = e => {
-      if ($(e.target).closest(".popover").length == 0)
-        this.repeatButton.popover("hide");
-    };
-
-    // hide popover when clicked outside
-    this.repeatButton.on("shown.bs.popover", () =>
-      $(document).on("click", hidePopover)
-    );
-
-   /* this.repeatButton.on("hide.bs.popover", () => {
-      $(document).off("click", hidePopover);
+    /* this.repeatButton.on("hide.bs.popover", () => {
 
       this.config.repeat.count = Number(
         $(`#repeat-popover-${this.config.repeat.type}-repeat`).val()
@@ -393,9 +382,7 @@ export default class extends Controller {
       `#verses .verse[data-verse-number=${this.track.currentVerse}]`
     ).find(".play .fa");
 
-    thisVerse.removeClass(
-      "fa-play-circle fa-pause-circle fa-spinner fa-spin"
-    );
+    thisVerse.removeClass("fa-play-circle fa-pause-circle fa-spinner fa-spin");
 
     if ("loading" == type) {
       p.addClass("fa-spinner1 animate-spin");
@@ -432,7 +419,7 @@ export default class extends Controller {
       let progressPercentage =
         Math.floor((currentTime / totalDuration) * 1000) / 10;
 
-      this.progressBar.setValue(progressPercentage)
+      this.progressBar.setValue(progressPercentage);
 
       $("#player .timer").text(this.formatTime(currentTime));
     }, 500);
@@ -532,7 +519,7 @@ export default class extends Controller {
     this.setSegmentInterval();
 
     this.preloadNextVerse();
-   // this.verseDropdown.val(this.track.currentVerse).trigger("change");
+    // this.verseDropdown.val(this.track.currentVerse).trigger("change");
   }
 
   getNextTrackVerse() {
