@@ -48,7 +48,8 @@ environment.plugins.append(
   "PurgecssPlugin",
   new PurgecssPlugin({
     whitelist: ["tajweed", ".h"],
-    whitelistPatterns: ["hlt"],
+    whitelistPatterns: [/hlt/],
+    whitelistPatternsChildren: [],
     paths: glob.sync([
       path.join(__dirname, "../../app/javascript/**/*.js"),
       path.join(__dirname, "../../app/views/**/*.erb")
