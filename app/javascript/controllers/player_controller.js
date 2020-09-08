@@ -64,17 +64,11 @@ export default class extends Controller {
       that.track.currentVerse ||= that.firstVerse;
 
       // preload howl for first track
-      that.preloadTrack[that.firstVerse] = {
+      that.preloadTrack[that.track.currentVerse] = {
         verse: that.firstVerse,
         howl: that.createHowl(that.firstVerse, false)
       };
     });
-
-    /*container.on("items:added", () => {
-      // this event is triggered from infinite scrolling controller
-      // new ayah are added to page. Refresh the play first and last ayah
-      this.updateVerses(firstVerse, lastVerse);
-    });*/
 
     setTimeout(() => this.scrollToVerse(this.config.firstVerse), 100);
   }

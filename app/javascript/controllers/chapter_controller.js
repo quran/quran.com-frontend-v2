@@ -38,6 +38,12 @@ export default class extends Controller {
         .find(".verses")
         .trigger("visibility:hidden");
     });
+
+    /*container.on("items:added", () => {
+      // this event is triggered from infinite scrolling controller
+      // new ayah are added to page. Refresh the play first and last ayah
+      this.updateVerses(firstVerse, lastVerse);
+    });*/
   }
 
   chapterId(){
