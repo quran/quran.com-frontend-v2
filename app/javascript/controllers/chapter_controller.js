@@ -12,7 +12,18 @@ export default class extends Controller {
   connect() {
     const chapter = this;
     this.element[this.identifier] = chapter;
+    // using same controller for reading, and translation mode
+    // active tab keep track of current active view
     this.activeTab = $(this.element).find(".tab-pane.show .verses");
+
+    // currently playing ayah
+    this.currentVerse = null;
+
+    // currently highlighted word
+    this.activeWord = null;
+
+    // intervals for each words of current ayah
+    this.segmentTimers = [];
 
     const translationTab = document.querySelector("#pill-translation-tab");
     const readingTab = document.querySelector("#pill-reading-tab");
@@ -44,17 +55,146 @@ export default class extends Controller {
       // new ayah are added to page. Refresh the play first and last ayah
       this.updateVerses(firstVerse, lastVerse);
     });*/
+
+    setTimeout(() => {
+      const player = document.getElementById("player").player;
+      const verses = chapter.activeTab.find(".verse");
+      player.init(
+        chapter,
+        verses.first().data("verseNumber"),
+        verses.last().data("verseNumber")
+      );
+    }, 100);
   }
 
-  chapterId(){
-    return this.element.dataset.chapterId
+  scrollToVerse(verse) {
+    let verseElement = this.activeTab.find(
+      `.verse[data-verse-number=${verse}]`
+    );
+
+    if (verseElement.length > 0) {
+      let verseTopOffset = verseElement.offset().top;
+      let verseHeight = verseElement.outerHeight();
+      let currentScroll = $(window).scrollTop();
+      let windowHeight = window.innerHeight;
+      let headerHeight =
+        $("header").outerHeight() + $(".surah-actions").outerHeight();
+      let playerHeight = $("#player").outerHeight();
+
+      // scroll if there isn't a space to appear completely
+      let bottomOffsetCheck =
+        verseTopOffset + verseHeight >
+        currentScroll + windowHeight - playerHeight;
+      let topOffsetCheck = verseTopOffset < currentScroll + headerHeight;
+
+      const scrollLength = verseTopOffset - (headerHeight + 50);
+      const scrollTime = Math.min(500, scrollLength * 10);
+
+      if (bottomOffsetCheck || topOffsetCheck) {
+        $("html, body")
+          .stop(true, true)
+          .animate(
+            {
+              scrollTop: scrollLength
+            },
+            scrollTime
+          );
+      }
+    }
   }
 
-  highlightVerse(verseNumber) {}
+  chapterId() {
+    return this.element.dataset.chapterId;
+  }
+
+  setSegmentInterval(seekTime, segmentTimings) {
+    this.removeSegmentTimers();
+
+    let segments = segmentTimings || [];
+
+    if (typeof seekTime != "number") {
+      this.removeSegmentHighlight();
+    }
+
+    let currentTime = seekTime * 1000;
+
+    $.each(segments, (index, segment) => {
+      let startTime = parseInt(segment[2], 10);
+      let endTime = parseInt(segment[3], 10);
+
+      //continue if the segment is passed
+      if (currentTime > endTime) return true;
+
+      if (currentTime > startTime) {
+        this.highlightSegment(segment[0], segment[1]);
+      } else {
+        let highlightAfter = startTime - currentTime;
+
+        this.segmentTimers.push(
+          setTimeout(() => {
+            this.highlightSegment(segment[0], segment[1]);
+          }, highlightAfter)
+        );
+      }
+    });
+  }
+
+  removeSegmentTimers() {
+    if (this.segmentTimers.length > 0) {
+      for (let alignTimer of this.segmentTimers) {
+        clearTimeout(alignTimer);
+      }
+      return (this.segmentTimers = []);
+    }
+  }
+
+  highlightSegment(startIndex, endIndex) {
+    //TODO: track highlighted words in memory and remove highlighting from them
+    // DOm operation could be costly
+    let showWordTooltip = false; // TODO: load from settings
+
+    this.removeSegmentHighlight();
+
+    const start = parseInt(startIndex, 10) + 1;
+    const end = parseInt(endIndex, 10) + 1;
+    const words = this.activeTab.find(
+      `.verse[data-verse-number=${this.currentVerse}] .word`
+    );
+
+    for (let word = start, end1 = end; word < end1; word++) {
+      words.eq(word - 1).addClass("highlight");
+      if (showWordTooltip) words.eq(word - 1).tooltip("show");
+    }
+  }
+
+  highlightVerse(verseNumber) {
+    if (this.currentVerse) {
+      this.removeHighlighting();
+    }
+    this.currentVerse = verseNumber;
+
+    this.activeTab
+      .find(`.verse[data-verse-number=${verseNumber}]`)
+      .addClass("highlight");
+  }
 
   highlightWord(wordPosition) {}
 
-  removeHighlighting() {}
+  removeSegmentHighlight() {
+    let showTooltip = false;
+    //if (this.config.showTooltip) $(".highlight").tooltip("hide");
+    // this.removeSegmentTimers();
+
+    $(".word.highlight").removeClass("highlight");
+  }
+
+  removeHighlighting() {
+    let verse = $(`.verse[data-verse-number=${this.currentVerse}]`);
+    verse.removeClass("highlight");
+
+    // remove highlighting from words
+    verse.find(".highlight").removeClass("highlight");
+  }
 
   loadVerses(verse) {
     // If this ayah is already loaded, scroll to it

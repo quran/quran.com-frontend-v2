@@ -15,7 +15,7 @@ export default class extends Controller {
     const dataset = el.dataset;
     let setting = document.body.setting;
 
-    new Tooltip(this.element, {
+    el.tooltip = new Tooltip(el, {
       trigger: "hover",
       placement: "top",
       html: true,
