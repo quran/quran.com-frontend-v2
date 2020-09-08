@@ -7,11 +7,12 @@
 // </div>
 
 import { Controller } from "stimulus";
-import { Tooltip } from "bootstrap";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 export default class extends Controller {
   connect() {
-    let el = $(this.element);
+    let el = this.element;
+    const dataset = el.dataset;
     let setting = document.body.setting;
 
     new Tooltip(this.element, {
@@ -21,21 +22,21 @@ export default class extends Controller {
       template:
         "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
       title: function(w) {
-        const local = el.data("local");
+        const local = dataset.local;
         const tooltip = setting.getTooltipType();
-        const text = el.data(tooltip);
+        const text = dataset[tooltip];
         return `<div class='${local}'>${text}</div>`;
       }
     });
 
-    el.on("dblclick", e => {
+    el.addEventListener("dblclick", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
       this.dbClick(e);
     });
 
-    el.on("click", e => {
+    el.addEventListener("click", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
@@ -46,14 +47,15 @@ export default class extends Controller {
   }
 
   play() {
-    GoogleAnalytic.trackEvent("Play Word", "Play", this.el.data("key"), 1);
+    let data = this.element.dataset;
+    GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
 
     let player,
       playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
     if (player) {
-      return player.playWord(this.el.data("audio"));
+      return player.playWord(data.audio);
     }
   }
 
@@ -63,13 +65,13 @@ export default class extends Controller {
 
     if (playerDom) player = playerDom.player;
     if (player) {
-      return player.seekToWord(this.el.data("position"));
+      return player.seekToWord(this.el.dataset.position);
     }
   }
 
   disconnect() {
-    this.el.off("click");
-    this.el.off("dblclick");
-    this.el.tooltip("dispose");
+    this.el.removeEventListener("click", () => {});
+    this.el.removeEventListener("dblclick", () => {});
+    this.el.removeEventListener("dispose", () => {});
   }
 }

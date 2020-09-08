@@ -29,7 +29,7 @@ export default class extends SettingController {
 
   changeFont(target) {
     this.set("font", target.value);
-    let controller = document.getElementById("verses");
+    let controller = document.getElementById("chapter-tabs");
 
     controller.chapter.changeFont(target.value);
   }

@@ -5,11 +5,11 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
-  #policy.default_src :self, :https, 'https://*.qurancdn.com', 'localhost:3000', 'https://*.quran.com'
+  #policy.default_src :https, "'self' 'unsafe-eval' 'unsafe-inline' https://*.qurancdn.com https://*.quran.com"
   #policy.font_src :self, :https, 'cdn.qurancdn.com localhost:3000'
   #policy.img_src :self, :https, :data, :blob
-  #policy.style_src :self, 'https://*.qurancdn.com localhost:3000 unsafe-inline'
-  #policy.script_src :self, :https, 'https://*.qurancdn.com https://www.googletagmanager.com https://www.google-analytics.com http://cdnjs.cloudflare.com unsafe-inline'
+  #policy.style_src "'self' 'unsafe-inline' http://localhost:*  https://*.qurancdn.com"
+  #policy.script_src "'self' 'unsafe-eval' https://www.googletagmanager.com/ https://www.google-analytics.com/ https://cdnjs.cloudflare.com/ https://*.qurancdn.com"
 
   #   policy.default_src :self, :https
   #   policy.font_src    :self, :https, :data
@@ -33,4 +33,6 @@ end
 # Report CSP violations to a specified URI
 # For further information see the following documentation:
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
-Rails.application.config.content_security_policy_report_only = true
+# Rails.application.config.content_security_policy_report_only = true
+# Rails.application.config.content_security_policy_nonce_generator = ->(request) { SecureRandom.base64(8) }
+# Rails.application.config.content_security_policy_nonce_directives = %w(script-src)

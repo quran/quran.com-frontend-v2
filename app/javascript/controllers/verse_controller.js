@@ -8,7 +8,7 @@
 
 import { Controller } from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
-import { Tooltip } from "bootstrap";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -52,10 +52,11 @@ const TAJWEED_RULES = [
 
 export default class extends Controller {
   static targets = ["actions"];
+
   connect() {
     this.el = $(this.element);
 
-    if (
+    /*if (
       this.el.find(".arabic").height() + this.el.find(".translation").height() <
       20
     ) {
@@ -63,7 +64,7 @@ export default class extends Controller {
       this.actionsTarget.children[0].classList.remove("flex-md-column");
       this.actionsTarget.children[0].classList.add("justify-content-md-evenly");
       this.element.classList.add("pb-md-2");
-    }
+    }*/
 
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
       new Tooltip(actionDom, {
@@ -133,13 +134,15 @@ export default class extends Controller {
   }
 
   bindTajweedTooltip() {
-    let dom = this.el;
+    let dom = this.element;
 
     TAJWEED_RULES.forEach(name => {
-      this.el.find(`.${name}`).tooltip({
-        title: TAJWEED_RULE_DESCRIPTION[name],
-        html: true,
-        direction: 'top'
+      dom.querySelectorAll(`.${name}`).forEach(tajweed => {
+        new Tooltip(tajweed, {
+          title: TAJWEED_RULE_DESCRIPTION[name],
+          html: true,
+          direction: "top"
+        });
       });
     });
   }

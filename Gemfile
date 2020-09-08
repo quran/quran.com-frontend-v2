@@ -12,6 +12,7 @@ gem 'rails', '~> 6.0.3.2'
 gem 'puma', '~> 3.12.4'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'sass-rails', '~> 6.0.0'
 gem 'webpacker', '>= 5.2.1'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

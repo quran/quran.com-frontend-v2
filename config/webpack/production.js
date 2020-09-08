@@ -44,9 +44,6 @@ if (fs.existsSync(whitelist_path)) {
   whitelist = JSON.parse(fs.readFileSync(whitelist_path));
 }
 
-// Enable the default config
-environment.splitChunks();
-
 environment.plugins.append(
   "PurgecssPlugin",
   new PurgecssPlugin({

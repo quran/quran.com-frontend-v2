@@ -3,16 +3,16 @@
   @font-face {
     font-family: 'p<%= page %>-v2';
     src: local(QCF200<%=page%>),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff2/p#{page}.woff2" %>') format('woff2'),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v2/woff/p#{page}.woff" %>') format('woff');
+    url('<%= asset_url "quran_fonts/v2/woff2/p#{page}.woff2" %>') format('woff2'),
+    url('<%= asset_url "quran_fonts/v2/woff/p#{page}.woff" %>') format('woff');
     font-display: block;
   }
 
   @font-face {
     font-family: 'p<%= page %>-v1';
-    src: url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff2/p#{page}.woff2"%>'),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/woff/p#{page}.woff" %>') format('woff'),
-    url('<%= asset_pack_url "media/fonts/quran_fonts/v1/ttf/p#{page}.ttf" %>') format('truetype');
+    src: url('<%= asset_url "quran_fonts/v1/woff2/p#{page}.woff2"%>'),
+    url('<%= asset_url "quran_fonts/v1/woff/p#{page}.woff" %>') format('woff'),
+    url('<%= asset_url "quran_fonts/v1/ttf/p#{page}.ttf" %>') format('truetype');
   }
 
   .p<%= page %>-v2 {

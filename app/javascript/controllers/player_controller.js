@@ -6,10 +6,10 @@
 // <div data-controller="player">
 // </div>
 
-import {Controller} from "stimulus";
-import {Howl, Howler} from "howler";
+import { Controller } from "stimulus";
+import { Howl, Howler } from "howler";
 import Slider from "bootstrap-slider";
-import {Tooltip} from "bootstrap";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
@@ -21,27 +21,25 @@ export default class extends Controller {
     this.element[this.identifier] = this;
     this.settings = document.body.setting;
 
-    let el = this.element;
-    let container = $("#verses");
-    let verseDomList = container.find(".verse");
-
-    //TODO: eventually, we'll move word play to separate controller.
-    // maybe one move player to utility, and have word and ayah player controller.
     this.playWordQueue = [];
     this.resumeOnWordPlayEnd = false;
+    this.preloadTrack = {};
+    this.segmentTimers = [];
+    this.track = {};
+    this.audioData = {};
+    this.playerProgressInterval = null;
 
     this.config = {
-      chapter: container.data("chapterId"),
-      totalVerses: container.data("totalVerses"),
-      firstVerse: verseDomList.first().data("verseNumber"),
-      lastVerse: verseDomList.last().data("verseNumber"),
+      chapter: null,
+      firstVerse: null,
+      lastVerse: null,
       currentVerse: null,
       autoScroll: this.settings.get("autoScroll"),
       recitation: this.settings.get("recitation"),
       showTooltip: false,
       repeat: {
+        verse: null,
         enabled: this.settings.get("repeatEnabled"),
-        verse: verseDomList.first().data("verseNumber"),
         type: this.settings.get("repeatType") || "single", // or range
         count: this.settings.get("repeatCount"), // number of time to play each ayah
         from: this.settings.get("repeatFrom"),
@@ -50,18 +48,31 @@ export default class extends Controller {
       }
     };
 
-    this.preloadTrack = {};
-    this.segmentTimers = [];
-    this.track = {};
-    this.audioData = {};
-    this.playerProgressInterval = null;
-
     this.buildPlayer();
-    container.on("items:added", () => {
+    this.bindPlayerEvents();
+  }
+
+  init(chapter, firstVerse, lastVerse) {
+    this.chapter = chapter;
+
+    const that = this;
+
+    this.updateVerses().then(() => {
+      // set first track to play
+      that.track.currentVerse = that.firstVerse;
+
+      // preload howl for first track
+      that.preloadTrack[that.firstVerse] = {
+        verse: that.firstVerse,
+        howl: that.createHowl(that.firstVerse, false)
+      };
+    });
+
+    /*container.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
       // new ayah are added to page. Refresh the play first and last ayah
-      this.updateVerses();
-    });
+      this.updateVerses(firstVerse, lastVerse);
+    });*/
 
     setTimeout(() => this.scrollToVerse(this.config.firstVerse), 100);
   }
@@ -99,7 +110,7 @@ export default class extends Controller {
       title: this.scrollButton.dataset.title
     });
 
-    let scrollBtnClasses = this.scrollButton.classList
+    let scrollBtnClasses = this.scrollButton.classList;
 
     if (this.config.autoScroll) {
       scrollBtnClasses.add("text-primary");
@@ -120,19 +131,6 @@ export default class extends Controller {
       }
 
       this.settings.saveSettings();
-    });
-
-    this.updateVerses().then(() => {
-      // set first track to play
-      that.track.currentVerse = that.firstVerse;
-
-      // preload howl for first track
-      that.preloadTrack[that.firstVerse] = {
-        verse: that.firstVerse,
-        howl: that.createHowl(that.firstVerse, false)
-      };
-
-      that.bindPlayerEvents();
     });
   }
 
@@ -208,9 +206,9 @@ export default class extends Controller {
   }
 
   handlePlayBtnClick() {
-    if(this.isPlaying()){
-      this.track.howl.pause()
-    } else{
+    if (this.isPlaying()) {
+      this.track.howl.pause();
+    } else {
       this.play(this.track.currentVerse);
     }
   }
@@ -232,8 +230,6 @@ export default class extends Controller {
   }
 
   bindPlayerEvents() {
-    // unload the player when user navigate
-
     // player controls
     $("#player .play-btn").on("click", event => {
       event.preventDefault();
@@ -254,35 +250,6 @@ export default class extends Controller {
     this.progressBar.on("change", value => {
       this.handleProgressBarChange(value);
     });
-
-    /* this.repeatButton.on("hide.bs.popover", () => {
-
-      this.config.repeat.count = Number(
-        $(`#repeat-popover-${this.config.repeat.type}-repeat`).val()
-      );
-
-      //  set repeat range
-      this.config.repeat.from = Number($("#repeat-popover-range-from").val());
-      this.config.repeat.to = Number($("#repeat-popover-range-to").val());
-      this.config.repeat.verse = Number($("#repeat-popover-single").val());
-
-      // reset repeat iteration.
-      this.config.repeat.iteration = 1;
-
-      if (this.config.repeat.enabled) {
-        let verse =
-          "single" == this.config.repeat.type
-            ? this.config.repeat.verse
-            : this.config.repeat.from;
-        this.jumpToVerse(Number(verse));
-      }
-
-      this.settings.set("repeatType", this.config.repeat.type);
-      this.settings.set("repeatEnabled", this.config.repeat.enabled);
-      this.settings.set("repeatCount", this.config.repeat.count);
-      this.settings.set("repeatFrom", this.config.repeat.from);
-      this.settings.set("repeatTo", this.config.repeat.to);
-    });*/
   }
 
   handleProgressBarChange(value) {
@@ -306,7 +273,7 @@ export default class extends Controller {
       return Promise.resolve([]);
     } else {
       // this verse isn't present in the page. Load it
-      let controller = document.getElementById("verses");
+      let controller = document.getElementById("chapter-tabs");
 
       controller.chapter.loadVerses(verse).then(() => {
         this.updateVerses();
@@ -372,17 +339,19 @@ export default class extends Controller {
 
   setPlayCtrls(type) {
     let p = $("#player .play-btn");
-    p.removeClass("fa-play-circle fa-pause-circle fa-spinner fa-spin");
+    p.removeClass("fa-play-circle fa-pause-circle fa-spinner animate-spin");
 
     let thisVerse = $(
       `#verses .verse[data-verse-number=${this.track.currentVerse}]`
     ).find(".play .fa");
 
-    thisVerse.removeClass("fa-play-circle fa-pause-circle fa-spinner fa-spin");
+    thisVerse.removeClass(
+      "fa-play-circle fa-pause-circle fa-spinner animate-spin"
+    );
 
     if ("loading" == type) {
-      p.addClass("fa-spinner fa-spin");
-      thisVerse.addClass("fa-spinner fa-spin");
+      p.addClass("fa-spinner animate-spin");
+      thisVerse.addClass("fa-spinner animate-spin");
     } else {
       p.addClass(`fa-${type}-circle`);
       thisVerse.addClass(`fa-${type}-circle`);
@@ -659,8 +628,12 @@ export default class extends Controller {
     });
   }
 
+  changeVersesContainer(container) {
+    this.container = $(container);
+  }
+
   updateVerses() {
-    let verses = $("#verses .verse");
+    let verses = $(".tab-pane.show .verses");
 
     this.firstVerse = verses.first().data("verse-number");
     this.lastVerse = verses.last().data("verse-number");
@@ -674,7 +647,7 @@ export default class extends Controller {
     this.preloadTrack = {};
     this.audioData = {};
 
-    this.updateVerses().then(() => {
+    this.this.fetchAudioData(this.firstVerse, this.lastVerse).then(() => {
       // set first track to play
       // clear the loaded tracks
 

@@ -1,11 +1,10 @@
 @font-face {
   font-family: "icon-surah";
-  src: url("../../fonts/surah_names/surah_names.woff2"),
-    url("../../fonts/surah_names/surah_names.eot?#iefix")
+  src: url("../fonts/surah_names/surah_names.woff2"),
+    url("../fonts/surah_names/surah_names.eot?#iefix")
       format("embedded-opentype"),
-    url("../../fonts/surah_names/surah_names.woff") format("woff"),
-    url("../../fonts/surah_names/surah_names.ttf") format("truetype"),
-    url("../../fonts/surah_names/surah_names.svg#surah_names") format("svg");
+    url("../fonts/surah_names/surah_names.woff") format("woff"),
+    url("../fonts/surah_names/surah_names.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

@@ -5,8 +5,13 @@
 
 require("turbolinks").start();
 require("partial_replacement");
-require("../utility/infinite-scrolling-page");
 
+import JQuery from "jquery";
+window.$ = window.JQuery = JQuery;
+
+require("popper.js/dist/umd/popper");
+//require('bootstrap/dist/js/bootstrap');
+import "custom-bootstrap";
 import "../utility/trubolink-patch";
 
 // need google analytic is service worker, expose this globaly
@@ -29,6 +34,6 @@ $(document).on("click", ".dropdown-menu", function(e) {
 
 require("../stylesheets/application.scss");
 
-// page fonts
-require.context("../fonts/quran_fonts", true);
-require.context("../images", true);
+// fonts are moved to rails assets pipeline
+//require.context("../fonts/quran_fonts", true);
+//require.context("../images", true);

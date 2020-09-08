@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 var PRE_DEFINED_FOOTNOTES = {
   sg: "Singular",
@@ -33,12 +34,16 @@ export default class extends Controller {
       let text = dom.innerText.replace(" ", "");
 
       if (PRE_DEFINED_FOOTNOTES[text]) {
-        $(dom).tooltip({ title: PRE_DEFINED_FOOTNOTES[text], html: true, direction: 'top' });
+        new Tooltip(dom, {
+          title: PRE_DEFINED_FOOTNOTES[text],
+          html: true,
+          direction: "top"
+        });
       }
     });
   }
 
   disconnect() {
-    this.el.find("sup").tooltip("dispose");
+    //this.el.find("sup").tooltip("dispose");
   }
 }
