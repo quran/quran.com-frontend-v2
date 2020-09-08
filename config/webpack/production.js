@@ -37,17 +37,18 @@ const path = require("path");
 // Configure PurgeCSS
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 
-var whitelist_path = "config/webpack/purgecss/whitelist.json";
+/*var whitelist_path = "config/webpack/purgecss/whitelist.json";
 var whitelist = {};
 
 if (fs.existsSync(whitelist_path)) {
   whitelist = JSON.parse(fs.readFileSync(whitelist_path));
-}
+}*/
 
 environment.plugins.append(
   "PurgecssPlugin",
   new PurgecssPlugin({
-    whitelist,
+    whitelist: ["tajweed", ".h"],
+    whitelistPatterns: ["hlt"],
     paths: glob.sync([
       path.join(__dirname, "../../app/javascript/**/*.js"),
       path.join(__dirname, "../../app/views/**/*.erb")

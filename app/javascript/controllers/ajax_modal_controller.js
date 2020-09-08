@@ -7,7 +7,7 @@
 // </div>
 
 import { Controller } from "stimulus";
-import { Modal } from "bootstrap/js/src/modal";
+import Modal from "bootstrap/js/src/modal";
 
 export default class extends Controller {
   connect() {
