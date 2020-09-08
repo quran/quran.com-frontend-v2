@@ -50,11 +50,18 @@ export default class extends Controller {
         .trigger("visibility:hidden");
     });
 
-    /*container.on("items:added", () => {
+    this.activeTab.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
-      // new ayah are added to page. Refresh the play first and last ayah
-      this.updateVerses(firstVerse, lastVerse);
-    });*/
+      // new ayah are added to page. Refresh the player's first and last ayah
+
+      const player = document.getElementById("player").player;
+      const verses = chapter.activeTab.find(".verse");
+      player.init(
+        chapter,
+        verses.first().data("verseNumber"),
+        verses.last().data("verseNumber")
+      );
+    });
 
     setTimeout(() => {
       const player = document.getElementById("player").player;
