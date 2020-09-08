@@ -1,0 +1,108 @@
+$font-regular: "SFProText-Regular";
+$font-bold: "SFProText-Bold";
+$font-medium: "SFProText-Medium";
+
+@font-face {
+  font-family: $font-regular;
+  src: local("SFProText Regular"), local("SFProText-Regular"),
+  local("SF Pro Text Regular"), url("<%= asset_path 'SFProText-Regular.woff2' %>"),
+  url("<%= asset_url 'SFProText-Regular.eot?#iefix' %>") format("embedded-opentype"),
+  url("<%= asset_url 'SFProText-Regular.woff' %>") format("woff"),
+  url("<%= asset_url 'SFProText-Regular.ttf' %>") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $font-medium;
+  src: local("SFProText Medium"),
+  local("SFProText-Medium"),
+  local("SF Pro Text Medium"),
+  url("<%= asset_url 'SFProText-Medium.woff2' %>"),
+  url("<%= asset_url 'SFProText-Medium.eot?#iefix'%>") format("embedded-opentype"),
+  url("<%= asset_url 'SFProText-Medium.woff' %>") format("woff"),
+  url("<%= asset_url 'SFProText-Medium.ttf' %>") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $font-bold;
+  src: local("SFProText Bold"),
+  local("SFProText-Bold"),
+  local("SF Pro Text Bold"),
+  url("<%= asset_url 'SFProText-Bold.woff2' %>"),
+  url("<%= asset_url 'SFProText-Bold.eot?#iefix' %>") format("embedded-opentype"),
+  url("<%= asset_url 'SFProText-Bold.woff' %>") format("woff"),
+  url("<%= asset_url 'SFProText-Bold.ttf' %>") format("truetype"),
+  url("<%= asset_url 'SFProText-Bold.svg#SFProText-Bold' %>") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "bismillah";
+  src: url("<%= asset_url 'bismillah/bismillah.woff2' %>"),
+  url("<%= asset_url 'bismillah/bismillah.eot?#iefix' %>") format("embedded-opentype"),
+  url("<%= asset_url 'bismillah/bismillah.woff' %>") format("woff"),
+  url("<%= asset_url 'bismillah/bismillah.ttf' %>") format("truetype"),
+  url("<%= asset_url 'bismillah/bismillah.svg#bismillah' %>") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "pdms";
+  src: local("_PDMS_Saleem_QuranFont Regular"),
+  url("<%= asset_url ' quran_fonts/pdms/pdms-saleem-quranfont.ttf' %>");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kitab";
+  src: url("<%= asset_url 'quran_fonts/kitab/kitab.woff2' %>"),
+  url("<%= asset_url 'quran_fonts/kitab/kitab.woff' %>") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Qalam";
+  src: url("<%= asset_url 'quran_fonts/qalam/al_qalam.ttf'%>");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "me_quran";
+  src: url("<%= asset_url 'quran_fonts/me_quran/me_quran.ttf'%>");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "nafees";
+  src: local("Nafees"), local("Nafees Regular"),
+  url("<%= asset_url 'languages/urdu/nafees/nafees-nastaleeq-webfont.woff2'%>"),
+  url("<%= asset_url 'languages/urdu/nafees/nafees-nastaleeq-webfont.eot?#iefix'%>") format("embedded-opentype"),
+  url("<%= asset_url 'languages/urdu/nafees/nafees-nastaleeq-webfont.woff'%>") format("woff"),
+  url("<%= asset_url 'languages/urdu/nafees/nafees-nastaleeq-webfont.ttf'%>") format("truetype"),
+  url("<%= asset_url 'languages/urdu/nafees/nafees-nastaleeq-webfont.svg#SFProText-Bold'%>") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "divehi";
+  src: url("<%= asset_url 'languages/dhivehi/akuru/DhivehiAkuru.woff'%>"),
+  url("<%= asset_url 'languages/dhivehi/akuru/DhivehiAkuru.otf'%>");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "UthmanicHafs1";
+  src: url("<%= asset_url 'quran_fonts/UthmanicHafs1/UthmanicHafs1Ex1Ver12.otf'%>");
+  font-display: swap;
+}
