@@ -54,12 +54,14 @@ export default class extends Controller {
 
   init(chapter, firstVerse, lastVerse) {
     this.chapter = chapter;
+    this.config.chapter = chapter.chapterId()
+    this.config.firstVerse = firstVerse
+    this.config.lastVerse = lastVerse
 
     const that = this;
-
     this.updateVerses().then(() => {
-      // set first track to play
-      that.track.currentVerse = that.firstVerse;
+      // set first ayah track to play, if player isn't already playing any ayah
+      that.track.currentVerse ||= that.firstVerse;
 
       // preload howl for first track
       that.preloadTrack[that.firstVerse] = {

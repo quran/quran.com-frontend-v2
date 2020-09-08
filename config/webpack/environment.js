@@ -17,6 +17,7 @@ const sassLoaderConfig = sassLoader.use.find(function(element) {
 // Use Dart-implementation of Sass (default is node-sass)
 const options = sassLoaderConfig.options;
 options.implementation = require("sass");
+
 /*
 environment.plugins.prepend(
   "Provide",
@@ -29,7 +30,6 @@ environment.plugins.prepend(
   })
 );*/
 
-// Enable the default config
 environment.splitChunks();
 
 environment.loaders.prepend("erb", erb);

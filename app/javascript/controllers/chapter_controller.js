@@ -40,6 +40,10 @@ export default class extends Controller {
     });
   }
 
+  chapterId(){
+    return this.element.dataset.chapterId
+  }
+
   highlightVerse(verseNumber) {}
 
   highlightWord(wordPosition) {}
@@ -52,7 +56,7 @@ export default class extends Controller {
       return Promise.resolve([]);
     }
 
-    const chapter = this.element.dataset.chapterId;
+    const chapter = this.chapterId();
     const verses = this.activeTab.find(".verse");
     const firstVerse = verses.first().data().verseNumber;
     const lastVerse = verses.last().data().verseNumber;
