@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "fac";
-  src: url("../fonts/icons/fa.eot");
-  src: url("../fonts/icons/fa.eot#iefix") format("embedded-opentype"),
-    url("../fonts/icons/fa.woff") format("woff"),
-    url("../fonts/icons/fa.ttf") format("truetype"),
-    url("../fonts/icons/fa.svg#icons") format("svg");
+  src: url("<%= asset_url 'icons/fa.eot' %>");
+  src: url("<%= asset_url 'icons/fa.eot#iefix'%>") format("embedded-opentype"),
+  url("<%= asset_url 'icons/fa.woff'%>") format("woff"),
+  url("<%= asset_url 'icons/fa.ttf'%>") format("truetype"),
+  url("<%= asset_url 'icons/fa.svg#icons'%>") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -63,19 +63,3 @@
   font-size: 2em;
 }
 
-[class^="fa-"],
-[class*=" fa-"] {
-  color: #b1bec5;
-}
-
-.fa-play {
-  color: $color-primary;
-  font-size: 25px;
-}
-.fa-book {
-  font-size: 23px;
-}
-
-.fa-share-alt {
-  font-size: 20px;
-}
