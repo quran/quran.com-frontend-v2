@@ -64,6 +64,17 @@
   }
 
   .translation {
+    .urdu{
+      line-height: normal;
+    }
+
+    .resource{
+      color: $color-primary;
+      &:before{
+        content: "\2014\00A0"
+      }
+    }
+
     sup {
       color: $color-primary;
       cursor: pointer;

@@ -43,6 +43,11 @@
     content: $fa-twitter;
   }
 }
+.fa-whatsapp {
+  &:before {
+    content: $fa-whatsapp;
+  }
+}
 .fa-developer {
   &:before {
     content: $fa-developer;

@@ -1,8 +1,8 @@
-<div class="text-muted mt-5 <%= translation.language_name %>"
+<div class="text-muted mt-5 mb-2 <%= translation.language_name %>"
      id="<%= dom_id translation %>"
      data-controller="translation">
-  <span class="d-block text-primary ff-b h5"><%= translation.resource_name %></span>
   <%= translation.text.html_safe %>
 
+  <small class="d-block resource"> <%= translation.resource_name %></small>
   <div id="<%= dom_id translation %>_footnotes"></div>
 </div>

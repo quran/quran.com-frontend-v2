@@ -54,13 +54,13 @@ export default class extends Controller {
       href: `https://www.facebook.com/dialog/send?link=${this.url}`
     });
 
-    /* let wp=this.isMobileOrTablet() ? "api" : "web";
+     let wp=this.isMobileOrTablet() ? "api" : "web";
 
     this.addButton("whatsapp", "Whatsapp", {
       "data-share": `'https://${wp}.whatsapp.com/send?text=${this.url} ${this.title} ${this.text}'`,
       href: `https://${wp}.whatsapp.com/send?text="${this.title} ${this.url} ${this.text}"`
     });
-*/
+
     this.addButton("pinterest", "Pinterest", {
       href: `https://pinterest.com/pin/create/button/?url=${
         this.url

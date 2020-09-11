@@ -122,9 +122,9 @@ class ChapterPresenter < HomePresenter
   end
 
   def total_pages
-    total = (range_end - range_start)
+    total = (range_end - range_start) + 1
 
-    (total / per_page).ceil
+    (total  / per_page).ceil
   end
 
   def has_more_verses?

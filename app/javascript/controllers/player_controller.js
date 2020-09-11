@@ -65,7 +65,7 @@ export default class extends Controller {
 
       // preload howl for first ayah
       that.createHowl(that.currentVerse, false);
-      chapter.scrollToVerse(that.currentVerse);
+      //chapter.scrollToVerse(that.currentVerse);
     });
   }
 

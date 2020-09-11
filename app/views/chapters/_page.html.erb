@@ -8,7 +8,7 @@
         <div class="line">
           <div class="text-center">
             <% line.each do |verse_number, words| %>
-              <div class="arabic d-inline verse" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
+              <div class="arabic d-inline verse <%= @presenter.font_method %>" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
                 <%= render partial: 'word', collection: words %>
               </div>
             <% end %>
