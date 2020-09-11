@@ -14,25 +14,14 @@ import DeviceDetector from "../utility/deviceDetector";
 let settings = {};
 
 export default class extends Controller {
-  static targets = [
-    "wordTooltip",
-    "reset",
-    "readingMode",
-    "translations",
-    "recitation"
-  ];
-
   connect() {
     this.element[this.identifier] = this;
     this.store = new LocalStore();
     this.loadSettings();
     this.device = new DeviceDetector();
-    window.addEventListener("resize", () => this.resizeHandler());
 
-    /*$(document).on("click", "#reset-setting", e => {
-      e.preventDefault();
-      this.resetSetting();
-    });*/
+    this.loadToolTipType()
+    window.addEventListener("resize", () => this.resizeHandler());
   }
 
   resizeHandler() {
@@ -56,12 +45,16 @@ export default class extends Controller {
     }
   }
 
-  getTooltipType() {
+  loadToolTipType(){
     if (this.get("tooltip") == "translation") {
-      return "t";
+      this.tooltipType = 't'
     } else {
-      return "tr";
+      this.tooltipType = 'tr'
     }
+  }
+
+  getTooltipType() {
+    return this.tooltipType
   }
 
   saveSettings() {

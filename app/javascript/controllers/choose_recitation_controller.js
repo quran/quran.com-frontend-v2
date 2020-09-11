@@ -11,7 +11,6 @@ import SettingController from "./setting_controller";
 
 export default class extends SettingController {
   connect() {
-    super.connect();
     const recitation = this.get("recitation");
 
     this.element.querySelectorAll("[name=recitation]").forEach(reciter => {
