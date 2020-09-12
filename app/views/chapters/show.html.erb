@@ -3,10 +3,11 @@
     <i class="fa fa-times-circle close-sidebar close-right-sidebar"></i>
 
     <h4 class="mb-0 ff-b"><%= _t('settings.label') %></h4>
-    <button class="btn btn-primary text-white"><%= _t('settings.reset') %></button>
   </div>
 
   <div class="bg-faded outline" style="margin-top: -7px">
+    <!--<a class="text-white"><%= _t('settings.reset') %></a>-->
+
     <%= render_async '/settings', lazy_load: true, lazy_load: {root: '#right-sidebar'} do %>
       <p class="text-center p-3">
         <%= loading_spinner %>

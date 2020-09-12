@@ -11,15 +11,10 @@
           <label class="form-check-label text-muted ff-m" for="recitation-<%= recitation.id %>">
             <%= recitation.reciter_name %>
             <% if recitation.style.present? %>
-              <small class="rounded-pill bg-primary text-white p-1"><%= recitation.style %></small>
+              <small class="rounded-pill bg-primary text-white p-1 style" data-style="<%= recitation.style.downcase %>"><%= recitation.style %></small>
             <% end %>
           </label>
         </div>
-
-        <button class="btn btn-info d-flex align-items-center mt-2">
-          <i class="fa fa-play"></i>
-          Hear the Voice
-        </button>
       </div>
     <% end %>
   </div>

@@ -1,6 +1,6 @@
-<div class="right-sidebar px-4 py-4 border-left">
-  <div class="d-md-none d-flex justify-content-between pb-3 pt-2 align-items-center border-top">
-    <h6 class="mb-0 ff-b">
+<div class="right-sidebar px-4 py-4 border-left" data-controller="settings">
+  <div class="d-flex justify-content-between pb-3 pt-2 align-items-center">
+    <h6 class="mb-0">
       <%= _t('settings.night_mode.label') %>
     </h6>
 
@@ -208,13 +208,16 @@
 <div class="sidebar slide-right px-4 py-4 border-left d-none" id="translations-sidebar">
   <div class="sidebar-head d-flex align-items-center justify-content-between">
     <i class="fa fa-long-arrow-left close-sidebar close-translations-sidebar"></i>
-    <h4 class="mb-0 ff-b"><%= _t('settings.translations') %></h4>
+    <h4 class="mb-0"><%= _t('settings.translations') %></h4>
+
+    <% if false %>
     <button class="btn btn-primary text-white">
       <%= _t('settings.remove_all') %>
     </button>
+    <% end %>
   </div>
 
-  <%= render_async 'settings/translations', lazy_load: true, lazy_load: {root: '#translations-sidebar'} do %>
+  <%= render_async '/settings/translations', lazy_load: true, lazy_load: {root: '#translations-sidebar'} do %>
     <p class="text-center p-3">
       <%= loading_spinner %>
     </p>
@@ -224,10 +227,10 @@
 <div class="sidebar slide-right px-4 py-4 border-left d-none" id="reciters-sidebar">
   <div class="sidebar-head d-flex align-items-center justify-content-between">
     <i class="fa fa-long-arrow-left close-sidebar close-reciters-sidebar"></i>
-    <h4 class="mb-0 ff-b"><%= _t('settings.reciters') %></h4>
+    <h4 class="mb-0"><%= _t('settings.reciters') %></h4>
   </div>
 
-  <%= render_async 'settings/recitations', lazy_load: true, lazy_load: {root: '#reciters-sidebar'} do %>
+  <%= render_async '/settings/recitations', lazy_load: true, lazy_load: {root: '#reciters-sidebar'} do %>
     <p class="text-center p-3">
       <%= loading_spinner %>
     </p>
@@ -235,12 +238,12 @@
 </div>
 
 <div class="sidebar slide-right px-4 py-4 border-left d-none" id="fonts-sidebar">
-  <div class="sidebar-head d-flex align-items-center">
+  <div class="sidebar-head d-flex align-items-center justify-content-between">
     <i class="fa fa-long-arrow-left close-sidebar close-fonts-sidebar"></i>
-    <h4 class="mb-0 ff-b"><%= _t('settings.font_type') %></h4>
+    <h4 class="mb-0"><%= _t('settings.font_type') %></h4>
   </div>
 
-  <%= render_async 'settings/fonts', lazy_load: true, lazy_load: {root: '#fonts-sidebar'} do %>
+  <%= render_async '/settings/fonts', lazy_load: true, lazy_load: {root: '#fonts-sidebar'} do %>
     <p class="text-center p-3">
       <%= loading_spinner %>
     </p>

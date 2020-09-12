@@ -15,7 +15,7 @@ class ChapterPresenter < HomePresenter
   def initialize(context)
     super context
 
-    @range_start, @range_end = params[:range].to_s.split('-')
+    @range_start, @range_end = params[:range].to_s.split(/-|:/)
   end
 
   def chapter

@@ -9,12 +9,12 @@
                   name: 'chapters',
                   category: "#{chapter.id}-#{chapter.name_simple}"
                 } do %>
-      <div class="col name mt-2 text-truncate">
+      <div class="col mt-2 text-truncate">
         <h5 class="name text-muted"><%= chapter.name_simple %></h5>
-        <span class="text-nowrap <%= chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
+        <span class="text-nowrap text-primary <%= chapter.translated_name.language_name %>"><%= chapter.translated_name.name %></span>
       </div>
 
-      <div class="col-4 icon mt-2">
+      <div class="col-4 icon mt-2 text-primary">
         <span class="icon-surah icon-surah<%= chapter.chapter_number %>"></span>
         <span class="icon-surah icon-surah-surah"></span>
       </div>

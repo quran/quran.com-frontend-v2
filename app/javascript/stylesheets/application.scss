@@ -33,7 +33,6 @@
 @import "./pages/home";
 @import "./pages/chapter";
 @import "./pages/common";
-@import "./pages/static";
 
 @import "theme/dark";
 
@@ -53,4 +52,8 @@
 
 .fa-share-alt {
   font-size: 20px;
+}
+
+.nav-link:focus{
+  outline: none !important;
 }

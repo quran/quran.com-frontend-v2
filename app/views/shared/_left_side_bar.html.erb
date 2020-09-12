@@ -12,35 +12,35 @@
       <% end %>
     </li>
     <li class="d-block my-1">
-      <%= link_to pages_apps_path do %>
-        <i class="fa fa-mobile pr-2"></i>
-        <%= _t('nav.mobile_apps') %>
-      <% end %>
-    </li>
-    <li class="d-block my-1">
-      <%= link_to pages_about_us_path do %>
+      <%= link_to about_us_path do %>
         <i class="fa fa-info-circle pr-2"></i>
          <%= _t('nav.about_us') %>
       <% end %>
     </li>
     <li class="d-block my-1">
-      <%= link_to pages_donations_path do %>
+      <%= link_to donations_path do %>
         <i class="fa fa-donate pr-2"></i>
         <%= _t('nav.contribute') %>
       <% end %>
     </li>
     <li class="d-block my-1">
-      <%= link_to pages_help_and_feedback_path do %>
+      <%= link_to support_path do %>
         <i class="fa fa-help pr-2"></i>
 
         <%= _t('nav.help') %>
       <% end %>
     </li>
     <li class="d-block my-1">
-      <%= link_to pages_developers_path do %>
+      <%= link_to developers_path do %>
         <i class="fa fa-developer pr-2"></i>
 
         <%= _t('nav.developers') %>
+      <% end %>
+    </li>
+    <li class="d-block my-1">
+      <%= link_to apps_path do %>
+        <i class="fa fa-mobile pr-2"></i>
+        <%= _t('nav.mobile_apps') %>
       <% end %>
     </li>
   </ul>

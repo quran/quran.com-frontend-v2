@@ -8,9 +8,18 @@
 // </div>
 
 import SettingController from "./setting_controller";
+import Tooltip from "bootstrap/js/src/tooltip";
+
+const recitationStyles = {
+  mujawwad: "Mujawwad is a melodic style of Holy Quran recitation",
+  murattal: "Murattal is at a slower pace, used for study and practice",
+  muallim: "Muallim is teaching style recitation of Holy Quran"
+}
 
 export default class extends SettingController {
   connect() {
+    super.connect()
+
     const recitation = this.get("recitation");
 
     this.element.querySelectorAll("[name=recitation]").forEach(reciter => {
@@ -27,6 +36,14 @@ export default class extends SettingController {
 
         this.updateReciter(e.target.value);
       });
+
+    $(this.element)
+      .find("[name=recitation]")
+
+
+    this.element.querySelectorAll('[data-style]').forEach(elem =>{
+      new Tooltip(elem, {direction: 'left', title: recitationStyles[elem.dataset.style]})
+    })
   }
 
   disconnect() {

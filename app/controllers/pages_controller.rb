@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   def donations; end
 
-  def help_and_feedback; end
+  def support; end
 
   def developers; end
 

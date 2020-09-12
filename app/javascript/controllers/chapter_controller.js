@@ -238,7 +238,7 @@ export default class extends Controller {
     let path = this.activeTab.find(".pagination").data("url");
     let verseList = this.activeTab;
 
-    fetch(`${path}?${$.param({ font: font })}`)
+    fetch(`${path}?${$.param({ font: font,reading: this.get('reading') })}`)
       .then(response => response.text())
       .then(verses => {
         verseList.html(

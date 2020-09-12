@@ -66,20 +66,6 @@ body.night {
     }
   }
 
-  .search-form {
-    border-color: #2d2d2d;
-    background-color: #1c1f21;
-    input {
-      background: transparent;
-    }
-  }
-
-  .top-section {
-    .search-form input {
-      background: #1c1f21;
-    }
-  }
-
   header,
   header.active {
     border-color: #2d2d2d;
@@ -89,23 +75,22 @@ body.night {
   // home page
   .chapter-list .items ul li {
     .name {
-      color: #fff;
+      color: #fff !important;
     }
 
     a {
       &:hover {
-        // box-shadow: 0px 10px 35px 0 rgba(45, 45, 45, 1);
-        box-shadow: 0px 10px 35px 0 rgba(38, 50, 56, 0.5);
 
-        .name {
-          color: $color-primary;
-        }
       }
     }
   }
 
   .nav-tabs .nav-link {
     background: transparent !important;
+  }
+
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    border-bottom-color: #1d1f21;
   }
 
   // Sidebar

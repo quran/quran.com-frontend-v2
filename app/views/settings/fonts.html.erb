@@ -1,6 +1,7 @@
 <% verse = Verse.find_by_verse_key('1:1') %>
 
 <style>
+  <% if false %>
   @font-face {
     font-family: 'p1-v2';
     src: local(QCF2001),
@@ -8,6 +9,12 @@
     url('<%= asset_url "quran_fonts/v2/woff/p1.woff" %>') format('woff');
     font-display: swap;
   }
+
+  .p1-v2 {
+    font-family: 'p1-v2';
+  }
+
+  <% end %>
 
   @font-face {
     font-family: 'p1-v1';
@@ -17,11 +24,7 @@
     font-display: swap;
   }
 
-  .p1-v2{
-    font-family: 'p1-v2';
-  }
-
-  .p1-v1{
+  .p1-v1 {
     font-family: 'p1-v1';
   }
 </style>
@@ -33,67 +36,64 @@
       <input class="form-check-input" type="radio" name="font" value="v1" id=v1>
       <label class="form-check-label text-muted ff-m" for="v1">
         <%= _t('settings.fonts.qcf_v1') %>
-      </label>
 
-      <h1 class="arabic" style="font-size: 30px">
-        <% verse.words.each do |word| %>
-        <span class="<%= word.char_type_name %>" id="w-<%= word.id %>">
-  <span class="p1-v1">
-    <%= word.code.html_safe %>
-  </span>
-</span>
-        <% end %>
-      </h1>
+        <div class="arabic" style="font-size: 30px">
+          <% verse.words.each do |word| %>
+            <span class=" p1-v1"<%= word.char_type_name %>" id="w-<%= word.id %>">
+            <%= word.code.html_safe %>
+            </span>
+          <% end %>
+        </div>
+      </label>
     </div>
 
-    <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" name="font" value="v2" id=v2>
-      <label class="form-check-label text-muted ff-m" for="v2">
-        <%= _t('settings.fonts.qcf_v2') %>
-      </label>
+    <% if false %>
+      <div class="my-4 col-12">
+        <input class="form-check-input" type="radio" name="font" value="v2" id=v2>
+        <label class="form-check-label text-muted ff-m" for="v2">
+          <%= _t('settings.fonts.qcf_v2') %>
+          <div class="arabic" style="font-size: 30px">
+            <% verse.words.each do |word| %>
+            <span class="p1-v2 <%= word.char_type_name %>" id="w-<%= word.id %>">
+              <%= word.code_v2.html_safe %>
+            </span>
+            <% end %>
+          </div>
+        </label>
+      </div>
+    <% end %>
 
-      <h1 class="arabic" style="font-size: 30px">
-        <% verse.words.each do |word| %>
-        <span class="<%= word.char_type_name %>" id="w-<%= word.id %>">
-  <span class="p1-v2">
-    <%= word.code_v2.html_safe %>
-  </span>
-</span>
-        <% end %>
-      </h1>
-    </div>
-
     <div class="my-4 col-12">
-      <input class="form-check-input" type="radio"  checked=checked name="font" value="uthmani" id=uthmani>
+      <input class="form-check-input" type="radio" checked=checked name="font" value="uthmani" id=uthmani>
       <label class="form-check-label text-muted ff-m" for="uthmani">
         <%= _t('settings.fonts.uthmani') %>
-      </label>
 
-      <h1 class="arabic madani" style="font-size: 30px">
-        <%= raw verse.text_madani %>
-      </h1>
+        <div class="arabic madani" style="font-size: 30px">
+          <%= raw verse.text_madani %>
+        </div>
+      </label>
     </div>
 
     <div class="my-4 col-12">
       <input class="form-check-input" type="radio" name="font" value="indopak" id=indopak>
       <label class="form-check-label text-muted ff-m" for="indopak">
         <%= _t('settings.fonts.indopak') %>
-      </label>
 
-      <h1 class="arabic indopak" style="font-size: 30px">
-        <%= raw verse.text_indopak %>
-      </h1>
+        <div class="arabic indopak" style="font-size: 30px">
+          <%= raw verse.text_indopak %>
+        </div>
+      </label>
     </div>
 
     <div class="my-4 col-12">
       <input class="form-check-input" type="radio" name="font" value="tajweed" id=tajweed>
       <label class="form-check-label text-muted ff-m" for="tajweed">
         <%= _t('settings.fonts.tajweed') %>
-      </label>
 
-      <h1 class="arabic text_uthmani_tajweed" style="font-size: 30px">
-        <%= raw verse.text_uthmani_tajweed %>
-      </h1>
+        <div class="arabic text_uthmani_tajweed" style="font-size: 30px">
+          <%= raw verse.text_uthmani_tajweed %>
+        </div>
+      </label>
     </div>
   </div>
 </div>
