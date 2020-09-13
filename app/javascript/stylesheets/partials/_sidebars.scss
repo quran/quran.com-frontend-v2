@@ -1,4 +1,4 @@
-$slider-width: 30rem;
+$slider-width: 25rem;
 $slider-animation: all 470ms cubic-bezier(0.34, 1.25, 0.3, 1) !default;
 
 @mixin translate3d($x: 0, $y: 0, $z: 0) {
@@ -60,6 +60,11 @@ $slider-animation: all 470ms cubic-bezier(0.34, 1.25, 0.3, 1) !default;
       i {
         width: 15px;
         margin-right: 10px;
+        &:before{
+          height: 17px;
+          vertical-align: middle;
+          margin: 0px;
+        }
       }
     }
   }
@@ -77,6 +82,7 @@ $slider-animation: all 470ms cubic-bezier(0.34, 1.25, 0.3, 1) !default;
 .slide-left {
   //@include translate3d(-$slider-width, 0, 0); /* issue with translate 3d with padding */
   border-right: 1px solid rgba($color-secondary, 0.09);
+  width: $slider-width;
 
   /* new solution */
   left: -$slider-width;
@@ -91,9 +97,12 @@ $slider-animation: all 470ms cubic-bezier(0.34, 1.25, 0.3, 1) !default;
   //@include translate3d(calc(100vw), 0, 0);  /* issue with translate 3d with padding */
   border-left: 1px solid rgba($color-secondary, 0.09);
   right: -$slider-width;
-
+   width: $slider-width;
   &.open {
     right: 0;
+  }
+  @media #{$phone} {
+    width: 100%;
   }
 
   .close-sidebar {

@@ -5,6 +5,20 @@ body.night {
     color: #fff;
   }
 
+  .btn-info {
+    background: #33312b;
+    color: white;
+  }
+
+  input {
+    background-color: #404040 !important;
+    color: white !important;
+  }
+
+  .navbar-toggler {
+    border: 1px solid white;
+  }
+
   .theme-switch {
     background: $primary-400;
   }
@@ -21,6 +35,10 @@ body.night {
         }
       }
     }
+  }
+
+  .dropdown-toggle::after {
+    color: white;
   }
 
   .navbar,
@@ -66,6 +84,20 @@ body.night {
     }
   }
 
+  .search-form {
+    border-color: #2d2d2d;
+    background-color: #32312c;
+    input {
+      background: transparent;
+    }
+  }
+
+  .top-section {
+    .search-form input {
+      background: #1c1f21;
+    }
+  }
+
   header,
   header.active {
     border-color: #2d2d2d;
@@ -77,16 +109,19 @@ body.night {
     .name {
       color: #fff !important;
     }
-
-    a {
-      &:hover {
-
-      }
-    }
   }
 
   .nav-tabs .nav-link {
     background: transparent !important;
+  }
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    border-bottom-color: #1c2022;
+  }
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    border-bottom-color: #1d1f21;
   }
 
   .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{

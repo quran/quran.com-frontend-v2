@@ -22,11 +22,11 @@
           >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b text-primary"><%= _t('settings.chapters') %></h6>
-              <i class="fa fa-times-circle c-pointer"></i>
+              <i class="fa fa-times-circle fa-center c-pointer"></i>
             </div>
 
-            <div class="rounded-search dropdown-item pt-3 mb-3">
-              <input class="form-control bg-light" type="search" id="filter-chapter"/>
+            <div class="rounded-search pt-3 mb-3 px-2">
+              <input class="form-control bg-light px-2" type="search" id="filter-chapter"/>
             </div>
 
             <div id=chapters>
@@ -67,11 +67,11 @@
           >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b text-primary"><%=_t('verses.go') %></h6>
-              <i class="fa fa-times-circle c-pointer"></i>
+              <i class="fa fa-times-circle fa-center c-pointer"></i>
             </div>
 
-            <div class="rounded-search dropdown-item pt-3 mb-3">
-              <input class="form-control bg-light" type="search" id="filter-ayah"/>
+            <div class="rounded-search px-2 pt-3 mb-3">
+              <input class="form-control bg-light px-2" type="search" id="filter-ayah"/>
             </div>
 
             <div id="verse-list">
@@ -110,8 +110,8 @@
       </div>
 
       <div class="col text-right">
-        <button class="btn btn-outline-secondary" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
-          <i class="fa fa-cog" , class="c-pointer"></i>
+        <button class="btn btn-outline-secondary setting-button" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
+          <i class="fa fa-cog fa-center-1" , class="c-pointer"></i>
           <span class="d-md-inline d-none">
             <%= _t('settings.label') %>
           </span>

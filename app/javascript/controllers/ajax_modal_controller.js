@@ -59,7 +59,7 @@ export default class extends Controller {
       <div class="modal-header">
         <h5 class="modal-title" id="modal-title">Loading</h5>
         <a class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="fa fa-times"></span>
+          <span aria-hidden="true" class="fa fa-times fa-center"></span>
         </a>
       </div>
       <div class="modal-body" id="modal-body">

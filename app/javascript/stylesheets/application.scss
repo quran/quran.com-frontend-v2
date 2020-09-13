@@ -36,7 +36,6 @@
 
 @import "theme/dark";
 
-
 [class^="fa-"],
 [class*=" fa-"] {
   color: #b1bec5;
@@ -54,6 +53,6 @@
   font-size: 20px;
 }
 
-.nav-link:focus{
+.nav-link:focus {
   outline: none !important;
 }

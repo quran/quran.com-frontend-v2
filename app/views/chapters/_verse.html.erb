@@ -32,7 +32,7 @@
           data-category="play"
         >
 
-          <i class="fa fa-play-circle"></i>
+          <i class="fa fa-play-circle h4"></i>
           <small class="d-md-none d-block ff-r">
             <%= _t('action.play') %>
           </small>
@@ -75,7 +75,7 @@
           </small>
         </a>
 
-        <a class="ayah-action text-center text-muted my-2"
+        <a class="ayah-action text-center text-muted my-2 reflection-link"
            data-title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>"
            href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank"
            data-controller="track"

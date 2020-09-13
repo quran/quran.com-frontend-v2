@@ -237,8 +237,9 @@ export default class extends Controller {
   changeFont(font) {
     let path = this.activeTab.find(".pagination").data("url");
     let verseList = this.activeTab;
+    const isReadingMode = false;
 
-    fetch(`${path}?${$.param({ font: font,reading: this.get('reading') })}`)
+    fetch(`${path}?${$.param({ font: font, reading: isReadingMode })}`)
       .then(response => response.text())
       .then(verses => {
         verseList.html(

@@ -107,12 +107,13 @@ export default class extends Controller {
       .map(key => `${key}=${options[key]}`)
       .join(", ");
 
-    let content = `<span class='share-icon ${icon} mb-4'>
+    let content = `<div class='col-4 col-md-3 text-center'>
+                  <span class='share-icon ${icon}'>
                    <a target='_blank' rel='noopener'
                    title='Share on ${name}'
                    class='align-items-center d-flex justify-content-center' ${linkOptions}>
                    <i class='fa fa-${icon}'></i></a>
-                   <span class='text-muted fs-sm'>${name}</span></span>`;
+                   </span><p class='text-muted fs-sm'>${name}</p></div>`;
 
     this.shareButtons.append(content);
   }

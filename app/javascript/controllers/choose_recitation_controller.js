@@ -18,7 +18,7 @@ const recitationStyles = {
 
 export default class extends SettingController {
   connect() {
-    super.connect()
+    super.connect();
 
     const recitation = this.get("recitation");
 
@@ -37,13 +37,12 @@ export default class extends SettingController {
         this.updateReciter(e.target.value);
       });
 
-    $(this.element)
-      .find("[name=recitation]")
-
-
-    this.element.querySelectorAll('[data-style]').forEach(elem =>{
-      new Tooltip(elem, {direction: 'left', title: recitationStyles[elem.dataset.style]})
-    })
+    this.element.querySelectorAll("[data-style]").forEach(elem => {
+      new Tooltip(elem, {
+        direction: "left",
+        title: recitationStyles[elem.dataset.style]
+      });
+    });
   }
 
   disconnect() {
@@ -54,7 +53,7 @@ export default class extends SettingController {
   updateReciter(newRecitation) {
     let playerDom = document.getElementById("player");
     let player = playerDom.player;
-    this.set("recitation", newRecitation)
+    this.set("recitation", newRecitation);
 
     player.setRecitation(newRecitation);
   }

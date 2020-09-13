@@ -1,23 +1,35 @@
 <section id="chapter-info">
   <div class="container">
-    <ul class="d-flex align-items-center">
-      <li><h1>Surah <%= @presenter.name_simple %></h1></li>
-      <li><%= _t("chapters.verses") %> <span class="info"><%= @presenter.verses_count %></span></li>
-      <li><%= _t("chapters.pages") %> <span class="info"><%= @presenter.pages.join('-') %></span></li>
-      <li><%= _t("chapters.revelation_place") %> <span class="info"><%= @presenter.revelation_place.humanize %></span>
-      </li>
-    </ul>
-
     <div class="surah-info-area">
-      <div class="row">
+      <div class="row pt-4">
         <div class="col-md-4 order-1">
           <div class="img-col">
             <%= lazy_image_tag "#{@presenter.revelation_place}.jpg", class: 'img-fluid', alt: @presenter.revelation_place %>
           </div>
         </div>
 
-        <div class="col-md-8 order-2">
-          <div class="<%= I18n.locale %>" data-controller="slim-scroller">
+        <div class="col-md-8 order-2 mt-md-0 mt-3">
+          <ul class="row align-items-center">
+            <div class="col-12 col-md">
+              <li><h4 class="ff-b">Surah <%= @presenter.name_simple %></h4></li>
+            </div>
+
+            <div class="col-12 col-md justify-content-md-evenly justify-content-between d-flex">
+              <li>
+                <%= _t("chapters.verses") %> <br><span class="info text-muted"><%= @presenter.verses_count %></span>
+              </li>
+
+              <li>
+                <%= _t("chapters.pages") %> <br><span class="info text-muted"><%= @presenter.pages.join('-') %></span>
+              </li>
+
+              <li>
+                <%= _t("chapters.revelation_place") %>
+                <br><span class="info text-muted"><%= @presenter.revelation_place.humanize %></span></li>
+            </div>
+          </ul>
+
+          <div class="<%= I18n.locale %>">
             <%= @presenter.info.text.html_safe %>
           </div>
         </div>

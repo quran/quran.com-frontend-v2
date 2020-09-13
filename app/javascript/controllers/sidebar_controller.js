@@ -17,11 +17,12 @@ export default class extends Controller {
   toggle(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-
     const { target, close, isChild } = this.element.dataset;
 
     if (isChild != "true") {
       document.body.classList.toggle("disabled");
+    }else{
+      document.getElementById('main-right-sidebar').classList.toggle("d-none")
     }
 
     const sidebar = document.querySelector(target);

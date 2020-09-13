@@ -3,8 +3,69 @@
   font-family: "bismillah";
   font-size: 60px;
   padding: 25px 0;
+  @media #{$phone} {
+    font-size: 45px;
+    padding: 11px 0;
+  }
 }
 
+.chapters.show {
+  header {
+    position: unset !important;
+  }
+}
+.hear-voice {
+  font-size: 12px;
+
+  .fa-play {
+    font-size: 19px;
+    line-height: 34px;
+  }
+}
+.setting-button {
+  @media #{$phone} {
+    padding: 4px 7px 4px 3px;
+  }
+}
+
+#player {
+  .play-btn {
+    height: 40px;
+  }
+}
+.verse-actions-below {
+  .fa-play-circle {
+    margin-right: 12px;
+  }
+  i.fa.fa-copy {
+    margin-right: 7px;
+  }
+
+  i.fa.fa-book {
+    margin-right: 4px;
+  }
+
+  i.fa.fa-share-alt {
+    margin-right: 10px;
+  }
+
+  img {
+    margin-right: 6px;
+  }
+  @media #{$phone} {
+    .fa {
+      height: 12px;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .reflection-link {
+      margin-top: 0px !important;
+      small {
+        margin-top: 2px !important;
+      }
+    }
+  }
+}
 .surah-actions {
   .dropdown-menu.show {
     overflow: auto;
@@ -56,8 +117,9 @@
     padding-right: 1rem;
   }
 
-  .word{
-    &:hover, &.highlight{
+  .word {
+    &:hover,
+    &.highlight {
       color: $color-primary !important;
     }
   }
@@ -67,14 +129,14 @@
   }
 
   .translation {
-    .urdu{
+    .urdu {
       line-height: normal;
     }
 
-    .resource{
+    .resource {
       color: $color-primary;
-      &:before{
-        content: "\2014"
+      &:before {
+        content: "\2014";
       }
     }
 

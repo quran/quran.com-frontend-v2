@@ -40,6 +40,33 @@ ul {
   box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.15);
 }
 
+/*Icons*/
+.fa-center, .fa-center-1, .fa-center-2, .fa-center-3{
+  height: 12px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.fa-center-1{
+  height: 17px;
+}
+.fa-center-2{
+  height: 22px;
+}
+.fa-center-3{
+  height: 32px;
+}
+/*Header*/
+.navbar-toggler {
+  padding: 7px 12px 7px 10px;
+  .fa{
+    &:before{
+      height: 17px;
+      vertical-align: middle;
+      margin: 0px;
+    }
+  }
+}
+
 /*Search box*/
 .search-form {
   .form-group {
@@ -98,6 +125,9 @@ ul {
     .form-control-submit {
       z-index: 1;
     }
+    input.form-control{
+       padding-right: 65px;
+    }
   }
 
   .no-js {
@@ -150,6 +180,12 @@ ul {
   .search-label {
     padding: 5px;
   }
+  .form-group.sb-search-open{
+    input.form-control{
+      padding-right: 48px;
+    }
+  }
+
 }
 
 /*checboxes*/

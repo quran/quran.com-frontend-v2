@@ -545,13 +545,9 @@ export default class extends Controller {
     this.preloadTrack = {};
     this.audioData = {};
 
-    this.this.fetchAudioData(this.firstVerse, this.lastVerse).then(() => {
-      // set first track to play
-      // clear the loaded tracks
-
+    this.fetchAudioData(this.firstVerse, this.lastVerse).then(() => {
       let wasPlaying = this.isPlaying();
       wasPlaying && this.handlePauseBtnClick();
-      this.track = null;
 
       wasPlaying && this.play(this.currentVerse);
     });
