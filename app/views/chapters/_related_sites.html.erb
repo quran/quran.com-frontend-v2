@@ -1,11 +1,11 @@
-<div class="related-sites-section scrolled-section">
+<div class="related-sites-section h-scrolled-section my-2 mb-5">
   <div class="container">
     <div class="row">
       <% related_sites.each do |img, link, name, description| %>
         <div class="col-md-4">
-          <figure class="site">
-            <%= link_to link do %>
-              <%= lazy_image_tag "media/images/#{img}", class: 'img-fluid', alt: link %>
+          <figure class="position-relative rounded">
+            <%= link_to link, data: {controller: 'track', name: 'related-sizes', category: link } do %>
+              <%= lazy_image_tag img, class: 'img-fluid rounded', width: "100%", alt: link %>
 
               <div class="caption d-flex align-items-end">
                 <div>

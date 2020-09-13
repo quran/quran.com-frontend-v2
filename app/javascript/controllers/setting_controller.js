@@ -9,90 +9,23 @@
 
 import { Controller } from "stimulus";
 import LocalStore from "../utility/local-store";
+import DeviceDetector from "../utility/deviceDetector";
 
 let settings = {};
 
 export default class extends Controller {
-  static targets = [
-    "wordTooltip",
-    "reset",
-    "readingMode",
-    "translations",
-    "recitation"
-  ];
-
   connect() {
     this.element[this.identifier] = this;
     this.store = new LocalStore();
     this.loadSettings();
+    this.device = new DeviceDetector();
 
-    $(document).on("click", ".font-size", e => {
-      e.preventDefault();
-      this.handleFontSize(e);
-    });
-
-    $(document).on("click", "#toggle-nightmode", e => {
-      e.preventDefault();
-      this.toggleNightMode();
-    });
-
-    $(document).on("change", "#tooltip-dropdown", e => {
-      e.preventDefault();
-      this.handleTooltip(e);
-    });
-
-    $(document).on("click", "#reset-setting", e => {
-      e.preventDefault();
-      this.resetSetting();
-    });
-
-    $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
-
-    $("#reciter-dropdown-menu")
-      .val(this.get("recitation"))
-      .trigger("change");
-    $(document).on("select2:select", "#reciter-dropdown-menu", e => {
-      this.updateReciter(e.currentTarget.value);
-    });
-
-    $("#translations")
-      .val(this.get("translations"))
-      .trigger("change");
-
-    $(document).on("select2:select", "#translations", e => {
-      this.updateTranslations($(e.target).val());
-    });
-
-    $(document).on("select2:unselecting", "#translations", e => {
-      this.updateTranslations($(e.target).val());
-    });
-
-    let mobileDetect = window.matchMedia("(max-width: 610px)");
-    this.mobile = mobileDetect.matches;
-
-    mobileDetect.addListener(match => {
-      this.mobile = match.matches;
-      this.updatePage();
-    });
-
-    this.updatePage();
+    this.loadToolTipType()
+    window.addEventListener("resize", () => this.resizeHandler());
   }
 
-  toggleReadingMode() {
-    $("#toggle-readingmode").toggleClass("text-primary");
-  }
-
-  updateReciter(newRecitation) {
-    let playerDom = document.getElementById("player");
-    let player = playerDom.player;
-
-    player.setRecitation(newRecitation);
-  }
-
-  updateTranslations(newTranslationIds) {
-    let controller = document.getElementById("verses");
-
-    controller.chapter.changeTranslations(newTranslationIds);
+  resizeHandler() {
+    this.mobile = this.device.isMobile();
   }
 
   loadSettings() {
@@ -112,12 +45,16 @@ export default class extends Controller {
     }
   }
 
-  getTooltipType() {
+  loadToolTipType(){
     if (this.get("tooltip") == "translation") {
-      return "t";
+      this.tooltipType = 't'
     } else {
-      return "tr";
+      this.tooltipType = 'tr'
     }
+  }
+
+  getTooltipType() {
+    return this.tooltipType
   }
 
   saveSettings() {
@@ -127,7 +64,7 @@ export default class extends Controller {
 
   defaultSetting() {
     return {
-      font: "qcf_v2",
+      font: "v1",
       tooltip: "translation",
       recitation: 7,
       nightMode: false,
@@ -169,33 +106,6 @@ export default class extends Controller {
     );
   }
 
-  updatePage() {
-    this.updateFontSize();
-    const isNightMode = this.get("nightMode");
-    const darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
-
-    const setDark = function(e) {
-      if (e && e.matches) {
-        $("body").addClass("night");
-      } else {
-        if (isNightMode) {
-          $("body").addClass("night");
-        } else {
-          $("body").removeClass("night");
-        }
-      }
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-      setDark(darkModeMediaQuery);
-    });
-    darkModeMediaQuery.addListener(event => {
-      setDark(event);
-    });
-    setDark(darkModeMediaQuery);
-  }
-
   get(key) {
     return this.settings[key];
   }
@@ -207,8 +117,7 @@ export default class extends Controller {
 
   toggleNightMode(e) {
     const isNightMode = $("body").hasClass("night");
-    $("body").toggleClass("night");
-    $("#toggle-nightmode").toggleClass("text-primary");
+    document.body.classList.toggle("night");
     this.set("nightMode", !isNightMode);
   }
 
@@ -218,6 +127,7 @@ export default class extends Controller {
   }
 
   handleFontSize(e) {
+    e.preventDefault();
     const that = $(e.target);
 
     const target = that.closest("li").data("target");

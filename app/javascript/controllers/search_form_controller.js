@@ -1,11 +1,15 @@
 import {Controller} from "stimulus";
 import {debounce} from "lodash-es";
+import DeviceDetector from "../utility/deviceDetector";
 
 const FILTER_DELAY = 150;
 
 export default class extends Controller {
   connect() {
-    this.searchBox = $(this.element).find('input[type=search]');
+    let el = this.element;
+
+    this.searchBox = $(el).find('input[type=search]');
+    this.device = new DeviceDetector()
 
     this.searchBox.change((e) => {
       this.getSuggestions(e.target.value)
@@ -16,6 +20,27 @@ export default class extends Controller {
           $(this).change();
         }, FILTER_DELAY)
       );
+
+    this.resizeHandler()
+
+    window.addEventListener("resize", () => this.resizeHandler())
+
+    this.element.querySelector('#search-trigger').addEventListener('click', () => {
+      if (el.classList.contains('expand-collapse'))
+        el.classList.add('sb-search-open')
+    })
+  }
+
+  resizeHandler() {
+    let classes = this.element.classList;
+
+    if (this.device.isMobile()) {
+      classes.remove('sb-search-open')
+      classes.add('expand-collapse')
+    } else {
+      classes.add('sb-search-open')
+      classes.remove('expand-collapse')
+    }
   }
 
   getSuggestions(text) {

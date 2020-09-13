@@ -6,9 +6,7 @@
 #
 ---
 sq:
-  tafsir_select: Zgjidhni një tefsir
   errors:
-    format: "%{attribute} %{message}"
     not_found:
     invalid_verse: Kontrolloni zgjedhjen tuaj Ayah. Outshtë jashtë nivelit.
     invalid_chapter: Kontrolloni zgjedhjen tuaj të sures. Outshtë jashtë nivelit.
@@ -16,6 +14,7 @@ sq:
     unavailable_session:
     unacceptable_request:
     connection_refused:
+    format: "%{attribute} %{message}"
   local: anglisht
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet faqja
@@ -29,7 +28,6 @@ sq:
     remove_all: Hiq të gjitha
     translation_english: Shqip
     translation_other: Gjuhe te tjera
-    reading: lexim
     font_size:
       label: Përmasa e germave
       arabic: Arabic
@@ -43,6 +41,16 @@ sq:
       day_tip: Kaloni në modalitetin e ditës
       night_tip: Kaloni në modalitetin e natës
     reset: Rivendosja e Vendosjes
+    font_type:
+    sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
     media:
     go: Shkoni në vargje
@@ -53,7 +61,6 @@ sq:
     previous: Sureja e mëparshme
     verses: vargjet
     pages: Faqet
-    info: Informacioni i Kapitullit
     continue: vazhdoj
     quick_links: Lidhjet e Shpejta
     go_to_beginning: Fillimi i kapitullit
@@ -71,7 +78,7 @@ sq:
       label: Copiar
       done: Copiado!
     share: Ndani ajetin
-    addNote: Adcionar uma nota
+    addNote:
     tafsir:
       label: Tafsirs
       select: Zgjidhni Tafsir
@@ -114,12 +121,13 @@ sq:
     other_links: Lidhje të tjera
     contact_us: Na kontaktoni
     help: Ndihmë & reagime
-    about_project: Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
+    about_project:
+      Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
       gjithë për të lexuar, studiuar dhe mësuar Kuranin Fisnik. Kurani Fisnik ka shumë
       emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       dhe Al-Noor.
     rights: Të gjitha të drejtat e rezervuara
-    mobilea_apps: Aplikacione celulare
+    mobile_apps: Aplikacione celulare
     navigate: Navigate
     legacy_site: Trashëgimia quran.com
     blog: Blog
@@ -139,3 +147,8 @@ sq:
     audio_description: Mësoni dhe dëgjoni në të njëjtën kohë
   close: afër
   page: faqe
+  reader_mode:
+    reading: lexim
+    translation: përkthime
+    info: Informacioni i Kapitullit
+  share_ayah:

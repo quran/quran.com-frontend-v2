@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import InfinitePages from "../utility/InfinitePages";
 
 export default class extends Controller {
   connect() {
@@ -9,29 +10,43 @@ export default class extends Controller {
     if (context) context = $(context);
     else context = window;
 
-    $(`#${containerId}`).infinitePages({
+    const itemsContainer = $(`#${containerId}`);
+
+    const plugin = new InfinitePages(itemsContainer, {
       debug: false,
       buffer: 1000, // load new page when within 200px of nav link
-      nextSelector: `#${containerId}_pagination a[rel=next]:first`,
+      navSelector: `#${containerId}_pagination a[rel=next]:first`,
       context: context,
       loading() {},
       success(data) {
         // called after successful ajax call
         $(`#${containerId}_pagination`).remove();
         const newItems = $(data);
-        $(`#${containerId}`).append(newItems);
-        $(`#${containerId}`).trigger("items:added");
+        itemsContainer.append(newItems);
+        itemsContainer.trigger("items:added");
       },
       error(error) {
-        return $(`#${containerId}`)
-          .find(".pagination")
-          .before(error);
+        return itemsContainer.find(".pagination").before(error);
       }
     });
+
+    // if element is hidden, pause the scroller
+    if (itemsContainer.is(":hidden")) {
+      plugin.pause();
+    }
+
+    itemsContainer.on("visibility:visible", () => {
+      plugin.resume();
+    });
+
+    itemsContainer.on("visibility:hidden", () => {
+      plugin.pause();
+    });
+
+    this.plugin = plugin;
   }
 
   disconnect() {
-    let plugin = $(this.element).data().infinitepages;
-    if (plugin) plugin.stop();
+    if (this.plugin) this.plugin.stop();
   }
 }

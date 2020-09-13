@@ -6,11 +6,14 @@
     %>
 
     <div class="link">
-      <%= link_to item.verse_key,verse_link , class: 'ayah-badge', target: :blank %>
+      <%= link_to item.verse_key, verse_link , class: 'ayah-badge', target: :blank, data: {controller: 'track', name: 'search-suggestion-badge', category: item.verse_key } %>
     </div>
 
     <div class="ayat">
-      <a href="<%= verse_link %>">
+      <a href="<%= verse_link %>"
+         data-controller="track"
+         data-name="search-suggestion-link"
+         data-category="<%=item.verse_key%>">
         <b class="madani">
           <%= item.highlighted_text.html_safe %>
         </b>
@@ -26,7 +29,11 @@
     </div>
   <% else %>
     <div class="link">
-      <a href="<%= item[0] %>">
+      <a href="<%= item[0] %>"
+         data-controller="track"
+         data-name="search-suggestion-extra"
+         data-category="<%=item[0]%>"
+      >
         <%= item[0] %>
       </a>
     </div>

@@ -6,18 +6,19 @@
 #
 ---
 id:
-  tafsir_select: Pilih tafsir
   errors:
-    format: "%{attribute} %{message}"
     not_found: Maaf, halaman ini tidak ada
-    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_verse:
+      Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
-    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_chapter:
+      Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih sebuah Surah
     no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
+    format: "%{attribute} %{message}"
   local: indonesian
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
@@ -31,7 +32,6 @@ id:
     remove_all: Buang semua
     translation_english: Bahasa Inggris
     translation_other: Bahasa Lainnya
-    reading: Membaca
     font_size:
       label: Ukuran huruf
       arabic: Arab
@@ -45,10 +45,20 @@ id:
       day_tip: Ganti ke mode terang
       night_tip: Ganti ke mode malam
     reset: Atur Ulang Pengaturan
+    font_type:
+    sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
-    media: 'Lihat kuliah dari %{from}
+    media: "Lihat kuliah dari %{from}
 
-      '
+      "
     go: Pergi ke ayat
     not_found: Ayat tidak ditemukan
   chapters:
@@ -57,7 +67,6 @@ id:
     previous: SEBELUMNYA
     verses: Ayat
     pages: Halaman
-    info: Info Surat
     continue: Terus
     quick_links: Tautan langsung
     go_to_beginning: Awal Surat
@@ -118,10 +127,11 @@ id:
     other_links: Tautan lainnya
     contact_us: Hubungi kami
     help: Bantuan & umpan balik
-    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+    about_project:
+      Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
-    mobilea_apps: Aplikasi Ponsel
+    mobile_apps: Aplikasi Ponsel
     navigate: Telusuri
     legacy_site: Quran.com versi lama
     blog: Blog
@@ -141,3 +151,8 @@ id:
     audio_description: Belajar & mendengarkan secara bersamaan
   close: Dekat
   page: Halaman
+  reader_mode:
+    reading: Membaca
+    translation: Terjemahan
+    info: Info Surat
+  share_ayah:

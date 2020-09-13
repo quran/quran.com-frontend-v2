@@ -1,4 +1,6 @@
-<p class="badge badge badge-primary">Found <%= translations[:texts].length %> results in <%= translations[:language] %> translations</p>
+<p class="badge badge badge-primary">
+  Found <%= translations[:texts].length %> results in <%= translations[:language] %> translations
+</p>
 
 <% translations[:texts].each do |translation| %>
   <div class="txt <%= translation[:language] %>" data-controller="translation">

@@ -1,5 +1,14 @@
+<% content_for :header do %>
+  <div class="col-2 justify-content-end d-md-block d-none" data-controller="theme">
+     <span class="theme-switch mr-2" data-theme="light">
+       <%= lazy_image_tag "icon/light.svg" %>
+     </span>
+  </div>
+<% end %>
+
 <%= render 'top_section' %>
+
 <%= cache "chapters-and-juz-#{I18n.locale}" do %>
-  <%= render 'related_sites' %>
   <%= render 'chapter_and_juzs_tabs' %>
+  <%= render 'related_sites' %>
 <% end %>

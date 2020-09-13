@@ -10,62 +10,209 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
   connect() {
-    $('[data-toggle="tooltip"]').tooltip({ boundary: "window" });
-    this.element[this.identifier] = this;
-    this.dragActionBar();
+    const chapter = this;
+    this.element[this.identifier] = chapter;
+    // using same controller for reading, and translation mode
+    // active tab keep track of current active view
+    this.activeTab = $(this.element).find(".tab-pane.show .verses");
+
+    // currently playing ayah
+    this.currentVerse = null;
+
+    // currently highlighted word
+    this.activeWord = null;
+
+    // intervals for each words of current ayah
+    this.segmentTimers = [];
+
+    const translationTab = document.querySelector("#pill-translation-tab");
+    const readingTab = document.querySelector("#pill-reading-tab");
+
+    translationTab.addEventListener("shown.bs.tab", e => {
+      chapter.activeTab = $(e.target.dataset.target).find(".verses");
+      chapter.activeTab.trigger("visibility:visible");
+    });
+
+    readingTab.addEventListener("shown.bs.tab", e => {
+      chapter.activeTab = $(e.target.dataset.target).find(".verses");
+      chapter.activeTab.trigger("visibility:visible");
+    });
+
+    translationTab.addEventListener("hidden.bs.tab", e => {
+      $(e.target.dataset.target)
+        .find(".verses")
+        .trigger("visibility:hidden");
+    });
+
+    readingTab.addEventListener("hidden.bs.tab", e => {
+      $(e.target.dataset.target)
+        .find(".verses")
+        .trigger("visibility:hidden");
+    });
+
+    this.activeTab.on("items:added", () => {
+      // this event is triggered from infinite scrolling controller
+      // new ayah are added to page. Refresh the player's first and last ayah
+
+      const player = document.getElementById("player").player;
+      const verses = chapter.activeTab.find(".verse");
+      player.init(
+        chapter,
+        verses.first().data("verseNumber"),
+        verses.last().data("verseNumber")
+      );
+    });
+
+    setTimeout(() => {
+      const player = document.getElementById("player").player;
+      const verses = chapter.activeTab.find(".verse");
+      player.init(
+        chapter,
+        verses.first().data("verseNumber"),
+        verses.last().data("verseNumber")
+      );
+    }, 100);
   }
 
-  dragActionBar() {
-    const slider = document.querySelector(".surah-actions");
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+  scrollToVerse(verse) {
+    let verseElement = this.activeTab.find(
+      `.verse[data-verse-number=${verse}]`
+    );
 
-    slider.addEventListener("mousedown", e => {
-      isDown = true;
-      slider.classList.add("active");
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener("mouseleave", () => {
-      isDown = false;
-      slider.classList.remove("active");
-    });
-    slider.addEventListener("mouseup", () => {
-      isDown = false;
-      slider.classList.remove("active");
-    });
-    slider.addEventListener("mousemove", e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 3; //scroll-fast
-      slider.scrollLeft = scrollLeft - walk;
-      console.log(walk);
-    });
-  }
+    if (verseElement.length > 0) {
+      let verseTopOffset = verseElement.offset().top;
+      let verseHeight = verseElement.outerHeight();
+      let currentScroll = $(window).scrollTop();
+      let windowHeight = window.innerHeight;
+      let headerHeight =
+        $("header").outerHeight() + $(".surah-actions").outerHeight();
+      let playerHeight = $("#player").outerHeight();
 
-  updatePagination(dom) {
-    const lastVerse = $(dom.find(".verse").last()).data("verseNumber");
+      // scroll if there isn't a space to appear completely
+      let bottomOffsetCheck =
+        verseTopOffset + verseHeight >
+        currentScroll + windowHeight - playerHeight;
+      let topOffsetCheck = verseTopOffset < currentScroll + headerHeight;
 
-    // Update next page ref if it exists.
-    const nextPage = $("#verses_pagination a[rel=next]");
-    if (nextPage.length > 0) {
-      let ref = nextPage.attr('href');
-      const updatedRef = ref.replace(/page=\d+/, `page=${Math.ceil(lastVerse / 10) + 1}`);
-      nextPage.attr('href', updatedRef);
+      const scrollLength = verseTopOffset - (headerHeight + 50);
+      const scrollTime = Math.min(500, scrollLength * 10);
+
+      if (bottomOffsetCheck || topOffsetCheck) {
+        $("html, body")
+          .stop(true, true)
+          .animate(
+            {
+              scrollTop: scrollLength
+            },
+            scrollTime
+          );
+      }
     }
+  }
+
+  chapterId() {
+    return this.element.dataset.chapterId;
+  }
+
+  setSegmentInterval(seekTime, segmentTimings) {
+    this.removeSegmentTimers();
+
+    let segments = segmentTimings || [];
+
+    if (typeof seekTime != "number") {
+      this.removeSegmentHighlight();
+    }
+
+    let currentTime = seekTime * 1000;
+
+    $.each(segments, (index, segment) => {
+      let startTime = parseInt(segment[2], 10);
+      let endTime = parseInt(segment[3], 10);
+
+      //continue if the segment is passed
+      if (currentTime > endTime) return true;
+
+      if (currentTime > startTime) {
+        this.highlightSegment(segment[0], segment[1]);
+      } else {
+        let highlightAfter = startTime - currentTime;
+
+        this.segmentTimers.push(
+          setTimeout(() => {
+            this.highlightSegment(segment[0], segment[1]);
+          }, highlightAfter)
+        );
+      }
+    });
+  }
+
+  removeSegmentTimers() {
+    if (this.segmentTimers.length > 0) {
+      for (let alignTimer of this.segmentTimers) {
+        clearTimeout(alignTimer);
+      }
+      return (this.segmentTimers = []);
+    }
+  }
+
+  highlightSegment(startIndex, endIndex) {
+    //TODO: track highlighted words in memory and remove highlighting from them
+    // DOm operation could be costly
+    let showWordTooltip = false; // TODO: load from settings
+
+    this.removeSegmentHighlight();
+
+    const start = parseInt(startIndex, 10) + 1;
+    const end = parseInt(endIndex, 10) + 1;
+    const words = this.activeTab.find(
+      `.verse[data-verse-number=${this.currentVerse}] .word`
+    );
+
+    for (let word = start, end1 = end; word < end1; word++) {
+      words.eq(word - 1).addClass("highlight");
+      if (showWordTooltip) words.eq(word - 1).tooltip("show");
+    }
+  }
+
+  highlightVerse(verseNumber) {
+    if (this.currentVerse) {
+      this.removeHighlighting();
+    }
+    this.currentVerse = verseNumber;
+
+    this.activeTab
+      .find(`.verse[data-verse-number=${verseNumber}]`)
+      .addClass("highlight");
+  }
+
+  highlightWord(wordPosition) {}
+
+  removeSegmentHighlight() {
+    let showTooltip = false;
+    //if (this.config.showTooltip) $(".highlight").tooltip("hide");
+    // this.removeSegmentTimers();
+
+    $(".word.highlight").removeClass("highlight");
+  }
+
+  removeHighlighting() {
+    let verse = $(`.verse[data-verse-number=${this.currentVerse}]`);
+    verse.removeClass("highlight");
+
+    // remove highlighting from words
+    verse.find(".highlight").removeClass("highlight");
   }
 
   loadVerses(verse) {
     // If this ayah is already loaded, scroll to it
-    if ($(`#verses .verse[data-verse-number=${verse}]`).length > 0) {
+    if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
       return Promise.resolve([]);
     }
 
-    const chapter = this.element.dataset.chapterId;
-    const lastVerse = $("#verses .verse:last").data().verseNumber;
-    const firstVerse = $("#verses .verse:first").data().verseNumber;
+    const chapter = this.chapterId();
+    const verses = this.activeTab.find(".verse");
+    const firstVerse = verses.first().data().verseNumber;
+    const lastVerse = verses.last().data().verseNumber;
 
     let from, to;
 
@@ -87,9 +234,26 @@ export default class extends Controller {
     return Promise.resolve(request);
   }
 
+  changeFont(font) {
+    let path = this.activeTab.find(".pagination").data("url");
+    let verseList = this.activeTab;
+    const isReadingMode = false;
+
+    fetch(`${path}?${$.param({ font: font, reading: isReadingMode })}`)
+      .then(response => response.text())
+      .then(verses => {
+        verseList.html(
+          $(verses)
+            .find("#verses")
+            .html()
+        );
+      });
+  }
+
   changeTranslations(newTranslationIds) {
-    let path = $("#verses_pagination").data("url");
+    let path = this.activeTab.find(".pagination").data("url");
     let translationsToLoad;
+    let verseList = this.activeTab;
 
     if (0 == newTranslationIds.length) {
       translationsToLoad = "no";
@@ -100,7 +264,7 @@ export default class extends Controller {
     fetch(`${path}?${$.param({ translations: translationsToLoad })}`)
       .then(response => response.text())
       .then(verses => {
-        $("#verses").html(
+        verseList.html(
           $(verses)
             .find("#verses")
             .html()
@@ -111,27 +275,33 @@ export default class extends Controller {
   insertVerses(newVerses) {
     let dom = $("<div>").html(newVerses);
     let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
+    let verseList = this.activeTab;
 
     while (
-      $(`#verses .verse[data-verse-number=${previousVerse}]`).length == 0 &&
+      verseList.find(`.verse[data-verse-number=${previousVerse}]`).length ==
+        0 &&
       previousVerse > 0
     ) {
       previousVerse = previousVerse - 1;
     }
 
     if (previousVerse > 0) {
-      let targetDom = $(`#verses .verse[data-verse-number=${previousVerse}]`);
+      let targetDom = verseList.find(
+        `.verse[data-verse-number=${previousVerse}]`
+      );
       targetDom.after(newVerses);
     } else {
       let nextVerse = $(dom.find(".verse")[dom.find(".verse").length - 1]).data(
         "verseNumber"
       );
 
-      while ($(`#verses .verse[data-verse-number=${nextVerse}]`).length == 0) {
+      while (
+        verseList.find(`.verse[data-verse-number=${nextVerse}]`).length == 0
+      ) {
         nextVerse = nextVerse + 1;
       }
 
-      let targetDom = $(`#verses .verse[data-verse-number=${nextVerse}]`);
+      let targetDom = verseList.find(`.verse[data-verse-number=${nextVerse}]`);
       targetDom.before(newVerses);
     }
 

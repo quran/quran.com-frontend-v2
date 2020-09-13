@@ -1,86 +1,122 @@
-<section>
-  <div class="container surah-actions overflow-auto mt-4 mt-md-0 scrolling-wrapper">
-    <ul class=" d-flex flex-row flex-nowrap list-inline mb-0" id="surah-actions">
-      <li class="list-inline-item d-flex align-items-center" id="reciter-dropdown">
-        <i class="fa fa-microphone-alt text-info lines-heights"></i>
-        <span class="text-muted text-nowrap"><%= _t('settings.reciters') %></span>
-        <select id="reciter-dropdown-menu" data-placeholder="<%= t('settings.reciters') %>" data-controller="select2">
-          <% recitations.each do |recitation| %>
-            <option value="<%= recitation.id %>">
-              <%= recitation.reciter_name %>
-            </option>
-          <% end %>
-        </select>
-      </li>
+<% current_chapter = @presenter.chapter.id %>
+<% verse_locale = _t('player.current_verse') %>
 
-      <li class="list-inline-item d-flex align-items-center translation-li" id="translation-dropdown">
-        <i class="fa fa-columns lines-heights text-info"></i>
-        <span class="text-muted text-nowrap"><%= _t('settings.translations') %></span>
+<section class="bg-info surah-actions sticky-top">
+  <div class="container position-relative">
+    <div class="row align-items-center actions-row">
+      <div class="col-md-2 col-5">
+        <div class="dropdown surah-dropdown">
+          <button class="btn btn-white dropdown-toggle position-relative border-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-left pr-md-5 pr-3 text-primary">
+              <strong>
+                <%= @presenter.chapter.name_simple %>
+              </strong>
+              <p class="text-muted mb-0"><%= @presenter.chapters[current_chapter-1].translated_name.name %></p>
+            </div>
+          </button>
 
-        <select id="translations" data-placeholder="<%= t('settings.translations') %>" data-controller="select2" multiple data-multiple="true">
-          <% ordered_translations.each do |language, list| %>
-            <optgroup label="<%= language.humanize %>">
-              <% list.each do |trans| %>
-                <option value="<%= trans[0] %>">
-                  <%= trans[1] %>
-                </option>
+          <div
+            class="dropdown-menu border-0 custom-shadow pt-0"
+            aria-labelledby="dropdownMenuButton"
+            data-controller="filter-list" data-list="#chapters" data-input="#filter-chapter"
+          >
+            <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
+              <h6 class="mb-0 ff-b text-primary"><%= _t('settings.chapters') %></h6>
+              <i class="fa fa-times-circle fa-center c-pointer"></i>
+            </div>
+
+            <div class="rounded-search pt-3 mb-3 px-2">
+              <input class="form-control bg-light px-2" type="search" id="filter-chapter"/>
+            </div>
+
+            <div id=chapters>
+              <% @presenter.chapters.each do |chapter| %>
+                <div class="dropdown-item <%= 'active' if chapter.id == current_chapter %>" data-filter-tags="<%= chapter.chapter_number %> <%= chapter.name_simple.downcase %> <%= chapter.translated_name.name.downcase %> <%= chapter.name_arabic %>">
+                  <%= link_to chapter_path(chapter) do %>
+                    <div class='row'>
+                      <div class="col-2"><%= chapter.chapter_number %></div>
+                      <div class="col-7 text-muted">
+                        <%= chapter.name_simple %>
+                      </div>
+                      <div class="col-3">
+                        <%= chapter.name_arabic %>
+                      </div>
+                      <div class="col-10 offset-2">
+                        <%= chapter.translated_name.name %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
               <% end %>
-            </optgroup>
-          <% end %>
-        </select>
-      </li>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <li class="list-inline-item d-flex align-items-center text-nowrap " id="tooltip">
-        <i class="fa fa-comment-alt text-info lines-heights"></i>
-        <span class="text-muted text-nowrap ml-1"><%= _t('settings.tooltip.label') %></span>
-        <select class="p-2 rounded bg-light border-info text-info" id="tooltip-dropdown" placeholder="<%= _t('settings.tooltip.label') %>">
-          <option value="translation">
-            <%= _t('settings.tooltip.translation') %>
-          </option>
-          <option value="transliteration">
-            <%= _t('settings.tooltip.transliteration') %>
-          </option>
-        </select>
-      </li>
+      <div class="col-md-1 col-4">
+        <div class="dropdown verse-dropdown">
+          <button class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-left pr-md-5 pr-3 text-primary">
+              <strong> <%= verse_locale %> <%= @presenter.paginate.first.verse_number %></strong>
+            </div>
+          </button>
 
-      <li class='list-inline-item border-left d-flex align-items-center' id="arabic-font" data-target=".word">
-        <i class="fa fa-text-width text-info lines-heights"></i>
-        <%= _t('settings.font_size.arabic') %>
+          <div class="dropdown-menu border-0 custom-shadow pt-0"
+               aria-labelledby="verseDropdown"
+               data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah"
+          >
+            <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
+              <h6 class="mb-0 ff-b text-primary"><%=_t('verses.go') %></h6>
+              <i class="fa fa-times-circle fa-center c-pointer"></i>
+            </div>
 
-        <a href="" class="font-size increase">+</a>
-        <a href="" class="font-size decrease">-</a>
-      </li>
+            <div class="rounded-search px-2 pt-3 mb-3">
+              <input class="form-control bg-light px-2" type="search" id="filter-ayah"/>
+            </div>
 
-      <li class='list-inline-item d-flex align-items-center' id="translation-font" data-target=".translation">
-        <%= _t('settings.font_size.translation') %>
-        <a href="" class="font-size increase">+</a>
-        <a href="" class="font-size decrease">-</a>
-      </li>
+            <div id="verse-list">
+              <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
+                <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
+                  <%= link_to chapter_path("#{current_chapter}/#{verse_num}"), data: {verse: verse_num} do %>
+                    <%= verse_locale %> <%= verse_num %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <li class="list-inline-item border-left d-flex align-items-center">
-        <%= link_to url_for(reading: !@presenter.reading_mode?), id: 'toggle-readingmode', class: "d-flex align-items-center" do %>
-          <span class="fa fa-book text-info lines-heights"></span>
-          <%= _t('settings.reading') %>
-        <% end %>
-      </li>
+      <div class="col-md-5 d-md-block d-none">
+        <ul class="nav nav-pills mb-0 justify-content-end" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if 'translation' == @presenter.active_tab %>" id="pill-translation-tab" data-toggle="tab" href="<%= range_path range: @presenter.range, reading: false %>" data-target="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="<%= 'translation' == @presenter.active_tab %>">
+              <%= _t('reader_mode.translation') %>
+            </a>
+          </li>
 
-      <li class="list-inline-item d-flex align-items-center">
-        <a id="toggle-nightmode" class="d-flex align-items-center text-nowrap">
-          <i class="fa fa-lightbulb text-info lines-heights"></i>
-          <%= _t('settings.night_mode.label') %>
-        </a>
-      </li>
+          <li class="nav-item">
+            <a class="nav-link <%= 'active' if 'reading' == @presenter.active_tab %>" id="pill-reading-tab" data-toggle="tab" href="<%= range_path range: @presenter.range, reading: true %>" data-target="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="<%= 'reading' == @presenter.active_tab %>">
+              <%= _t('reader_mode.reading') %>
+            </a>
+          </li>
 
-      <li class="list-inline-item d-flex align-items-center">
-        <a id="reset-setting" class="fa fa-times-circle text-info lines-heights" rel="tooltip" data-toggle="tooltip" title="<%= t('settings.reset') %>"></a>
-      </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pill-surah-info-tab" data-toggle="tab" href="<%= chapter_info_path(@presenter.chapter.id, locale: I18n.locale) %>" data-target="#pill-info" role="tab" aria-controls="pill-info" aria-selected="false">
+              <%= _t('reader_mode.info') %>
+            </a>
+          </li>
+        </ul>
+      </div>
 
-      <li class="list-inline-item d-flex align-items-center">
-        <%= link_to chapter_info_path(@presenter.chapter), remote: true, data: {disable_with: spinning_loader}, class: "d-flex align-items-center text-nowrap" do %>
-          <i class="fa fa-info-circle text-info lines-heights"></i>
-          <%= _t("chapters.info") %>
-        <% end %>
-      </li>
-    </ul>
+      <div class="col text-right">
+        <button class="btn btn-outline-secondary setting-button" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
+          <i class="fa fa-cog fa-center-1" , class="c-pointer"></i>
+          <span class="d-md-inline d-none">
+            <%= _t('settings.label') %>
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
 </section>

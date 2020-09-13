@@ -6,8 +6,9 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -50,13 +51,34 @@ const TAJWEED_RULES = [
 ];
 
 export default class extends Controller {
+  static targets = ["actions"];
+
   connect() {
     this.el = $(this.element);
-    this.trackActions();
 
-    $(this.el)
-      .find("[data-toggle=tooltip]")
-      .tooltip();
+    /*if (
+      this.el.find(".arabic").height() + this.el.find(".translation").height() <
+      20
+    ) {
+      this.actionsTarget.classList.add("col-md-12", "order-md-1");
+      this.actionsTarget.children[0].classList.remove("flex-md-column");
+      this.actionsTarget.children[0].classList.add("justify-content-md-evenly");
+      this.element.classList.add("pb-md-2");
+    }*/
+
+    this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
+      new Tooltip(actionDom, {
+        trigger: "hover",
+        placement: "right",
+        html: true,
+        template:
+          "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
+        title: () => {
+          const locale = window.locale;
+          return `<div class='${locale}'>${actionDom.dataset.title}</div>`;
+        }
+      });
+    });
 
     let copyDom = this.el.find(".copy");
 
@@ -94,8 +116,7 @@ export default class extends Controller {
     }
   }
 
-  disconnect() {
-  }
+  disconnect() {}
 
   copy() {
     copyToClipboard(this.el.data("text"));
@@ -112,24 +133,16 @@ export default class extends Controller {
     );
   }
 
-  trackActions() {
-    let key = this.el.data('key');
-
-    this.el.find('[data-tack]').on('click', (e) => {
-      const target = $(e.target)
-      const action = target.data('track');
-
-      GoogleAnalytic.trackEvent(action, "AyahAction", "Clicked", key);
-    })
-  }
-
   bindTajweedTooltip() {
-    let dom = this.el;
+    let dom = this.element;
 
     TAJWEED_RULES.forEach(name => {
-      this.el.find(`.${name}`).tooltip({
-        title: TAJWEED_RULE_DESCRIPTION[name],
-        html: true
+      dom.querySelectorAll(`.${name}`).forEach(tajweed => {
+        new Tooltip(tajweed, {
+          title: TAJWEED_RULE_DESCRIPTION[name],
+          html: true,
+          direction: "top"
+        });
       });
     });
   }

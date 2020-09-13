@@ -1,29 +1,35 @@
 <section id="chapter-info">
-  <div class="container alert alert-dismissible fade show" role="alert">
-    <ul class="d-flex align-items-center info-heading">
-      <li><h1>About Surah <%= @presenter.name_simple %></h1></li>
-      <li><%= _t("chapters.audio_files") %> <span class="info"><%= @presenter.verses_count %></span></li>
-      <li><%= _t("chapters.pages") %> <span class="info"><%= @presenter.pages.join('-') %></span></li>
-      <li><%= _t("chapters.revelation_place") %> <span class="info"><%= @presenter.revelation_place.humanize %></span>
-      </li>
-
-      <li class="ml-auto">
-        <a class="text-info" rel="tooltip" data-dismiss="alert" title="Close Info">
-          <i class="fa fa-times-circle"></i>
-        </a>
-      </li>
-    </ul>
-
+  <div class="container">
     <div class="surah-info-area">
-      <div class="row">
+      <div class="row pt-4">
         <div class="col-md-4 order-1">
           <div class="img-col">
-            <%= lazy_image_tag "media/images/#{@presenter.revelation_place}.jpg", class: 'img-fluid', alt: @presenter.revelation_place %>
+            <%= lazy_image_tag "#{@presenter.revelation_place}.jpg", class: 'img-fluid', alt: @presenter.revelation_place %>
           </div>
         </div>
 
-        <div class="col-md-8 order-2">
-          <div class="text-col <%= I18n.locale %>" data-controller="slim-scroller">
+        <div class="col-md-8 order-2 mt-md-0 mt-3">
+          <ul class="row align-items-center">
+            <div class="col-12 col-md">
+              <li><h4 class="ff-b">Surah <%= @presenter.name_simple %></h4></li>
+            </div>
+
+            <div class="col-12 col-md justify-content-md-evenly justify-content-between d-flex">
+              <li>
+                <%= _t("chapters.verses") %> <br><span class="info text-muted"><%= @presenter.verses_count %></span>
+              </li>
+
+              <li>
+                <%= _t("chapters.pages") %> <br><span class="info text-muted"><%= @presenter.pages.join('-') %></span>
+              </li>
+
+              <li>
+                <%= _t("chapters.revelation_place") %>
+                <br><span class="info text-muted"><%= @presenter.revelation_place.humanize %></span></li>
+            </div>
+          </ul>
+
+          <div class="<%= I18n.locale %>">
             <%= @presenter.info.text.html_safe %>
           </div>
         </div>

@@ -3,24 +3,25 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2.2'
+gem 'rails', '~> 6.0.3.2'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12.4'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '>= 4.2.2'
+gem 'sass-rails', '~> 6.0.0'
+gem 'webpacker', '>= 5.2.1'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.2.1'
 
 gem 'fast_blank'
 gem 'pg'
 
-gem 'jbuilder'
+gem 'jbuilder', '>= 2.10.0'
 gem 'oj'
 
 # i18n
@@ -29,15 +30,12 @@ gem 'translation'
 # Run any code in parallel Processes
 gem 'parallel', require: false
 gem 'ruby-progressbar', require: false
+
 # seo
-gem 'canonical-rails', git: 'https://github.com/jumph4x/canonical-rails'
 gem 'meta-tags', '>= 2.13.0'
 
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
-
-#gem 'quran-core', github: 'quran/quran-core'
-
 gem 'sentry-raven'
 
 # Detect language from text
@@ -46,11 +44,11 @@ gem "cld3"
 # Elasticsearch
 # using excon as faraday adapter (net::http breaks)
 gem 'excon'
-gem 'elasticsearch-model'
+gem 'elasticsearch-model', '>= 7.1.0'
 gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
-gem 'actionpack-action_caching'
-gem "actionpack-page_caching"
+gem 'actionpack-action_caching', '>= 1.2.1'
+gem "actionpack-page_caching", ">= 1.2.2"
 
 # Pagination
 gem 'pagy', '= 3.7.3'
@@ -76,8 +74,8 @@ group :development do
 
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'annotate', '= 2.7.4'
-  gem 'rails_real_favicon', '>= 0.0.13'
+  #gem 'annotate', '= 2.7.4'
+  gem 'rails_real_favicon', '>= 0.1.0'
   gem 'rubocop', '>= 0.79', require: false
   gem 'rubocop-performance'
   gem 'rubocop-rails', '~> 2.3.2'
@@ -101,7 +99,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.32.1'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
