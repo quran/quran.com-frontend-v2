@@ -33,6 +33,7 @@
     height: 40px;
   }
 }
+
 .verse-actions-below {
   .fa-play-circle {
     margin-right: 12px;
@@ -66,6 +67,7 @@
     }
   }
 }
+
 .surah-actions {
   .dropdown-menu.show {
     overflow: auto;
@@ -126,6 +128,12 @@
 
   .w {
     margin: 0 5px;
+  }
+
+  .bg-secondary{
+    &:hover{
+      color: #fff;
+    }
   }
 
   .translation {

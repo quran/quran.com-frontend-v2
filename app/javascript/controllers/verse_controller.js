@@ -6,7 +6,7 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 
@@ -54,20 +54,10 @@ export default class extends Controller {
   static targets = ["actions"];
 
   connect() {
-    this.el = $(this.element);
-
-    /*if (
-      this.el.find(".arabic").height() + this.el.find(".translation").height() <
-      20
-    ) {
-      this.actionsTarget.classList.add("col-md-12", "order-md-1");
-      this.actionsTarget.children[0].classList.remove("flex-md-column");
-      this.actionsTarget.children[0].classList.add("justify-content-md-evenly");
-      this.element.classList.add("pb-md-2");
-    }*/
+    let el = $(this.element);
 
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
-      new Tooltip(actionDom, {
+      actionDom.tooltip = new Tooltip(actionDom, {
         trigger: "hover",
         placement: "right",
         html: true,
@@ -80,29 +70,29 @@ export default class extends Controller {
       });
     });
 
-    let copyDom = this.el.find(".copy");
+    let copyDom = this.element.querySelector(".copy");
 
-    copyDom.click(e => {
+    copyDom.addEventListener('click', e => {
       e.preventDefault();
       this.copy();
     });
 
     this.copyDom = copyDom;
 
-    this.playButton = this.el.find(".play-verse");
+    let playButton = el.find(".ayah-action.play");
 
-    this.playButton.on("click", event => {
+    playButton.on("click", event => {
       event.preventDefault();
-      //event.stopImmediatePropagation();
+      event.stopImmediatePropagation();
 
       let player,
         playerDom = document.getElementById("player");
 
       if (playerDom) player = playerDom.player;
 
-      if (this.playButton.find(".fa").hasClass("fa-play-solid")) {
+      if (playButton.find(".fa").hasClass("fa-play-circle")) {
         if (player) {
-          return player.play(this.el.data("verseNumber"));
+          return player.play(el.data("verseNumber"));
         }
       } else {
         if (player) {
@@ -111,25 +101,30 @@ export default class extends Controller {
       }
     });
 
-    if (this.el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
       this.bindTajweedTooltip();
     }
+
+    this.el = el;
   }
 
-  disconnect() {}
+  disconnect() {
+  }
 
   copy() {
     copyToClipboard(this.el.data("text"));
 
-    let title = this.copyDom.data("original-title");
-    let done = this.copyDom.attr("done");
+    let {title, done} = this.copyDom.dataset;
 
-    this.copyDom
-      .attr("title", done)
-      .tooltip("_fixTitle")
-      .tooltip("show");
-    this.copyDom.on("hidden.bs.tooltip", () =>
-      this.copyDom.attr("title", title).tooltip("_fixTitle")
+    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
+    this.copyDom.tooltip._fixTitle()
+
+    this.copyDom.tooltip.show();
+
+    this.copyDom.addEventListener("hidden.bs.tooltip", () => {
+        this.copyDom.setAttribute("title", title);
+        this.copyDom.tooltip._fixTitle()
+      }
     );
   }
 

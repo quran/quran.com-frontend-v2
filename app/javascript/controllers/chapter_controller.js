@@ -190,7 +190,6 @@ export default class extends Controller {
   removeSegmentHighlight() {
     let showTooltip = false;
     //if (this.config.showTooltip) $(".highlight").tooltip("hide");
-    // this.removeSegmentTimers();
 
     $(".word.highlight").removeClass("highlight");
   }
@@ -201,6 +200,7 @@ export default class extends Controller {
 
     // remove highlighting from words
     verse.find(".highlight").removeClass("highlight");
+    this.removeSegmentTimers();
   }
 
   loadVerses(verse) {

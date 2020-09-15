@@ -8,12 +8,13 @@
 
 import { Controller } from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
+import LocalStore from "../utility/local-store";
 
 export default class extends Controller {
   connect() {
     let el = this.element;
+    const store = new LocalStore();
     const dataset = el.dataset;
-    let setting = document.body.setting;
 
     el.tooltip = new Tooltip(el, {
       trigger: "hover",
@@ -21,9 +22,10 @@ export default class extends Controller {
       html: true,
       template:
         "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
-      title: function(w) {
+      title: () => {
         const local = dataset.local;
-        const tooltip = setting.getTooltipType();
+        const tooltip = document.body.setting.get('tooltip');
+
         const text = dataset[tooltip];
         return `<div class='${local}'>${text}</div>`;
       }

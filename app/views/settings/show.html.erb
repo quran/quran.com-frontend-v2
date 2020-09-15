@@ -73,15 +73,17 @@
       <h6 class="ff-b">
         <%= _t('settings.tooltip.label') %>
       </h6>
+
       <div class="row">
         <label class="custom-label col">
-          <input type="radio" name="radio" checked/>
+          <input type="radio" name="tooltip-display" data-value="t"/>
           <p class="border border-muted d-flex w-100 rounded">
             <%= _t('settings.tooltip.translation') %>
           </p>
         </label>
+
         <label class="custom-label col">
-          <input type="radio" name="radio"/>
+          <input type="radio" name="tooltip-display" data-value="tr"/>
           <p class="border border-muted d-flex w-100 rounded">
             <%= _t('settings.tooltip.transliteration') %>
           </p>

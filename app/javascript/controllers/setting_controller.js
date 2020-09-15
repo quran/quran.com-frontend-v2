@@ -15,13 +15,14 @@ let settings = {};
 
 export default class extends Controller {
   connect() {
-    this.element[this.identifier] = this;
     this.store = new LocalStore();
     this.loadSettings();
     this.device = new DeviceDetector();
 
-    this.loadToolTipType()
     window.addEventListener("resize", () => this.resizeHandler());
+
+    this.bindTooltip();
+    this.element[this.identifier] = this;
   }
 
   resizeHandler() {
@@ -45,16 +46,16 @@ export default class extends Controller {
     }
   }
 
-  loadToolTipType(){
-    if (this.get("tooltip") == "translation") {
-      this.tooltipType = 't'
-    } else {
-      this.tooltipType = 'tr'
-    }
+  bindTooltip(){
+    $(`[data-value=${this.get('tooltip')}]`).attr('checked', 'checked')
+
+    $("[name=tooltip-display]").on('change', event => {
+      this.set("tooltip", $(event.target).data('value'))
+    })
   }
 
   getTooltipType() {
-    return this.tooltipType
+    return this.get('tooltip');
   }
 
   saveSettings() {
@@ -65,7 +66,7 @@ export default class extends Controller {
   defaultSetting() {
     return {
       font: "v1",
-      tooltip: "translation",
+      tooltip: "t",
       recitation: 7,
       nightMode: false,
       readingMode: false,
@@ -113,17 +114,7 @@ export default class extends Controller {
   set(key, value) {
     this.settings[key] = value;
     this.saveSettings();
-  }
-
-  toggleNightMode(e) {
-    const isNightMode = $("body").hasClass("night");
-    document.body.classList.toggle("night");
-    this.set("nightMode", !isNightMode);
-  }
-
-  handleTooltip(e) {
-    const target = $(e.target);
-    this.set("tooltip", target.val());
+    document.body.setting = this;
   }
 
   handleFontSize(e) {

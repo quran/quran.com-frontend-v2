@@ -92,7 +92,7 @@ export default class extends Controller {
       document.body.removeChild(modal);
 
       let backdrop = document.getElementsByClassName("modal-backdrop");
-      if (backdrop) document.body.removeChild(backdrop);
+      if (backdrop && backdrop.length > 0) document.body.removeChild(backdrop[0]);
     }
   }
 }

@@ -1,15 +1,17 @@
 <div class="container">
-  <div class="col-12">
-    <div class="tafsir lh-n <%= @presenter.language_name %>">
-      <h2>
-        <%= @presenter.tafsir_name %>
-      </h2>
+  <div class="row d-flex justify-content-center my-5">
+    <div class="col-md-8">
+      <div class="tafsir <%= @presenter.language_name %>">
+        <h2 class="border-bottom py-2">
+          <%= @presenter.tafsir_name %>
+        </h2>
 
-      <%= @presenter.tafsir_text %>
-    </div>
+        <%= @presenter.tafsir_text %>
+      </div>
 
-    <div class="text-center my-4">
-      <%= link_to "Back to ayah", "/#{@presenter.verse.verse_key}", class: 'btn btn-primary' %>
+      <div class="text-center my-4">
+        <%= link_to "Back to ayah", "/#{@presenter.verse.verse_key}", class: 'btn btn-outline-primary mt-4' %>
+      </div>
     </div>
   </div>
 </div>
