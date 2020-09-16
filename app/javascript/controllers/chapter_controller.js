@@ -9,6 +9,31 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
+  initialize() {
+    this.setURLState();
+  }
+
+  setURLState() {
+    // set the selected tab url and state in the url, if not already there
+    const paramString = window.location.search;
+    if(paramString.includes('reading=true')) {
+      this.updateURLState(window.location.href, {reading: true});
+    }else if(paramString.includes('reading=false')) {
+      this.updateURLState(window.location.href, {reading: false});
+    }else {
+      const translationTab = document.querySelector("#pill-translation-tab");
+      const readingTab = document.querySelector("#pill-reading-tab");
+      if(translationTab.classList.contains('active')) {
+        this.updateURLState(translationTab.href, {reading: false});
+      }else if(readingTab.classList.contains('active')) {
+        this.updateURLState(readingTab.href, {reading: true});
+      }
+    }
+  }
+  updateURLState(url, state) {
+    window.history.pushState(state, '', url);
+  }
+
   connect() {
     const chapter = this;
     this.element[this.identifier] = chapter;
@@ -29,11 +54,15 @@ export default class extends Controller {
     const readingTab = document.querySelector("#pill-reading-tab");
 
     translationTab.addEventListener("shown.bs.tab", e => {
+      const url = e.target.href;
+      url && this.updateURLState(url, {reading: false});
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
 
     readingTab.addEventListener("shown.bs.tab", e => {
+      const url = e.target.href;
+      url && this.updateURLState(url, {reading: true});
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
@@ -237,9 +266,9 @@ export default class extends Controller {
   changeFont(font) {
     let path = this.activeTab.find(".pagination").data("url");
     let verseList = this.activeTab;
-    const isReadingMode = false;
-
-    fetch(`${path}?${$.param({ font: font, reading: isReadingMode })}`)
+    const reading = window.history.state?.reading || false;
+    
+    fetch(`${path}?${$.param({ font, reading })}`)
       .then(response => response.text())
       .then(verses => {
         verseList.html(
