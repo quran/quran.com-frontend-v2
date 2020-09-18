@@ -51,10 +51,9 @@ const TAJWEED_RULES = [
 ];
 
 export default class extends Controller {
-  static targets = ["actions"];
-
   connect() {
     let el = $(this.element);
+    //TODO: enable these action only for reading mode.
 
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
