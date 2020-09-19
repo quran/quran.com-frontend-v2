@@ -273,7 +273,7 @@ export default class extends Controller {
       .then(verses => {
         verseList.html(
           $(verses)
-            .find("#verses")
+            .find(`#verses-${reading ? 'reading' : 'translation'}`)
             .html()
         );
       });
