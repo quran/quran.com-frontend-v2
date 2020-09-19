@@ -3,14 +3,15 @@ class AjaxModal {
     this.createModel(title);
     var that = this;
 
-    $.get(url, data => {})
-      .done(content => {
+    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+      .then(resp => resp.text())
+      .then(content => {
         const response = $("<div>").html(content);
         const responseBody = response.find("#body");
         that.dialog.find("#modal-title").html(response.find("#title").html());
         that.dialog.find("#body").html(response.find("#modal").html());
       })
-      .fail(err => {
+      .catch(err => {
         if (401 == err.status) {
           that.dialog.find(".modal-body").html(
             `<h2>${err.responseText}</h2>

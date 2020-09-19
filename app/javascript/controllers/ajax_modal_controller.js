@@ -17,7 +17,6 @@ export default class extends Controller {
   }
 
   loadModal(e) {
-    var that = this;
     e.preventDefault();
     e.stopImmediatePropagation();
 
@@ -33,8 +32,9 @@ export default class extends Controller {
         .remove();
     });
 
-    $.get(url, data => {})
-      .done(content => {
+    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+      .then(resp => resp.text())
+      .then(content => {
         const response = $("<div>").html(content);
         const responseBody = response.find("#body");
 
@@ -45,7 +45,7 @@ export default class extends Controller {
           .find("#modal")
           .html();
       })
-      .fail(err => {
+      .catch(err => {
         //TODO: show error
       });
   }
@@ -54,22 +54,22 @@ export default class extends Controller {
     this.removeModal("#ajax-modal");
 
     let modal = `
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal-title">Loading</h5>
-        <a class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="fa fa-times fa-center"></span>
-        </a>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
-      </div>
-      <div class="modal-footer" id="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>`;
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Loading</h5>
+              <a class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="fa fa-times fa-center"></span>
+              </a>
+            </div>
+            <div class="modal-body" id="modal-body">
+              <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>`;
 
     let ajaxModal = document.createElement("div");
     ajaxModal.classList.add("modal");

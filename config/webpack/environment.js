@@ -18,6 +18,8 @@ const sassLoaderConfig = sassLoader.use.find(function(element) {
 const options = sassLoaderConfig.options;
 options.implementation = require("sass");
 
+environment.config.resolve.alias = {'jquery': "jquery/dist/jquery.slim.js"};
+
 /*
 environment.plugins.prepend(
   "Provide",
