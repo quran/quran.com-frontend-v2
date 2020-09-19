@@ -26,7 +26,7 @@ export default class extends Controller {
       let id = target.getAttribute("foot_note");
 
       if (id && id.length > 0) {
-        $.ajax(`/foot_note/${id}`);
+        fetch(`/foot_note/${id}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
       }
     });
 
