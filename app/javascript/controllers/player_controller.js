@@ -7,7 +7,6 @@
 // </div>
 
 import { Controller } from "stimulus";
-import { Howl, Howler } from "howler";
 import Slider from "bootstrap-slider";
 import Tooltip from "bootstrap/js/src/tooltip";
 
@@ -15,9 +14,15 @@ const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
 // TODO: should set to false to use web audio instead, but that requires CORS
 const USE_HTML5 = false;
+let Howl, Howler;
 
 export default class extends Controller {
-  connect() {
+  async connect() {
+    import("howler").then((howler) => {
+      Howl = howler.Howl;
+      Howler = howler.Howler;
+    });
+
     this.element[this.identifier] = this;
     this.settings = document.body.setting;
 
