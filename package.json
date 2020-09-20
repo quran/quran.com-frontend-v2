@@ -25,6 +25,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-dev-server": "^3.11.0"
   }
 }

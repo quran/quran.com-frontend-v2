@@ -17,7 +17,7 @@ const USE_HTML5 = false;
 let Howl, Howler;
 
 export default class extends Controller {
-  async connect() {
+  connect() {
     import("howler").then((howler) => {
       Howl = howler.Howl;
       Howler = howler.Howler;
@@ -66,7 +66,7 @@ export default class extends Controller {
     const that = this;
     this.updateVerses().then(() => {
       // set first ayah track to play, if player isn't already playing any ayah
-      that.currentVerse ||= that.firstVerse;
+      that.currentVerse = that.currentVerse || that.firstVerse;
 
       // preload howl for first ayah
       that.createHowl(that.currentVerse, false);
