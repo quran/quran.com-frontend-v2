@@ -89,8 +89,6 @@ export default class extends Controller {
   }
 
   buildPlayer() {
-    let that = this;
-
     this.progressBar = new Slider("#player #player-bar", {
       min: 0,
       max: 100,
