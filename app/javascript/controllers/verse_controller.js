@@ -61,6 +61,7 @@ export default class extends Controller {
         trigger: "hover",
         placement: "right",
         html: true,
+        sanitize: false,
         template:
           "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
         title: () => {
@@ -136,6 +137,7 @@ export default class extends Controller {
         new Tooltip(tajweed, {
           title: TAJWEED_RULE_DESCRIPTION[name],
           html: true,
+          sanitize: false,
           direction: "top"
         });
       });

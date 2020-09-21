@@ -40,7 +40,8 @@ export default class extends SettingController {
     this.element.querySelectorAll("[data-style]").forEach(elem => {
       new Tooltip(elem, {
         direction: "left",
-        title: recitationStyles[elem.dataset.style]
+        title: recitationStyles[elem.dataset.style],
+        sanitize: false
       });
     });
   }

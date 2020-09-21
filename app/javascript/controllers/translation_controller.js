@@ -37,7 +37,8 @@ export default class extends Controller {
         new Tooltip(dom, {
           title: PRE_DEFINED_FOOTNOTES[text],
           html: true,
-          direction: "top"
+          direction: "top",
+          sanitize: false,
         });
       }
     });

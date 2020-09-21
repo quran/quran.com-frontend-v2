@@ -104,6 +104,7 @@ export default class extends Controller {
       placement: "top",
       boundary: "window",
       html: true,
+      sanitize: false,
       title: this.scrollButton.dataset.title
     });
 

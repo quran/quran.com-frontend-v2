@@ -20,6 +20,7 @@ export default class extends Controller {
       trigger: "hover",
       placement: "top",
       html: true,
+      sanitize: false,
       template:
         "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
       title: () => {
