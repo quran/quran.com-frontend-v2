@@ -43,7 +43,5 @@ export default class extends Controller {
     });
   }
 
-  disconnect() {
-    //this.el.find("sup").tooltip("dispose");
-  }
+  disconnect() {}
 }

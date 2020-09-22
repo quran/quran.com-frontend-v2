@@ -5,9 +5,9 @@
     </h6>
 
     <div class="col-2 justify-content-end" data-controller="theme">
-          <span class="theme-switch mr-2" data-theme="light">
-            <%= lazy_image_tag "icon/light.svg" %>
-          </span>
+      <span class="theme-switch mr-2" data-theme="light">
+        <%= lazy_image_tag "icon/light.svg" %>
+      </span>
     </div>
   </div>
 
@@ -57,12 +57,13 @@
 
   <ul class="nav nav-pills my-5 justify-content-center" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="display-tab" data-toggle="pill" href="#display" role="tab" aria-controls="Display" aria-selected="true">
+      <a class="nav-link active" id="display-tab" data-toggle="pill" href="#display" role="tab" aria-controls="display" aria-selected="true">
         <%= _t('settings.display') %>
       </a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link" id="Repeat-tab" data-toggle="pill" href="#Repeat" role="tab" aria-controls="Repeat" aria-selected="false">
+      <a class="nav-link" id="audio-tab" data-toggle="pill" href="#audio" role="tab" aria-controls="repeat" aria-selected="false">
         <%= _t('settings.audio') %>
       </a>
     </li>
@@ -95,7 +96,6 @@
           <h6 class="mb-0 ff-b">
             <%= _t('settings.font_type') %>
           </h6>
-          <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
         </div>
 
         <div class="col-1">
@@ -110,23 +110,23 @@
       <div class="row">
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
-           <i class="fa fa-plus-circle fa-center c-pointer"></i>
+            <i class="fa fa-plus-circle fa-center c-pointer" data-increment="1" data-target=".word" data-trigger="font-size"></i>
             <h6 class="mb-0 ff-b"><%= _t('settings.font_size.arabic') %></h6>
-           <i class="fa fa-minus-circle fa-center c-pointer"></i>
+            <i class="fa fa-minus-circle fa-center c-pointer" data-increment="-1" data-target=".word" data-trigger="font-size"></i>
           </div>
         </div>
 
         <div class="col my-2">
           <div class="d-flex justify-content-between align-items-center">
-            <i class="fa fa-plus-circle fa-center px-2 c-pointer"></i>
+            <i class="fa fa-plus-circle fa-center px-2 c-pointer" data-increment="1" data-target=".translation" data-trigger="font-size"></i>
             <h6 class="mb-0 ff-b"><%= _t('settings.font_size.translation') %></h6>
-            <i class="fa fa-minus-circle fa-center px-2 c-pointer"></i>
+            <i class="fa fa-minus-circle fa-center px-2 c-pointer" data-increment="-1" data-target=".translation" data-trigger="font-size"></i>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="tab-pane fade" id="Repeat" role="tabpanel" aria-labelledby="Repeat-tab">
+    <div class="tab-pane fade" id="audio" role="tabpanel" aria-labelledby="audio-tab">
       <h6 class="ff-b mt-4">Play</h6>
       <div class="dropdown pb-4 border-bottom">
         <button class="btn btn-outline-info border text-muted dropdown-toggle" type="button" id="play-dropdown" data-toggle="dropdown" aria-expanded="false">
@@ -213,13 +213,13 @@
     <h6 class="mb-0 ff-b"><%= _t('settings.translations') %></h6>
 
     <% if false %>
-    <button class="btn btn-primary text-white">
-      <%= _t('settings.remove_all') %>
-    </button>
+      <button class="btn btn-primary text-white">
+        <%= _t('settings.remove_all') %>
+      </button>
     <% end %>
   </div>
 
-  <%= render_async '/settings/translations', lazy_load: true, lazy_load: {root: '#translations-sidebar'} do %>
+  <%= render_async '/settings/translations', lazy_load: {root: '#translations-sidebar'} do %>
     <p class="text-center p-3">
       <%= loading_spinner %>
     </p>
@@ -232,7 +232,7 @@
     <h6 class="mb-0 ff-b"><%= _t('settings.reciters') %></h6>
   </div>
 
-  <%= render_async '/settings/recitations', lazy_load: true, lazy_load: {root: '#reciters-sidebar'} do %>
+  <%= render_async '/settings/recitations', lazy_load: {root: '#reciters-sidebar'} do %>
     <p class="text-center p-3">
       <%= loading_spinner %>
     </p>
@@ -245,7 +245,7 @@
     <h6 class="mb-0 ff-b"><%= _t('settings.font_type') %></h6>
   </div>
 
-  <%= render_async '/settings/fonts', lazy_load: true, lazy_load: {root: '#fonts-sidebar'} do %>
+  <%= render_async '/settings/fonts', lazy_load: {root: '#fonts-sidebar'} do %>
     <p class="text-center p-3">
       <%= loading_spinner %>
     </p>

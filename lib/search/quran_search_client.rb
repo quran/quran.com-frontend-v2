@@ -29,9 +29,9 @@ module Search
       results = Verse.search(search_defination)
 
       # For debugging, copy the query and paste in kibana for debugging
-      #File.open("last_query.json", "wb") do |f|
-      #  f << search_defination.to_json
-      #end
+      File.open("_last_query.json", "wb") do |f|
+        f << search_defination.to_json
+      end
 
       if results.empty?
         Search::NavigationClient.new(query.query).search
@@ -69,7 +69,7 @@ module Search
 
     def search_query(highlight_size = 500)
       match_any = [
-        nested_translation_query('default', highlight_size)
+        nested_translation_query('en', highlight_size)
       ]
 
       get_detected_languages_code.each do |lang|
@@ -77,7 +77,7 @@ module Search
       end
 
       match_any << quran_text_query
-      match_any << words_query
+      match_any += words_query
 
       {
         bool: {
@@ -88,7 +88,8 @@ module Search
     end
 
     def words_query
-      [{
+      [
+        {
          nested: {
            path: 'words',
            query: {

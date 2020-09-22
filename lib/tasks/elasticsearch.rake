@@ -4,8 +4,15 @@ namespace :elasticsearch do
 
   desc 'deletes all elasticsearch indices'
   task delete_indices: :environment do
-    Verse.__elasticsearch__.delete_index!
-    Chapter.__elasticsearch__.delete_index!
+    begin
+      Verse.__elasticsearch__.delete_index!
+    rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
+    end
+
+    begin
+      Chapter.__elasticsearch__.delete_index!
+    rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
+    end
 
     puts "Done"
   end
@@ -31,5 +38,3 @@ namespace :elasticsearch do
     puts "Done #{Verse.__elasticsearch__.refresh_index!}"
   end
 end
-
-
