@@ -69,10 +69,14 @@
 }
 
 .surah-actions {
-  .dropdown-menu.show {
-    overflow: auto;
+  .dropdown-menu {
     width: 300px;
-    max-height: 350px;
+
+    #chapters,
+    #verse-list {
+      max-height: 350px;
+      overflow: auto;
+    }
   }
 
   .dropdown-toggle::after {
@@ -130,8 +134,8 @@
     margin: 0 5px;
   }
 
-  .bg-secondary{
-    &:hover{
+  .bg-secondary {
+    &:hover {
       color: #fff;
     }
   }
@@ -144,7 +148,7 @@
     .resource {
       color: $color-primary;
       &:before {
-        content: '—';
+        content: "—";
       }
     }
 

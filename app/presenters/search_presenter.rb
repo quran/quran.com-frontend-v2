@@ -6,6 +6,7 @@ class SearchPresenter < BasePresenter
   end
 
   def no_results?
+    return ture if @search.nil?
     @search.empty?
   end
 
@@ -15,7 +16,7 @@ class SearchPresenter < BasePresenter
 
   def pagination
     strong_memoize :pagination do
-      @search.pagination
+      @search&.pagination
     end
   end
 
@@ -49,7 +50,7 @@ class SearchPresenter < BasePresenter
 
   def items
     strong_memoize :items do
-      if :navigation == @search.result_type
+      if :navigation == @search&.result_type
         @results
       else
         Verse.unscoped.where(id: @results.keys).each do |v|

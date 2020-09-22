@@ -6,8 +6,8 @@
     <div class="row align-items-center actions-row">
       <div class="col-md-2 col-5">
         <div class="dropdown surah-dropdown">
-          <button class="btn btn-white dropdown-toggle position-relative border-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="text-left pr-md-5 pr-3 text-primary">
+          <button class="btn btn-white dropdown-toggle position-relative" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-left pr-3 text-primary">
               <strong>
                 <%= @presenter.chapter.name_simple %>
               </strong>
@@ -18,7 +18,9 @@
           <div
             class="dropdown-menu border-0 custom-shadow pt-0"
             aria-labelledby="dropdownMenuButton"
-            data-controller="filter-list" data-list="#chapters" data-input="#filter-chapter"
+            data-controller="filter-list"
+            data-list="#chapters"
+            data-input="#filter-chapter"
           >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b text-primary"><%= _t('settings.chapters') %></h6>
@@ -56,7 +58,7 @@
       <div class="col-md-1 col-4">
         <div class="dropdown verse-dropdown">
           <button class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="text-left pr-md-5 pr-3 text-primary">
+            <div class="text-left pr-3 text-primary">
               <strong> <%= verse_locale %> <%= @presenter.paginate.first.verse_number %></strong>
             </div>
           </button>

@@ -22,11 +22,16 @@ export default class extends Controller {
     window.addEventListener("resize", () => this.resizeHandler());
 
     this.bindTooltip();
+    this.bindFontSize();
+    this.updateFontSize();
+    this.bindReset();
+
     this.element[this.identifier] = this;
   }
 
   resizeHandler() {
     this.mobile = this.device.isMobile();
+    this.updateFontSize();
   }
 
   loadSettings() {
@@ -46,16 +51,24 @@ export default class extends Controller {
     }
   }
 
-  bindTooltip(){
-    $(`[data-value=${this.get('tooltip')}]`).attr('checked', 'checked')
+  bindTooltip() {
+    $(`[data-value=${this.get("tooltip")}]`).attr("checked", "checked");
 
-    $("[name=tooltip-display]").on('change', event => {
-      this.set("tooltip", $(event.target).data('value'))
-    })
+    $("[name=tooltip-display]").on("change", event => {
+      this.set("tooltip", $(event.target).data("value"));
+    });
+  }
+
+  bindReset() {
+    $("#reset-settings").on("click", event => this.resetSetting(event));
+  }
+
+  bindFontSize() {
+    $("[data-trigger=font-size]").on("click", e => this.handleFontSize(e));
   }
 
   getTooltipType() {
-    return this.get('tooltip');
+    return this.get("tooltip");
   }
 
   saveSettings() {
@@ -78,11 +91,11 @@ export default class extends Controller {
       autoScroll: true,
       wordFontSize: {
         mobile: 30,
-        desktop: 50
+        desktop: 30
       },
       translationFontSize: {
-        mobile: 17,
-        desktop: 20
+        mobile: 16,
+        desktop: 16
       }
     };
   }
@@ -102,6 +115,7 @@ export default class extends Controller {
     fontStylesheet.sheet.insertRule(
       `.w {font-size: ${wordFontSize}px !important}`
     );
+
     fontStylesheet.sheet.insertRule(
       `.translation {font-size: ${translationFontSize}px !important}`
     );
@@ -119,17 +133,17 @@ export default class extends Controller {
 
   handleFontSize(e) {
     e.preventDefault();
-    const that = $(e.target);
 
-    const target = that.closest("li").data("target");
-    const targetDom = $(target);
+    const data = e.target.dataset;
+    const targetDom = $(data.target);
+    const increment = +data.increment;
 
     let size = parseInt(targetDom.css("font-size"), 10);
-    size = that.hasClass("increase") ? size + 1 : size - 1;
+    size = size + increment;
 
     let device = this.mobile ? "mobile" : "desktop";
 
-    if (target == ".word") {
+    if (".word" == data.target) {
       let sizes = this.get("wordFontSize");
       sizes[device] = size;
       this.set("wordFontSize", sizes);
