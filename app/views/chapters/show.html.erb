@@ -43,7 +43,7 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses" class='verses' data-controller="infinite-page">
+      <div id="verses-translation" class='verses' data-controller="infinite-page">
         <% if 'translation' == @presenter.active_tab %>
           <%= render 'verses' %>
         <% else %>
@@ -61,7 +61,7 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="page" class='verses' data-controller="infinite-page">
+      <div id="verses-reading" class='verses' data-controller="infinite-page">
         <% if 'reading' == @presenter.active_tab %>
           <%= render 'verses' %>
         <% else %>
