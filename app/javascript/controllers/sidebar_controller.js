@@ -10,23 +10,36 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["trigger", "close"];
-
   connect() {
-    $(this.triggerTarget).on("click", e => {
-      e.preventDefault();
-      this.toggle(e);
-    });
-
-    $(this.closeTarget).on("click", e => {
-      e.preventDefault();
-      this.toggle(e);
-    });
-
+    this.element.addEventListener("click", e => this.toggle(e));
   }
 
-  toggle() {
-    $("body").toggleClass("active");
-    $('.right-sidebar').toggleClass('open');
+  toggle(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const { target, close, isChild } = this.element.dataset;
+
+    if (isChild != "true") {
+      document.body.classList.toggle("disabled");
+    }else{
+      document.getElementById('main-right-sidebar').classList.toggle("d-none")
+    }
+
+    const sidebar = document.querySelector(target);
+
+    sidebar.classList.toggle("d-none");
+    const opened = sidebar.classList.toggle("open");
+
+    if (opened) {
+      document.querySelectorAll(close).forEach(closeTrigger => {
+        closeTrigger.addEventListener("click", e => this.toggle(e));
+      });
+    } else {
+      document.querySelectorAll(close).forEach(closeTrigger => {
+        closeTrigger.removeEventListener("click", () => {});
+      });
+    }
   }
+
+  removeListener() {}
 }

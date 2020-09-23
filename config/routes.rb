@@ -13,9 +13,20 @@ Rails.application.routes.draw do
   get :search, to: 'search#search', as: :search
   get 'search/suggestion', to: 'search#suggestion'
 
+  get '/settings', to: 'settings#show'
+  get '/settings/translations', to: 'settings#translations'
+  get '/settings/recitations', to: 'settings#recitations'
+  get '/settings/fonts', to: 'settings#fonts'
+
   get '/audio', to: 'audio_files#index'
   get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
   get "آیت الکرسی/", to: 'chapters#ayatul_kursi', id: '2', range: '255'
+
+  get '/about-us', to: 'pages#about_us', as: :about_us
+  get :apps, to: 'pages#apps'
+  get :donations, to: 'pages#donations'
+  get :support, to: 'pages#support'
+  get :developers, to: 'pages#developers'
 
   resources :verses, only: :show do
     member do
@@ -23,14 +34,6 @@ Rails.application.routes.draw do
       get :select_tafsirs
       get :tafsir
     end
-  end
-
-  namespace :pages do
-    get :about_us
-    get :apps
-    get :donations
-    get :help_and_feedback
-    get :developers
   end
 
   root to: 'chapters#index'
@@ -89,6 +92,12 @@ Rails.application.routes.draw do
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 
+  # 2-3:5 => 2/3-5
+  get '/:chapter-:start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+
+  # 2/3:5 => 2/3-5
+  get '/:chapter/:start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+
   # /2:2:3 => 1/2-3
   get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
@@ -97,6 +106,9 @@ Rails.application.routes.draw do
 
   # /2/1/1 => /2/1-2
   get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+
+  # 2-3-5 => 2/3-5
+  #get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
   get '/:id', to: 'chapters#show', as: :chapter
   get '/:id/(:range)', to: 'chapters#show', as: :range

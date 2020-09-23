@@ -15,19 +15,27 @@ class ChapterPresenter < HomePresenter
   def initialize(context)
     super context
 
-    @range_start, @range_end = params[:range].to_s.split('-')
+    @range_start, @range_end = params[:range].to_s.split(/-|:/)
   end
 
   def chapter
     @chapter ||= Chapter.find_using_slug(params[:id])
   end
 
+
+  def active_tab
+    if reading_mode?
+      'reading'
+    else
+      'translation'
+    end
+  end
+
   def reading_mode?
     return @reading_mode unless @reading_mode.nil?
 
-    reading = params[:reading] || session[:reading]
-    session[:reading] = reading.to_s == 'true'
-    @reading_mode = session[:reading]
+    reading = params[:reading].presence
+    @reading_mode = reading.to_s == 'true'
   end
 
   def font
@@ -62,7 +70,15 @@ class ChapterPresenter < HomePresenter
 
   # Next page number in the collection
   def next_page
-    current_page + 1 unless last_page? || out_of_range?
+    if last_page? || out_of_range?
+      return nil
+    end
+
+    if reading_mode?
+      return paginate.last.page_number + 1
+    end
+
+    current_page + 1
   end
 
   def first_page
@@ -81,12 +97,20 @@ class ChapterPresenter < HomePresenter
 
   # Last page of the collection?
   def last_page?
-    current_page == total_pages
+    if reading_mode?
+      paginate.last.verse_number >= range_end
+    else
+      current_page == total_pages
+    end
   end
 
   # Out of range of the collection?
   def out_of_range?
-    current_page > total_pages
+    if reading_mode?
+      paginate.last.nil? || paginate.last.verse_number > range_end
+    else
+      current_page > total_pages
+    end
   end
 
   def range
@@ -98,9 +122,9 @@ class ChapterPresenter < HomePresenter
   end
 
   def total_pages
-    total = (range_end - range_start)
+    total = (range_end - range_start) + 1
 
-    (total / per_page).ceil
+    (total  / per_page).ceil
   end
 
   def has_more_verses?
@@ -124,11 +148,11 @@ class ChapterPresenter < HomePresenter
   end
 
   def continue?
-    paginate.last.verse_number < chapter.verses_count
+    paginate.last && (paginate.last.verse_number < chapter.verses_count)
   end
 
   def continue_range
-    context.range_path @chapter, "#{range_start}-#{chapter.verses_count}"
+    context.range_path(@chapter, "#{range_start}-#{chapter.verses_count}", reading: reading_mode?)
   end
 
   def previous_surah?
@@ -205,7 +229,10 @@ class ChapterPresenter < HomePresenter
   end
 
   def meta_image
-    "https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
+    #"https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
+
+    first = paginate.first
+    "https://quran-og-image.vercel.app/#{first.verse_key.gsub(':', '/')}?text=Hello"
   end
 
   protected
@@ -250,14 +277,38 @@ class ChapterPresenter < HomePresenter
   end
 
   def verse_pagination_start
-    (((current_page - 1) * per_page) + range_start).to_i
+    if reading_mode?
+      # on reading more, we render one page each request
+      # per_page is ignored
+
+      if params[:page]
+        first = Verse.where(chapter_id: chapter.id, page_number: params[:page]).first
+        [first.verse_number, range_start].max
+      else
+        first = Verse.where(chapter_id: chapter.id).first
+        [first.verse_number, range_start].max
+      end
+    else
+      (((current_page - 1) * per_page) + range_start).to_i
+    end
   end
 
   def verse_pagination_end(start, per)
+    if reading_mode?
+      first = Verse.where(chapter_id: chapter.id, verse_number: start).first
+      last_on_page = Verse.where(page_number: first.page_number).last
+
+      return min(last_on_page.verse_number, range_end)
+    end
+
     min((start + per) - 1, range_end)
   end
 
   def min(a, b)
     a < b ? a : b
+  end
+
+  def max(a, b)
+    a > b ? a : b
   end
 end

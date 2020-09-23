@@ -13,7 +13,7 @@
   line-height: 1em;
   border-radius: 27px;
 
-  .fa:before{
+  .fa:before {
     height: 46px;
     width: 50px;
     display: flex;
@@ -27,7 +27,7 @@
     box-shadow: 0 1px 3px #999;
   }
 
-  &.facebook {
+  &.fb {
     background: #4267b2;
   }
 
@@ -51,13 +51,13 @@
     background: #5f99cf;
   }
 
-  &.get-pocket {
+  &.pocket {
     background: #ef3f56;
   }
 
   &.envelope {
     background: #0b2e13;
-    .fa:before{
+    .fa:before {
       height: 53px;
     }
   }
@@ -78,4 +78,8 @@
     display: block;
     text-align: center;
   }
+}
+
+.fs-sm {
+  font-size: 0.78125rem !important;
 }

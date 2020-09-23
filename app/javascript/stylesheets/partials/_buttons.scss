@@ -1,0 +1,14 @@
+.btn-outline-primary {
+  display: inline-block;
+  background: #e0f7fa;
+  font-family: $font-medium;
+  border-radius: 50px;
+  border: solid 1px #80deea;
+  padding: 10px 35px;
+
+  &:hover,
+  &.active {
+    background: $color-primary;
+    color: $white !important;
+  }
+}

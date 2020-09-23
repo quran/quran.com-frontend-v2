@@ -1,20 +1,21 @@
-<div class="row page" id="page-num-<%=verses[0]%>">
+<div class="row page" id="page-num-<%= verses[0] %>">
   <div class="col-md-12">
     <h4><%= _t('page') %> <%= verses[0] %></h4>
 
     <% lines = group_ayah_by_lines(verses[1]) %>
-
-    <% lines.each do |k, line| %>
-      <div class="line arabic">
-        <div class="text-center">
-          <% line.each do |verse_number, words| %>
-            <div class="verse" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
-              <%= render partial: 'word', collection: words %>
-            </div>
-          <% end %>
+    <div class="lines">
+      <% lines.each do |k, line| %>
+        <div class="line">
+          <div class="text-center">
+            <% line.each do |verse_number, words| %>
+              <div class="arabic d-inline verse <%= @presenter.font_method %>" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
+                <%= render partial: 'word', collection: words %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <div class="row d-flex justify-content-end row-border">
       <div class="col-md-11">

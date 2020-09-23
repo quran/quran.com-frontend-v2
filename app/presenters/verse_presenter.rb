@@ -1,9 +1,9 @@
 class VersePresenter < BasePresenter
   def verse
     verses = Verse.where(word_translations: {language_id: language.id})
-             .or(Verse.where(word_translations: {language_id: Language.default.id}))
-             .eager_load(words: :word_translation)
-             .order('words.position ASC, word_translations.priority ASC')
+               .or(Verse.where(word_translations: {language_id: Language.default.id}))
+               .eager_load(words: :word_translation)
+               .order('words.position ASC, word_translations.priority ASC')
 
     if params[:id].to_s.include?(':')
       verses.find_by_verse_key(params[:id])
@@ -39,7 +39,7 @@ class VersePresenter < BasePresenter
   end
 
   def share_text
-   verse.text_madani
+    verse.text_madani
   end
 
   def share_title
@@ -63,7 +63,7 @@ class VersePresenter < BasePresenter
   end
 
   def tafsir_text
-    tafsir.text
+    tafsir.text.to_s.html_safe
   end
 
   def meta_page_type
@@ -87,8 +87,10 @@ class VersePresenter < BasePresenter
     return 16 if params[:tafsir_id].blank?
 
     ResourceContent
-        .where(id: params[:tafsir_id])
-        .or(ResourceContent.where(slug: params[:tafsir_id]))
-        .first&.id || 16
+      .approved
+      .tafsirs
+      .where(id: params[:tafsir_id])
+      .or(ResourceContent.where(slug: params[:tafsir_id]))
+      .first&.id || 16
   end
 end

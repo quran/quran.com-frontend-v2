@@ -9,90 +9,29 @@
 
 import { Controller } from "stimulus";
 import LocalStore from "../utility/local-store";
+import DeviceDetector from "../utility/deviceDetector";
 
 let settings = {};
 
 export default class extends Controller {
-  static targets = [
-    "wordTooltip",
-    "reset",
-    "readingMode",
-    "translations",
-    "recitation"
-  ];
-
   connect() {
-    this.element[this.identifier] = this;
     this.store = new LocalStore();
     this.loadSettings();
+    this.device = new DeviceDetector();
 
-    $(document).on("click", ".font-size", e => {
-      e.preventDefault();
-      this.handleFontSize(e);
-    });
+    window.addEventListener("resize", () => this.resizeHandler());
 
-    $(document).on("click", "#toggle-nightmode", e => {
-      e.preventDefault();
-      this.toggleNightMode();
-    });
+    this.bindTooltip();
+    this.bindFontSize();
+    this.updateFontSize();
+    this.bindReset();
 
-    $(document).on("change", "#tooltip-dropdown", e => {
-      e.preventDefault();
-      this.handleTooltip(e);
-    });
-
-    $(document).on("click", "#reset-setting", e => {
-      e.preventDefault();
-      this.resetSetting();
-    });
-
-    $(document).on("click", "#toggle-readingmode", this.toggleReadingMode);
-
-    $("#reciter-dropdown-menu")
-      .val(this.get("recitation"))
-      .trigger("change");
-    $(document).on("select2:select", "#reciter-dropdown-menu", e => {
-      this.updateReciter(e.currentTarget.value);
-    });
-
-    $("#translations")
-      .val(this.get("translations"))
-      .trigger("change");
-
-    $(document).on("select2:select", "#translations", e => {
-      this.updateTranslations($(e.target).val());
-    });
-
-    $(document).on("select2:unselecting", "#translations", e => {
-      this.updateTranslations($(e.target).val());
-    });
-
-    let mobileDetect = window.matchMedia("(max-width: 610px)");
-    this.mobile = mobileDetect.matches;
-
-    mobileDetect.addListener(match => {
-      this.mobile = match.matches;
-      this.updatePage();
-    });
-
-    this.updatePage();
+    this.element[this.identifier] = this;
   }
 
-  toggleReadingMode() {
-    $("#toggle-readingmode").toggleClass("text-primary");
-  }
-
-  updateReciter(newRecitation) {
-    let playerDom = document.getElementById("player");
-    let player = playerDom.player;
-
-    player.setRecitation(newRecitation);
-  }
-
-  updateTranslations(newTranslationIds) {
-    let controller = document.getElementById("verses");
-
-    controller.chapter.changeTranslations(newTranslationIds);
+  resizeHandler() {
+    this.mobile = this.device.isMobile();
+    this.updateFontSize();
   }
 
   loadSettings() {
@@ -112,12 +51,24 @@ export default class extends Controller {
     }
   }
 
+  bindTooltip() {
+    $(`[data-value=${this.get("tooltip")}]`).attr("checked", "checked");
+
+    $("[name=tooltip-display]").on("change", event => {
+      this.set("tooltip", $(event.target).data("value"));
+    });
+  }
+
+  bindReset() {
+    $("#reset-settings").on("click", event => this.resetSetting(event));
+  }
+
+  bindFontSize() {
+    $("[data-trigger=font-size]").on("click", e => this.handleFontSize(e));
+  }
+
   getTooltipType() {
-    if (this.get("tooltip") == "translation") {
-      return "t";
-    } else {
-      return "tr";
-    }
+    return this.get("tooltip");
   }
 
   saveSettings() {
@@ -127,8 +78,8 @@ export default class extends Controller {
 
   defaultSetting() {
     return {
-      font: "qcf_v2",
-      tooltip: "translation",
+      font: "v1",
+      tooltip: "t",
       recitation: 7,
       nightMode: false,
       readingMode: false,
@@ -140,11 +91,11 @@ export default class extends Controller {
       autoScroll: true,
       wordFontSize: {
         mobile: 30,
-        desktop: 50
+        desktop: 30
       },
       translationFontSize: {
-        mobile: 17,
-        desktop: 20
+        mobile: 16,
+        desktop: 16
       }
     };
   }
@@ -164,36 +115,10 @@ export default class extends Controller {
     fontStylesheet.sheet.insertRule(
       `.w {font-size: ${wordFontSize}px !important}`
     );
+
     fontStylesheet.sheet.insertRule(
       `.translation {font-size: ${translationFontSize}px !important}`
     );
-  }
-
-  updatePage() {
-    this.updateFontSize();
-    const isNightMode = this.get("nightMode");
-    const darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
-
-    const setDark = function(e) {
-      if (e && e.matches) {
-        $("body").addClass("night");
-      } else {
-        if (isNightMode) {
-          $("body").addClass("night");
-        } else {
-          $("body").removeClass("night");
-        }
-      }
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-      setDark(darkModeMediaQuery);
-    });
-    darkModeMediaQuery.addListener(event => {
-      setDark(event);
-    });
-    setDark(darkModeMediaQuery);
   }
 
   get(key) {
@@ -203,32 +128,22 @@ export default class extends Controller {
   set(key, value) {
     this.settings[key] = value;
     this.saveSettings();
-  }
-
-  toggleNightMode(e) {
-    const isNightMode = $("body").hasClass("night");
-    $("body").toggleClass("night");
-    $("#toggle-nightmode").toggleClass("text-primary");
-    this.set("nightMode", !isNightMode);
-  }
-
-  handleTooltip(e) {
-    const target = $(e.target);
-    this.set("tooltip", target.val());
+    document.body.setting = this;
   }
 
   handleFontSize(e) {
-    const that = $(e.target);
+    e.preventDefault();
 
-    const target = that.closest("li").data("target");
-    const targetDom = $(target);
+    const data = e.target.dataset;
+    const targetDom = $(data.target);
+    const increment = +data.increment;
 
     let size = parseInt(targetDom.css("font-size"), 10);
-    size = that.hasClass("increase") ? size + 1 : size - 1;
+    size = size + increment;
 
     let device = this.mobile ? "mobile" : "desktop";
 
-    if (target == ".word") {
+    if (".word" == data.target) {
       let sizes = this.get("wordFontSize");
       sizes[device] = size;
       this.set("wordFontSize", sizes);

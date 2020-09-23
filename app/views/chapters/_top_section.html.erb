@@ -1,27 +1,33 @@
-<div class="top-section">
-  <div class="container">
-    <div class="logo-wrap">
-      <%= lazy_image_tag 'media/images/logo-lg-w.png', class: 'img-fluid', alt: 'Quran.com logo' %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-9 mt-3">
+      <%= lazy_image_tag 'logo-lg-w.png', class: 'img-fluid', alt: 'Quran.com logo' %>
     </div>
+  </div>
 
-    <div class="banner">
-      <h1><%= _t('noble_quran') %></h1>
+  <div class="row my-md-5 my-3">
+    <div class="col text-center">
+      <h1 class="ff-b text-primary"><%= _t('noble_quran') %></h1>
     </div>
+  </div>
 
-    <%= render 'shared/search_form', expanded: false %>
-
-    <div class="popular-search">
-      <p>
-        <%= _t('search.popular') %>
-      </p>
-
-      <ul class="scrolled-section">
-        <% popular_searches.each do |poplar_search| %>
-          <li>
-            <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary' %>
-          </li>
-        <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <%= render 'shared/search_form' %>
     </div>
+  </div>
+
+  <div class="popular-search mt-5">
+    <p class="text-muted">
+      <%= _t('search.popular') %>
+    </p>
+
+    <ul class="h-scrolled-section  d-flex">
+      <% popular_searches.each_with_index do |poplar_search, i| %>
+        <li class="d-block mr-3">
+          <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn-outline-primary', data: {controller: 'track', name: 'popular-search', category: poplar_search[0] } %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

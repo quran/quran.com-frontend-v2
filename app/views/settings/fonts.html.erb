@@ -1,0 +1,99 @@
+<% verse = Verse.find_by_verse_key('1:1') %>
+
+<style>
+  <% if false %>
+  @font-face {
+    font-family: 'p1-v2';
+    src: local(QCF2001),
+    url('<%= asset_url "quran_fonts/v2/woff2/p1.woff2" %>') format('woff2'),
+    url('<%= asset_url "quran_fonts/v2/woff/p1.woff" %>') format('woff');
+    font-display: swap;
+  }
+
+  .p1-v2 {
+    font-family: 'p1-v2';
+  }
+
+  <% end %>
+
+  @font-face {
+    font-family: 'p1-v1';
+    src: url('<%= asset_url "quran_fonts/v1/woff2/p1.woff2"%>'),
+    url('<%= asset_url "quran_fonts/v1/woff/p1.woff" %>') format('woff'),
+    url('<%= asset_url "quran_fonts/v1/ttf/p1.ttf" %>') format('truetype');
+    font-display: swap;
+  }
+
+  .p1-v1 {
+    font-family: 'p1-v1';
+  }
+</style>
+
+
+<div data-controller="font" class="px-4">
+  <div class="row">
+    <div class="my-4 col-12">
+      <input class="form-check-input" type="radio" name="font" value="v1" id=v1>
+      <label class="form-check-label text-muted ff-m" for="v1">
+        <%= _t('settings.fonts.qcf_v1') %>
+
+        <div class="arabic" style="font-size: 30px">
+          <% verse.words.each do |word| %>
+            <span class=" p1-v1"<%= word.char_type_name %>" id="w-<%= word.id %>">
+            <%= word.code.html_safe %>
+            </span>
+          <% end %>
+        </div>
+      </label>
+    </div>
+
+    <% if false %>
+      <div class="my-4 col-12">
+        <input class="form-check-input" type="radio" name="font" value="v2" id=v2>
+        <label class="form-check-label text-muted ff-m" for="v2">
+          <%= _t('settings.fonts.qcf_v2') %>
+          <div class="arabic" style="font-size: 30px">
+            <% verse.words.each do |word| %>
+            <span class="p1-v2 <%= word.char_type_name %>" id="w-<%= word.id %>">
+              <%= word.code_v2.html_safe %>
+            </span>
+            <% end %>
+          </div>
+        </label>
+      </div>
+    <% end %>
+
+    <div class="my-4 col-12">
+      <input class="form-check-input" type="radio" checked=checked name="font" value="uthmani" id=uthmani>
+      <label class="form-check-label text-muted ff-m" for="uthmani">
+        <%= _t('settings.fonts.uthmani') %>
+
+        <div class="arabic madani" style="font-size: 30px">
+          <%= raw verse.text_madani %>
+        </div>
+      </label>
+    </div>
+
+    <div class="my-4 col-12">
+      <input class="form-check-input" type="radio" name="font" value="indopak" id=indopak>
+      <label class="form-check-label text-muted ff-m" for="indopak">
+        <%= _t('settings.fonts.indopak') %>
+
+        <div class="arabic indopak" style="font-size: 30px">
+          <%= raw verse.text_indopak %>
+        </div>
+      </label>
+    </div>
+
+    <div class="my-4 col-12">
+      <input class="form-check-input" type="radio" name="font" value="tajweed" id=tajweed>
+      <label class="form-check-label text-muted ff-m" for="tajweed">
+        <%= _t('settings.fonts.tajweed') %>
+
+        <div class="arabic text_uthmani_tajweed" style="font-size: 30px">
+          <%= raw verse.text_uthmani_tajweed %>
+        </div>
+      </label>
+    </div>
+  </div>
+</div>

@@ -8,11 +8,11 @@
 th:
   noble_quran: อัลกุรอาน
   errors:
-    format: "%{attribute} %{message}"
     not_found: ขออภัย ไม่พบหน้าดังกล่าว
-    invalid_verse: ไม่พบอายะห์ดังกล่าว. กรุณากลับไปยังหน้าหลัก
-    invalid_chapter: ไม่พบซูเราะห์ดังกล่าว. กรุณากลับไปยังหน้าหลัก
-    no_script: ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
+    invalid_verse: ไม่พบอายะห์ดังกล่าว กรุณาตรวจสอบอายะห์ที่คุณเลือก
+    invalid_chapter: ไม่พบซูเราะห์ดังกล่าว กรุณาตรวจสอบซูเราะห์ที่คุณเลือก
+    no_script:
+      ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
       Quran.com ทำงานได้ดีที่สุดเมื่อเปิดใช้งาน JavaScript. สำหรับคำแนะนำเพิ่มเติมเกี่ยวกับวิธีเปิดใช้งาน
       JavaScript
     unavailable_session: |
@@ -24,34 +24,44 @@ th:
     connection_refused: |-
       อุปส์! การเชื่อมต่อกับ Web Console middleware ล้มเหลว.
       กรุณาตรวจสอบให้แน่ใจว่าเซิฟเวอร์ rails ทำงานอยู่.
+    format: "%{attribute} %{message}"
   local: ภาษาอังกฤษ
   site_local: ภาษาของเว็บไซต์
   change_local: เลือกภาษาที่คุณต้องการให้แสดงผล
-  local_native_name: ภาษาอังกฤษ
+  local_native_name: ภาษาไทย
   language: ภาษา
   page: หน้า
   settings:
     label: การตั้งค่า
     chapters: ซูเราะห์
     reciters: เสียงอ่าน
-    translations: การแปล
+    translations: คำแปล
     remove_all: ลบทั้งหมด
     translation_english: ภาษาอังกฤษ
     translation_other: ภาษาอื่น ๆ
-    reading: การอ่าน
     reset: รีเซ็ตการตั้งค่า
     font_size:
       label: ขนาดตัวอักษร
       arabic: ภาษาอาหรับ
-      translation: การแปล
+      translation: คำแปล
     tooltip:
       label: การแสดงคำแนะนำ
-      translation: การแปล
-      transliteration: การทับศัพท์
+      translation: คำแปล
+      transliteration: คำอ่าน
     night_mode:
       label: โหมดกลางคืน
       day_tip: เปลี่ยนเป็นโหมดปกติ
       night_tip: เปลี่ยนเป็นโหมดกลางคืน
+    font_type:
+    sample_audio:
+    display:
+    audio:
+    fonts:
+      tajweed:
+      uthmani:
+      qcf_v1:
+      qcf_v2:
+      indopak:
   verses:
     media: ดูวิดีโออรรถาธิบายจาก %{from}
     go: ไปยังอายะห์
@@ -62,13 +72,12 @@ th:
     previous: ซูเราะห์ก่อนหน้า
     verses: อายะห์
     pages: หน้า
-    revelation_place: ตำแหน่งที่ปรากฏ
-    info: ข้อมูลซูเราะห์
+    revelation_place: ประทานที่
     continue: ต่อ
     quick_links: ลิงค์
     go_to_beginning: ส่วนต้นของซูเราะห์
     read_full: อ่านทั้งซูเราะห์
-    invalid: ข้อมูลซูเราะห์ไม่ถูกต้อง
+    invalid: ไม่พบข้อมูลซูเราะห์
   footnote: เชิงอรรถ
   action:
     play: เล่น
@@ -77,7 +86,7 @@ th:
     addNote: เพิ่มโน๊ต
     bookmark:
       label: บุ๊คมาร์ค
-      done: บุ๊คมาร์คแล้ว
+      done: บุ๊คมาร์คแล้ว!
     copy:
       label: คัดลอก
       done: คัดลอกสำเร็จ!
@@ -88,7 +97,7 @@ th:
   search:
     label: ค้นหา
     placeholder: ค้นหา "นุห์"
-    result: "%{from} - %{to} จาก <span>{total}</span> ผลการค้นหาสำหรับ: <span>{query}</span>"
+    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-success>%{query}</span>"
     error: ขออภัยเกิดข้อผิดพลาดในการค้นหาของคุณ
     no_query: ไม่มีคำค้นหา
     no_result: ไม่พบผลลัพธ์
@@ -97,11 +106,11 @@ th:
     yaseen: ซูเราะห์ยาซีน
     al_mulk: ซูเราะห์อัลมุลกฺ
     ar_rahman: ซูเราะห์อัรรอหฺมาน
-    al_waqiah: ซูเราะห์ อัลวากิอะฮฺ
+    al_waqiah: ซูเราะห์อัลวากิอะฮฺ
     al_kahf: ซูเราะห์อัลกะฮฺฟฺ
     al_muzammil: ซูเราะห์อัลมุซซัมมิล
   player:
-    current_verse: อายะห์
+    current_verse: อายะห์ที่
     next_verse: อายะห์ถัดไป
     previous_verse: อายะห์ก่อนหน้า
     repeat_title: เล่นซ้ำอายะห์
@@ -123,16 +132,17 @@ th:
     other_links: ลิงค์อื่น ๆ
     contact_us: ติดต่อเรา
     help: แนะนำติชม
-    about_project: Quran.com เป็นโครงการเพื่อสังคม สำหรับการอ่านและศึกษาคัมภีร์อัลกุรอาน
+    about_project:
+      Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
+      ศึกษา และเรียนรู้อัลกุรอานเป็นเรื่องง่ายสำหรับทุกคน.
     rights: สงวนลิขสิทธิ์
-    mobilea_apps: แอปพลิเคชันมือถือ
+    mobile_apps: แอปพลิเคชันมือถือ
     navigate: นำทาง
     legacy_site: Quran.com เวอร์ชั่นเก่า
     blog: บล็อก
     forum: ฟอรัม
   juz: ญุซ
   click_here: คลิกที่นี่
-  tafsir_select: เลือกตัฟซีร
   download: ดาวน์โหลด
   home: หน้าหลัก
   related_sites:
@@ -144,3 +154,8 @@ th:
     audio: เสียงอ่านอัลกุรอาน
     audio_description: ศึกษาข้อมูล และฟังไปพร้อมกัน
   close: ปิด
+  reader_mode:
+    reading: โหมดอ่าน
+    translation: คำแปล
+    info: ข้อมูลซูเราะห์
+  share_ayah:

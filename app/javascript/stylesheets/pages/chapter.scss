@@ -1,0 +1,212 @@
+#bismillah {
+  color: #000;
+  font-family: "bismillah";
+  font-size: 60px;
+  padding: 25px 0;
+  @media #{$phone} {
+    font-size: 45px;
+    padding: 11px 0;
+  }
+}
+
+.chapters.show {
+  header {
+    position: unset !important;
+  }
+}
+.hear-voice {
+  font-size: 12px;
+
+  .fa-play {
+    font-size: 19px;
+    line-height: 34px;
+  }
+}
+.setting-button {
+  @media #{$phone} {
+    padding: 4px 7px 4px 3px;
+  }
+}
+
+#player {
+  .play-btn {
+    height: 40px;
+  }
+}
+
+.verse-actions-below {
+  .fa-play-circle {
+    margin-right: 12px;
+  }
+  i.fa.fa-copy {
+    margin-right: 7px;
+  }
+
+  i.fa.fa-book {
+    margin-right: 4px;
+  }
+
+  i.fa.fa-share-alt {
+    margin-right: 10px;
+  }
+
+  img {
+    margin-right: 6px;
+  }
+  @media #{$phone} {
+    .fa {
+      height: 12px;
+      display: block;
+      margin-bottom: 18px;
+    }
+    .reflection-link {
+      margin-top: 0px !important;
+      small {
+        margin-top: 2px !important;
+      }
+    }
+  }
+}
+
+.surah-actions {
+  .dropdown-menu {
+    width: 300px;
+
+    #chapters,
+    #verse-list {
+      max-height: 350px;
+      overflow: auto;
+    }
+  }
+
+  .dropdown-toggle::after {
+    position: absolute;
+    right: 12px;
+    top: 46%;
+  }
+
+  @media #{$tablet-md} {
+    .verse-dropdown,
+    .surah-dropdown {
+      position: unset;
+
+      .dropdown-menu {
+        max-height: unset;
+        position: fixed !important;
+        bottom: 0px;
+        top: -2px !important;
+        transform: unset !important;
+        z-index: $cloud - 100;
+      }
+    }
+
+    .actions-row {
+      position: relative;
+    }
+  }
+}
+
+.verse,
+.line {
+  .arabic {
+    font-size: 30px;
+    line-height: normal;
+  }
+}
+
+.verse {
+  &.highlight {
+    background-color: #f5fbf7;
+    border-radius: 50px;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .word {
+    &:hover,
+    &.highlight {
+      color: $color-primary !important;
+    }
+  }
+
+  .w {
+    margin: 0 5px;
+  }
+
+  .bg-secondary {
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .translation {
+    .urdu {
+      line-height: normal;
+    }
+
+    .resource {
+      color: $color-primary;
+      &:before {
+        content: "—";
+      }
+    }
+
+    sup {
+      color: $color-primary;
+      cursor: pointer;
+    }
+
+    inline-comment {
+      color: $color-primary;
+
+      &:before {
+        content: "(";
+      }
+
+      &:after {
+        content: ")";
+      }
+    }
+
+    small {
+      a {
+        font-size: 14px;
+        color: #607d8b;
+      }
+
+      i {
+        font-size: 11px;
+        color: $color-primary;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.nav-item {
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
+}
+
+.dropdown-item.active {
+  a {
+    color: #fff;
+  }
+}
+
+#player {
+  .slider-handle {
+    background: $color-primary;
+    border: 2px solid white;
+    width: 20px;
+    height: 20px;
+    top: -4px;
+  }
+}
+
+.filter-hide {
+  display: none;
+}

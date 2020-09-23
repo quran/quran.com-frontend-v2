@@ -1,0 +1,158 @@
+body.night {
+  background: #1d1f21;
+  color: #9e9e9e;
+  .arabic {
+    color: #fff;
+  }
+
+  .btn-info {
+    background: #33312b;
+    color: white;
+  }
+
+  input {
+    background-color: #404040 !important;
+    color: white !important;
+  }
+
+  .navbar-toggler {
+    border: 1px solid white;
+  }
+
+  .theme-switch {
+    background: $primary-400;
+  }
+
+  .pagination-section {
+    .en {
+      color: white;
+    }
+    .pagy-nav {
+      span {
+        color: white;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .dropdown-toggle::after {
+    color: white;
+  }
+
+  .navbar,
+  footer,
+  .dropdown-menu,
+  .footnote,
+  .verse.highlight,
+  .popover-header,
+  .sidebar,
+  .card {
+    background: #32312c !important;
+  }
+
+  .verse .w,
+  #bismillah,
+  .ayah-number,
+  .translation .txt {
+    color: #fff;
+  }
+
+  .surah-actions,
+  .bg-info {
+    li a,
+    li,
+    h1 {
+      color: lighten(#9e9e9e, 5%);
+    }
+    background: #2d2d2d !important;
+  }
+
+  #player {
+    background: #2d2d2d !important;
+    border-top: 1px solid lighten(#2d2d2d, 5%);
+  }
+
+  .surah-actions {
+    a.font-size {
+      color: $color-primary;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .search-form {
+    border-color: #2d2d2d;
+    background-color: #32312c;
+    input {
+      background: transparent;
+    }
+  }
+
+  .top-section {
+    .search-form input {
+      background: #1c1f21;
+    }
+  }
+
+  header,
+  header.active {
+    border-color: #2d2d2d;
+    background: #32312c;
+  }
+
+  // home page
+  .chapter-list .items ul li {
+    .name {
+      color: #fff !important;
+    }
+  }
+
+  .nav-tabs .nav-link {
+    background: transparent !important;
+  }
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    border-bottom-color: #1c2022;
+  }
+
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link {
+    border-bottom-color: #1d1f21;
+  }
+
+  .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    border-bottom-color: #1d1f21;
+  }
+
+  // Sidebar
+  .right-sidebar .sidebar-head {
+    border-color: #2d2d2d;
+  }
+
+  .border-left {
+    border-left-color: #1c1f21 !important;
+  }
+
+  .main-menu li {
+    a {
+      border-color: #2d2d2d;
+
+      &:hover {
+        background-color: #3a3636;
+      }
+    }
+  }
+
+  .player-bar__range::-webkit-slider-thumb {
+    background: $color-primary !important;
+    border-color: $white !important;
+  }
+  .player-bar__range::-moz-range-thumb {
+    background: $color-primary !important;
+    border-color: $white !important;
+  }
+}

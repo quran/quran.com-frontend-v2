@@ -1,178 +1,35 @@
-<div id="player" data-controller="player player-manager">
-  <div class="container" >
-    <div class="audio-left-col overflow-auto">
-      <ul class="d-flex align-items-center justify-content-between">
-        <li>
-          <button class="previous-btn"><i class="fa fa-step-backward1"></i></button>
-        </li>
+<div id="player" data-controller="player player-manager" class="fixed-bottom bg-white custom-shadow">
+  <div class="container p-2">
+    <div class="row offset-md-2">
+      <div class="col-md-3 d-flex justify-content-between mt-3 order-md-0 order-1">
+        <div class="previous-btn d-flex align-items-center order-md-0 order-2">
+          <i class="fa-center-3 text-muted fa fa-step-backward c-pointer"></i>
+        </div>
 
-        <li class="play-ctrls play">
-          <button class="play-btn">
-            <i class="fa fa-play-solid d-flex align-items-center justify-content-center"></i>
-          </button>
-          <button class="pause-btn">
-            <i class="fa fa-pause d-flex align-items-center"></i>
-          </button>
-          <button class="pause-loading">
-            <i class="fa fa-spinner1 animate-spin"></i>
-          </button>
-        </li>
+        <div class="d-flex align-items-center order-md-1 order-3" style="font-size: 30px">
+          <i class="fa-center-3 text-primary fa-play-circle c-pointer play-btn"></i>
+        </div>
 
-        <li>
-          <button class="next-btn"><i class="fa fa-step-forward1"></i></button>
-        </li>
+        <div class="next-btn d-flex align-items-center order-md-2 order-4">
+          <i class="fa-center-3 text-muted fa fa-step-forward c-pointer"></i>
+        </div>
 
-        <li>
-          <button class="repeat-btn"><i class="fa fa-repeat"></i></button>
+        <div class="d-flex align-items-center order-md-3 order-5">
+          <i
+            class="fa-center-3 text-muted fa fa-link-regular c-pointer"
+            id="auto-scroll-btn"
+            data-title="<%= _t("player.scroll") %>"
+          ></i>
+        </div>
+      </div>
 
-          <div class="repeat-popover-container d-none">
-            <div class="repeat-popover-title text-center mt-1">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="repeat-popover-switch">
-                <label class="custom-control-label" for="repeat-popover-switch">
-                  <%= _t("player.repeat_title") %>
-                </label>
-              </div>
-            </div>
-
-            <div class="repeat-popover-content">
-              <div class="overlay">
-              </div>
-
-              <ul class="nav nav-pills mb-3 text-center" id="repeat-popover-pills-tab" role="tablist">
-                <li class="nav-item w-50">
-                  <a class="nav-link"
-                     id="repeat-popover-pills-single-tab"
-                     data-toggle="pill"
-                     href="#repeat-popover-pills-single-content"
-                     role="tab" aria-selected="true">
-                    <%= _t("player.repeat_single") %>
-                  </a>
-                </li>
-                <li class="nav-item w-50">
-                  <a class="nav-link"
-                     id="repeat-popover-pills-range-tab"
-                     data-toggle="pill"
-                     href="#repeat-popover-pills-range-content"
-                     role="tab" aria-selected="false">
-                    <%= _t("player.repeat_range") %>
-                  </a>
-                </li>
-              </ul>
-
-              <div class="tab-content">
-                <div id="repeat-popover-pills-single-content" class="tab-pane fade show active" role="tabpanel" aria-labelledby="repeat-popover-pills-single-tab">
-                  <div class="h6 text-muted">
-                    <%= _t("player.current_verse") %>
-                  </div>
-
-                  <select id="repeat-popover-single" class="form-control custom-select">
-                  </select>
-
-                  <span class="text-muted">
-                    <%= _t("player.repeat_times") %>
-                  </span>
-                  <select id="repeat-popover-single-repeat" class="form-control custom-select repeat-popover-repeat-value">
-                    <option value="2" selected>2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="1000"><%= _t("player.repeat_loop") %></option>
-                  </select>
-                </div>
-
-                <div id="repeat-popover-pills-range-content" class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="repeat-popover-pills-range-tab">
-                  <div class="row no-gutters">
-                    <div class="col-6 text-muted">
-                      <%= _t("player.repeat_from") %>
-                      <select id="repeat-popover-range-from" class="form-control">
-                      </select>
-                    </div>
-
-                    <div class="col-6 text-muted">
-                      <%= _t("player.repeat_to") %>
-                      <select id="repeat-popover-range-to" class="form-control custom-select">
-                      </select>
-                    </div>
-                  </div>
-
-                  <span class="text-muted">
-                    <%= _t("player.repeat_times") %>
-                  </span>
-                  <select id="repeat-popover-range-repeat" class="form-control custom-select repeat-popover-repeat-value">
-                    <option value="2" selected>2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="1000"><%= _t("player.repeat_loop") %></option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-
-        <li>
-          <button class="auto-scroll-btn" data-html="true" data-placement='top' title="<%= _t("player.scroll") %>">
-            <i class="fa fa-link"></i>
-          </button>
-        </li>
-
-        <li class="text-primary timer">00:00</li>
-
-        <li class="lg-audio">
-          <div id="player-bar">
-            <div class="progress"></div>
-          </div>
-        </li>
-
-        <li class="text-primary total-time d-none">00:00</li>
-
-        <li class="dropdown">
-          <% if false %>
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            <%= @presenter.chapter.name_complex %>
-          </a>
-
-          <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 24px, 0px); top: 0px; left: 0px; will-change: transform;">
-            <% @presenter.chapters.find_each do |chapter| %>
-            <div class="dropdown-item <%= 'active' if chapter.id == @presenter.chapter.id %>">
-              <%= link_to "#{chapter.chapter_number} #{chapter.name_simple}", chapter_path(chapter), data: {arabic: chapter.name_arabic} %>
-            </div>
-            <% end %>
-          </div>
-          <% end %>
-          <select id="chapter-select">
-            <% @presenter.chapters.find_each do |chapter| %>
-            <option value=<%= chapter.chapter_number %> data-name-simple="<%= chapter.name_simple %>" data-translated-name="<%= chapter.translated_name.name %>" data-arabic="<%= chapter.name_arabic %>" <% if chapter.id == @presenter.chapter.id %> selected='selected' <% end %>>
-              <%= chapter.chapter_number %>
-              <%= chapter.name_simple %>
-            </option>
-            <% end %>
-          </select>
-        </li>
-
-        <li class="dropdown dropdown-verse">
-          <%
-            current_verse = @presenter.paginate.first.verse_number
-            verse_i18n = t('player.current_verse')
-          %>
-
-          <select class="d-none" id="player-verse-dropdown"
-                  data-i18n-label="<%= verse_i18n %>"
-                  x-placement="bottom-start"></select>
-        </li>
-      </ul>
+      <div class="col-9 d-flex align-items-center">
+        <small class="text-primary timer mr-3 d-none">00:00</small>
+        <div id="player-bar">
+          <input type="range" min="1" max="100" step="0.1" value="0" disabled class="player-bar__range" id="player-range">
+        </div>
+        <small class="text-primary total-time ml-2 d-none">00:00</small>
+      </div>
     </div>
   </div>
 </div>

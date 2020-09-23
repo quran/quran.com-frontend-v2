@@ -1,0 +1,26 @@
+<%
+  options =  {
+      path: path,
+      method: request_method,
+      data: request_data,
+      headers: headers,
+      interval: interval,
+      retry_event: retry_event_name,
+      success_event: event_name,
+      error_event: error_event_name,
+      retry_count: retry_count,
+      error_message: error_message,
+      lazy_load: lazy_load
+  }
+
+  _html_options = html_options
+  _html_options[:class] = "render-async #{ _html_options[:class]} "
+  _html_options[:id] = container_id
+
+  _html_options[:data] = options
+  _html_options[:data][:controller] = 'render-async'
+%>
+
+<%= content_tag html_element_name, _html_options do %>
+  <%= placeholder %>
+<% end %>

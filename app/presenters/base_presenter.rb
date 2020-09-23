@@ -66,7 +66,7 @@ class BasePresenter
   end
 
   def meta_title
-    'Quran.com'
+    I18n.t('noble_quran')
   end
 
   def related_links;

@@ -9,10 +9,10 @@
 <link rel="manifest" href="<%= static_manifest_path(format: :json) %>">
 <link rel="search" type="application/opensearchdescription+xml" title="search Quran.com" href="<%= static_opensearch_path format: 'xml' %>">
 
-<link href="<%= asset_pack_url('media/images/icons/favicon.ico') %>" title="Quran.com" type="image/x-icon" rel="shortcut icon" />
-<link href="<%= asset_pack_url('media/images/icons/android-chrome-256x256.png') %>" title="Quran.com" type="image/png" rel="fluid-icon" />
-<link href="<%= asset_pack_url('media/images/icons/safari-pinned-tab.svg') %>" title="Quran.com" type="image/x-icon" rel="mask-icon" color="theme-color" />
-<link href="<%= asset_pack_url('media/images/icons/apple-touch-icon.png') %>" title="Quran.com" type="image/png" rel="apple-touch-icon" color="theme-color" />
+<link href="<%= asset_url('icons/favicon.ico') %>" title="Quran.com" type="image/x-icon" rel="shortcut icon" />
+<link href="<%= asset_url('icons/android-chrome-256x256.png') %>" title="Quran.com" type="image/png" rel="fluid-icon" />
+<link href="<%= asset_url('icons/safari-pinned-tab.svg') %>" title="Quran.com" type="image/x-icon" rel="mask-icon" color="theme-color" />
+<link href="<%= asset_url('icons/apple-touch-icon.png') %>" title="Quran.com" type="image/png" rel="apple-touch-icon" color="theme-color" />
 
 <%
   set_meta_tags @presenter.open_graph_hash
@@ -62,3 +62,5 @@
         }
     });
 </script>
+
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6%2CPromise%2Csmoothscroll%2Cdefault%2Ces2015%2Ces2018%2Cfetch%2CMutationObserver%2CIntersectionObserver%2CIntersectionObserverEntry&flags=gated"></script>

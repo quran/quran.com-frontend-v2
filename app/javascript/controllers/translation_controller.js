@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 var PRE_DEFINED_FOOTNOTES = {
   sg: "Singular",
@@ -18,12 +19,21 @@ export default class extends Controller {
 
     foodnotes.click(e => {
       e.preventDefault();
+      e.stopImmediatePropagation();
+
       let target = e.target;
 
       let id = target.getAttribute("foot_note");
 
       if (id && id.length > 0) {
-        $.rails.ajax(`/foot_note/${id}`);
+        fetch(`/foot_note/${id}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+        .then(resp => resp.text())
+        .then(script => {
+          const scriptTag = document.createElement('script');
+          scriptTag.innerText = script;
+
+          document.body.append(scriptTag);
+        });
       }
     });
 
@@ -31,12 +41,15 @@ export default class extends Controller {
       let text = dom.innerText.replace(" ", "");
 
       if (PRE_DEFINED_FOOTNOTES[text]) {
-        $(dom).tooltip({ title: PRE_DEFINED_FOOTNOTES[text], html: true });
+        new Tooltip(dom, {
+          title: PRE_DEFINED_FOOTNOTES[text],
+          html: true,
+          direction: "top",
+          sanitize: false,
+        });
       }
     });
   }
 
-  disconnect() {
-    this.el.find("sup").tooltip("dispose");
-  }
+  disconnect() {}
 }

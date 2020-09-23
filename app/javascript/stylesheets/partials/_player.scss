@@ -1,6 +1,70 @@
 #player {
+  #player-bar {
+    width: 100%;
+  }
   .mleft {
     margin-left: 2px;
+  }
+  .play-btn{
+    height: 40px;
+  }
+  
+  .player-bar__range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .player-bar__range::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }
+  
+  .player-bar__range:hover {
+    opacity: 1;
+  }
+  
+  .player-bar__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: $color-primary;
+    cursor: pointer;
+    border: 4px solid $color-primary;
+  }
+  
+  .player-bar__range::-moz-range-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: $white;
+    cursor: pointer;
+    border: 4px solid $color-primary;
+  }
+
+  .player-bar__range::-ms-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: $white;
+    cursor: pointer;
+    border: 4px solid $color-primary;
   }
 
   @media (max-width: 767px) {

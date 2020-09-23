@@ -7,18 +7,16 @@
 // </div>
 
 import { Controller } from "stimulus";
+import Modal from "bootstrap/js/src/modal";
 
 export default class extends Controller {
   connect() {
-    $(this.element).on("click", e => {
-      if ($(e.target).hasClass("disabled")) return;
-
+    this.element.addEventListener("click", e => {
       this.loadModal(e);
     });
   }
 
   loadModal(e) {
-    var that = this;
     e.preventDefault();
     e.stopImmediatePropagation();
 
@@ -34,56 +32,67 @@ export default class extends Controller {
         .remove();
     });
 
-    $.get(url, data => {})
-      .done(content => {
+    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+      .then(resp => resp.text())
+      .then(content => {
         const response = $("<div>").html(content);
         const responseBody = response.find("#body");
-        that.dialog.find("#modal-title").html(response.find("#title").html());
-        that.dialog.find("#modal-body").html(response.find("#modal").html());
+
+        document.getElementById("modal-title").innerHTML = response
+          .find("#title")
+          .html();
+        document.getElementById("modal-body").innerHTML = response
+          .find("#modal")
+          .html();
       })
-      .fail(err => {
+      .catch(err => {
         //TODO: show error
       });
   }
 
   createModel(classes) {
-    if ($(".modal").length > 0) {
-      $(".modal").remove();
-      $(".modal-backdrop").remove();
-    }
+    this.removeModal("#ajax-modal");
 
     let modal = `
-        <div class="modal" tabindex="-1" role="dialog" id="ajax-modal">
-  <div class='modal-dialog ${classes}' role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal-title">Loading</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div id="modal-body">
-      <div class="modal-body" id="modal-body">
-        <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
-      </div>
-        <div class="modal-footer" id="modal-footer">
-          <a data-dismiss="modal" class="btn btn-secondary" href="#">Close</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Loading</h5>
+              <a class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="fa fa-times fa-center"></span>
+              </a>
+            </div>
+            <div class="modal-body" id="modal-body">
+              <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>`;
 
-    this.dialog = $(modal);
-    this.dialog.appendTo("body");
+    let ajaxModal = document.createElement("div");
+    ajaxModal.classList.add("modal");
+    ajaxModal.id = "ajax-modal";
+    ajaxModal.innerHTML = modal;
+    document.body.append(ajaxModal);
 
-    $("#ajax-modal").on("hidden.bs.modal", function(e) {
-      $("#ajax-modal")
-        .empty()
-        .remove();
+    ajaxModal.addEventListener("hidden.bs.modal", () => {
+      this.removeModal(ajaxModal);
     });
 
-    this.dialog.modal({ backdrop: "static" });
+    this.dialog = new Modal(ajaxModal, { backdrop: "static" });
+    this.dialog.show();
+  }
+
+  removeModal() {
+    let modal = document.getElementById("ajax-modal");
+    if (modal) {
+      // can also use dom.remove, but parentNode.removeChild
+      document.body.removeChild(modal);
+
+      let backdrop = document.getElementsByClassName("modal-backdrop");
+      if (backdrop && backdrop.length > 0) document.body.removeChild(backdrop[0]);
+    }
   }
 }

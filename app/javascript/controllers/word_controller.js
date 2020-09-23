@@ -7,36 +7,39 @@
 // </div>
 
 import { Controller } from "stimulus";
+import Tooltip from "bootstrap/js/src/tooltip";
+import LocalStore from "../utility/local-store";
 
 export default class extends Controller {
   connect() {
-    let el = $(this.element);
-    let setting = document.body.setting;
+    let el = this.element;
+    const store = new LocalStore();
+    const dataset = el.dataset;
 
-    el.tooltip({
+    el.tooltip = new Tooltip(el, {
       trigger: "hover",
       placement: "top",
       html: true,
+      sanitize: false,
       template:
-        "<div class='tooltip' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>",
-      title: function(w) {
-        let word = $(this);
+        "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
+      title: () => {
+        const local = dataset.local;
+        const tooltip = document.body.setting.get('tooltip');
 
-        const local = word.data("local");
-        const tooltip = setting.getTooltipType();
-        const text = word.data(tooltip);
+        const text = dataset[tooltip];
         return `<div class='${local}'>${text}</div>`;
       }
     });
 
-    el.on("dblclick", e => {
+    el.addEventListener("dblclick", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
       this.dbClick(e);
     });
 
-    el.on("click", e => {
+    el.addEventListener("click", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
@@ -47,14 +50,15 @@ export default class extends Controller {
   }
 
   play() {
-    GoogleAnalytic.trackEvent("Play Word", "Play", this.el.data("key"), 1);
+    let data = this.element.dataset;
+    GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
 
     let player,
       playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
     if (player) {
-      return player.playWord(this.el.data("audio"));
+      return player.playWord(data.audio);
     }
   }
 
@@ -64,13 +68,13 @@ export default class extends Controller {
 
     if (playerDom) player = playerDom.player;
     if (player) {
-      return player.seekToWord(this.el.data("position"));
+      return player.seekToWord(this.el.dataset.position);
     }
   }
 
   disconnect() {
-    this.el.off("click");
-    this.el.off("dblclick");
-    this.el.tooltip("dispose");
+    this.el.removeEventListener("click", () => {});
+    this.el.removeEventListener("dblclick", () => {});
+    this.el.removeEventListener("dispose", () => {});
   }
 }

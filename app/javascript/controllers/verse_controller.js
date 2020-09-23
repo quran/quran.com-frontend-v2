@@ -8,6 +8,7 @@
 
 import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
+import Tooltip from "bootstrap/js/src/tooltip";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -51,36 +52,47 @@ const TAJWEED_RULES = [
 
 export default class extends Controller {
   connect() {
-    this.el = $(this.element);
-    this.trackActions();
+    let el = $(this.element);
+    //TODO: enable these action only for reading mode.
 
-    $(this.el)
-      .find("[data-toggle=tooltip]")
-      .tooltip();
+    this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
+      actionDom.tooltip = new Tooltip(actionDom, {
+        trigger: "hover",
+        placement: "right",
+        html: true,
+        sanitize: false,
+        template:
+          "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
+        title: () => {
+          const locale = window.locale;
+          return `<div class='${locale}'>${actionDom.dataset.title}</div>`;
+        }
+      });
+    });
 
-    let copyDom = this.el.find(".copy");
+    let copyDom = this.element.querySelector(".copy");
 
-    copyDom.click(e => {
+    copyDom && copyDom.addEventListener('click', e => {
       e.preventDefault();
       this.copy();
     });
 
     this.copyDom = copyDom;
 
-    this.playButton = this.el.find(".play-verse");
+    let playButton = el.find(".ayah-action.play");
 
-    this.playButton.on("click", event => {
+    playButton.on("click", event => {
       event.preventDefault();
-      //event.stopImmediatePropagation();
+      event.stopImmediatePropagation();
 
       let player,
         playerDom = document.getElementById("player");
 
       if (playerDom) player = playerDom.player;
 
-      if (this.playButton.find(".fa").hasClass("fa-play-solid")) {
+      if (playButton.find(".fa").hasClass("fa-play-circle")) {
         if (player) {
-          return player.play(this.el.data("verseNumber"));
+          return player.play(el.data("verseNumber"));
         }
       } else {
         if (player) {
@@ -89,9 +101,11 @@ export default class extends Controller {
       }
     });
 
-    if (this.el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
       this.bindTajweedTooltip();
     }
+
+    this.el = el;
   }
 
   disconnect() {
@@ -100,36 +114,31 @@ export default class extends Controller {
   copy() {
     copyToClipboard(this.el.data("text"));
 
-    let title = this.copyDom.data("original-title");
-    let done = this.copyDom.attr("done");
+    let {title, done} = this.copyDom.dataset;
 
-    this.copyDom
-      .attr("title", done)
-      .tooltip("_fixTitle")
-      .tooltip("show");
-    this.copyDom.on("hidden.bs.tooltip", () =>
-      this.copyDom.attr("title", title).tooltip("_fixTitle")
+    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
+    this.copyDom.tooltip._fixTitle()
+
+    this.copyDom.tooltip.show();
+
+    this.copyDom.addEventListener("hidden.bs.tooltip", () => {
+        this.copyDom.setAttribute("title", title);
+        this.copyDom.tooltip._fixTitle()
+      }
     );
   }
 
-  trackActions() {
-    let key = this.el.data('key');
-
-    this.el.find('[data-tack]').on('click', (e) => {
-      const target = $(e.target)
-      const action = target.data('track');
-
-      GoogleAnalytic.trackEvent(action, "AyahAction", "Clicked", key);
-    })
-  }
-
   bindTajweedTooltip() {
-    let dom = this.el;
+    let dom = this.element;
 
     TAJWEED_RULES.forEach(name => {
-      this.el.find(`.${name}`).tooltip({
-        title: TAJWEED_RULE_DESCRIPTION[name],
-        html: true
+      dom.querySelectorAll(`.${name}`).forEach(tajweed => {
+        new Tooltip(tajweed, {
+          title: TAJWEED_RULE_DESCRIPTION[name],
+          html: true,
+          sanitize: false,
+          direction: "top"
+        });
       });
     });
   }
