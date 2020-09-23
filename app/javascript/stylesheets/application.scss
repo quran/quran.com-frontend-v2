@@ -13,7 +13,6 @@
  */
 
 @import "bootstrap-components";
-@import "bootstrap-slider.min";
 @import "extentions/extension-pace";
 @import "extentions/extension-slimscroll";
 
@@ -29,6 +28,7 @@
 @import "partials/tajweed";
 @import "partials/footnotes";
 @import "partials/share";
+@import "partials/player";
 
 @import "./pages/home";
 @import "./pages/chapter";
