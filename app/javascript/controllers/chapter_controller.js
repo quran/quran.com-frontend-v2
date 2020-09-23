@@ -133,14 +133,7 @@ export default class extends Controller {
       const scrollTime = Math.min(500, scrollLength * 10);
 
       if (bottomOffsetCheck || topOffsetCheck) {
-        $("html, body")
-          .stop(true, true)
-          .animate(
-            {
-              scrollTop: scrollLength
-            },
-            scrollTime
-          );
+        document.scrollingElement.scrollTo({top: scrollLength, behavior: 'smooth'});
       }
     }
   }

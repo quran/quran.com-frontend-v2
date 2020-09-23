@@ -146,4 +146,13 @@ body.night {
       }
     }
   }
+
+  .player-bar__range::-webkit-slider-thumb {
+    background: $color-primary !important;
+    border-color: $white !important;
+  }
+  .player-bar__range::-moz-range-thumb {
+    background: $color-primary !important;
+    border-color: $white !important;
+  }
 }

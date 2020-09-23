@@ -26,7 +26,14 @@ export default class extends Controller {
       let id = target.getAttribute("foot_note");
 
       if (id && id.length > 0) {
-        $.ajax(`/foot_note/${id}`);
+        fetch(`/foot_note/${id}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+        .then(resp => resp.text())
+        .then(script => {
+          const scriptTag = document.createElement('script');
+          scriptTag.innerText = script;
+
+          document.body.append(scriptTag);
+        });
       }
     });
 
@@ -37,7 +44,8 @@ export default class extends Controller {
         new Tooltip(dom, {
           title: PRE_DEFINED_FOOTNOTES[text],
           html: true,
-          direction: "top"
+          direction: "top",
+          sanitize: false,
         });
       }
     });

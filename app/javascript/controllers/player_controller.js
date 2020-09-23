@@ -7,17 +7,21 @@
 // </div>
 
 import { Controller } from "stimulus";
-import { Howl, Howler } from "howler";
-import Slider from "bootstrap-slider";
 import Tooltip from "bootstrap/js/src/tooltip";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
 //"https://download.quranicaudio.com/";
 // TODO: should set to false to use web audio instead, but that requires CORS
 const USE_HTML5 = false;
+let Howl, Howler;
 
 export default class extends Controller {
   connect() {
+    import("howler").then((howler) => {
+      Howl = howler.Howl;
+      Howler = howler.Howler;
+    });
+
     this.element[this.identifier] = this;
     this.settings = document.body.setting;
 
@@ -61,7 +65,7 @@ export default class extends Controller {
     const that = this;
     this.updateVerses().then(() => {
       // set first ayah track to play, if player isn't already playing any ayah
-      that.currentVerse ||= that.firstVerse;
+      that.currentVerse = that.currentVerse || that.firstVerse;
 
       // preload howl for first ayah
       that.createHowl(that.currentVerse, false);
@@ -76,7 +80,8 @@ export default class extends Controller {
     this.playWordQueue = [];
     //unload all tracks
     Howler.unload();
-    this.progressBar.destroy();
+    this.progressBar.removeEventListener(this.onProgressChange);
+    this.progressBar.disabled = true;
   }
 
   isPlaying() {
@@ -84,15 +89,7 @@ export default class extends Controller {
   }
 
   buildPlayer() {
-    let that = this;
-
-    this.progressBar = new Slider("#player #player-bar", {
-      min: 0,
-      max: 100,
-      step: 0.1,
-      value: 0,
-      enabled: false
-    });
+    this.progressBar = document.getElementById('player-range');
 
     // auto scroll component
     this.scrollButton = this.element.querySelector("#auto-scroll-btn");
@@ -101,6 +98,7 @@ export default class extends Controller {
       placement: "top",
       boundary: "window",
       html: true,
+      sanitize: false,
       title: this.scrollButton.dataset.title
     });
 
@@ -184,8 +182,8 @@ export default class extends Controller {
     verse = verse || this.currentVerse;
 
     // enable progress bar if disabled
-    this.progressBar.enable();
-    this.progressBar.setValue(0);
+    this.progressBar.disabled = false;
+    this.progressBar.value = this.progressBar.value || 0;
 
     this.chapter.removeSegmentHighlight();
     this.currentVerse = verse;
@@ -241,9 +239,8 @@ export default class extends Controller {
     });
 
     // slider
-    this.progressBar.on("change", value => {
-      this.handleProgressBarChange(value);
-    });
+    this.onProgressChange = e => this.handleProgressBarChange(e.target.value);
+    this.progressBar.addEventListener("change", this.onProgressChange);
   }
 
   handleProgressBarChange(value) {
@@ -251,7 +248,7 @@ export default class extends Controller {
     // let howler calculate duration for such files
     let duration = this.track.duration || this.track.howl.duration();
 
-    let time = (duration / 100) * value.newValue;
+    let time = (duration / 100) * value;
     this.track.howl.seek(time);
   }
 
@@ -385,7 +382,7 @@ export default class extends Controller {
       let progressPercentage =
         Math.floor((currentTime / totalDuration) * 1000) / 10;
 
-      this.progressBar.setValue(progressPercentage);
+      this.progressBar.value = progressPercentage;
 
       $("#player .timer").text(this.formatTime(currentTime));
     }, 500);
@@ -399,7 +396,7 @@ export default class extends Controller {
   }
 
   onVerseEnd() {
-    this.progressBar.setValue(0);
+    this.progressBar.value = 0;
 
     if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type

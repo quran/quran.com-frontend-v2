@@ -84,9 +84,10 @@ export default class InfinitePages {
       this._loading();
 
       const url = this.$container.find(this.options.navSelector).attr("href");
-      return (this.jqXHR = $.get(url, data => {})
-        .done(content => this._success(content))
-        .fail(err => this._error(err)));
+      return (fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+        .then(resp => resp.text())
+        .then(content => this._success(content))
+        .catch(err => this._error(err)));
     }
   }
 
@@ -102,7 +103,6 @@ export default class InfinitePages {
 
   _success(content) {
     this.options.state.loading = false;
-    this.jqXHR = null;
     this._log("New page loaded!");
     if (typeof this.options.success === "function") {
       this.options.success(content);
@@ -139,16 +139,5 @@ export default class InfinitePages {
 
   destroy() {
     this.stop();
-  }
-
-  // Abort loading of the page
-  abort() {
-    if (this.jqXHR) {
-      this.jqXHR.abort();
-      this.jqXHR = null;
-      return this._log("Page load aborted!");
-    } else {
-      return this._log("There was no request to abort");
-    }
   }
 }
