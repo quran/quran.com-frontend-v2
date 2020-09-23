@@ -27,6 +27,13 @@ export default class extends Controller {
 
       if (id && id.length > 0) {
         fetch(`/foot_note/${id}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+        .then(resp => resp.text())
+        .then(script => {
+          const scriptTag = document.createElement('script');
+          scriptTag.innerText = script;
+
+          document.body.append(scriptTag);
+        });
       }
     });
 
