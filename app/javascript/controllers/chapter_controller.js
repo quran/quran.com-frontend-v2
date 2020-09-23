@@ -9,6 +9,12 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
+  initialize() {
+    this.translationTab = document.querySelector("#pill-translation-tab");
+    this.readingTab = document.querySelector("#pill-reading-tab");
+    this.setURLState();
+  }
+
   connect() {
     const chapter = this;
     this.element[this.identifier] = chapter;
@@ -25,26 +31,27 @@ export default class extends Controller {
     // intervals for each words of current ayah
     this.segmentTimers = [];
 
-    const translationTab = document.querySelector("#pill-translation-tab");
-    const readingTab = document.querySelector("#pill-reading-tab");
-
-    translationTab.addEventListener("shown.bs.tab", e => {
+    this.translationTab.addEventListener("shown.bs.tab", e => {
+      const url = e.target.href;
+      url && this.updateURLState(url, { reading: false });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
 
-    readingTab.addEventListener("shown.bs.tab", e => {
+    this.readingTab.addEventListener("shown.bs.tab", e => {
+      const url = e.target.href;
+      url && this.updateURLState(url, { reading: true });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
 
-    translationTab.addEventListener("hidden.bs.tab", e => {
+    this.translationTab.addEventListener("hidden.bs.tab", e => {
       $(e.target.dataset.target)
         .find(".verses")
         .trigger("visibility:hidden");
     });
 
-    readingTab.addEventListener("hidden.bs.tab", e => {
+    this.readingTab.addEventListener("hidden.bs.tab", e => {
       $(e.target.dataset.target)
         .find(".verses")
         .trigger("visibility:hidden");
@@ -72,6 +79,34 @@ export default class extends Controller {
         verses.last().data("verseNumber")
       );
     }, 100);
+  }
+
+  setURLState() {
+    // set the selected tab url and state in the url, if not already there
+    const paramString = window.location.search;
+    if (paramString.includes("reading=true")) {
+      this.updateURLState(window.location.href, { reading: true });
+    } else if (paramString.includes("reading=false")) {
+      this.updateURLState(window.location.href, { reading: false });
+    } else {
+      if (this.isTranslationsMode()) {
+        this.updateURLState(this.translationTab.href, { reading: false });
+      } else if (this.isReadingMode()) {
+        this.updateURLState(this.readingTab.href, { reading: true });
+      }
+    }
+  }
+
+  isReadingMode() {
+    return this.readingTab.classList.contains("active");
+  }
+
+  isTranslationsMode() {
+    return this.translationTab.classList.contains("active");
+  }
+
+  updateURLState(url, state) {
+    window.history.pushState(state, "", url);
   }
 
   scrollToVerse(verse) {
@@ -228,19 +263,45 @@ export default class extends Controller {
   }
 
   changeFont(font) {
-    let path = this.activeTab.find(".pagination").data("url");
-    let verseList = this.activeTab;
-    const isReadingMode = false;
+    const readingUrl = `${this.readingTab.href}&font=${font}`;
+    const translationUrl = `${this.translationTab.href}&font=${font}`;
 
-    fetch(`${path}?${$.param({ font: font, reading: isReadingMode })}`)
-      .then(response => response.text())
-      .then(verses => {
-        verseList.html(
-          $(verses)
-            .find("#verses")
-            .html()
-        );
-      });
+    const readingTarget = this.readingTab.dataset.target;
+    const translationTarget = this.translationTab.dataset.target;
+
+    const readingPage = document.querySelector(readingTarget);
+    const translationPage = document.querySelector(translationTarget);
+
+    readingPage.innerHTML = this.getLazyTab(
+      readingUrl,
+      readingTarget,
+      !this.isReadingMode()
+    );
+    translationPage.innerHTML = this.getLazyTab(
+      translationUrl,
+      translationTarget,
+      !this.isTranslationsMode()
+    );
+  }
+
+  getLazyTab(url, target, lazy) {
+    const lazyParent = `{"root":"${target}"}`;
+    const id = Math.random()
+      .toString(36)
+      .substring(7);
+
+    return `<div
+              className="render-async"
+              id="render-async-${id}"
+              data-path="${url}"
+              data-method="GET"
+              data-headers="{}"
+              data-lazy-load=${lazy ? lazyParent : false}
+              data-controller="render-async">
+               <p className="text-center p-3">
+                 <i className="fa fa-spinner fa-spin"></i>
+               </p>
+            </div>`;
   }
 
   changeTranslations(newTranslationIds) {

@@ -51,10 +51,9 @@ const TAJWEED_RULES = [
 ];
 
 export default class extends Controller {
-  static targets = ["actions"];
-
   connect() {
     let el = $(this.element);
+    //TODO: enable these action only for reading mode.
 
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
@@ -73,7 +72,7 @@ export default class extends Controller {
 
     let copyDom = this.element.querySelector(".copy");
 
-    copyDom.addEventListener('click', e => {
+    copyDom && copyDom.addEventListener('click', e => {
       e.preventDefault();
       this.copy();
     });

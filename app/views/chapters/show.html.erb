@@ -1,15 +1,23 @@
+<% content_for :header do %>
+  <div class="col-2 col-md-8 align-items-center chapter-header">
+    <div class="rounded-search col-md-6">
+      <%= render 'shared/search_form', expandable: true %>
+    </div>
+  </div>
+<% end %>
+
 <div id="right-sidebar" class="sidebar slide-right border-left d-none">
   <div class="sidebar-head d-flex align-items-center justify-content-between">
     <i class="fa fa-times-circle close-sidebar close-right-sidebar"></i>
     <h6 class="mb-0 ff-b"><%= _t('settings.label') %></h6>
 
-    <button class="btn btn-primary text-white"><%= _t('settings.reset') %></button>
+    <button class="btn btn-primary text-white" id='reset-settings'><%= _t('settings.reset') %></button>
   </div>
 
   <div class="bg-faded outline" style="margin-top: -7px">
     <!--<a class="text-white"><%= _t('settings.reset') %></a>-->
 
-    <%= render_async '/settings', lazy_load: true, lazy_load: {root: '#right-sidebar'} do %>
+    <%= render_async '/settings', lazy_load: {root: '#right-sidebar'} do %>
       <p class="text-center p-3">
         <%= loading_spinner %>
       </p>
@@ -21,14 +29,6 @@
 </div>
 
 <div id="chapter-page">
-  <% content_for :header do %>
-    <div class="col-2 col-md-8 align-items-center chapter-header">
-      <div class="rounded-search col-md-6">
-        <%= render 'shared/search_form' %>
-      </div>
-    </div>
-  <% end %>
-
   <%= render 'surah_actions' %>
 
   <div
@@ -43,11 +43,11 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses" class='verses' data-controller="infinite-page">
+      <div id="verses-translation" class='verses' data-controller="infinite-page">
         <% if 'translation' == @presenter.active_tab %>
           <%= render 'verses' %>
         <% else %>
-          <%= render_async range_path(range: @presenter.range, reading: false), lazy_load: true, lazy_load: {root: '#pill-translation'} do %>
+          <%= render_async range_path(range: @presenter.range, reading: false), lazy_load: {root: '#pill-translation'} do %>
             <p class="text-center p-3">
               <%= loading_spinner %>
             </p>
@@ -61,11 +61,11 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="page" class='verses' data-controller="infinite-page">
+      <div id="verses-reading" class='verses' data-controller="infinite-page">
         <% if 'reading' == @presenter.active_tab %>
           <%= render 'verses' %>
         <% else %>
-          <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: true, lazy_load: {root: '#pill-reading'} do %>
+          <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: {root: '#pill-reading'} do %>
             <p class="text-center p-3">
               <%= loading_spinner %>
             </p>
@@ -75,7 +75,7 @@
     </div>
 
     <div class="tab-pane fade" id="pill-info" role="tabpanel" aria-labelledby="pill-info-tab">
-      <%= render_async chapter_info_path(@presenter.chapter), lazy_load: true, lazy_load: {root: '#pill-info'} do %>
+      <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
         <p class="text-center p-3">
           <%= loading_spinner %>
         </p>
