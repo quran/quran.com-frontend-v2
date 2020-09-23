@@ -409,8 +409,8 @@ DEPENDENCIES
   pronto-rubocop
   pronto-scss
   pry-rails
-  puma (~> 3.12.4)
-  puma-ngrok-tunnel
+  puma (~> 3.12.6)
+  puma-ngrok-tunnel (>= 1.0.0)
   rack-cors
   rails (~> 6.0.3.3)
   rails_real_favicon (>= 0.1.0)
