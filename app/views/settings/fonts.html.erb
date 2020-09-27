@@ -47,7 +47,6 @@
       </label>
     </div>
 
-    <% if false %>
       <div class="my-4 col-12">
         <input class="form-check-input" type="radio" name="font" value="v2" id=v2>
         <label class="form-check-label text-muted ff-m" for="v2">
@@ -61,7 +60,6 @@
           </div>
         </label>
       </div>
-    <% end %>
 
     <div class="my-4 col-12">
       <input class="form-check-input" type="radio" checked=checked name="font" value="uthmani" id=uthmani>
@@ -69,7 +67,7 @@
         <%= _t('settings.fonts.uthmani') %>
 
         <div class="arabic madani" style="font-size: 30px">
-          <%= raw verse.text_madani %>
+          <%= verse.text_uthmani %>
         </div>
       </label>
     </div>
@@ -80,7 +78,7 @@
         <%= _t('settings.fonts.indopak') %>
 
         <div class="arabic indopak" style="font-size: 30px">
-          <%= raw verse.text_indopak %>
+          <%= verse.text_indopak %>
         </div>
       </label>
     </div>

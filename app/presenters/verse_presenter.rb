@@ -39,7 +39,7 @@ class VersePresenter < BasePresenter
   end
 
   def share_text
-    verse.text_madani
+    verse.text_uthmani
   end
 
   def share_title

@@ -23,32 +23,16 @@ module QuranSearchable
 
     def as_indexed_json(options = {})
       hash = self.as_json(
-        only: [:id, :verse_key, :chapter_id],
+        only: [:id, :verse_key, :chapter_id, :text_uthmani, :text_uthmani_simple, :text_imlaei, :text_imlaei_simple, :text_indopak, :text_indopak_simple],
         methods: [:verse_path, :verse_id]
       )
 
-      # text_madani is Uthmani script
-      # text_uthmani_simple is same without harq'at
-      # text_imlaei is imlaei script
-      # text_simple is imlaei without harq'at
-      # We need to fix the naming in DB.
-      #  - text_imlaei And text_imlaei_simple
-      #  - text_uthmani And text_uthmani_simple
 
-      hash[:text_uthmani] = text_madani
-      hash[:text_uthmani_simple] = text_uthmani_simple
-
-      hash[:text_imlaei] = text_imlaei
-      hash[:text_imlaei_simple] = text_imlaei_change #text_imlaei.remove_dialectic
-
-      hash[:text_indopak] = text_indopak
-      hash[:text_indopak_simple] = text_indopak.remove_dialectic
-
-      hash[:words] = words.where.not(text_madani: nil).map do |w|
+      hash[:words] = words.where.not(text_uthmani: nil).map do |w|
         {
           id: w.id,
-          madani: w.text_madani, # uthmani script
-          simple: w.text_simple, # uthmani simple
+          madani: w.text_uthmani, # uthmani script
+          simple: w.text_uthmani_simple,
           text_imlaei: w.text_imlaei
         }
       end

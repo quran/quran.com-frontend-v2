@@ -16,7 +16,7 @@
 #
 
 class FootNote < ApiCoreRecord
-  belongs_to :resource, polymorphic: true
+  belongs_to :translation
   belongs_to :language
   belongs_to :resource_content
 end

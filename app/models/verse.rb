@@ -39,12 +39,12 @@ class Verse < ApiCoreRecord
   has_many :words
   #has_many :media_contents, as: :resource
   has_many :translations
-  has_many :audio_files, as: :resource
+  has_many :audio_files
   has_many :recitations, through: :audio_files
   has_many :roots, through: :words
 
   # For eager loading
-  has_one  :audio, class_name: 'AudioFile', as: :resource
+  has_one  :audio, class_name: 'AudioFile'
 
   default_scope { order 'verse_number asc' }
 
@@ -55,6 +55,6 @@ class Verse < ApiCoreRecord
   end
 
   def highlighted_text
-    @highlighted_text || text_madani
+    @highlighted_text || text_uthmani
   end
 end

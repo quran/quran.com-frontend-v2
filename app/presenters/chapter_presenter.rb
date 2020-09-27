@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 
 class ChapterPresenter < HomePresenter
-  WORD_TEXT_TYPES = ['code', 'code_v2', 'text_indopak', 'uthmani', 'text_imlaei', 'text_madani'].freeze
+  WORD_TEXT_TYPES = [
+    'code',
+    'v2',
+    'indopak',
+    'uthmani',
+    'imlaei'
+  ].freeze
 
   FONT_METHODS = {
     'v1' => 'code',
     'v2' => 'code_v2',
-    'uthmani' => 'text_madani',
+    'uthmani' => 'text_uthmani',
     'imlaei' => 'text_imlaei',
     'indopak' => 'text_indopak',
     'tajweed' => 'text_uthmani_tajweed',
@@ -21,7 +27,6 @@ class ChapterPresenter < HomePresenter
   def chapter
     @chapter ||= Chapter.find_using_slug(params[:id])
   end
-
 
   def active_tab
     if reading_mode?
@@ -48,12 +53,12 @@ class ChapterPresenter < HomePresenter
 
   def font_method
     return @font_method if @font_method
-
     @font_method = FONT_METHODS[font].presence || 'code'
   end
 
   def render_verse_words?
-    WORD_TEXT_TYPES.include?(font_method)
+    return @render_words if !@render_words.nil?
+    @render_words= WORD_TEXT_TYPES.include?(font)
   end
 
   def paginate
@@ -124,7 +129,7 @@ class ChapterPresenter < HomePresenter
   def total_pages
     total = (range_end - range_start) + 1
 
-    (total  / per_page).ceil
+    (total / per_page).ceil
   end
 
   def has_more_verses?
