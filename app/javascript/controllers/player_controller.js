@@ -44,7 +44,6 @@ export default class extends Controller {
       showTooltip: false,
       repeat: {
         verse: null,
-        enabled: this.settings.get("repeatEnabled"),
         type: this.settings.get("repeatType") || "single", // or range
         count: this.settings.get("repeatCount"), // number of time to play each ayah
         from: this.settings.get("repeatFrom"),
@@ -55,6 +54,13 @@ export default class extends Controller {
 
     this.buildPlayer();
     this.bindPlayerEvents();
+  }
+
+  updateConfig() {
+    this.config.repeat.count = this.settings.get("repeatCount");
+    this.config.repeat.type = this.settings.get("repeatType");
+    this.config.repeat.from = this.settings.get("repeatFrom");
+    this.config.repeat.to = this.settings.get("repeatTo");
   }
 
   init(chapter, firstVerse, lastVerse) {
@@ -397,9 +403,10 @@ export default class extends Controller {
 
   onVerseEnd() {
     this.progressBar.value = 0;
+    const {count, type} = this.config.repeat;
 
-    if (this.config.repeat.enabled) {
-      "single" == this.config.repeat.type
+    if (count > 0) {
+      "single" == type
         ? this.repeatSingleVerse()
         : this.repeatRangeVerses();
     } else {
@@ -413,7 +420,6 @@ export default class extends Controller {
       //  play the same verse
       this.config.repeat.iteration++;
       this.play();
-      console.log("repeating current verse", this.currentVerse);
     } else {
       this.config.repeat.iteration = 1;
 
@@ -488,6 +494,7 @@ export default class extends Controller {
         });
       },
       onplay: () => {
+        this.updateConfig();
         this.updatePlayerControls();
 
         this.onPlay();

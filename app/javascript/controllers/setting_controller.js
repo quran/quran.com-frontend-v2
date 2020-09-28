@@ -84,9 +84,10 @@ export default class extends Controller {
       nightMode: false,
       readingMode: false,
       translations: [131],
-      repeatEnabled: false,
       repeatType: "single",
       repeatCount: 1,
+      repeatFrom: null,
+      repeatTo: null,
       repeatIteration: 1,
       autoScroll: true,
       wordFontSize: {
@@ -129,6 +130,15 @@ export default class extends Controller {
     this.settings[key] = value;
     this.saveSettings();
     document.body.setting = this;
+  }
+
+  setAudioSetting(e) {
+    let value = Number(e.target.value);
+    if(e.target.type === 'checkbox') {
+        value = e.target.value === 'on' ? 'range' : 'single';
+    }
+    const setting = e.target.dataset.setting;
+    this.set(setting, value);
   }
 
   handleFontSize(e) {

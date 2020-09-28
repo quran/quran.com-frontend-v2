@@ -127,7 +127,7 @@
     </div>
 
     <div class="tab-pane fade" id="audio" role="tabpanel" aria-labelledby="audio-tab">
-      <h6 class="ff-b mt-4">Play</h6>
+      <!-- <h6 class="ff-b mt-4">Play</h6>
       <div class="dropdown pb-4 border-bottom">
         <button class="btn btn-outline-info border text-muted dropdown-toggle" type="button" id="play-dropdown" data-toggle="dropdown" aria-expanded="false">
           Countinues
@@ -138,19 +138,34 @@
           <li><a class="dropdown-item" href="#">Page</a></li>
           <li><a class="dropdown-item" href="#">Juzz</a></li>
         </ul>
-      </div>
+      </div> -->
 
-      <div class="border-bottom py-4">
+      <div>
+      <div class="py-4">
         <h6 class="ff-b">Play each verse</h6>
         <div class="row">
           <div class="col-md-6 d-flex align-items-center">
-            <input type="text" class="form-control w-50" id="play-each-verse">
+            <input type="text" class="form-control w-50" id="play-each-verse" data-setting="repeatCount" data-action="input->setting#setAudioSetting">
             <label for="play-each-verse" class="form-label mb-0 text-muted ml-2">times</label>
           </div>
         </div>
+        </div>
+        
+        <div class="py-4">
+          <h6 class="ff-b">Set a range to repeat</h6>
+          <div class="form-check d-flex align-items-center text-muted">
+            <input class="form-check-input" style="width: 28px;" type="checkbox" name="flexCheckboxDefault" id="wordpause-specifc" data-setting="repeatType" data-action="input->setting#setAudioSetting">
+            <label class="form-check-label d-flex align-items-center" for="wordpause-specifc">
+              <span class="mx-2">from</span>
+              <input type="number" class="form-control w-25" data-setting="repeatFrom" data-action="input->setting#setAudioSetting">
+              <span class="mx-2">to</span>
+              <input type="number" class="form-control w-25" data-setting="repeatTo" data-action="input->setting#setAudioSetting">
+            </label>
+          </div>
+      </div>
       </div>
 
-      <div class="py-4">
+      <!-- <div class="py-4">
         <h6 class="ff-b">Set how long to pause before playing next word</h6>
         <div class="form-check d-flex align-items-center text-muted">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="wordpause-specifc">
@@ -202,7 +217,7 @@
             Wait same duration of the verse
           </label>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
