@@ -57,10 +57,13 @@ export default class extends Controller {
   }
 
   updateConfig() {
-    this.config.repeat.count = this.settings.get("repeatCount");
-    this.config.repeat.type = this.settings.get("repeatType");
-    this.config.repeat.from = this.settings.get("repeatFrom");
-    this.config.repeat.to = this.settings.get("repeatTo");
+    const { get } = this.settings;
+    this.config.repeat = {
+      count: get('repeatCount'),
+      type: get('repeatType'),
+      from: get('repeatFrom'),
+      to: get('repeatTo'),
+    } 
   }
 
   init(chapter, firstVerse, lastVerse) {
