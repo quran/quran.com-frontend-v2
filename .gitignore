@@ -38,3 +38,11 @@ lib/tasks/download_font.rake
 /public/sitemaps
 
 /config/credentials/staging.key
+
+# macOS General
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+# specfic ._.DS_Store
+._*
