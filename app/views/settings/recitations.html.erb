@@ -4,23 +4,35 @@
   </div>
 
   <div id="recitations">
-    <% approved_recitations.each do |recitation| %>
+    <% @presenter.recitations.each do |recitation| %>
+      <% reciter_name = recitation.reciter.translated_name %>
+
       <div class="form-check my-4"
-           data-filter-tags="<%= recitation.reciter_name.downcase %> <%= recitation.style.to_s.downcase %>">
+           data-filter-tags="<%= recitation.reciter_name.downcase %> <%= reciter_name.name %> <%= recitation.style.to_s.downcase %>">
         <div>
           <input class="form-check-input" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
           <label class="form-check-label text-muted ff-r" for="recitation-<%= recitation.id %>">
-            <%= recitation.reciter_name %>
+            <span class="<%= reciter_name.language_name %>">
+              <%= reciter_name.name %>
+            </span>
+
             <% if recitation.style.present? %>
               <small class="rounded-pill bg-primary text-white p-1 style" data-style="<%= recitation.style.downcase %>"><%= recitation.style %></small>
+            <% end %>
+
+            <% if 'english' != reciter_name.language_name %>
+              <br/>
+              <small class="fs-xl">
+                <%= recitation.reciter_name %>
+              </small>
             <% end %>
           </label>
         </div>
 
-        <button class="btn btn-info d-flex align-items-center mt-2 hear-voice justify-content-between px-2">
+        <!--<button class="btn btn-info d-flex align-items-center mt-2 hear-voice justify-content-between px-2">
           <i class="fa fa-play fa-center-2"></i>
           Hear the Voice
-        </button>
+        </button>-->
       </div>
     <% end %>
   </div>

@@ -1,7 +1,7 @@
 require 'elasticsearch/model'
 
 module QuranSearchable
-  TRANSLATION_LANGUAGES = Language.where(id: Translation.select('DISTINCT(language_id)').map(&:language_id).uniq)
+  TRANSLATION_LANGUAGES = Language.with_translations
   TRANSLATION_LANGUAGE_CODES = TRANSLATION_LANGUAGES.pluck(:iso_code) + ['default']
   VERSE_TEXTS_ATTRIBUTES = [:text_uthmani, :text_uthmani_simple, :text_imlaei, :text_imlaei_simple, :text_indopak, :text_indopak_simple]
   DEFAULT_TRANSLATIONS = [131, 149] # Translation we'll always search, regardless of language of queried text

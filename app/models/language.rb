@@ -15,8 +15,10 @@
 #
 
 class Language < ApiCoreRecord
+  include NameTranslateable
+
   serialize :es_indexes
-  has_many :translated_names, as: :resource
+  scope :with_translations, -> {where 'translations_count > 0'}
 
   class << self
     def default

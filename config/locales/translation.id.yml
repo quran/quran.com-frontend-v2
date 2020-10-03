@@ -55,6 +55,9 @@ id:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
+      one:
+      other:
   verses:
     media: "Lihat kuliah dari %{from}
 
@@ -131,11 +134,11 @@ id:
       Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
-    mobile_apps: Aplikasi Ponsel
     navigate: Telusuri
     legacy_site: Quran.com versi lama
     blog: Blog
     forum: Forum
+    mobile_apps: Aplikasi Ponsel
   juz: Juz
   click_here: Klik disini
   download: Download

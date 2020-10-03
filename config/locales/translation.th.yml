@@ -62,6 +62,9 @@ th:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
+      one:
+      other:
   verses:
     media: ดูวิดีโออรรถาธิบายจาก %{from}
     go: ไปยังอายะห์
@@ -136,11 +139,11 @@ th:
       Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
       ศึกษา และเรียนรู้อัลกุรอานเป็นเรื่องง่ายสำหรับทุกคน.
     rights: สงวนลิขสิทธิ์
-    mobile_apps: แอปพลิเคชันมือถือ
     navigate: นำทาง
     legacy_site: Quran.com เวอร์ชั่นเก่า
     blog: บล็อก
     forum: ฟอรัม
+    mobile_apps: แอปพลิเคชันมือถือ
   juz: ญุซ
   click_here: คลิกที่นี่
   download: ดาวน์โหลด

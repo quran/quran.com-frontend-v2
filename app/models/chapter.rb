@@ -21,15 +21,10 @@
 class Chapter < ApiCoreRecord
   include Slugable
   include QuranNavigationSearchable
+  include NameTranslateable
 
   has_many :verses
   has_many :chapter_infos
-  has_many :slugs
-
-  has_many :translated_names, as: :resource
-
-  # For eager loading
-  has_one :translated_name, as: :resource
 
   serialize :pages
 

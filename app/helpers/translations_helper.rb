@@ -6,7 +6,7 @@ module TranslationsHelper
   end
 
   def available_locales
-    keys = [:en, :ur, :ar, :"bn-BD", :fa, :fr, :id, :it, :nl, :"pt-BR", :sq, :th, :tr]
+    keys = [:en, :ur, :ar, :"bn-BD", :fa, :hi, :fr, :id, :it, :nl, :"pt-BR", :sq, :th, :tr]
     locales = I18n.backend.send(:translations)
 
     keys.map do |key|

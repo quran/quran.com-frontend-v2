@@ -51,14 +51,17 @@ ar:
     reset: أرجع الإعدادات الى الوضع الافتراضي
     font_type: إختر الخط
     sample_audio: شغّل عينة
-    display:
-    audio:
+    display: إعدادات العرض
+    audio: إعدادات الصوت
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: نص التجويد
+      uthmani: النص العثماني
+      qcf_v1: مجمع الملك فهد الإصدار ١
+      qcf_v2: مجمع الملك فهد الإصدار ٢
+      indopak: نص الأوردو
+    translation_count:
+      one:
+      other:
   verses:
     media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية
@@ -86,11 +89,11 @@ ar:
       label: نسخ
       done: تم النسخ!
     share: شارك الآية
-    addNote: أضف ملاحظة
+    addNote: اضف ملاحظة
     tafsir:
       label: تفاسير
       select: اختر التفسير
-    quran_reflect: إقرأ تأمّلات لهذه الآية على تأمّل القرآن
+    quran_reflect: إقرأ تأمّلات لهذه الآية على "Quran Reflect"
   search:
     placeholder: البحث عن سورة "نوح"
     result: "%{from} - %{to} من <span>{total}</span> نتائج البحث لـ: <span>{query}</span>"
@@ -134,11 +137,11 @@ ar:
       ودراسة وتدبر القرآن الكريم. للقرآن الكريم أسماء كثيرة من ضمنها القرآن، الكتاب،
       الفرقان، الموعظة، الذكر، و النور.
     rights: كل الحقوق محفوظة
-    mobile_apps: تطبيقات الهاتف
     navigate: التنقل
     legacy_site: موقع quran.com القديم
     blog: مدونة
     forum: المنتدى
+    mobile_apps: تطبيقات الهاتف
   juz: الجزء
   click_here: أنقر هنا
   download: تحميل

@@ -70,6 +70,9 @@ pt-BR:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
+      one:
+      other:
   verses:
     media: Assistir comentário do vídeo a partir de %{from}
     go: Vá para o verso
@@ -144,11 +147,11 @@ pt-BR:
       Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
       conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
     rights: Todos os direitos reservados
-    mobile_apps: Aplicativos móveis
     navigate: Navegar
     legacy_site: Questões Legais Quran.com
     blog: Blog
     forum: Fórum
+    mobile_apps: Aplicativos móveis
   juz: Juz
   click_here: Clique aqui
   download: baixar

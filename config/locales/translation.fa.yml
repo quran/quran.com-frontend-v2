@@ -14,10 +14,17 @@ fa:
       به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
       کند. Quran.com با جاوا اسکریپت فعال بهترین کار می کند. برای اطلاعات بیشتر در
       مورد نحوه فعال کردن جاوا اسکریپت
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
-    format: "%{attribute} %{message}"
+    unavailable_session: |-
+      جلسه٪ {id} دیگر در حافظه موجود نیست.
+
+       اگر اتفاقاً روی یک سرور چند پردازشی (مانند Unicorn یا Puma) اجرا می شوید ، این فرآیند را انجام می دهید
+       این درخواست٪٪ id را در حافظه ذخیره نمی کند.  در نظر گرفتن تعداد
+       پردازش ها / کارگران را به یک (1) یا با استفاده از یک سرور متفاوت در حال توسعه است.
+    unacceptable_request: نسخه پشتیبانی شده در سرصفحه تایید انتظار می رود.
+    connection_refused: |-
+      اوه!  اتصال به میان افزار Web Console انجام نشد.
+       لطفا مطمئن شوید که یک سرور توسعه ریل در حال اجرا است.
+    format: "%{attribute} %{message}\n"
   local: انگلیسی
   site_local: زبان سایت
   change_local: زبانی را که می خواهید سایت در آن نمایش داده شود را انتخاب کنید
@@ -25,11 +32,11 @@ fa:
   language: زبان
   settings:
     label: تنظیمات
-    chapters: سوره
-    reciters: Reciters
-    translations: ترجمه ها
+    chapters: سوره را انتخاب کنید
+    reciters: قاریان را انتخاب کنید
+    translations: ترجمه ها را انتخاب كنيد
     remove_all: همه را حذف کنید
-    translation_english: فارسی
+    translation_english: "انگليسي "
     translation_other: زبان های دیگر
     font_size:
       label: اندازه فونت
@@ -43,17 +50,20 @@ fa:
       label: حالت شب
       day_tip: به حالت روز تغییر دهید
       night_tip: به حالت شبانه بروید
-    reset: تنظیم مجدد تنظیم کنید
-    font_type:
-    sample_audio:
-    display:
-    audio:
+    reset: تنظیم مجدد را تنظیم کنید
+    font_type: قلم را انتخاب کنید
+    sample_audio: نمونه بازی کنید
+    display: تنظیمات نمایشگر
+    audio: تنظیمات صدا
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: متن تجوید
+      uthmani: متن عثمانی
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: متن ایندوپاک
+    translation_count:
+      one:
+      other:
   verses:
     media: تماشای تفسیر ویدیویی از %{from}
     go: برو به آیه
@@ -75,22 +85,22 @@ fa:
     play: بازی
     pause: مکث کنید
     bookmark:
-      label: نشانک
+      label: نشانه گذاری
       done: نشانه گذاری شده
     copy:
       label: کپی
       done: کپی شد!
-    share: آیه را به اشتراک بگذار
+    share: اشتراک گذاری
     addNote: یادداشت را اضافه کنید
     tafsir:
       label: تفسیرها
       select: تفسیر را انتخاب کنید
-    quran_reflect:
+    quran_reflect: تأملات این آیه را در QuranReflect بخوانید
   search:
     placeholder: جستجو کردن
     result: "%{to}%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>\n"
     error: متأسفیم ، در جستجوی شما خطایی روی داد.
-    no_query: جستجوی جستجو وجود ندارد
+    no_query: جستجو وجود ندارد
     no_result: نتیجه ای پیدا نشد.
     popular: جستجوهای محبوب
     ayatul_kursi: آیت الكرسی
@@ -99,7 +109,7 @@ fa:
     ar_rahman: سوره رحمان
     al_waqiah: سوره واقیه
     al_kahf: سوره کهف
-    al_muzammil: سوره معظمیل
+    al_muzammil: سوره مزمل
     label: جستجو کردن
   player:
     current_verse: آیه
@@ -112,7 +122,7 @@ fa:
     repeat_to: به
     repeat_times: بار
     repeat_loop: حلقه
-    scroll: به صورت خودکار به ayah در حال پخش پیمایش می شود
+    scroll: به صورت خودکار به آيه در حال پخش پیمایش می شود
   loading: در حال بارگذاری...
   nav:
     title: قرآن
@@ -128,13 +138,13 @@ fa:
       Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
       به عنوان قرآن شریف ، القرآن ، قرآن کریم ، قرآن نیز شناخته می شود).
     rights: کلیه حقوق محفوظ است
-    mobile_apps: برنامه های موبایل
     navigate: حرکت کنید
     legacy_site: "Legacy Quran.com
 
       "
     blog: وبلاگ
     forum: انجمن
+    mobile_apps: برنامه های موبایل
   juz: جوز
   click_here: اینجا کلیک کنید
   download: دانلود
@@ -154,4 +164,4 @@ fa:
     reading: خواندن
     translation: ترجمه ها
     info: اطلاعات مربوط به فصل
-  share_ayah:
+  share_ayah: نشر آيه

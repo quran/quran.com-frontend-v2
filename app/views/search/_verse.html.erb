@@ -1,4 +1,4 @@
-<% show_translations = @presenter.render_translations?(verse) %>
+<% show_translations = verse.translations[0] %>
 
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
   <div class="row">
@@ -8,7 +8,7 @@
           <%= link_to verse.verse_key,
                       "/#{verse.chapter_id}/#{verse.verse_number}#{@presenter.params_for_verse_link(verse)}",
                       class: 'ayah-badge', target: :blank,
-                      data: {controller: 'track', name: 'search-page', category: verse.verse_key }
+                      data: {controller: 'track', name: 'search-page', category: verse.verse_key}
           %>
          </span>
       </div>
@@ -25,7 +25,7 @@
     <div class="row translations">
       <div class="col-12">
         <div class="translation">
-          <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translations %>
+          <%= render partial: 'translation', collection: verse.translations, as: :translations %>
         </div>
       </div>
     </div>

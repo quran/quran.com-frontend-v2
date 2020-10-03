@@ -3,13 +3,12 @@
 class AudioPresenter < BasePresenter
   def initialize(context)
     super context
-    @verses = load_verses
   end
 
   def data
     json = {}
 
-    @verses.each do |verse|
+    load_verses.each do |verse|
       audio = verse.audio
 
       json[verse.verse_number] = {
@@ -27,7 +26,7 @@ class AudioPresenter < BasePresenter
   def load_verses
     Verse
       .eager_load(:audio)
-      .where(chapter_id: chapter_id, audio_files: { recitation_id: recitation_id })
+      .where(chapter_id: chapter_id, audio_files: {recitation_id: recitation_id})
       .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
   end
 
@@ -49,12 +48,10 @@ class AudioPresenter < BasePresenter
 
   def recitation_id
     # 7 is default recitation
-
-    recitation = (
-    params[:recitation].presence || DEFAULT_RECITATION
-  ).to_i
-
-    recitation
+    strong_memoize :recitation do
+      recitation = params[:recitation].presence || session[:recitation].presence || DEFAULT_RECITATION
+      session[:recitation] = recitation
+    end
   end
 
   def chapter_id

@@ -55,6 +55,9 @@ bn-BD:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
+      one:
+      other:
   verses:
     media: "%{from} এর ভিডিও মন্তব্য দেখুন"
     go: শ্লোক যান
@@ -141,11 +144,11 @@ bn-BD:
       কুরআন ডট কম কুরআন পড়ার এবং অধ্যয়নের জন্য একটি প্রো বোন প্রকল্প
       (এটি নোবেল কুরআন, আল কুরআন, পবিত্র কোরআন, কোরান হিসাবেও পরিচিত)।
     rights: সমস্ত অধিকার সংরক্ষিত
-    mobile_apps: মোবাইল অ্যাপস
     navigate: নেভিগেট করুন
     legacy_site: লিগ্যাসি কুরআন
     blog: ব্লগ
     forum: ফোরাম
+    mobile_apps: মোবাইল অ্যাপস
   juz: পারার
   click_here: এখানে ক্লিক করুন
   download: ডাউনলোড

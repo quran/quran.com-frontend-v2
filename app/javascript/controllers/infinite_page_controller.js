@@ -10,7 +10,7 @@ export default class extends Controller {
     if (context) context = $(context);
     else context = window;
 
-    const itemsContainer = $(`#${containerId}`);
+    const itemsContainer = $(el.data("items-container") || `#${containerId}`);
 
     const plugin = new InfinitePages(itemsContainer, {
       debug: false,

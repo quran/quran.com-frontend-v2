@@ -90,7 +90,7 @@
     <div class="col-md-11">
       <div class="translation">
         <% if @presenter.render_translations? %>
-          <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translation %>
+          <%= render partial: 'translation', collection: verse.translations, as: :translation %>
         <% end %>
       </div>
     </div>

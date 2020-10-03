@@ -1,5 +1,5 @@
 <style>
-<% font_ids(verses).each do |i| %>
+  <% font_ids(verses).each do |i| %>
   @font-face {
     font-family: 'p<%= i %>-v2';
     src: local(QCF200<%=i%>),
@@ -16,12 +16,13 @@
     font-display: swap;
   }
 
-  .p<%= i %>-v2{
+  .p<%= i %>-v2 {
     font-family: 'p<%=i%>-v2';
   }
 
-  .p<%= i %>-v1{
+  .p<%= i %>-v1 {
     font-family: 'p<%=i%>-v1';
   }
-<% end %>
+
+  <% end %>
 </style>
