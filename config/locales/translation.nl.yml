@@ -53,6 +53,7 @@ nl:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
   verses:
     media: Bekijk video commentaar van %{from}
     go: Ga naar vers
@@ -131,11 +132,11 @@ nl:
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
     rights: Alle rechten voorbehouden
-    mobile_apps: Mobiele apps
     navigate: Navigeren
     legacy_site: Legacy Quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Mobiele apps
   juz: Juz
   click_here: Klik hier
   download: te downloaden

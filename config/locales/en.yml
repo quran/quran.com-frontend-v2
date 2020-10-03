@@ -18,6 +18,7 @@ en:
     reciters: Choose Reciters
     sample_audio: Play Sample
     translations: Choose Translations
+    translation_count: "Showing %{number} translations"
     remove_all: Remove all
     translation_english: English
     translation_other: Other Languages

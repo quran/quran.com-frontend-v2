@@ -1,3 +1,5 @@
+<% reciter = @presenter.selected_reciter %>
+
 <div class="right-sidebar px-4 py-4 border-left" id="main-right-sidebar" data-controller="settings">
   <div class="d-flex justify-content-between pt-2 align-items-center">
     <h6 class="mb-0 ff-b">
@@ -36,7 +38,9 @@
   <div class="row bg-info p-3 border mt-5 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#translations-sidebar" data-close=".close-translations-sidebar">
     <div class="col-11">
       <h6 class="mb-0 ff-b"><%= _t('settings.translations') %></h6>
-      <small class="mb-0 text-muted">Sahih International</small>
+      <span class="mb-0 text-muted fs-sm">
+        <%= _t('settings.translation_count', number: 22) %>
+      </span>
     </div>
 
     <div class="col-1">
@@ -47,7 +51,9 @@
   <div class="row bg-info p-3 border mt-3 rounded align-items-center c-pointer" data-controller="sidebar" data-is-child=true data-target="#reciters-sidebar" data-close=".close-reciters-sidebar">
     <div class="col-11">
       <h6 class="mb-0 ff-b"><%= _t('settings.reciters') %></h6>
-      <small class="mb-0 text-muted">Mishari Rashid al-`Afasy</small>
+      <span class="mb-0 text-muted fs-sm <%= reciter.language_name %>">
+         <%= reciter.name %>
+      </span>
     </div>
 
     <div class="col-1">

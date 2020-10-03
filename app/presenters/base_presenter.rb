@@ -147,4 +147,15 @@ class BasePresenter
       end
     end
   end
+
+  def eager_load_translated_name(records)
+    defaults = records.where(
+      translated_names: {language_id: Language.default.id}
+    )
+
+    records
+      .where(
+        translated_names: {language_id: language}
+      ).or(defaults).order('translated_names.language_priority DESC')
+  end
 end

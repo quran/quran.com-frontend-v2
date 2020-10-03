@@ -34,10 +34,6 @@ module ChaptersHelper
     end
   end
 
-  def approved_recitations
-    Recitation.approved.select(:id, :reciter_name, :style)
-  end
-
   def font_ids(verses)
     verses.map(&:page_number).uniq
   end

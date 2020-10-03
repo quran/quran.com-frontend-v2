@@ -51,6 +51,7 @@ sq:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
   verses:
     media:
     go: Shkoni në vargje
@@ -78,7 +79,7 @@ sq:
       label: Copiar
       done: Copiado!
     share: Ndani ajetin
-    addNote:
+    addNote: Adcionar uma nota
     tafsir:
       label: Tafsirs
       select: Zgjidhni Tafsir
@@ -127,11 +128,11 @@ sq:
       emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       dhe Al-Noor.
     rights: Të gjitha të drejtat e rezervuara
-    mobile_apps: Aplikacione celulare
     navigate: Navigate
     legacy_site: Trashëgimia quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Aplikacione celulare
   juz: Juz
   click_here: Kliko këtu
   download: Shkarko

@@ -23,7 +23,9 @@ tr:
   settings:
     label: Ayarlar
     chapters: Sure Seç
-    reciters: reciters
+    reciters: "Okuyucular seçin
+
+      "
     translations: Çeviriler
     remove_all: Hepsini kaldır
     translation_english: Türkçe
@@ -51,6 +53,7 @@ tr:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
   verses:
     media:
     go: Sonraki ayet
@@ -129,11 +132,11 @@ tr:
       Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
       birçok isme sahiptir.
     rights: Tüm hakları Saklıdır
-    mobile_apps: Mobil uygulamalar
     navigate: Gezin
     legacy_site: Eski Quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Mobil uygulamalar
   juz: Cüz
   click_here: Buraya Tıkla
   download: İndir

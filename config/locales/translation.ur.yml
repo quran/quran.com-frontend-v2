@@ -61,6 +61,7 @@ ur:
       qcf_v1: QCF v1 فونٹ
       qcf_v2: QCF v2 فونٹ
       indopak: انڈوپاک مصحف
+    translation_count: آپ %{number} ترجمے پڑھ رہے ہیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں
@@ -138,11 +139,11 @@ ur:
       کرتے ہیں کہ ہر ایک کے لئے نوبل قرآن کو پڑھنے ، مطالعہ کرنے اور سیکھنے میں آسانی
       ہوگی۔
     rights: جملہ حقوق محفوظ ہیں
-    mobile_apps: موبائل ایپ
     navigate: تشریف لے جائیں
     legacy_site: پرانی سائٹ
     blog: بلاگ
     forum: فورم
+    mobile_apps: موبائل ایپ
   juz: سپارے
   click_here: یہاں کلک کریں
   download: ڈاؤن لوڈ کریں

@@ -1,5 +1,6 @@
 class SettingsController < ApplicationController
   def show
+    @presenter = AudioPresenter.new(self)
     render layout: false
   end
 
@@ -8,6 +9,8 @@ class SettingsController < ApplicationController
   end
 
   def recitations
+    @presenter = AudioPresenter.new(self)
+
     render layout: false
   end
 

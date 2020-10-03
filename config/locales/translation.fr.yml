@@ -62,6 +62,7 @@ fr:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
   verses:
     media: Regarder les commentaires de la vidéo depuis %{from}
     go: Aller au verset
@@ -140,11 +141,11 @@ fr:
       Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
       Quran, Koran) est un projet à but non-lucratif.
     rights: Tous droits réservés
-    mobile_apps: Applications Mobile
     navigate: Naviguer
     legacy_site: Version précédente de Quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Applications Mobile
   juz: Juz
   click_here: Cliquez ici
   download: Télécharger

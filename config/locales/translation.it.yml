@@ -54,6 +54,7 @@ it:
       qcf_v1:
       qcf_v2:
       indopak:
+    translation_count:
   verses:
     media: Guarda il commento video di %{from}
     go: Vai al verso
@@ -130,11 +131,11 @@ it:
       Quran.com è un progetto pro bono per la lettura e lo studio del
       Corano (noto anche come The Noble Quran, Al Quran, Holy Quran, Koran).
     rights: Tutti i diritti riservati
-    mobile_apps: App mobili
     navigate: Navigare
     legacy_site: Legacy Quran.com
     blog: blog
     forum: Forum
+    mobile_apps: App mobili
   juz: Juz
   click_here: clicca qui
   download: Scarica
