@@ -63,6 +63,8 @@ th:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: ดูวิดีโออรรถาธิบายจาก %{from}
     go: ไปยังอายะห์

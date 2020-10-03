@@ -5,17 +5,6 @@ class AudioPresenter < BasePresenter
     super context
   end
 
-  def selected_reciter
-    load_recitations
-      .find(recitation_id)
-      .reciter
-      .translated_name
-  end
-
-  def recitations
-    load_recitations
-  end
-
   def data
     json = {}
 
@@ -67,13 +56,5 @@ class AudioPresenter < BasePresenter
 
   def chapter_id
     params[:chapter] || params[:chapter_id]
-  end
-
-  def load_recitations
-    list = Recitation
-             .eager_load(reciter: :translated_name)
-             .approved
-
-    eager_load_translated_name(list)
   end
 end

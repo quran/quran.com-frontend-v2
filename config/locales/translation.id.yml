@@ -56,6 +56,8 @@ id:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: "Lihat kuliah dari %{from}
 

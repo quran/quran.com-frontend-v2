@@ -1,6 +1,7 @@
 class SettingsController < ApplicationController
+  before_action :init_presenter
+
   def show
-    @presenter = AudioPresenter.new(self)
     render layout: false
   end
 
@@ -9,12 +10,14 @@ class SettingsController < ApplicationController
   end
 
   def recitations
-    @presenter = AudioPresenter.new(self)
-
     render layout: false
   end
 
   def fonts
     render layout: false
+  end
+
+  def init_presenter
+    @presenter = SettingPresenter.new(self)
   end
 end

@@ -63,6 +63,8 @@ fr:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: Regarder les commentaires de la vidéo depuis %{from}
     go: Aller au verset

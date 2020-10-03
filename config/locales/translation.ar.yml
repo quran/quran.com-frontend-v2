@@ -60,6 +60,8 @@ ar:
       qcf_v2: مجمع الملك فهد الإصدار ٢
       indopak: نص الأوردو
     translation_count:
+      one:
+      other:
   verses:
     media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية

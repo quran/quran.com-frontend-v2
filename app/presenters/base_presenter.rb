@@ -117,31 +117,28 @@ class BasePresenter
 
   def valid_translations
     strong_memoize :valid_translations do
-      translations = (
+      saved = (
       params[:translations].presence ||
         params[:translations].presence ||
         session[:translations].presence || DEFAULT_TRANSLATION
       )
 
-      if translations.is_a?(String)
-        translations = translations.to_s.split(',')
-      end
-
-      if 'no' == translations
+      if 'no' == saved || saved.blank?
         context.session[:translations] = 'no'
         []
       else
+        if saved.is_a?(String)
+          saved = saved.split(',')
+        end
+
         approved_translations = ResourceContent
                                   .approved
                                   .translations
                                   .one_verse
 
+        with_ids = approved_translations.where(id: saved)
         translations = approved_translations
-                         .where(
-                           slug: translations
-                         ).or(
-          approved_translations.where(id: translations)
-        ).pluck(:id)
+                         .where(slug: saved).or(with_ids).pluck(:id)
 
         context.session[:translations] = translations
       end

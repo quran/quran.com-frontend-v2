@@ -22,7 +22,6 @@ class SearchPresenter < BasePresenter
 
   def render_translations?(verse)
     @results[verse.id][:translations].present?
-    true
   end
 
   def load_translations(verse)

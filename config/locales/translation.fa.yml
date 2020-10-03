@@ -62,6 +62,8 @@ fa:
       qcf_v2: QCF V2
       indopak: متن ایندوپاک
     translation_count:
+      one:
+      other:
   verses:
     media: تماشای تفسیر ویدیویی از %{from}
     go: برو به آیه

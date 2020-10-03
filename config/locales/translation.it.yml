@@ -55,6 +55,8 @@ it:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: Guarda il commento video di %{from}
     go: Vai al verso

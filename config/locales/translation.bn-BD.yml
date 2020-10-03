@@ -56,6 +56,8 @@ bn-BD:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: "%{from} এর ভিডিও মন্তব্য দেখুন"
     go: শ্লোক যান

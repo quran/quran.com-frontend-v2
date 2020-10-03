@@ -54,6 +54,8 @@ nl:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: Bekijk video commentaar van %{from}
     go: Ga naar vers

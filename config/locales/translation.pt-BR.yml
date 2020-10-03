@@ -71,6 +71,8 @@ pt-BR:
       qcf_v2:
       indopak:
     translation_count:
+      one:
+      other:
   verses:
     media: Assistir comentário do vídeo a partir de %{from}
     go: Vá para o verso

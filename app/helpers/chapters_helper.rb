@@ -26,14 +26,6 @@ module ChaptersHelper
     end
   end
 
-  def approved_translations
-    translations = ResourceContent.one_verse.translations.approved.order('priority ASC').pluck(:id, :name, :language_name)
-
-    translations.group_by do |trans|
-      trans[2]
-    end
-  end
-
   def font_ids(verses)
     verses.map(&:page_number).uniq
   end

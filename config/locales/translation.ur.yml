@@ -61,7 +61,9 @@ ur:
       qcf_v1: QCF v1 فونٹ
       qcf_v2: QCF v2 فونٹ
       indopak: انڈوپاک مصحف
-    translation_count: آپ %{number} ترجمے پڑھ رہے ہیں
+    translation_count:
+      one: آپ ایک ترجمہ پڑھ رہے ہیں
+      other: آپ %{count} ترجمے پڑھ رہے ہیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں
