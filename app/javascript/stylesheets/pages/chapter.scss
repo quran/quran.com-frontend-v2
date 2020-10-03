@@ -9,6 +9,12 @@
   }
 }
 
+#verses {
+  // reading/translation mode page are lazy loaded
+  // need to set min height to wrapper give for interaction observer to see this dom's presence within page
+  min-height: 50px;
+}
+
 .chapters.show {
   header {
     position: unset !important;

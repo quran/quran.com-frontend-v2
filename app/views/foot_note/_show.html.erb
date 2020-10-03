@@ -1,5 +1,5 @@
-<div class='footnote' id="<%= dom_id(@foot_note.translation) %>_footnotes">
-  <div class="bg-info rounded-lg <%= @foot_note.language_name %>">
+<div class='footnote' id="footnote-<%= @foot_note.id %>">
+  <div class="bg-info my-2 rounded-lg <%= @foot_note.language_name %>">
     <div class="alert alert-dismissible p-3" role="alert">
       <span class="text-primary ff-b h5"><%= _t('footnote') %></span>
       <a class="close" id='close-footnote' data-dismiss="alert" aria-label="Close">

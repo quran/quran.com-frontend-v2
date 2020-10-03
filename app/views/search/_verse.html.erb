@@ -25,7 +25,7 @@
     <div class="row translations">
       <div class="col-12">
         <div class="translation">
-          <%= render partial: 'translation', collection: @presenter.load_translations(verse), as: :translations %>
+          <%= render partial: 'translation', collection: verse.translations, as: :translations %>
         </div>
       </div>
     </div>

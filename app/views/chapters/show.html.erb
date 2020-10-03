@@ -15,8 +15,6 @@
   </div>
 
   <div class="bg-faded outline" style="margin-top: -7px">
-    <!--<a class="text-white"><%= _t('settings.reset') %></a>-->
-
     <%= render_async '/settings', lazy_load: {root: '#right-sidebar'} do %>
       <p class="text-center p-3">
         <%= loading_spinner %>
@@ -43,16 +41,18 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses-translation" class='verses' data-controller="infinite-page">
-        <% if 'translation' == @presenter.active_tab %>
-          <%= render 'verses' %>
-        <% else %>
-          <%= render_async range_path(range: @presenter.range, reading: false), lazy_load: {root: '#pill-translation'} do %>
-            <p class="text-center p-3">
-              <%= loading_spinner %>
-            </p>
-          <% end.html_safe %>
-        <% end %>
+      <div id="verses-translation" class='verses' data-controller="infinite-page" data-items-container="#verses-translation #verses">
+        <div id="verses">
+          <% if 'translation' == @presenter.active_tab %>
+            <%= render 'verses' %>
+          <% else %>
+            <%= render_async range_path(range: @presenter.range, reading: false), lazy_load: {root: '#pill-translation'} do %>
+              <p class="text-center p-3">
+                <%= loading_spinner %>
+              </p>
+            <% end.html_safe %>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -61,16 +61,18 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses-reading" class='verses' data-controller="infinite-page">
-        <% if 'reading' == @presenter.active_tab %>
-          <%= render 'verses' %>
-        <% else %>
-          <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: {root: '#pill-reading'} do %>
-            <p class="text-center p-3">
-              <%= loading_spinner %>
-            </p>
-          <% end.html_safe %>
-        <% end %>
+      <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
+        <div id=verses>
+          <% if 'reading' == @presenter.active_tab %>
+            <%= render 'verses' %>
+          <% else %>
+            <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: {root: '#pill-reading'} do %>
+              <p class="text-center p-3">
+                <%= loading_spinner %>
+              </p>
+            <% end.html_safe %>
+          <% end %>
+        </div>
       </div>
     </div>
 

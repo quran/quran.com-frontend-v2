@@ -133,7 +133,10 @@ export default class extends Controller {
       const scrollTime = Math.min(500, scrollLength * 10);
 
       if (bottomOffsetCheck || topOffsetCheck) {
-        document.scrollingElement.scrollTo({top: scrollLength, behavior: 'smooth'});
+        document.scrollingElement.scrollTo({
+          top: scrollLength,
+          behavior: "smooth"
+        });
       }
     }
   }
@@ -269,8 +272,10 @@ export default class extends Controller {
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
 
-    const readingPage = document.querySelector(readingTarget);
-    const translationPage = document.querySelector(translationTarget);
+    const readingPage = document.querySelector(`${readingTarget} #verses`);
+    const translationPage = document.querySelector(
+      `${translationTarget} #verses`
+    );
 
     readingPage.innerHTML = this.getLazyTab(
       readingUrl,
@@ -305,9 +310,9 @@ export default class extends Controller {
   }
 
   changeTranslations(newTranslationIds) {
-    let path = this.activeTab.find(".pagination").data("url");
-    let translationsToLoad;
     let verseList = this.activeTab;
+    let path = verseList.find(".pagination").data("url");
+    let translationsToLoad;
 
     if (0 == newTranslationIds.length) {
       translationsToLoad = "no";

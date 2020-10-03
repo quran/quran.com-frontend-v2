@@ -4,6 +4,6 @@ class FootNoteController < ApplicationController
   def show
     @foot_note = FootNote.find(params[:id])
 
-    render partial: 'foot_note/show', change: "#{view_context.dom_id(@foot_note.translation)}_footnotes" if request.xhr?
+    render partial: 'foot_note/show' if request.xhr?
   end
 end

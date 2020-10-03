@@ -69,8 +69,7 @@ class BasePresenter
     I18n.t('noble_quran')
   end
 
-  def related_links;
-  end
+  def related_links; end
 
   def meta_url
     context.url_for(protocol: 'https')
@@ -107,7 +106,9 @@ class BasePresenter
   end
 
   def language
-    @language ||= Language.find_by(iso_code: I18n.locale) || Language.default
+    strong_memoize :language do
+      Language.find_by(iso_code: I18n.locale) || Language.default
+    end
   end
 
   def sanitize_meta_description_text(text)

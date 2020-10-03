@@ -2,7 +2,7 @@
 
 class ChapterPresenter < HomePresenter
   WORD_TEXT_TYPES = [
-    'code',
+    'v1',
     'v2',
     'indopak',
     'uthmani',
@@ -25,7 +25,9 @@ class ChapterPresenter < HomePresenter
   end
 
   def chapter
-    @chapter ||= Chapter.find_using_slug(params[:id])
+    strong_memoize :chapter do
+      Chapter.find_using_slug(params[:id])
+    end
   end
 
   def active_tab
@@ -37,10 +39,10 @@ class ChapterPresenter < HomePresenter
   end
 
   def reading_mode?
-    return @reading_mode unless @reading_mode.nil?
-
-    reading = params[:reading].presence
-    @reading_mode = reading.to_s == 'true'
+    strong_memoize :reading_mode do
+      reading = params[:reading].presence
+      @reading_mode = reading.to_s == 'true'
+    end
   end
 
   def font
@@ -52,17 +54,25 @@ class ChapterPresenter < HomePresenter
   end
 
   def font_method
-    return @font_method if @font_method
-    @font_method = FONT_METHODS[font].presence || 'code'
+    strong_memoize :font_method do
+      FONT_METHODS[font].presence || 'code'
+    end
+  end
+
+  def showing_qcf_font?
+    ['code_v2', 'code'].include? font_method
   end
 
   def render_verse_words?
-    return @render_words if !@render_words.nil?
-    @render_words= WORD_TEXT_TYPES.include?(font)
+    strong_memoize :render_words do
+      WORD_TEXT_TYPES.include?(font)
+    end
   end
 
   def paginate
-    @verses ||= verses(verse_pagination_start, per_page)
+    strong_memoize :paginate do
+      verses(verse_pagination_start, per_page)
+    end
   end
 
   def all
@@ -84,10 +94,6 @@ class ChapterPresenter < HomePresenter
     end
 
     current_page + 1
-  end
-
-  def first_page
-    1
   end
 
   # Previous page number in the collection
@@ -153,7 +159,9 @@ class ChapterPresenter < HomePresenter
   end
 
   def continue?
-    paginate.last && (paginate.last.verse_number < chapter.verses_count)
+    if last = paginate.last
+      last.verse_number < chapter.verses_count
+    end
   end
 
   def continue_range
@@ -186,14 +194,6 @@ class ChapterPresenter < HomePresenter
     true
   end
 
-  def load_translations(verse, default_translation = nil)
-    translations_to_load = valid_translations
-
-    translations_to_load = [default_translation] if default_translation && translations_to_load.blank?
-
-    verse.translations.where(resource_content_id: translations_to_load).order('translations.priority ASC')
-  end
-
   def meta_page_type
     'article'
   end
@@ -208,7 +208,7 @@ class ChapterPresenter < HomePresenter
   def meta_description
     strong_memoize :meta_description do
       first_verse = paginate.first
-      translation = load_translations(first_verse, DEFAULT_TRANSLATION).first
+      translation = first_verse.translations.first || first_verse.translations.find_by_resource_content_id(DEFAULT_TRANSLATION)
 
       "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{sanitize_meta_description_text(translation.text)}"
     end
@@ -237,7 +237,7 @@ class ChapterPresenter < HomePresenter
     #"https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
 
     first = paginate.first
-    "https://quran-og-image.vercel.app/#{first.verse_key.gsub(':', '/')}?text=Hello"
+    "https://quran-og-image.vercel.app/#{first.verse_key.gsub(':', '/')}"
   end
 
   protected
@@ -247,22 +247,42 @@ class ChapterPresenter < HomePresenter
 
     verse_end = verse_pagination_end(verse_start, per)
 
-    list = Verse
-             .where(chapter_id: chapter.id)
-             .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+    fetch_verses_range(verse_start, verse_end)
+    load_translations
+    load_words
 
-    list = list.where(word_translations: {language_id: language.id})
-             .or(list.where(word_translations: {language_id: Language.default.id}))
-             .eager_load(words: eager_load_words)
-
-    list.order('verses.verse_index ASC, words.position ASC, word_translations.priority ASC')
+    @results.order('verses.verse_index ASC, words.position ASC, word_translations.priority ASC')
   end
 
-  def eager_load_words
-    %i[
-      word_translation
-      transliteration
-    ]
+  def fetch_verses_range(verse_start, verse_end)
+    @results = Verse
+                 .where(chapter_id: chapter.id)
+                 .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+  end
+
+  def load_words
+    words_with_default_translation = @results.where(word_translations: {language_id: Language.default.id})
+
+    if (language.id != Language.default.id)
+      @results = @results
+                   .where(word_translations: {language_id: language.id})
+                   .or(words_with_default_translation)
+                   .eager_load(words: :word_translation)
+    else
+      @results = words_with_default_translation
+                   .eager_load(words: :word_translation)
+    end
+  end
+
+  def load_translations
+    translations = valid_translations
+
+    if translations.present?
+      @results = @results
+                   .where(translations: {resource_content_id: translations})
+                   .eager_load(:translations)
+                   .order('translations.priority ASC')
+    end
   end
 
   def range_end
@@ -285,14 +305,14 @@ class ChapterPresenter < HomePresenter
     if reading_mode?
       # on reading more, we render one page each request
       # per_page is ignored
-
+      first_verse = nil
       if params[:page]
-        first = Verse.where(chapter_id: chapter.id, page_number: params[:page]).first
-        [first.verse_number, range_start].max
+        first_verse = Verse.where(chapter_id: chapter.id, page_number: params[:page]).first
       else
-        first = Verse.where(chapter_id: chapter.id).first
-        [first.verse_number, range_start].max
+        first_verse = Verse.where(chapter_id: chapter.id).first
       end
+
+      max(first_verse.verse_number, range_start)
     else
       (((current_page - 1) * per_page) + range_start).to_i
     end
