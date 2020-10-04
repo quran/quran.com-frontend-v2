@@ -21,6 +21,7 @@ export default class extends Controller {
 
     window.addEventListener("resize", () => this.resizeHandler());
 
+    this.bindReset();
     this.bindTooltip();
     this.bindFontSize();
     this.updateFontSize();
