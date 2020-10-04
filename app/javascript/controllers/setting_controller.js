@@ -49,6 +49,16 @@ export default class extends Controller {
     if (this.settings.translations.length == 0) {
       this.settings.translations = defaultsSettings.translations;
     }
+
+    // rest repeat setting,
+    // we shouldn't save this in local storage in first place
+    // this could lead to unexpected behaviour
+    // say user has set to repeat 2:255 then switch to other surah that don't have ayah 255
+    // and our player will be clueless
+    this.settings.repeatEnabled = false;
+    this.settings.repeatFrom = 0;
+    this.settings.repeatTo = 0;
+    this.settings.repeatAyah = 0;
   }
 
   bindTooltip() {

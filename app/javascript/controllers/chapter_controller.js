@@ -234,33 +234,65 @@ export default class extends Controller {
     this.removeSegmentTimers();
   }
 
+  updatePagination(dom) {
+    const verses = this.activeTab.find(".verse");
+    const lastVerse = verses.last().data().verseNumber;
+
+    // Update next page ref if it exists.
+    const nextPage = this.activeTab.find(".pagination a[rel=next]");
+    if (nextPage.length > 0) {
+      let ref = nextPage.attr("href");
+      const updatedRef = ref.replace(
+        /page=\d+/,
+        `page=${Math.ceil(lastVerse / 10) + 1}`
+      );
+      nextPage.attr("href", updatedRef);
+    }
+    // resume the infinite pagination
+    this.activeTab[0].infinitePage.resume();
+
+    return Promise.resolve([]);
+  }
+
   loadVerses(verse) {
+    // called when user jump to ayah from repeat setting
+
     // If this ayah is already loaded, scroll to it
     if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
+      this.scrollToVerse(verse);
       return Promise.resolve([]);
     }
 
+    // pause infinite page loader
+    this.activeTab[0].infinitePage.pause();
     const chapter = this.chapterId();
-    const verses = this.activeTab.find(".verse");
-    const firstVerse = verses.first().data().verseNumber;
-    const lastVerse = verses.last().data().verseNumber;
-
+    const reading = this.isReadingMode();
     let from, to;
 
-    if (verse > lastVerse) {
+    //const verses = this.activeTab.find(".verse");
+    //const firstVerse = verses.first().data().verseNumber;
+    //const lastVerse = verses.last().data().verseNumber;
+
+    /*if (verse > lastVerse) {
       from = lastVerse;
       to = Math.ceil(verse / 10) * 10;
     } else {
       from = verse;
       to = firstVerse;
-    }
+    }*/
+
+    // instead of loading all ayah, lets say load batch of 10 around the select verse
+    // i.e if user want to jump to 200, we'll load 195 to 205
+    from = Math.max(0, verse - 5);
+    to = verse + 5;
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({ from, to, verse })}`
+      `/${chapter}/load_verses?${$.param({ from, to, verse, reading })}`
     )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses))
-      .then(dom => this.updatePagination(dom));
+      //.then(updatedDom => this.updatePagination(updatedDom))
+      .then(() => this.scrollToVerse(verse));
 
     return Promise.resolve(request);
   }
@@ -310,8 +342,8 @@ export default class extends Controller {
   }
 
   changeTranslations(newTranslationIds) {
-    let verseList = this.activeTab;
-    let path = verseList.find(".pagination").data("url");
+    // changing translation should always update the translation tab
+
     let translationsToLoad;
 
     if (0 == newTranslationIds.length) {
@@ -320,7 +352,12 @@ export default class extends Controller {
       translationsToLoad = newTranslationIds.join(",");
     }
 
-    fetch(`${path}?${$.param({ translations: translationsToLoad })}`)
+    const path = `${this.translationTab.href}&${$.param({
+      translations: translationsToLoad
+    })}`;
+    let verseList = $(this.translationTab).find("#verses");
+
+    fetch(`${path}`)
       .then(response => response.text())
       .then(verses => {
         verseList.html(
@@ -332,15 +369,15 @@ export default class extends Controller {
   }
 
   insertVerses(newVerses) {
-    let dom = $("<div>").html(newVerses);
-    let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
+    //let dom = $("<div>").html(newVerses);
     let verseList = this.activeTab;
+    //let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
 
-    while (
+    /*while (
       verseList.find(`.verse[data-verse-number=${previousVerse}]`).length ==
-        0 &&
+      0 &&
       previousVerse > 0
-    ) {
+      ) {
       previousVerse = previousVerse - 1;
     }
 
@@ -356,14 +393,18 @@ export default class extends Controller {
 
       while (
         verseList.find(`.verse[data-verse-number=${nextVerse}]`).length == 0
-      ) {
+        ) {
         nextVerse = nextVerse + 1;
       }
 
       let targetDom = verseList.find(`.verse[data-verse-number=${nextVerse}]`);
       targetDom.before(newVerses);
-    }
+    }*/
 
-    return Promise.resolve(dom);
+    // simply replace current page with newly loaded verses
+    verseList.find("#verses").html(newVerses);
+    this.activeTab[0].infinitePage.resume();
+    
+    return Promise.resolve(verseList);
   }
 }

@@ -43,6 +43,7 @@ export default class extends Controller {
       plugin.pause();
     });
 
+    this.element.infinitePage = plugin;
     this.plugin = plugin;
   }
 

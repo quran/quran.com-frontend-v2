@@ -21,8 +21,8 @@ export default class extends Controller {
 
     if (isChild != "true") {
       document.body.classList.toggle("disabled");
-    }else{
-      document.getElementById('main-right-sidebar').classList.toggle("d-none")
+    } else {
+      document.getElementById("main-right-sidebar").classList.toggle("d-none");
     }
 
     const sidebar = document.querySelector(target);
@@ -38,6 +38,8 @@ export default class extends Controller {
       document.querySelectorAll(close).forEach(closeTrigger => {
         closeTrigger.removeEventListener("click", () => {});
       });
+
+      $(document).trigger("sidebar:closed");
     }
   }
 
