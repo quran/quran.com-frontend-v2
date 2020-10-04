@@ -78,6 +78,12 @@ export default class extends SettingController {
 
   jumpTo(verse) {
     let controller = document.getElementById("chapter-tabs");
+
+    // sidebar will lock body scrolling, when its closed scroll to repeating verse
+    $(document).on("sidebar:closed", () =>
+      controller.chapter.scrollToVerse(verse)
+    );
+
     return controller.chapter.loadVerses(verse);
   }
 
@@ -116,21 +122,30 @@ export default class extends SettingController {
 
   updatePlayerRepeat() {
     let verseToRepeat = 0;
+    let first, last;
 
     if ("single" == this.settings.repeatType) {
       verseToRepeat = this.settings.repeatAyah;
+      first = verseToRepeat;
+      last = first + 5;
     } else {
       verseToRepeat = this.settings.repeatFrom;
+      first = verseToRepeat;
+      last = this.settings.repeatTo;
     }
 
     if (verseToRepeat > 0) {
+      document.body.loader.show();
+
       this.jumpTo(verseToRepeat).then(() => {
+        document.body.loader.hide();
+
         let player,
           playerDom = document.getElementById("player");
 
         if (playerDom) player = playerDom.player;
         if (player) {
-          return player.updateRepeatConfig(this.settings);
+          return player.updateRepeatConfig(this.settings, { first, last });
         }
       });
     }

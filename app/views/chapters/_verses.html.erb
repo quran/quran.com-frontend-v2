@@ -1,4 +1,4 @@
-<% verses = @presenter.paginate %>
+<% verses = local_assigns[:verses] || @presenter.paginate %>
 
 <%= render 'fonts', verses: verses if @presenter.showing_qcf_font?%>
 

@@ -250,7 +250,6 @@ export default class extends Controller {
     }
     // resume the infinite pagination
     this.activeTab[0].infinitePage.resume();
-    document.body.loader.hide();
 
     return Promise.resolve([]);
   }
@@ -266,13 +265,13 @@ export default class extends Controller {
 
     // pause infinite page loader
     this.activeTab[0].infinitePage.pause();
-    document.body.loader.show();
     const chapter = this.chapterId();
-    const verses = this.activeTab.find(".verse");
-    const firstVerse = verses.first().data().verseNumber;
-    const lastVerse = verses.last().data().verseNumber;
     const reading = this.isReadingMode();
     let from, to;
+
+    //const verses = this.activeTab.find(".verse");
+    //const firstVerse = verses.first().data().verseNumber;
+    //const lastVerse = verses.last().data().verseNumber;
 
     /*if (verse > lastVerse) {
       from = lastVerse;
@@ -292,7 +291,7 @@ export default class extends Controller {
     )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses))
-      .then(updatedDom => this.updatePagination(updatedDom))
+      //.then(updatedDom => this.updatePagination(updatedDom))
       .then(() => this.scrollToVerse(verse));
 
     return Promise.resolve(request);
@@ -404,7 +403,6 @@ export default class extends Controller {
 
     // simply replace current page with newly loaded verses
     verseList.find("#verses").html(newVerses);
-    this.activeTab.trigger("items:added");
 
     return Promise.resolve(verseList);
   }

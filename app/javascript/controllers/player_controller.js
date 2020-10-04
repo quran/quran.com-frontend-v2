@@ -57,7 +57,7 @@ export default class extends Controller {
     this.bindPlayerEvents();
   }
 
-  updateRepeatConfig(setting) {
+  updateRepeatConfig(setting, repeatRange) {
     this.config.repeat = {
       enabled: setting.repeatEnabled,
       count: setting.repeatCount,
@@ -69,17 +69,18 @@ export default class extends Controller {
     };
 
     this.pauseSeconds = setting.pauseBwAyah;
-    let current = this.currentVerse;
-    let nexAyah;
-
-    if ("single" == setting.repeatType) nexAyah = setting.repeatAyah;
-    else nexAyah = setting.repeatFrom;
 
     // Rest next ayah to play when user change the repeat setting
     // rollback to previously playing ayah if user has not set repeat start
-    this.currentVerse = nexAyah || current || this.firstVerse;
 
-    if (this.isPlaying()) this.play(this.currentVerse);
+    this.firstVerse = repeatRange.first;
+    this.lastVerse = repeatRange.last;
+    this.currentVerse = repeatRange.first;
+
+    this.updateVerses().then(() => {
+      this.createHowl(this.currentVerse, false);
+      if (this.isPlaying()) this.play(this.currentVerse);
+    });
   }
 
   init(chapter, firstVerse, lastVerse) {
