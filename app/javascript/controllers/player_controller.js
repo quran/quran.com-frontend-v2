@@ -6,7 +6,7 @@
 // <div data-controller="player">
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
@@ -69,7 +69,7 @@ export default class extends Controller {
     };
 
     this.pauseSeconds = setting.pauseBwAyah;
-    let current = this.currentVerse
+    let current = this.currentVerse;
     let nexAyah;
 
     if ("single" == setting.repeatType) nexAyah = setting.repeatAyah;
@@ -277,37 +277,6 @@ export default class extends Controller {
     this.track.howl.seek(time);
   }
 
-  jumpToVerse(verse) {
-    // this method is called when user:
-    // select ayah from verse dropdown
-    // from play range dropdown
-
-    let wasPlaying = this.isPlaying();
-    if ($(`#verses .verse[data-verse-number=${verse}]`).length > 0) {
-      this.scrollToVerse(verse);
-
-      if (wasPlaying) {
-        this.play(verse);
-      }
-
-      return Promise.resolve([]);
-    } else {
-      // this verse isn't present in the page. Load it
-      let controller = document.getElementById("chapter-tabs");
-
-      controller.chapter.loadVerses(verse).then(() => {
-        this.updateVerses();
-        this.scrollToVerse(verse);
-
-        if (wasPlaying) {
-          this.play(verse);
-        }
-
-        return Promise.resolve([]);
-      });
-    }
-  }
-
   updatePlayerControls() {
     if (this.isPlaying()) this.setPlayCtrls("pause");
     else this.setPlayCtrls("play");
@@ -446,7 +415,6 @@ export default class extends Controller {
       //  play the same verse
       this.config.repeat.iteration++;
       this.play();
-      console.log("repeating current verse", this.currentVerse);
     } else {
       this.config.repeat.iteration = 1;
 
@@ -496,8 +464,6 @@ export default class extends Controller {
     }
 
     let audioData = this.audioData[verse];
-    if (!audioData)
-      debugger
     let audioPath = this.buildAudioUrl(audioData.path);
 
     let howl = new Howl({

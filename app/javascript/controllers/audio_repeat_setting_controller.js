@@ -15,6 +15,7 @@ export default class extends SettingController {
     repeatSwitch.on("change", () => {
       const enabled = repeatSwitch.is(":checked");
       this.set("repeatEnabled", enabled);
+
       this.updatePlayerRepeat();
 
       if (enabled) {
@@ -43,8 +44,22 @@ export default class extends SettingController {
     this.repeatRangeFrom = $("#repeat-range-from");
     this.repeatRangeTo = $("#repeat-range-to");
     this.repeatRangeTimes = $("#repeat-range-times");
+    this.repeatRangeTo.attr("disabled", true);
 
-    this.repeatRangeFrom.on("change", () => this.updateRepeatRange());
+    this.repeatRangeFrom.on("change", e => {
+      const from = Number(this.repeatRangeFrom.val());
+      this.repeatRangeTo.val(0);
+
+      this.repeatRangeTo.find("option").each((i, option) => {
+        // disable all options which are less then repeat start
+        const val = Number(option.value);
+        option.disabled = val > 0 && val < from;
+      });
+
+      this.repeatRangeTo.attr("disabled", false);
+
+      this.updateRepeatRange();
+    });
     this.repeatRangeTo.on("change", () => this.updateRepeatRange());
     this.repeatRangeTimes.on("change", () => this.updateRepeatRange());
 
@@ -53,18 +68,25 @@ export default class extends SettingController {
   }
 
   updateRepeatSingle() {
+    const verseToRepeat = Number(this.repeatSingle.val());
     this.set("repeatType", "single");
     this.set("repeatCount", Number(this.repeatSingleTimes.val()));
-    this.set("repeatAyah", Number(this.repeatSingle.val()));
+    this.set("repeatAyah", verseToRepeat);
 
     this.updatePlayerRepeat();
   }
 
+  jumpTo(verse) {
+    let controller = document.getElementById("chapter-tabs");
+    return controller.chapter.loadVerses(verse);
+  }
+
   updateRepeatRange() {
+    const rangeStart = Number(this.repeatRangeFrom.val());
     this.set("repeatType", "range");
 
     this.set("repeatCount", Number(this.repeatRangeTimes.val()));
-    this.set("repeatFrom", Number(this.repeatRangeFrom.val()));
+    this.set("repeatFrom", rangeStart);
     this.set("repeatTo", Number(this.repeatRangeTo.val()));
 
     this.updatePlayerRepeat();
@@ -93,12 +115,24 @@ export default class extends SettingController {
   }
 
   updatePlayerRepeat() {
-    let player,
-      playerDom = document.getElementById("player");
+    let verseToRepeat = 0;
 
-    if (playerDom) player = playerDom.player;
-    if (player) {
-      return player.updateRepeatConfig(this.settings);
+    if ("single" == this.settings.repeatType) {
+      verseToRepeat = this.settings.repeatAyah;
+    } else {
+      verseToRepeat = this.settings.repeatFrom;
+    }
+
+    if (verseToRepeat > 0) {
+      this.jumpTo(verseToRepeat).then(() => {
+        let player,
+          playerDom = document.getElementById("player");
+
+        if (playerDom) player = playerDom.player;
+        if (player) {
+          return player.updateRepeatConfig(this.settings);
+        }
+      });
     }
   }
 }
