@@ -132,6 +132,11 @@ pt-BR:
     repeat_times: Vezes
     repeat_loop: continuamente
     scroll: Rolar automaticamente para o ayah(verso) atualmente em reprodução
+    select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: Carregando...
   nav:
     title: Alcorão

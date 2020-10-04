@@ -129,6 +129,11 @@ bn-BD:
     repeat_times: টাইমস
     repeat_loop: লুপ
     scroll: স্বয়ংক্রিয়ভাবে বর্তমানে প্লে আইয়ায় স্ক্রোল করে
+    select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: লোড হচ্ছে ...
   nav:
     title: কুরআন

@@ -6,7 +6,7 @@
 // <div data-controller="player">
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
@@ -17,7 +17,7 @@ let Howl, Howler;
 
 export default class extends Controller {
   connect() {
-    import("howler").then((howler) => {
+    import("howler").then(howler => {
       Howl = howler.Howl;
       Howler = howler.Howler;
     });
@@ -32,6 +32,7 @@ export default class extends Controller {
     this.track = {};
     this.audioData = {};
     this.playerProgressInterval = null;
+    this.pauseSeconds = 0;
 
     this.chapter = null;
     this.firstVerse = null;
@@ -44,7 +45,6 @@ export default class extends Controller {
       showTooltip: false,
       repeat: {
         verse: null,
-        enabled: this.settings.get("repeatEnabled"),
         type: this.settings.get("repeatType") || "single", // or range
         count: this.settings.get("repeatCount"), // number of time to play each ayah
         from: this.settings.get("repeatFrom"),
@@ -55,6 +55,31 @@ export default class extends Controller {
 
     this.buildPlayer();
     this.bindPlayerEvents();
+  }
+
+  updateRepeatConfig(setting) {
+    this.config.repeat = {
+      enabled: setting.repeatEnabled,
+      count: setting.repeatCount,
+      type: setting.repeatType,
+      verse: setting.repeatAyah,
+      from: setting.repeatFrom,
+      to: setting.repeatTo,
+      iteration: 1
+    };
+
+    this.pauseSeconds = setting.pauseBwAyah;
+    let current = this.currentVerse
+    let nexAyah;
+
+    if ("single" == setting.repeatType) nexAyah = setting.repeatAyah;
+    else nexAyah = setting.repeatFrom;
+
+    // Rest next ayah to play when user change the repeat setting
+    // rollback to previously playing ayah if user has not set repeat start
+    this.currentVerse = nexAyah || current || this.firstVerse;
+
+    if (this.isPlaying()) this.play(this.currentVerse);
   }
 
   init(chapter, firstVerse, lastVerse) {
@@ -89,7 +114,7 @@ export default class extends Controller {
   }
 
   buildPlayer() {
-    this.progressBar = document.getElementById('player-range');
+    this.progressBar = document.getElementById("player-range");
 
     // auto scroll component
     this.scrollButton = this.element.querySelector("#auto-scroll-btn");
@@ -398,6 +423,14 @@ export default class extends Controller {
   onVerseEnd() {
     this.progressBar.value = 0;
 
+    if (this.pauseSeconds > 0) {
+      setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
+    } else {
+      this.onVerseEnded();
+    }
+  }
+
+  onVerseEnded() {
     if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()
@@ -409,7 +442,7 @@ export default class extends Controller {
   }
 
   repeatSingleVerse() {
-    if (this.config.repeat.iteration < this.config.repeat.count) {
+    if (this.config.repeat.iteration <= this.config.repeat.count) {
       //  play the same verse
       this.config.repeat.iteration++;
       this.play();
@@ -425,14 +458,7 @@ export default class extends Controller {
     let repeatSetting = this.config.repeat;
 
     if (this.currentVerse == repeatSetting.to) {
-      // current itration is finished
-      if (repeatSetting.iteration < repeatSetting.count) {
-        console.log(
-          "repeating range, ",
-          repeatSetting.iteration,
-          " count",
-          repeatSetting.count
-        );
+      if (repeatSetting.iteration <= repeatSetting.count) {
         this.play(repeatSetting.from);
         repeatSetting.iteration++;
       } else {
@@ -470,6 +496,8 @@ export default class extends Controller {
     }
 
     let audioData = this.audioData[verse];
+    if (!audioData)
+      debugger
     let audioPath = this.buildAudioUrl(audioData.path);
 
     let howl = new Howl({

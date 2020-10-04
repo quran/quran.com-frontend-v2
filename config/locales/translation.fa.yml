@@ -123,6 +123,11 @@ fa:
     repeat_times: بار
     repeat_loop: حلقه
     scroll: به صورت خودکار به آيه در حال پخش پیمایش می شود
+    select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: در حال بارگذاری...
   nav:
     title: قرآن

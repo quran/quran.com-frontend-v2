@@ -15,7 +15,7 @@
   </div>
 
   <div class="bg-faded outline" style="margin-top: -7px">
-    <%= render_async '/settings', lazy_load: {root: '#right-sidebar'} do %>
+    <%= render_async "/settings?chapter=#{@presenter.chapter.id}", lazy_load: {root: '#right-sidebar'} do %>
       <p class="text-center p-3">
         <%= loading_spinner %>
       </p>

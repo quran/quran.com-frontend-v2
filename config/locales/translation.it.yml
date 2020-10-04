@@ -118,6 +118,11 @@ it:
     repeat_times: Volte
     repeat_loop: ciclo continuo
     scroll: Scorre automaticamente fino all'ayah attualmente in riproduzione
+    select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: Caricamento in corso...
   nav:
     title: Quran

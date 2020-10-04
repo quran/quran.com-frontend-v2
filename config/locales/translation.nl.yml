@@ -115,6 +115,11 @@ nl:
     repeat_times: Keer
     repeat_loop: lus
     scroll: Scroll automatisch naar de huidige ayah
+    select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: Laden ...
   nav:
     title: Koran
