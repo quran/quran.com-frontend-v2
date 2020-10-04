@@ -6,7 +6,7 @@
 // <div data-controller="player">
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
@@ -69,9 +69,15 @@ export default class extends Controller {
     };
 
     this.pauseSeconds = setting.pauseBwAyah;
+    let current = this.currentVerse
+    let nexAyah;
 
-    if ("single" == setting.repeatType) this.currentVerse = setting.repeatAyah;
-    else this.currentVerse = setting.repeatFrom;
+    if ("single" == setting.repeatType) nexAyah = setting.repeatAyah;
+    else nexAyah = setting.repeatFrom;
+
+    // Rest next ayah to play when user change the repeat setting
+    // rollback to previously playing ayah if user has not set repeat start
+    this.currentVerse = nexAyah || current || this.firstVerse;
 
     if (this.isPlaying()) this.play(this.currentVerse);
   }
@@ -490,6 +496,8 @@ export default class extends Controller {
     }
 
     let audioData = this.audioData[verse];
+    if (!audioData)
+      debugger
     let audioPath = this.buildAudioUrl(audioData.path);
 
     let howl = new Howl({
