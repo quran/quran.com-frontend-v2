@@ -129,6 +129,10 @@ fr:
     repeat_loop: boucle
     scroll: Défiler automatiquement jusqu’au verset en cours de lecture
     select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: Chargement...
   nav:
     title: Coran

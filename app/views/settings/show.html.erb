@@ -187,6 +187,7 @@
                     <% 2.upto(10) do |count| %>
                       <option value="<%= count %>"><%= count %></option>
                     <% end %>
+                    <option value="1000"><%= _t('player.loop') %></option>
                   </select>
                 </div>
               </div>
@@ -239,6 +240,7 @@
                   <% 2.upto(10) do |count| %>
                     <option value="<%= count %>"><%= count %></option>
                   <% end %>
+                  <option value="1000"><%= _t('player.loop') %></option>
                 </select>
               </div>
             </div>
@@ -246,30 +248,31 @@
         </div>
       </div>
 
-      <div class="my-4 d-none" id="repeat-wrapper">
-        <h6 class="ff-b">Play each verse</h6>
-        <div class="row">
-          <div class="col-md-6 d-flex align-items-center">
-            <input type="text" class="form-control w-50" id="play-each-verse">
-            <label for="play-each-verse" class="form-label mb-0 text-muted ml-2">times</label>
-          </div>
-        </div>
-      </div>
-
       <div class="py-4">
-        <h6 class="ff-b">Set how long to pause before playing next verse</h6>
+        <h6 class="ff-b"><%= _t('player.pause_bw_ayah') %></h6>
         <div class="form-check d-flex align-items-center text-muted">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="verse-specifc">
-          <label class="form-check-label d-flex align-items-center" for="verse-specifc">
-            <span class="mx-2">Wait</span>
-            <input type="text" class="form-control w-25" id="play-each-verse">
-            <span class="ml-2">seconds</span>
+          <input class="form-check-input" type="radio" name="pause-bw-ayah" id="pause-ayah">
+
+          <label class="form-check-label d-flex align-items-center w-100" for="pause-ayah">
+            <span class="mx-2"><%= _t('player.pause') %></span>
+
+            <select class="form-control w-25" id=pause-bw-ayah-seconds>
+              <option value="0" selected>
+                0
+              </option>
+
+              <% 3.step(30, 2) do |pause| %>
+                <option value="<%= pause %>"><%= pause %></option>
+              <% end %>
+            </select>
+            <span class="ml-2"><%= _t('player.pause_seconds') %></span>
           </label>
         </div>
+
         <div class="form-check text-muted mt-2">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="verse-same" checked>
+          <input class="form-check-input" type="radio" value="0" name="pause-bw-ayah" id="play-continuously" checked>
           <label class="form-check-label" for="verse-same">
-            Wait same duration of the verse
+            <%= _t('player.play_continuously') %>
           </label>
         </div>
       </div>

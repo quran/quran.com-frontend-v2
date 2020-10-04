@@ -6,6 +6,7 @@ export default class extends SettingController {
     this.bindSwitch();
     this.bindRepeatSingle();
     this.bindRepeatRange();
+    this.bindPause();
   }
 
   bindSwitch() {
@@ -65,6 +66,28 @@ export default class extends SettingController {
     this.set("repeatCount", Number(this.repeatRangeTimes.val()));
     this.set("repeatFrom", Number(this.repeatRangeFrom.val()));
     this.set("repeatTo", Number(this.repeatRangeTo.val()));
+
+    this.updatePlayerRepeat();
+  }
+
+  bindPause() {
+    const pause = $("#pause-ayah");
+    const pauseSelect = $("#pause-bw-ayah-seconds");
+    let enablePause = pause.is(":checked");
+
+    $("[name='pause-bw-ayah']").on("change", () => {
+      enablePause = pause.is(":checked");
+      this.updatePause(enablePause, pauseSelect.val());
+    });
+
+    pauseSelect.on("change", () => {
+      this.updatePause(enablePause, pauseSelect.val());
+    });
+  }
+
+  updatePause(enabled, seconds) {
+    if (enabled) this.set("pauseBwAyah", Number(seconds));
+    else this.set("pauseBwAyah", 0);
 
     this.updatePlayerRepeat();
   }

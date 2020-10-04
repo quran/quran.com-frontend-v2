@@ -104,6 +104,10 @@ en:
     repeat_to: To ayah
     repeat_times: Repeat count
     repeat_loop: loop
+    pause_bw_ayah: Set how long to pause before playing next verse
+    pause_seconds: seconds
+    pause: Pause for
+    play_continuously: Keep playing without pause
     scroll: Automatically scrolls to the currently playing ayah
   loading: Loading...
   nav:

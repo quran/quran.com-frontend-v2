@@ -89,6 +89,7 @@ export default class extends Controller {
       repeatTo: null,
       repeatIteration: 1,
       repeatType: "single",
+      pauseBwAyah: 0,
       repeatAyah: null,
       autoScroll: true,
       wordFontSize: {

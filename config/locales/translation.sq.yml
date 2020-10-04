@@ -114,6 +114,10 @@ sq:
     repeat_loop: lak
     scroll: Automatikisht lëviz nëpër ajetin që luan aktualisht
     select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: Loading ...
   nav:
     title: Quran

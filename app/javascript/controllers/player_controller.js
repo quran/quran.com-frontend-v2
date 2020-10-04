@@ -32,6 +32,7 @@ export default class extends Controller {
     this.track = {};
     this.audioData = {};
     this.playerProgressInterval = null;
+    this.pauseSeconds = 0;
 
     this.chapter = null;
     this.firstVerse = null;
@@ -66,6 +67,8 @@ export default class extends Controller {
       to: setting.repeatTo,
       iteration: 1
     };
+
+    this.pauseSeconds = setting.pauseBwAyah;
 
     if ("single" == setting.repeatType) this.currentVerse = setting.repeatAyah;
     else this.currentVerse = setting.repeatFrom;
@@ -414,6 +417,14 @@ export default class extends Controller {
   onVerseEnd() {
     this.progressBar.value = 0;
 
+    if (this.pauseSeconds > 0) {
+      setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
+    } else {
+      this.onVerseEnded();
+    }
+  }
+
+  onVerseEnded() {
     if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()

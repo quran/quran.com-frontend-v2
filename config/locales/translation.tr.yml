@@ -118,6 +118,10 @@ tr:
     repeat_loop: döngü
     scroll: O anda çalan ayah'a otomatik olarak kayar
     select_verse:
+    pause_bw_ayah:
+    pause_seconds:
+    pause:
+    play_continuously:
   loading: Yükleniyor...
   nav:
     title: Kuran

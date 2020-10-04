@@ -126,6 +126,10 @@ ur:
 
       "
     select_verse: آیت منتخب کریں
+    pause_bw_ayah: "اگلی آیت چلانے سے پہلے کتنے سیکنڈ کا وقففہ ہو\n\n"
+    pause_seconds: سیکنڈ کیلئے
+    pause: وقفہ لیں
+    play_continuously: توقف کیے بغیر چلاتے رہیں
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
