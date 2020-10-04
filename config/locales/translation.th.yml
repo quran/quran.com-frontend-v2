@@ -124,6 +124,7 @@ th:
     repeat_times: ครั้ง
     repeat_loop: วนซ้ำ
     scroll: เลื่อนไปที่อายะห์ที่กำลังเล่นอยู่โดยอัตโนมัติ
+    select_verse:
   loading: กำลังโหลด...
   nav:
     title: อัลกุรอาน

@@ -119,6 +119,7 @@ id:
     repeat_times: Kali
     repeat_loop: tak berhenti
     scroll: Gulirkan secara otomatis ke ayat yang sedang diputar pada saat transisi...
+    select_verse:
   loading: Memuat ...
   nav:
     title: Quran

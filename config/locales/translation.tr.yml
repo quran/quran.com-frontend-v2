@@ -117,6 +117,7 @@ tr:
     repeat_times: Zamanlar
     repeat_loop: döngü
     scroll: O anda çalan ayah'a otomatik olarak kayar
+    select_verse:
   loading: Yükleniyor...
   nav:
     title: Kuran

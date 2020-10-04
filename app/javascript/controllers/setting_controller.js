@@ -24,7 +24,6 @@ export default class extends Controller {
     this.bindTooltip();
     this.bindFontSize();
     this.updateFontSize();
-    this.bindReset();
 
     this.element[this.identifier] = this;
   }
@@ -85,9 +84,12 @@ export default class extends Controller {
       readingMode: false,
       translations: [131],
       repeatEnabled: false,
-      repeatType: "single",
       repeatCount: 1,
+      repeatFrom: null,
+      repeatTo: null,
       repeatIteration: 1,
+      repeatType: "single",
+      repeatAyah: null,
       autoScroll: true,
       wordFontSize: {
         mobile: 30,

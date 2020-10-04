@@ -115,16 +115,17 @@ ur:
     current_verse: آیت
     next_verse: اگلی آیت
     previous_verse: پچھلی آیت
-    repeat_title: دہرائیں
+    repeat_title: آیت کو دہرائیں
     repeat_single: اکیلی آیت
     repeat_range: مخصوص آیات
-    repeat_from: سے
-    repeat_to: تک
+    repeat_from: آیت سے
+    repeat_to: آیت تک
     repeat_times: کتنی بار
     repeat_loop: چلاتے رہو
     scroll: "جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
 
       "
+    select_verse: آیت منتخب کریں
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن

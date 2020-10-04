@@ -134,63 +134,125 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="audio" role="tabpanel" aria-labelledby="audio-tab">
-      <h6 class="ff-b mt-4">Play</h6>
-      <div class="dropdown pb-4 border-bottom">
-        <button class="btn btn-outline-info border text-muted dropdown-toggle" type="button" id="play-dropdown" data-toggle="dropdown" aria-expanded="false">
-          Countinues
-        </button>
-        <ul class="dropdown-menu custom-shadow border-0 rounded" aria-labelledby="play-dropdown">
-          <li><a class="dropdown-item" href="#">Countinues</a></li>
-          <li><a class="dropdown-item" href="#">Chapter</a></li>
-          <li><a class="dropdown-item" href="#">Page</a></li>
-          <li><a class="dropdown-item" href="#">Juzz</a></li>
-        </ul>
+    <div class="tab-pane fade" id="audio" role="tabpanel" aria-labelledby="audio-tab" data-controller="audio-repeat-setting">
+      <div class="form-check form-switch form-control-lg">
+        <label class="form-check-label" for="repeat-switch">
+          <%= _t('player.repeat_title') %>
+        </label>
+
+        <input class="form-check-input" type="checkbox" id="repeat-switch">
       </div>
 
-      <div class="border-bottom py-4">
+      <div id=repeat-wrapper class="d-none fade my-4">
+        <ul class="nav nav-pills justify-content-center" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active fs-sm" id="repeat-single" data-toggle="pill" href="#single-tab" role="tab" aria-controls="single-tab" aria-selected="true">
+              <%= _t('player.repeat_single') %>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link fs-sm" id="repeat-range" data-toggle="pill" href="#range-tab" role="tab" aria-controls="range-tab" aria-selected="false">
+              <%= _t('player.repeat_range') %>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="repeat-tabs">
+          <div class="tab-pane fade show active border p-3 my-2" id="single-tab" role="tabpanel" aria-labelledby="repeat-single">
+            <div class="row">
+              <div class="col-12">
+                <div class="mb-3">
+                  <label class="form-label" for="repeat-single-ayah">
+                    <%= _t('player.select_verse') %>
+                  </label>
+                  <select class="form-select" id=repeat-single-ayah aria-label="<%= t('player.select_verse') %>">
+                    <option selected>
+                      <%= _t('player.select_verse') %>
+                    </option>
+
+                    <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
+                      <option value="<%= verse %>"><%= verse %></option>
+                    <% end %>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="repeat-single-times">
+                    <%= _t('player.repeat_times') %>
+                  </label>
+
+                  <select class="form-select" aria-label="<%= t('player.repeat_times') %>" id=repeat-single-times>
+                    <option selected value="1"><%= _t('player.repeat_times') %></option>
+                    <% 2.upto(10) do |count| %>
+                      <option value="<%= count %>"><%= count %></option>
+                    <% end %>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade border p-3 my-2" id="range-tab" role="tabpanel" aria-labelledby="repeat-range">
+            <div class="row mb-3">
+              <div class="col-6">
+                <label class="form-label" for="repeat-range-from">
+                  <%= _t('player.repeat_from') %>
+                </label>
+
+                <select class="form-select" id=repeat-range-from aria-label="<%= t('player.select_verse') %>">
+                  <option selected>
+                    <%= _t('player.select_verse') %>
+                  </option>
+
+                  <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
+                    <option value="<%= verse %>"><%= verse %></option>
+                  <% end %>
+                </select>
+              </div>
+
+              <div class="col-6">
+                <label class="form-label" for="repeat-range-to">
+                  <%= _t('player.repeat_to') %>
+                </label>
+
+                <select class="form-select" id=repeat-range-to aria-label="<%= t('player.select_verse') %>">
+                  <option selected>
+                    <%= _t('player.select_verse') %>
+                  </option>
+
+                  <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
+                    <option value="<%= verse %>"><%= verse %></option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-12">
+                <label class="form-label" for="repeat-range-times">
+                  <%= _t('player.repeat_times') %>
+                </label>
+
+                <select class="form-select" aria-label="<%= t('player.repeat_times') %>" id=repeat-range-times>
+                  <option selected value="1"><%= _t('player.repeat_times') %></option>
+                  <% 2.upto(10) do |count| %>
+                    <option value="<%= count %>"><%= count %></option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-4 d-none" id="repeat-wrapper">
         <h6 class="ff-b">Play each verse</h6>
         <div class="row">
           <div class="col-md-6 d-flex align-items-center">
             <input type="text" class="form-control w-50" id="play-each-verse">
             <label for="play-each-verse" class="form-label mb-0 text-muted ml-2">times</label>
           </div>
-        </div>
-      </div>
-
-      <div class="py-4">
-        <h6 class="ff-b">Set how long to pause before playing next word</h6>
-        <div class="form-check d-flex align-items-center text-muted">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="wordpause-specifc">
-          <label class="form-check-label d-flex align-items-center" for="wordpause-specifc">
-            <span class="mx-2">Wait</span>
-            <input type="text" class="form-control w-25" id="play-each-verse">
-            <span class="ml-2">seconds</span>
-          </label>
-        </div>
-        <div class="form-check text-muted mt-2">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="wordpause-same" checked>
-          <label class="form-check-label" for="wordpause-same">
-            Wait same duration of the word
-          </label>
-        </div>
-      </div>
-
-      <div class="py-4">
-        <h6 class="ff-b">Set how long to pause before playing next Tajweed ruling</h6>
-        <div class="form-check d-flex align-items-center text-muted">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="Tajweed-specifc">
-          <label class="form-check-label d-flex align-items-center" for="Tajweed-specifc">
-            <span class="mx-2">Wait</span>
-            <input type="text" class="form-control w-25" id="play-each-verse">
-            <span class="ml-2">seconds</span>
-          </label>
-        </div>
-        <div class="form-check text-muted mt-2">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="Tajweed-same" checked>
-          <label class="form-check-label" for="Tajweed-same">
-            Wait same duration of the Tajweed
-          </label>
         </div>
       </div>
 

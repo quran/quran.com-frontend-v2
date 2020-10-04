@@ -94,14 +94,15 @@ en:
     al_muzammil: Surah Al Muzzammil
   player:
     current_verse: Verse
+    select_verse: Select verse
     next_verse: Next verse
     previous_verse: Previous verse
     repeat_title: Repeat Ayah
     repeat_single: Single
     repeat_range: Range
-    repeat_from: From
-    repeat_to: To
-    repeat_times: Times
+    repeat_from: From ayah
+    repeat_to: To ayah
+    repeat_times: Repeat count
     repeat_loop: loop
     scroll: Automatically scrolls to the currently playing ayah
   loading: Loading...

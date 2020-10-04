@@ -121,6 +121,7 @@ ar:
     repeat_times: مرّات
     repeat_loop: عدد التكرار
     scroll: تمرير تلقائيًا إلى الآية التي تستمع لها حاليًا
+    select_verse:
   loading: جار التحميل...
   nav:
     title: القرآن

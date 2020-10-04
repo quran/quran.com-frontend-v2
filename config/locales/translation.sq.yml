@@ -113,6 +113,7 @@ sq:
     repeat_times: kohët
     repeat_loop: lak
     scroll: Automatikisht lëviz nëpër ajetin që luan aktualisht
+    select_verse:
   loading: Loading ...
   nav:
     title: Quran
