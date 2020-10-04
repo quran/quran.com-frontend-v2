@@ -62,8 +62,8 @@ fa:
       qcf_v2: QCF V2
       indopak: متن ایندوپاک
     translation_count:
-      one:
-      other:
+      one: نمایش یک ترجمه
+      other: نمایش ترجمه های %{count}
   verses:
     media: تماشای تفسیر ویدیویی از %{from}
     go: برو به آیه
@@ -123,11 +123,14 @@ fa:
     repeat_times: بار
     repeat_loop: حلقه
     scroll: به صورت خودکار به آيه در حال پخش پیمایش می شود
-    select_verse:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
+    select_verse: آیه را انتخاب کنید
+    pause_bw_ayah: قبل از پخش آیه بعدی تنظیم کنید که چه مدت مکث داشته باشد
+    pause_seconds: ثانیه
+    pause: مکث برای
+    play_continuously: بازی را بدون مکث ادامه دهید
+    show_word_tooltip: "Show word translation in tooltip while playing ayah
+
+      "
   loading: در حال بارگذاری...
   nav:
     title: قرآن

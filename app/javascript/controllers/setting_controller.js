@@ -103,6 +103,7 @@ export default class extends Controller {
       pauseBwAyah: 0,
       repeatAyah: null,
       autoScroll: true,
+      autoShowWordTooltip: false,
       wordFontSize: {
         mobile: 30,
         desktop: 30

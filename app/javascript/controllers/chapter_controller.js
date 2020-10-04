@@ -189,7 +189,7 @@ export default class extends Controller {
   highlightSegment(startIndex, endIndex) {
     //TODO: track highlighted words in memory and remove highlighting from them
     // DOm operation could be costly
-    let showWordTooltip = false; // TODO: load from settings
+    const showWordTooltip = document.body.setting.get("autoShowWordTooltip");
 
     this.removeSegmentHighlight();
 
@@ -201,7 +201,7 @@ export default class extends Controller {
 
     for (let word = start, end1 = end; word < end1; word++) {
       words.eq(word - 1).addClass("highlight");
-      if (showWordTooltip) words.eq(word - 1).tooltip("show");
+      if (showWordTooltip) words.eq(word - 1)[0].tooltip.show();
     }
   }
 
@@ -216,21 +216,18 @@ export default class extends Controller {
       .addClass("highlight");
   }
 
-  highlightWord(wordPosition) {}
-
   removeSegmentHighlight() {
-    let showTooltip = false;
-    //if (this.config.showTooltip) $(".highlight").tooltip("hide");
+    $(".word.highlight").each((i, word) => {
+      if (word.tooltip._popper) word.tooltip.hide();
 
-    $(".word.highlight").removeClass("highlight");
+      word.classList.remove("highlight");
+    });
   }
 
   removeHighlighting() {
     let verse = $(`.verse[data-verse-number=${this.currentVerse}]`);
     verse.removeClass("highlight");
 
-    // remove highlighting from words
-    verse.find(".highlight").removeClass("highlight");
     this.removeSegmentTimers();
   }
 
@@ -343,7 +340,6 @@ export default class extends Controller {
 
   changeTranslations(newTranslationIds) {
     // changing translation should always update the translation tab
-
     let translationsToLoad;
 
     if (0 == newTranslationIds.length) {
@@ -351,11 +347,13 @@ export default class extends Controller {
     } else {
       translationsToLoad = newTranslationIds.join(",");
     }
+    document.body.loader.show();
 
     const path = `${this.translationTab.href}&${$.param({
       translations: translationsToLoad
     })}`;
-    let verseList = $(this.translationTab).find("#verses");
+
+    let verseList = $(this.translationTab.dataset.target).find("#verses");
 
     fetch(`${path}`)
       .then(response => response.text())
@@ -365,6 +363,8 @@ export default class extends Controller {
             .find("#verses")
             .html()
         );
+
+        document.body.loader.hide();
       });
   }
 
@@ -404,7 +404,7 @@ export default class extends Controller {
     // simply replace current page with newly loaded verses
     verseList.find("#verses").html(newVerses);
     this.activeTab[0].infinitePage.resume();
-    
+
     return Promise.resolve(verseList);
   }
 }

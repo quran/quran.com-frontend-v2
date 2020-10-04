@@ -57,6 +57,10 @@ export default class extends Controller {
     this.bindPlayerEvents();
   }
 
+  updatePause(pauseSec) {
+    this.pauseSeconds = pauseSec;
+  }
+
   updateRepeatConfig(setting, repeatRange) {
     this.config.repeat = {
       enabled: setting.repeatEnabled,
@@ -67,8 +71,6 @@ export default class extends Controller {
       to: setting.repeatTo,
       iteration: 1
     };
-
-    this.pauseSeconds = setting.pauseBwAyah;
 
     // Rest next ayah to play when user change the repeat setting
     // rollback to previously playing ayah if user has not set repeat start
@@ -97,6 +99,11 @@ export default class extends Controller {
       that.createHowl(that.currentVerse, false);
       //chapter.scrollToVerse(that.currentVerse);
     });
+
+    // sidebar will lock body scrolling, when its closed scroll to repeating verse
+    $(document).on("sidebar:closed", () =>
+      chapter.scrollToVerse(this.currentVerse)
+    );
   }
 
   disconnect() {

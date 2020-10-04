@@ -11,6 +11,7 @@ export default class extends SettingController {
 
   bindSwitch() {
     let repeatSwitch = $("#repeat-switch");
+    let tooltipSwitch = $("#tooltip-switch");
 
     repeatSwitch.on("change", () => {
       const enabled = repeatSwitch.is(":checked");
@@ -25,8 +26,16 @@ export default class extends SettingController {
       }
     });
 
+    tooltipSwitch.on("change", () => {
+      const enabled = tooltipSwitch.is(":checked");
+      this.set("autoShowWordTooltip", enabled);
+    });
+
     repeatSwitch[0].checked = this.get("repeatEnabled");
+    tooltipSwitch[0].checked = this.get("autoShowWordTooltip");
+
     repeatSwitch.trigger("change");
+    tooltipSwitch.trigger("change");
   }
 
   bindRepeatSingle() {
@@ -117,7 +126,13 @@ export default class extends SettingController {
     if (enabled) this.set("pauseBwAyah", Number(seconds));
     else this.set("pauseBwAyah", 0);
 
-    this.updatePlayerRepeat();
+    let player,
+      playerDom = document.getElementById("player");
+
+    if (playerDom) player = playerDom.player;
+    if (player) {
+      return player.updatePause(this.get("pauseBwAyah"));
+    }
   }
 
   updatePlayerRepeat() {

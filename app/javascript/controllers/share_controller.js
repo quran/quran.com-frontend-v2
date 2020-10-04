@@ -21,7 +21,6 @@ export default class extends Controller {
       scrollbars: "yes",
       resizable: "no",
       centerscreen: "yes",
-      chrome: "yes",
       left:
         window.outerWidth / 2 +
         (window.screenX || window.screenLeft || 0) -
@@ -54,7 +53,7 @@ export default class extends Controller {
       href: `https://www.facebook.com/dialog/send?link=${this.url}`
     });
 
-     let wp=this.isMobileOrTablet() ? "api" : "web";
+    let wp = this.isMobileOrTablet() ? "api" : "web";
 
     this.addButton("whatsapp", "Whatsapp", {
       "data-share": `'https://${wp}.whatsapp.com/send?text=${this.url} ${this.title} ${this.text}'`,
@@ -121,7 +120,8 @@ export default class extends Controller {
   share(target) {
     let link = $(target);
 
-    window.open(link.data("share") || target.href, "", this.shareWindowConfig);
+    // window.open(link.data("share") || target.href, "", this.shareWindowConfig);
+    window.open(link.data("share") || target.href, "_blank");
 
     GoogleAnalytic.trackEvent("Share", "Verse", this.el.data("versekKey"), 1);
   }

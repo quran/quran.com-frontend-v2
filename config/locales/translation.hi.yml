@@ -125,6 +125,7 @@ hi:
     pause_seconds:
     pause:
     play_continuously:
+    show_word_tooltip:
   loading:
   nav:
     title: कुरान पाक

@@ -11,7 +11,7 @@ import SettingController from "./setting_controller";
 
 export default class extends SettingController {
   connect() {
-    super.connect()
+    super.connect();
     const translations = this.get("translations");
 
     this.element.querySelectorAll(".translation").forEach(trans => {
@@ -30,9 +30,7 @@ export default class extends SettingController {
       });
   }
 
-  disconnect() {
-    $(document).off("change", "[name=font]", e => {});
-  }
+  disconnect() {}
 
   updateTranslations() {
     let newTranslations = [];

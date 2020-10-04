@@ -44,19 +44,19 @@ it:
       day_tip: Passa alla modalità giorno
       night_tip: Passa alla modalità notte
     reset: Ripristinare le impostazioni
-    font_type:
+    font_type: Seleziona il carattere
     sample_audio:
-    display:
-    audio:
+    display: Impostazioni di visualizzazione
+    audio: Impostazioni audio
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Testo Tajweed
+      uthmani: Testo Uthmani
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: Testo IndoPak
     translation_count:
-      one:
-      other:
+      one: Visualizzazione di una traduzione
+      other: Visualizzazione delle traduzioni %{count}
   verses:
     media: Guarda il commento video di %{from}
     go: Vai al verso
@@ -88,7 +88,7 @@ it:
     tafsir:
       label: Seleziona un tafsir
       select: Seleziona un tafsir
-    quran_reflect:
+    quran_reflect: Leggi Riflessioni per questo Ayah su QuranReflect
   search:
     placeholder: Cerca "Noah"
     result:
@@ -118,11 +118,14 @@ it:
     repeat_times: Volte
     repeat_loop: ciclo continuo
     scroll: Scorre automaticamente fino all'ayah attualmente in riproduzione
-    select_verse:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
+    select_verse: Seleziona il verso
+    pause_bw_ayah: Imposta il tempo di pausa prima di riprodurre la strofa successiva
+    pause_seconds: secondi
+    pause: Pausa per
+    play_continuously: Continua a giocare senza pause
+    show_word_tooltip:
+      Mostra la traduzione delle parole nella descrizione comando
+      durante la riproduzione di ayah
   loading: Caricamento in corso...
   nav:
     title: Quran
@@ -162,4 +165,4 @@ it:
     reading: Lettura
     translation: Traduzioni
     info: Informazioni sul capitolo
-  share_ayah:
+  share_ayah: Condividi ayah

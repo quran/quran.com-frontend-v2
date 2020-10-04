@@ -108,6 +108,7 @@ en:
     pause_seconds: seconds
     pause: Pause for
     play_continuously: Keep playing without pause
+    show_word_tooltip: Show word translation in tooltip while playing ayah
     scroll: Automatically scrolls to the currently playing ayah
   loading: Loading...
   nav:

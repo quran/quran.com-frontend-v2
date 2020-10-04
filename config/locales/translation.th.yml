@@ -52,19 +52,19 @@ th:
       label: โหมดกลางคืน
       day_tip: เปลี่ยนเป็นโหมดปกติ
       night_tip: เปลี่ยนเป็นโหมดกลางคืน
-    font_type:
+    font_type: เลือกแบบอักษร
     sample_audio:
-    display:
-    audio:
+    display: การตั้งค่าการแสดงผล
+    audio: การตั้งค่าเสียง
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: ข้อความ Tajweed
+      uthmani: อุท ธ มณีข้อความ
+      qcf_v1: QCF V1.0
+      qcf_v2: QCF V2
+      indopak: ข้อความ IndoPak
     translation_count:
-      one:
-      other:
+      one: กำลังแสดงคำแปลหนึ่งคำ
+      other: กำลังแสดงคำแปล %{count}
   verses:
     media: ดูวิดีโออรรถาธิบายจาก %{from}
     go: ไปยังอายะห์
@@ -96,7 +96,7 @@ th:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร
-    quran_reflect:
+    quran_reflect: อ่านการสะท้อนสำหรับ Ayah นี้ใน QuranReflect
   search:
     label: ค้นหา
     placeholder: ค้นหา "นุห์"
@@ -124,11 +124,12 @@ th:
     repeat_times: ครั้ง
     repeat_loop: วนซ้ำ
     scroll: เลื่อนไปที่อายะห์ที่กำลังเล่นอยู่โดยอัตโนมัติ
-    select_verse:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
+    select_verse: เลือกกลอน
+    pause_bw_ayah: กำหนดระยะเวลาในการหยุดชั่วคราวก่อนเล่นข้อถัดไป
+    pause_seconds: วินาที
+    pause: หยุดชั่วคราวสำหรับ
+    play_continuously: เล่นต่อไปโดยไม่หยุดชั่วคราว
+    show_word_tooltip: แสดงการแปลคำศัพท์ในคำแนะนำเครื่องมือขณะเล่น ayah
   loading: กำลังโหลด...
   nav:
     title: อัลกุรอาน
@@ -166,4 +167,4 @@ th:
     reading: โหมดอ่าน
     translation: คำแปล
     info: ข้อมูลซูเราะห์
-  share_ayah:
+  share_ayah: แบ่งปัน ayah
