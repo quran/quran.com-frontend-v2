@@ -403,7 +403,8 @@ export default class extends Controller {
 
     // simply replace current page with newly loaded verses
     verseList.find("#verses").html(newVerses);
-
+    this.activeTab[0].infinitePage.resume();
+    
     return Promise.resolve(verseList);
   }
 }
