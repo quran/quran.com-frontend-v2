@@ -88,8 +88,8 @@ export default class extends Controller {
     });
 
     el.find(".share-icon a").on("click", e => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
+      //e.preventDefault();
+      //e.stopImmediatePropagation();
 
       this.share(e.target);
     });
@@ -121,7 +121,7 @@ export default class extends Controller {
     let link = $(target);
 
     // window.open(link.data("share") || target.href, "", this.shareWindowConfig);
-    window.open(link.data("share") || target.href, "_blank");
+    // window.open(link.data("share") || target.href, "_blank");
 
     GoogleAnalytic.trackEvent("Share", "Verse", this.el.data("versekKey"), 1);
   }

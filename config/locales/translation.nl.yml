@@ -90,7 +90,7 @@ nl:
     quran_reflect: Lees Reflections voor deze Ayah op QuranReflect
   search:
     placeholder: Zoek "Noah"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
     error: Sorry, er is een fout opgetreden bij uw zoekopdracht.
     no_query: Geen zoekopdracht.
     no_result: Geen resultaten gevonden.

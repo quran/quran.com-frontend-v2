@@ -100,7 +100,7 @@ th:
   search:
     label: ค้นหา
     placeholder: ค้นหา "นุห์"
-    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-success>%{query}</span>"
+    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-primary>%{query}</span>"
     error: ขออภัยเกิดข้อผิดพลาดในการค้นหาของคุณ
     no_query: ไม่มีคำค้นหา
     no_result: ไม่พบผลลัพธ์

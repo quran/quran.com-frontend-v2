@@ -92,7 +92,7 @@ tr:
     quran_reflect: Bu ayetin Kuran Üzerine Düşünceler Oku
   search:
     placeholder: Arama "Noah"
-    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-success>%{query}</span>"
+    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-primary>%{query}</span>"
     error: Üzgünüz, aramanızla ilgili bir hata oluştu.
     no_query: Arama sorgusu yok.
     no_result: Sonuç bulunamadı.

@@ -86,7 +86,7 @@ index:
           - arabic_keywords
           - quran_word_synonym
           - arabic_normalization
-          - arabic_stemmer
+          # - arabic_stemmer
           - arabic_stop
           - icu_folding
 

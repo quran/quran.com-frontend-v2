@@ -1,8 +1,8 @@
-<% show_translations = verse.translations[0] %>
+<% translations = @presenter.load_translations verse %>
 
 <div class="verse" id="<%= verse.id %>" data-verse-number="<%= verse.verse_number %>" data-controller="verse" data-key="<%= verse.verse_key %>">
   <div class="row">
-    <div class="col-md-1 verse-actions text-center <%= show_translations ? 'col-2' : 'no-transaltion col-12' %>">
+    <div class="col-md-1 verse-actions text-center <%= translations.any? ? 'col-2' : 'no-transaltion col-12' %>">
       <div class="actions">
         <span>
           <%= link_to verse.verse_key,
@@ -21,12 +21,10 @@
     </div>
   </div>
 
-  <% if show_translations %>
+  <% if translations.any? %>
     <div class="row translations">
       <div class="col-12">
-        <div class="translation">
-          <%= render partial: 'translation', collection: verse.translations, as: :translations %>
-        </div>
+        <%= render partial: 'translation', collection: translations, as: :translations %>
       </div>
     </div>
   <% end %>

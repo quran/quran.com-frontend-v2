@@ -1,5 +1,17 @@
 <div class="search-result" data-controller="search-suggestions">
   <ul role="menu" data-controller="slim-scroller">
     <%= render partial: 'suggestion', collection: @presenter.items, as: :item %>
+
+    <li class="d-flex justify-content-between">
+      <div class="ayat">
+          <a href="/search?query=<%= @presenter.query %>"
+             data-controller="track"
+             data-name="search-suggestion-extra"
+             data-category="view-more"
+          >
+            View more results
+          </a>
+      </div>
+    </li>
   </ul>
 </div>

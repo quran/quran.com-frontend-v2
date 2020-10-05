@@ -32,7 +32,9 @@ module Search
 
 =end
 
-      LANG_DETECTOR_CLD3.find_top_n_most_freq_langs(query.to_s, 5).map(&:language)
+      LANG_DETECTOR_CLD3.find_top_n_most_freq_langs(query.to_s, 5).map do |part|
+        part.language.to_s
+      end
     end
 
     def detect_language_code
