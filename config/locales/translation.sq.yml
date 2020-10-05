@@ -88,7 +88,7 @@ sq:
     quran_reflect: Lexoni Reflektimet për këtë Ajet në Kur'anin Reflektoni
   search:
     placeholder: Kërko "Noah"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
     error: Na vjen keq, pati një gabim në kërkimin tuaj.
     no_query: Asnjë pyetje kërkimi.
     no_result: Nuk u gjet asnjë rezultat

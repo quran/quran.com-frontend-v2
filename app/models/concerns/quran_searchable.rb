@@ -27,11 +27,10 @@ module QuranSearchable
         methods: [:verse_path, :verse_id]
       )
 
-
       hash[:words] = words.where.not(text_uthmani: nil).map do |w|
         {
           id: w.id,
-          madani: w.text_uthmani, # uthmani script
+          madani: w.text_uthmani,
           simple: w.text_uthmani_simple,
           text_imlaei: w.text_imlaei
         }

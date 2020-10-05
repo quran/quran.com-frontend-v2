@@ -40,15 +40,15 @@ class SearchController < ApplicationController
   end
 
   def do_search
-    @presenter = SearchPresenter.new(self)
-
     client = Search::QuranSearchClient.new(
       query,
       page: page, size: size, lanugage: language
     )
+    @presenter = SearchPresenter.new(self)
 
     begin
       results = client.search
+
       @presenter.add_search_results(results)
     rescue Faraday::ConnectionFailed => e
       false

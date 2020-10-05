@@ -25,7 +25,19 @@ class SearchPresenter < BasePresenter
   end
 
   def load_translations(verse)
-    @results[verse.id][:translations]
+    strong_memoize :load_translation do
+      translations = @results[verse.id][:translations].group_by do |t|
+        t[:language]
+      end
+
+      translations.keys.each do |key|
+        translations[key] = translations[key].map do |t|
+          t[:texts]
+        end.flatten
+      end
+
+      translations
+    end
   end
 
   def show_verse_actions?
@@ -37,15 +49,12 @@ class SearchPresenter < BasePresenter
   end
 
   def params_for_verse_link(verse)
-    if (translation = load_translations(verse)).present?
-      translations_ids = translation.map do |trans|
-        trans[:texts].map { |a| a[:resource_id] }
-      end.flatten.uniq
-
-      if translations_ids.present?
-        "?translations=#{translations_ids.join(',')}"
-      end
+    translations = load_translations(verse)
+    translations_ids = translations.values.flatten.map do |t|
+      t[:resource_id]
     end
+
+    "?translations=#{translations_ids.join(',')}"
   end
 
   def items

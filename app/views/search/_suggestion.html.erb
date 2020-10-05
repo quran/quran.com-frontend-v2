@@ -1,8 +1,9 @@
 <li class="d-flex justify-content-between">
   <% if item.is_a?(Verse) %>
     <%
-      has_translation = @presenter.render_translations?(item)
-      verse_link = "/#{item.chapter_id}/#{item.verse_number}#{@presenter.params_for_verse_link(item)}"
+      translations = @presenter.load_translations(item)
+     has_translation = translations.any?
+     verse_link = "/#{item.chapter_id}/#{item.verse_number}#{@presenter.params_for_verse_link(item)}"
     %>
 
     <div class="link">
@@ -19,7 +20,7 @@
         </b>
 
         <% if has_translation %>
-          <% translation = @presenter.load_translations(item)[0][:texts][0] %>
+          <% translation = translations.values.first.first %>
          <br/>
           <p class="fs-sm">
             <%= translation[:text].to_s.html_safe %>
@@ -47,4 +48,3 @@
     </div>
   <% end %>
 </li>
-

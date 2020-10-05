@@ -12,7 +12,11 @@ class ChaptersController < ApplicationController
     @presenter = ChapterPresenter.new(self)
 
     unless @presenter.chapter
-      return redirect_to root_path, error: t('chapters.invalid')
+      return redirect_to root_path, error: t('errors.invalid_chapter')
+    end
+
+    if @presenter.out_of_range?
+      return redirect_to chapter_path(@presenter.chapter), error: t('errors.invalid_verse')
     end
 
     render partial: 'verses', layout: false if request.xhr?
