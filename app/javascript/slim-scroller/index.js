@@ -436,9 +436,13 @@ export default function slimScroll(dom, options) {
       releaseScroll = true;
       return;
     }
-    bar.stop(true, true).fadeIn("fast");
+
+    //bar.stop(true, true).fadeIn("fast");
+    bar.show();
+
     if (o.railVisible) {
-      rail.stop(true, true).fadeIn("fast");
+      //rail.stop(true, true).fadeIn("fast");
+      rail.show()
     }
   }
 
@@ -451,8 +455,10 @@ export default function slimScroll(dom, options) {
           !isOverBar &&
           !isDragg
         ) {
-          bar.fadeOut("slow");
-          rail.fadeOut("slow");
+          //bar.fadeOut("slow");
+          //rail.fadeOut("slow");
+          rail.hide("slow")
+          bar.hide("slow")
         }
       }, 1000);
     }
