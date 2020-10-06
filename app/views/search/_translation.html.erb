@@ -5,7 +5,7 @@
 </p>
 
 <% translations.each do |translation| %>
-  <div class="translation <%= language %> mb-3" data-controller="translation">
+  <div class="translation <%= language %> mb-3">
     <%= translation[:text].html_safe %>
     <small class="d-block resource"><%= translation[:resource_name] %></small>
 
