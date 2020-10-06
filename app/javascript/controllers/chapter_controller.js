@@ -187,21 +187,28 @@ export default class extends Controller {
   }
 
   highlightSegment(startIndex, endIndex) {
-    //TODO: track highlighted words in memory and remove highlighting from them
-    // DOm operation could be costly
-    const showWordTooltip = document.body.setting.get("autoShowWordTooltip");
-
-    this.removeSegmentHighlight();
-
-    const start = parseInt(startIndex, 10) + 1;
-    const end = parseInt(endIndex, 10) + 1;
     const words = this.activeTab.find(
       `.verse[data-verse-number=${this.currentVerse}] .word`
     );
 
+    // tajweed mode don't show words
+    if (0 == words.length) return;
+
+    //TODO: track highlighted words in memory and remove highlighting from them
+    // DOm operation could be costly
+    const showWordTooltip = document.body.setting.get("autoShowWordTooltip");
+    this.removeSegmentHighlight();
+
+    const start = parseInt(startIndex, 10) + 1;
+    const end = parseInt(endIndex, 10) + 1;
+
     for (let word = start, end1 = end; word < end1; word++) {
       words.eq(word - 1).addClass("highlight");
-      if (showWordTooltip) words.eq(word - 1)[0].tooltip.show();
+
+      if (showWordTooltip) {
+        let tip = words.eq(word - 1)[0].tooltip;
+        tip && tip.show();
+      }
     }
   }
 
@@ -217,8 +224,12 @@ export default class extends Controller {
   }
 
   removeSegmentHighlight() {
-    $(".word.highlight").each((i, word) => {
-      if (word.tooltip._popper) word.tooltip.hide();
+    let words = $(".word.highlight");
+
+    words.each((i, word) => {
+      let tip = word.tooltip;
+
+      if (tip && tip._popper) tip.hide();
 
       word.classList.remove("highlight");
     });
