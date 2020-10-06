@@ -6,7 +6,11 @@ class SearchController < ApplicationController
     if do_search
       render partial: 'results', layout: false if request.xhr?
     else
-      render 'error', layout: false if request.xhr?
+      if request.xhr?
+        render 'error', layout: false
+      else
+        render 'error'
+      end
     end
   end
 

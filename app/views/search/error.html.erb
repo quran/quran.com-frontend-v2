@@ -1,3 +1,21 @@
-<h6 class="mx-2 mt-2 text-center">
-  Sorry there was a problem with search.
-</h6>
+<div class="container">
+  <div class="col-12 my-5">
+    <h3>
+      Sorry there was a problem with search.
+    </h3>
+
+    <small>Here are some popular searches</small>
+
+    <% popular_searches.each do |item| %>
+      <div class="link my-2">
+        <a href="<%= item[0] %>"
+           data-controller="track"
+           data-name="search-suggestion-extra"
+           data-category="<%= item[0] %>"
+        >
+          <%= item[1] %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
