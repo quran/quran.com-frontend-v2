@@ -47,12 +47,13 @@ SitemapGenerator::Sitemap.create do
     end
   end
 
-  available_translations = ResourceContent.includes(:language).translations.one_verse.approved
-  available_tafsirs = ResourceContent.includes(:language).tafsirs.one_verse.approved
+  available_translations = ResourceContent.translations.one_verse.approved
+  available_tafsirs = ResourceContent.tafsirs.one_verse.approved
 
   # Add all verses
   Verse.find_each do |verse|
-    verse_path = verse.verse_key.tr(':', '/')
+    verse_key = verse.verse_key
+    verse_path = verse_key.tr(':', '/')
 
     add "/#{verse_path}", priority: 0.8, changefreq: CHANGE_FREQUENCY
 
@@ -61,21 +62,21 @@ SitemapGenerator::Sitemap.create do
 
     # Add available translation for each verse
     available_translations.each do |trans|
-      add "/#{verse_path}?translations=#{trans.slug || trans.id}", priority: 0.8, changefreq: CHANGE_FREQUENCY
+      add "/#{verse_path}?translations=#{trans.id}", priority: 0.8, changefreq: CHANGE_FREQUENCY
     end
 
     # Tafsir list
-    add "/#{verse_path}/tafsirs", priority: 0.8, changefreq: CHANGE_FREQUENCY
+    add "/#{verse_key}/tafsirs", priority: 0.8, changefreq: CHANGE_FREQUENCY
 
     # Add available tafsirs for each verse
     available_tafsirs.each do |tafsir|
-      add "/#{verse_path}/tafsirs/#{tafsir.slug || tafsir.id}", priority: 0.8, changefreq: CHANGE_FREQUENCY
+      add "/#{verse_key}/tafsirs/#{tafsir.id}", priority: 0.8, changefreq: CHANGE_FREQUENCY
     end
   end
 
   # Static pages
-  %w(about_us donations developers apps).each do |url|
-    add "/pages/#{url}", priority: 0.3, changefreq: CHANGE_FREQUENCY
+  %w(about_us donations developers apps).each do |page|
+    add "/#{page}", priority: 0.3, changefreq: CHANGE_FREQUENCY
   end
 
   # Add site locals
