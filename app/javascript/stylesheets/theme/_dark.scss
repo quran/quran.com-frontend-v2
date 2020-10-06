@@ -16,11 +16,14 @@ body.night {
     color: white !important;
   }
 
-  .text-muted {
+  .text-muted,
+  .nav-link.active,
+  .navbar-toggler {
     color: #adadad !important;
   }
 
-  .navbar-toggler {
+  .navbar-toggler,
+  .setting-button {
     border: 1px solid white;
   }
 
