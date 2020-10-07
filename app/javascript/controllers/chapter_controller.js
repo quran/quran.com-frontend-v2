@@ -145,7 +145,7 @@ export default class extends Controller {
     return this.element.dataset.chapterId;
   }
 
-  setSegmentInterval(seekTime, segmentTimings) {
+  setSegmentInterval(seekTime, segmentTimings, isPlaying) {
     this.removeSegmentTimers();
 
     let segments = segmentTimings || [];
@@ -165,6 +165,10 @@ export default class extends Controller {
 
       if (currentTime > startTime) {
         this.highlightSegment(segment[0], segment[1]);
+        if (!isPlaying) {
+          // if player is not playing, just highlight seek the word
+          return;
+        }
       } else {
         let highlightAfter = startTime - currentTime;
 

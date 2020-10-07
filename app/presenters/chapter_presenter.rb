@@ -55,7 +55,13 @@ class ChapterPresenter < HomePresenter
 
   def font_method
     strong_memoize :font_method do
-      FONT_METHODS[font].presence || 'code'
+      _font = font
+      if reading_mode? && 'tajweed' == _font
+        # we don't have wbw data for tajweed, fallback to uthmani script
+        _font = 'uthmani'
+      end
+
+      FONT_METHODS[_font].presence || 'code'
     end
   end
 

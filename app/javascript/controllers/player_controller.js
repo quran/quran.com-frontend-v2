@@ -113,7 +113,7 @@ export default class extends Controller {
     this.playWordQueue = [];
     //unload all tracks
     Howler.unload();
-    this.progressBar.removeEventListener(this.onProgressChange);
+    this.progressBar.removeEventListener("change", () => {});
     this.progressBar.disabled = true;
   }
 
@@ -272,8 +272,9 @@ export default class extends Controller {
     });
 
     // slider
-    this.onProgressChange = e => this.handleProgressBarChange(e.target.value);
-    this.progressBar.addEventListener("change", this.onProgressChange);
+    this.progressBar.addEventListener("change", e =>
+      this.handleProgressBarChange(e.target.value)
+    );
   }
 
   handleProgressBarChange(value) {
@@ -461,7 +462,8 @@ export default class extends Controller {
   setSegmentInterval() {
     this.chapter.setSegmentInterval(
       this.track.howl.seek(),
-      this.preloadTrack[this.currentVerse].segments
+      this.preloadTrack[this.currentVerse].segments,
+      this.isPlaying()
     );
   }
 
