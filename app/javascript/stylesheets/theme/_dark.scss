@@ -2,8 +2,9 @@ body.night {
   background: #1d1f21;
   color: #d2d2d2;
 
-  .arabic {
-    color: #fff;
+  .arabic,
+  .nav-pills .nav-link.active {
+    color: #fff !important;
   }
 
   .btn-info {

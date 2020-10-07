@@ -114,11 +114,14 @@
 
 .verse,
 .line {
-  direction: rtl;
   .arabic {
     font-size: 30px;
     line-height: normal;
   }
+}
+
+.line {
+  direction: rtl;
 }
 
 .verse {
