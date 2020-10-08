@@ -12,13 +12,17 @@
 
   <div id='ordered-translations'>
     <div class="py-4 border-bottom">
-      <% translated_name = languages[38].translated_name%>
+      <%
+        language = languages[38]
+        translated = language.translated_name
+        name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
+      %>
 
-      <strong class="ff-m text-muted <%= translated_name.language_name %>" data-filter-tags="english">
-        <%= translated_name.name %>
+      <strong class="ff-m text-muted <%= language.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+        <%= translated.name %>
       </strong>
 
-      <%= render partial: 'translation', collection: translations[trans_keys.delete(38)], as: :translation, locals: {language: languages[38]} %>
+      <%= render partial: 'translation', collection: translations[trans_keys.delete(38)], as: :translation, locals: {language: name_for_filters} %>
     </div>
 
     <div class="py-4">
@@ -26,12 +30,16 @@
         <%= _t('settings.translation_other') %>
       </h6>
       <% trans_keys.each do |lang| %>
-        <% translated_name = languages[lang].translated_name%>
-        <strong class="ff-m text-muted <%= translated_name.language_name %>" data-filter-tags="<%= translated_name.language_name %>">
-          <%= translated_name.name %>
+        <%
+          language = languages[lang]
+          translated = language.translated_name
+          name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
+        %>
+        <strong class="ff-m text-muted <%= language.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+          <%= translated.name %>
         </strong>
 
-        <%= render partial: 'translation', collection: translations[lang], as: :translation, locals: {language: translated_name.language_name} %>
+        <%= render partial: 'translation', collection: translations[lang], as: :translation, locals: {language: name_for_filters} %>
       <% end %>
     </div>
   </div>

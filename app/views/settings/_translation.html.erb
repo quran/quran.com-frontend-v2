@@ -1,6 +1,8 @@
-<% translated_name = translation.translated_name %>
+<%
+  translated_name = translation.translated_name
+%>
 
-<div class="form-check my-4 ml-4" data-filter-tags="<%= language%> <%= translated_name.name.downcase %> <%= translated_name.language_name %> <%= translation.name.downcase %>">
+<div class="form-check my-4 ml-4" data-filter-tags="<%= language %> <%= translated_name.name.downcase %> <%= translation.name.downcase %>">
   <input class="form-check-input translation" type="checkbox" value="<%= translation.id %>" id="tans-<%= translated_name.id %>">
   <label class="form-check-label text-muted ff-r" for="tans-<%= translated_name.id %>">
     <span class="<%= translated_name.language_name %>">
