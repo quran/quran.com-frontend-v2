@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3.3'
+gem 'rails', '~> 6.0.3.4'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12.6'
@@ -48,7 +48,7 @@ gem 'elasticsearch-model', '>= 7.1.0'
 gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
 gem 'actionpack-action_caching', '>= 1.2.1'
-gem "actionpack-page_caching", ">= 1.2.2"
+gem "actionpack-page_caching", ">= 1.2.3"
 
 # Pagination
 gem 'pagy', '= 3.7.3'
@@ -69,7 +69,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'web-console', '>= 4.0.1'
+  gem 'web-console', '>= 4.0.4'
   gem 'puma-ngrok-tunnel', '>= 1.0.0'
 
   gem 'listen', '>= 3.0.5', '< 3.2'
