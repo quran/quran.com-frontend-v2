@@ -28,4 +28,8 @@ class SettingsController < ApplicationController
   def init_presenter
     @presenter = SettingPresenter.new(self)
   end
+
+  def generate_localised_cache_key
+    "#{controller_name}/#{action_name}/#{fetch_locale}"
+  end
 end

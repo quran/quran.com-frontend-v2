@@ -23,4 +23,8 @@ class HomePresenter < BasePresenter
   def juz
     Juz.order('juz_number ASC')
   end
+
+  def cache_key
+    'home'
+  end
 end

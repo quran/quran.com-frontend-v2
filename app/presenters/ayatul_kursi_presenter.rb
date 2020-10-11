@@ -10,4 +10,8 @@ class AyatulKursiPresenter < ChapterPresenter
   def meta_keywords
     ['آیت الکرسی', 'ayatul kursi', 'Quran 2:255']
   end
+
+  def cache_key
+    'ayat-ul-kursi'
+  end
 end
