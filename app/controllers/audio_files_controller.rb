@@ -1,16 +1,21 @@
 # frozen_string_literal: true
 
 class AudioFilesController < ApplicationController
-  # caches_action :index, expires_in: 30.days, cache_path: :action_cache_key
+  before_action :init_presenter
+  caches_action :index,
+                cache_path: :generate_localised_cache_key
 
   def index
-    presenter = AudioPresenter.new(self)
-    render json: presenter.data.to_json
+    render json: @presenter.data.to_json
   end
 
   protected
 
-  def action_cache_key
-    "audio-#{params[:chapter]}-#{params[:page]}-#{params[:recitation]}"
+  def init_presenter
+    @presenter = AudioPresenter.new(self)
+  end
+
+  def generate_localised_cache_key
+    "#{controller_name}/#{@presenter.cache_key}"
   end
 end

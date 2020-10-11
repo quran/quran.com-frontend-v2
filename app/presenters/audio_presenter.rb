@@ -21,6 +21,10 @@ class AudioPresenter < BasePresenter
     json
   end
 
+  def cache_key
+    "c:#{chapter_id}-r:#{recitation_id}-s:#{verse_start}-e:#{verse_end}"
+  end
+
   protected
 
   def load_verses
