@@ -142,8 +142,8 @@ class BasePresenter
   end
 
   def saved_translations
-    # session[:translations].presence ||
     params[:translations].presence ||
+      session[:translations].presence ||
       params[:translations].presence || DEFAULT_TRANSLATION
   end
 
