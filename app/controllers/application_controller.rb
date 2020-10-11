@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
       extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
       I18n.default_locale
   end
+
+  def generate_localised_cache_key
+    "#{controller_name}/#{action_name}/#{fetch_locale}"
+  end
 end
