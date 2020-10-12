@@ -117,11 +117,7 @@ class BasePresenter
 
   def valid_translations
     strong_memoize :valid_translations do
-      saved = (
-      params[:translations].presence ||
-        params[:translations].presence ||
-        session[:translations].presence || DEFAULT_TRANSLATION
-      )
+      saved = saved_translations
 
       if 'no' == saved || saved.blank?
         context.session[:translations] = 'no'
@@ -143,6 +139,12 @@ class BasePresenter
         context.session[:translations] = translations
       end
     end
+  end
+
+  def saved_translations
+    params[:translations].presence ||
+      session[:translations].presence ||
+      params[:translations].presence || DEFAULT_TRANSLATION
   end
 
   def eager_load_translated_name(records)

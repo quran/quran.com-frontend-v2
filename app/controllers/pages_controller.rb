@@ -2,6 +2,11 @@
 
 class PagesController < ApplicationController
   before_action :set_presenter
+  caches_page :about_us,
+              :apps,
+              :donations,
+              :support,
+              :developers
 
   def about_us; end
 

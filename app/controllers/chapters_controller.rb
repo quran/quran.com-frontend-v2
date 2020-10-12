@@ -2,15 +2,18 @@
 
 class ChaptersController < ApplicationController
   before_action :check_routes, only: :show
-  # caches_action :index, :show, :ayatul_kursi, expires_in: 7.days, cache_path: :action_cache_key
+  before_action :init_presenter
+
+  caches_action :index,
+                :show,
+                :ayatul_kursi,
+                :load_verses,
+                cache_path: :generate_localised_cache_key
 
   def index
-    @presenter = HomePresenter.new(self)
   end
 
   def show
-    @presenter = ChapterPresenter.new(self)
-
     unless @presenter.chapter
       return redirect_to root_path, error: t('errors.invalid_chapter')
     end
@@ -23,8 +26,6 @@ class ChaptersController < ApplicationController
   end
 
   def ayatul_kursi
-    @presenter = AyatulKursiPresenter.new(self)
-
     unless @presenter.chapter
       return redirect_to root_path, error: t('chapters.invalid')
     end
@@ -106,7 +107,18 @@ class ChaptersController < ApplicationController
     end
   end
 
-  def action_cache_key
-    "#{action_name}-#{request.xhr?}-#{params[:id]}-#{params[:range]}-#{params[:translations]}-#{params[:reading]}-#{params[:font]}-#{I18n.locale}"
+  def init_presenter
+    @presenter = case action_name
+                 when 'index'
+                   HomePresenter.new(self)
+                 when 'ayatul_kursi'
+                   AyatulKursiPresenter.new(self)
+                 else
+                   ChapterPresenter.new(self)
+                 end
+  end
+
+  def generate_localised_cache_key
+    "verses:xhr#{request.xhr?}/#{@presenter.cache_key}/#{fetch_locale}"
   end
 end

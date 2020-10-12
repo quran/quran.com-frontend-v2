@@ -1,6 +1,5 @@
 class VersesController < ApplicationController
   before_action :init_presenter
-  # caches_action :select_tafsirs, :share, expires_in: 1.day
 
   def share
     render layout: false

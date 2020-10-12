@@ -24,6 +24,13 @@ class ChapterPresenter < HomePresenter
     @range_start, @range_end = params[:range].to_s.split(/-|:/)
   end
 
+  def cache_key
+    _start = verse_pagination_start
+    _end = verse_pagination_end(_start, per_page)
+
+    "f:#{font_method}-ch:#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{_start}-#{_end}"
+  end
+
   def chapter
     strong_memoize :chapter do
       Chapter.find_using_slug(params[:id])
