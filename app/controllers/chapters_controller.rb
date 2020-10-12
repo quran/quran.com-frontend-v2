@@ -38,13 +38,6 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
-    start = params[:verse].to_i
-    from = params[:from] || start
-    to = params[:to].to_i + 1 || start + 10
-
-    params[:range] = "#{from}-#{to}"
-    @presenter = ChapterPresenter.new(self)
-
     render layout: false
   end
 
@@ -113,6 +106,13 @@ class ChaptersController < ApplicationController
                    HomePresenter.new(self)
                  when 'ayatul_kursi'
                    AyatulKursiPresenter.new(self)
+                 when 'load_verses'
+                   start = params[:verse].to_i
+                   from = params[:from] || start
+                   to = params[:to].to_i || start + 10
+
+                   params[:range] = "#{from}-#{to}"
+                   @presenter = ChapterPresenter.new(self)
                  else
                    ChapterPresenter.new(self)
                  end

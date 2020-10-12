@@ -89,7 +89,8 @@ class ChapterPresenter < HomePresenter
   end
 
   def all
-    verses(verse_pagination_start, range_end - range_start)
+    per = range_end - range_start
+    verses(verse_pagination_start, per + 1)
   end
 
   def per_page
