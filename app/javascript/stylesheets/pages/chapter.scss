@@ -28,7 +28,12 @@
     line-height: 34px;
   }
 }
+
 .setting-button {
+  &:hover {
+    color: #fff !important;
+  }
+
   @media #{$phone} {
     padding: 4px 7px 4px 3px;
   }

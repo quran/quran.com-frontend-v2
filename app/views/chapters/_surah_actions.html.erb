@@ -79,7 +79,7 @@
             <div id="verse-list">
               <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
                 <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
-                  <%= link_to chapter_path("#{current_chapter}/#{verse_num}"), data: {verse: verse_num} do %>
+                  <%= link_to "/#{current_chapter}/#{verse_num}", data: {verse: verse_num} do %>
                     <%= verse_locale %> <%= verse_num %>
                   <% end %>
                 </div>
@@ -112,7 +112,7 @@
       </div>
 
       <div class="col text-right">
-        <button class="btn btn-outline-secondary setting-button text-muted" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
+        <button class="btn btn-outline-secondary setting-button" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
           <i class="fa fa-cog fa-center-1" , class="c-pointer"></i>
           <span class="d-md-inline d-none">
             <%= _t('settings.label') %>

@@ -13,6 +13,7 @@ export default class extends Controller {
     this.translationTab = document.querySelector("#pill-translation-tab");
     this.readingTab = document.querySelector("#pill-reading-tab");
     this.setURLState();
+    this.bindAyahJump();
   }
 
   connect() {
@@ -24,6 +25,8 @@ export default class extends Controller {
 
     // currently playing ayah
     this.currentVerse = null;
+
+    this.totalVerses = Number(this.element.dataset.totalVerses);
 
     // currently highlighted word
     this.activeWord = null;
@@ -95,6 +98,26 @@ export default class extends Controller {
         this.updateURLState(this.readingTab.href, { reading: true });
       }
     }
+  }
+
+  bindAyahJump() {
+    $("#verse-list")
+      .find(".dropdown-item a")
+      .on("click", e => {
+        document.body.loader.show();
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const ayah = e.currentTarget.dataset.verse;
+        // TODO: we need to refactor this now, repeating this a lot
+        // create a utility to load verses, update page, tell player to load audio etc
+        this.loadVerses(ayah).then(() => {
+          this.scrollToVerse(ayah);
+          document.body.loader.hide();
+          this.activeTab.trigger("items:added");
+        });
+      });
   }
 
   isReadingMode() {
@@ -268,6 +291,7 @@ export default class extends Controller {
 
   loadVerses(verse) {
     // called when user jump to ayah from repeat setting
+    verse = Number(verse);
 
     // If this ayah is already loaded, scroll to it
     if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
@@ -295,8 +319,8 @@ export default class extends Controller {
 
     // instead of loading all ayah, lets say load batch of 10 around the select verse
     // i.e if user want to jump to 200, we'll load 195 to 205
-    from = Math.max(0, verse - 5);
-    to = verse + 5;
+    from = Math.max(0, verse - 2);
+    to = Math.min(verse + 5, this.totalVerses);
 
     let request = fetch(
       `/${chapter}/load_verses?${$.param({ from, to, verse, reading })}`
