@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   get :sw, to: 'static#serviceworker'
   get :serviceworker, to: 'static#serviceworker'
+  get '/quran-service-worker', to: 'static#serviceworker'
+  get '/manifest', to: 'static#manifest'
 
   get "/sitemap.xml.gz" => proc { |req|
     [
@@ -111,4 +113,6 @@ Rails.application.routes.draw do
 
   get '/:id', to: 'chapters#show', as: :chapter
   get '/:id/(:range)', to: 'chapters#show', as: :range
+
+  match '*path' => redirect('/'), via: [:get, :post]
 end
