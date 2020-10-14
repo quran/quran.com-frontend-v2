@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get :serviceworker, to: 'static#serviceworker'
   get '/quran-service-worker', to: 'static#serviceworker'
   get '/manifest', to: 'static#manifest'
+  get '/opensearch', to: 'static#opensearch'
 
   get "/sitemap.xml.gz" => proc { |req|
     [

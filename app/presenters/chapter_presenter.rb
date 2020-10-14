@@ -25,8 +25,13 @@ class ChapterPresenter < HomePresenter
   end
 
   def cache_key
-    _start = verse_pagination_start rescue -1
-    _end = verse_pagination_end(_start, per_page)
+    begin
+      _start = verse_pagination_start
+      _end = verse_pagination_end(_start, per_page)
+    rescue Exception => e
+      _start = 'buggy'
+      _end = 'buggy'
+    end
 
     "f:#{font_method}-ch:#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{_start}-#{_end}"
   end
