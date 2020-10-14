@@ -114,5 +114,5 @@ Rails.application.routes.draw do
   get '/:id', to: 'chapters#show', as: :chapter
   get '/:id/(:range)', to: 'chapters#show', as: :range
 
-  match '*path' => redirect('/'), via: [:get, :post]
+  match '*', to: redirect('/'), via: [:get, :post]
 end
