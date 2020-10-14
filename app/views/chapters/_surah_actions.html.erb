@@ -24,7 +24,7 @@
           >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b text-primary"><%= _t('settings.chapters') %></h6>
-              <i class="fa fa-times-circle fa-center c-pointer"></i>
+              <i class="fa fa-times-circle fa-center c-pointer text-muted"></i>
             </div>
 
             <div class="rounded-search pt-3 mb-3 px-2">
@@ -59,7 +59,7 @@
         <div class="dropdown verse-dropdown">
           <button class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="text-left pr-3 text-primary">
-              <strong> <%= verse_locale %> <%= @presenter.paginate.first.verse_number %></strong>
+              <strong> <%= verse_locale %> <%= @presenter.paginate[0].verse_number %></strong>
             </div>
           </button>
 
@@ -69,7 +69,7 @@
           >
             <div class="d-flex justify-content-between align-items-center p-3 border-bottom d-md-none">
               <h6 class="mb-0 ff-b text-primary"><%=_t('verses.go') %></h6>
-              <i class="fa fa-times-circle fa-center c-pointer"></i>
+              <i class="fa fa-times-circle fa-center c-pointer text-muted"></i>
             </div>
 
             <div class="rounded-search px-2 pt-3 mb-3">
@@ -79,7 +79,7 @@
             <div id="verse-list">
               <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
                 <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
-                  <%= link_to chapter_path("#{current_chapter}/#{verse_num}"), data: {verse: verse_num} do %>
+                  <%= link_to "/#{current_chapter}/#{verse_num}", data: {verse: verse_num} do %>
                     <%= verse_locale %> <%= verse_num %>
                   <% end %>
                 </div>

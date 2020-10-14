@@ -1,11 +1,13 @@
+<% language, translations = translations %>
+
 <p class="badge badge badge-primary">
-  Found <%= translations[:texts].length %> results in <%= translations[:language] %> translations
+  Found <%= translations.size %> results in <%= language %> translations
 </p>
 
-<% translations[:texts].each do |translation| %>
-  <div class="txt <%= translation[:language] %>" data-controller="translation">
-    <span class="resource"><%= translation[:resource_name] %></span>
+<% translations.each do |translation| %>
+  <div class="translation <%= language %> mb-3">
     <%= translation[:text].html_safe %>
+    <small class="d-block resource"><%= translation[:resource_name] %></small>
 
     <div id="footnote"></div>
   </div>

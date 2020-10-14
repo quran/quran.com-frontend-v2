@@ -23,7 +23,9 @@ tr:
   settings:
     label: Ayarlar
     chapters: Sure Seç
-    reciters: reciters
+    reciters: "Okuyucular seçin
+
+      "
     translations: Çeviriler
     remove_all: Hepsini kaldır
     translation_english: Türkçe
@@ -41,18 +43,21 @@ tr:
       day_tip: Gündüz moduna geç
       night_tip: Gece moduna geç
     reset: Ayarı Sıfırla
-    font_type:
-    sample_audio:
-    display:
-    audio:
+    font_type: Yazı Tipi Seçin
+    sample_audio: Örnek Oynat
+    display: Görüntü ayarları
+    audio: Ses ayarları
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Tajweed Metni
+      uthmani: Osmani Metni
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: IndoPak metni
+    translation_count:
+      one: Bir çeviri gösteriliyor
+      other: "%{count} çeviri gösteriliyor"
   verses:
-    media:
+    media: "%{from} 'dan video yorumu izleyin"
     go: Sonraki ayet
     not_found: Ayet bulunamadı
   chapters:
@@ -84,10 +89,10 @@ tr:
 
         "
       select: Tefsir'i seçin
-    quran_reflect:
+    quran_reflect: Bu ayetin Kuran Üzerine Düşünceler Oku
   search:
     placeholder: Arama "Noah"
-    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-success>%{query}</span>"
+    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-primary>%{query}</span>"
     error: Üzgünüz, aramanızla ilgili bir hata oluştu.
     no_query: Arama sorgusu yok.
     no_result: Sonuç bulunamadı.
@@ -112,6 +117,12 @@ tr:
     repeat_times: Zamanlar
     repeat_loop: döngü
     scroll: O anda çalan ayah'a otomatik olarak kayar
+    select_verse: Ayet seçin
+    pause_bw_ayah: Sonraki dizeyi çalmadan önce ne kadar süre duraklayacağınızı ayarlayın
+    pause_seconds: saniye
+    pause: Duraklat
+    play_continuously: Duraklatmadan oynamaya devam edin
+    show_word_tooltip: Ayah oynarken araç ipucunda kelime çevirisini göster
   loading: Yükleniyor...
   nav:
     title: Kuran
@@ -129,11 +140,11 @@ tr:
       Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
       birçok isme sahiptir.
     rights: Tüm hakları Saklıdır
-    mobile_apps: Mobil uygulamalar
     navigate: Gezin
     legacy_site: Eski Quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Mobil uygulamalar
   juz: Cüz
   click_here: Buraya Tıkla
   download: İndir
@@ -153,4 +164,4 @@ tr:
     reading: Okuma
     translation: Çeviriler
     info: Bölüm Bilgisi
-  share_ayah:
+  share_ayah: Paylaş ayah

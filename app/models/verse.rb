@@ -31,22 +31,19 @@ class Verse < ApiCoreRecord
   include QuranSearchable
 
   belongs_to :chapter, inverse_of: :verses, counter_cache: true
-  belongs_to :verse_root
-  belongs_to :verse_lemma
-  belongs_to :verse_stem
+  # Don't need these relation for now
+  # belongs_to :verse_root
+  # belongs_to :verse_lemma
+  # belongs_to :verse_stem
 
   has_many :tafsirs
   has_many :words
-  #has_many :media_contents, as: :resource
   has_many :translations
-  has_many :audio_files, as: :resource
+  has_many :audio_files
   has_many :recitations, through: :audio_files
-  has_many :roots, through: :words
 
   # For eager loading
-  has_one  :audio, class_name: 'AudioFile', as: :resource
-
-  default_scope { order 'verse_number asc' }
+  has_one  :audio, class_name: 'AudioFile'
 
   attr_accessor :highlighted_text
 
@@ -55,6 +52,6 @@ class Verse < ApiCoreRecord
   end
 
   def highlighted_text
-    @highlighted_text || text_madani
+    @highlighted_text || text_uthmani
   end
 end

@@ -10,30 +10,34 @@ var PRE_DEFINED_FOOTNOTES = {
 
 export default class extends Controller {
   connect() {
-    this.el = $(this.element);
     this.bindFootnotes();
   }
 
   bindFootnotes() {
-    let foodnotes = this.el.find("sup");
+    let el = $(this.element);
+    let foodnotes = el.find("sup");
 
     foodnotes.click(e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
-      let target = e.target;
+      var target = e.target;
 
-      let id = target.getAttribute("foot_note");
+      var id = target.getAttribute("foot_note");
 
       if (id && id.length > 0) {
-        fetch(`/foot_note/${id}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
-        .then(resp => resp.text())
-        .then(script => {
-          const scriptTag = document.createElement('script');
-          scriptTag.innerText = script;
+        let existing = el.find(`#footnote-${id}`);
+        if (existing.length > 0) {
+          return existing.toggleClass("d-none");
+        }
 
-          document.body.append(scriptTag);
-        });
+        fetch(`/foot_note/${id}`, {
+          headers: { "X-Requested-With": "XMLHttpRequest" }
+        })
+          .then(resp => resp.text())
+          .then(text => {
+            el.find("#footnotes").html(text);
+          });
       }
     });
 
@@ -45,7 +49,7 @@ export default class extends Controller {
           title: PRE_DEFINED_FOOTNOTES[text],
           html: true,
           direction: "top",
-          sanitize: false,
+          sanitize: false
         });
       }
     });

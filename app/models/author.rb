@@ -12,6 +12,6 @@
 #
 
 class Author < ApiCoreRecord
-  has_many :translated_names, as: :resource
+  include NameTranslateable
   has_many :resource_contents
 end

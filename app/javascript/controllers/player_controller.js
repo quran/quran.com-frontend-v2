@@ -17,7 +17,7 @@ let Howl, Howler;
 
 export default class extends Controller {
   connect() {
-    import("howler").then((howler) => {
+    import("howler").then(howler => {
       Howl = howler.Howl;
       Howler = howler.Howler;
     });
@@ -32,6 +32,7 @@ export default class extends Controller {
     this.track = {};
     this.audioData = {};
     this.playerProgressInterval = null;
+    this.pauseSeconds = 0;
 
     this.chapter = null;
     this.firstVerse = null;
@@ -44,7 +45,6 @@ export default class extends Controller {
       showTooltip: false,
       repeat: {
         verse: null,
-        enabled: this.settings.get("repeatEnabled"),
         type: this.settings.get("repeatType") || "single", // or range
         count: this.settings.get("repeatCount"), // number of time to play each ayah
         from: this.settings.get("repeatFrom"),
@@ -55,6 +55,34 @@ export default class extends Controller {
 
     this.buildPlayer();
     this.bindPlayerEvents();
+  }
+
+  updatePause(pauseSec) {
+    this.pauseSeconds = pauseSec;
+  }
+
+  updateRepeatConfig(setting, repeatRange) {
+    this.config.repeat = {
+      enabled: setting.repeatEnabled,
+      count: setting.repeatCount,
+      type: setting.repeatType,
+      verse: setting.repeatAyah,
+      from: setting.repeatFrom,
+      to: setting.repeatTo,
+      iteration: 1
+    };
+
+    // Rest next ayah to play when user change the repeat setting
+    // rollback to previously playing ayah if user has not set repeat start
+
+    this.firstVerse = repeatRange.first;
+    this.lastVerse = repeatRange.last;
+    this.currentVerse = repeatRange.first;
+
+    this.updateVerses().then(() => {
+      this.createHowl(this.currentVerse, false);
+      if (this.isPlaying()) this.play(this.currentVerse);
+    });
   }
 
   init(chapter, firstVerse, lastVerse) {
@@ -71,6 +99,11 @@ export default class extends Controller {
       that.createHowl(that.currentVerse, false);
       //chapter.scrollToVerse(that.currentVerse);
     });
+
+    // sidebar will lock body scrolling, when its closed scroll to repeating verse
+    $(document).on("sidebar:closed", () =>
+      chapter.scrollToVerse(this.currentVerse)
+    );
   }
 
   disconnect() {
@@ -80,7 +113,7 @@ export default class extends Controller {
     this.playWordQueue = [];
     //unload all tracks
     Howler.unload();
-    this.progressBar.removeEventListener(this.onProgressChange);
+    this.progressBar.removeEventListener("change", () => {});
     this.progressBar.disabled = true;
   }
 
@@ -89,7 +122,7 @@ export default class extends Controller {
   }
 
   buildPlayer() {
-    this.progressBar = document.getElementById('player-range');
+    this.progressBar = document.getElementById("player-range");
 
     // auto scroll component
     this.scrollButton = this.element.querySelector("#auto-scroll-btn");
@@ -239,8 +272,9 @@ export default class extends Controller {
     });
 
     // slider
-    this.onProgressChange = e => this.handleProgressBarChange(e.target.value);
-    this.progressBar.addEventListener("change", this.onProgressChange);
+    this.progressBar.addEventListener("change", e =>
+      this.handleProgressBarChange(e.target.value)
+    );
   }
 
   handleProgressBarChange(value) {
@@ -250,37 +284,6 @@ export default class extends Controller {
 
     let time = (duration / 100) * value;
     this.track.howl.seek(time);
-  }
-
-  jumpToVerse(verse) {
-    // this method is called when user:
-    // select ayah from verse dropdown
-    // from play range dropdown
-
-    let wasPlaying = this.isPlaying();
-    if ($(`#verses .verse[data-verse-number=${verse}]`).length > 0) {
-      this.scrollToVerse(verse);
-
-      if (wasPlaying) {
-        this.play(verse);
-      }
-
-      return Promise.resolve([]);
-    } else {
-      // this verse isn't present in the page. Load it
-      let controller = document.getElementById("chapter-tabs");
-
-      controller.chapter.loadVerses(verse).then(() => {
-        this.updateVerses();
-        this.scrollToVerse(verse);
-
-        if (wasPlaying) {
-          this.play(verse);
-        }
-
-        return Promise.resolve([]);
-      });
-    }
   }
 
   updatePlayerControls() {
@@ -398,6 +401,14 @@ export default class extends Controller {
   onVerseEnd() {
     this.progressBar.value = 0;
 
+    if (this.pauseSeconds > 0) {
+      setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
+    } else {
+      this.onVerseEnded();
+    }
+  }
+
+  onVerseEnded() {
     if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()
@@ -409,11 +420,10 @@ export default class extends Controller {
   }
 
   repeatSingleVerse() {
-    if (this.config.repeat.iteration < this.config.repeat.count) {
+    if (this.config.repeat.iteration <= this.config.repeat.count) {
       //  play the same verse
       this.config.repeat.iteration++;
       this.play();
-      console.log("repeating current verse", this.currentVerse);
     } else {
       this.config.repeat.iteration = 1;
 
@@ -425,14 +435,7 @@ export default class extends Controller {
     let repeatSetting = this.config.repeat;
 
     if (this.currentVerse == repeatSetting.to) {
-      // current itration is finished
-      if (repeatSetting.iteration < repeatSetting.count) {
-        console.log(
-          "repeating range, ",
-          repeatSetting.iteration,
-          " count",
-          repeatSetting.count
-        );
+      if (repeatSetting.iteration <= repeatSetting.count) {
         this.play(repeatSetting.from);
         repeatSetting.iteration++;
       } else {
@@ -459,7 +462,8 @@ export default class extends Controller {
   setSegmentInterval() {
     this.chapter.setSegmentInterval(
       this.track.howl.seek(),
-      this.preloadTrack[this.currentVerse].segments
+      this.preloadTrack[this.currentVerse].segments,
+      this.isPlaying()
     );
   }
 

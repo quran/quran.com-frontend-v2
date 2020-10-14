@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   # surah in url for seo
   get '/surah/:id/info', to: 'chapter_info#show'
   get '/surah-info/:id', to: 'chapter_info#show'
-  get '/:id/tafsirs', to: 'verses#select_tafsirs', as: :verse_tafsirs
   get '/:id/tafsirs/:tafsir_id', to: 'verses#tafsir', as: :verse_tafsir
 
   resources :chapter_info, only: :show

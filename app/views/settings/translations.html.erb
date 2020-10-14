@@ -1,7 +1,10 @@
 <%
-  translations = approved_translations
+  translations = @presenter.translations
   trans_keys = translations.keys
+
+  languages = @presenter.languages
 %>
+
 <div data-controller="filter-list choose-translations" class="px-4" data-list="#ordered-translations" data-input="#filter-translations">
   <div class="rounded-search d-flex justify-content-end my-4">
     <input class="form-control bg-light" placeholder="Filter" type="search" id="filter-translations"/>
@@ -9,21 +12,34 @@
 
   <div id='ordered-translations'>
     <div class="py-4 border-bottom">
-      <strong class="ff-m text-muted" data-filter-tags="english">
-        English
+      <%
+        language = languages[38]
+        translated = language.translated_name
+        name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
+      %>
+
+      <strong class="ff-m text-muted <%= language.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+        <%= translated.name %>
       </strong>
 
-      <%= render partial: 'translation', collection: translations[trans_keys.delete('english')], as: :translation, locals: {language: 'english'} %>
+      <%= render partial: 'translation', collection: translations[trans_keys.delete(38)], as: :translation, locals: {language: name_for_filters} %>
     </div>
 
     <div class="py-4">
-      <h6 class="ff-b mb-3">Other Languages</h6>
+      <h6 class="ff-b mb-3">
+        <%= _t('settings.translation_other') %>
+      </h6>
       <% trans_keys.each do |lang| %>
-        <strong class="ff-m text-muted" data-filter-tags="<%= lang %>">
-          <%= lang.humanize %>
+        <%
+          language = languages[lang]
+          translated = language.translated_name
+          name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
+        %>
+        <strong class="ff-m text-muted <%= language.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+          <%= translated.name %>
         </strong>
 
-        <%= render partial: 'translation', collection: translations[lang], as: :translation, locals: {language: lang} %>
+        <%= render partial: 'translation', collection: translations[lang], as: :translation, locals: {language: name_for_filters} %>
       <% end %>
     </div>
   </div>

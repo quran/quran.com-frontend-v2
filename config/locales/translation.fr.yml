@@ -52,16 +52,19 @@ fr:
       day_tip: Passer en mode jour
       night_tip: Passer en mode nuit
     reset: Remettre les paramètres par défault
-    font_type:
+    font_type: Sélectionnez la police
     sample_audio:
-    display:
-    audio:
+    display: Paramètres d'affichage
+    audio: Les paramètres audio
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Texte Tajweed
+      uthmani: Texte uthmani
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: Texte IndoPak
+    translation_count:
+      one: Afficher une traduction
+      other: Affichage des traductions %{count}
   verses:
     media: Regarder les commentaires de la vidéo depuis %{from}
     go: Aller au verset
@@ -93,7 +96,7 @@ fr:
     tafsir:
       label: Tafsirs
       select: Sélectionnez Tafsir
-    quran_reflect:
+    quran_reflect: Lire les réflexions pour cette Ayah sur le Coran
   search:
     placeholder: Chercher "Noah"
     result:
@@ -125,6 +128,14 @@ fr:
     repeat_times: Fois
     repeat_loop: boucle
     scroll: Défiler automatiquement jusqu’au verset en cours de lecture
+    select_verse: Sélectionnez un verset
+    pause_bw_ayah: Définir la durée de pause avant de jouer le couplet suivant
+    pause_seconds: Secondes
+    pause: Pause pour
+    play_continuously: Continuez à jouer sans pause
+    show_word_tooltip:
+      Afficher la traduction des mots dans l'info-bulle tout en jouant
+      à ayah
   loading: Chargement...
   nav:
     title: Coran
@@ -140,11 +151,11 @@ fr:
       Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
       Quran, Koran) est un projet à but non-lucratif.
     rights: Tous droits réservés
-    mobile_apps: Applications Mobile
     navigate: Naviguer
     legacy_site: Version précédente de Quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Applications Mobile
   juz: Juz
   click_here: Cliquez ici
   download: Télécharger
@@ -164,4 +175,4 @@ fr:
     reading: Mode lecture
     translation: Traductions
     info: Info Sourate
-  share_ayah:
+  share_ayah: Partager ayah

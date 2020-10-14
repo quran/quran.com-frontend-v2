@@ -9,6 +9,12 @@
   }
 }
 
+#verses {
+  // reading/translation mode page are lazy loaded
+  // need to set min height to wrapper give for interaction observer to see this dom's presence within page
+  min-height: 50px;
+}
+
 .chapters.show {
   header {
     position: unset !important;
@@ -22,7 +28,12 @@
     line-height: 34px;
   }
 }
+
 .setting-button {
+  &:hover {
+    color: #fff !important;
+  }
+
   @media #{$phone} {
     padding: 4px 7px 4px 3px;
   }
@@ -112,6 +123,10 @@
     font-size: 30px;
     line-height: normal;
   }
+}
+
+.line {
+  direction: rtl;
 }
 
 .verse {

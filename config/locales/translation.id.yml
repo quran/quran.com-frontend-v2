@@ -45,16 +45,19 @@ id:
       day_tip: Ganti ke mode terang
       night_tip: Ganti ke mode malam
     reset: Atur Ulang Pengaturan
-    font_type:
+    font_type: Pilih font
     sample_audio:
-    display:
-    audio:
+    display: Pengaturan tampilan
+    audio: Pengaturan Audio
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Teks Tajwid
+      uthmani: Teks Uthmani
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: Teks IndoPak
+    translation_count:
+      one: Menampilkan satu terjemahan
+      other: Menampilkan terjemahan %{count}
   verses:
     media: "Lihat kuliah dari %{from}
 
@@ -88,10 +91,10 @@ id:
     tafsir:
       label: Tafsir
       select: Pilih Tafsir
-    quran_reflect:
+    quran_reflect: Baca Refleksi untuk Ayah ini di QuranReflect
   search:
     placeholder: Cari "Nuh"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
     error: Maaf, terdapat kesalahan dalam pencarian Anda.
     no_query: Tidak ada kata yang dicari.
     no_result: Tidak ada hasil yang ditemukan.
@@ -116,6 +119,12 @@ id:
     repeat_times: Kali
     repeat_loop: tak berhenti
     scroll: Gulirkan secara otomatis ke ayat yang sedang diputar pada saat transisi...
+    select_verse: Pilih ayat
+    pause_bw_ayah: Setel berapa lama jeda sebelum memainkan bait berikutnya
+    pause_seconds: detik
+    pause: Jeda untuk
+    play_continuously: Terus mainkan tanpa jeda
+    show_word_tooltip: Tampilkan terjemahan kata di tooltip saat memainkan ayat
   loading: Memuat ...
   nav:
     title: Quran
@@ -131,11 +140,11 @@ id:
       Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
-    mobile_apps: Aplikasi Ponsel
     navigate: Telusuri
     legacy_site: Quran.com versi lama
     blog: Blog
     forum: Forum
+    mobile_apps: Aplikasi Ponsel
   juz: Juz
   click_here: Klik disini
   download: Download
@@ -147,7 +156,7 @@ id:
     sunnah_description: Hadits Nabi Muhammad (SAW)
     salah: Salah
     salah_description: Cari waktu sholat untuk lokasi mana pun
-    audio:
+    audio: Alquran mulia dalam audio
     audio_description: Belajar & mendengarkan secara bersamaan
   close: Dekat
   page: Halaman
@@ -155,4 +164,4 @@ id:
     reading: Membaca
     translation: Terjemahan
     info: Info Surat
-  share_ayah:
+  share_ayah: Bagikan ayah

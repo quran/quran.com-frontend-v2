@@ -9,7 +9,7 @@ nl:
   errors:
     not_found: Sorry, deze pagina bestaat niet
     invalid_verse: Controleer je Ayah-selectie. Het is buiten bereik.
-    invalid_chapter:
+    invalid_chapter: Controleer uw Surah-selectie. Het is buiten bereik.
     no_script:
     unavailable_session:
     unacceptable_request:
@@ -43,16 +43,19 @@ nl:
       day_tip: Overschakelen naar de dagmodus
       night_tip: Overschakelen naar nachtmodus
     reset: Reset instelling
-    font_type:
-    sample_audio:
-    display:
-    audio:
+    font_type: Selecteer lettertype
+    sample_audio: Voorbeeld afspelen
+    display: Scherminstellingen
+    audio: Geluidsinstellingen
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Tajweed-tekst
+      uthmani: Uthmani-tekst
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: IndoPak-tekst
+    translation_count:
+      one: Er wordt één vertaling weergegeven
+      other: Vertalingen van %{count} worden weergegeven
   verses:
     media: Bekijk video commentaar van %{from}
     go: Ga naar vers
@@ -84,10 +87,10 @@ nl:
     tafsir:
       label: Tafsirs
       select: Selecteer Tafsir
-    quran_reflect:
+    quran_reflect: Lees Reflections voor deze Ayah op QuranReflect
   search:
     placeholder: Zoek "Noah"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
     error: Sorry, er is een fout opgetreden bij uw zoekopdracht.
     no_query: Geen zoekopdracht.
     no_result: Geen resultaten gevonden.
@@ -112,6 +115,14 @@ nl:
     repeat_times: Keer
     repeat_loop: lus
     scroll: Scroll automatisch naar de huidige ayah
+    select_verse: Selecteer een vers
+    pause_bw_ayah:
+      Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
+      afgespeeld
+    pause_seconds: Seconden
+    pause: Pauzeer voor
+    play_continuously: Blijf spelen zonder pauze
+    show_word_tooltip: Toon woordvertaling in tooltip tijdens het spelen van ayah
   loading: Laden ...
   nav:
     title: Koran
@@ -131,11 +142,11 @@ nl:
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
     rights: Alle rechten voorbehouden
-    mobile_apps: Mobiele apps
     navigate: Navigeren
     legacy_site: Legacy Quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Mobiele apps
   juz: Juz
   click_here: Klik hier
   download: te downloaden
@@ -157,4 +168,4 @@ nl:
     reading: Lezing
     translation: Vertalingen
     info: Soera Info
-  share_ayah:
+  share_ayah: Deel ayah

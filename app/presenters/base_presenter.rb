@@ -69,8 +69,7 @@ class BasePresenter
     I18n.t('noble_quran')
   end
 
-  def related_links;
-  end
+  def related_links; end
 
   def meta_url
     context.url_for(protocol: 'https')
@@ -107,7 +106,9 @@ class BasePresenter
   end
 
   def language
-    @language ||= Language.find_by(iso_code: I18n.locale) || Language.default
+    strong_memoize :language do
+      Language.find_by(iso_code: I18n.locale) || Language.default
+    end
   end
 
   def sanitize_meta_description_text(text)
@@ -116,34 +117,44 @@ class BasePresenter
 
   def valid_translations
     strong_memoize :valid_translations do
-      translations = (
-      params[:translations].presence ||
-        params[:translations].presence ||
-        session[:translations].presence || DEFAULT_TRANSLATION
-      )
+      saved = saved_translations
 
-      if translations.is_a?(String)
-        translations = translations.to_s.split(',')
-      end
-
-      if 'no' == translations
+      if 'no' == saved || saved.blank?
         context.session[:translations] = 'no'
         []
       else
+        if saved.is_a?(String)
+          saved = saved.split(',')
+        end
+
         approved_translations = ResourceContent
                                   .approved
                                   .translations
                                   .one_verse
 
+        with_ids = approved_translations.where(id: saved)
         translations = approved_translations
-                         .where(
-                           slug: translations
-                         ).or(
-          approved_translations.where(id: translations)
-        ).pluck(:id)
+                         .where(slug: saved).or(with_ids).pluck(:id)
 
         context.session[:translations] = translations
       end
     end
+  end
+
+  def saved_translations
+    params[:translations].presence ||
+      session[:translations].presence ||
+      params[:translations].presence || DEFAULT_TRANSLATION
+  end
+
+  def eager_load_translated_name(records)
+    defaults = records.where(
+      translated_names: {language_id: Language.default.id}
+    )
+
+    records
+      .where(
+        translated_names: {language_id: language}
+      ).or(defaults).order('translated_names.language_priority DESC')
   end
 end

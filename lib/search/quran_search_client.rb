@@ -6,8 +6,8 @@ module Search
 
     QURAN_SEARCH_ATTRS = [
       # Uthmani
-      "text_uthmani.*^4",
-      "text_uthmani_simple.*^3",
+      "text_uthmani_simple.*^4",
+      "text_uthmani.*^3",
 
       # Imlaei script
       "text_imlaei*^4",
@@ -29,9 +29,9 @@ module Search
       results = Verse.search(search_defination)
 
       # For debugging, copy the query and paste in kibana for debugging
-      File.open("_last_query.json", "wb") do |f|
-        f << search_defination.to_json
-      end
+      # File.open("_last_query.json", "wb") do |f|
+      #  f << search_defination.to_json
+      # end
 
       if results.empty?
         Search::NavigationClient.new(query.query).search
@@ -63,13 +63,20 @@ module Search
         query: search_query,
         highlight: highlight(highlight_size),
         from: page * result_size,
-        size: result_size
+        size: result_size,
+        sort: sort_results
       }
+    end
+
+    def sort_results
+      [
+        {_score: {order: :desc}}
+      ]
     end
 
     def search_query(highlight_size = 500)
       match_any = [
-        nested_translation_query('en', highlight_size)
+        nested_translation_query('default', highlight_size)
       ]
 
       get_detected_languages_code.each do |lang|
@@ -77,7 +84,7 @@ module Search
       end
 
       match_any << quran_text_query
-      match_any += words_query
+      # match_any += words_query
 
       {
         bool: {
@@ -90,35 +97,49 @@ module Search
     def words_query
       [
         {
-         nested: {
-           path: 'words',
-           query: {
-             multi_match: {
-               query: query.query.remove_dialectic,
-               fields: ['words.simple.*']
-             }
-           }
-         }
-       },
-       {
-         nested: {
-           path: 'words',
-           query: {
-             multi_match: {
-               query: query.query,
-               fields: ['words.madani.*', 'words.text_imlaei.*']
-             }
-           }
-         }
-       }
+          nested: {
+            path: 'words',
+            query: {
+              multi_match: {
+                query: query.query.remove_dialectic,
+                fields: ['words.text_uthmani_simple.*'],
+                type: "phrase"
+              }
+            }
+          }
+        },
+        {
+          nested: {
+            path: 'words',
+            query: {
+              multi_match: {
+                query: query.query,
+                fields: ['words.text_uthmani.*', 'words.text_imlaei.*']
+              }
+            }
+          }
+        }
       ]
     end
 
     def quran_text_query
       {
-        multi_match: {
-          query: query.query,
-          fields: QURAN_SEARCH_ATTRS
+        bool: {
+          should: [
+            {
+              multi_match: {
+                query: query.query,
+                fields: ['text_uthmani_simple.*^10', 'text_uthmani.*^10', 'text_imlaei.*^10', 'verse_key.keyword^10', 'verse_path^5'],
+                type: "phrase"
+              },
+
+              # disable this if we need exact match
+              #multi_match: {
+              #  query: query.query,
+              #  fields: QURAN_SEARCH_ATTRS
+              #}
+            }
+          ]
         }
       }
     end
@@ -134,11 +155,19 @@ module Search
                 {
                   "multi_match": {
                     "query": query.query,
-                    "fields": ["trans_#{language_code}.text.*"]
+                    "fields": ["trans_#{language_code}.text.*^5"],
+                    type: "phrase"
+                  }
+                },
+
+                {
+                  "multi_match": {
+                    "query": query.query,
+                    "fields": ["trans_#{language_code}.text.*^1"],
                   }
                 }
               ],
-              minimum_should_match: '85%'
+              minimum_should_match: '75%'
             }
           },
           inner_hits: {
@@ -146,7 +175,7 @@ module Search
             highlight: {
               tags_schema: 'styled',
               fields: {
-                "trans_#{language_code}.text.*": {
+                "trans_#{language_code}.text.text": {
                   fragment_size: highlight_size
                 }
               }
@@ -163,7 +192,7 @@ module Search
     def highlight(highlight_size = 500)
       {
         fields: {
-          "text_imlaei.*": {
+          "text_uthmani.*": {
             type: 'fvh',
             fragment_size: highlight_size
           }
@@ -193,7 +222,11 @@ module Search
       detected_languages = query.detect_languages
       related_language = Language.where(iso_code: detected_languages).pluck(:es_indexes)
 
-      languages = (detected_languages + related_language).flatten.uniq
+      if detected_languages == ['ar']
+        languages = detected_languages
+      else
+        languages = (detected_languages + related_language).flatten.uniq
+      end
 
       languages.select do |lang|
         QuranSearchable::TRANSLATION_LANGUAGE_CODES.include?(lang)

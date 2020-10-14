@@ -21,7 +21,7 @@ bn-BD:
     format: "%{attribute} %{message}"
   local: ইংরেজি
   site_local: সাইট ভাষা
-  change_local:
+  change_local: আপনি যে সাইটের ভাষা প্রদর্শিত হতে চান তা চয়ন করুন
   local_native_name: বাংলা
   language: ভাষা
   settings:
@@ -45,16 +45,19 @@ bn-BD:
       label: রাত মোড
       day_tip: দিন মোডে স্যুইচ করুন
       night_tip: নাইট মোডে স্যুইচ করুন
-    font_type:
+    font_type: ফন্ট নির্বাচন করুন
     sample_audio:
-    display:
-    audio:
+    display: প্রদর্শন সেটিং
+    audio: অডিও সেটিংস
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: তাজওয়েদ পাঠ্য
+      uthmani: উসমানী পাঠ্য
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: ইন্দোপাক পাঠ্য
+    translation_count:
+      one: একটি অনুবাদ দেখাচ্ছে
+      other: "%{count} অনুবাদগুলি দেখানো হচ্ছে"
   verses:
     media: "%{from} এর ভিডিও মন্তব্য দেখুন"
     go: শ্লোক যান
@@ -86,7 +89,7 @@ bn-BD:
     tafsir:
       label: তাফসীর
       select: তাফসির নির্বাচন করুন
-    quran_reflect:
+    quran_reflect: কুরআনফিলিফ্টে এই আয়াতের প্রতিচ্ছবি পড়ুন
   search:
     label: অনুসন্ধান
     placeholder: '"নূহ" অনুসন্ধান করুন'
@@ -126,6 +129,12 @@ bn-BD:
     repeat_times: টাইমস
     repeat_loop: লুপ
     scroll: স্বয়ংক্রিয়ভাবে বর্তমানে প্লে আইয়ায় স্ক্রোল করে
+    select_verse: শ্লোক নির্বাচন করুন
+    pause_bw_ayah: পরবর্তী আয়াতটি খেলার আগে কতক্ষণ বিরতি দিতে হবে তা সেট করুন
+    pause_seconds: সেকেন্ড
+    pause: বিরতি দিন
+    play_continuously: বিরতি না দিয়ে খেলতে থাকুন
+    show_word_tooltip: আয়াহ খেলার সময় টুলটিপে শব্দ অনুবাদটি দেখান
   loading: লোড হচ্ছে ...
   nav:
     title: কুরআন
@@ -141,11 +150,11 @@ bn-BD:
       কুরআন ডট কম কুরআন পড়ার এবং অধ্যয়নের জন্য একটি প্রো বোন প্রকল্প
       (এটি নোবেল কুরআন, আল কুরআন, পবিত্র কোরআন, কোরান হিসাবেও পরিচিত)।
     rights: সমস্ত অধিকার সংরক্ষিত
-    mobile_apps: মোবাইল অ্যাপস
     navigate: নেভিগেট করুন
     legacy_site: লিগ্যাসি কুরআন
     blog: ব্লগ
     forum: ফোরাম
+    mobile_apps: মোবাইল অ্যাপস
   juz: পারার
   click_here: এখানে ক্লিক করুন
   download: ডাউনলোড
@@ -164,4 +173,4 @@ bn-BD:
     reading: পড়া
     translation: অনুবাদ
     info: অধ্যায় তথ্য
-  share_ayah:
+  share_ayah: আয়া শেয়ার করুন

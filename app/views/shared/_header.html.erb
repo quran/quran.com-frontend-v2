@@ -21,8 +21,8 @@
 
               <ul class="dropdown-menu">
                 <% available_locales.each do |locale, name| %>
-                  <li class="dropdown-item <%= 'active' if I18n.locale.to_s == locale %>">
-                    <%= link_to url_for(locale: locale) do %>
+                  <li>
+                    <%= link_to url_for(locale: locale), class: "dropdown-item #{'active' if I18n.locale == locale}" do %>
                       <span class="<%= locale %>"><%= name %></span>
                     <% end %>
                   </li>

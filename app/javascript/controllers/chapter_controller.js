@@ -13,6 +13,7 @@ export default class extends Controller {
     this.translationTab = document.querySelector("#pill-translation-tab");
     this.readingTab = document.querySelector("#pill-reading-tab");
     this.setURLState();
+    this.bindAyahJump();
   }
 
   connect() {
@@ -24,6 +25,8 @@ export default class extends Controller {
 
     // currently playing ayah
     this.currentVerse = null;
+
+    this.totalVerses = Number(this.element.dataset.totalVerses);
 
     // currently highlighted word
     this.activeWord = null;
@@ -97,6 +100,26 @@ export default class extends Controller {
     }
   }
 
+  bindAyahJump() {
+    $("#verse-list")
+      .find(".dropdown-item a")
+      .on("click", e => {
+        document.body.loader.show();
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const ayah = e.currentTarget.dataset.verse;
+        // TODO: we need to refactor this now, repeating this a lot
+        // create a utility to load verses, update page, tell player to load audio etc
+        this.loadVerses(ayah).then(() => {
+          this.scrollToVerse(ayah);
+          document.body.loader.hide();
+          this.activeTab.trigger("items:added");
+        });
+      });
+  }
+
   isReadingMode() {
     return this.readingTab.classList.contains("active");
   }
@@ -133,7 +156,10 @@ export default class extends Controller {
       const scrollTime = Math.min(500, scrollLength * 10);
 
       if (bottomOffsetCheck || topOffsetCheck) {
-        document.scrollingElement.scrollTo({top: scrollLength, behavior: 'smooth'});
+        document.scrollingElement.scrollTo({
+          top: scrollLength,
+          behavior: "smooth"
+        });
       }
     }
   }
@@ -142,7 +168,7 @@ export default class extends Controller {
     return this.element.dataset.chapterId;
   }
 
-  setSegmentInterval(seekTime, segmentTimings) {
+  setSegmentInterval(seekTime, segmentTimings, isPlaying) {
     this.removeSegmentTimers();
 
     let segments = segmentTimings || [];
@@ -162,6 +188,10 @@ export default class extends Controller {
 
       if (currentTime > startTime) {
         this.highlightSegment(segment[0], segment[1]);
+        if (!isPlaying) {
+          // if player is not playing, just highlight seek the word
+          return;
+        }
       } else {
         let highlightAfter = startTime - currentTime;
 
@@ -184,21 +214,28 @@ export default class extends Controller {
   }
 
   highlightSegment(startIndex, endIndex) {
-    //TODO: track highlighted words in memory and remove highlighting from them
-    // DOm operation could be costly
-    let showWordTooltip = false; // TODO: load from settings
-
-    this.removeSegmentHighlight();
-
-    const start = parseInt(startIndex, 10) + 1;
-    const end = parseInt(endIndex, 10) + 1;
     const words = this.activeTab.find(
       `.verse[data-verse-number=${this.currentVerse}] .word`
     );
 
+    // tajweed mode don't show words
+    if (0 == words.length) return;
+
+    //TODO: track highlighted words in memory and remove highlighting from them
+    // DOm operation could be costly
+    const showWordTooltip = document.body.setting.get("autoShowWordTooltip");
+    this.removeSegmentHighlight();
+
+    const start = parseInt(startIndex, 10) + 1;
+    const end = parseInt(endIndex, 10) + 1;
+
     for (let word = start, end1 = end; word < end1; word++) {
       words.eq(word - 1).addClass("highlight");
-      if (showWordTooltip) words.eq(word - 1).tooltip("show");
+
+      if (showWordTooltip) {
+        let tip = words.eq(word - 1)[0].tooltip;
+        tip && tip.show();
+      }
     }
   }
 
@@ -213,51 +250,85 @@ export default class extends Controller {
       .addClass("highlight");
   }
 
-  highlightWord(wordPosition) {}
-
   removeSegmentHighlight() {
-    let showTooltip = false;
-    //if (this.config.showTooltip) $(".highlight").tooltip("hide");
+    let words = $(".word.highlight");
 
-    $(".word.highlight").removeClass("highlight");
+    words.each((i, word) => {
+      let tip = word.tooltip;
+
+      if (tip && tip._popper) tip.hide();
+
+      word.classList.remove("highlight");
+    });
   }
 
   removeHighlighting() {
     let verse = $(`.verse[data-verse-number=${this.currentVerse}]`);
     verse.removeClass("highlight");
 
-    // remove highlighting from words
-    verse.find(".highlight").removeClass("highlight");
     this.removeSegmentTimers();
   }
 
+  updatePagination(dom) {
+    const verses = this.activeTab.find(".verse");
+    const lastVerse = verses.last().data().verseNumber;
+
+    // Update next page ref if it exists.
+    const nextPage = this.activeTab.find(".pagination a[rel=next]");
+    if (nextPage.length > 0) {
+      let ref = nextPage.attr("href");
+      const updatedRef = ref.replace(
+        /page=\d+/,
+        `page=${Math.ceil(lastVerse / 10) + 1}`
+      );
+      nextPage.attr("href", updatedRef);
+    }
+    // resume the infinite pagination
+    this.activeTab[0].infinitePage.resume();
+
+    return Promise.resolve([]);
+  }
+
   loadVerses(verse) {
+    // called when user jump to ayah from repeat setting
+    verse = Number(verse);
+
     // If this ayah is already loaded, scroll to it
     if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
+      this.scrollToVerse(verse);
       return Promise.resolve([]);
     }
 
+    // pause infinite page loader
+    this.activeTab[0].infinitePage.pause();
     const chapter = this.chapterId();
-    const verses = this.activeTab.find(".verse");
-    const firstVerse = verses.first().data().verseNumber;
-    const lastVerse = verses.last().data().verseNumber;
-
+    const reading = this.isReadingMode();
     let from, to;
 
-    if (verse > lastVerse) {
+    //const verses = this.activeTab.find(".verse");
+    //const firstVerse = verses.first().data().verseNumber;
+    //const lastVerse = verses.last().data().verseNumber;
+
+    /*if (verse > lastVerse) {
       from = lastVerse;
       to = Math.ceil(verse / 10) * 10;
     } else {
       from = verse;
       to = firstVerse;
-    }
+    }*/
+
+    // instead of loading all ayah, lets say load batch of 10 around the select verse
+    // i.e if user want to jump to 200, we'll load 195 to 205
+    from = Math.max(0, verse - 2);
+    to = Math.min(verse + 5, this.totalVerses);
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({ from, to, verse })}`
+      `/${chapter}/load_verses?${$.param({ from, to, verse, reading })}`
     )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses))
-      .then(dom => this.updatePagination(dom));
+      //.then(updatedDom => this.updatePagination(updatedDom))
+      .then(() => this.scrollToVerse(verse));
 
     return Promise.resolve(request);
   }
@@ -269,8 +340,10 @@ export default class extends Controller {
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
 
-    const readingPage = document.querySelector(readingTarget);
-    const translationPage = document.querySelector(translationTarget);
+    const readingPage = document.querySelector(`${readingTarget} #verses`);
+    const translationPage = document.querySelector(
+      `${translationTarget} #verses`
+    );
 
     readingPage.innerHTML = this.getLazyTab(
       readingUrl,
@@ -305,17 +378,23 @@ export default class extends Controller {
   }
 
   changeTranslations(newTranslationIds) {
-    let path = this.activeTab.find(".pagination").data("url");
+    // changing translation should always update the translation tab
     let translationsToLoad;
-    let verseList = this.activeTab;
 
     if (0 == newTranslationIds.length) {
       translationsToLoad = "no";
     } else {
       translationsToLoad = newTranslationIds.join(",");
     }
+    document.body.loader.show();
 
-    fetch(`${path}?${$.param({ translations: translationsToLoad })}`)
+    const path = `${this.translationTab.href}&${$.param({
+      translations: translationsToLoad
+    })}`;
+
+    let verseList = $(this.translationTab.dataset.target).find("#verses");
+
+    fetch(`${path}`)
       .then(response => response.text())
       .then(verses => {
         verseList.html(
@@ -323,19 +402,21 @@ export default class extends Controller {
             .find("#verses")
             .html()
         );
+
+        document.body.loader.hide();
       });
   }
 
   insertVerses(newVerses) {
-    let dom = $("<div>").html(newVerses);
-    let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
+    //let dom = $("<div>").html(newVerses);
     let verseList = this.activeTab;
+    //let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
 
-    while (
+    /*while (
       verseList.find(`.verse[data-verse-number=${previousVerse}]`).length ==
-        0 &&
+      0 &&
       previousVerse > 0
-    ) {
+      ) {
       previousVerse = previousVerse - 1;
     }
 
@@ -351,14 +432,18 @@ export default class extends Controller {
 
       while (
         verseList.find(`.verse[data-verse-number=${nextVerse}]`).length == 0
-      ) {
+        ) {
         nextVerse = nextVerse + 1;
       }
 
       let targetDom = verseList.find(`.verse[data-verse-number=${nextVerse}]`);
       targetDom.before(newVerses);
-    }
+    }*/
 
-    return Promise.resolve(dom);
+    // simply replace current page with newly loaded verses
+    verseList.find("#verses").html(newVerses);
+    this.activeTab[0].infinitePage.resume();
+
+    return Promise.resolve(verseList);
   }
 }

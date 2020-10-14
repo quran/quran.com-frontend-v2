@@ -1,14 +1,9 @@
 class VersePresenter < BasePresenter
   def verse
-    verses = Verse.where(word_translations: {language_id: language.id})
-               .or(Verse.where(word_translations: {language_id: Language.default.id}))
-               .eager_load(words: :word_translation)
-               .order('words.position ASC, word_translations.priority ASC')
-
     if params[:id].to_s.include?(':')
-      verses.find_by_verse_key(params[:id])
+      Verse.find_by_verse_key(params[:id])
     else
-      verses.find_by_id_or_key(params[:id])
+      Verse.find_by_id_or_key(params[:id])
     end
   end
 
@@ -39,7 +34,7 @@ class VersePresenter < BasePresenter
   end
 
   def share_text
-    verse.text_madani
+    verse.text_uthmani
   end
 
   def share_title

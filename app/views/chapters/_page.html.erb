@@ -1,8 +1,9 @@
-<div class="row page" id="page-num-<%= verses[0] %>">
+<div class="row page my-2" id="page-num-<%= verses[0] %>">
   <div class="col-md-12">
-    <h4><%= _t('page') %> <%= verses[0] %></h4>
+    <h4 class="text-muted"><%= _t('page') %> <%= verses[0] %></h4>
 
     <% lines = group_ayah_by_lines(verses[1]) %>
+
     <div class="lines">
       <% lines.each do |k, line| %>
         <div class="line">

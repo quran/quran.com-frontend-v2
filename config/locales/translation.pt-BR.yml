@@ -60,16 +60,19 @@ pt-BR:
       label: Modo noturno
       day_tip: Mudar para modo diurno
       night_tip: Mudar para modo noturno
-    font_type:
+    font_type: Selecione a fonte
     sample_audio:
-    display:
-    audio:
+    display: Configurações do visor
+    audio: Configurações de áudio
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Texto Tajweed
+      uthmani: Texto Uthmani
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: Texto IndoPak
+    translation_count:
+      one: Mostrando uma tradução
+      other: Mostrando traduções %{count}
   verses:
     media: Assistir comentário do vídeo a partir de %{from}
     go: Vá para o verso
@@ -101,7 +104,7 @@ pt-BR:
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
-    quran_reflect:
+    quran_reflect: Leia as reflexões para esta Ayah no QuranReflect
   search:
     label: Pesquisar
     placeholder: Pesquisar "
@@ -129,6 +132,12 @@ pt-BR:
     repeat_times: Vezes
     repeat_loop: continuamente
     scroll: Rolar automaticamente para o ayah(verso) atualmente em reprodução
+    select_verse: Selecione o verso
+    pause_bw_ayah: Defina quanto tempo fazer uma pausa antes de tocar a próxima estrofe
+    pause_seconds: segundos
+    pause: Pausa para
+    play_continuously: Continue jogando sem pausa
+    show_word_tooltip: Mostrar tradução de palavras na dica ao tocar ayah
   loading: Carregando...
   nav:
     title: Alcorão
@@ -144,11 +153,11 @@ pt-BR:
       Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
       conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
     rights: Todos os direitos reservados
-    mobile_apps: Aplicativos móveis
     navigate: Navegar
     legacy_site: Questões Legais Quran.com
     blog: Blog
     forum: Fórum
+    mobile_apps: Aplicativos móveis
   juz: Juz
   click_here: Clique aqui
   download: baixar
@@ -166,4 +175,4 @@ pt-BR:
     reading: Leitura
     translation: Traduções
     info: Informações do capítulo
-  share_ayah:
+  share_ayah: Compartilhe ayah

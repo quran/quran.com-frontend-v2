@@ -23,6 +23,7 @@
 
 class ResourceContent < ApiCoreRecord
   include LanguageFilterable
+  include NameTranslateable
 
   scope :translations, -> { where sub_type: [SubType::Translation, SubType::Transliteration] }
   scope :media, -> { where sub_type: SubType::Video }

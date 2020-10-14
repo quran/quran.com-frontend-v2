@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://quran.com">
-    <img src="app/javascript/images/icons/android-chrome-256x256.png" alt="Logo" width="80" height="80">
+    <img src="app/assets/images/icons/android-chrome-256x256.png" alt="Logo" width="80" height="80">
   </a>
 
   <h1 align="center">The Noble Quran</h1>
@@ -55,7 +55,7 @@
 ## About The Project
 
 <a href="https://quran.com">
-<img src="app/javascript/images/thumbnail.png" alt="Quran.com Thumbnail">
+<img src="app/assets/images/thumbnail.png" alt="Quran.com Thumbnail">
 </a>
 
 Ma Sha'a Allah and Tabarak Al Rahman, ["The Noble Quran"](https://quran.com) application serves millions of visitors from all around the world. Al-hamdu Lillah, the project continues to grow.

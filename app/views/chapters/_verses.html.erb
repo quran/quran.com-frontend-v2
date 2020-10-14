@@ -1,6 +1,6 @@
-<% verses = @presenter.paginate %>
+<% verses = local_assigns[:verses] || @presenter.paginate %>
 
-<%= render 'fonts', verses: verses %>
+<%= render 'fonts', verses: verses if @presenter.showing_qcf_font?%>
 
 <% if @presenter.reading_mode? %>
   <% pages = verses.group_by(&:page_number) %>

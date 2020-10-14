@@ -7,7 +7,7 @@
 ---
 sq:
   errors:
-    not_found:
+    not_found: Na vjen keq, kjo faqe nuk ekziston
     invalid_verse: Kontrolloni zgjedhjen tuaj Ayah. Outshtë jashtë nivelit.
     invalid_chapter: Kontrolloni zgjedhjen tuaj të sures. Outshtë jashtë nivelit.
     no_script:
@@ -41,18 +41,21 @@ sq:
       day_tip: Kaloni në modalitetin e ditës
       night_tip: Kaloni në modalitetin e natës
     reset: Rivendosja e Vendosjes
-    font_type:
+    font_type: Zgjidhni shkronjën
     sample_audio:
-    display:
-    audio:
+    display: Parametrat e ekranit
+    audio: Cilësimet e audios
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Teksti Tajweed
+      uthmani: Teksti Uthmani
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: Teksti IndoPak
+    translation_count:
+      one: Po tregon një përkthim
+      other: Po shfaqen përkthimet %{count}
   verses:
-    media:
+    media: Shikoni komentin e videos nga %{from}
     go: Shkoni në vargje
     not_found: Vargu nuk u gjet
   chapters:
@@ -78,14 +81,14 @@ sq:
       label: Copiar
       done: Copiado!
     share: Ndani ajetin
-    addNote:
+    addNote: Adcionar uma nota
     tafsir:
       label: Tafsirs
       select: Zgjidhni Tafsir
-    quran_reflect:
+    quran_reflect: Lexoni Reflektimet për këtë Ajet në Kur'anin Reflektoni
   search:
     placeholder: Kërko "Noah"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
     error: Na vjen keq, pati një gabim në kërkimin tuaj.
     no_query: Asnjë pyetje kërkimi.
     no_result: Nuk u gjet asnjë rezultat
@@ -110,6 +113,14 @@ sq:
     repeat_times: kohët
     repeat_loop: lak
     scroll: Automatikisht lëviz nëpër ajetin që luan aktualisht
+    select_verse: Zgjidh vargun
+    pause_bw_ayah: Vendosni sa kohë të ndalet para se të luani vargun tjetër
+    pause_seconds: sekonda
+    pause: Bëni pauzë për
+    play_continuously: Vazhdoni të luani pa ndalur
+    show_word_tooltip:
+      Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
+      ayah
   loading: Loading ...
   nav:
     title: Quran
@@ -127,11 +138,11 @@ sq:
       emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       dhe Al-Noor.
     rights: Të gjitha të drejtat e rezervuara
-    mobile_apps: Aplikacione celulare
     navigate: Navigate
     legacy_site: Trashëgimia quran.com
     blog: Blog
     forum: Forum
+    mobile_apps: Aplikacione celulare
   juz: Juz
   click_here: Kliko këtu
   download: Shkarko
@@ -151,4 +162,4 @@ sq:
     reading: lexim
     translation: përkthime
     info: Informacioni i Kapitullit
-  share_ayah:
+  share_ayah: Ndani ajetin

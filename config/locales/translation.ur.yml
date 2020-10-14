@@ -61,6 +61,9 @@ ur:
       qcf_v1: QCF v1 فونٹ
       qcf_v2: QCF v2 فونٹ
       indopak: انڈوپاک مصحف
+    translation_count:
+      one: آپ ایک ترجمہ پڑھ رہے ہیں
+      other: آپ %{count} ترجمے پڑھ رہے ہیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں
@@ -112,14 +115,22 @@ ur:
     current_verse: آیت
     next_verse: اگلی آیت
     previous_verse: پچھلی آیت
-    repeat_title: دہرائیں
+    repeat_title: آیت کو دہرائیں
     repeat_single: اکیلی آیت
     repeat_range: مخصوص آیات
-    repeat_from: سے
-    repeat_to: تک
+    repeat_from: آیت سے
+    repeat_to: آیت تک
     repeat_times: کتنی بار
     repeat_loop: چلاتے رہو
     scroll: "جو آیت چل رہی ہو اس کو  صفہ پر سامنے رکھو
+
+      "
+    select_verse: آیت منتخب کریں
+    pause_bw_ayah: "اگلی آیت چلانے سے پہلے کتنے سیکنڈ کا وقففہ ہو\n\n"
+    pause_seconds: سیکنڈ
+    pause: وقفہ لیں
+    play_continuously: توقف کیے بغیر چلاتے رہیں
+    show_word_tooltip: "آیت چلاتے ہوئے لفظ کا ترجمہ دکھائیں
 
       "
   loading: لوڈ کر رہا ہے ...
@@ -138,11 +149,11 @@ ur:
       کرتے ہیں کہ ہر ایک کے لئے نوبل قرآن کو پڑھنے ، مطالعہ کرنے اور سیکھنے میں آسانی
       ہوگی۔
     rights: جملہ حقوق محفوظ ہیں
-    mobile_apps: موبائل ایپ
     navigate: تشریف لے جائیں
     legacy_site: پرانی سائٹ
     blog: بلاگ
     forum: فورم
+    mobile_apps: موبائل ایپ
   juz: سپارے
   click_here: یہاں کلک کریں
   download: ڈاؤن لوڈ کریں
