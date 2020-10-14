@@ -4,7 +4,11 @@ module QuranSearchable
   TRANSLATION_LANGUAGES = Language.with_translations
   TRANSLATION_LANGUAGE_CODES = TRANSLATION_LANGUAGES.pluck(:iso_code) + ['default']
   VERSE_TEXTS_ATTRIBUTES = [:text_uthmani, :text_uthmani_simple, :text_imlaei, :text_imlaei_simple, :text_indopak, :text_indopak_simple]
-  DEFAULT_TRANSLATIONS = [131, 149] # Translation we'll always search, regardless of language of queried text
+  # Translation we'll always search, regardless of language of queried text
+  # 131 Dr. Mustafa Khattab
+  # 149 Fadel Soliman, Bridges’ translation
+  # 57 Transliteration
+  DEFAULT_TRANSLATIONS = [131, 149, 57]
   extend ActiveSupport::Concern
 
   included do
@@ -30,8 +34,8 @@ module QuranSearchable
       hash[:words] = words.where.not(text_uthmani: nil).map do |w|
         {
           id: w.id,
-          madani: w.text_uthmani,
-          simple: w.text_uthmani_simple,
+          text_uthmani: w.text_uthmani,
+          text_uthmani_simple: w.text_uthmani_simple,
           text_imlaei: w.text_imlaei
         }
       end
@@ -104,7 +108,7 @@ module QuranSearchable
       end
 
       indexes 'words', type: 'nested', include_in_parent: true, dynamic: false do
-        indexes :madani,
+        indexes :text_uthmani,
                 type: 'text',
                 term_vector: 'with_positions_offsets',
                 analyzer: 'arabic_synonym_normalized',
@@ -118,7 +122,7 @@ module QuranSearchable
                 similarity: 'my_bm25',
                 search_analyzer: 'arabic_stemmed'
 
-        indexes :simple,
+        indexes :text_uthmani_simple,
                 type: 'text',
                 term_vector: 'with_positions_offsets',
                 analyzer: 'arabic_synonym_normalized',

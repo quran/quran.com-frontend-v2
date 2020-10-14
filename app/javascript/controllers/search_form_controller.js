@@ -1,5 +1,5 @@
-import {Controller} from "stimulus";
-import {debounce} from "lodash-es";
+import { Controller } from "stimulus";
+import { debounce } from "lodash-es";
 import DeviceDetector from "../utility/deviceDetector";
 
 const FILTER_DELAY = 150;
@@ -35,17 +35,13 @@ export default class extends Controller {
         }
       });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", e => {
       if (this.element.contains(e.target)) {
         $(".suggestions").show();
       } else {
-        $(".suggestions").hide()
+        $(".suggestions").hide();
       }
-    })
-
-    $(".search-btn").click(() => {
-      alert('s')
-    })
+    });
   }
 
   bindSuggestion() {
@@ -54,7 +50,7 @@ export default class extends Controller {
         this.getSuggestions(e.target.value);
       })
       .keyup(
-        debounce(function (e) {
+        debounce(function(e) {
           /* fire the above change event after every letter is typed with a delay of 250ms */
           $(this).change();
         }, FILTER_DELAY)
@@ -88,6 +84,6 @@ export default class extends Controller {
   }
 
   doSearch(query) {
-    Turbolinks.visit(`/search?query=${query}`)
+    Turbolinks.visit(`/search?query=${query}`);
   }
 }
