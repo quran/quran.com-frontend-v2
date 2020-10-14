@@ -35,5 +35,7 @@ module Quran
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    config.middleware.delete(Rack::Runtime)
   end
 end
