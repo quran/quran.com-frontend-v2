@@ -145,28 +145,32 @@ module Search
     end
 
     def nested_translation_query(language_code, highlight_size)
+      matches = [
+        {
+          "multi_match": {
+            "query": query.query,
+            "fields": ["trans_#{language_code}.text.*^5"],
+            type: "phrase"
+          }
+        }
+      ]
+
+      if !phrase_matching
+        matches << {
+          "multi_match": {
+            "query": query.query,
+            "fields": ["trans_#{language_code}.text.*^1"],
+          }
+        }
+      end
+
       {
         nested: {
           path: "trans_#{language_code}",
           score_mode: "max",
           query: {
             bool: {
-              should: [
-                {
-                  "multi_match": {
-                    "query": query.query,
-                    "fields": ["trans_#{language_code}.text.*^5"],
-                    type: "phrase"
-                  }
-                },
-
-                {
-                  "multi_match": {
-                    "query": query.query,
-                    "fields": ["trans_#{language_code}.text.*^1"],
-                  }
-                }
-              ],
+              should: matches,
               minimum_should_match: '75%'
             }
           },

@@ -46,7 +46,10 @@ class SearchController < ApplicationController
   def do_search
     client = Search::QuranSearchClient.new(
       query,
-      page: page, size: size, lanugage: language
+      page: page,
+      size: size,
+      lanugage: language,
+      phrase_matching: params[:phrase].presence
     )
     @presenter = SearchPresenter.new(self)
 
