@@ -33,17 +33,18 @@ module Search
     def search_query
       {
           bool: {
-              should: quran_text_query
+              should: navigational_query
           }
 
       }
     end
 
-    def quran_text_query
+    def navigational_query
       {
           multi_match: {
               query: query.query,
-              fields: SEARCH_ATTRS
+              fields: SEARCH_ATTRS,
+              type: "phrase"
           }
       }
     end

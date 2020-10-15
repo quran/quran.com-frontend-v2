@@ -131,7 +131,7 @@ module Search
                 query: query.query,
                 fields: ['text_uthmani_simple.*^10', 'text_uthmani.*^10', 'text_imlaei.*^10', 'verse_key.keyword^10', 'verse_path^5'],
                 type: "phrase"
-              },
+              }
 
               # disable this if we need exact match
               #multi_match: {
