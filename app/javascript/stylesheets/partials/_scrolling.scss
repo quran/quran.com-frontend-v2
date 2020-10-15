@@ -9,9 +9,10 @@
     opacity: 0;
   }
 
+  
   &:hover{
     scrollbar-width: thin;/* Firefox 64 */
-
+    
     &::-webkit-scrollbar {
       opacity: 1;
       background-color: lighten($text-muted, 50%);
