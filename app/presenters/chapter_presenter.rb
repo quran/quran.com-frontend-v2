@@ -144,7 +144,8 @@ class ChapterPresenter < HomePresenter
   end
 
   def range
-    "#{range_start}-#{range_end}"
+    #"#{range_start}-#{range_end}"
+    params[:range]
   end
 
   def current_page
@@ -340,7 +341,7 @@ class ChapterPresenter < HomePresenter
   def verse_pagination_end(start, per)
     if reading_mode?
       first = Verse.where(chapter_id: chapter.id, verse_number: start).first
-      last_on_page = Verse.where(page_number: first.page_number).last
+      last_on_page = Verse.where(chapter_id: chapter.id, page_number: first.page_number).last
 
       return min(last_on_page.verse_number, range_end)
     end

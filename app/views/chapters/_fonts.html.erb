@@ -10,7 +10,8 @@
 
   @font-face {
     font-family: 'p<%= i %>-v1';
-    src: url('<%= asset_url "quran_fonts/v1/woff2/p#{i}.woff2"%>'),
+    src: local(QCF_P<%=i.to_s.rjust(3, '0')%>),
+    url('<%= asset_url "quran_fonts/v1/woff2/p#{i}.woff2"%>'),
     url('<%= asset_url "quran_fonts/v1/woff/p#{i}.woff" %>') format('woff'),
     url('<%= asset_url "quran_fonts/v1/ttf/p#{i}.ttf" %>') format('truetype');
     font-display: swap;

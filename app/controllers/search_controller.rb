@@ -49,7 +49,7 @@ class SearchController < ApplicationController
       page: page,
       size: size,
       lanugage: language,
-      phrase_matching: params[:phrase].presence
+      phrase_matching: force_phrase_matching?
     )
     @presenter = SearchPresenter.new(self)
 
@@ -68,7 +68,10 @@ class SearchController < ApplicationController
   def do_suggest
     client = Search::QuranSearchClient.new(
       query,
-      page: page, size: size, lanugage: language
+      page: page,
+      size: size,
+      lanugage: language,
+      phrase_matching: force_phrase_matching?
     )
 
     begin
@@ -85,5 +88,9 @@ class SearchController < ApplicationController
 
   def action_cache_key
     "#{action_name}-#{request.xhr?}-#{params[:query]}-#{params[:page]}-#{I18n.locale}"
+  end
+
+  def force_phrase_matching?
+    params[:phrase].presence || query.match?(/\d+(:)?(\d+)?/)
   end
 end
