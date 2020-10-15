@@ -326,7 +326,7 @@ export default class extends Controller {
 
     // instead of loading all ayah, lets say load batch of 10 around the select verse
     // i.e if user want to jump to 200, we'll load 195 to 205
-    from = Math.max(0, verse - 2);
+    from = Math.max(1, verse - 2);
     to = Math.min(verse + 5, this.totalVerses);
 
     let request = fetch(
