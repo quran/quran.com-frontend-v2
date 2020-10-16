@@ -122,6 +122,9 @@
   .arabic {
     font-size: 30px;
     line-height: normal;
+    word-spacing: 55px;
+    display: flex;
+    flex-flow: row wrap;
   }
 }
 

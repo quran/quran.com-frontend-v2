@@ -12,6 +12,8 @@ import LocalStore from "../utility/local-store";
 import DeviceDetector from "../utility/deviceDetector";
 
 let settings = {};
+const LOWER_FONT_SIZE_LIMIT = 10;
+const UPPER_FONT_SIZE_LIMIT = 150;
 
 export default class extends Controller {
   connect() {
@@ -128,7 +130,7 @@ export default class extends Controller {
     let translationFontSize = this.get("translationFontSize")[device];
 
     fontStylesheet.sheet.insertRule(
-      `.w {font-size: ${wordFontSize}px !important}`
+      `.w {font-size: ${Math.min(Math.max(parseInt(wordFontSize), LOWER_FONT_SIZE_LIMIT), UPPER_FONT_SIZE_LIMIT)}px !important}`
     );
 
     fontStylesheet.sheet.insertRule(
