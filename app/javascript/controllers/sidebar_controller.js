@@ -38,7 +38,7 @@ export default class extends Controller {
       });
     } else {
       document.body.style = ``;
-      document.scrollingElement .scrollTo({top: this.scrollFromTop});
+      document.scrollingElement.scrollTo({top: this.scrollFromTop});
       this.scrollFromTop = 0;
       document.querySelectorAll(close).forEach(closeTrigger => {
         closeTrigger.removeEventListener("click", () => {});
