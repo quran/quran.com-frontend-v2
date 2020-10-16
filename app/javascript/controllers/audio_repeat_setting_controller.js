@@ -87,12 +87,6 @@ export default class extends SettingController {
 
   jumpTo(verse) {
     let controller = document.getElementById("chapter-tabs");
-
-    // sidebar will lock body scrolling, when its closed scroll to repeating verse
-    $(document).on("sidebar:closed", () =>
-      controller.chapter.scrollToVerse(verse)
-    );
-
     return controller.chapter.loadVerses(verse);
   }
 

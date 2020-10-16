@@ -97,13 +97,7 @@ export default class extends Controller {
 
       // preload howl for first ayah
       that.createHowl(that.currentVerse, false);
-      //chapter.scrollToVerse(that.currentVerse);
     });
-
-    // sidebar will lock body scrolling, when its closed scroll to repeating verse
-    $(document).on("sidebar:closed", () =>
-      chapter.scrollToVerse(this.currentVerse)
-    );
   }
 
   disconnect() {
