@@ -14,6 +14,8 @@ import DeviceDetector from "../utility/deviceDetector";
 let settings = {};
 const LOWER_FONT_SIZE_LIMIT = 10;
 const UPPER_FONT_SIZE_LIMIT = 150;
+const DISABLED_COLOR_VAL = 'var(--bs-gray)';
+const ENABLED_COLOR_VAL = '#b1bec5';
 
 export default class extends Controller {
   connect() {
@@ -120,14 +122,28 @@ export default class extends Controller {
   updateFontSize() {
     $("style.setting").remove();
 
+    
     let fontStylesheet = document.createElement("style");
     fontStylesheet.classList.add("setting");
     document.head.appendChild(fontStylesheet);
-
+    
     let device = this.mobile ? "mobile" : "desktop";
-
-    let wordFontSize = this.get("wordFontSize")[device];
+    
     let translationFontSize = this.get("translationFontSize")[device];
+    let wordFontSize = this.get("wordFontSize")[device];
+
+    if(document.getElementById('font-size-plus')) {
+      if(wordFontSize <= LOWER_FONT_SIZE_LIMIT) {
+        document.getElementById('font-size-plus').style.color = ENABLED_COLOR_VAL;
+        document.getElementById('font-size-minus').style.color = DISABLED_COLOR_VAL;
+      }else if(wordFontSize >= UPPER_FONT_SIZE_LIMIT) {
+        document.getElementById('font-size-plus').style.color = DISABLED_COLOR_VAL;
+        document.getElementById('font-size-minus').style.color = ENABLED_COLOR_VAL;
+      }else {
+        document.getElementById('font-size-plus').style.color = ENABLED_COLOR_VAL;
+        document.getElementById('font-size-minus').style.color = ENABLED_COLOR_VAL;
+      }
+    }
 
     fontStylesheet.sheet.insertRule(
       `.w {font-size: ${Math.min(Math.max(parseInt(wordFontSize), LOWER_FONT_SIZE_LIMIT), UPPER_FONT_SIZE_LIMIT)}px !important}`
