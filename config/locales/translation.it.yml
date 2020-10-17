@@ -92,8 +92,8 @@ it:
   search:
     placeholder: Cerca "Noah"
     result:
-      "%{from} - %{to} DI <span>{total}</span> RISULTATI DELLA RICERCA PER:
-      <span>{query}</span>"
+      "%{from} - %{to} DI <span>%{total}</span> RISULTATI DELLA RICERCA PER:
+      <span>%{query}</span>"
     error: Siamo spiacenti, si è verificato un errore durante la ricerca.
     no_query: Nessuna query di ricerca.
     no_result: Nessun risultato trovato.

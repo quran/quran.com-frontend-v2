@@ -36,32 +36,32 @@ export default class extends Controller {
     // intervals for each words of current ayah
     this.segmentTimers = [];
 
-    this.translationTab.addEventListener("shown.bs.tab", e => {
+    this.translationTab && this.translationTab.addEventListener("shown.bs.tab", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: false });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
 
-    this.readingTab.addEventListener("shown.bs.tab", e => {
+    this.readingTab && this.readingTab.addEventListener("shown.bs.tab", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: true });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
 
-    this.infoTab.addEventListener("shown.bs.tab", e => {
+    this.infoTab && this.infoTab.addEventListener("shown.bs.tab", e => {
       const url = e.target.href;
       url && this.updateURLState(url, {});
     });
 
-    this.translationTab.addEventListener("hidden.bs.tab", e => {
+    this.translationTab && this.translationTab.addEventListener("hidden.bs.tab", e => {
       $(e.target.dataset.target)
         .find(".verses")
         .trigger("visibility:hidden");
     });
 
-    this.readingTab.addEventListener("hidden.bs.tab", e => {
+    this.readingTab && this.readingTab.addEventListener("hidden.bs.tab", e => {
       $(e.target.dataset.target)
         .find(".verses")
         .trigger("visibility:hidden");

@@ -126,6 +126,11 @@
     display: flex;
     flex-flow: row wrap;
   }
+  .result-verse {
+    word-spacing: initial;
+    display: inline-block;
+    float: right;
+  }
 }
 
 .line {
