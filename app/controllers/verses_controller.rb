@@ -7,7 +7,7 @@ class VersesController < ApplicationController
 
   def select_tafsirs
     @approved_tafsirs = ResourceContent.tafsirs.approved
-    @tafsirs_langs = ResourceContent.tafsirs.approved.pluck(:language_name).uniq
+    @tafsirs_langs = @approved_tafsirs.pluck(:language_name).uniq
 
     render layout: false
   end

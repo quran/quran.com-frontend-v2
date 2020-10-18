@@ -93,7 +93,7 @@ ur:
     tafsir:
       label: تفسیر
       select: تفسیر منتخب کریں
-      filter_tafsir: 'زبان کے لحاظ سے فلٹر:'
+      filter_tafsir: ": زبان کے لحاظ سے فلٹر"
     quran_reflect: QuranReflect پر اس آیت کے متعلق لوگوں کے خیالات پڑہیں
   search:
     placeholder: " تلاش کریں (نوح)"
