@@ -6,7 +6,7 @@
 #
 ---
 hi:
-  noble_quran: महान कुरान
+  noble_quran:
   errors:
     not_found:
     invalid_verse:
@@ -19,7 +19,7 @@ hi:
   local:
   site_local:
   change_local:
-  local_native_name: हिंदी
+  local_native_name:
   language:
   page:
   reader_mode:
@@ -128,7 +128,7 @@ hi:
     show_word_tooltip:
   loading:
   nav:
-    title: कुरान पाक
+    title:
     settings:
     contribute:
     about_us:

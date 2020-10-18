@@ -230,7 +230,7 @@ class ChapterPresenter < HomePresenter
       first_verse = paginate.first
       translation = first_verse.translations.first || first_verse.translations.find_by_resource_content_id(DEFAULT_TRANSLATION)
 
-      "Surah #{chapter.name_simple} #{paginate.first.verse_key} #{sanitize_meta_description_text(translation.text)}"
+      "Surah #{chapter.name_simple}(#{chapter.name_arabic}) #{paginate.first.verse_key} #{sanitize_meta_description_text(translation.text)}"
     end
   end
 

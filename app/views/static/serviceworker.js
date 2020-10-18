@@ -1,17 +1,17 @@
-var WORKBOX_DEBUG=true;
+var WORKBOX_DEBUG = true;
 
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js"
 );
 
 function swlog(message, object) {
-  if(WORKBOX_DEBUG){
-    console.log(`[Service Worker] ${message}`, object ? object : '');
+  if (WORKBOX_DEBUG) {
+    console.log(`[Service Worker] ${message}`, object ? object : "");
   }
 }
 
 if (workbox) {
-  workbox.setConfig({debug: WORKBOX_DEBUG});
+  workbox.setConfig({ debug: WORKBOX_DEBUG });
   workbox.googleAnalytics.initialize();
 
   workbox.routing.registerRoute(
@@ -24,11 +24,9 @@ if (workbox) {
         new workbox.cacheableResponse.CacheableResponse({
           statuses: [0, 200]
         }),
-        new workbox.expiration.CacheExpiration(
-          'quran-audio',
-          {
-            maxEntries: 500
-          }),
+        new workbox.expiration.CacheExpiration("quran-audio", {
+          maxEntries: 500
+        }),
         new workbox.rangeRequests.RangeRequestsPlugin()
       ]
     })
@@ -57,11 +55,9 @@ if (workbox) {
         new workbox.cacheableResponse.CacheableResponse({
           statuses: [0, 200, 206, 304]
         }),
-        new workbox.expiration.CacheExpiration(
-          'quran-static',
-          {
-            maxEntries: 500
-          })
+        new workbox.expiration.CacheExpiration("quran-static", {
+          maxEntries: 500
+        })
       ]
     })
   );
@@ -74,14 +70,12 @@ if (workbox) {
   );
 
   workbox.routing.registerRoute(
-    new RegExp("^https://(www|beta|staging)?.(?:quran).com/(.*)"),
+    new RegExp("quran.com"),
 
     new workbox.strategies.NetworkFirst({
       cacheName: "quran-pwa",
       plugins: [
-        new workbox.expiration.CacheExpiration(
-          'quran-pwa',
-          {
+        new workbox.expiration.CacheExpiration("quran-pwa", {
           maxEntries: 2000,
           maxAgeSeconds: 6 * 30 * 24 * 60 * 60 // 6 month
         })
@@ -89,7 +83,7 @@ if (workbox) {
     })
   );
 
-  workbox.routing.setCatchHandler(({event}) => {
+  workbox.routing.setCatchHandler(({ event }) => {
     return fetch(event.request);
   });
 

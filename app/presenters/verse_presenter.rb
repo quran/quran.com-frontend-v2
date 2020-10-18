@@ -12,7 +12,7 @@ class VersePresenter < BasePresenter
   end
 
   def tafsir_name
-    tafsir.resource_name
+    tafsir&.resource_name || ResourceContent.find(tafirs_filter).name
   end
 
   def chapter
@@ -58,7 +58,12 @@ class VersePresenter < BasePresenter
   end
 
   def tafsir_text
-    tafsir.text.gsub(/[.]+/, '.<br/>').to_s.html_safe
+    if(t= tafsir)
+      t.text.gsub(/[.]+/, '.<br/>').to_s.html_safe
+      t.text.to_s.html_safe
+    else
+      "Sorry we don't have tafsir for this ayah"
+    end
   end
 
   def meta_page_type
@@ -66,7 +71,7 @@ class VersePresenter < BasePresenter
   end
 
   def language_name
-    tafsir.language_name
+    tafsir&.language_name
   end
 
   protected

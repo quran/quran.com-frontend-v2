@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  post 'fb', to: 'chapters#index'
+
   # surah in url for seo
   get '/surah/:id/info', to: 'chapter_info#show'
   get '/surah-info/:id', to: 'chapter_info#show'
@@ -115,5 +117,5 @@ Rails.application.routes.draw do
   get '/:id', to: 'chapters#show', as: :chapter
   get '/:id/(:range)', to: 'chapters#show', as: :range
 
-  match '*', to: redirect('/'), via: [:get, :post]
+  match '*unmatched_route', :to => 'application#not_found', via: :all
 end

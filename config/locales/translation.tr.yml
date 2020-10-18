@@ -23,9 +23,9 @@ tr:
   settings:
     label: Ayarlar
     chapters: Sure Seç
-    reciters: "Okuyucular seçin
+    reciters: 'Okuyucular seçin
 
-      "
+      '
     translations: Çeviriler
     remove_all: Hepsini kaldır
     translation_english: Türkçe
@@ -85,14 +85,14 @@ tr:
     share: Paylaş ayet
     addNote: Not ekle
     tafsir:
-      label: "Tefsirler
+      label: 'Tefsirler
 
-        "
+        '
       select: Tefsir'i seçin
     quran_reflect: Bu ayetin Kuran Üzerine Düşünceler Oku
   search:
     placeholder: Arama "Noah"
-    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-primary>%{query}</span>"
+    result: "%{from} - %{total} OF <span>%{to}</span> ARAMA SONUÇLARI: <span class=text-success>%{query}</span>"
     error: Üzgünüz, aramanızla ilgili bir hata oluştu.
     no_query: Arama sorgusu yok.
     no_result: Sonuç bulunamadı.
@@ -134,8 +134,7 @@ tr:
     other_links: Diğer bağlantılar
     contact_us: Bizimle iletişime geçin
     help: Yardım ve geri bildirim
-    about_project:
-      Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
+    about_project: Quran.com bir Sadaqah Jariyah'dır. Herkesin Kur'an-ı Kerim'i okumasını,
       okumasını ve öğrenmesini kolaylaştırmayı umuyoruz. Kur'an-ı Kerim, Kur'an-ı
       Kerim Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr ve Al-Noor gibi
       birçok isme sahiptir.

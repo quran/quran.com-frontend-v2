@@ -19,5 +19,9 @@ class VersesController < ApplicationController
 
   def init_presenter
     @presenter = VersePresenter.new(self)
+
+    unless @presenter.verse
+      redirect_to '/', alert: t('errors.invalid_verse')
+    end
   end
 end
