@@ -91,6 +91,7 @@ ar:
     tafsir:
       label: تفاسير
       select: اختر التفسير
+      filter_tafsir: اختر حسب اللغة
     quran_reflect: إقرأ تأمّلات لهذه الآية على "Quran Reflect"
   search:
     placeholder: البحث عن سورة "نوح"

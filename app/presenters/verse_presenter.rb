@@ -59,6 +59,7 @@ class VersePresenter < BasePresenter
 
   def tafsir_text
     if(t= tafsir)
+      t.text.gsub(/[.]+/, '.<br/>').to_s.html_safe
       t.text.to_s.html_safe
     else
       "Sorry we don't have tafsir for this ayah"

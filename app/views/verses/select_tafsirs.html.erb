@@ -4,11 +4,21 @@
 <% verse = @presenter.verse %>
 
 <div id="modal">
-  <div class="modal-body">
-    <ul>
+  <div class="modal-body" data-controller="tafsir-modal">
+    <div class="mb-4">
+      <div id="filters" class="d-flex align-items-end">
+        <h6 class="mr-2"><%= _t('action.tafsir.filter_tafsir') %></h6>
+        <% @tafsirs_langs.each do |language_name| %>
+          <button data-action="tafsir-modal#filter" data-selected-lang="<%= language_name %>" type="button" class="btn btn-outline-secondary btn-sm mr-2"><%= language_name %></button>
+        <% end %>
+      </div>
+    </div>
+    <ul id="tafsir-results">
       <% @approved_tafsirs.each do |tafsir| %>
-        <li class="mb-3 border-bottom pb-2">
+        <li class="mb-3 border-bottom pb-2" data-lang="<%= tafsir.language_name %>">
           <%= link_to tafsir.name, verse_tafsir_path(verse.verse_key, tafsir_id: tafsir.slug || tafsir.id) %>
+          <br />
+          <span class="h6"><%= tafsir.language_name %></span>
         </li>
       <% end %>
     </ul>
