@@ -87,6 +87,7 @@ hi:
     tafsir:
       label:
       select:
+      filter_tafsir: 'भाषा द्वारा फ़िल्टर करें:'
     bookmark:
       label:
       done:

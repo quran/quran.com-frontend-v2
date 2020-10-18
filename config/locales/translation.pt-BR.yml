@@ -100,6 +100,7 @@ pt-BR:
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
+      filter_tafsir: 'Filtrar por idioma:'
     quran_reflect: Leia as reflexões para esta Ayah no QuranReflect
   search:
     label: Pesquisar

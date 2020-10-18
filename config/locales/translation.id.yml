@@ -89,6 +89,7 @@ id:
     tafsir:
       label: Tafsir
       select: Pilih Tafsir
+      filter_tafsir: 'Filter menurut bahasa:'
     quran_reflect: Baca Refleksi untuk Ayah ini di QuranReflect
   search:
     placeholder: Cari "Nuh"

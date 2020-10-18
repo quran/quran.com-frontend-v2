@@ -94,6 +94,7 @@ fa:
     tafsir:
       label: تفسیرها
       select: تفسیر را انتخاب کنید
+      filter_tafsir: 'فیلتر بر اساس زبان:'
     quran_reflect: تأملات این آیه را در QuranReflect بخوانید
   search:
     placeholder: جستجو کردن

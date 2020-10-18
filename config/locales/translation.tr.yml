@@ -89,6 +89,7 @@ tr:
 
         '
       select: Tefsir'i seçin
+      filter_tafsir: 'Dile göre filtrele:'
     quran_reflect: Bu ayetin Kuran Üzerine Düşünceler Oku
   search:
     placeholder: Arama "Noah"

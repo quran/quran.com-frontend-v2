@@ -100,6 +100,7 @@ fr:
     tafsir:
       label: Tafsirs
       select: Sélectionnez Tafsir
+      filter_tafsir: 'Filtrer par langue:'
     quran_reflect: Lire les réflexions pour cette Ayah sur le Coran
   search:
     placeholder: Chercher "Noah"

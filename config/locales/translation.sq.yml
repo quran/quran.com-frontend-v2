@@ -85,6 +85,7 @@ sq:
     tafsir:
       label: Tafsirs
       select: Zgjidhni Tafsir
+      filter_tafsir: 'Filtro sipas gjuhës:'
     quran_reflect: Lexoni Reflektimet për këtë Ajet në Kur'anin Reflektoni
   search:
     placeholder: Kërko "Noah"

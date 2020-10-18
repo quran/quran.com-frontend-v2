@@ -87,6 +87,7 @@ it:
     tafsir:
       label: Seleziona un tafsir
       select: Seleziona un tafsir
+      filter_tafsir: 'Filtra per lingua:'
     quran_reflect: Leggi Riflessioni per questo Ayah su QuranReflect
   search:
     placeholder: Cerca "Noah"

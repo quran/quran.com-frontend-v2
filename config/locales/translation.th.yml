@@ -95,6 +95,7 @@ th:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร
+      filter_tafsir: 'กรองตามภาษา:'
     quran_reflect: อ่านข้อความสะท้อนบทเรียนสำหรับอายะห์นี้ใน QuranReflect
   search:
     label: ค้นหา

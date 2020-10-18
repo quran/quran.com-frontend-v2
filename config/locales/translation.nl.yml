@@ -87,6 +87,7 @@ nl:
     tafsir:
       label: Tafsirs
       select: Selecteer Tafsir
+      filter_tafsir: 'Filter op taal:'
     quran_reflect: Lees Reflections voor deze Ayah op QuranReflect
   search:
     placeholder: Zoek "Noah"
