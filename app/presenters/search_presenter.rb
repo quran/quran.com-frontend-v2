@@ -14,6 +14,14 @@ class SearchPresenter < BasePresenter
     pagination.next
   end
 
+  def meta_description
+    "Quran search result for #{query}"
+  end
+
+  def meta_title
+    query
+  end
+
   def pagination
     strong_memoize :pagination do
       @search&.pagination

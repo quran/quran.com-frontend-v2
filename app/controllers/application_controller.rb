@@ -2,6 +2,11 @@
 
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  rescue_from ActionController::RoutingError, with: :not_found
+
+  def not_found
+    redirect_to '/'
+  end
 
   protected
 
@@ -21,5 +26,9 @@ class ApplicationController < ActionController::Base
       cookies[:locale] ||
       extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
       I18n.default_locale
+  end
+
+  def handle_routing_error
+    redirect_to '/'
   end
 end
