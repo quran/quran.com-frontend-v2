@@ -8,11 +8,9 @@
 id:
   errors:
     not_found: Maaf, halaman ini tidak ada
-    invalid_verse:
-      Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_verse: Ayah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih Surah / Ayah
-    invalid_chapter:
-      Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
+    invalid_chapter: Surah berada di luar jangkauan. Silahkan pergi ke halaman rumah
       dan pilih sebuah Surah
     no_script:
     unavailable_session:
@@ -59,9 +57,9 @@ id:
       one: Menampilkan satu terjemahan
       other: Menampilkan terjemahan %{count}
   verses:
-    media: "Lihat kuliah dari %{from}
+    media: 'Lihat kuliah dari %{from}
 
-      "
+      '
     go: Pergi ke ayat
     not_found: Ayat tidak ditemukan
   chapters:
@@ -94,7 +92,7 @@ id:
     quran_reflect: Baca Refleksi untuk Ayah ini di QuranReflect
   search:
     placeholder: Cari "Nuh"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Maaf, terdapat kesalahan dalam pencarian Anda.
     no_query: Tidak ada kata yang dicari.
     no_result: Tidak ada hasil yang ditemukan.
@@ -136,8 +134,7 @@ id:
     other_links: Tautan lainnya
     contact_us: Hubungi kami
     help: Bantuan & umpan balik
-    about_project:
-      Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
+    about_project: Quran.com (juga dikenal sebagai The Noble Quran, Al Quran, Holy
       Quran, Koran) adalah sebuah proyek pro bono.
     rights: Hak Cipta Terpelihara
     navigate: Telusuri

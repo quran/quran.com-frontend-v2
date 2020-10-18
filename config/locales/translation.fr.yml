@@ -8,34 +8,38 @@
 fr:
   errors:
     not_found: Désolé, cette page n'existe pas
-    invalid_verse:
-      "L'ayah est hors de portée. Accédez à la page d'accueil et sélectionnez
-      un(e) Surah / Ayah
-
-      "
-    invalid_chapter:
-      La sourate est hors de portée. Accédez à la page d'accueil et
+    invalid_verse: Verifiez votre choix de verset. Le numéro de verset est hors d'atteinte.
+    invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
-    no_script:
-      On dirait que votre navigateur ne supporte pas Javascript ou qu'il
+    no_script: On dirait que votre navigateur ne supporte pas Javascript ou qu'il
       est désactivé. Coran.com fonctionne mieux avec JavaScript activé. Pour plus
       d'instructions sur l'activation de javascript
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
+    unavailable_session: |
+      La session %{id} n'est plus disponible en mémoire.
+
+      Si vous utilisez un serveur multi-processus (comme Unicorn ou Puma), le processus
+      cet appel de requête ne stocke pas %{id} en mémoire. Pensez à tourner le nombre de
+      processus / travailleurs à un (1) ou en utilisant un serveur différent en développement.
+    unacceptable_request: 'Une version prise en charge est attendue dans l''en-tête
+      Accept.
+
+      '
+    connection_refused: |
+      Oops! Impossible de se connecter à la console Web middleware.
+      faire S'il vous plaît assurer un serveur de développement de rails est en cours d'exécution.
     format: "%{attribute} %{message}"
   local: french
-  site_local: "Langue du Site
+  site_local: 'Langue du Site
 
-    "
+    '
   change_local: Choisir la langue du site
   local_native_name: Français
   language: Langue
   settings:
     label: Paramètres
-    chapters: Sourates
-    reciters: Récitateurs
-    translations: Traductions
+    chapters: Sélectionner une Sourate
+    reciters: Choisissez un récitateur
+    translations: Choix des traductions
     remove_all: Tout désélectionner
     translation_english: Anglais
     translation_other: Autres Langues
@@ -53,7 +57,7 @@ fr:
       night_tip: Passer en mode nuit
     reset: Remettre les paramètres par défault
     font_type: Sélectionnez la police
-    sample_audio:
+    sample_audio: Ecouter l'extrait
     display: Paramètres d'affichage
     audio: Les paramètres audio
     fonts:
@@ -70,11 +74,11 @@ fr:
     go: Aller au verset
     not_found: Verset introuvable
   chapters:
-    label: SOURATES
-    next: SUIVANT
-    previous: PRECEDENT
-    verses: VERSETS
-    pages: PAGES
+    label: Sourates
+    next: Suivant
+    previous: Précédent
+    verses: Versets
+    pages: Pages
     continue: Continuer
     quick_links: Liens rapides
     go_to_beginning: Début de la Sourate
@@ -87,11 +91,11 @@ fr:
     pause: Pause
     bookmark:
       label: Favoris
-      done: Ajouter aux favoris
+      done: Ajouté aux favoris!
     copy:
       label: Copier
       done: Copié !
-    share: Partager le verset
+    share: Partager
     addNote: Ajouter une note
     tafsir:
       label: Tafsirs
@@ -99,17 +103,16 @@ fr:
     quran_reflect: Lire les réflexions pour cette Ayah sur le Coran
   search:
     placeholder: Chercher "Noah"
-    result:
-      "%{from}-%{to} DE <span> %{total} </span> RESULTATS DE LA RECHERCHE POUR:
+    result: "%{from}-%{to} DE <span> %{total} </span> RESULTATS DE LA RECHERCHE POUR:
       <span>%{query}</span>"
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
     popular: Recherches populaires
     ayatul_kursi: Ayatul Kursi
-    yaseen: "Sourate Yaseen
+    yaseen: 'Sourate Yaseen
 
-      "
+      '
     al_mulk: Sourate Al Mulk
     ar_rahman: Sourate Ar-Rahman
     al_waqiah: Sourate Al Waqiah
@@ -120,7 +123,7 @@ fr:
     current_verse: Verset
     next_verse: Prochain Verset
     previous_verse: Verset Précèdent
-    repeat_title: ACTIVER REPETITION
+    repeat_title: Répéter Verset
     repeat_single: Une fois
     repeat_range: Plage
     repeat_from: De
@@ -133,8 +136,7 @@ fr:
     pause_seconds: Secondes
     pause: Pause pour
     play_continuously: Continuez à jouer sans pause
-    show_word_tooltip:
-      Afficher la traduction des mots dans l'info-bulle tout en jouant
+    show_word_tooltip: Afficher la traduction des mots dans l'info-bulle tout en jouant
       à ayah
   loading: Chargement...
   nav:
@@ -147,9 +149,10 @@ fr:
     other_links: Autre liens
     contact_us: Contacter nous
     help: Aide et feedback
-    about_project:
-      Quran.com (connu aussi sous le nom The Noble Quran, Al Quran, Holy
-      Quran, Koran) est un projet à but non-lucratif.
+    about_project: Quran.com est une Sadaqah Jariyah. Nous espérons que tout le monde
+      puisse lire, étudier et apprendre le Noble Coran. Le Noble Coran a de nombreux
+      noms dont Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr et
+      Al-Noor.
     rights: Tous droits réservés
     navigate: Naviguer
     legacy_site: Version précédente de Quran.com

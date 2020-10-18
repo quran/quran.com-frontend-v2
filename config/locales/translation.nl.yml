@@ -21,9 +21,9 @@ nl:
   local_native_name: Nederlands
   language: Site Taal
   settings:
-    label: "Instellingen
+    label: 'Instellingen
 
-      "
+      '
     chapters: hoofdstukken
     reciters: Reciteurs
     translations: Vertalingen
@@ -90,7 +90,7 @@ nl:
     quran_reflect: Lees Reflections voor deze Ayah op QuranReflect
   search:
     placeholder: Zoek "Noah"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Sorry, er is een fout opgetreden bij uw zoekopdracht.
     no_query: Geen zoekopdracht.
     no_result: Geen resultaten gevonden.
@@ -116,8 +116,7 @@ nl:
     repeat_loop: lus
     scroll: Scroll automatisch naar de huidige ayah
     select_verse: Selecteer een vers
-    pause_bw_ayah:
-      Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
+    pause_bw_ayah: Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
       afgespeeld
     pause_seconds: Seconden
     pause: Pauzeer voor
@@ -126,9 +125,9 @@ nl:
   loading: Laden ...
   nav:
     title: Koran
-    settings: "Instellingen
+    settings: 'Instellingen
 
-      "
+      '
     contribute: Bijdragen
     about_us: Over ons
     developers: ontwikkelaars
@@ -136,8 +135,7 @@ nl:
     other_links: Andere links
     contact_us: Contacteer ons
     help: Hulp en feedback
-    about_project:
-      Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
+    about_project: Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
       te maken om The Noble Quran te lezen, bestuderen en leren. De Edele Koran heeft
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
@@ -151,9 +149,9 @@ nl:
   click_here: Klik hier
   download: te downloaden
   home: Thuis
-  noble_quran: "De edele Koran
+  noble_quran: 'De edele Koran
 
-    "
+    '
   related_sites:
     label: Gerelateerde sites
     sunnah: Sunnah

@@ -88,7 +88,7 @@ sq:
     quran_reflect: Lexoni Reflektimet për këtë Ajet në Kur'anin Reflektoni
   search:
     placeholder: Kërko "Noah"
-    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Na vjen keq, pati një gabim në kërkimin tuaj.
     no_query: Asnjë pyetje kërkimi.
     no_result: Nuk u gjet asnjë rezultat
@@ -118,8 +118,7 @@ sq:
     pause_seconds: sekonda
     pause: Bëni pauzë për
     play_continuously: Vazhdoni të luani pa ndalur
-    show_word_tooltip:
-      Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
+    show_word_tooltip: Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
       ayah
   loading: Loading ...
   nav:
@@ -132,8 +131,7 @@ sq:
     other_links: Lidhje të tjera
     contact_us: Na kontaktoni
     help: Ndihmë & reagime
-    about_project:
-      Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
+    about_project: Quran.com është një Xhariyah Sadaka. Shpresojmë ta lehtësojmë të
       gjithë për të lexuar, studiuar dhe mësuar Kuranin Fisnik. Kurani Fisnik ka shumë
       emra përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       dhe Al-Noor.

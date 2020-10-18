@@ -11,8 +11,7 @@ th:
     not_found: ขออภัย ไม่พบหน้าดังกล่าว
     invalid_verse: ไม่พบอายะห์ดังกล่าว กรุณาตรวจสอบอายะห์ที่คุณเลือก
     invalid_chapter: ไม่พบซูเราะห์ดังกล่าว กรุณาตรวจสอบซูเราะห์ที่คุณเลือก
-    no_script:
-      ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
+    no_script: ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
       Quran.com ทำงานได้ดีที่สุดเมื่อเปิดใช้งาน JavaScript. สำหรับคำแนะนำเพิ่มเติมเกี่ยวกับวิธีเปิดใช้งาน
       JavaScript
     unavailable_session: |
@@ -34,12 +33,12 @@ th:
   settings:
     label: การตั้งค่า
     chapters: ซูเราะห์
-    reciters: เสียงอ่าน
-    translations: คำแปล
+    reciters: เลือกเสียงอ่าน
+    translations: เลือกคำแปลความหมาย
     remove_all: ลบทั้งหมด
     translation_english: ภาษาอังกฤษ
     translation_other: ภาษาอื่น ๆ
-    reset: รีเซ็ตการตั้งค่า
+    reset: รีเซ็ตการตั้งค่าใหม่
     font_size:
       label: ขนาดตัวอักษร
       arabic: ภาษาอาหรับ
@@ -53,18 +52,18 @@ th:
       day_tip: เปลี่ยนเป็นโหมดปกติ
       night_tip: เปลี่ยนเป็นโหมดกลางคืน
     font_type: เลือกแบบอักษร
-    sample_audio:
+    sample_audio: ตัวอย่างเสียง
     display: การตั้งค่าการแสดงผล
-    audio: การตั้งค่าเสียง
+    audio: ตั้งค่าเสียงอ่าน
     fonts:
-      tajweed: ข้อความ Tajweed
-      uthmani: อุท ธ มณีข้อความ
+      tajweed: อักษรแบบแสดงตัจวีด
+      uthmani: อักษรแบบอุษมานีย์
       qcf_v1: QCF V1.0
       qcf_v2: QCF V2
-      indopak: ข้อความ IndoPak
+      indopak: อักษรแบบอินเดีย-ปากีสถาน
     translation_count:
-      one: กำลังแสดงคำแปลหนึ่งคำ
-      other: กำลังแสดงคำแปล %{count}
+      one: กำลังแสดงหนึ่งคำแปล
+      other: กำลังแสดง %{count} คำแปล
   verses:
     media: ดูวิดีโออรรถาธิบายจาก %{from}
     go: ไปยังอายะห์
@@ -73,19 +72,19 @@ th:
     label: ซูเราะห์
     next: ซูเราะห์ถัดไป
     previous: ซูเราะห์ก่อนหน้า
-    verses: อายะห์
+    verses: จำนวนอายะห์
     pages: หน้า
     revelation_place: ประทานที่
     continue: ต่อ
     quick_links: ลิงค์
-    go_to_beginning: ส่วนต้นของซูเราะห์
+    go_to_beginning: ไปยังส่วนต้นของซูเราะห์
     read_full: อ่านทั้งซูเราะห์
     invalid: ไม่พบข้อมูลซูเราะห์
   footnote: เชิงอรรถ
   action:
     play: เล่น
     pause: หยุด
-    share: แชร์อายะห์
+    share: แชร์อายะห์นี้
     addNote: เพิ่มโน๊ต
     bookmark:
       label: บุ๊คมาร์ค
@@ -96,11 +95,11 @@ th:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร
-    quran_reflect: อ่านการสะท้อนสำหรับ Ayah นี้ใน QuranReflect
+    quran_reflect: อ่านข้อความสะท้อนบทเรียนสำหรับอายะห์นี้ใน QuranReflect
   search:
     label: ค้นหา
     placeholder: ค้นหา "นุห์"
-    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-primary>%{query}</span>"
+    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-success>%{query}</span>"
     error: ขออภัยเกิดข้อผิดพลาดในการค้นหาของคุณ
     no_query: ไม่มีคำค้นหา
     no_result: ไม่พบผลลัพธ์
@@ -117,19 +116,19 @@ th:
     next_verse: อายะห์ถัดไป
     previous_verse: อายะห์ก่อนหน้า
     repeat_title: เล่นซ้ำอายะห์
-    repeat_single: เดี่ยว
+    repeat_single: อายะห์เดี่ยว
     repeat_range: เป็นช่วง
     repeat_from: จาก
     repeat_to: ถึง
-    repeat_times: ครั้ง
+    repeat_times: จำนวนครั้ง
     repeat_loop: วนซ้ำ
     scroll: เลื่อนไปที่อายะห์ที่กำลังเล่นอยู่โดยอัตโนมัติ
-    select_verse: เลือกกลอน
-    pause_bw_ayah: กำหนดระยะเวลาในการหยุดชั่วคราวก่อนเล่นข้อถัดไป
+    select_verse: เลือกอายะห์
+    pause_bw_ayah: กำหนดระยะเวลาหยุดพักชั่วคราว ก่อนเล่นอายะห์ถัดไป
     pause_seconds: วินาที
-    pause: หยุดชั่วคราวสำหรับ
-    play_continuously: เล่นต่อไปโดยไม่หยุดชั่วคราว
-    show_word_tooltip: แสดงการแปลคำศัพท์ในคำแนะนำเครื่องมือขณะเล่น ayah
+    pause: หยุดพัก
+    play_continuously: เล่นเสียงอ่านต่อเนื่องโดยไม่หยุดพัก
+    show_word_tooltip: แสดงคำแปลเหนือข้อความในอายะห์ขณะเล่นเสียง
   loading: กำลังโหลด...
   nav:
     title: อัลกุรอาน
@@ -141,8 +140,7 @@ th:
     other_links: ลิงค์อื่น ๆ
     contact_us: ติดต่อเรา
     help: แนะนำติชม
-    about_project:
-      Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
+    about_project: Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
       ศึกษา และเรียนรู้อัลกุรอานเป็นเรื่องง่ายสำหรับทุกคน.
     rights: สงวนลิขสิทธิ์
     navigate: นำทาง
@@ -164,7 +162,7 @@ th:
     audio_description: ศึกษาข้อมูล และฟังไปพร้อมกัน
   close: ปิด
   reader_mode:
-    reading: โหมดอ่าน
-    translation: คำแปล
+    reading: อ่านแบบไม่มีคำแปล
+    translation: กุรอานพร้อมคำแปล
     info: ข้อมูลซูเราะห์
-  share_ayah: แบ่งปัน ayah
+  share_ayah: แชร์อายะห์
