@@ -108,7 +108,7 @@ pt-BR:
   search:
     label: Pesquisar
     placeholder: Pesquisar "
-    result: "%{from}-%{to} de <span> {total} </span> Resultados da pesquisa: <span>{query}</span>"
+    result: "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa: <span>%{query}</span>"
     error: Desculpe, ouve um erro com sua busca.
     no_query: Não há consulta para buscar
     no_result: Não foram encontrado resultados

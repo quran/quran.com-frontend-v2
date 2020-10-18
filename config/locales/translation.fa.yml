@@ -98,7 +98,7 @@ fa:
     quran_reflect: تأملات این آیه را در QuranReflect بخوانید
   search:
     placeholder: جستجو کردن
-    result: "%{to}%{from}-%{to} OF <span> {total} </span> SEARCH RESULTS FOR: <span>{query}</span>\n"
+    result: "%{to}%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span>%{query}</span>\n"
     error: متأسفیم ، در جستجوی شما خطایی روی داد.
     no_query: جستجو وجود ندارد
     no_result: نتیجه ای پیدا نشد.

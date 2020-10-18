@@ -1,3 +1,10 @@
+.pagination-section {
+  .ur, .ar, .fa {
+    direction: rtl;
+    unicode-bidi: embed;
+  }
+}
+
 .search-result {
   width: 100%;
   position: absolute;
