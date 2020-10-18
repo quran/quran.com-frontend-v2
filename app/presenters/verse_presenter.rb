@@ -58,7 +58,7 @@ class VersePresenter < BasePresenter
   end
 
   def tafsir_text
-    tafsir.text.to_s.html_safe
+    tafsir.text.gsub(/[.]+/, '.<br/>').to_s.html_safe
   end
 
   def meta_page_type

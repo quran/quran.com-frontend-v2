@@ -71,6 +71,7 @@ en:
     tafsir:
       label: Tafsirs
       select: Select Tafsir
+      filter_tafsir: 'Filter by language:'
     bookmark:
       label: Bookmark
       done: Bookmarked!
