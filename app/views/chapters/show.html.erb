@@ -61,7 +61,7 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
+      <div id="verses-reading" class='verses verses-reading' data-controller="infinite-page" data-items-container="#verses-reading #verses">
         <div id='verses'>
           <% if 'reading' == @presenter.active_tab %>
             <%= render 'verses' %>

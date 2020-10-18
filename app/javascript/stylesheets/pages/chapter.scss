@@ -133,6 +133,15 @@
   }
 }
 
+.verses-reading {
+  .verse,
+  .line {
+    .arabic {
+      word-spacing: initial;
+    }
+  }
+}
+
 .line {
   direction: rtl;
 }
