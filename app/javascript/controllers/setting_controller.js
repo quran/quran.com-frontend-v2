@@ -95,7 +95,7 @@ export default class extends Controller {
       font: "v1",
       tooltip: "t",
       recitation: 7,
-      nightMode: false,
+      nightMode: null,
       readingMode: false,
       translations: [131],
       repeatEnabled: false,
@@ -122,13 +122,13 @@ export default class extends Controller {
   updateFontSize() {
     $("style.setting").remove();
 
-    
+
     let fontStylesheet = document.createElement("style");
     fontStylesheet.classList.add("setting");
     document.head.appendChild(fontStylesheet);
-    
+
     let device = this.mobile ? "mobile" : "desktop";
-    
+
     let translationFontSize = this.get("translationFontSize")[device];
     let wordFontSize = this.get("wordFontSize")[device];
 
@@ -190,7 +190,6 @@ export default class extends Controller {
   }
 
   resetSetting(e) {
-    $("body").removeClass("night");
     this.settings = this.defaultSetting();
     this.saveSettings();
 
