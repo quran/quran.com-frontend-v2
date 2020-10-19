@@ -7,6 +7,21 @@ class VersePresenter < BasePresenter
     end
   end
 
+  def approved_tafsirs
+    ResourceContent.tafsirs.approved
+  end
+
+  def tafsir_languages
+    list = Language
+             .eager_load(:translated_name)
+             .where(id: approved_tafsirs.select(:language_id))
+
+    eager_load_translated_name(list).reduce({}) do |hash, translation|
+      hash[translation.id] = translation
+      hash
+    end
+  end
+
   def render_verse_words?
     true
   end
