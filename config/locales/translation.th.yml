@@ -11,7 +11,8 @@ th:
     not_found: ขออภัย ไม่พบหน้าดังกล่าว
     invalid_verse: ไม่พบอายะห์ดังกล่าว กรุณาตรวจสอบอายะห์ที่คุณเลือก
     invalid_chapter: ไม่พบซูเราะห์ดังกล่าว กรุณาตรวจสอบซูเราะห์ที่คุณเลือก
-    no_script: ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
+    no_script:
+      ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
       Quran.com ทำงานได้ดีที่สุดเมื่อเปิดใช้งาน JavaScript. สำหรับคำแนะนำเพิ่มเติมเกี่ยวกับวิธีเปิดใช้งาน
       JavaScript
     unavailable_session: |
@@ -95,12 +96,12 @@ th:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร
-      filter_tafsir: 'กรองตามภาษา:'
+      filter_tafsir: "กรองตามภาษา:"
     quran_reflect: อ่านข้อความสะท้อนบทเรียนสำหรับอายะห์นี้ใน QuranReflect
   search:
     label: ค้นหา
     placeholder: ค้นหา "นุห์"
-    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-success>%{query}</span>"
+    result: "%{from} - %{to} จาก <span>%{total}</span> ผลการค้นหาสำหรับ: <span class=text-primary>%{query}</span>"
     error: ขออภัยเกิดข้อผิดพลาดในการค้นหาของคุณ
     no_query: ไม่มีคำค้นหา
     no_result: ไม่พบผลลัพธ์
@@ -141,7 +142,8 @@ th:
     other_links: ลิงค์อื่น ๆ
     contact_us: ติดต่อเรา
     help: แนะนำติชม
-    about_project: Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
+    about_project:
+      Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
       ศึกษา และเรียนรู้อัลกุรอานเป็นเรื่องง่ายสำหรับทุกคน.
     rights: สงวนลิขสิทธิ์
     navigate: นำทาง
