@@ -1,24 +1,32 @@
 <div id="title">
   <%= _t('action.tafsir.select') %>
 </div>
+
 <% verse = @presenter.verse %>
+<% tafsir_languages = @presenter.tafsir_languages %>
 
 <div id="modal">
   <div class="modal-body" data-controller="tafsir-modal">
     <div class="mb-4">
+      <h6 class="mr-2"><%= _t('action.tafsir.filter_tafsir') %></h6>
+
       <div id="filters" class="d-flex align-items-end">
-        <h6 class="mr-2"><%= _t('action.tafsir.filter_tafsir') %></h6>
-        <% @tafsirs_langs.each do |language_name| %>
-          <button data-action="tafsir-modal#filter" data-selected-lang="<%= language_name %>" type="button" class="btn btn-outline-secondary btn-sm mr-2"><%= language_name %></button>
+        <% tafsir_languages.each do |lang_id, language| %>
+          <button data-action="tafsir-modal#filter" data-selected-lang="<%= lang_id %>" type="button" class="btn btn-outline-secondary btn-sm mr-2">
+            <%= language.translated_name.name %>
+          </button>
         <% end %>
       </div>
     </div>
+
     <ul id="tafsir-results">
-      <% @approved_tafsirs.each do |tafsir| %>
-        <li class="mb-3 border-bottom pb-2" data-lang="<%= tafsir.language_name %>">
-          <%= link_to tafsir.name, verse_tafsir_path(verse.verse_key, tafsir_id: tafsir.slug || tafsir.id) %>
-          <br />
-          <span class="h6"><%= tafsir.language_name %></span>
+      <% @presenter.approved_tafsirs.each do |tafsir| %>
+        <li class="mb-3 border-bottom pb-2" data-lang="<%= tafsir.language_id %>">
+          <%= link_to verse_tafsir_path(verse.verse_key, tafsir_id: tafsir.slug.presence || tafsir.id) do %>
+            <%= tafsir.name %>
+            <br/>
+            <small class="text-muted"><%= tafsir_languages[tafsir.language_id].translated_name.name %></small>
+          <% end %>
         </li>
       <% end %>
     </ul>
