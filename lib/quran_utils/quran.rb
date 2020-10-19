@@ -39,7 +39,6 @@ module QuranUtils
       end
     end
 
-    SURAH_AYAH = Chapter.order('id asc').map(&:verses_count)
     # MUHSAF_PAGES:
     # 604 pages, each value in array is first ayah id on page
     # i.e ayah page 2 start with ayah_id = 8

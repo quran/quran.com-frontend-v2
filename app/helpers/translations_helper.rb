@@ -2,7 +2,7 @@
 
 module TranslationsHelper
   def _t(key, args = {})
-    "<span class='#{I18n.locale}'>#{t key, args}</span>".html_safe
+    "<span class='#{I18n.locale}'>#{t key, **args}</span>".html_safe
   end
 
   def available_locales
