@@ -95,7 +95,7 @@ ar:
     quran_reflect: إقرأ تأمّلات لهذه الآية على "Quran Reflect"
   search:
     placeholder: البحث عن سورة "نوح"
-    result: '"{from} - %{to}% من <span>%{total}</span> نتائج البحث لـ: <span>%{query}</span>"'
+    result: '"%{to} - %{from} من <span>%{total}</span> نتائج البحث لـ: <span>%{query}</span>"'
     error: عذرا، يوجد خطأ في بحثك.
     no_query: لا يوجد طلب بحث
     no_result: لا توجد نتائج
