@@ -3,7 +3,7 @@
 TranslationIO.configure do |config|
   config.api_key        = Rails.application.credentials[:translation_key]
   config.source_locale  = 'en'
-  config.target_locales = %w[sq ur ar bn-BD nl fr id it fa pt-BR th tr th hi]
+  config.target_locales = %w[sq ur ar bn nl fr id it fa pt th tr th hi]
 
   # Uncomment this if you don't want to use gettext
   config.disable_gettext = true

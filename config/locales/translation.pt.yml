@@ -5,15 +5,18 @@
 # https://translation.io/quran/quran/pt-BR
 #
 ---
-pt-BR:
+pt:
   noble_quran: O Nobre Alcorão
   errors:
     not_found: Desculpe, esta página não existe
-    invalid_verse: O Ayah (verso) está fora de alcance. Por favor, vá para a página
+    invalid_verse:
+      O Ayah (verso) está fora de alcance. Por favor, vá para a página
       inicial
-    invalid_chapter: O capítulo está fora de alcance. Por favor, vá para a página
+    invalid_chapter:
+      O capítulo está fora de alcance. Por favor, vá para a página
       inicial
-    no_script: Parece que seu navegador não suporta Javascript ou está desativado.
+    no_script:
+      Parece que seu navegador não suporta Javascript ou está desativado.
       O Quran.com funciona melhor com o JavaScript ativado. Para obter mais instruções
       sobre como ativar o javascript
     unavailable_session: |
@@ -22,9 +25,10 @@ pt-BR:
       Se acontecer de você executar em um servidor multi-processo (como Unicorn ou Puma) o processo
       esta solicitação não armazena %{id} na memória. Considere transformar o número de
       processos para um (1) ou usando um servidor diferente em desenvolvimento.
-    unacceptable_request: 'Uma versão suportada é esperada no cabeçalho de aceite.
+    unacceptable_request:
+      "Uma versão suportada é esperada no cabeçalho de aceite.
 
-      '
+      "
     connection_refused: |
       Opa! Falha ao conectar-se ao middleware do console da Web.
       Por favor, certifique-se de que um servidor de desenvolvimento de trilhos está sendo executado.
@@ -100,7 +104,7 @@ pt-BR:
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
-      filter_tafsir: 'Filtrar por idioma:'
+      filter_tafsir: "Filtrar por idioma:"
     quran_reflect: Leia as reflexões para esta Ayah no QuranReflect
   search:
     label: Pesquisar
@@ -146,7 +150,8 @@ pt-BR:
     other_links: Outros links
     contact_us: Nos contate
     help: Ajuda e feedback
-    about_project: Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
+    about_project:
+      Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
       conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
     rights: Todos os direitos reservados
     navigate: Navegar
