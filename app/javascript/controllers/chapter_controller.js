@@ -21,6 +21,11 @@ export default class extends Controller {
   connect() {
     const chapter = this;
     this.element[this.identifier] = chapter;
+
+    // disable turbolink scroll position.
+    // we want to scroll to first ayah on page
+    document.addEventListener("turbolinks:load", () => this.scrollToTop());
+
     // using same controller for reading, and translation mode
     // active tab keep track of current active view
     this.activeTab = $(this.element).find(".tab-pane.show .verses");
@@ -89,6 +94,14 @@ export default class extends Controller {
         verses.last().data("verseNumber")
       );
     }, 100);
+  }
+
+  disconnect() {
+    document.removeEventListener("turbolinks:load", () => this.scrollToTop());
+  }
+
+  scrollToTop() {
+    document.body.scrollIntoView();
   }
 
   setURLState() {

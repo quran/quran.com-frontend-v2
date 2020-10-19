@@ -126,10 +126,17 @@
     display: flex;
     flex-flow: row wrap;
   }
+
   .result-verse {
     word-spacing: initial;
     display: inline-block;
     float: right;
+  }
+}
+
+#verses-reading {
+  .arabic {
+    word-spacing: 8px;
   }
 }
 
