@@ -21,7 +21,7 @@ gem 'turbolinks', '~> 5.2.1'
 gem 'fast_blank'
 gem 'pg'
 
-gem 'jbuilder', '>= 2.10.0'
+gem 'jbuilder', '>= 2.10.1'
 gem 'oj'
 
 # i18n
@@ -44,7 +44,7 @@ gem "cld3"
 # Elasticsearch
 # using excon as faraday adapter (net::http breaks)
 gem 'excon'
-gem 'elasticsearch-model', '>= 7.1.0'
+gem 'elasticsearch-model', '>= 7.1.1'
 gem "typhoeus", github: 'naveed-ahmad/typhoeus'
 
 gem 'actionpack-action_caching', '>= 1.2.1'
