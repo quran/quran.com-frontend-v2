@@ -97,7 +97,7 @@ ur:
     quran_reflect: QuranReflect پر اس آیت کے متعلق لوگوں کے خیالات پڑہیں
   search:
     placeholder: " تلاش کریں (نوح)"
-    result: "{total}% - کل {to}% سے{from}% کی تلاش کے نتائج {query}%"
+    result: لگ بھگ%{total} نتائج میں سے آپ دیکھ رہیں ہیں %{from}  سے %{to} نتیجے
     error: معذرت، آپ کی تلاش میں ایک خرابی تھی.
     no_query: تلاش کے لئے کچھ لکھئے
     no_result: کوئی نتیجہ نہیں ملا
