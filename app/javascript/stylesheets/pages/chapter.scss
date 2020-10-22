@@ -132,7 +132,12 @@
     display: inline-block;
     float: right;
   }
+  .text_uthmani_tajweed, .text_indopak {
+    word-spacing: initial;
+    display: inline-block;
+  }
 }
+
 
 #verses-reading {
   .arabic {
