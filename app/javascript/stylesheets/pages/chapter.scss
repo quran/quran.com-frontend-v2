@@ -127,12 +127,17 @@
     flex-flow: row wrap;
   }
 
-  .result-verse {
+  .result-verse, .text_uthmani_tajweed {
     word-spacing: initial;
     display: inline-block;
     float: right;
   }
+
+  .text_indopak {
+    word-spacing: initial;
+  }
 }
+
 
 #verses-reading {
   .arabic {
