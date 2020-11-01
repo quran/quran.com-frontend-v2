@@ -33,7 +33,7 @@ class SearchPresenter < BasePresenter
   end
 
   def load_translations(verse)
-    strong_memoize :load_translation do
+    strong_memoize "translations_#{verse.id}" do
       translations = @results[verse.id][:translations].group_by do |t|
         t[:language]
       end
