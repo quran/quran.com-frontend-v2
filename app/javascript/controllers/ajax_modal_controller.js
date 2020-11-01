@@ -32,11 +32,10 @@ export default class extends Controller {
         .remove();
     });
 
-    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+    fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(resp => resp.text())
       .then(content => {
         const response = $("<div>").html(content);
-        const responseBody = response.find("#body");
 
         document.getElementById("modal-title").innerHTML = response
           .find("#title")
@@ -81,8 +80,8 @@ export default class extends Controller {
       this.removeModal(ajaxModal);
     });
 
-    this.dialog = new Modal(ajaxModal, { backdrop: "static" });
-    this.dialog.show();
+    global.dialog = new Modal(ajaxModal, { backdrop: "static" });
+    global.dialog.show();
   }
 
   removeModal() {
@@ -92,7 +91,8 @@ export default class extends Controller {
       document.body.removeChild(modal);
 
       let backdrop = document.getElementsByClassName("modal-backdrop");
-      if (backdrop && backdrop.length > 0) document.body.removeChild(backdrop[0]);
+      if (backdrop && backdrop.length > 0)
+        document.body.removeChild(backdrop[0]);
     }
   }
 }

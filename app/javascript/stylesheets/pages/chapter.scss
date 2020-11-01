@@ -127,7 +127,8 @@
     flex-flow: row wrap;
   }
 
-  .result-verse, .text_uthmani_tajweed {
+  .result-verse,
+  .text_uthmani_tajweed {
     word-spacing: initial;
     display: inline-block;
     float: right;
@@ -137,7 +138,6 @@
     word-spacing: initial;
   }
 }
-
 
 #verses-reading {
   .arabic {
@@ -190,6 +190,7 @@
     sup {
       color: $color-primary;
       cursor: pointer;
+      margin-right: 5px;
     }
 
     inline-comment {
