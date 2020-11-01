@@ -133,14 +133,14 @@ export default class extends SettingController {
     let verseToRepeat = 0;
     let first, last;
 
-    if ("single" == this.settings.repeatType) {
-      verseToRepeat = this.settings.repeatAyah;
+    if ("single" == this.get("repeatType")) {
+      verseToRepeat = this.get("repeatAyah");
       first = verseToRepeat;
       last = first + 5;
     } else {
-      verseToRepeat = this.settings.repeatFrom;
+      verseToRepeat = this.get("repeatFrom");
       first = verseToRepeat;
-      last = this.settings.repeatTo;
+      last = this.get("repeatTo");
     }
 
     if (verseToRepeat > 0) {
@@ -154,7 +154,17 @@ export default class extends SettingController {
 
         if (playerDom) player = playerDom.player;
         if (player) {
-          return player.updateRepeatConfig(this.settings, { first, last });
+          return player.updateRepeatConfig(
+            {
+              repeatEnabled: this.get("repeatEnabled"),
+              repeatCount: this.get("repeatCount"),
+              repeatType: this.get("repeatType"),
+              repeatAyah: this.get("repeatAyah"),
+              repeatFrom: this.get("repeatFrom"),
+              repeatTo: this.get("repeatTo")
+            },
+            { first, last }
+          );
         }
       });
     }

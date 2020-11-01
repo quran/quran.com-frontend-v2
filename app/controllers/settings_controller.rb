@@ -30,6 +30,6 @@ class SettingsController < ApplicationController
   end
 
   def generate_localised_cache_key
-    "#{controller_name}/#{action_name}/#{fetch_locale}"
+    "#{controller_name}/#{action_name}/#{params[:chapter]}/#{fetch_locale}"
   end
 end
