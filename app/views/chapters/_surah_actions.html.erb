@@ -80,7 +80,11 @@
               <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
                 <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
                   <%= link_to "/#{current_chapter}/#{verse_num}", data: {verse: verse_num} do %>
-                    <%= verse_locale %> <%= verse_num %>
+                    <div class="row">
+                      <div class="col-12 verse-num">
+                        <%= verse_locale %> <%= verse_num %>
+                      </div>
+                    </div>
                   <% end %>
                 </div>
               <% end %>

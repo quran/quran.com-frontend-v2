@@ -127,7 +127,6 @@ export default class extends Controller {
         document.body.loader.show();
 
         e.preventDefault();
-        e.stopImmediatePropagation();
 
         const ayah = e.currentTarget.dataset.verse;
         // TODO: we need to refactor this now, repeating this a lot
@@ -153,6 +152,11 @@ export default class extends Controller {
   }
 
   scrollToVerse(verse) {
+    $("#verse-list .dropdown-item").removeClass("active");
+    let activeVerse = $("#verse-list").find(`[data-filter-tags=${verse}]`);
+    activeVerse.addClass("active");
+    $(".verse-dropdown strong").html(activeVerse.find(".verse-num").html());
+
     let verseElement = this.activeTab.find(
       `.verse[data-verse-number=${verse}]`
     );
