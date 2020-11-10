@@ -29,12 +29,15 @@
 </p>
 
 <!-- PROJECT SHIELDS -->
+<div align="center">
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 [![Stargazers][stars-shield]][stars-url]
 [![MIT License][license-shield]][license-url]
+
+</div>
 
 <!-- TABLE OF CONTENTS -->
 
