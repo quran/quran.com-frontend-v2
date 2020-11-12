@@ -12,17 +12,14 @@ es:
     invalid_verse: Verifica su selección de Ayah. No está en el rango permitido.
     invalid_chapter: Verifica la selección de Surah. No está en el rango permitido.
     no_script:
-    unavailable_session:
-      La sesión %{id} no está disponible en la memoria. Si ejecutas
+    unavailable_session: La sesión %{id} no está disponible en la memoria. Si ejecutas
       un servidor multi-procesos (como Unicorn o Puma) esta solicitud no almacena
       %{id} en la memoria. Considera sobreescribir el número de procesos a uno (1)
       o usando un servidor de desarrollo diferente
-    unacceptable_request:
-      "Una versión compatible se espera en la cabecera Aceptar.
+    unacceptable_request: 'Una versión compatible se espera en la cabecera Aceptar.
 
-      "
-    connection_refused:
-      "¡Ups! Ha fallado la conexión con la consola de la página
+      '
+    connection_refused: "¡Ups! Ha fallado la conexión con la consola de la página
       de middleware. Por favor verifica que el servidor de desarrollo rails está en
       funcionamiento."
     format: "%{attribute} %{message}"
@@ -97,7 +94,7 @@ es:
     tafsir:
       label: Tafsirs
       select: Selecciona Tafsir
-      filter_tafsir: "Filtrar por idioma:"
+      filter_tafsir: 'Filtrar por idioma:'
     bookmark:
       label: Marcador
       done: "¡Señalado!"
@@ -107,8 +104,7 @@ es:
   search:
     label: búsqueda
     placeholder: Buscar "Noé"
-    result:
-      "%{from} - %{to} DE <span>%{total}</span> RESULTADOS DE BÚSQUEDA PARA:
+    result: "%{from} - %{to} DE <span>%{total}</span> RESULTADOS DE BÚSQUEDA PARA:
       <span class=text-primary>%{query}</span>"
     error: Lo sentimos, hubo un error con tu búsqueda.
     no_query: Sin consulta de búsqueda.
@@ -133,14 +129,12 @@ es:
     repeat_to: Al Ayah
     repeat_times: Repetir contador
     repeat_loop: bucle
-    pause_bw_ayah:
-      Establecer cuánto tiempo hacer una pausa antes de reproducir el
+    pause_bw_ayah: Establecer cuánto tiempo hacer una pausa antes de reproducir el
       siguiente verso
     pause_seconds: segundos
     pause: Pausar durante
     play_continuously: Seguir reproduciendo sin pausa
-    show_word_tooltip:
-      Mostrar traducción de palabras en la descripción emergente
+    show_word_tooltip: Mostrar traducción de palabras en la descripción emergente
       mientras se reproduce el ayah
     scroll: Baja automaticamente al ayah reproduciendose actualmente
   loading: Cargando...
@@ -154,11 +148,10 @@ es:
     other_links: Otros enlaces
     contact_us: Contáctanos
     help: Ayuda y feedback
-    about_project:
-      "Quran.con es un Sadaqah Jariyah. Esperamos facilitaros la lectura,
+    about_project: 'Quran.con es un Sadaqah Jariyah. Esperamos facilitaros la lectura,
       estudio y asimilación del Noble Quran. El Noble Quran tiene muchos nombres incluyendo
       Al Quran Al-Kareem (El Noble Quran), Al-Ketab (El Libro), Al-Furqan (El Discernimiento),
-      Al-Maw'itha (El Consejo), Al-Thikr (El Recuerdo) y Al-Noor (La Luz) "
+      Al-Maw''itha (El Consejo), Al-Thikr (El Recuerdo) y Al-Noor (La Luz) '
     rights: Todos los derechos reservados
     mobile_apps: Apps para móviles
     navigate: Navegar

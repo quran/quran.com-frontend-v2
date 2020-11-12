@@ -88,6 +88,9 @@ body.night {
 
   .dropdown-item {
     color: $white;
+    &:hover{
+      color: #2d2d2d;
+    }
   }
 
   .surah-actions {

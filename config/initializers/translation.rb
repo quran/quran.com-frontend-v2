@@ -26,3 +26,5 @@ TranslationIO.configure do |config|
     'helpers'
   ]
 end
+
+I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)

@@ -24,9 +24,9 @@ zh-CN:
       long: "%Y年%m月%d日"
       short: "%m月%d日"
     order:
-      - :year
-      - :month
-      - :day
+    - :year
+    - :month
+    - :day
   number:
     currency:
       format:
@@ -47,9 +47,9 @@ zh-CN:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 1
         significant: false
         strip_insignificant_zeros: false
@@ -57,11 +57,11 @@ zh-CN:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%Y年%m月%d日 %A %H:%M:%S %Z"

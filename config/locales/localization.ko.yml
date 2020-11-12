@@ -17,7 +17,7 @@ ko:
   support:
     array:
       last_word_connector: ", "
-      two_words_connector: "와(과) "
+      two_words_connector: '와(과) '
       words_connector: ", "
   date:
     formats:
@@ -25,9 +25,9 @@ ko:
       long: "%Y년 %m월 %d일 (%a)"
       short: "%m/%d"
     order:
-      - :year
-      - :month
-      - :day
+    - :year
+    - :month
+    - :day
   number:
     currency:
       format:
@@ -48,9 +48,9 @@ ko:
       decimal_units:
         format: "%n%u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -58,11 +58,11 @@ ko:
         format: "%n%u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

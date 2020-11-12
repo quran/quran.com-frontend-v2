@@ -11,8 +11,7 @@ bn-BD:
     not_found: দুঃখিত, এই পেজ বিদ্যমান নেই
     invalid_verse: আয়াত নির্বাচন চেক করুন। এটা রেঞ্জ-এর বাইরে।
     invalid_chapter: সূরা নির্বাচন চেক করুন। এটা রেঞ্জ-এর বাইরে।
-    no_script:
-      আপনার ব্রাউজারটি হয়তো জাভাস্ক্রিপ্ট সমর্থন করে না বা এটা ডিসেবল করা
+    no_script: আপনার ব্রাউজারটি হয়তো জাভাস্ক্রিপ্ট সমর্থন করে না বা এটা ডিসেবল করা
       আছে। কুরআন ডট কম (quran.com) জাভাস্ক্রিপ্ট এনেবল থাকলে সবচেয়ে ভালো কাজ করে।
       কিভাবে জাভাস্ক্রিপ্ট-কে এনেবল করবেন সে সম্পর্কে আরও নির্দেশনার জন্য
     unavailable_session: |-
@@ -26,60 +25,60 @@ bn-BD:
     format: "%{attribute} %{message}"
   local: ইংরেজি
   site_local: সাইট-এর ভাষা
-  change_local: "ভাষা নির্বাচন করুন, যে ভাষায় আপনি সাইট দেখতে চান "
+  change_local: 'ভাষা নির্বাচন করুন, যে ভাষায় আপনি সাইট দেখতে চান '
   local_native_name: বাংলা
   language: ভাষা
   settings:
     label: সেটিংস
     chapters: সূরা নির্বাচন করুন
-    reciters: "ক্বারী নির্বাচন করুন "
-    translations: "অনুবাদ বাছাই করুন "
+    reciters: 'ক্বারী নির্বাচন করুন '
+    translations: 'অনুবাদ বাছাই করুন '
     remove_all: সব মুছে ফেলুন
     translation_english: ইংরেজি
     translation_other: অন্যান্য ভাষাসমূহ
-    reset: "ডিফল্ট সেটিং রিসেট করুন "
+    reset: 'ডিফল্ট সেটিং রিসেট করুন '
     font_size:
-      label: "ফন্ট সাইজ "
+      label: 'ফন্ট সাইজ '
       arabic: আরবি
       translation: অনুবাদ
     tooltip:
       label: টুলটিপ ডিসপ্লে
       translation: অনুবাদ
-      transliteration: "লিপ্যন্তর - ট্রান্সলিটারেশন "
+      transliteration: 'লিপ্যন্তর - ট্রান্সলিটারেশন '
     night_mode:
       label: রাত মোড
       day_tip: দিন মোডে স্যুইচ করুন
       night_tip: নাইট মোডে স্যুইচ করুন
     font_type: ফন্ট নির্বাচন করুন
-    sample_audio: "নমুনা প্লে করুন "
+    sample_audio: 'নমুনা প্লে করুন '
     display: ডিসপ্লে সেটিং
     audio: অডিও সেটিংস
     fonts:
-      tajweed: "তাজওইদ টেক্সট "
-      uthmani: "উসমানী টেক্সট "
+      tajweed: 'তাজওইদ টেক্সট '
+      uthmani: 'উসমানী টেক্সট '
       qcf_v1: QCF V1
       qcf_v2: QCF V2
-      indopak: "ইন্দোপাক টেক্সট "
+      indopak: 'ইন্দোপাক টেক্সট '
     translation_count:
-      one: "একটি অনুবাদ দেখানো হচ্ছে "
+      one: 'একটি অনুবাদ দেখানো হচ্ছে '
       other: "%{count} অনুবাদগুলি দেখানো হচ্ছে"
   verses:
     media: "%{from} এর ভিডিও মন্তব্য দেখুন"
     go: আয়াত-এ যান
-    not_found: "আয়াত খুঁজে পাওয়া যায়নি "
+    not_found: 'আয়াত খুঁজে পাওয়া যায়নি '
   chapters:
     label: সূরা
     next: পরবর্তি সূরা
     previous: পূর্ববর্তী সূরা
     verses: আয়াত
     pages: পেজ
-    revelation_place: "নাজিল-এর স্থান "
+    revelation_place: 'নাজিল-এর স্থান '
     continue: চালিয়ে
     quick_links: দ্রুত লিঙ্ক
     go_to_beginning: সূরার সূচনা
     read_full: পূর্ণ সূরা পড়ুন
     invalid: সার্চের সময় সূরা খুঁজে পাওয়া যায়নি
-  footnote: "ফুটনোট "
+  footnote: 'ফুটনোট '
   action:
     play: তিলাওয়াত শুনুন
     pause: বিরতি
@@ -92,9 +91,9 @@ bn-BD:
       label: কপি
       done: কপি করা হয়েছে
     tafsir:
-      label: "তাফসির "
+      label: 'তাফসির '
       select: তাফসির নির্বাচন করুন
-      filter_tafsir: "ভাষা অনুসারে ফিল্টার করুন:"
+      filter_tafsir: 'ভাষা অনুসারে ফিল্টার করুন:'
     quran_reflect: 'এই আয়াত এর রিফ্লেকশান পড়ুন "কুরআনরিফ্লেক্ট"-এ
 
       '
@@ -135,36 +134,35 @@ bn-BD:
   nav:
     title: কুরআন
     settings: সেটিংস
-    contribute: "কন্ট্রিবিউট "
+    contribute: 'কন্ট্রিবিউট '
     about_us: আমাদের সম্পর্কে
     developers: ডেভেলপারগণ
     useful_sites: দরকারী সাইট
     other_links: অন্যান্য লিঙ্ক
     contact_us: আমাদের সাথে যোগাযোগ করুন
     help: সাহায্য এবং ফিডব্যাক
-    about_project:
-      "কুরআন.কম একটি সাদাকাহ জারিয়াহ। আমরা আশা করি এটা সকলের জন্য পবিত্র
+    about_project: 'কুরআন.কম একটি সাদাকাহ জারিয়াহ। আমরা আশা করি এটা সকলের জন্য পবিত্র
       কুরআন পড়া, বুঝা এবং অধ্যয়ন সহজ করবে। পবিত্র কুরআন এর আরো নামের মধ্যে রয়েছে আল-কুরআন
-      আল-কারিম, আল-কিতাব, আল-ফুরকান, আল-জিকর এবং আল-নূর।  "
+      আল-কারিম, আল-কিতাব, আল-ফুরকান, আল-জিকর এবং আল-নূর।  '
     rights: সমস্ত অধিকার সংরক্ষিত
     navigate: নেভিগেট করুন
-    legacy_site: "লিগ্যাসি কুরআন.কম "
+    legacy_site: 'লিগ্যাসি কুরআন.কম '
     blog: ব্লগ
     forum: ফোরাম
     mobile_apps: মোবাইল অ্যাপস
   juz: পারা
   click_here: এখানে ক্লিক করুন
   download: ডাউনলোড
-  home: "হোম "
+  home: 'হোম '
   related_sites:
     label: সম্পর্কিত সাইট
     sunnah: সুন্নাহ
     sunnah_description: হযরত মুহাম্মদ (সাঃ) এর হাদীস
     salah: সালাহ
-    salah_description: "যে কোনো অবস্থানে সালাহ/নামাজ-এর সময় অনুসন্ধান "
+    salah_description: 'যে কোনো অবস্থানে সালাহ/নামাজ-এর সময় অনুসন্ধান '
     audio: অডিওতে নোবেল কোরআন
     audio_description: একই সাথে শেখা এবং শুনা
-  close: "বন্ধ করুন "
+  close: 'বন্ধ করুন '
   page: পেজ
   reader_mode:
     reading: পড়া

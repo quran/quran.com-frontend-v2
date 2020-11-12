@@ -22,9 +22,9 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     order:
-      - :year
-      - :month
-      - :day
+    - :year
+    - :month
+    - :day
   number:
     currency:
       format:
@@ -45,9 +45,9 @@ ja:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -55,11 +55,11 @@ ja:
         format: "%n%u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"

@@ -22,9 +22,9 @@ ug-CN:
       long: "%Y-%m-%d"
       short: "%b%d"
     order:
-      - :year
-      - :month
-      - :day
+    - :year
+    - :month
+    - :day
   number:
     currency:
       format:
@@ -45,9 +45,9 @@ ug-CN:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 1
         significant: false
         strip_insignificant_zeros: false
@@ -55,10 +55,10 @@ ug-CN:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%Y %b %d %A %H:%M:%S %Z"

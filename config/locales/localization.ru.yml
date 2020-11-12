@@ -25,9 +25,9 @@ ru:
       long: "%-d %B %Y"
       short: "%-d %b"
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   number:
     currency:
       format:
@@ -48,9 +48,9 @@ ru:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 1
         significant: false
         strip_insignificant_zeros: false
@@ -58,11 +58,11 @@ ru:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%a, %d %b %Y, %H:%M:%S %z"

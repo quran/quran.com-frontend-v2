@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
       cookies[:locale] ||
       extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
       I18n.default_locale
+
+    requested_locale.to_s.split('-').first
   end
 
   def handle_routing_error

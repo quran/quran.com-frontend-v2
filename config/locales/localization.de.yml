@@ -35,9 +35,9 @@ de:
       long: "%e. %B %Y"
       short: "%e. %b"
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   number:
     currency:
       format:
@@ -58,9 +58,9 @@ de:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -68,12 +68,12 @@ de:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n %"
         precision: 1
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%A, %d. %B %Y, %H:%M Uhr"
