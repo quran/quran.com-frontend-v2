@@ -71,7 +71,7 @@ en:
     tafsir:
       label: Tafsirs
       select: Select Tafsir
-      filter_tafsir: 'Filter by language:'
+      filter_tafsir: "Filter by language:"
     bookmark:
       label: Bookmark
       done: Bookmarked!
@@ -134,14 +134,14 @@ en:
     not_found: Sorry, this page does not exist
     invalid_verse: Check your Ayah selection. It's out of range.
     invalid_chapter: Check your Surah selection. It's out of range.
-    no_script: Looks like either your browser does not support Javascript or its disabled. Quran.com workes best with JavaScript enabled. For more instruction on how to enable javascript
+    no_script: Looks like either your browser does not support Javascript or its disabled. Quran.com workes best with JavaScript enabled. For more instruction on how to enable javascript <a href="http://www.enable-javascript.com/" target="_blank" rel="nofollow">click here</a>.
   click_here: Click here
   download: Download
   home: Home
   related_sites:
     label: Related Sites
     sunnah: Sunnah
-    sunnah_description: The Hadith of Prophet Muhammad(PBUH)
+    sunnah_description: The Hadith of Prophet Muhammad(صلى الله عليه وسلم)
     salah: Salah
     salah_description: Search prayer time for any location
     audio: Noble Quran in audio

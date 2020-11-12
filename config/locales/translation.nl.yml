@@ -13,20 +13,23 @@ nl:
     no_script:
     unavailable_session:
     unacceptable_request:
+      "Een geaccepteerde versie is verwacht in de Accept header.
+
+      "
     connection_refused:
     format: "%{attribute} %{message}"
-  local: nederlands
+  local: engels
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
-  local_native_name: Nederlands
-  language: Site Taal
+  local_native_name: Engels
+  language: Taal
   settings:
-    label: 'Instellingen
+    label: "Instellingen
 
-      '
-    chapters: hoofdstukken
-    reciters: Reciteurs
-    translations: Vertalingen
+      "
+    chapters: Selecteer Surah
+    reciters: Kies Reciteurs
+    translations: Kies Vertalingen
     remove_all: Verwijder alles
     translation_english: Engels
     translation_other: Andere Talen
@@ -58,17 +61,21 @@ nl:
       other: Vertalingen van %{count} worden weergegeven
   verses:
     media: Bekijk video commentaar van %{from}
-    go: Ga naar vers
+    go: Ga naar Ayah
     not_found: Ayah niet gevonden
   chapters:
-    label: Soeras
-    next: VOLGENDE
-    previous: VORIGE
+    label: "Surah
+
+      "
+    next: "Volgende Surah
+
+      "
+    previous: Vorige Surah
     verses: Ayah
     pages: pagina's
     continue: Voortzetten
     quick_links: Snelle links
-    go_to_beginning: Begin van hoofdstuk
+    go_to_beginning: Begin van Surah
     read_full: Lees de volledige Soera
     invalid: Surah niet gevonden tijdens het zoeken 'of' kon geen resultaten vinden
     revelation_place: Openbaring plaats
@@ -78,16 +85,18 @@ nl:
     pause: Pauze
     bookmark:
       label: Bladwijzer
-      done: Aangemaakte Bladwijzers
+      done: Bladwijzer aangemaakt!
     copy:
       label: Kopiëren
       done: Gekopieerd!
-    share: Deel ayah
-    addNote: Notitie
+    share: "Deel "
+    addNote: "Notitie Toevoegen
+
+      "
     tafsir:
       label: Tafsirs
       select: Selecteer Tafsir
-      filter_tafsir: 'Filter op taal:'
+      filter_tafsir: "Filter op taal:"
     quran_reflect: Lees Reflections voor deze Ayah op QuranReflect
   search:
     placeholder: Zoek "Noah"
@@ -103,32 +112,33 @@ nl:
     al_waqiah: Surah Al Waqi'ah
     al_kahf: Surah Al Kahf
     al_muzammil: Surah Al Muzzammil
-    label: Zoek "Noah"
+    label: Zoek
   player:
     current_verse: Ayah
     next_verse: Volgende Ayah
     previous_verse: Vorige Ayah
-    repeat_title: HERHALING
+    repeat_title: Herhaal ayah
     repeat_single: Single
     repeat_range: Bereik
     repeat_from: uit
-    repeat_to: Naar
-    repeat_times: Keer
+    repeat_to: Naar ayah
+    repeat_times: Herhalings teller
     repeat_loop: lus
     scroll: Scroll automatisch naar de huidige ayah
     select_verse: Selecteer een vers
-    pause_bw_ayah: Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
+    pause_bw_ayah:
+      Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
       afgespeeld
     pause_seconds: Seconden
     pause: Pauzeer voor
     play_continuously: Blijf spelen zonder pauze
     show_word_tooltip: Toon woordvertaling in tooltip tijdens het spelen van ayah
-  loading: Laden ...
+  loading: Laden...
   nav:
     title: Koran
-    settings: 'Instellingen
+    settings: "Instellingen
 
-      '
+      "
     contribute: Bijdragen
     about_us: Over ons
     developers: ontwikkelaars
@@ -136,7 +146,8 @@ nl:
     other_links: Andere links
     contact_us: Contacteer ons
     help: Hulp en feedback
-    about_project: Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
+    about_project:
+      Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
       te maken om The Noble Quran te lezen, bestuderen en leren. De Edele Koran heeft
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
@@ -148,23 +159,25 @@ nl:
     mobile_apps: Mobiele apps
   juz: Juz
   click_here: Klik hier
-  download: te downloaden
+  download: Download
   home: Thuis
-  noble_quran: 'De edele Koran
+  noble_quran: "De edele Koran
 
-    '
+    "
   related_sites:
     label: Gerelateerde sites
     sunnah: Sunnah
     sunnah_description: De hadith van de profeet Mohammed (vzmh)
     salah: Salah
-    salah_description: Zoek gebedstijd voor elke locatie
+    salah_description: Zoek gebedstijden voor een locatie
     audio: Edele Koran in audio
     audio_description: Tegelijkertijd leren en luisteren
-  close: Dicht
+  close: Gesloten
   page: Pagina
   reader_mode:
-    reading: Lezing
+    reading: "Lezen
+
+      "
     translation: Vertalingen
     info: Soera Info
   share_ayah: Deel ayah
