@@ -10,15 +10,16 @@ es:
   errors:
     not_found: Lo sentimos, esta página no existe
     invalid_verse: Verifica su selección de Ayah. No está en el rango permitido.
-    invalid_chapter: Verifica la selección de Surah. No está en el rango permitido.
-    no_script:
+    invalid_chapter: Verifica su selección de Surah. No está en el rango permitido.
+    no_script: Parece que su navegador no es compatible con Javascript o está deshabilitado.
+      Quran.com funciona mejor con JavaScript habilitado. Para obtener más instrucciones
+      sobre cómo habilitar JavaScript, <a href="http://www.enable-javascript.com/"
+      target="_blank" rel="nofollow">haga clic aquí</a> .
     unavailable_session: La sesión %{id} no está disponible en la memoria. Si ejecutas
       un servidor multi-procesos (como Unicorn o Puma) esta solicitud no almacena
       %{id} en la memoria. Considera sobreescribir el número de procesos a uno (1)
       o usando un servidor de desarrollo diferente
-    unacceptable_request: 'Una versión compatible se espera en la cabecera Aceptar.
-
-      '
+    unacceptable_request: Una versión compatible se espera en la cabecera Aceptar.
     connection_refused: "¡Ups! Ha fallado la conexión con la consola de la página
       de middleware. Por favor verifica que el servidor de desarrollo rails está en
       funcionamiento."
@@ -62,7 +63,7 @@ es:
     tooltip:
       label: Mostrar consejos
       translation: Traducción
-      transliteration: Transcripción
+      transliteration: Transcripción fonética
     night_mode:
       label: Modo nocturno
       day_tip: Cambiar al modo día
@@ -136,7 +137,7 @@ es:
     play_continuously: Seguir reproduciendo sin pausa
     show_word_tooltip: Mostrar traducción de palabras en la descripción emergente
       mientras se reproduce el ayah
-    scroll: Baja automaticamente al ayah reproduciendose actualmente
+    scroll: Baja automaticamente al ayah reproduciéndose actualmente
   loading: Cargando...
   nav:
     title: Quran
@@ -165,7 +166,7 @@ es:
   related_sites:
     label: Páginas relacionadas
     sunnah: Sunnah
-    sunnah_description: El hadith del Profeta Muhammad (PyB)
+    sunnah_description: El hadith del Profeta Muhammad (ﷺ)
     salah: Salah
     salah_description: Buscar la hora del rezo para cualquier lugar
     audio: El Noble Quran en audio

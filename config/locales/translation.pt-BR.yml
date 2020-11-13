@@ -9,37 +9,36 @@ pt-BR:
   noble_quran: O Nobre Alcorão
   errors:
     not_found: Desculpe, esta página não existe
-    invalid_verse: O Ayah (verso) está fora de alcance. Por favor, vá para a página
+    invalid_verse: O Ayah (verso) está fora dos limites. Por favor, vá para a página
       inicial
-    invalid_chapter: O capítulo está fora de alcance. Por favor, vá para a página
+    invalid_chapter: O capítulo está fora dos limites. Por favor, vá para a página
       inicial
-    no_script: Parece que seu navegador não suporta Javascript ou está desativado.
+    no_script: Parece que seu navegador não suporta Javascript ou este está desativado.
       O Quran.com funciona melhor com o JavaScript ativado. Para obter mais instruções
-      sobre como ativar o javascript
+      sobre como ativar o javascript <a href="http://www.enable-javascript.com/" target="_blank"
+      rel="nofollow">clique aqui</a>.
     unavailable_session: |
       A sessão %{id} não está mais disponível na memória.
 
       Se acontecer de você executar em um servidor multi-processo (como Unicorn ou Puma) o processo
-      esta solicitação não armazena %{id} na memória. Considere transformar o número de
-      processos para um (1) ou usando um servidor diferente em desenvolvimento.
-    unacceptable_request: 'Uma versão suportada é esperada no cabeçalho de aceite.
-
-      '
+      desta solicitação não irá armazenar %{id} na memória. Considere transformar o número de
+      processos para um (1) ou utilizar um servidor diferente para o desenvolvimento.
+    unacceptable_request: Uma versão suportada é esperada no header Accept.
     connection_refused: |
       Opa! Falha ao conectar-se ao middleware do console da Web.
-      Por favor, certifique-se de que um servidor de desenvolvimento de trilhos está sendo executado.
+      Por favor, certifique-se de que um servidor de desenvolvimento rails está sendo executado.
     format: "%{attribute} %{message}"
   local: Inglês
   site_local: Idioma do Site
-  change_local: Escolha o idioma que você deseja que o site seja exibido
+  change_local: Escolha o idioma no qual você deseja que o site seja exibido
   local_native_name: Português
   language: Idioma
   page: Página
   settings:
     label: Configurações
     chapters: Capítulos
-    reciters: Recitadores
-    translations: Traduções
+    reciters: Escolher Recitadores
+    translations: Escolher Traduções
     remove_all: Deletar tudo
     translation_english: Inglês
     translation_other: Outros Idiomas
@@ -57,7 +56,7 @@ pt-BR:
       day_tip: Mudar para modo diurno
       night_tip: Mudar para modo noturno
     font_type: Selecione a fonte
-    sample_audio:
+    sample_audio: Reproduzir Amostra
     display: Configurações do visor
     audio: Configurações de áudio
     fonts:
@@ -68,32 +67,32 @@ pt-BR:
       indopak: Texto IndoPak
     translation_count:
       one: Mostrando uma tradução
-      other: Mostrando traduções %{count}
+      other: Mostrando %{count} traduções
   verses:
     media: Assistir comentário do vídeo a partir de %{from}
-    go: Vá para o verso
+    go: Ir para o verso
     not_found: Verso não encontrado
   chapters:
     label: Surah (Capítulo)
-    next: Próxima Surah (Capítulo)
-    previous: Surah(Capítulo) anterior
-    verses: Ayah(Versos)
+    next: Próximo Surah (Capítulo)
+    previous: Surah (Capítulo) anterior
+    verses: Ayahs (Versos)
     pages: Páginas
     revelation_place: Local da Revelação
     continue: Continuar
     quick_links: Links Rápidos
     go_to_beginning: Início do capítulo
     read_full: Ler o capítulo completo
-    invalid: Surah (Capítulo) Inválida
+    invalid: Surah (Capítulo) Inválido
   footnote: Nota de rodapé
   action:
-    play: Tocar
+    play: Reproduzir
     pause: Pausar
-    share: Compartilhar ayah (verso)
+    share: Compartilhe Ayah
     addNote: Adicionar uma Observação
     bookmark:
       label: Marcar
-      done: Marcado
+      done: Marcado!
     copy:
       label: Copiar
       done: Copiado!
@@ -104,11 +103,12 @@ pt-BR:
     quran_reflect: Leia as reflexões para este Ayah no QuranReflect
   search:
     label: Pesquisar
-    placeholder: Pesquisar "
-    result: "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa: <span>%{query}</span>"
-    error: Desculpe, ouve um erro com sua busca.
-    no_query: Não há consulta para buscar
-    no_result: Não foram encontrado resultados
+    placeholder: Pesquisar "Noé"
+    result: "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa para:
+      <span>%{query}</span>"
+    error: Desculpe, ocorreu um erro com sua busca.
+    no_query: Nenhum texto de pesquisa
+    no_result: Não foram encontrados resultados
     popular: Pesquisas Populares
     ayatul_kursi: Ayatul Kursi
     yaseen: Surah Yaseen
@@ -118,23 +118,23 @@ pt-BR:
     al_kahf: Surah Al Kahf
     al_muzammil: Surah Al Muzzammil
   player:
-    current_verse: Ayah(Verso)
-    next_verse: Próximo Ayah(Versos)
-    previous_verse: Ayah(Verso) Anterior
-    repeat_title: Repetir Ayah(Verso)
-    repeat_single: Simples
+    current_verse: Ayah (Verso)
+    next_verse: Próximo Ayah (Verso)
+    previous_verse: Ayah (Verso) anterior
+    repeat_title: Repetir Ayah (Verso)
+    repeat_single: Única
     repeat_range: Faixa
-    repeat_from: A partir de
-    repeat_to: Até
-    repeat_times: Vezes
+    repeat_from: A partir do Ayah
+    repeat_to: Até ao Ayah
+    repeat_times: Número de repetições
     repeat_loop: continuamente
-    scroll: Rolar automaticamente para o ayah(verso) atualmente em reprodução
+    scroll: Rolar automaticamente para o Ayah (verso) atualmente em reprodução
     select_verse: Selecione o verso
-    pause_bw_ayah: Defina quanto tempo fazer uma pausa antes de tocar a próxima estrofe
+    pause_bw_ayah: Defina quanto tempo pretende pausar antes de tocar o próximo verso
     pause_seconds: segundos
     pause: Pausa para
-    play_continuously: Continue jogando sem pausa
-    show_word_tooltip: Mostrar tradução de palavras na dica ao tocar ayah
+    play_continuously: Continue reproduzindo sem pausar
+    show_word_tooltip: Mostrar tradução de palavras na dica ao reproduzir ayah
   loading: Carregando...
   nav:
     title: Alcorão
@@ -156,14 +156,14 @@ pt-BR:
     mobile_apps: Aplicativos móveis
   juz: Juz
   click_here: Clique aqui
-  download: baixar
+  download: Descarregar
   home: Início
   related_sites:
     label: Sites relacionados
     sunnah: Sunnah
-    sunnah_description: O Hadith do Profeta Muhammad (SAWS)
-    salah: Salah(oração)
-    salah_description: Pesquise o horário de oração em qualquer localidade
+    sunnah_description: O Hadith do Profeta Maomé (ﷺ)
+    salah: Salah (oração)
+    salah_description: Pesquise o horário de oração em qualquer localização
     audio: Nobre Alcorão em áudio
     audio_description: Aprendendo e ouvindo ao mesmo tempo
   close: Fechar
