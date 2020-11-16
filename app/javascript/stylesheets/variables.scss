@@ -41,6 +41,7 @@ $fs-xl: $fs-base + 3; /* 16px   */
 $fs-xxl: $fs-base + 15; /* 28px   */
 
 /*Media Variables*/
+$phone-xs: "screen and (max-width: 340px)";
 $phone: "screen and (max-width: 480px)";
 $tablet: "screen and (max-width: 768px)";
 $tablet-md: "screen and (max-width: 992px)";

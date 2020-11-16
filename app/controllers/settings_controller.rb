@@ -1,27 +1,19 @@
 class SettingsController < ApplicationController
+  layout false
   before_action :init_presenter
-
   caches_action :show,
                 :translations,
                 :recitations,
                 :fonts,
                 cache_path: :generate_localised_cache_key
 
-  def show
-    render layout: false
-  end
+  def show;end
 
-  def translations
-    render layout: false
-  end
+  def translations;end
 
-  def recitations
-    render layout: false
-  end
-
-  def fonts
-    render layout: false
-  end
+  def recitations;end
+  
+  def fonts;end
 
   protected
 

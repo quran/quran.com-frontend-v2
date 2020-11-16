@@ -21,25 +21,33 @@ export default class extends Controller {
     var that = this;
     var list = $(container);
     var searchInput = $(input);
-
+    try{
+      document.querySelector(".dropdown."+list.attr("id")).addEventListener("shown.bs.dropdown", () =>
+        searchInput.trigger("focus")
+      );
+    }catch(e){
+      searchInput.trigger("focus");
+    }
     /* on change keyboard */
-    searchInput.change(
-      debounce(function(e) {
-        var filter = searchInput.val().toLowerCase();
-
-        that.doFilter(filter, list);
-        return false;
-      }, 100)
-    );
-
-    // trigger change when user clear the search box
-    searchInput[0].addEventListener("search", () =>
-      searchInput.trigger("change")
-    );
-
-    searchInput.keyup(() => {
-      searchInput.trigger("change");
-    });
+    if(searchInput.length){
+      searchInput.change(
+        debounce(function(e) {
+          var filter = searchInput.val().toLowerCase();
+  
+          that.doFilter(filter, list);
+          return false;
+        }, 100)
+      );
+      
+      // trigger change when user clear the search box
+      searchInput[0].addEventListener("search", () =>
+        searchInput.trigger("change")
+      );
+  
+      searchInput.keyup(() => {
+        searchInput.trigger("change");
+      });
+    }
   }
 
   doFilter(text, list) {

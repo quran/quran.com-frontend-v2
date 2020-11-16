@@ -13,7 +13,6 @@ export default class extends Controller {
     this.translationTab = document.querySelector("#pill-translation-tab");
     this.readingTab = document.querySelector("#pill-reading-tab");
     this.infoTab = document.querySelector("#pill-surah-info-tab");
-
     // this.setURLState();
     this.bindAyahJump();
   }
@@ -47,7 +46,7 @@ export default class extends Controller {
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
-
+    
     this.readingTab.addEventListener("shown.bs.tab", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: true });

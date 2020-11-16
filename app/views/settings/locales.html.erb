@@ -1,0 +1,21 @@
+<div data-controller="filter-list choose-locales" class="px-4" data-list="#locales" data-input="#filter-locales">
+  <!--<div class="rounded-search d-flex justify-content-end my-4">
+    <input class="form-control bg-light" placeholder="Filter" type="search" id="filter-locales"/>
+  </div>
+-->
+  <div id="site-locales">
+    <% available_locales.each do |locale, name| %>
+      
+      <div class="form-check my-4" data-filter-tags="<%= name %>">
+        <div>
+          <input class="form-check-input" type="radio" name="locale" value="<%= locale %>" id="locale-<%= locale %>" <%="checked" if I18n.locale == locale%>>
+          <label class="form-check-label text-muted ff-r" for="locale-<%= locale %>">
+            <span class="">
+              <%= name %>
+            </span>
+          </label>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
