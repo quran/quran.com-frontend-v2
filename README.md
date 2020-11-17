@@ -241,5 +241,5 @@ Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) w
 [issues-shield]: https://img.shields.io/github/issues/quran/quran.com-frontend-v2?style=for-the-badge
 [issues-url]: https://github.com/quran/quran.com-frontend-v2/issues
 [license-shield]: https://img.shields.io/github/license/quran/quran.com-frontend-v2?style=for-the-badge
-[license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE.txt
+[license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png
