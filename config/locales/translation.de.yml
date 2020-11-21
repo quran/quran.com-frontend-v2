@@ -6,155 +6,205 @@
 #
 ---
 de:
-  noble_quran:
+  noble_quran: Der edle Koran
   errors:
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
+    not_found: 'Entschuldigung, diese Seite existiert nicht
+
+      '
+    invalid_verse: Überprüfen Sie Ihre Ayah-Auswahl. Sie ist außerhalb der Reichweite.
+    invalid_chapter: Überprüfen Sie Ihre Suren-Auswahl. Sie ist außerhalb der Reichweite.
+    no_script: Es sieht so aus, als ob Ihr Browser entweder kein Javascript unterstützt
+      oder es deaktiviert ist. Quran.com funktioniert am besten mit aktiviertem JavaScript.Für
+      weitere Anweisungen zum Aktivieren von Javascript <a href="http://www.enable-javascript.com/"
+      target="_blank" rel="nofollow">hier klicken</a>.
+    unavailable_session: |-
+      Die Sitzung %{id} ist im Speicher nicht mehr verfügbar.
+
+      Falls Sie eventuell auf einem Multi-Prozess-Server (wie Unicorn oder Puma) laufen, ist der Prozess dieser Anfrage-Treffer speichert %{id} nicht im Speicher. Ziehen Sie in Betracht, die Anzahl von Prozesse/Arbeiter zu einem (1) oder mit einem anderen Server in der Entwicklung zu benutzen.
+    unacceptable_request: Eine unterstützte Version wird in der Accept-Kopfzeile erwartet.
+    connection_refused: |-
+      Hoppla! Verbindung zur Web Konsolen-Middleware fehlgeschlagen.
+      Bitte stellen Sie sicher, dass ein Rails-Entwicklungsserver läuft.
     format: "%{attribute} %{message}"
-  local:
-  site_local:
-  change_local:
-  local_native_name:
-  language:
-  page:
+  local: englisch
+  site_local: 'Sprache der Website
+
+    '
+  change_local: Wähle die Sprache aus, in der sie die Website anzeigen lassen möchtest
+  local_native_name: Englisch
+  language: Sprache
+  page: Seite
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: Lesen
+    translation: Übersetzungen
+    info: 'Sure Info
+
+      '
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: Einstellungen
+    display: 'Anzeige-Einstellungen
+
+      '
+    audio: Audio Einstellungen
+    chapters: Sure auswählen
+    reciters: Rezitatoren auswählen
+    sample_audio: 'Probe abspielen
+
+      '
+    translations: 'Übersetzungen auswählen
+
+      '
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: Anzeigen einer Übersetzung
+      other: Anzeigen von %{count} Übersetzungen
+    remove_all: Alles entfernen
+    translation_english: Englisch
+    translation_other: Andere Sprachen
+    reset: 'Auf Standard zurücksetzen
+
+      '
+    font_type: Schriftart auswählen
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Tadschwīd Text
+      uthmani: Uthmanischer Text
+      qcf_v1: König Fahd Koran Komplex
+      qcf_v2: König Fahd Koran Komplex
+      indopak: IndoPak-Text
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Schriftgröße
+      arabic: Arabisch
+      translation: Übersetzungen
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Tooltip-Anzeige
+      translation: Übersetzung
+      transliteration: Transliteration
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: Nachmodus
+      day_tip: 'Auf Tagesmodus wechseln
+
+        '
+      night_tip: Auf Nachmodus wechseln
   verses:
-    media:
-    go:
-    not_found:
+    media: Video-Kommentar ansehen von %{from}
+    go: Gehe zur Ayah
+    not_found: Ayah nicht gefunden
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-  footnote:
-  share_ayah:
+    label: Sure
+    next: Nächste Sure
+    previous: Vorherige Sure
+    verses: Ayahs
+    pages: Seiten
+    revelation_place: Ort der Offenbarung
+    continue: Fortfahren
+    quick_links: Schnelle Links
+    go_to_beginning: Anfang der Sure
+    read_full: 'Vollständige Sure lesen
+
+      '
+    invalid: 'Sure bei der Suche nicht gefunden
+
+      '
+  footnote: Fußnote
+  share_ayah: Ayah teilen
   action:
-    play:
-    pause:
-    share:
-    quran_reflect:
-    addNote:
+    play: Abspielen
+    pause: Pause
+    share: Teilen
+    quran_reflect: Lies überlegungen für diese Ayah auf QuranReflect
+    addNote: 'Notiz hinzufügen
+
+      '
     tafsir:
-      label:
-      select:
-      filter_tafsir:
+      label: Tafsirs
+      select: Tafsir auswählen
+      filter_tafsir: nach Sprache filtern
     bookmark:
-      label:
-      done:
+      label: Lesezeichen
+      done: Lesezeichen gesetzt!
     copy:
-      label:
-      done:
+      label: Kopieren
+      done: Kopiert!
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+    label: Suche
+    placeholder: Suche "Noah"
+    result: "%{from}-%{to} VON <span> %{total} </span> SUCH RESULTATE FÜR: <span class=text-primary>%{query}</span>"
+    error: Entschuldigung, es gab einen Fehler bei Ihrer Suche.
+    no_query: Keine Suchanfrage.
+    no_result: 'Keine Ergebnisse gefunden.
+
+      '
+    popular: Populäre Suchanfragen
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Sure Yaseen
+    al_mulk: 'Sure Al Mulk
+
+      '
+    ar_rahman: Sure Ar-Rahman
+    al_waqiah: Sure Al Waqi'ah
+    al_kahf: 'Sure Al Kahf
+
+      '
+    al_muzammil: Sure Al Muzzammil
   player:
-    current_verse:
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
-    show_word_tooltip:
-    scroll:
-  loading:
+    current_verse: Vers
+    select_verse: Vers auswählen
+    next_verse: Nächster Vers
+    previous_verse: Vorheriger Vers
+    repeat_title: Ayah wiederholen
+    repeat_single: Einzeln
+    repeat_range: Reichweite
+    repeat_from: Von der Ayah
+    repeat_to: Zur Ayah
+    repeat_times: Zählung wiederholen
+    repeat_loop: Schleife
+    pause_bw_ayah: Stellen Sie ein, wie lange angehalten werden soll, bevor der nächste
+      Vers abgespielt wird
+    pause_seconds: Sekunden
+    pause: Pausieren für
+    play_continuously: Weiter abspielen ohne Pause
+    show_word_tooltip: Wortübersetzung im Tooltip beim Abspielen von Ayah anzeigen
+    scroll: 'Scrollt automatisch zur aktuell gespielten Ayah
+
+      '
+  loading: Laden...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-  juz:
-  click_here:
-  download:
-  home:
+    title: Koran
+    settings: Einstellungen
+    contribute: Beitragen
+    about_us: Über uns
+    developers: Entwickler
+    useful_sites: Nützliche Seiten
+    other_links: Andere Links
+    contact_us: Kontaktieren Sie uns
+    help: 'Hilfe & feedback
+
+      '
+    about_project: Quran.com ist eine Sadaqah Jariyah. Wir hoffen, es jedem leicht
+      zu machen, den edlen Koran zu lesen, zu studieren und zu lernen. Der edle Koran
+      hat viele Namen, darunter Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
+      Al-Thikr und Al-Noor.
+    rights: 'Alle Rechte vorbehalten
+
+      '
+    mobile_apps: Mobile Apps
+    navigate: Navigieren
+    legacy_site: Legacy Quran.com
+    blog: Blog
+    forum: Forum
+  juz: Juz
+  click_here: Hier klicken
+  download: Downloaden
+  home: Home
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
+    label: Verwandte Seiten
+    sunnah: Sunnah
+    sunnah_description: Die Hadithe des Propheten Muhammad (ﷺ)
+    salah: Salah
+    salah_description: 'Gebetszeiten für jeden Ort suchen
+
+      '
+    audio: Edler Koran in Audio
+    audio_description: 'Lernen & Zuhören zur gleichen Zeit
+
+      '
+  close: Schließen

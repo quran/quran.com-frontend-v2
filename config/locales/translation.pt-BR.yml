@@ -10,7 +10,7 @@ pt-BR:
   errors:
     not_found: Desculpe, esta página não existe
     invalid_verse: O Ayah (verso) está fora dos limites. Por favor, vá para a página
-      inicial
+      inicial.
     invalid_chapter: O capítulo está fora dos limites. Por favor, vá para a página
       inicial
     no_script: Parece que seu navegador não suporta Javascript ou este está desativado.
@@ -107,8 +107,8 @@ pt-BR:
     result: "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa para:
       <span>%{query}</span>"
     error: Desculpe, ocorreu um erro com sua busca.
-    no_query: Nenhum texto de pesquisa
-    no_result: Não foram encontrados resultados
+    no_query: Nenhum texto de pesquisa.
+    no_result: Não foram encontrados resultados.
     popular: Pesquisas Populares
     ayatul_kursi: Ayatul Kursi
     yaseen: Surah Yaseen

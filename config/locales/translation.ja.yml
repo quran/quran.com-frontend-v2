@@ -16,10 +16,10 @@ ja:
     unacceptable_request:
     connection_refused:
     format: "%{attribute}%{message}"
-  local:
+  local: 英語
   site_local:
   change_local:
-  local_native_name:
+  local_native_name: 英語
   language:
   page:
   reader_mode:
@@ -38,7 +38,7 @@ ja:
       one:
       other:
     remove_all:
-    translation_english:
+    translation_english: 英語
     translation_other:
     reset:
     font_type:
@@ -50,7 +50,7 @@ ja:
       indopak:
     font_size:
       label:
-      arabic:
+      arabic: アラビア語
       translation:
     tooltip:
       label:
@@ -129,7 +129,7 @@ ja:
     scroll:
   loading:
   nav:
-    title:
+    title: コーラン
     settings:
     contribute:
     about_us:
@@ -143,7 +143,7 @@ ja:
     mobile_apps:
     navigate:
     legacy_site:
-    blog:
+    blog: ブログ
     forum:
   juz:
   click_here:

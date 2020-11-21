@@ -6,7 +6,7 @@
 #
 ---
 dv:
-  noble_quran:
+  noble_quran: ކީރިތި ޤުރުއާން
   errors:
     not_found: މާޢާފް ކުރައްވާ ތިޔަ ސަފްޚާ ފެންނާކަށް ނެއް
     invalid_verse: އާޔެއް  ޗެކް ކޮއްލައްވާ. ދެއވިފައިވާ  ރޭންޖް ދިމާނުވޭ
@@ -22,7 +22,7 @@ dv:
   change_local: ބޭނުންފުޅުވާ ބަސް ސައިޓް އިން ފެނުމަށް
   local_native_name: އިގިރޭސި
   language: ބަސް
-  page:
+  page: ސަފްޚާ
   reader_mode:
     reading:
     translation:
@@ -113,10 +113,10 @@ dv:
     al_kahf:
     al_muzammil:
   player:
-    current_verse:
+    current_verse: އާޔެއް
     select_verse:
-    next_verse:
-    previous_verse:
+    next_verse: ކުރިއަށް އޮތް އާޔެއް
+    previous_verse: އިސްވެދިޔަ އާޔެއް
     repeat_title:
     repeat_single:
     repeat_range:
@@ -124,31 +124,31 @@ dv:
     repeat_to:
     repeat_times:
     repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
+    pause_bw_ayah: އާޔެއް ހުއްޓަން ދާ ވަގުތު
+    pause_seconds: ސިކުންތު
+    pause: ހުއްޓުވުމަށް
+    play_continuously: ހުއްޓާނުލާ ކުރިއަށް ގެންދޭ
     show_word_tooltip:
     scroll:
   loading: ކުރިއަށްދަނި
   nav:
-    title:
-    settings:
+    title: ޤުރުއާން
+    settings: ސެޓިންސް
     contribute: އަޅުގަނޑު މެންނާ އެހީތެރި ވުމަށް
     about_us: އަޅުގަނޑު މެންނާ ގުޅޭ
     developers: ޑެވެލޮޕާރްސް
-    useful_sites:
-    other_links:
+    useful_sites: ބޭނުން ހިފޭސައިޓް ތަށް
+    other_links: އެހެނިހެން ލިންކްސް
     contact_us: 'އަޅުގނޑުމެންނާ ގުޅުއްވުމަށް '
-    help:
+    help: އެހީ އަދީ ފީޑްބެކް
     about_project: ޤުރްއާން.ކޮމް އަކީ ސަދަޤާތކެވެ. އަޅުގަނޑުމެން އުންމީދު ކުރަނީ މި
       ސައިޓަކީ  އެއްމެނަށް ވެސް ބޭނުންތެރިވި ސައިޓެއް ގޮތުގައިއެވެ. ކީރިތި ޤުރުައާނަށް
       ގިނަ ނަންތަށް ދެވިފައިވެއެ.އެގޮތުން ބައެއް ނަންތަކަކީ  އަލް ޤުރުއާނުލް ކަރީމް،
       އަލ ކިތާބު، އަލް ފުރުޤާން އަލް ނޫރު މިފަދަ ނަންތަށް ޝާމިލް ވެފައިވެއެ.
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
+    rights: ހުރިހާ ރައިޓްސްއެއް
+    mobile_apps: މޯބައިލް އެޕްސް
+    navigate: ދަތުރު
+    legacy_site: ލެގަސީ ޤުރުއާން.ކޮމް
     blog: ބޮލޮގް
     forum: ފޯރުމް
   juz: ފޮތް
