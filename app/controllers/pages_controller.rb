@@ -12,6 +12,10 @@ class PagesController < ApplicationController
 
   def apps; end
 
+  def privacy
+
+  end
+
   def donations; end
 
   def support; end

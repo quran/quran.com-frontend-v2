@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get :apps, to: 'pages#apps'
   get :donations, to: 'pages#donations'
   get :support, to: 'pages#support'
+  get :privacy, to: 'pages#privacy'
   get :developers, to: 'pages#developers'
 
   resources :verses, only: :show do
