@@ -10,7 +10,8 @@ it:
     not_found: Siamo spiacenti, questa pagina non esiste
     invalid_verse: Il verso è fuori portata. Per favore vai alla home page
     invalid_chapter: Il capitolo è fuori portata. Per favore vai alla home page
-    no_script: Sembra che il tuo browser non supporti Javascript o sia disabilitato.
+    no_script:
+      Sembra che il tuo browser non supporti Javascript o sia disabilitato.
       Quran.com funziona meglio con JavaScript abilitato. Per ulteriori istruzioni
       su come abilitare JavaScript
     unavailable_session:
@@ -87,11 +88,12 @@ it:
     tafsir:
       label: Seleziona un tafsir
       select: Seleziona un tafsir
-      filter_tafsir: 'Filtra per lingua:'
+      filter_tafsir: "Filtra per lingua:"
     quran_reflect: Leggi Riflessioni per questo Ayah su QuranReflect
   search:
     placeholder: Cerca "Noah"
-    result: "%{from} - %{to} DI <span>%{total}</span> RISULTATI DELLA RICERCA PER:
+    result:
+      "%{from} - %{to} DI <span>%{total}</span> RISULTATI DELLA RICERCA PER:
       <span>%{query}</span>"
     error: Siamo spiacenti, si è verificato un errore durante la ricerca.
     no_query: Nessuna query di ricerca.
@@ -122,7 +124,8 @@ it:
     pause_seconds: secondi
     pause: Pausa per
     play_continuously: Continua a giocare senza pause
-    show_word_tooltip: Mostra la traduzione delle parole nella descrizione comando
+    show_word_tooltip:
+      Mostra la traduzione delle parole nella descrizione comando
       durante la riproduzione di ayah
   loading: Caricamento in corso...
   nav:
@@ -135,7 +138,8 @@ it:
     other_links: Altri link
     contact_us: Contattaci
     help: Aiuto e feedback
-    about_project: Quran.com è un progetto pro bono per la lettura e lo studio del
+    about_project:
+      Quran.com è un progetto pro bono per la lettura e lo studio del
       Corano (noto anche come The Noble Quran, Al Quran, Holy Quran, Koran).
     rights: Tutti i diritti riservati
     navigate: Navigare
@@ -143,6 +147,7 @@ it:
     blog: blog
     forum: Forum
     mobile_apps: App mobili
+    privacy:
   juz: Juz
   click_here: clicca qui
   download: Scarica

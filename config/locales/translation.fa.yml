@@ -10,7 +10,8 @@ fa:
     not_found: متأسفیم ، این صفحه وجود ندارد
     invalid_verse: آیه خارج از محدوده است. لطفا به صفحه اصلی بروید
     invalid_chapter: فصل خارج از محدوده است. لطفا به صفحه اصلی بروید
-    no_script: به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
+    no_script:
+      به نظر می رسد که مرورگر شما از Javascript یا غیرفعال آن پشتیبانی نمی
       کند. Quran.com با جاوا اسکریپت فعال بهترین کار می کند. برای اطلاعات بیشتر در
       مورد نحوه فعال کردن جاوا اسکریپت
     unavailable_session: |-
@@ -35,7 +36,7 @@ fa:
     reciters: قاریان را انتخاب کنید
     translations: ترجمه ها را انتخاب كنيد
     remove_all: همه را حذف کنید
-    translation_english: 'انگليسي '
+    translation_english: "انگليسي "
     translation_other: زبان های دیگر
     font_size:
       label: اندازه فونت
@@ -94,7 +95,7 @@ fa:
     tafsir:
       label: تفسیرها
       select: تفسیر را انتخاب کنید
-      filter_tafsir: 'فیلتر بر اساس زبان:'
+      filter_tafsir: "فیلتر بر اساس زبان:"
     quran_reflect: تأملات این آیه را در QuranReflect بخوانید
   search:
     placeholder: جستجو کردن
@@ -128,9 +129,9 @@ fa:
     pause_seconds: ثانیه
     pause: مکث برای
     play_continuously: بازی را بدون مکث ادامه دهید
-    show_word_tooltip: 'Show word translation in tooltip while playing ayah
+    show_word_tooltip: "Show word translation in tooltip while playing ayah
 
-      '
+      "
   loading: در حال بارگذاری...
   nav:
     title: قرآن
@@ -142,16 +143,18 @@ fa:
     other_links: پیوندهای دیگر
     contact_us: با ما تماس بگیرید
     help: راهنما و بازخورد
-    about_project: Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
+    about_project:
+      Quran.com یک پروژه طرفدار برای خواندن و مطالعه قرآن است (همچنین
       به عنوان قرآن شریف ، القرآن ، قرآن کریم ، قرآن نیز شناخته می شود).
     rights: کلیه حقوق محفوظ است
     navigate: حرکت کنید
-    legacy_site: 'Legacy Quran.com
+    legacy_site: "Legacy Quran.com
 
-      '
+      "
     blog: وبلاگ
     forum: انجمن
     mobile_apps: برنامه های موبایل
+    privacy:
   juz: جوز
   click_here: اینجا کلیک کنید
   download: دانلود

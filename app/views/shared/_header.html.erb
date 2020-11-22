@@ -12,24 +12,6 @@
           <%= link_to root_path, class: 'h2 ff-b mb-0 ml-3' do %>
             Quran<span class="ff-m h4 ml-0">.com</span>
           <% end %>
-
-          <div id="local-switcher" class="d-md-block d-none">
-            <div class="dropdown">
-              <a class="nav-link dropdown-toggle pb-0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= _t('local_native_name') %> <i class="fa fa-fadown-open"></i>
-              </a>
-
-              <ul class="dropdown-menu">
-                <% available_locales.each do |locale, name| %>
-                  <li>
-                    <%= link_to url_for(locale: locale), class: "dropdown-item #{'active' if I18n.locale == locale}" do %>
-                      <span class="<%= locale %>"><%= name %></span>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
         </div>
 
         <%= yield :header %>

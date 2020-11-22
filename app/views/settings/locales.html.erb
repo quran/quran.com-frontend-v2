@@ -5,7 +5,7 @@
 -->
   <div id="site-locales">
     <% available_locales.each do |locale, name| %>
-      
+
       <div class="form-check my-4" data-filter-tags="<%= name %>">
         <div>
           <input class="form-check-input" type="radio" name="locale" value="<%= locale %>" id="locale-<%= locale %>" <%="checked" if I18n.locale == locale%>>

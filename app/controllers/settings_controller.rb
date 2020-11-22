@@ -12,8 +12,10 @@ class SettingsController < ApplicationController
   def translations;end
 
   def recitations;end
-  
+
   def fonts;end
+
+  def locales;end
 
   protected
 

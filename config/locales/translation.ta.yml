@@ -2,10 +2,10 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/quran/quran/ps-AF
+# https://translation.io/quran/quran/ta
 #
 ---
-ps-AF:
+ta:
   noble_quran:
   errors:
     not_found:
@@ -15,10 +15,10 @@ ps-AF:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-    format:
+    format: "%{attribute} %{message}"
   local:
   site_local:
-  change_local:
+  change_local: "தளத்தின் பக்கங்களை காட்ட உங்களுக்கு பிடித்தமான முதன்மை மொழியை தேர்ந்தெடுக்கவும் "
   local_native_name:
   language:
   page:
@@ -65,35 +65,35 @@ ps-AF:
     go:
     not_found:
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
+    label: ஸூராஹ்
+    next: அடுத்து ஸூராஹ்
+    previous: முந்தைய ஸூராஹ்
+    verses: ஆயத்துகள்
+    pages: பக்கங்கள்
+    revelation_place: வெளிப்படுத்தப்பட்ட  இடம்
+    continue: தொடரவும்
+    quick_links: "விரைவு தொடுப்புகள் "
+    go_to_beginning: ஸூராஹ்வின் ஆரம்பம்
+    read_full: முழு ஸூராஹ்வையும் படிக்க
+    invalid: தேடலின் போது ஸூராஹ் கிடைக்கவில்லை
   footnote:
   share_ayah:
   action:
-    play:
-    pause:
-    share:
+    play: "இயக்கு "
+    pause: "இடைநிறுத்து "
+    share: "பகிர் "
     quran_reflect:
-    addNote:
+    addNote: குறிப்பு சேர்க்க
     tafsir:
-      label:
-      select:
+      label: தஃப்சீர்
+      select: தஃப்சீரைத் தேர்ந்தெடுக்கவும்
       filter_tafsir:
     bookmark:
-      label:
-      done:
+      label: "புத்தகக்குறியிடு "
+      done: புத்தககுறி சேமிக்கப்பட்டது!
     copy:
-      label:
-      done:
+      label: நகலெடு
+      done: நகலெடுக்கப்பட்டது!
   search:
     label:
     placeholder:
@@ -158,4 +158,4 @@ ps-AF:
     salah_description:
     audio:
     audio_description:
-  close:
+  close: மூடுக

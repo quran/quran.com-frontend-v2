@@ -8,12 +8,13 @@
 de:
   noble_quran: Der edle Koran
   errors:
-    not_found: 'Entschuldigung, diese Seite existiert nicht
+    not_found: "Entschuldigung, diese Seite existiert nicht
 
-      '
+      "
     invalid_verse: Überprüfen Sie Ihre Ayah-Auswahl. Sie ist außerhalb der Reichweite.
     invalid_chapter: Überprüfen Sie Ihre Suren-Auswahl. Sie ist außerhalb der Reichweite.
-    no_script: Es sieht so aus, als ob Ihr Browser entweder kein Javascript unterstützt
+    no_script:
+      Es sieht so aus, als ob Ihr Browser entweder kein Javascript unterstützt
       oder es deaktiviert ist. Quran.com funktioniert am besten mit aktiviertem JavaScript.Für
       weitere Anweisungen zum Aktivieren von Javascript <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">hier klicken</a>.
@@ -27,9 +28,9 @@ de:
       Bitte stellen Sie sicher, dass ein Rails-Entwicklungsserver läuft.
     format: "%{attribute} %{message}"
   local: englisch
-  site_local: 'Sprache der Website
+  site_local: "Sprache der Website
 
-    '
+    "
   change_local: Wähle die Sprache aus, in der sie die Website anzeigen lassen möchtest
   local_native_name: Englisch
   language: Sprache
@@ -37,32 +38,32 @@ de:
   reader_mode:
     reading: Lesen
     translation: Übersetzungen
-    info: 'Sure Info
+    info: "Sure Info
 
-      '
+      "
   settings:
     label: Einstellungen
-    display: 'Anzeige-Einstellungen
+    display: "Anzeige-Einstellungen
 
-      '
+      "
     audio: Audio Einstellungen
     chapters: Sure auswählen
     reciters: Rezitatoren auswählen
-    sample_audio: 'Probe abspielen
+    sample_audio: "Probe abspielen
 
-      '
-    translations: 'Übersetzungen auswählen
+      "
+    translations: "Übersetzungen auswählen
 
-      '
+      "
     translation_count:
       one: Anzeigen einer Übersetzung
       other: Anzeigen von %{count} Übersetzungen
     remove_all: Alles entfernen
     translation_english: Englisch
     translation_other: Andere Sprachen
-    reset: 'Auf Standard zurücksetzen
+    reset: "Auf Standard zurücksetzen
 
-      '
+      "
     font_type: Schriftart auswählen
     fonts:
       tajweed: Tadschwīd Text
@@ -80,9 +81,9 @@ de:
       transliteration: Transliteration
     night_mode:
       label: Nachmodus
-      day_tip: 'Auf Tagesmodus wechseln
+      day_tip: "Auf Tagesmodus wechseln
 
-        '
+        "
       night_tip: Auf Nachmodus wechseln
   verses:
     media: Video-Kommentar ansehen von %{from}
@@ -98,12 +99,12 @@ de:
     continue: Fortfahren
     quick_links: Schnelle Links
     go_to_beginning: Anfang der Sure
-    read_full: 'Vollständige Sure lesen
+    read_full: "Vollständige Sure lesen
 
-      '
-    invalid: 'Sure bei der Suche nicht gefunden
+      "
+    invalid: "Sure bei der Suche nicht gefunden
 
-      '
+      "
   footnote: Fußnote
   share_ayah: Ayah teilen
   action:
@@ -111,9 +112,9 @@ de:
     pause: Pause
     share: Teilen
     quran_reflect: Lies überlegungen für diese Ayah auf QuranReflect
-    addNote: 'Notiz hinzufügen
+    addNote: "Notiz hinzufügen
 
-      '
+      "
     tafsir:
       label: Tafsirs
       select: Tafsir auswählen
@@ -130,20 +131,20 @@ de:
     result: "%{from}-%{to} VON <span> %{total} </span> SUCH RESULTATE FÜR: <span class=text-primary>%{query}</span>"
     error: Entschuldigung, es gab einen Fehler bei Ihrer Suche.
     no_query: Keine Suchanfrage.
-    no_result: 'Keine Ergebnisse gefunden.
+    no_result: "Keine Ergebnisse gefunden.
 
-      '
+      "
     popular: Populäre Suchanfragen
     ayatul_kursi: Ayatul Kursi
     yaseen: Sure Yaseen
-    al_mulk: 'Sure Al Mulk
+    al_mulk: "Sure Al Mulk
 
-      '
+      "
     ar_rahman: Sure Ar-Rahman
     al_waqiah: Sure Al Waqi'ah
-    al_kahf: 'Sure Al Kahf
+    al_kahf: "Sure Al Kahf
 
-      '
+      "
     al_muzammil: Sure Al Muzzammil
   player:
     current_verse: Vers
@@ -157,15 +158,16 @@ de:
     repeat_to: Zur Ayah
     repeat_times: Zählung wiederholen
     repeat_loop: Schleife
-    pause_bw_ayah: Stellen Sie ein, wie lange angehalten werden soll, bevor der nächste
+    pause_bw_ayah:
+      Stellen Sie ein, wie lange angehalten werden soll, bevor der nächste
       Vers abgespielt wird
     pause_seconds: Sekunden
     pause: Pausieren für
     play_continuously: Weiter abspielen ohne Pause
     show_word_tooltip: Wortübersetzung im Tooltip beim Abspielen von Ayah anzeigen
-    scroll: 'Scrollt automatisch zur aktuell gespielten Ayah
+    scroll: "Scrollt automatisch zur aktuell gespielten Ayah
 
-      '
+      "
   loading: Laden...
   nav:
     title: Koran
@@ -176,21 +178,23 @@ de:
     useful_sites: Nützliche Seiten
     other_links: Andere Links
     contact_us: Kontaktieren Sie uns
-    help: 'Hilfe & feedback
+    help: "Hilfe & feedback
 
-      '
-    about_project: Quran.com ist eine Sadaqah Jariyah. Wir hoffen, es jedem leicht
+      "
+    about_project:
+      Quran.com ist eine Sadaqah Jariyah. Wir hoffen, es jedem leicht
       zu machen, den edlen Koran zu lesen, zu studieren und zu lernen. Der edle Koran
       hat viele Namen, darunter Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr und Al-Noor.
-    rights: 'Alle Rechte vorbehalten
+    rights: "Alle Rechte vorbehalten
 
-      '
+      "
     mobile_apps: Mobile Apps
     navigate: Navigieren
     legacy_site: Legacy Quran.com
     blog: Blog
     forum: Forum
+    privacy:
   juz: Juz
   click_here: Hier klicken
   download: Downloaden
@@ -200,11 +204,11 @@ de:
     sunnah: Sunnah
     sunnah_description: Die Hadithe des Propheten Muhammad (ﷺ)
     salah: Salah
-    salah_description: 'Gebetszeiten für jeden Ort suchen
+    salah_description: "Gebetszeiten für jeden Ort suchen
 
-      '
+      "
     audio: Edler Koran in Audio
-    audio_description: 'Lernen & Zuhören zur gleichen Zeit
+    audio_description: "Lernen & Zuhören zur gleichen Zeit
 
-      '
+      "
   close: Schließen

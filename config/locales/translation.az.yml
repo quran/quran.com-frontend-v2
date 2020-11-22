@@ -2,10 +2,10 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/quran/quran/ps-AF
+# https://translation.io/quran/quran/az
 #
 ---
-ps-AF:
+az:
   noble_quran:
   errors:
     not_found:
@@ -15,7 +15,7 @@ ps-AF:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-    format:
+    format: "%{attribute} %{message}"
   local:
   site_local:
   change_local:
