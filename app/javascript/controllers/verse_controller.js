@@ -10,6 +10,7 @@ import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 
+
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
   slnt: "Silent",
@@ -54,7 +55,6 @@ export default class extends Controller {
   connect() {
     let el = $(this.element);
     //TODO: enable these action only for reading mode.
-
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
         trigger: "hover",
