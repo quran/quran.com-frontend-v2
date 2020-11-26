@@ -57,7 +57,7 @@ export default class extends Controller {
       playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
-    if (player) {
+    if (player&&data.audio) {
       return player.playWord(data.audio);
     }
   }
