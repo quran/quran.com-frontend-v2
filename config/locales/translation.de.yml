@@ -11,7 +11,7 @@ de:
     not_found: "Entschuldigung, diese Seite existiert nicht
 
       "
-    invalid_verse: Überprüfen Sie Ihre Ayah-Auswahl. Sie ist außerhalb der Reichweite.
+    invalid_verse: Überprüfen Sie Ihre Vers-Auswahl. Sie ist außerhalb der Reichweite.
     invalid_chapter: Überprüfen Sie Ihre Suren-Auswahl. Sie ist außerhalb der Reichweite.
     no_script:
       Es sieht so aus, als ob Ihr Browser entweder kein Javascript unterstützt
@@ -31,7 +31,9 @@ de:
   site_local: "Sprache der Website
 
     "
-  change_local: Wähle die Sprache aus, in der sie die Website anzeigen lassen möchtest
+  change_local:
+    Wählen Sie die Sprache aus, in der Sie die Website anzeigen lassen
+    möchten
   local_native_name: Englisch
   language: Sprache
   page: Seite
@@ -68,8 +70,8 @@ de:
     fonts:
       tajweed: Tadschwīd Text
       uthmani: Uthmanischer Text
-      qcf_v1: König Fahd Koran Komplex
-      qcf_v2: König Fahd Koran Komplex
+      qcf_v1: König Fahd Koran Komplex v1
+      qcf_v2: König Fahd Koran Komplex v2
       indopak: IndoPak-Text
     font_size:
       label: Schriftgröße
@@ -80,20 +82,20 @@ de:
       translation: Übersetzung
       transliteration: Transliteration
     night_mode:
-      label: Nachmodus
+      label: Nachtmodus
       day_tip: "Auf Tagesmodus wechseln
 
         "
-      night_tip: Auf Nachmodus wechseln
+      night_tip: Auf Nachtmodus wechseln
   verses:
     media: Video-Kommentar ansehen von %{from}
-    go: Gehe zur Ayah
-    not_found: Ayah nicht gefunden
+    go: Gehe zum Vers
+    not_found: Vers nicht gefunden
   chapters:
     label: Sure
     next: Nächste Sure
     previous: Vorherige Sure
-    verses: Ayahs
+    verses: Verse
     pages: Seiten
     revelation_place: Ort der Offenbarung
     continue: Fortfahren
@@ -106,12 +108,12 @@ de:
 
       "
   footnote: Fußnote
-  share_ayah: Ayah teilen
+  share_ayah: Vers teilen
   action:
     play: Abspielen
     pause: Pause
     share: Teilen
-    quran_reflect: Lies überlegungen für diese Ayah auf QuranReflect
+    quran_reflect: Lies Überlegungen für diesen Vers auf QuranReflect
     addNote: "Notiz hinzufügen
 
       "
@@ -151,11 +153,11 @@ de:
     select_verse: Vers auswählen
     next_verse: Nächster Vers
     previous_verse: Vorheriger Vers
-    repeat_title: Ayah wiederholen
+    repeat_title: Vers wiederholen
     repeat_single: Einzeln
     repeat_range: Reichweite
-    repeat_from: Von der Ayah
-    repeat_to: Zur Ayah
+    repeat_from: Von dem Vers
+    repeat_to: Zum Vers
     repeat_times: Zählung wiederholen
     repeat_loop: Schleife
     pause_bw_ayah:
@@ -164,8 +166,8 @@ de:
     pause_seconds: Sekunden
     pause: Pausieren für
     play_continuously: Weiter abspielen ohne Pause
-    show_word_tooltip: Wortübersetzung im Tooltip beim Abspielen von Ayah anzeigen
-    scroll: "Scrollt automatisch zur aktuell gespielten Ayah
+    show_word_tooltip: Wortübersetzung im Tooltip beim Abspielen von Vers anzeigen
+    scroll: "Scrollt automatisch zum aktuell gespielten Vers
 
       "
   loading: Laden...
@@ -178,7 +180,7 @@ de:
     useful_sites: Nützliche Seiten
     other_links: Andere Links
     contact_us: Kontaktieren Sie uns
-    help: "Hilfe & feedback
+    help: "Hilfe & Feedback
 
       "
     about_project:
@@ -194,7 +196,7 @@ de:
     legacy_site: Legacy Quran.com
     blog: Blog
     forum: Forum
-    privacy:
+    privacy: Datenschutz
   juz: Juz
   click_here: Hier klicken
   download: Downloaden

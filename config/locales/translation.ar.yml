@@ -56,8 +56,8 @@ ar:
     fonts:
       tajweed: نص التجويد
       uthmani: النص العثماني
-      qcf_v1: مجمع الملك فهد الإصدار ١
-      qcf_v2: مجمع الملك فهد الإصدار ٢
+      qcf_v1: مجمع الملك فهد للقرآن الإصدار ١
+      qcf_v2: مجمع الملك فهد للقرآن الإصدار ٢
       indopak: نص الأوردو
     translation_count:
       one: عرض ترجمة واحدة
@@ -149,7 +149,7 @@ ar:
     blog: مدونة
     forum: المنتدى
     mobile_apps: تطبيقات الهاتف
-    privacy:
+    privacy: الخصوصية
   juz: الجزء
   click_here: أنقر هنا
   download: تحميل

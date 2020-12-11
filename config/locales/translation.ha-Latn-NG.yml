@@ -27,53 +27,53 @@ ha-Latn-NG:
       ba. Da fatan za a tabbatar da sabar ci gaban ci gaban rails tana gudana
     format:
   local: turanci
-  site_local:
+  site_local: Yaren Yanar gizo
   change_local: Zabi yaren da kake son shafin ya nuna a ciki
   local_native_name: Turanci
   language: Harshe
   page: Shafi
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: Karatu
+    translation: Fassarori
+    info: Bayanin Surar
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: Saituna
+    display: Saitunan nuni
+    audio: Saitunan Sauti
+    chapters: Zabi Sura
+    reciters: Zaba Masu Karatu
+    sample_audio: Kunna samfura
+    translations: Zabi Fassarori
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: Nuna fassara daya
+      other: nuna %{count} fassarori
+    remove_all: Cire duka
+    translation_english: Turanci
+    translation_other: Sauran harsuna
+    reset: Sake saita zuwa tsoho
+    font_type: Zabi rubutu
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Rubutun Tajweed
+      uthmani: Rubutun Uthmani
+      qcf_v1: QCF V1
+      qcf_v2: QCF V2
+      indopak: Rubutun IndoPak
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Girman rubutu
+      arabic: Larabci
+      translation: Fassarori
     tooltip:
-      label:
-      translation:
+      label: Nunin kayan aiki
+      translation: Fassara
       transliteration:
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: Yanayin Dare
+      day_tip: Canja zuwa yanayin rana
+      night_tip: Canja zuwa yanayin dare
   verses:
-    media:
-    go:
-    not_found:
+    media: Duba Sharhin bidiyo daga %{from}
+    go: Je zuwa ayah
+    not_found: Ba a samo ayah ba
   chapters:
     label: Surar
     next: Sura ta gaba
@@ -87,9 +87,9 @@ ha-Latn-NG:
     read_full: Karanta cikakkiyar Surar
     invalid: Ba a samu sura a yayin binciken ba
   footnote: Footasan kafa
-  share_ayah:
+  share_ayah: Raba aya
   action:
-    play: Kunna
+    play: Kunna samfura
     pause: Dakata
     share: Raba
     quran_reflect: Karanta tunani game da wannan ayah akan QuranReflect
@@ -105,38 +105,38 @@ ha-Latn-NG:
       label: Kwafa
       done: Kwafa
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+    label: Bincika
+    placeholder: Binciko "Nuhu"
+    result: "%{from}-%{to} OF <span> %{total} </span> sakamakon ga: <span class=text-primary>%{query}</span>"
+    error: Yi hakuri, an sami kuskure tare da binciken
+    no_query: Babu abun bincika
+    no_result: Babu sakamakon da aka samo
+    popular: Mashahurin Bincike
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Suratu Yaseen
+    al_mulk: Suratu Al Mulk
+    ar_rahman: Suratu Ar-Rahman
+    al_waqiah: Suratu Al-Waqi'ah
+    al_kahf: Suratu Al Kahf
+    al_muzammil: Suratu Al Muzammil
   player:
     current_verse: Aya
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
-    show_word_tooltip:
-    scroll:
+    select_verse: Zabi aya
+    next_verse: Aya ta gaba
+    previous_verse: Ayar da ta gabata
+    repeat_title: Maimaita ayah
+    repeat_single: Guda tak
+    repeat_range: Yankin
+    repeat_from: Daga ayah
+    repeat_to: Zuwa ayah
+    repeat_times: Maimaita kidaya
+    repeat_loop: Madauki
+    pause_bw_ayah: Saita tsawon lokacin da zaka dakata kafin wasa aya ta gaba
+    pause_seconds: dakika
+    pause: Dakata don
+    play_continuously: Ci gaba da wasa ba tare da tsayawa ba
+    show_word_tooltip: Nuna fassarar kalma a cikin kayan aiki yayin kunna ayah
+    scroll: Yi ta atomatik zuwa ayah mai gudana a yanzu
   loading: Ana lodawa
   nav:
     title: Qur'ani
@@ -149,23 +149,27 @@ ha-Latn-NG:
     contact_us: Tuntube mu
     help: Taimako & ra'ayoyi
     about_project:
+      Quran.com sadaqah jariyah ce. Muna fatan saukake ga kowa da kowa
+      don karantawa, yin karatu, da kuma koyon Karatun Alkur'ani mai girma. Al-Kur'ani
+      mai girma yana da sunaye da yawa da suka hada da Al-Qur'ani, Al-Kareem, Al-Kitab,
+      Al-Furqan, Al-Maw'itha, Al-Thikr da Al-Noor
     rights: Duk hakkoki an tanada
     mobile_apps: Apps na waya
     navigate: Kewaya
     legacy_site: Legacy Quran.com
     blog: Blog
     forum: Shafin Tattaunawa
-    privacy:
+    privacy: sirri
   juz: Juz'i
   click_here: danna nan
   download: Saukar
   home: Gida
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
+    label: Shafuka masu alaka
+    sunnah: Sunnah
+    sunnah_description: Hadisin Annabi Muhammad (ﷺ)
+    salah: Sallah
+    salah_description: Bincika lokutan sallah na kowane wuri
+    audio: AlKur'ani mai girma a cikin sauti
+    audio_description: Ilmantarwa & saurara a lokaci guda
   close: Rufe

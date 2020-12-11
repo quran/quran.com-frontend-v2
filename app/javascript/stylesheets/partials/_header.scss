@@ -25,7 +25,7 @@ header {
       margin: 13px 19px;
 
       .nav-link {
-        font-family: $font-medium;
+        //font-family: $font-medium;
         font-size: 14px;
         color: #cfd8dc;
         padding: 0px;
@@ -74,11 +74,13 @@ header {
 }
 
 .logo {
-  font-family: $font-bold;
+  //font-family: $font-bold;
+  font-weight: 700;
   color: $color-primary;
 
   span {
-    font-family: $font-regular;
+    //font-family: $font-regular;
+    font-weight: 100;
   }
 }
 
@@ -92,13 +94,12 @@ header {
         top: 9px !important;
         padding: 12px 12px !important;
       }
-
     }
   }
 }
 
 @media (max-width: 767px) {
-  .header{
+  .header {
     position: absolute;
   }
   #local-switcher {

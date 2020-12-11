@@ -6,88 +6,99 @@
 #
 ---
 ta:
-  noble_quran:
+  noble_quran: திருக்குர்ஆன்
   errors:
-    not_found:
+    not_found: மன்னிக்கவும், இந்த பக்கம் தளத்தில் இல்லை
     invalid_verse:
+      "உங்கள் ஆயாஹ் தேர்வை சரிபார்க்கவும். அது தேர்வு வரம்புக்கு வெளியே
+      உள்ளது. "
     invalid_chapter:
-    no_script:
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
+      "உங்கள் ஸுராஹ் தேர்வை சரிபார்க்கவும். அது தேர்வு வரம்புக்கு வெளியே
+      உள்ளது. "
+    no_script: |-
+      உங்கள் உலாவி ஜாவாஸ்கிரிப்டை ஆதரிக்கவில்லை அல்லது ஜாவாஸ்கிரிப்ட் முடக்கப்பட்டுள்ளது போல் தெரிகிறது.
+      ஜாவாஸ்கிரிப்டை எவ்வாறு இயக்குவது என்பது பற்றிய கூடுதல் அறிவுறுத்தலுக்கு <a href="http://www.enable-javascript.com/" target="_blank" rel="nofollow">இங்கு அழுத்தவும்</a>.
+    unavailable_session: |-
+      ஸெஷன் %{id} தற்போது நினைவகத்தில் இல்லை.
+
+      நீங்கள் பல-செயல் சேவையகத்தில் (யூனிகார்ன் அல்லது பூமா போன்றவை) இயங்க நேர்ந்தால் இந்த கோரிக்கையை யல்படுத்தவும் என்கிற ஹிட்  %{id}நினைவகத்தில் சேமிக்க படாது.செயல்முறைகளை/சேவைகளை ஒற்றை (1) எண்ணிற்கு மாற்றுங்கள் அல்லது டெவெலபிமான்ட்டிற்கு வேறு சேவையகத்தைப் பயன்படுத்துதல்.
+    unacceptable_request: "அக்சப்ட் ஹெட்டரில் பொருத்தமான பதிப்பு எதிர்பார்க்க படுகிறது  "
+    connection_refused: |-
+      அச்சச்சோ! வெப் கன்சோல் மிடில்வேருடன் இணைக்க முடியவில்லை.
+      தயவு செய்து இரயில் டெவெலப்மென்ட் சேவையகம் இயங்குகிறதா என்பதை உறுதிப்படுத்தவும்.
     format: "%{attribute} %{message}"
-  local:
-  site_local:
+  local: ஆங்கிலம்
+  site_local: தளத்தின் மொழி
   change_local: "தளத்தின் பக்கங்களை காட்ட உங்களுக்கு பிடித்தமான முதன்மை மொழியை தேர்ந்தெடுக்கவும் "
-  local_native_name:
-  language:
-  page:
+  local_native_name: ஆங்கிலம்
+  language: மொழி
+  page: பக்கம்
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: வாசிக்க
+    translation: மொழிபெயர்ப்புகள்
+    info: ஸூரத்தின் தகவல்
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: அமைப்புகள்
+    display: காட்சி அமைப்புகள்
+    audio: ஆடியோ அமைப்புகள்
+    chapters: ஸூராஹ்வை தேர்ந்தெடுக்கவும்
+    reciters: ஓதுபவரை தேர்ந்தெடுக்க
+    sample_audio: மாதிரியைய் இயக்க
+    translations: மொழிபெயர்ப்புகளைத் தேர்ந்தெடுக்கவும்
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: ஒரு மொழிபெயர்ப்பைக் காட்டுகிறது
+      other: "%{count} மொழிபெயர்ப்புகள் காட்டப்படுகின்றன"
+    remove_all: அனைத்தையும் நீக்க
+    translation_english: ஆங்கிலம்
+    translation_other: மற்ற மொழிகளில்
+    reset: இயல்புநிலைக்கு மீட்ட
+    font_type: எழுத்துருவைத் தேர்ந்தெடுக்கவும்
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: தஜ்வீத் உரை
+      uthmani: உஸ்மானி உரை
+      qcf_v1: மன்னர் ஃபஹத் குர்ஆன் வளாகம் பதிப்பு 1
+      qcf_v2: மன்னர் ஃபஹத் குர்ஆன் வளாகம் பதிப்பு 2
+      indopak: இந்தோ பாக் உரை
     font_size:
-      label:
-      arabic:
-      translation:
+      label: எழுத்துரு அளவு
+      arabic: அரபி
+      translation: மொழிபெயர்ப்புகள்
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: உதவிக்குறிப்பு காட்சி
+      translation: மொழிபெயர்ப்பு
+      transliteration: ஒலிபெயர்ப்பு
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: இரவு முறை
+      day_tip: பகல் முறைக்கு மாற்ற
+      night_tip: இரவு முறைக்கு மாற்ற
   verses:
-    media:
-    go:
-    not_found:
+    media: "%{from} இலிருந்து வீடியோ விளக்கவுரைப் பாருங்கள்"
+    go: ஆயத்திற்கு செல்ல
+    not_found: ஆயாஹ் கிடைக்கவில்லை
   chapters:
     label: ஸூராஹ்
-    next: அடுத்து ஸூராஹ்
+    next: அடுத்த ஸூராஹ்
     previous: முந்தைய ஸூராஹ்
     verses: ஆயத்துகள்
     pages: பக்கங்கள்
-    revelation_place: வெளிப்படுத்தப்பட்ட  இடம்
+    revelation_place: இறக்கப்பட்ட  இடம்
     continue: தொடரவும்
     quick_links: "விரைவு தொடுப்புகள் "
     go_to_beginning: ஸூராஹ்வின் ஆரம்பம்
     read_full: முழு ஸூராஹ்வையும் படிக்க
     invalid: தேடலின் போது ஸூராஹ் கிடைக்கவில்லை
-  footnote:
-  share_ayah:
+  footnote: அடிக்குறிப்பு
+  share_ayah: ஆயத்தை பகிர
   action:
     play: "இயக்கு "
     pause: "இடைநிறுத்து "
     share: "பகிர் "
-    quran_reflect:
+    quran_reflect: இந்த ஆயத்தின் பிரதிபலிப்புகளை குர்ஆன்-ரிஃப்லெக்ட் இல் படியுங்கள்
     addNote: குறிப்பு சேர்க்க
     tafsir:
-      label: தஃப்சீர்
+      label: "தஃப்சீர்கள் "
       select: தஃப்சீரைத் தேர்ந்தெடுக்கவும்
-      filter_tafsir:
+      filter_tafsir: "மொழி மூலம் வடிகட்டவும்:"
     bookmark:
       label: "புத்தகக்குறியிடு "
       done: புத்தககுறி சேமிக்கப்பட்டது!
@@ -95,67 +106,77 @@ ta:
       label: நகலெடு
       done: நகலெடுக்கப்பட்டது!
   search:
-    label:
-    placeholder:
+    label: தேடல்
+    placeholder: '"நூஹ்" என்று தேடுங்கள்'
     result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+      " <span class=text-primary>%{query}</span>: என்கிற சொல்லுக்கு <span> %{total}
+      </span> தேடல் முடிவுகள் கிடைத்துள்ளன அதில் %{from}-%{to}"
+    error: மன்னிக்கவும், உங்கள் தேடலில் பிழை ஏற்பட்டது.
+    no_query: தேடல் வினவல் இல்லை.
+    no_result: முடிவுகள் எதுவும் இல்லை.
+    popular: பிரபலமான தேடல்கள்
+    ayatul_kursi: "ஆயத்துல் குர்ஸி "
+    yaseen: ஸூராஹ் யாஸீன்
+    al_mulk: ஸூராஹ் அல்-முல்க்
+    ar_rahman: ஸூராஹ் அர்-ரஹ்மான்
+    al_waqiah: "ஸூராஹ் அல்-வாக்கிஅஹ்  "
+    al_kahf: ஸூராஹ் அல்-கஹ்ஃப்
+    al_muzammil: ஸூராஹ் அல்-முஸ்ஸம்மில்
   player:
-    current_verse:
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
+    current_verse: வசனம்
+    select_verse: வசனத்தைத் தேர்ந்தெடுக்கவும்
+    next_verse: அடுத்த வசனம்
+    previous_verse: முந்தைய வசனம்
+    repeat_title: ஆயத்தை சுழற்சியில் ஓத
+    repeat_single: ஒற்றை
+    repeat_range: "வரம்பு "
+    repeat_from: ஆயத்திலிருந்து
+    repeat_to: ஆயத்துவரை
+    repeat_times: சுழற்சி எண்ணிக்கை
+    repeat_loop: சுழற்சியில் இயக்க
     pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
+      அடுத்த வசனத்தை இயக்குவதற்கு முன் எவ்வளவு நேரம் இடைநிறுத்த வேண்டும்
+      என்பதை அமைக்கவும்
+    pause_seconds: விநாடிகள்
+    pause: இடைநிறுத்தம்
+    play_continuously: இடைநிறுத்தாமல் தொடர்ந்து இயக்க
     show_word_tooltip:
-    scroll:
-  loading:
+      ஆயாஹ் ஓடும்பொழுது உதவிக்குறிப்பில் சொல்லின் மொழிபெயர்ப்பைக்
+      காட்டப்படும்
+    scroll: தற்போது ஓடும் ஆயத்திற்கு தானாக காட்சி உருளும்
+  loading: ஏறிக் கொண்டிருக்கிறது...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
+    title: குர்ஆன்
+    settings: அமைப்புகள்
+    contribute: பங்களிக்க
+    about_us: எங்களை பற்றி
+    developers: உருவாக்குனர்கள்
+    useful_sites: பயனுள்ள தளங்கள்
+    other_links: "மற்ற தொடுப்புகள் "
+    contact_us: எங்களை தொடர்பு கொள்ள
+    help: உதவி & பின்னூட்டம்
     about_project:
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-    privacy:
-  juz:
-  click_here:
-  download:
-  home:
+      Quran.com ஒரு சதாக்கா ஜாரியா ஆக இருக்கிறது. அனைவருக்கும் திருக்குர்ஆனை
+      ஓதுவது, படிப்பது மற்றும் கற்றுக்கொள்வதை எளிதாக்குவோம் என்று நம்புகிறோம்.திருக்குர்ஆனுக்கு
+      அல்-குர்ஆன் அல்-கரீம், அல்-கிதாப், அல்-ஃபுர்கான், அல்-மவ்இதஹ், அல்-திக்ர், மற்றும்
+      அல்-நூர் உள்ளிட்ட பல பெயர்கள் உள்ளன.
+    rights: அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை
+    mobile_apps: மொபைல் பயன்பாடுகள்
+    navigate: வழிச்செலுத்த
+    legacy_site: பழைய Quran.com
+    blog: வலைப்பதிவு
+    forum: பொது மன்றம்
+    privacy: தனியுரிமை
+  juz: ஜூஸ்
+  click_here: இங்கு அழுத்தவும்
+  download: பதிவிறக்கம்
+  home: முகப்பு
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
+    label: தொடர்புடைய தளங்கள்
+    sunnah: நபிவழி
+    sunnah_description: முஹம்மது நபி (ﷺ) அவர்களின் ஹதீஸ்
+    salah: ஸலாஹ்
+    salah_description: எந்த இடத்திற்கும் ஆன தொழுகை நேரங்களை தேட
+    audio: திருக்குர்ஆன் ஆடியோ
+    audio_description: "ஒரே சமயத்தில் கற்றல் மற்றும் கேட்டல் "
   close: மூடுக

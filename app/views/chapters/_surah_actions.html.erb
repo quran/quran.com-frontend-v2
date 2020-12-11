@@ -11,7 +11,7 @@
               <strong>
                 <%= @presenter.chapter.name_simple %>
               </strong>
-              <p class="text-muted mb-0"><%= @presenter.chapters[current_chapter-1].translated_name.name %></p>
+              <p class="text-muted mb-0 text-wrap"><%= @presenter.chapters[current_chapter-1].translated_name.name %></p>
             </div>
           </a>
 
@@ -43,7 +43,7 @@
                       <div class="col-3">
                         <%= chapter.name_arabic %>
                       </div>
-                      <div class="col-10 offset-2">
+                      <div class="col-10 offset-2 text-wrap">
                         <%= chapter.translated_name.name %>
                       </div>
                     </div>

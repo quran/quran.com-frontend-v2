@@ -65,8 +65,8 @@ pt-BR:
     fonts:
       tajweed: Texto Tajweed
       uthmani: Texto Uthmani
-      qcf_v1: QCF V1
-      qcf_v2: QCF V2
+      qcf_v1: Alcorão do Complexo do Rei Fahd v1
+      qcf_v2: Alcorão do Complexo do Rei Fahd v2
       indopak: Texto IndoPak
     translation_count:
       one: Mostrando uma tradução
@@ -159,7 +159,7 @@ pt-BR:
     blog: Blog
     forum: Fórum
     mobile_apps: Aplicativos móveis
-    privacy:
+    privacy: Privacidade
   juz: Juz
   click_here: Clique aqui
   download: Descarregar
@@ -167,7 +167,7 @@ pt-BR:
   related_sites:
     label: Sites relacionados
     sunnah: Sunnah
-    sunnah_description: O Hadith do Profeta Maomé (ﷺ)
+    sunnah_description: O Hadith do Profeta Maomé (Muhammad) ﷺ
     salah: Salah (oração)
     salah_description: Pesquise o horário de oração em qualquer localização
     audio: Nobre Alcorão em áudio
