@@ -223,5 +223,7 @@ export default class extends Controller {
   resetPage() {
     //$("style.setting").remove();
     this.styles.innerText = "";
+    let controller = document.getElementById("chapter-tabs");
+    controller.chapter.changeTranslations(this.defaultSetting().translations);
   }
 }
