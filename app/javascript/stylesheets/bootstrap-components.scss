@@ -37,3 +37,8 @@
 @import "~bootstrap/scss/helpers";
 
 @import "~bootstrap/scss/utilities/api";
+
+::selection {
+  background-color: $primary-400;
+  color: white;
+}

@@ -165,12 +165,22 @@
   .word {
     &:hover,
     &.highlight {
-      color: $color-primary !important;
+      color: $color-primary;
+
+      &::selection{
+        //TODO: move this to design system.Hard coding this for now
+        color: #FF7416;
+      }
     }
   }
 
   .w {
-    padding: 0 5px;
+    padding: 0 4px;
+  }
+
+  .pause:not(.v1){
+  // don't show pause marks for Uthmai and Indopak script
+    display: none;
   }
 
   .bg-secondary {
