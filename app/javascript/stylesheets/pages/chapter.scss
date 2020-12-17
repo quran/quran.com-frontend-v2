@@ -122,9 +122,13 @@
   .arabic {
     font-size: 30px;
     line-height: normal;
-    word-spacing: 55px;
     display: flex;
     flex-flow: row wrap;
+
+    &.v1 {
+      // add line spacing for FF wrap bug
+      word-spacing: 55px;
+    }
   }
 
   .result-verse,

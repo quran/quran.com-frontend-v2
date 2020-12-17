@@ -162,17 +162,17 @@ export default class extends Controller {
 
     rules.push(`.translation {font-size: ${translationFontSize}px !important}`);
 
+    // add word spacing for v1 font to fix weird word overlapping issue on FF
     rules.push(
-      `#verses-reading .arabic {word-spacing: ${arabicFs * 0.323}px !important}`
+      `#verses-reading .arabic .v1{word-spacing: ${arabicFs *
+        0.323}px !important}`
     );
 
-    //fontStylesheet.sheet.insertRule(
-    //  `#verses-reading .pause {word-spacing: ${arabicFs * 0.423}px !important}`
-    //);
-
     rules.push(
-      `#verses-reading .pause {word-spacing: ${arabicFs * 0.423}px !important}`
+      `#verses-reading .v1.pause {word-spacing: ${arabicFs *
+        0.423}px !important}`
     );
+
     global.styles = this.styles;
     this.styles.innerText = rules.join(" ");
   }
