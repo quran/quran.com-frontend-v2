@@ -12,10 +12,9 @@ import SettingController from "./setting_controller";
 export default class extends SettingController {
   connect() {
     super.connect();
-    const translations = this.get("translations");
-
+    const translations = this.get("translations").map((id) => +(id));
     this.element.querySelectorAll(".translation").forEach(trans => {
-      if (translations.includes(String(trans.value))) {
+      if (translations.includes(+(trans.value))) {
         trans.setAttribute("checked", "checked");
       }
     });
@@ -34,10 +33,11 @@ export default class extends SettingController {
 
   updateTranslations() {
     let newTranslations = [];
-    document.querySelectorAll(".translation:checked").forEach(trans => {
-      newTranslations.push(trans.value);
+    Array.from(document.querySelectorAll(".translation:checked")).sort(function(a, b){
+      return a.dataset.priority - b.dataset.priority;
+    }).forEach(function(el){
+       newTranslations.push(el.value);
     });
-
     this.set("translations", newTranslations);
 
     let controller = document.getElementById("chapter-tabs");

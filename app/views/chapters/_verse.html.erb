@@ -90,7 +90,7 @@
     <div class="col-md-11">
       <div class="translation">
         <% if @presenter.render_translations? %>
-          <%= render partial: 'translation', collection: verse.translations, as: :translation %>
+          <%= render partial: 'translation', collection: verse.translations.sort_by { |t| @presenter.valid_translations.index(t.resource_content_id) }, as: :translation %>
         <% end %>
       </div>
     </div>

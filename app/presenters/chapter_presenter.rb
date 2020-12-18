@@ -296,7 +296,6 @@ class ChapterPresenter < HomePresenter
 
   def load_translations
     translations = valid_translations
-
     if translations.present?
       @results = @results
                    .where(translations: {resource_content_id: translations})

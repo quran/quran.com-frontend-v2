@@ -3,7 +3,7 @@
 %>
 
 <div class="form-check my-4 ml-4" data-filter-tags="<%= language %> <%= translated_name.name.downcase %> <%= translation.name.downcase %>">
-  <input class="form-check-input translation" type="checkbox" value="<%= translation.id %>" id="tans-<%= translated_name.id %>">
+  <input class="form-check-input translation" type="checkbox" value="<%= translation.id %>" id="tans-<%= translated_name.id %>" data-priority=<%=translation.priority || 100%>>
   <label class="form-check-label text-muted" for="tans-<%= translated_name.id %>">
     <span class="<%= translated_name.language_name %>">
       <%= translated_name.name %>
