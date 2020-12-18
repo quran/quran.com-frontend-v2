@@ -32,7 +32,7 @@ export default class extends Controller {
 
     if (opened) {
       this.scrollFromTop = window.scrollY;
-      document.body.style = `position:fixed; top:-${this.scrollFromTop}px`;
+      document.body.style = `position:fixed; inset: -${this.scrollFromTop}px 0 0;`;
       document.querySelectorAll(close).forEach(closeTrigger => {
         closeTrigger.addEventListener("click", e => this.toggle(e));
       });
