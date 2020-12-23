@@ -165,7 +165,7 @@
   .word {
     &:hover,
     &.highlight {
-      color: $color-primary;
+      color: $color-primary !important;
 
       &::selection{
         //TODO: move this to design system.Hard coding this for now
