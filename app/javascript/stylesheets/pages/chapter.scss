@@ -20,6 +20,7 @@
     position: unset !important;
   }
 }
+
 .hear-voice {
   font-size: 12px;
 
@@ -49,6 +50,7 @@
   .fa-play-circle {
     margin-right: 12px;
   }
+
   i.fa.fa-copy {
     margin-right: 7px;
   }
@@ -64,6 +66,7 @@
   img {
     margin-right: 6px;
   }
+
   @media #{$phone} {
     .fa {
       height: 12px;
@@ -72,6 +75,7 @@
     }
     .reflection-link {
       margin-top: 0px !important;
+
       small {
         margin-top: 2px !important;
       }
@@ -162,14 +166,25 @@
     padding-right: 1rem;
   }
 
+  .word-range {
+    background: $color-primary;
+    color: $white;
+
+    .word {
+      &:hover,
+      &.highlight {
+        color: $color-highlight2 !important;
+      }
+    }
+  }
+
   .word {
     &:hover,
     &.highlight {
       color: $color-primary !important;
 
-      &::selection{
-        //TODO: move this to design system.Hard coding this for now
-        color: #FF7416;
+      &::selection {
+        color: $color-highlight2;
       }
     }
   }
@@ -178,8 +193,8 @@
     padding: 0 4px;
   }
 
-  .pause:not(.v1){
-  // don't show pause marks for Uthmai and Indopak script
+  .pause:not(.v1) {
+    // don't show pause marks for Uthmai and Indopak script
     display: none;
   }
 
@@ -196,6 +211,7 @@
 
     .resource {
       color: $color-primary;
+
       &:before {
         content: "—";
       }

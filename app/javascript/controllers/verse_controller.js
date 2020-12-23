@@ -10,7 +10,6 @@ import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 
-
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
   slnt: "Silent",
@@ -54,6 +53,49 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     let el = $(this.element);
+
+    this.bindAyahActions(el);
+    this.bindAyahRangeSelection(el);
+
+    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+      this.bindTajweedTooltip();
+    }
+
+    this.el = el;
+  }
+
+  bindAyahRangeSelection(el) {
+    el.find('.arabic')
+      .on('mouseup', () => this.wrapWordRange(el));
+  }
+
+  wrapWordRange(el) {
+    $('.word.in-range').unwrap($('.word-range'))
+    $('.word.in-range').removeClass('in-range');
+
+    const selection = document.getSelection();
+
+    let startPosition, endPosition;
+
+    if(selection){
+       let start = selection.anchorNode.parentElement;
+       let end = selection.extentNode.parentElement;
+
+      let p1 = start.dataset.position;
+      let p2 = end.dataset.position;
+
+      startPosition = Math.min(p1, p2);
+      endPosition = Math.max(p1, p2);
+
+      for(let i=startPosition; i <= endPosition; i++){
+          el.find(`[data-position=${i}]`).addClass('in-range');
+      }
+
+      $(".word.in-range").wrapAll("<span class='word-range' data-controller='words-range'/>");
+    }
+  }
+
+  bindAyahActions(el) {
     //TODO: enable these action only for reading mode.
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
@@ -71,7 +113,6 @@ export default class extends Controller {
     });
 
     let copyDom = this.element.querySelector(".copy");
-
     copyDom && copyDom.addEventListener('click', e => {
       e.preventDefault();
       this.copy();
@@ -100,12 +141,6 @@ export default class extends Controller {
         }
       }
     });
-
-    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
-      this.bindTajweedTooltip();
-    }
-
-    this.el = el;
   }
 
   disconnect() {

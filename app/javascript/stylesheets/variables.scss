@@ -14,6 +14,7 @@ $color-fusion: darken(desaturate(adjust-hue($color-primary, 5), 80%), 25%);
 $primary: $color-primary;
 $info: $color-info;
 $white: #fff !default;
+$color-highlight2: #FF7416;
 
 // color variant
 $primary-400: lighten($color-primary, 5%) !default;
