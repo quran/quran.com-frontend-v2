@@ -122,7 +122,6 @@
   .arabic {
     font-size: 30px;
     line-height: normal;
-    display: flex;
     flex-flow: row wrap;
 
     &.v1 {
@@ -141,6 +140,14 @@
   .text_indopak {
     word-spacing: initial;
   }
+}
+
+.verse .arabic{
+  display: flex;
+}
+
+.line .arabic{
+  display: inline-flex;
 }
 
 #verses-reading {
