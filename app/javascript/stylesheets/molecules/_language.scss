@@ -1,0 +1,39 @@
+.language {
+  -webkit-appearance: none;
+  border: none;
+  margin: 0 10px;
+  padding: 0 10px;
+  color: $dark-green;
+  background-color: transparent;
+  outline: none;
+  //background-image: url('../../images/');
+  position: relative;
+  padding-right: 30px;
+  option {
+    text-align: start;
+    -webkit-appearance: none;
+    color: black;
+    border-color: transparent;
+    outline: none;
+    margin: 10px;
+  }
+}
+.language-wrapper {
+  position: relative;
+  margin: 0 10px;
+  display: flex;
+  &::after {
+    content: '';
+    background-image: url('../images/arrow.svg');
+    transform: translateY(-50%) rotate(90deg);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 50%;
+    padding: 10px;
+    background-color: w;
+    position: absolute;
+    right: 20px;
+    z-index: -1;
+  }
+}

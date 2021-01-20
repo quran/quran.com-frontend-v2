@@ -1,0 +1,10 @@
+.logo {
+  color: $dark-green;
+  font-size: 26px;
+  margin: 0;
+  padding: 0;
+  &:hover {
+    color: darken($color: $dark-green, $amount: 1%);
+    text-decoration: none;
+  }
+}

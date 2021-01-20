@@ -1,0 +1,161 @@
+.label {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  border-radius: 4px;
+  cursor: pointer;
+  min-height: 40px;
+  position: relative;
+
+}
+.label__right-border {
+  // border-top-right-radius: 0px;
+  // border-bottom-right-radius: 0px;
+  // border-right: 1px solid #C1C2C7;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 32px;
+    background-color: #C1C2C7;
+  }
+  margin-right: 20px;
+}
+.label__opened {
+  background-color: $grey4;
+  @at-root .dark & {
+    background-color: #1c1c20;
+  }
+}
+.label__large {
+  max-width: 400px;
+  width: 100%;
+  min-height: 56px;
+  background-color: $grey4;
+  background-color: #FBFBFB;
+  border: 1px solid #DADBDE;
+  padding: 6px 8px;
+  @at-root .dark & {
+    background-color: #1c1c20;
+    border: 1px solid #71727e;
+  }
+  @at-root .settings & {
+    max-width: none;
+    @include sm {
+      border-radius: 0px;
+    }
+  }
+}
+.label__small {
+  // &.label__opened {
+  //   @at-root .dark {
+  //     background-color: #31333d !important;
+  //   }
+  //   background-color: $grey4;
+  // }
+  max-width: 100px;
+  display: flex;
+  align-items: center;
+}
+.label--text {
+  margin: 0 5px;
+  @at-root .label__large & {
+    margin: 0 ;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
+  }
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+.label--title {
+  color: $font-darkgrey;
+  font-weight: $font-semibold;
+  font-size: $font-medium;
+  white-space: nowrap;
+  @at-root .label__small & {
+    color: $font-darkgrey;
+    font-weight: $font-regular;
+  }
+  @at-root .dark & {
+    color: white;
+  }
+}
+.label--subtitle {
+  color: $font-grey;
+  font-weight: $font-regular;
+  font-size: $font-medium;
+  @at-root .dark & {
+    color: #999AA2;
+  }
+  @at-root .label__small & {
+    display: none;
+  }
+}
+.label--arrow {
+  display: flex;
+  align-items: center;
+  @at-root .label__large & {
+    &::after {
+      transform: rotate(-90deg);
+    }
+  }
+  @at-root .label__opened & {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+  &::after {
+    content: $icon-arrow-down;
+    font-family: quran-icon;
+    margin-right: 9px;
+    font-size: 9px;
+    color: $grey7;
+  }
+}
+
+.label-wrapper {
+
+}
+.dropdown-wrapper {
+  @at-root .label--open & {
+    display: block;
+  }
+  @include smmin {
+    display: none;
+    padding-top: 20px;
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+  }
+  @include sm {
+    display: none;
+   position: fixed;
+   z-index: 10;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(51, 54, 71, 0.478);
+   .dropdown {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     width: 332px;
+     max-width: 90%;
+     height: 100%;
+     border-radius: 0px;
+     box-shadow: none;
+     background-color: white;
+  }
+  }
+
+}

@@ -1,0 +1,50 @@
+.green-image {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  background-image: url('../images/makkah.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  //   max-width: 300px;
+  height: 200px;
+  position: relative;
+  break-inside: avoid-column;
+  margin: 8px auto;
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    padding: 8px;
+    p,
+    h5 {
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00abc29d;
+    z-index: 3;
+  }
+}
+.green-images-wrapper {
+  columns: 290px 3;
+}
+
+.green-image-link:hover {
+  text-decoration: none;
+}

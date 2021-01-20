@@ -1,0 +1,20 @@
+.footer {
+  width: 100vw;
+  background-color: #fbfbfb;
+  padding-bottom: 40px;
+  @at-root .dark & {
+    background-color: #31333d;
+  }
+
+  a {
+    display: block;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & > div {
+      margin-bottom: 16px;
+    }
+  }
+}

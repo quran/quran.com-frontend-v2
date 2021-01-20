@@ -1,0 +1,171 @@
+@import url(//db.onlinewebfonts.com/c/0b51833ff62e4af8acb5fd3e2bf59e97?family=SF+Pro+Display);
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.eot');
+  src: url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.eot?#iefix')
+  format('embedded-opentype'),
+  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.woff2')
+  format('woff2'),
+  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.woff')
+  format('woff'),
+  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.ttf')
+  format('truetype'),
+  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.svg#SF Pro Display')
+  format('svg');
+}
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  font-family: 'SF Pro Display' !important;
+ // font-family: 'Roboto' !important;
+}
+
+
+.dark {
+  // background-color: $dark-grey;
+  background-color: #1c1c20;
+  // padding: 30px 10px;
+}
+
+@mixin scrollbarStyle {
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: $grey9;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+    @at-root .dark & {
+      background-color: $dark-grey;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #808696;
+    border-radius: 4px;
+    width: 6px;
+  }
+}
+html {
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: $grey9;
+    border-radius: 4px;
+    &:hover {
+      width: 12px;
+    }
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+    &:hover {
+      width: 12px;
+    }
+    @at-root .dark & {
+      background-color: $dark-grey;
+    }
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #808696;
+    border-radius: 4px;
+    width: 6px;
+    &:hover {
+      width: 12px;
+    }
+  }
+}
+
+// Small devices
+@mixin xsm {
+  @media (max-width: #{$screen-xsm-min}) {
+    @content;
+  }
+}
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+@mixin smmin {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+@mixin mdmin {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lgmin {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+.arabic .start-circle,
+.arabic .end-circle {
+  width: 3px;
+  height: 2em;
+  background-color: #00acc2;
+  @at-root .dark & {
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    left: -5px;
+    right: -5px;
+    top: 0;
+    bottom: 0;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: -5px;
+    left: -3px;
+    // background: #31333d;
+    border-radius: 50%;
+    background-color: #00acc2;
+    @at-root .dark & {
+    }
+  }
+}
+.arabic .start-circle {
+  transform: rotate(180deg);
+}
+
+.arabic .selection {
+  position: absolute;
+  background: #cfeff4;
+  z-index: -1;
+  @at-root .dark & {
+    background-color: #183036;
+  }
+}

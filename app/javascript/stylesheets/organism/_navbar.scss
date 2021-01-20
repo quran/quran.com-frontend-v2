@@ -1,0 +1,46 @@
+.navbar {
+  background-color: $grey2;
+  height: 48px;
+  padding: 0px;
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+  @at-root .dark & {
+    background-color: #31333d;
+  }
+}
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-inner--firstpart {
+  display: flex;
+  align-items: center;
+}
+.navbar-first-label {
+  width: 200px;
+  @include sm {
+    width: 150px;
+  }
+}
+.nav-tabs { 
+  border-bottom: none;
+
+  @include md {
+    display: none;
+  }
+}
+.nav-button { 
+
+  button {
+
+    @include sm {
+      font-size: 0;
+      &::before {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.translations {
+    .translations__padding {
+        padding-left: 8px;
+    }
+
+    .country-name {
+        position: relative;
+        margin-left: 16px;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -20px;
+            width: 15px;
+            height: 15px;
+           // background-image: url("../../toolkit/images/united-kingdom.svg");
+            background-repeat: no-repeat !important;
+            background-size: contain !important;
+        }
+        &.country-name--al {
+            &::before {
+               // background-image: url("../../toolkit/images/albania.svg") !important;
+            }
+
+        }
+        &.country-name--az {
+            &::before {
+             //   background-image: url("../../toolkit/images/azerbaijan.svg") !important;
+            }
+
+        }
+    }
+    .translations__content {
+        @include sm {
+            padding: 0 16px;
+        }
+    }
+}
+
+

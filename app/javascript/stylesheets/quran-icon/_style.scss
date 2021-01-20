@@ -1,0 +1,252 @@
+@font-face {
+  font-family: 'quran-icon';
+  src:  url('../../quran-icon/quran-icon.eot');
+  src:  url('../../quran-icon/quran-icon.eot?nit14d#iefix') format('embedded-opentype'),
+    url('../../quran-icon/quran-icon.ttf?nit14d') format('truetype'),
+    url('../../quran-icon/quran-icon.woff?nit14d') format('woff'),
+    url('../../quran-icon/quran-icon.svg?nit14d#quran-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'quran-icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-copy {
+  &:before {
+    content: $icon-copy;
+    color: #00acc2;
+  }
+}
+.icon-menu {
+  &:before {
+    content: $icon-menu;
+  }
+}
+.icon-next1 {
+  &:before {
+    content: $icon-next1;
+    color: #c1c2c7;
+  }
+}
+.icon-prev {
+  &:before {
+    content: $icon-prev;
+    color: #c1c2c7;
+  }
+}
+.icon-repeat {
+  &:before {
+    content: $icon-repeat;
+    color: #c1c2c7;
+  }
+}
+.icon-about {
+  &:before {
+    content: $icon-about;
+    color: #999aa3;
+  }
+}
+.icon-contribute {
+  &:before {
+    content: $icon-contribute;
+  }
+}
+.icon-dev {
+  &:before {
+    content: $icon-dev;
+  }
+}
+.icon-help {
+  &:before {
+    content: $icon-help;
+    color: #999ba3;
+  }
+}
+.icon-phone {
+  &:before {
+    content: $icon-phone;
+  }
+}
+.icon-play1 {
+  &:before {
+    content: $icon-play1;
+    color: #71727e;
+  }
+}
+.icon-settings .path1 {
+  &:before {
+    content: $icon-settings-path1;
+    color: rgb(0, 0, 0);
+  }
+}
+.icon-settings .path2 {
+  &:before {
+    content: $icon-settings-path2;
+    margin-left: -1em;
+    color: rgb(51, 54, 71);
+  }
+}
+.icon-minus {
+  &:before {
+    content: $icon-minus;
+    color: #999aa2;
+  }
+}
+.icon-plus {
+  &:before {
+    content: $icon-plus;
+    color: #999aa2;
+  }
+}
+.icon-arrow-down {
+  &:before {
+    content: $icon-arrow-down;
+    color: #999aa2;
+  }
+}
+.icon-arrow-right {
+  &:before {
+    content: $icon-arrow-right;
+    color: #93949c;
+  }
+}
+.icon-book-open {
+  &:before {
+    content: $icon-book-open;
+    color: #c1c2c7;
+  }
+}
+.icon-down .path1 {
+  &:before {
+    content: $icon-down-path1;
+    color: rgb(197, 225, 230);
+  }
+}
+.icon-down .path2 {
+  &:before {
+    content: $icon-down-path2;
+    margin-left: -0.9228515625em;
+    color: rgb(0, 0, 0);
+  }
+}
+.icon-duplicate {
+  &:before {
+    content: $icon-duplicate;
+    color: #c1c2c7;
+  }
+}
+.icon-home {
+  &:before {
+    content: $icon-home;
+    color: #999aa2;
+  }
+}
+.icon-lamp .path1 {
+  &:before {
+    content: $icon-lamp-path1;
+    color: rgb(255, 193, 7);
+  }
+}
+.icon-lamp .path2 {
+  &:before {
+    content: $icon-lamp-path2;
+    margin-left: -0.8330078125em;
+    color: rgb(96, 125, 139);
+  }
+}
+.icon-lamp .path3 {
+  &:before {
+    content: $icon-lamp-path3;
+    margin-left: -0.8330078125em;
+    color: rgb(0, 0, 0);
+  }
+}
+.icon-link {
+  &:before {
+    content: $icon-link;
+    color: #8e94a2;
+  }
+}
+.icon-next {
+  &:before {
+    content: $icon-next;
+    color: #8e94a2;
+  }
+}
+.icon-pause {
+  &:before {
+    content: $icon-pause;
+    color: #999aa2;
+  }
+}
+.icon-play {
+  &:before {
+    content: $icon-play;
+  }
+}
+.icon-quran-reflect {
+  &:before {
+    content: $icon-quran-reflect;
+    color: #c1c2c7;
+  }
+}
+.icon-search {
+  &:before {
+    content: $icon-search;
+  }
+}
+.icon-share1 {
+  &:before {
+    content: $icon-share1;
+  }
+}
+.icon-share-2 {
+  &:before {
+    content: $icon-share-2;
+  }
+}
+.icon-x {
+  &:before {
+    content: $icon-x;
+  }
+}
+.icon-settings1 {
+  &:before {
+    content: $icon-settings1;
+  }
+}
+.icon-minus1 {
+  &:before {
+    content: $icon-minus1;
+  }
+}
+.icon-checkmark {
+  &:before {
+    content: $icon-checkmark;
+  }
+}
+.icon-arrow-right2 {
+  &:before {
+    content: $icon-arrow-right2;
+  }
+}
+.icon-arrow-left2 {
+  &:before {
+    content: $icon-arrow-left2;
+  }
+}
+

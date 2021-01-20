@@ -1,0 +1,76 @@
+.settings {
+}
+
+.settings__menu__head {
+  display: flex;
+  justify-content: space-between;
+}
+.close-settings {
+  // width: 24px;
+  // height: 24px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // cursor: pointer;
+  // &::after {
+  //   content: $icon-x;
+  //   font-family: icomoon;
+  //   font-size: 20px;
+  //   @at-root .dark & {
+  //     color: white;
+  // }
+
+  // }
+}
+.settings__menu__head__first-part {
+  display: flex;
+  align-items: center;
+  a {
+    color: black;
+  }
+}
+
+.flexx {
+  display: flex;
+  justify-content: space-between;
+}
+.flexx-center {
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.display-settings {
+  // display: none;
+}
+
+.audio-select {
+  width: 100%;
+  &.half {
+    width: 50%;
+    padding-right: 8px;
+  }
+  &:nth-child(1) {
+    margin-right: 16px;
+  }
+}
+
+.display-settings__radios {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  @include sm {
+    padding: 0 8px;
+  }
+}
+.audio-settings {
+  .audio-control {
+    // margin-bottom: 32px;
+  }
+  @include sm {
+    padding: 16px;
+  }
+}

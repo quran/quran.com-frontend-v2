@@ -1,0 +1,29 @@
+.mini-input {
+  display: flex;
+  align-items: center;
+}
+
+.mini-input__input {
+  border: 1px solid #e1e1e4;
+  border-radius: 4px;
+  width: 60px;
+  height: 40px;
+  color: #333647;
+  font-size: $font-medium;
+  padding-left: 8px;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+  @at-root .dark & {
+    background: none;
+    border-color: #71727e;
+    color: #fbfbfb;
+  }
+}

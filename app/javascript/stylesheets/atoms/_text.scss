@@ -1,0 +1,68 @@
+.text {
+  text-decoration: none;
+  padding: 0;
+  margin: 5px;
+  @at-root .dark & {
+    &.text--small {
+      color: $grey8;
+    }
+    &.text--xlarge,
+    &.text--medium,
+    &.text--large,
+    &.text--large2 {
+      color: #fbfbfb;
+    }
+
+    &.text--medium.text--semibold {
+      color: #fff;
+    }
+    &.text--grey.text--medium {
+      color: #999aa2;
+    }
+    &.text--small {
+      color: #71727e;
+    }
+  }
+}
+// TEXT COLORS
+.text--grey {
+  color: $font-grey;
+}
+.text--green {
+  color: $font-green;
+}
+.text--darkgrey {
+  color: $font-darkgrey;
+}
+.text--softgray {
+  color: $font-softgrey;
+}
+.text--black {
+  color: $font-pitchblack;
+}
+
+// TEXT SIZES
+.text--small {
+  font-size: $font-small;
+}
+.text--medium {
+  font-size: $font-medium;
+}
+.text--large {
+  font-size: $font-large;
+}
+.text--large2 {
+  font-size: 20px;
+}
+.text--xlarge {
+  font-size: $font-xlarge;
+}
+
+// TEXT WEIGHT
+.text--regular {
+  font-weight: $font-regular;
+}
+.text--semibold {
+  //   font-weight: $font-semibold;
+  font-weight: bold;
+}

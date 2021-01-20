@@ -1,14 +1,527 @@
 <% content_for :header do %>
-  <div class="col-2 justify-content-end d-md-block d-none" data-controller="theme">
-     <span class="theme-switch mr-2" data-theme="light">
-       <%= lazy_image_tag "icon/light.svg" %>
-     </span>
+<% end %>
+
+<div class="container content-page">
+  <div class="content-page__center col">
+    <img class="quran-logo" src="../../assets/toolkit/images/quran-logo.png" alt="">
+    <h1 class="green space-y-32">The Noble Quran</h1>
+    <div class="space-y-8">
+      <div class="input-wrapper large">
+        <input type="text" placeholder="Search 'Noah'">
+      </div>        </div>
+
+
+
+
   </div>
-<% end %>
+  <div class="container space-y-32">
+    <p class="no-margin">Popular Searches</p>
+    <div class="popular-searches">
+      <div>
+        <button id="" class="btn btn--lightgreen btn--large">Ayatul Kursi</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Yaseen</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Mulk</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Ar-Rahman</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Waqi'ah</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Kahf</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Muzzammil</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Muzzammil</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Muzzammil</button>                <button id="" class="btn btn--lightgreen btn--large">Surah Al Muzzammil</button>            </div>
+    </div>
+  </div>
+  <div class="container content-page__center col">
+    <div class="">
+      <div class="tabs">
+        <a id="" class="tabs__item tabs__item--selected show-surah">Show Surah</a>
+        <a id="" class="tabs__item show-juz">Show Juz</a>
+      </div> </div>
+  </div>
+</div>
 
-<%= render 'top_section' %>
 
-<%= cache "chapters-and-juz-#{I18n.locale}" do %>
-  <%= render 'chapter_and_juzs_tabs' %>
-  <%= render 'related_sites' %>
-<% end %>
+<div class="container space-y-32">
+  <div class="juz-section hidden">
+    <div class="juz-card">
+      <h5 class="juz-card__title">Title header</h5>
+      <div class="surah-card">
+        <div class="surah-card__text">
+          <div class="surah-card__latin">
+            <h5>Al-Fatihah</h5>
+            <div class="ayah-number-wrapper">
+              <p class="ayah-number">42-242</p>
+              <p>The Opener</p>
+            </div>
+          </div>
+          <div class="surah-card__arabic">
+            <p>الفاتحة</p>
+          </div>
+        </div>
+      </div>    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>
+    </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>        <div class="juz-card">
+    <h5 class="juz-card__title">Title header</h5>
+    <div class="surah-card">
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p class="ayah-number">42-242</p>
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>    <div class="surah-card">
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p class="ayah-number">42-242</p>
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>
+  </div>    </div>
+  <div class="surah-section">
+    <div class="surah-card">
+      <div class="surah-card__number">
+        1
+      </div>
+      <div class="surah-card__text">
+        <div class="surah-card__latin">
+          <h5>Al-Fatihah</h5>
+          <div class="ayah-number-wrapper">
+            <p>The Opener</p>
+          </div>
+        </div>
+        <div class="surah-card__arabic">
+          <p>الفاتحة</p>
+        </div>
+      </div>
+    </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      2
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      3
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      4
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      5
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      6
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      7
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      8
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      9
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      10
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      11
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      12
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      13
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      14
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>        <div class="surah-card">
+    <div class="surah-card__number">
+      15
+    </div>
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5>Al-Fatihah</h5>
+        <div class="ayah-number-wrapper">
+          <p>The Opener</p>
+        </div>
+      </div>
+      <div class="surah-card__arabic">
+        <p>الفاتحة</p>
+      </div>
+    </div>
+  </div>    </div>
+</div>
+
+
+<div class="container space-y-16 green-images-wrapper">
+  <a href="" class="green-image-link">
+    <div class="green-image ">
+      <div class="content">
+        <h5>Salah</h5>
+        <p>Search player times for any location</p>
+      </div>
+    </div>
+  </a>    <a href="" class="green-image-link">
+  <div class="green-image ">
+    <div class="content">
+      <h5>Sunnah</h5>
+      <p>The Hadith of Prophet Muhammad (ﷺ)</p>
+    </div>
+  </div>
+</a>    <a href="" class="green-image-link">
+  <div class="green-image ">
+    <div class="content">
+      <h5>Noble Quran in audio</h5>
+      <p>Learning &amp; listening at the same time</p>
+    </div>
+  </div>
+</a></div>
+<%#= render 'top_section' %>
+
+<%#= cache "chapters-and-juz-#{I18n.locale}" do %>
+  <%#= render 'chapter_and_juzs_tabs' %>
+  <%#= render 'related_sites' %>
+<%# end %>

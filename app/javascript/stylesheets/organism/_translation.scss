@@ -1,0 +1,194 @@
+.translation__item {
+  display: flex;
+  position: relative;
+  @include sm {
+    flex-direction: column;
+  }
+
+  .translation__icons {
+    display: flex;
+    flex-direction: column;
+    @include sm {
+      flex-direction: row;
+      align-items: center;
+    }
+    .translation__icon {
+      // width: 25px;
+      font-family: inherit;
+      height: 30px;
+      cursor: pointer;
+      margin: 10px 0;
+      text-decoration: none;
+      white-space: nowrap;
+      @include sm {
+        margin: 10px;
+      }
+      @at-root .dark & {
+        color: #999AA2;
+      }
+      .icon-menu {
+        &::before {
+          color: #c1c2c7;
+          font-size: 22px;
+        }
+      }
+      .icon-play1 {
+        &::before {
+          color: $dark-green;
+          font-size: 22px;
+        }
+      }
+    }
+    .surah-ayah {
+      background-color: #ebebed;
+      color: #71727e;
+      border-radius: 4px;
+      padding: 3px 4px;
+      font-size: 14px;
+      @at-root .dark & {
+        background-color: #999aa2;
+        color: #fbfbfb;
+      }
+      //   @include sm {
+      //     position: absolute;
+      //     top: 0;
+      //     left: 0;
+      //   }
+    }
+    .surah-ayah-link {
+      //   @include sm {
+      //     position: absolute;
+      //     top: 0px;
+      //     left: 5px;
+      //   }
+    }
+  }
+
+  .traslation__text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 40px;
+
+    @include sm {
+      padding-left: 0px;
+    }
+  }
+  .traslation__translations {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    @include sm {
+      margin-left: 0;
+    }
+  }
+  .translation__arabic {
+    display: flex;
+    justify-content: flex-end;
+    flex: 2;
+    padding-top: 30px;
+    @include sm {
+      padding-top: 0;
+    }
+    p {
+      text-align: end;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.actions-wrapper {
+  position: absolute;
+  top: 35px;
+  left: 0px;
+  z-index: 123;
+
+  border-radius: 10px;
+  @include sm {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background-color: rgba(133, 133, 133, 0.418);
+    border-radius: 0px;
+  }
+}
+.actions-items {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  padding: 0px 15px;
+  border-radius: 10px;
+   -webkit-box-shadow: 0px 0px 20px 1px #d3d3d3;
+  box-shadow: 0px 0px 20px 1px #d3d3d3;
+  @at-root .dark & {
+    background-color: #31333d;
+    border: 1px solid #71727e;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+  @include sm {
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  a {
+    display: flex;
+    align-items: center;
+    color: #71727e;
+    font-family: 'SF Pro Display' !important;
+  }
+
+  .icon-duplicate,
+  .icon-menu,
+  .icon-book-open,
+  .icon-share-2,
+  .icon-copy,
+  .icon-quran-reflect {
+    &::before {
+      font-family: quran-icon;
+      width: 20px;
+      font-size: 18px;
+      color: $dark-green;
+      margin-right: 10px;
+    }
+  }
+  .icon-quran-reflect {
+    &::before {
+      // font-size: 18px;
+    }
+  }
+}
+
+.actions-menu {
+  position: relative;
+  @include sm {
+    flex: 1;
+    display: flex;
+    height: fit-content;
+    justify-content: flex-end;
+    position: static;
+  }
+}
+.actions-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  @include sm {
+    display: flex;
+  }
+  p {
+    white-space: nowrap;
+  }
+  span {
+    margin-left: 30px;
+    &::before {
+      color: #999aa2;
+    }
+  }
+}

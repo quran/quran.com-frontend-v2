@@ -1,0 +1,110 @@
+.btn {
+  border-radius: 4px;
+  font-size: 14px;
+  height: 32px;
+  padding: 5px 8px;
+}
+.btn--large {
+  padding: 8.5px 8px;
+  height: 40px;
+  //   line-height: 24px;
+}
+.btn--darkgreen {
+  background-color: $dark-green;
+  color: #ffffff;
+  &:hover {
+    color: white;
+    background: darken($color: $dark-green, $amount: 10%);
+    // background-color: #018899;
+  }
+}
+.btn--lightgreen {
+  background-color: $light-green !important;
+  color: $dark-green;
+
+  &:hover {
+    background: darken($color: $light-green, $amount: 10%);
+    color: $dark-green;
+    // background-color: #00ACC2;
+  }
+}
+.btn--lightgrey {
+  background-color: $grey2;
+  color: $black;
+  border: 1px solid #dfdfe0;
+  &:hover {
+    background: darken($color: $grey2, $amount: 10%);
+    color: $black;
+    // background-color: #018899;
+  }
+}
+
+.btn--darkgrey {
+  background-color: #dadbde;
+  color: $black;
+
+  &:hover {
+    background: darken($color: $grey3, $amount: 10%);
+    color: $black;
+    // background-color: #018899;
+  }
+}
+.btn--reciter {
+  background-color: #ebebed;
+  border-radius: 4px;
+  display: block;
+  @at-root .dark & {
+    background-color: #fbfbfb;
+    color: #71727e;
+  }
+}
+.btn--reciter__playing {
+  background-color: $light-green !important;
+  color: $dark-green !important;
+  &:focus {
+    box-shadow: none !important;
+
+  }
+  &.btn--play {
+    &::before {
+      content: $icon-pause;
+      margin-right: 5px;
+      font-family: quran-icon;
+      color: $dark-green;
+    }
+  }
+}
+.btn--settings {
+  @at-root .dark & {
+    background-color: #71727e;
+    color: #fbfbfb;
+  }
+
+  &::before {
+    content: $icon-settings1;
+    margin-right: 5px;
+    font-family: quran-icon;
+    font-size: 12px;
+    @include sm {
+      font-size: 14px;
+    }
+  }
+}
+.btn--play {
+  &::before {
+    content: $icon-play1;
+    margin-right: 5px;
+    font-family: quran-icon;
+    color: #71727e;
+  }
+}
+.btn--arrow-down {
+  &::before {
+    content: $icon-arrow-down;
+    margin-right: 5px;
+    font-size: 8px;
+    font-weight: normal;
+    font-family: quran-icon;
+    color: #999aa2;
+  }
+}

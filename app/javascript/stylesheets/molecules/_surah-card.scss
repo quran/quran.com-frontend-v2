@@ -1,0 +1,99 @@
+.surah-card {
+  background-color: #fbfbfb;
+  border: 1px solid #ebebed;
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  &:hover {
+    box-shadow: 0 2px 3px 0 #e1e1e4;
+  }
+  @at-root .dark & {
+    background-color: #31333d;
+    border: 1px solid #71727e;
+  }
+  @at-root .juz-card & {
+    background-color: #fbfbfb;
+    border: 1px solid #ebebed;
+  }
+}
+.surah-card__number {
+  margin-right: 16px;
+  background-color: #e1e1e4;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333647;
+  @at-root .dark & {
+    background-color: #1c1c20;
+    color: #fbfbfb;
+  }
+}
+.surah-card__text {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+.surah-card__latin {
+  h5 {
+    color: #333647;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 8px;
+    @at-root .dark & {
+      color: #fbfbfb;
+    }
+  }
+  p {
+    color: #71727e;
+    font-size: 14px;
+    margin: 0 !important;
+    padding: 0 !important;
+    @at-root .dark & {
+      color: #999aa2;
+    }
+  }
+
+  .ayah-number-wrapper {
+    display: flex;
+    align-items: center;
+    .ayah-number {
+      background-color: #e1e1e4;
+      color: #333647;
+      border-radius: 12px;
+      height: 24px;
+      padding: 2px 8px !important;
+      margin-right: 8px !important;
+      @at-root .dark & {
+        background-color: #1c1c20;
+        color: #fbfbfb;
+      }
+    }
+  }
+}
+.surah-card__arabic {
+  display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+    padding: 0;
+    color: $dark-green;
+  }
+}
+.surah-section {
+  display: grid;
+  column-gap: 12px;
+  row-gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include sm {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

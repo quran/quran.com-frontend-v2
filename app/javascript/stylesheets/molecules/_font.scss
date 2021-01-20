@@ -1,0 +1,19 @@
+.font {
+    margin-bottom: 30px;
+
+    .arabic-font {
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+.all-fonts {
+    @include sm {
+        padding: 0 16px;
+    }
+}

@@ -54,6 +54,14 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     let el = $(this.element);
+
+    $('.open-actions').click(function() {
+      $('.actions-wrapper').addClass('hidden');
+
+        el.find('.actions-wrapper')
+        .removeClass('hidden');
+    });
+
     //TODO: enable these action only for reading mode.
     this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
