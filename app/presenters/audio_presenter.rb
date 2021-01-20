@@ -31,7 +31,7 @@ class AudioPresenter < BasePresenter
     Verse
       .eager_load(:audio)
       .where(chapter_id: chapter_id, audio_files: {recitation_id: recitation_id})
-      .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+      .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
   end
 
   def verse_start

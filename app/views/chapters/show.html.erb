@@ -62,7 +62,7 @@
       <% end %>
 
       <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
-        <div id='verses'>
+        <div id='verses' class="pages">
           <% if 'reading' == @presenter.active_tab %>
             <%= render 'verses' %>
           <% else %>

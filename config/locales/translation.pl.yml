@@ -2,10 +2,10 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/quran/quran/ja
+# https://translation.io/quran/quran/pl
 #
 ---
-ja:
+pl:
   noble_quran:
   errors:
     not_found:
@@ -15,11 +15,11 @@ ja:
     unavailable_session:
     unacceptable_request:
     connection_refused:
-    format: "%{attribute}%{message}"
-  local: 英語
+    format: "%{attribute} %{message}"
+  local:
   site_local:
   change_local:
-  local_native_name: 英語
+  local_native_name:
   language:
   page:
   reader_mode:
@@ -38,7 +38,7 @@ ja:
       one:
       other:
     remove_all:
-    translation_english: 英語
+    translation_english:
     translation_other:
     reset:
     font_type:
@@ -50,7 +50,7 @@ ja:
       indopak:
     font_size:
       label:
-      arabic: アラビア語
+      arabic:
       translation:
     tooltip:
       label:
@@ -79,13 +79,9 @@ ja:
   footnote:
   share_ayah:
   action:
-    play: '再生する
-
-      '
+    play:
     pause:
-    share: '共有する。
-
-      '
+    share:
     quran_reflect:
     addNote:
     tafsir:
@@ -96,9 +92,7 @@ ja:
       label:
       done:
     copy:
-      label: 'コピー
-
-        '
+      label:
       done:
   search:
     label:
@@ -135,7 +129,7 @@ ja:
     scroll:
   loading:
   nav:
-    title: コーラン
+    title:
     settings:
     contribute:
     about_us:
@@ -149,7 +143,7 @@ ja:
     mobile_apps:
     navigate:
     legacy_site:
-    blog: ブログ
+    blog:
     forum:
     privacy:
   juz:

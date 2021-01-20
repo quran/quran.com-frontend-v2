@@ -1,6 +1,30 @@
 module QuranUtils
   class Quran
-    def self.get_ayah_keyget_ayah_id(surah, ayah)
+    def self.get_ayah_key_from_id(verse_id)
+      surah = nil
+      ayah = nil
+
+      SURAH_AYAH.each_with_index do |surah_ayah, surah_index|
+        if verse_id <= surah_ayah
+          surah = surah_index + 1
+          ayah = verse_id
+
+          break
+        else
+          verse_id = verse_id - surah_ayah
+        end
+      end
+
+      get_ayah_key surah, ayah
+    end
+
+    def self.get_ayah_id_from_key(key)
+      surah, ayah = key.split(':').map(&:to_i)
+
+      get_ayah_id surah, ayah
+    end
+
+    def self.get_ayah_id(surah, ayah)
       if valid_ayah?(surah, ayah)
         abs_ayahs[surah - 1] + ayah
       end

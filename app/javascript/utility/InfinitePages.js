@@ -1,3 +1,5 @@
+// fixed some bugs but maybe should look at this https://github.com/metafizzy/infinite-scroll/tree/master/js
+
 export default class InfinitePages {
   constructor(container, options) {
     const defaultsConfig = {
@@ -9,47 +11,47 @@ export default class InfinitePages {
       success: null, // optional callback when next-page request finishes
       error: null, // optional callback when next-page request fails
       context: window, // context to define the scrolling container
+      id: '',
       state: {
         paused: false,
         loading: false
       }
     };
 
+    this.scrollTimeout = null;
     this.options = $.extend({}, defaultsConfig, options);
     this.$container = container;
     this.$context = $(this.options.context);
+    this.options.id = Math.random().toString(36).substring(2, 10);
+    this.pageScrollHandler = null
+
     this.init();
   }
 
   init() {
-    // Debounce scroll event to improve performance
-    let scrollTimeout = null;
-    const scrollHandler = () => this.check();
-    const { debounce } = this.options;
+    this._log("Init scrolling")
 
-    // Use namespace to let us unbind event handler
-    /*this.$context.on("slimscrolling", function() {
-      if (scrollTimeout && self.active) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = null;
-      }
-      return (scrollTimeout = setTimeout(scrollHandler, debounce));
-    });*/
+    this.pageScrollHandler = this._scrolled.bind(this);
+    return this.$context[0].addEventListener('scroll', this.pageScrollHandler);
+  }
 
-    return this.$context.on("scroll.infinitePages, slimscrolling", function() {
-      if (scrollTimeout && self.active) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = null;
-      }
-      return (scrollTimeout = setTimeout(scrollHandler, debounce));
-    });
+  _scrolled() {
+    const {debounce} = this.options;
+
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+      this.scrollTimeout = null;
+    }
+    return (this.scrollTimeout = setTimeout(() => this.check(), debounce));
   }
 
   // Internal helper for logging messages
   _log(msg) {
     if (this.options.debug) {
+      const {id} = this.options;
+
       return typeof console !== "undefined" && console !== null
-        ? console.log(msg)
+        ? console.log(msg, this.$container.attr('id'), id)
         : undefined;
     }
   }
@@ -133,7 +135,10 @@ export default class InfinitePages {
   }
 
   stop() {
-    this.$context.off("scroll.infinitePages");
+    if (this.scrollTimeout)
+      clearTimeout(this.scrollTimeout);
+
+    this.$context[0].removeEventListener('scroll', this.pageScrollHandler);
     return this._log("Scroll checks stopped");
   }
 

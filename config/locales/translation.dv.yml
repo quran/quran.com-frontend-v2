@@ -14,8 +14,7 @@ dv:
     no_script:
     unavailable_session:
     unacceptable_request: ތިކަމަށް އެކަށޭން ވާށަން އެއް އެބައިން ހެޑާ ބައްލަވައި ގަންނަވާ
-    connection_refused:
-      މާފްކުރައްވާ! ވެބް ކޮންސޯލް މިޑިލްވެއާރް ގުޅުންވަނީ ކެޑިފާ.
+    connection_refused: މާފްކުރައްވާ! ވެބް ކޮންސޯލް މިޑިލްވެއާރް ގުޅުންވަނީ ކެޑިފާ.
       ރެއިލް ޑެވެލޮޕމެންޓް ސާރްވާ  ކުރިއައް ދޭތޯ ބައްލަވާލާ.
     format:
   local: އިގިރޭސި
@@ -27,9 +26,9 @@ dv:
   reader_mode:
     reading:
     translation:
-    info:
+    info: ސޫރަތާ ބެހޭ މައުލޫމާތު
   settings:
-    label:
+    label: ސެޓިންގްސް
     display:
     audio:
     chapters:
@@ -41,22 +40,22 @@ dv:
       other:
     remove_all:
     translation_english:
-    translation_other:
+    translation_other: އެހެން ބަހުރުވާތަށް
     reset:
     font_type:
     fonts:
       tajweed:
-      uthmani:
+      uthmani: ރަސްމް އުޘްމާނީ
       qcf_v1:
       qcf_v2:
       indopak:
     font_size:
-      label:
-      arabic:
-      translation:
+      label: ފޮންޓް ސައިޒް
+      arabic: އަރަބި ބަސް
+      translation: ތަރުޖަމާތައް
     tooltip:
       label:
-      translation:
+      translation: ތަރުޖަމާ
       transliteration:
     night_mode:
       label:
@@ -64,12 +63,12 @@ dv:
       night_tip:
   verses:
     media:
-    go:
-    not_found:
+    go: އާޔަތައް ދިޔުން
+    not_found: އާޔަތެއް ނުފެނުނެވެ
   chapters:
     label: ސޫރައް
-    next: ޖެހިގެން އޮތް ސޫރެއް
-    previous: ފާއިތުއެދިޔަ ސޫރެއް
+    next: ޖެހިގެން އޮތް ސޫރަތް
+    previous: ފާއިތުއެދިޔަ ސޫރެތް
     verses: އާޔެއް
     pages: ސަފްޚާ
     revelation_place: އާޔައް ބާވާލެއްވުނު ބިން
@@ -85,9 +84,9 @@ dv:
     pause: ހުއްޓުވުމަށް
     share:
     quran_reflect:
-    addNote: "ނޯޓެއް އިތުރު ކުރުމަށް
+    addNote: 'ނޯޓެއް އިތުރު ކުރުމަށް
 
-      "
+      '
     tafsir:
       label: ތަފްސީރު
       select: ތަފްސީރު ސްލެކްޓު ކުރުމަށް
@@ -111,12 +110,14 @@ dv:
     al_mulk:
     ar_rahman:
     al_waqiah:
-    al_kahf:
+    al_kahf: سُورَت ال كَحْف
     al_muzammil:
   player:
-    current_verse: އާޔެއް
+    current_verse: 'އާޔަތް
+
+      '
     select_verse:
-    next_verse: ކުރިއަށް އޮތް އާޔެއް
+    next_verse: ކުރިއަށް އޮތް އާޔެތް
     previous_verse: އިސްވެދިޔަ އާޔެއް
     repeat_title:
     repeat_single:
@@ -126,7 +127,7 @@ dv:
     repeat_times:
     repeat_loop:
     pause_bw_ayah: އާޔެއް ހުއްޓަން ދާ ވަގުތު
-    pause_seconds: ސިކުންތު
+    pause_seconds: ސިކުންތުތައް
     pause: ހުއްޓުވުމަށް
     play_continuously: ހުއްޓާނުލާ ކުރިއަށް ގެންދޭ
     show_word_tooltip:
@@ -140,10 +141,9 @@ dv:
     developers: ޑެވެލޮޕާރްސް
     useful_sites: ބޭނުން ހިފޭސައިޓް ތަށް
     other_links: އެހެނިހެން ލިންކްސް
-    contact_us: "އަޅުގނޑުމެންނާ ގުޅުއްވުމަށް "
+    contact_us: 'އަޅުގނޑުމެންނާ ގުޅުއްވުމަށް '
     help: އެހީ އަދީ ފީޑްބެކް
-    about_project:
-      ޤުރްއާން.ކޮމް އަކީ ސަދަޤާތކެވެ. އަޅުގަނޑުމެން އުންމީދު ކުރަނީ މި
+    about_project: ޤުރްއާން.ކޮމް އަކީ ސަދަޤާތކެވެ. އަޅުގަނޑުމެން އުންމީދު ކުރަނީ މި
       ސައިޓަކީ  އެއްމެނަށް ވެސް ބޭނުންތެރިވި ސައިޓެއް ގޮތުގައިއެވެ. ކީރިތި ޤުރުައާނަށް
       ގިނަ ނަންތަށް ދެވިފައިވެއެ.އެގޮތުން ބައެއް ނަންތަކަކީ  އަލް ޤުރުއާނުލް ކަރީމް،
       އަލ ކިތާބު، އަލް ފުރުޤާން އަލް ނޫރު މިފަދަ ނަންތަށް ޝާމިލް ވެފައިވެއެ.
@@ -159,11 +159,11 @@ dv:
   download: ޑައުންލޯޑް
   home: ހޯމް
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
+    label: ގުޅުންހުރި ސައިޓުތައް
+    sunnah: ސުންނަތް
+    sunnah_description: ރަސޫލާ (ﷺ) ގެ ހަދީސް ފުޅުތައް
     salah:
     salah_description:
-    audio:
+    audio: ކީރިތި ޤުރްއާން އަޑު ބަހުން
     audio_description:
   close: ލައްޕާ

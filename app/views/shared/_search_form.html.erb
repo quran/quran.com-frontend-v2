@@ -2,7 +2,7 @@
 
 <div class="search-form flex-fill">
   <form class="form-search form-group sb-search-open" action="/search" data-controller="search-form" data-expand=<%= local_assigns[:expandable] %>>
-    <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
+    <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" autocomplete="off" value="<%= query %>">
     <button type="submit" class="form-control form-control-submit search-btn"></button>
 
     <span class="search-label rounded-right" id=search-trigger>
