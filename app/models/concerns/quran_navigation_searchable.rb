@@ -1,55 +1,57 @@
+# frozen_string_literal: true
+
 module QuranNavigationSearchable
   extend ActiveSupport::Concern
 
   included do
     include Elasticsearch::Model
     index_name 'chapters'
-    settings YAML.load(
-        File.read("config/elasticsearch/settings.yml")
+    settings YAML.safe_load(
+      File.read('config/elasticsearch/settings.yml')
     )
 
     def index_variation(document, options)
       request = {
-          index: self.class.index_name,
-          body: document
+        index: self.class.index_name,
+        body: document
       }
-      request.merge!(type: self.class.document_type) if self.class.document_type
+      request[:type] = self.class.document_type if self.class.document_type
 
       __elasticsearch__.client.index(request.merge!(options))
     end
 
     def es_mappings
-      if self.is_a?(Chapter)
+      if is_a?(Chapter)
         names = [name_arabic, name_complex, name_simple]
 
         (names + translated_names.pluck(:name)).flatten.uniq.map do |name|
           {
-              name: name,
-              url: "/#{id}",
-              verse_id: verses.first.id
+            name: name,
+            url: "/#{id}",
+            verse_id: verses.first.id
           }
         end.flatten
       else
         # Juz
         verse_mapping.map do |chapter_id, verse_range|
           [
-              {
-                name: "Juz #{juz_number} #{Chapter.find(chapter_id).name_simple}",
-                url: "/#{chapter_id}/#{verse_range}",
-                verse_id: ''
-              },
+            {
+              name: "Juz #{juz_number} #{Chapter.find(chapter_id).name_simple}",
+              url: "/#{chapter_id}/#{verse_range}",
+              verse_id: ''
+            },
 
-              {
-                name: " جز#{juz_number} #{Chapter.find(chapter_id).name_arabic}",
-                url: "/#{chapter_id}/#{verse_range}",
-                verse_id: ''
-              },
+            {
+              name: " جز#{juz_number} #{Chapter.find(chapter_id).name_arabic}",
+              url: "/#{chapter_id}/#{verse_range}",
+              verse_id: ''
+            }
           ]
         end.flatten
       end
     end
 
-    def as_indexed_json(options = {})
+    def as_indexed_json(_options = {})
       all_varriations = es_mappings
       first = all_varriations.first
 

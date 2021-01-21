@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchPresenter < BasePresenter
   def add_search_results(search_response)
     @search = search_response
@@ -7,6 +9,7 @@ class SearchPresenter < BasePresenter
 
   def no_results?
     return ture if @search.nil?
+
     @search.empty?
   end
 
@@ -38,7 +41,7 @@ class SearchPresenter < BasePresenter
         t[:language]
       end
 
-      translations.keys.each do |key|
+      translations.each_key do |key|
         translations[key] = translations[key].map do |t|
           t[:texts]
         end.flatten
@@ -67,16 +70,16 @@ class SearchPresenter < BasePresenter
 
   def items
     strong_memoize :items do
-      if :navigation == @search&.result_type
+      if @search&.result_type == :navigation
         @results
       else
         Verse.unscoped.where(id: @results.keys).each do |v|
           highlights = @results[v.id]
-          if highlights[:text].present?
-            v.highlighted_text = highlights[:text].html_safe
-          else
-            v.highlighted_text = v.text_imlaei
-          end
+          v.highlighted_text = if highlights[:text].present?
+                                 highlights[:text].html_safe
+                               else
+                                 v.text_imlaei
+                               end
         end
       end
     end

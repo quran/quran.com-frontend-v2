@@ -10,6 +10,7 @@ class FootNoteController < ApplicationController
   end
 
   protected
+
   def generate_localised_cache_key
     "#{controller_name}/#{action_name}/#{params[:id]}/#{fetch_locale}"
   end

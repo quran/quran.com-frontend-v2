@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class AudioPresenter < BasePresenter
-  def initialize(context)
-    super context
-  end
-
   def data
     json = {}
 
@@ -30,7 +26,7 @@ class AudioPresenter < BasePresenter
   def load_verses
     Verse
       .eager_load(:audio)
-      .where(chapter_id: chapter_id, audio_files: {recitation_id: recitation_id})
+      .where(chapter_id: chapter_id, audio_files: { recitation_id: recitation_id })
       .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
   end
 

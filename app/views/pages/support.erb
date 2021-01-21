@@ -1,234 +1,35 @@
 <div class="container">
-  <div class="row d-flex justify-content-center my-5">
-    <div class="col-md-6">
-      <div class="text-center">
-        <h2>Help &amp; <span>feedback.</span></h2>
-        <p class="mb-5">Please check the FAQ to see if your question has been already answered. If needed you can
-          <a href="https://quran.zendesk.com/hc/en-us/requests/new" target="_blank">
-            contact us
-          </a> & we'll do our best to get back to you as soon as
-          possible, but just so you know we're a small team so please be nice. </p>
-      </div>
+  <div class="content-page content-page--small">
+    <div>
+      <h1>Help &amp; feedback.</h1>
+      <p>Please check the FAQ to see if your question has been already answered.
+        If needed you can<a href="https://quran.zendesk.com/hc/en-us/requests/new" target="_blank">contact us</a>&amp;
+        we'll do our best to get back to you as soon as possible, but just so you
+        know we're a small team so please be nice.
+      </p>
     </div>
-  </div>
 
+    <div>
+      <div id="accordion" class="accordion">
+        <% faq_list.each_with_index do |faq, i| %>
+          <div class="card">
+            <div class="card-header" id="faq-<%= i %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#faq-<%= i %>-body" aria-expanded="true" aria-controls="faq-<%= i %>-body">
+                  <p><%= faq[0] %></p>
+                </button>
+              </h5>
+            </div>
 
-  <div class="row d-flex justify-content-center">
-    <div class="col-lg-8 col-md-12">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="accordion-box">
-            <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      I found a translation bug, where do I file it?
-                    </a>
-                  </h2>
-                </div>
-
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                    It would help us a lot to keep the bugs and translation changes organized. You can fill out this
-                    simple and quick for to help us streamline the process. Visit the form at:
-                    <a href="https://quran.zendesk.com/hc/en-us/requests/new" target="_blank">
-                      https://quran.zendesk.com/hc/en-us/requests/new
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Translation
-                      missing
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="card-body">Open a new issue at
-                    <a href="https://github.com/quran/quran.com-frontend-v2/issues/new?title=Add missing translation" target="_blank" class="text-primary">Github</a>
-                    with all the detail, link to translation and we'll try our best to add this.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">I'm
-                      a developer. How can I contribute?
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="card-body">
-                    Please see <a href="/developers" class="text-primary">developers page</a> for more info.
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-header" id="headingFour">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">The
-                      site is not working, how do I tell you?
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                  <div class="card-body"> That's not good! If the site is not working at all or perhaps you see a white
-                    screen with '502', we appreciate it if you can email us immediately to let us know. You can email us
-                    at fire@quran.zendesk.com.
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-header" id="headingFive">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">Islamic
-                      / Fiqh / Fatwa related questions
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                  <div class="card-body">
-                    Quran.com is an online reading, listening and studying tool. The team behind Quran.com is made up of
-                    software engineers, designers, and product managers. Unfortunately, that is the limitation of our
-                    skill set we do not have scholars, imams or sheikhs as part of the team to assist with Islamic, Fiqh
-                    or Fatwa related questions. We try to refrain from answering any of those questions and advise you
-                    speak to your local imam at a mosque or to a sheikh.
-                  </div>
-                </div>
+            <div id="faq-<%= i %>-body" class="collapse" aria-labelledby="faq-<%= i %>" data-parent="#accordion">
+              <div class="card-body">
+               <%= faq[1].html_safe %>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="accordion-box">
-            <div class="accordion" id="accordionExample2">
-              <div class="card">
-                <div class="card-header" id="headingSix">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Does
-                      Quran.com have an app?
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample2">
-                  <div class="card-body">
-                    Yes! Please visit <a href="/pages/apps" class="text-primary">Apps page</a> to see our Android, and
-                    iOS apps.
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-header" id="headingSeven">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                      How can I donate?
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample2">
-                  <div class="card-body"> Firstly, we really appreciate your interest to contribute. Please visit
-                    <a href="/pages/donations" class="text-primary">this link</a>.
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-header" id="headingEight">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                      Is Tafsir available?
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample2">
-                  <div class="card-body">
-                    Yes, we do have some Tafsirs. Click on Tafisr Icon app will show you list of available tafsirs. Then select the
-                    tafsir you want to read.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingNine">
-                  <h2 class="mb-0">
-                    <a class="btn btn-link text-primary collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                      Adding more reciters
-                    </a>
-                  </h2>
-                </div>
-                <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample2">
-                  <div class="card-body">
-                    Submit more info about this reciter <%= link_to 'here', 'https://github.com/quran/quran.com-api/issues/new?title=Add%20new%20recitation', target: '_blank' %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row d-flex justify-content-center">
-    <div class="col-lg-8 col-md-12">
-      <div class="text-center my-5">
-        <h3 class="text-muted">
-          Can't find what you're looking for?
-          <span class="text-primary">
-             <%= link_to 'Submit Your Question here', 'https://quran.zendesk.com/hc/en-us/requests/new', target: '_blank' %>
-          </span>
-        </h3>
-
-        <% if false %>
-          <form action="https://contact.qurancdn.com/contact" method="post" data-remote="true" data-controller="contact-us">
-            <div class="row">
-              <div class="col-md-4">
-                <input type="text" class="form-control" placeholder="Full Name" name="contact[name]" required>
-              </div>
-
-              <div class="col-md-4">
-                <input type="email" class="form-control" placeholder="Email Address" name="contact[email]" required>
-              </div>
-              <div class="col-md-4">
-                <select class="form-control" name="contact[subject]" required>
-                  <option>Subject</option>
-                  <option value="feedback">Feedback &amp; Suggestions</option>
-                  <option value="translation-bug">Translation Error</option>
-                  <option value="bug">Site Bug</option>
-                  <option value="talent">Contributing (monetary or talent)</option>
-                  <option value="help">Help</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <textarea class="form-control" placeholder="Question" name="contact[detail]" required></textarea>
-                <small class="form-text text-muted">
-                  Please be as concise as possible and include screenshots where applicable to help us help you as
-                  quickly
-                  as we can.
-                </small>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="alert alert-dismissible alert-primary d-none">
-                </div>
-
-                <button type="submit" class="btn btn-primary" data-disable-with="Please wait..">Send Question</button>
-              </div>
-            </div>
-          </form>
         <% end %>
       </div>
     </div>
   </div>
-
 </div>
+

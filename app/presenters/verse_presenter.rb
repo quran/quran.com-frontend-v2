@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class VersePresenter < BasePresenter
   def verse
     if params[:id].to_s.include?(':')
-      Verse.find_by_verse_key(params[:id])
+      Verse.find_by(verse_key: params[:id])
     else
-      Verse.find_by_id_or_key(params[:id])
+      Verse.find_by(id_or_key: params[:id])
     end
   end
 
@@ -13,12 +15,11 @@ class VersePresenter < BasePresenter
 
   def tafsir_languages
     list = Language
-             .eager_load(:translated_name)
-             .where(id: approved_tafsirs.select(:language_id))
+           .eager_load(:translated_name)
+           .where(id: approved_tafsirs.select(:language_id))
 
-    eager_load_translated_name(list).reduce({}) do |hash, translation|
+    eager_load_translated_name(list).each_with_object({}) do |translation, hash|
       hash[translation.id] = translation
-      hash
     end
   end
 
@@ -30,9 +31,7 @@ class VersePresenter < BasePresenter
     tafsir&.resource_name || ResourceContent.find(tafirs_filter).name
   end
 
-  def chapter
-    verse.chapter
-  end
+  delegate :chapter, to: :verse
 
   def params_for_verse_link
     {}
@@ -73,7 +72,7 @@ class VersePresenter < BasePresenter
   end
 
   def tafsir_text
-    if(t= tafsir)
+    if (t = tafsir)
       t.text.gsub(/[.]+/, '.<br/>').to_s.html_safe
       t.text.to_s.html_safe
     else

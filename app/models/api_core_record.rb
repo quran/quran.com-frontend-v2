@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class ApiCoreRecord < ActiveRecord::Base
+class ApiCoreRecord < ApplicationRecord
   self.abstract_class = true
 end

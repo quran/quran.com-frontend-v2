@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   caches_action :show,
                 cache_path: :page_cache_key

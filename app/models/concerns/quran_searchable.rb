@@ -1,22 +1,25 @@
+# frozen_string_literal: true
+
 require 'elasticsearch/model'
 
 module QuranSearchable
   TRANSLATION_LANGUAGES = Language.with_translations
   TRANSLATION_LANGUAGE_CODES = TRANSLATION_LANGUAGES.pluck(:iso_code) + ['default']
-  VERSE_TEXTS_ATTRIBUTES = [:text_uthmani, :text_uthmani_simple, :text_imlaei, :text_imlaei_simple, :text_indopak, :text_indopak_simple]
+  VERSE_TEXTS_ATTRIBUTES = %i[text_uthmani text_uthmani_simple text_imlaei text_imlaei_simple text_indopak
+                              text_indopak_simple].freeze
   # Translation we'll always search, regardless of language of queried text
   # 131 Dr. Mustafa Khattab
   # 149 Fadel Soliman, Bridges’ translation
   # 57 Transliteration
-  DEFAULT_TRANSLATIONS = [131, 149, 57]
+  DEFAULT_TRANSLATIONS = [131, 149, 57].freeze
   extend ActiveSupport::Concern
 
   included do
     include Elasticsearch::Model
     ES_TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
-    settings YAML.load(
-      File.read("config/elasticsearch/settings.yml")
+    settings YAML.safe_load(
+      File.read('config/elasticsearch/settings.yml')
     )
 
     alias_method :verse_id, :id
@@ -25,10 +28,11 @@ module QuranSearchable
       "#{chapter_id}/#{verse_number}"
     end
 
-    def as_indexed_json(options = {})
-      hash = self.as_json(
-        only: [:id, :verse_key, :chapter_id, :text_uthmani, :text_uthmani_simple, :text_imlaei, :text_imlaei_simple, :text_indopak, :text_indopak_simple],
-        methods: [:verse_path, :verse_id]
+    def as_indexed_json(_options = {})
+      hash = as_json(
+        only: %i[id verse_key chapter_id text_uthmani text_uthmani_simple text_imlaei text_imlaei_simple
+                 text_indopak text_indopak_simple],
+        methods: %i[verse_path verse_id]
       )
 
       hash[:words] = words.where.not(text_uthmani: nil).map do |w|
@@ -40,10 +44,10 @@ module QuranSearchable
         }
       end
 
-      translations.where.not(resource_content_id: DEFAULT_TRANSLATIONS).includes(:language).each do |trans|
+      translations.where.not(resource_content_id: DEFAULT_TRANSLATIONS).includes(:language).find_each do |trans|
         doc = {
           translation_id: trans.id,
-          text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
+          text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w[], attributes: []),
           language: trans.language_name,
           resource_id: trans.resource_content_id,
           resource_name: trans.resource_name
@@ -53,17 +57,17 @@ module QuranSearchable
         hash["trans_#{trans.language.iso_code}"] << doc
       end
 
-      translations.where(resource_content_id: DEFAULT_TRANSLATIONS).each do |trans|
+      translations.where(resource_content_id: DEFAULT_TRANSLATIONS).find_each do |trans|
         doc = {
           translation_id: trans.id,
-          text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w(), attributes: []),
+          text: ES_TEXT_SANITIZER.sanitize(trans.text, tags: %w[], attributes: []),
           language: trans.language_name,
           resource_id: trans.resource_content_id,
           resource_name: trans.resource_name
         }
 
-        hash["trans_default"] ||= []
-        hash["trans_default"] << doc
+        hash['trans_default'] ||= []
+        hash['trans_default'] << doc
       end
 
       hash
@@ -78,7 +82,7 @@ module QuranSearchable
       end
 
       VERSE_TEXTS_ATTRIBUTES.each do |text_type|
-        indexes text_type, type: "text" do
+        indexes text_type, type: 'text' do
           indexes :text,
                   type: 'text',
                   similarity: 'my_bm25',
@@ -100,7 +104,7 @@ module QuranSearchable
                   search_analyzer: 'arabic_stemmed',
                   analyzer: 'arabic_ngram'
 
-          #indexes :autocomplete,
+          # indexes :autocomplete,
           #        type: 'completion',
           #        analyzer: 'arabic_synonym_normalized',
           #        search_analyzer: 'arabic_synonym_normalized'
@@ -131,7 +135,7 @@ module QuranSearchable
       end
 
       TRANSLATION_LANGUAGES.each do |lang|
-        es_analyzer = lang.es_analyzer_default.present? ? lang.es_analyzer_default : nil
+        es_analyzer = lang.es_analyzer_default.presence
 
         indexes "trans_#{lang.iso_code}", type: 'nested' do
           indexes :text, type: 'text' do
@@ -149,7 +153,7 @@ module QuranSearchable
                     analyzer: es_analyzer || 'english',
                     search_analyzer: 'shingle_analyzer'
 
-            #indexes :autocomplete,
+            # indexes :autocomplete,
             #        type: 'completion',
             #        search_analyzer: 'standard',
             #        analyzer: es_analyzer || 'english'
@@ -157,7 +161,7 @@ module QuranSearchable
         end
       end
 
-      indexes "trans_default", type: 'nested' do
+      indexes 'trans_default', type: 'nested' do
         indexes :text, type: 'text' do
           indexes :text,
                   type: 'text',

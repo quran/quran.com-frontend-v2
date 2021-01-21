@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get '/audio', to: 'audio_files#index'
   get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
-  get "آیت الکرسی/", to: 'chapters#ayatul_kursi', id: '2', range: '255'
+  get 'آیت الکرسی/', to: 'chapters#ayatul_kursi', id: '2', range: '255'
 
   get '/about-us', to: 'pages#about_us', as: :about_us
   get :apps, to: 'pages#apps'
@@ -54,45 +54,44 @@ Rails.application.routes.draw do
   get '/manifest', to: 'static#manifest'
   get '/opensearch', to: 'static#opensearch'
 
-  get "/sitemap.xml.gz" => proc { |req|
+  get '/sitemap.xml.gz' => proc { |_req|
     [
-        200,
-        {
-            'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{1.day.to_i}",
-            'Expires' => 1.day.from_now.to_s(:rfc822),
-            'Content-Type' => 'text/html'
-        },
-        [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
+      200,
+      {
+        'Pragma' => 'public',
+        'Cache-Control' => "max-age=#{1.day.to_i}",
+        'Expires' => 1.day.from_now.to_s(:rfc822),
+        'Content-Type' => 'text/html'
+      },
+      [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
     ]
   }
 
-  get "sitemap.xml.gz" => proc { |req|
+  get 'sitemap.xml.gz' => proc { |_req|
     [
-        200,
-        {
-            'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{7.days.to_i}",
-            'Expires' => 1.days.from_now.to_s(:rfc822),
-            'Content-Type' => 'text/html'
-        },
-        [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
+      200,
+      {
+        'Pragma' => 'public',
+        'Cache-Control' => "max-age=#{7.days.to_i}",
+        'Expires' => 1.day.from_now.to_s(:rfc822),
+        'Content-Type' => 'text/html'
+      },
+      [open(Rails.root.join('public', 'sitemaps', 'sitemap.xml.gz')).read]
     ]
   }
 
-
-  get "sitemaps/sitemap:number.xml.gz" => proc { |req|
-    filename = req['PATH_INFO'].gsub('sitemaps', '').gsub(/\//, '')
+  get 'sitemaps/sitemap:number.xml.gz' => proc { |req|
+    filename = req['PATH_INFO'].gsub('sitemaps', '').delete('/')
 
     [
-        200,
-        {
-            'Pragma' => 'public',
-            'Cache-Control' => "max-age=#{7.day.to_i}",
-            'Expires' => 7.days.from_now.to_s(:rfc822),
-            'Content-Type' => 'text/html'
-        },
-        [open(Rails.root.join('public', 'sitemaps', filename)).read]
+      200,
+      {
+        'Pragma' => 'public',
+        'Cache-Control' => "max-age=#{7.days.to_i}",
+        'Expires' => 7.days.from_now.to_s(:rfc822),
+        'Content-Type' => 'text/html'
+      },
+      [open(Rails.root.join('public', 'sitemaps', filename)).read]
     ]
   }
 
@@ -114,10 +113,10 @@ Rails.application.routes.draw do
   get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
   # 2-3-5 => 2/3-5
-  #get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+  # get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
   get '/:id', to: 'chapters#show', as: :chapter
   get '/:id/(:range)', to: 'chapters#show', as: :range
 
-  match '*unmatched_route', :to => 'application#not_found', via: :all
+  match '*unmatched_route', to: 'application#not_found', via: :all
 end
