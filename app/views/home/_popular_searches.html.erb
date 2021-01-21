@@ -1,0 +1,13 @@
+<div class="container space-y-32">
+  <p class="no-margin">
+    <%= _t('search.popular') %>
+  </p>
+
+  <div class="popular-searches">
+    <div>
+      <% popular_searches.each_with_index do |poplar_search, i| %>
+        <%= link_to poplar_search[1], poplar_search[0], class: 'btn btn--lightgreen btn--large', data: {controller: 'track', name: 'popular-search', category: poplar_search[0]} %>
+      <% end %>
+    </div>
+  </div>
+</div>

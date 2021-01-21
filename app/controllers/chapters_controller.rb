@@ -102,8 +102,6 @@ class ChaptersController < ApplicationController
 
   def init_presenter
     @presenter = case action_name
-                 when 'index'
-                   HomePresenter.new(self)
                  when 'ayatul_kursi'
                    AyatulKursiPresenter.new(self)
                  when 'load_verses'

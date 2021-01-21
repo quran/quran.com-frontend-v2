@@ -6,6 +6,9 @@ en:
   local_native_name: English
   language: Language
   page: Page
+  tabs:
+    chapter: Show Surah
+    juz: Show Juz
   reader_mode:
     reading: Reading
     translation: Translations

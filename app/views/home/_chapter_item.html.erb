@@ -1,0 +1,29 @@
+<%= link_to chapter_path(chapter),
+            data: {
+              controller: 'track',
+              name: 'chapters',
+              category: "#{chapter.id}-#{chapter.name_simple}"
+            } do %>
+  <div class="surah-card">
+    <div class="surah-card__number">
+      <%= chapter.chapter_number %>
+    </div>
+
+    <div class="surah-card__text">
+      <div class="surah-card__latin">
+        <h5><%= chapter.name_simple %></h5>
+        <% translated_name = chapter.translated_name %>
+        <div class="ayah-number-wrapper <%= translated_name.language_name %>">
+          <p><%= translated_name.name %></p>
+        </div>
+      </div>
+
+      <div class="surah-card__arabic">
+        <p>
+          <span class="icon-surah icon-surah<%= chapter.chapter_number %>"></span>
+          <span class="icon-surah icon-surah-surah"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,19 +1,22 @@
-<%= render 'shared/left_side_bar' %>
-
 <div class="header header--border">
   <div class="container header-inner">
     <div class="header-inner__firstpart">
       <div class="header-inner__firstpart__menu">
         <!-- TODO add hamburger to fonts -->
-        <%= image_tag 'icon/hamburger.svg', id:'menu-open' %>
+        <%= image_tag 'icon/hamburger.svg', id:'site-menu--trigger' %>
       </div>
-      <a class="logo" href="#"><strong>Quran</strong>.com</a>
+
+      <%= link_to root_path, class: 'logo' do %>
+        <strong>Quran</strong>.com
+      <% end %>
     </div>
+
     <div class="header-input">
       <div class="input-wrapper medium">
         <input type="text" placeholder="" />
       </div>
     </div>
+
     <div class="header-theme-switch">
       <div class="theme-language">
         <div class="language-wrapper">
@@ -26,6 +29,7 @@
             <option value="1">Spanish</option>
           </select>
         </div>
+
         <div class="theme-switch">
           <div class="theme-switch__buttons">
             <a class="theme-switch__button light active" href="#"></a>
@@ -39,3 +43,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'shared/site_menu' %>

@@ -86,6 +86,7 @@ group :development do
 
   # Linters
   gem 'scss_lint'
+  #gem 'erb_lint'
   # Pronto specific gems will analyze code and add comments on Github PR
   #gem 'pronto'
   #gem 'pronto-blacklist', require: false

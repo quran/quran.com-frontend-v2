@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'chapters#index'
+  root to: 'home#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :static do
