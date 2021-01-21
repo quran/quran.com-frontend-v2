@@ -15,8 +15,8 @@
             <option value="1">German</option>
             <option value="1">Spanish</option>
           </select>
-
         </div>
+
         <div class="theme-switch">
           <div class="theme-switch__buttons">
             <a class="theme-switch__button light active" href="#"></a>
@@ -29,58 +29,93 @@
       </div>
       <div class="site-menu__items">
         <div class="menu-item">
-          <a class="menu-item__link" href="">
+          <%= link_to root_path, class: 'menu-item__link' do %>
             <span class="icon icon-home"></span>
-            <p class="text text--grey text--large text--semibold">Home</p></a>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('home') %>
+            </p>
+          <% end %>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
+          <%= link_to apps_path, class: 'menu-item__link' do %>
             <span class="icon icon-mobile"></span>
-            <p class="text text--grey text--large text--semibold">Mobile Apps</p></a>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.mobile_apps') %>
+            </p>
+          <% end %>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
+          <%= link_to about_us_path, class: 'menu-item__link' do %>
             <span class="icon icon-about"></span>
-            <p class="text text--grey text--large text--semibold">About Us</p></a>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.about_us') %>
+            </p>
+          <% end %>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
-            <span class="icon icon-contribute"></span>
-            <p class="text text--grey text--large text--semibold">Contribute</p></a>
-        </div>
-        <div class="menu-item">
-          <a class="menu-item__link" href="">
+          <%= link_to support_path, class: 'menu-item__link' do %>
             <span class="icon icon-help"></span>
-            <p class="text text--grey text--large text--semibold">Help &amp; feedback</p></a>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.help') %>
+            </p>
+          <% end %>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
+          <%= link_to developers_path, class: 'menu-item__link' do %>
             <span class="icon icon-dev"></span>
-            <p class="text text--grey text--large text--semibold">Developers</p></a>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.developers') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to privacy_path, class: 'menu-item__link' do %>
+            <span class="icon-about"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.privacy') %>
+            </p>
+          <% end %>
         </div>
       </div>
 
       <div class="site-menu__sites">
-        <p class="text text--large2 text--black text--semibold">Related Sites</p>
+        <p class="text text--large2 text--black text--semibold">
+          <%= _t('related_sites.label') %>
+        </p>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
-            <span class="icon icon-"></span>
-            <p class="text text--grey text--large text--semibold">Quranaudio.com</p></a>
+          <a class="menu-item__link" href="https://quranicaudio.com/">
+            <p class="text text--grey text--large text--semibold">Quranaudio.com</p>
+          </a>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
-            <span class="icon icon-"></span>
-            <p class="text text--grey text--large text--semibold">Salah.com</p></a>
+          <a class="menu-item__link" href="https://sunnah.com/">
+            <p class="text text--grey text--large text--semibold">Sunnah.com</p>
+          </a>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
-            <span class="icon icon-"></span>
-            <p class="text text--grey text--large text--semibold">Legacyquran.com</p></a>
+          <a class="menu-item__link" href="https://salah.com/">
+            <p class="text text--grey text--large text--semibold">Salah.com</p>
+          </a>
         </div>
+
         <div class="menu-item">
-          <a class="menu-item__link" href="">
-            <span class="icon icon-"></span>
-            <p class="text text--grey text--large text--semibold">Corpus.Quran.com</p></a>
+          <a class="menu-item__link" href="https://legacy.quran.com/">
+            <p class="text text--grey text--large text--semibold">Legacy Quran.com</p>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://corpus.quran.com/wordbyword.jsp">
+            <p class="text text--grey text--large text--semibold">Corpus.Quran.com</p>
+          </a>
         </div>
       </div>
     </div>
