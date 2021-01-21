@@ -1,118 +1,43 @@
-<% if false %>
-<footer class="footer pb-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-2 col-md-3 col-sm-6">
-        <div class="footer-tab">
-          <h4><%= _t('nav.navigate') %></h4>
-          <ul>
-            <li>
-              <%= link_to _t('nav.about_us'), about_us_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.contribute'), donations_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.privacy'), privacy_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.help'), support_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.developers'), developers_path %>
-            </li>
-            <li>
-              <%= link_to _t('download'), apps_path %>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 col-sm-6">
-        <div class="footer-tab">
-          <h4><%= _t('nav.useful_sites') %></h4>
-          <ul>
-            <li>
-              <a href="https://quranicaudio.com/" target="_blank" rel="noopener noreferrer">Quranicaudio.com</a>
-            </li>
-            <li>
-              <a href="https://salah.com/" target="_blank" rel="noopener noreferrer">Salah.com</a>
-            </li>
-            <li>
-              <a href="https://sunnah.com/" target="_blank" rel="noopener noreferrer">Sunnah.com</a>
-            </li>
-            <li>
-              <a href="https://legacy.quran.com/" target="_blank" rel="noopener noreferrer"> Legacy Quran.com</a>
-            </li>
-            <li>
-              <a href="https://corpus.quran.com/wordbyword.jsp" target="_blank" rel="noopener noreferrer">Corpus.Quran.com</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 col-sm-6">
-        <div class="footer-tab">
-          <h4><%= _t('nav.other_links') %></h4>
-          <ul>
-            <li>
-              <a href="https://quran.com/sitemap.xml.gz" target="_blank" rel="noopener noreferrer">Sitemap</a>
-            </li>
-            <li>
-              <a href="https://quran.com/36" target="_blank" rel="noopener noreferrer">Surah Yaseen (يس)</a>
-            </li>
-            <li>
-              <a href="https://quran.com/2/255" target="_blank" rel="noopener noreferrer">Ayat Al-Kursi (آية الكرسي)</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 col-sm-12 ml-auto">
-        <div class="copyright">
-          <p class="mb-4">
-            <%= _t('nav.about_project').html_safe %>
-          </p>
-          <p class="mb-0">&copy; <%= Date.today.year %> <a href="https://quran.com">Quran.com</a>. <%= _t('nav.rights') %></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-<% end %>
-
 <div class="footer">
   <div class="container">
     <div class="content-page">
       <div class="footer-links">
         <div>
-          <h5>Navigation</h5>
-          <a href="">About us</a>
-          <a href="">Contribute</a>
-          <a href="">Privacy</a>
-          <a href="">Help &amp; feedback</a>
-          <a href="">Developers</a>
-          <a href="">Download</a>
+          <h5><%= _t('nav.navigate') %></h5>
+          <%= link_to _t('nav.about_us'), about_us_path %>
+          <%= link_to _t('nav.contribute'), donations_path %>
+          <%= link_to _t('nav.help'), support_path %>
+          <%= link_to _t('nav.developers'), developers_path %>
+          <%= link_to _t('download'), apps_path %>
+          <%= link_to _t('nav.privacy'), privacy_path %>
+        </div>
+
+        <div>
+          <h5><%= _t('nav.useful_sites') %></h5>
+          <a href="https://quranicaudio.com/" target="_blank">Quranicaudio.com</a>
+          <a href="https://salah.com/" target="_blank">Salah.com</a>
+          <a href="https://sunnah.com/" target="_blank">Sunnah.com</a>
+          <a href="https://legacy.quran.com/" target="_blank"> Legacy Quran.com</a>
+          <a href="https://corpus.quran.com/wordbyword.jsp" target="_blank">Corpus.Quran.com</a>
+          <a href="https://quranreflect.com" target="_blank">QuranReflect.com</a>
         </div>
         <div>
-          <h5>Useful sites</h5>
-          <a href="">Quranicaudio.com</a>
-          <a href="">Salah.com</a>
-          <a href="">Sunnah.com</a>
-          <a href="">Legacy Quran.com</a>
-          <a href="">Corpus.Quran.com</a>
+          <h5><%= _t('nav.other_links') %></h5>
+          <a href="https://quran.com/sitemap.xml.gz" target="_blank">Sitemap</a>
+          <a href="/surah-ya-sin">Surah Yaseen (يس)</a>
+          <a href="/ayatul-kursi">Ayat Al-Kursi (آية الكرسي)</a>
+          <a href="/surah-al-kahf">Surah Al-Kahf (الكهف)</a>
         </div>
-        <div>
-          <h5>Other links</h5>
-          <a href="">Sitemap</a>
-          <a href="">Surah Yaseen (يس)</a>
-          <a href="">Ayat Al-Kursi (آية الكرسي)</a>
-        </div>
+
         <div style="max-width: 345px;">
-          <p>Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone to read, study, and learn
-            The Noble Quran. The Noble Quran has many names including Al-Quran Al-Kareem, Al-Ketab,
-            Al-Furqan, Al-Maw'itha, Al-Thikr, and Al-Noor.</p>
-          <p>© 2020<a style="display: inline;" href="">Quran.com</a>. All Rights Reserved</p>
+          <p>
+            <%= _t('nav.about_project').html_safe %>
+          </p>
+
+          <p>
+            &copy; <%= Date.today.year %>
+            <a href="https://quran.com" style="display: inline;" >Quran.com</a>. <%= _t('nav.rights') %>
+          </p>
         </div>
       </div>
     </div>
