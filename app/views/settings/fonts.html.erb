@@ -30,70 +30,65 @@
 </style>
 
 
-<div data-controller="font" class="px-4">
-  <div class="row">
-    <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" name="font" value="v1" id=v1>
-      <label class="form-check-label text-muted ff-m" for="v1">
-        <%= _t('settings.fonts.qcf_v1') %>
 
-        <div class="arabic" style="font-size: 30px">
-          <% verse.words.each do |word| %>
-            <span class=" p1-v1"<%= word.char_type_name %>" id="w-<%= word.id %>">
-            <%= word.code.html_safe %>
-            </span>
-          <% end %>
-        </div>
-      </label>
-    </div>
 
-    <% if false %>
-      <div class="my-4 col-12">
-        <input class="form-check-input" type="radio" name="font" value="v2" id=v2>
-        <label class="form-check-label text-muted ff-m" for="v2">
-          <%= _t('settings.fonts.qcf_v2') %>
-          <div class="arabic" style="font-size: 30px">
-            <% verse.words.each do |word| %>
-            <span class="p1-v2 <%= word.char_type_name %>" id="w-<%= word.id %>">
-              <%= word.code_v2.html_safe %>
-            </span>
-            <% end %>
-          </div>
-        </label>
-      </div>
-    <% end %>
 
-    <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" checked=checked name="font" value="uthmani" id=uthmani>
-      <label class="form-check-label text-muted ff-m" for="uthmani">
-        <%= _t('settings.fonts.uthmani') %>
-
-        <div class="arabic madani" style="font-size: 30px">
-          <%= verse.text_uthmani %>
-        </div>
-      </label>
-    </div>
-
-    <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" name="font" value="indopak" id=indopak>
-      <label class="form-check-label text-muted ff-m" for="indopak">
-        <%= _t('settings.fonts.indopak') %>
-
-        <div class="arabic indopak" style="font-size: 30px">
-          <%= verse.text_indopak %>
-        </div>
-      </label>
-    </div>
-
-    <div class="my-4 col-12">
-      <input class="form-check-input" type="radio" name="font" value="tajweed" id=tajweed>
-      <label class="form-check-label text-muted ff-m" for="tajweed">
-        <%= _t('settings.fonts.tajweed') %>
-
-        <div class="arabic text_uthmani_tajweed" style="font-size: 30px">
-          <%= raw verse.text_uthmani_tajweed %>
-        </div>
-      </label>
+<div class="all-fonts" data-controller="font">
+  <div class="font">
+    <label class="radio-label "><%= _t('settings.fonts.qcf_v1') %> <input class="" name="font" type="radio" value="v1" id=v1>
+      <span class="checkmark"></span>
+    </label>
+    <div class="arabic">
+      <% verse.words.each do |word| %>
+        <span class=" p1-v1"<%= word.char_type_name %>" id="w-<%= word.id %>">
+        <%= word.code.html_safe %>
+        </span>
+      <% end %>
     </div>
   </div>
+
+  <% if false %>
+    <div class="font">
+      <label class="radio-label "><%= _t('settings.fonts.qcf_v2') %> <input class="" name="font" type="radio" value="v2" id=v2>
+        <span class="checkmark"></span>
+      </label>
+      <div class="arabic">
+        <% verse.words.each do |word| %>
+          <span class="p1-v2 <%= word.char_type_name %>" id="w-<%= word.id %>">
+            <%= word.code_v2.html_safe %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <%end%>
+  
+  <div class="font">
+    <label class="radio-label "><%= _t('settings.fonts.uthmani') %> <input class="" name="font" type="radio" checked=checked name="font" value="uthmani" id=uthmani>
+      <span class="checkmark"></span>
+    </label>
+    <div class="arabic madani">
+      <%= verse.text_uthmani %>
+    </div>
+  </div>
+  
+  
+  <div class="font">
+    <label class="radio-label "><%= _t('settings.fonts.indopak') %> <input class="" name="font" type="radio" value="indopak" id=indopak>
+      <span class="checkmark"></span>
+    </label>
+    <div class="arabic indopak">
+      <%= verse.text_indopak %>
+    </div>
+  </div>
+  
+  
+  <div class="font">
+    <label class="radio-label "><%= _t('settings.fonts.tajweed') %> <input class="" name="font" type="radio" value="tajweed" id=tajweed>
+      <span class="checkmark"></span>
+    </label>
+    <div class="arabic text_uthmani_tajweed">
+      <%= raw verse.text_uthmani_tajweed %>
+    </div>
+  </div>
+
 </div>

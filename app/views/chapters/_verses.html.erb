@@ -9,6 +9,8 @@
   <%= render partial: 'verse', collection: verses, as: :verse %>
 <% end %>
 
+
+
 <div class="text-center my-3 pagination" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
   <% if @presenter.next_page %>
     <%= chapter_next_page_link %>

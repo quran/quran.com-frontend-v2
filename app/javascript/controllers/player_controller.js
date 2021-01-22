@@ -92,6 +92,7 @@ export default class extends Controller {
 
     const that = this;
     this.updateVerses().then(() => {
+      
       // set first ayah track to play, if player isn't already playing any ayah
       that.currentVerse = that.currentVerse || that.firstVerse;
 
@@ -121,13 +122,13 @@ export default class extends Controller {
     // auto scroll component
     this.scrollButton = this.element.querySelector("#auto-scroll-btn");
 
-    new Tooltip(this.scrollButton, {
-      placement: "top",
-      boundary: "window",
-      html: true,
-      sanitize: false,
-      title: this.scrollButton.dataset.title
-    });
+    //new Tooltip(this.scrollButton, {
+    //  placement: "top",
+    //  boundary: "window",
+    //  html: true,
+    //  sanitize: false,
+    //  title: this.scrollButton.dataset.title
+    //});
 
     let scrollBtnClasses = this.scrollButton.classList;
 
@@ -211,7 +212,6 @@ export default class extends Controller {
     // enable progress bar if disabled
     this.progressBar.disabled = false;
     this.progressBar.value = this.progressBar.value || 0;
-
     this.chapter.removeSegmentHighlight();
     this.currentVerse = verse;
 
@@ -366,12 +366,12 @@ export default class extends Controller {
     clearInterval(this.playerProgressInterval);
     const totalDuration = this.track.duration || this.track.howl.duration();
 
-    $("#player .timer")
-      .removeClass("d-none")
+    $("#player .current-time")
+      .removeClass("hidden")
       .text("00:00");
 
-    $("#player .total-time")
-      .removeClass("d-none")
+    $("#player .all-time")
+      .removeClass("hidden")
       .text(this.formatTime(totalDuration));
 
     this.playerProgressInterval = setInterval(() => {
@@ -380,8 +380,8 @@ export default class extends Controller {
         Math.floor((currentTime / totalDuration) * 1000) / 10;
 
       this.progressBar.value = progressPercentage;
-
-      $("#player .timer").text(this.formatTime(currentTime));
+      $("#player-range").css({"background": "linear-gradient(to right, #00acc2 0%, #00acc2 "+progressPercentage+"%, #fff "+progressPercentage+"%, #fff 100%);"});
+      $("#player .current-time").text(this.formatTime(currentTime));
     }, 500);
   }
 
@@ -462,6 +462,7 @@ export default class extends Controller {
   }
 
   createHowl(verse, autoplay) {
+    
     if (this.preloadTrack[verse]) {
       // howl is already created
       return this.preloadTrack[verse];

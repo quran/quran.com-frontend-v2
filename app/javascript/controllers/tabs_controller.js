@@ -31,7 +31,10 @@ export default class extends Controller {
     this.hideTabs(tab);
 
     tabItem.classList.add(TAB_ITEM_SELECTED_CLASS);
-    document.querySelector(target).classList.remove("hidden");
+    let ele = document.querySelector(target);
+    ele.classList.remove("hidden");
+    const event = new Event('shown.bs.tab');
+    ele.dispatchEvent(event);
   }
 
   hideTabs(group) {

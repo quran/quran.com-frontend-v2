@@ -28,12 +28,12 @@ export default class extends Controller {
     }catch(e){
       searchInput.trigger("focus");
     }
+    
     /* on change keyboard */
     if(searchInput.length){
       searchInput.change(
         debounce(function(e) {
           var filter = searchInput.val().toLowerCase();
-  
           that.doFilter(filter, list);
           return false;
         }, 100)
@@ -56,14 +56,14 @@ export default class extends Controller {
       list
         .find("[data-filter-tags]:not([data-filter-tags*='" + text + "'])")
         .removeClass("filter-show")
-        .addClass("filter-hide");
+        .addClass("hidden");
 
       list
         .find("[data-filter-tags*='" + text + "']")
-        .removeClass("filter-hide")
+        .removeClass("hidden")
         .addClass("filter-show");
     } else {
-      list.find("[data-filter-tags]").removeClass("filter-hide filter-show");
+      list.find("[data-filter-tags]").removeClass("hidden filter-show");
     }
   }
 }

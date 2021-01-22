@@ -32,6 +32,89 @@ $(document).on("click", ".dropdown-menu", function(e) {
   e.stopPropagation();
 });
 
+
+
+
+
+$('.label-nav').click(function(e) {
+  if ($(e.target).parents('.dropdown').length == 1) return;
+  $(this).toggleClass('label--open');
+  $(this).toggleClass('label__opened');
+  $('.label-nav')
+    .not(this)
+    .removeClass('label--open , label__opened');
+});
+
+$(window).click(function(e) {
+  if (
+    $(e.target).parents('.label-nav').length == 0 &&
+    !$(e.target).is('.label-nav')
+  ) {
+    $('.label-nav').removeClass('label--open');
+    $('.label-nav').removeClass('label__opened');
+  }
+});
+$('.label-nav .icon-x').click(function() {
+  $(this)
+    .parents('.label-nav')
+    .removeClass('label--open');
+});
+
+
+
+
+
+
+
+
+
+
+
+$('.single-ayah-radio').prop('checked', true);
+
+$('.range-ayah-radio, .single-ayah-radio').click(function() {
+  if ($('.range-ayah-radio').is(':checked')) {
+    $('.range-ayah').removeClass('hidden');
+    $('.single-ayah').addClass('hidden');
+  } else {
+    $('.range-ayah').addClass('hidden');
+    $('.single-ayah').removeClass('hidden');
+  }
+});
+
+// actions
+
+$('.open-actions').click(function() {
+  $('.actions-wrapper').addClass('hidden');
+  $(this)
+    .parent()
+    .children('.actions-wrapper')
+    .removeClass('hidden');
+});
+
+$(window).click(function(e) {
+  if (
+    $(e.target).parents('.actions-menu').length == 0 &&
+    !$(e.target).is('.actions-menu')
+  ) {
+    $('.actions-wrapper').addClass('hidden');
+  }
+});
+
+$('.actions-wrapper, .close-actions').click(function(e) {
+  if (e.target === this) {
+    $('.actions-wrapper').addClass('hidden');
+  }
+});
+
+
+
+
+
+
+
+
+
 require("../stylesheets/application.scss");
 
 // fonts are moved to rails assets pipeline

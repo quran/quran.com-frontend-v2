@@ -41,7 +41,6 @@ export default class extends SettingController {
     this.set("translations", newTranslations);
 
     let controller = document.getElementById("chapter-tabs");
-
     controller.chapter.changeTranslations(newTranslations);
   }
 }

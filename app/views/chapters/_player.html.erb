@@ -1,35 +1,17 @@
-<div id="player" data-controller="player player-manager" class="fixed-bottom bg-white custom-shadow">
-  <div class="container p-2">
-    <div class="row offset-md-2">
-      <div class="col-md-3 d-flex justify-content-between mt-3 order-md-0 order-1">
-        <div class="previous-btn d-flex align-items-center order-md-0 order-2">
-          <i class="fa-center-3 text-muted fa fa-step-backward c-pointer"></i>
-        </div>
-
-        <div class="d-flex align-items-center order-md-1 order-3" style="font-size: 30px">
-          <i class="fa-center-3 text-primary fa-play-circle c-pointer play-btn"></i>
-        </div>
-
-        <div class="next-btn d-flex align-items-center order-md-2 order-4">
-          <i class="fa-center-3 text-muted fa fa-step-forward c-pointer"></i>
-        </div>
-
-        <div class="d-flex align-items-center order-md-3 order-5">
-          <i
-            class="fa-center-3 text-muted fa fa-link-regular c-pointer"
-            id="auto-scroll-btn"
-            data-title="<%= _t("player.scroll") %>"
-          ></i>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-8 d-flex align-items-center">
-        <small class="text-primary timer mr-3 d-none">00:00</small>
-        <div id="player-bar">
-          <input type="range" min="1" max="100" step="0.1" value="0" disabled class="player-bar__range" id="player-range">
-        </div>
-        <small class="text-primary total-time ml-2 d-none">00:00</small>
-      </div>
-    </div>
-  </div>
+<div class="player-section" id="player" data-controller="player player-manager">
+	<div class="container player__container">
+		<div class="player__controls">
+			<a class="icon-prev"></a>
+			<a class="control-play-icon icon-play1 play-btn"></a>
+			<a class="icon-next"></a>
+			<a class="icon-repeat"></a>
+			<a class="control-hidden-icon icon-link"></a>
+		</div>
+		<div class="player__bar">
+			<p class="current-time">00:00</p>
+			<input id="player-range" class="bar" type="range" min="0" max="100" step="0.1" value=0>
+			<p class="all-time">00:00</p>
+			<a class="bar-hidden-icon icon-link" id="auto-scroll-btn" data-title="<%= _t("player.scroll") %>"></a>
+		</div>
+	</div>
 </div>

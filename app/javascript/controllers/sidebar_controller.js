@@ -27,7 +27,7 @@ export default class extends Controller {
 
     const sidebar = document.querySelector(target);
 
-    sidebar.classList.toggle("d-none");
+    sidebar.classList.toggle("hidden");
     const opened = sidebar.classList.toggle("open");
 
     if (opened) {

@@ -38,8 +38,13 @@ export default class extends Controller {
     this.bindTooltip();
     this.bindFontSize();
     this.updateFontSize();
-
+    
     //this.element[this.identifier] = this;
+  }
+  
+  hideSetting(){
+    document.querySelector(".menus").classList.add("hidden");
+    document.querySelector(".menus__tab").classList.add("hidden");
   }
 
   resizeHandler() {

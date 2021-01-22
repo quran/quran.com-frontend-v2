@@ -121,19 +121,21 @@ export default class extends Controller {
 
   copy() {
     copyToClipboard(this.el.data("text"));
-
-    let {title, done} = this.copyDom.dataset;
-
-    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
-    this.copyDom.tooltip._fixTitle()
-
-    this.copyDom.tooltip.show();
-
-    this.copyDom.addEventListener("hidden.bs.tooltip", () => {
-        this.copyDom.setAttribute("title", title);
-        this.copyDom.tooltip._fixTitle()
-      }
-    );
+    
+    // no tooltip?
+    
+    //let {title, done} = this.copyDom.dataset;
+    //
+    //this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
+    //this.copyDom.tooltip._fixTitle()
+    //
+    //this.copyDom.tooltip.show();
+    //
+    //this.copyDom.addEventListener("hidden.bs.tooltip", () => {
+    //    this.copyDom.setAttribute("title", title);
+    //    this.copyDom.tooltip._fixTitle()
+    //  }
+    //);
   }
 
   bindTajweedTooltip() {
