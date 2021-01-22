@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SettingsController < ApplicationController
   layout false
   before_action :init_presenter
@@ -7,15 +9,15 @@ class SettingsController < ApplicationController
                 :fonts,
                 cache_path: :generate_localised_cache_key
 
-  def show;end
+  def show; end
 
-  def translations;end
+  def translations; end
 
-  def recitations;end
+  def recitations; end
 
-  def fonts;end
+  def fonts; end
 
-  def locales;end
+  def locales; end
 
   protected
 

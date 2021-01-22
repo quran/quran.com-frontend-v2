@@ -28,10 +28,8 @@ module QuranUtils
       end
     end
 
-    def strong_cache_memoize(name)
-      Rails.cache.fetch(cache_key(name), expires_in: cache_expiry_period, force: cache_expiry_period.blank?) do
-        yield
-      end
+    def strong_cache_memoize(name, &block)
+      Rails.cache.fetch(cache_key(name), expires_in: cache_expiry_period, force: cache_expiry_period.blank?, &block)
     end
 
     def strong_memoized?(name)

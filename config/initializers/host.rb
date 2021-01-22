@@ -6,6 +6,4 @@ Rails.application.config.hosts += [
   'localhost'
 ]
 
-if Rails.env.development?
-  Rails.application.config.hosts << '.ngrok.io'
-end
+Rails.application.config.hosts << '.ngrok.io' if Rails.env.development?

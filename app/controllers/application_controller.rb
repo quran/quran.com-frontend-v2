@@ -12,9 +12,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     locale = fetch_locale
-    unless I18n.available_locales.include?(locale.to_sym)
-      locale = I18n.default_locale
-    end
+    locale = I18n.default_locale unless I18n.available_locales.include?(locale.to_sym)
 
     session[:locale] = locale
     I18n.locale = locale
@@ -22,10 +20,10 @@ class ApplicationController < ActionController::Base
 
   def fetch_locale
     requested_locale = params[:locale] ||
-      session[:locale] ||
-      cookies[:locale] ||
-      extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
-      I18n.default_locale
+                       session[:locale] ||
+                       cookies[:locale] ||
+                       extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
+                       I18n.default_locale
 
     requested_locale.to_s.split('-').first
   end

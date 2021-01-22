@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class ChapterPresenter < HomePresenter
-  WORD_TEXT_TYPES = [
-    'v1',
-    'v2',
-    'indopak',
-    'uthmani',
-    'imlaei'
+  WORD_TEXT_TYPES = %w[
+    v1
+    v2
+    indopak
+    uthmani
+    imlaei
   ].freeze
 
   FONT_METHODS = {
@@ -15,7 +15,7 @@ class ChapterPresenter < HomePresenter
     'uthmani' => 'text_uthmani',
     'imlaei' => 'text_imlaei',
     'indopak' => 'text_indopak',
-    'tajweed' => 'text_uthmani_tajweed',
+    'tajweed' => 'text_uthmani_tajweed'
   }.freeze
 
   def initialize(context)
@@ -68,7 +68,7 @@ class ChapterPresenter < HomePresenter
   def font_method
     strong_memoize :font_method do
       _font = font
-      if reading_mode? && 'tajweed' == _font
+      if reading_mode? && _font == 'tajweed'
         # we don't have wbw data for tajweed, fallback to uthmani script
         _font = 'uthmani'
       end
@@ -78,7 +78,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def showing_qcf_font?
-    ['code_v2', 'code'].include? font_method
+    %w[code_v2 code].include? font_method
   end
 
   def render_verse_words?
@@ -104,13 +104,9 @@ class ChapterPresenter < HomePresenter
 
   # Next page number in the collection
   def next_page
-    if last_page? || out_of_range?
-      return nil
-    end
+    return nil if last_page? || out_of_range?
 
-    if reading_mode?
-      return paginate.last.page_number + 1
-    end
+    return paginate.last.page_number + 1 if reading_mode?
 
     current_page + 1
   end
@@ -144,7 +140,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def range
-    #"#{range_start}-#{range_end}"
+    # "#{range_start}-#{range_end}"
     params[:range]
   end
 
@@ -228,7 +224,7 @@ class ChapterPresenter < HomePresenter
   def meta_description
     strong_memoize :meta_description do
       first_verse = paginate.first
-      translation = first_verse.translations.first || first_verse.translations.find_by_resource_content_id(DEFAULT_TRANSLATION)
+      translation = first_verse.translations.first || first_verse.translations.find_by(resource_content_id: DEFAULT_TRANSLATION)
 
       "Surah #{chapter.name_simple}(#{chapter.name_arabic}) #{paginate.first.verse_key} #{sanitize_meta_description_text(translation.text)}"
     end
@@ -254,10 +250,10 @@ class ChapterPresenter < HomePresenter
   end
 
   def meta_image
-    #"https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
+    # "https://exports.qurancdn.com/images/#{paginate.first.verse_key}.png?color=black&font=qcfv1&fontSize=50&translation=131"
 
     first = paginate.first
-    "https://quran-og-image.vercel.app/#{first.verse_key.gsub(':', '/')}"
+    "https://quran-og-image.vercel.app/#{first.verse_key.tr(':', '/')}"
   end
 
   protected
@@ -276,22 +272,22 @@ class ChapterPresenter < HomePresenter
 
   def fetch_verses_range(verse_start, verse_end)
     @results = Verse
-                 .where(chapter_id: chapter.id)
-                 .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
+               .where(chapter_id: chapter.id)
+               .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
   end
 
   def load_words
-    words_with_default_translation = @results.where(word_translations: {language_id: Language.default.id})
+    words_with_default_translation = @results.where(word_translations: { language_id: Language.default.id })
 
-    if (language.id != Language.default.id)
-      @results = @results
-                   .where(word_translations: {language_id: language.id})
+    @results = if language.id == Language.default.id
+                 words_with_default_translation
+                   .eager_load(words: :word_translation)
+               else
+                 @results
+                   .where(word_translations: { language_id: language.id })
                    .or(words_with_default_translation)
                    .eager_load(words: :word_translation)
-    else
-      @results = words_with_default_translation
-                   .eager_load(words: :word_translation)
-    end
+               end
   end
 
   def load_translations
@@ -299,9 +295,9 @@ class ChapterPresenter < HomePresenter
 
     if translations.present?
       @results = @results
-                   .where(translations: {resource_content_id: translations})
-                   .eager_load(:translations)
-                   .order('translations.priority ASC')
+                 .where(translations: { resource_content_id: translations })
+                 .eager_load(:translations)
+                 .order('translations.priority ASC')
     end
   end
 
@@ -326,11 +322,11 @@ class ChapterPresenter < HomePresenter
       # on reading more, we render one page each request
       # per_page is ignored
       first_verse = nil
-      if params[:page]
-        first_verse = Verse.where(chapter_id: chapter.id, page_number: params[:page]).first
-      else
-        first_verse = Verse.where(chapter_id: chapter.id).first
-      end
+      first_verse = if params[:page]
+                      Verse.where(chapter_id: chapter.id, page_number: params[:page]).first
+                    else
+                      Verse.where(chapter_id: chapter.id).first
+                    end
 
       max(first_verse.verse_number, range_start)
     else

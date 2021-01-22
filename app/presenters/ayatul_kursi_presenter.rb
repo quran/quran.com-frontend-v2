@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AyatulKursiPresenter < ChapterPresenter
   def meta_url
     'https://quran.com/ayatul-kursi'

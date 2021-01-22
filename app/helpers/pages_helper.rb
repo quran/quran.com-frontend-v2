@@ -15,8 +15,6 @@ module PagesHelper
 
     lines = {}
 
-    # verses.map(&:words).flatten.group_by(&:line_number)
-
     verses.each do |verse|
       verse.words.each do |w|
         lines[w.line_number] ||= {}

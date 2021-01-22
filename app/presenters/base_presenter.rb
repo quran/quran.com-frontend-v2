@@ -30,7 +30,7 @@ class BasePresenter
       # FB Applinks meta tags
       al:
         {
-          web: {url: meta_url},
+          web: { url: meta_url },
           ios: {
             url: 'https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303',
             app_store_id: '1118663303',
@@ -57,7 +57,7 @@ class BasePresenter
       keywords: meta_keyword,
       image: meta_image,
       canonical: canonical_href,
-      'apple-itunes-app': 'app-id=1118663303',
+      'apple-itunes-app': 'app-id=1118663303'
     }
   end
 
@@ -119,22 +119,20 @@ class BasePresenter
     strong_memoize :valid_translations do
       saved = saved_translations
 
-      if 'no' == saved || saved.blank?
+      if saved == 'no' || saved.blank?
         context.session[:translations] = 'no'
         []
       else
-        if saved.is_a?(String)
-          saved = saved.split(',')
-        end
+        saved = saved.split(',') if saved.is_a?(String)
 
         approved_translations = ResourceContent
-                                  .approved
-                                  .translations
-                                  .one_verse
+                                .approved
+                                .translations
+                                .one_verse
 
         with_ids = approved_translations.where(id: saved)
         translations = approved_translations
-                         .where(slug: saved).or(with_ids).pluck(:id)
+                       .where(slug: saved).or(with_ids).pluck(:id)
 
         context.session[:translations] = translations
       end
@@ -149,12 +147,12 @@ class BasePresenter
 
   def eager_load_translated_name(records)
     defaults = records.where(
-      translated_names: {language_id: Language.default.id}
+      translated_names: { language_id: Language.default.id }
     )
 
     records
       .where(
-        translated_names: {language_id: language}
+        translated_names: { language_id: language }
       ).or(defaults).order('translated_names.language_priority DESC')
   end
 end

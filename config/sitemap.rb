@@ -42,7 +42,7 @@ SitemapGenerator::Sitemap.create do
     end
 
     # Add chapter info for available languages
-    ['en', 'ur', 'ml', 'ta'].each do |local|
+    %w[en ur ml ta].each do |local|
       add "/surah-info/#{chapter.chapter_number}?locale=#{local}", priority: 1, changefreq: CHANGE_FREQUENCY
     end
   end
@@ -75,12 +75,12 @@ SitemapGenerator::Sitemap.create do
   end
 
   # Static pages
-  %w(about_us donations developers apps).each do |page|
+  %w[about_us donations developers apps].each do |page|
     add "/#{page}", priority: 0.3, changefreq: CHANGE_FREQUENCY
   end
 
   # Add site locals
-  %w(en ar ur id tr fr).each do |local|
+  %w[en ar ur id tr fr].each do |local|
     add "/?locale=#{local}", priority: 0.3, changefreq: CHANGE_FREQUENCY
   end
 

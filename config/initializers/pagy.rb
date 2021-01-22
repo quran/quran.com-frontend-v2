@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 # Pagy initializer file
 # Customize only what you really need but notice that Pagy works also without any of the following lines.
 
-
 # Extras
 # See https://ddnexus.github.io/pagy/extras
-
 
 # Backend Extras
 
@@ -26,14 +26,14 @@ require 'pagy/extras/bootstrap'
 
 # Items: Allow the client to request a custom number of items per page with an optional selector UI
 # See https://ddnexus.github.io/pagy/extras/items
-#require 'pagy/extras/items'
-#Pagy::VARS[:items_param] = :page    # default
+# require 'pagy/extras/items'
+# Pagy::VARS[:items_param] = :page    # default
 # Pagy::VARS[:max_items]   = 10       # default
 
 # Out Of Range: Allow for easy handling of out of range pages
 # See https://ddnexus.github.io/pagy/extras/overflow
 require 'pagy/extras/overflow'
-Pagy::VARS[:overflow] = :last_page    # default  (other options: :empty_page and :exception)
+Pagy::VARS[:overflow] = :last_page # default  (other options: :empty_page and :exception)
 
 # Trim: Remove the page=1 param from links
 # See https://ddnexus.github.io/pagy/extras/trim
@@ -46,7 +46,7 @@ Pagy::VARS[:overflow] = :last_page    # default  (other options: :empty_page and
 
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
-Pagy::VARS[:items] = 20                                   # default
+Pagy::VARS[:items] = 20 # default
 
 # Other Variables
 # See https://ddnexus.github.io/pagy/api/pagy#other-variables
@@ -56,7 +56,6 @@ Pagy::VARS[:items] = 20                                   # default
 # Pagy::VARS[:anchor]     = '#anchor'                       # example
 # Pagy::VARS[:link_extra] = 'data-remote="true"'            # example
 # Pagy::VARS[:item_path]  = 'activerecord.models.product'   # example
-
 
 # Rails
 

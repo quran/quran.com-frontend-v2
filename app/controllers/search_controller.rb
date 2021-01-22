@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
   include LanguageBoost
   QUERY_SANITIZER = Rails::Html::WhiteListSanitizer.new
@@ -5,12 +7,10 @@ class SearchController < ApplicationController
   def search
     if do_search
       render partial: 'results', layout: false if request.xhr?
+    elsif request.xhr?
+      render 'error', layout: false
     else
-      if request.xhr?
-        render 'error', layout: false
-      else
-        render 'error'
-      end
+      render 'error'
     end
   end
 

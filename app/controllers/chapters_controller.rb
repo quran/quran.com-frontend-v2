@@ -10,25 +10,18 @@ class ChaptersController < ApplicationController
                 :load_verses,
                 cache_path: :generate_localised_cache_key
 
-  def index
-  end
+  def index; end
 
   def show
-    unless @presenter.chapter
-      return redirect_to root_path, error: t('errors.invalid_chapter')
-    end
+    return redirect_to root_path, error: t('errors.invalid_chapter') unless @presenter.chapter
 
-    if @presenter.out_of_range?
-      return redirect_to chapter_path(@presenter.chapter), error: t('errors.invalid_verse')
-    end
+    return redirect_to chapter_path(@presenter.chapter), error: t('errors.invalid_verse') if @presenter.out_of_range?
 
     render partial: 'verses', layout: false if request.xhr?
   end
 
   def ayatul_kursi
-    unless @presenter.chapter
-      return redirect_to root_path, error: t('chapters.invalid')
-    end
+    return redirect_to root_path, error: t('chapters.invalid') unless @presenter.chapter
 
     if request.xhr?
       render partial: 'verses', layout: false
@@ -92,11 +85,7 @@ class ChaptersController < ApplicationController
       valid_start, valid_end = valid_end, valid_start if valid_start > valid_end
       valid_end = valid_start if valid_end.zero?
 
-      if valid_start > 0
-        "#{valid_start}-#{valid_end}"
-      else
-        nil
-      end
+      "#{valid_start}-#{valid_end}" if valid_start.positive?
     end
   end
 
