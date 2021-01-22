@@ -380,6 +380,14 @@ export default class extends Controller {
       !this.isTranslationsMode()
     );
   }
+  
+  toggleAyahActions(e){
+    $('.actions-wrapper').addClass('hidden');
+    $(e.target)
+      .parent().parent()
+      .children('.actions-wrapper')
+      .removeClass('hidden');
+  }
 
   getLazyTab(url, target, lazy) {
     const lazyParent = `{"root":"${target}"}`;

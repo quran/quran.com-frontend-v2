@@ -90,8 +90,6 @@ GEM
       io-like (~> 0.3.0)
     ast (2.4.1)
     bindex (0.8.1)
-    binding_of_caller (0.8.0)
-      debug_inspector (>= 0.0.1)
     builder (3.2.4)
     capybara (3.33.0)
       addressable
@@ -112,7 +110,6 @@ GEM
     connection_pool (2.2.3)
     crass (1.0.6)
     dalli (2.7.10)
-    debug_inspector (0.0.3)
     elasticsearch (7.9.0)
       elasticsearch-api (= 7.9.0)
       elasticsearch-transport (= 7.9.0)
@@ -317,7 +314,6 @@ DEPENDENCIES
   actionpack-action_caching!
   actionpack-page_caching!
   annotate (>= 3.1.1)
-  binding_of_caller
   capybara (>= 3.32.1)
   chromedriver-helper
   cld3 (>= 3.4.1)

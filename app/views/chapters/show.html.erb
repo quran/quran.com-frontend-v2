@@ -31,7 +31,7 @@
       </div>
     </div>
     
-    <div class="reading-section tab-pane" id="reading-section" data-tab-group="chapter-tabs">
+    <div class="reading-section tab-pane hidden" id="reading-section" data-tab-group="chapter-tabs">
       <div class="reading">
         <div class="reading__content">
           <% if @presenter.show_bismillah? %>
@@ -57,7 +57,7 @@
       </div>
     </div>
     
-    <div class="info-section" id="info-section" data-tab-group="chapter-tabs">
+    <div class="info-section hidden" id="info-section" data-tab-group="chapter-tabs">
       <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
         <p class="text-center p-3">
           <%= loading_spinner %>
