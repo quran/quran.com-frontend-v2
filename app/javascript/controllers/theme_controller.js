@@ -37,12 +37,12 @@ export default class extends SettingController {
     const setDark = function(e) {
       let bodyClasses = document.body.classList;
       if (e && e.matches && null == isNightMode) {
-        bodyClasses.add("night");
+        bodyClasses.add("dark");
       } else {
         if (isNightMode) {
-          bodyClasses.add("night");
+          bodyClasses.add("dark");
         } else {
-          bodyClasses.remove("night");
+          bodyClasses.remove("dark");
         }
       }
     };
