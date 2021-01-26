@@ -15,29 +15,34 @@
          <span class="icon-play1"></span>
       </a>
       <div class="actions-menu">
-        <a class="translation__icon open-actions" data-action="click->chapter#toggleAyahActions"><span class="icon-menu "></span></a>
-        <div class="actions-wrapper hidden">
+        <a class="translation__icon open-actions" data-action="click->verse#toggleActions"><span class="icon-menu"></span></a>
+        <div class="actions-wrapper hidden" data-verse-id="<%=verse.verse_index%>">
           <div class="actions-items">
             <div class="actions-header">
               <p class="text text--darkgrey text--medium text--regular"><%=verse.chapter.name_simple%>: <%=verse.verse_number%></p>
               <span class="icon-x close-actions"></span>
             </div>
-            
-            <a class="translation__icon icon-duplicate copy"
+            <a class="translation__icon icon-duplicate"
               data-title="<%= t('action.copy.label') %>"
               data-done="<%= t('action.copy.done') %>"
               data-controller="track"
               data-name='ayah-action'
               data-category="copy"><%= _t('action.copy.label') %>
             </a>
-            
-            <a class="translation__icon icon-copy action-copy " href="#">Copy advanced</a>
-            
+            <a class="translation__icon icon-copy action-copy"
+              data-title="Copy options"
+              data-controller="ajax-modal"
+              data-url="<%= copy_advanced_verse_path(verse.id, translation_ids: @presenter.valid_translations) %>"
+              data-controller="track"
+              data-type="copy"
+              data-name='ayah-action'>Copy advanced
+            </a>
             <a class="translation__icon icon-book-open"
               data-title="<%= t('action.tafsir.label', default: 'Tafsir') %>"
               data-controller="ajax-modal"
               data-url="<%= select_tafsirs_verse_path(verse.id) %>"
               data-controller="track"
+              data-type="tafsir"
               data-name='ayah-action'
               data-category="tafsir-list"><%= t('action.tafsir.label', default: 'Tafsir') %>
             </a>
@@ -46,6 +51,7 @@
               data-controller="ajax-modal"
               data-url="<%= share_verse_path(verse.id) %>"
               data-controller="track"
+              data-type="share"
               data-name='ayah-action'
               data-category="share-list"><%= t('action.share') %>
             </a>

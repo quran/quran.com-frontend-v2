@@ -6,10 +6,10 @@
   <% pages = verses.group_by(&:page_number) %>
   <%= render partial: 'page', collection: pages, as: :verses %>
 <% else %>
-  <%= render partial: 'verse', collection: verses, as: :verse %>
+  <div data-controller="segment-player" id="segment-player">
+    <%= render partial: 'verse', collection: verses, as: :verse %>
+  </div>
 <% end %>
-
-
 
 <div class="text-center my-3 pagination" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
   <% if @presenter.next_page %>

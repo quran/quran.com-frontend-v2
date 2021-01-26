@@ -1,0 +1,23 @@
+<%footnote_counter = 0%>
+<%footnotes = []%>
+<%@verses.each do |verse|%>
+  <%= verse.text_uthmani %>
+  <%verse.translations.each do |translation|%>
+    <%= Nokogiri::HTML.fragment(translation.text).children.collect do |ele|
+      if ele.name == "sup"
+        if params[:add_footnotes] == "true"
+          footnote = FootNote.where(id: ele.attributes["foot_note"].value).last&.text
+          if footnote
+            footnotes << footnote
+            "[#{footnote_counter += 1}]"
+          end
+        end
+      else
+        ele.text
+      end
+    end.compact.join.html_safe%> --<%=translation.resource_name%>
+  <%end%>
+<%end%>
+<%footnotes.each_with_index do |footnote,index|%>
+  [<%=index+1%>] <%=ActionView::Base.full_sanitizer.sanitize(footnote)%>
+<%end%>

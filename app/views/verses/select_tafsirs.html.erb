@@ -9,7 +9,6 @@
   <div class="modal-body" data-controller="tafsir-modal">
     <div class="mb-4">
       <h6 class="mr-2"><%= _t('action.tafsir.filter_tafsir') %></h6>
-
       <div id="filters" class="d-flex align-items-end">
         <% tafsir_languages.each do |lang_id, language| %>
           <button data-action="tafsir-modal#filter" data-selected-lang="<%= lang_id %>" type="button" class="btn btn-outline-secondary btn-sm mr-2">

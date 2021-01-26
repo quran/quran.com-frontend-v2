@@ -78,7 +78,7 @@ export default class extends Controller {
       });
     });
 
-    let copyDom = this.element.querySelector(".copy");
+    let copyDom = this.element.querySelector(".icon-duplicate");
 
     copyDom && copyDom.addEventListener('click', e => {
       e.preventDefault();
@@ -136,6 +136,12 @@ export default class extends Controller {
     //    this.copyDom.tooltip._fixTitle()
     //  }
     //);
+  }
+  
+  toggleActions(e){
+    e.preventDefault();
+    //document.querySelector(".actions-wrapper").classList.add("hidden");
+    e.target.parentNode.nextElementSibling.classList.toggle("hidden");
   }
 
   bindTajweedTooltip() {

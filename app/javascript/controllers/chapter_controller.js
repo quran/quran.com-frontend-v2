@@ -71,7 +71,6 @@ export default class extends Controller {
         .trigger("visibility:hidden");
     });
     
-    
     this.activeTab.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
       // new ayah are added to page. Refresh the player's first and last ayah
@@ -381,14 +380,6 @@ export default class extends Controller {
     );
   }
   
-  toggleAyahActions(e){
-    $('.actions-wrapper').addClass('hidden');
-    $(e.target)
-      .parent().parent()
-      .children('.actions-wrapper')
-      .removeClass('hidden');
-  }
-
   getLazyTab(url, target, lazy) {
     const lazyParent = `{"root":"${target}"}`;
     const id = Math.random()

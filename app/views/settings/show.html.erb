@@ -1,5 +1,5 @@
 <% reciter = @presenter.selected_reciter %>
-<!--class="right-sidebar px-4 py-4 border-left" id="main-right-sidebar"-->
+
 <div class="settings" data-controller="settings" id="main-right-sidebar">
   <div class="tab__container">
     <div class="menu__header">
@@ -27,11 +27,11 @@
     
     <div class="tab__row tab__row--col">
       <div class="tab__item" data-controller="sidebar" data-is-child=true data-target="#translations-sidebar" data-close=".close-translations">
-  
         <div class="label label__large" id="open-translations">
           <div class="label--text">
             <p class="label--title"><%= _t('settings.translations') %></p>
-            <!--<p class="label--subtitle">Sahih International</p>-->
+            <% selected_count = @presenter.selected_translation_count %>
+            <p class="label--subtitle"><%= _t('settings.translation_count', count: selected_count) %></p>
           </div>
           <div class="label--arrow"></div>
           <div class="dropdown-wrapper">
@@ -76,15 +76,12 @@
       </div>
     </div>
     
-    
     <div class="tab__row tab__row--center">
       <div class="tabs" data-controller="tabs">
         <a id="display-settings" class="tabs__item tabs__item--selected" data-target=".display-settings" data-tab="basic-settings-tabs"><%= _t('settings.display') %></a>
         <a id="audio-settings" class="tabs__item " data-target=".audio-settings" data-tab="basic-settings-tabs"><%= _t('settings.audio') %></a>
       </div>
     </div>
-    
-    
     <div class="display-settings" data-tab-group="basic-settings-tabs">
       <div>
         <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.tooltip.label') %></p>
@@ -103,7 +100,7 @@
         <div class="label label__large" id="open-fonts" data-controller="sidebar" data-is-child=true data-target="#fonts-sidebar" data-close=".close-fonts">
           <div class="label--text">
             <p class="label--title"><%= _t('settings.font_type') %></p>
-            <!--<p class="label--subtitle">Me_quran</p>-->
+            <p class="label--subtitle"><%= _t("settings.fonts.#{@presenter.selected_font_name}") %></p>
           </div>
           <div class="label--arrow"></div>
           <div class="dropdown-wrapper">
@@ -111,9 +108,7 @@
               <div class="menu__header">
                 <div class="first">
                   <div id="close-" class="close- icon-x"></div>
-                  <p class="text text--black text--large2 text--semibold">label</p>    </div>
-                <div>
-                  <!--  -->
+                  <p class="text text--black text--large2 text--semibold">label</p>
                 </div>
               </div>
               <div class="dropdown--input">
@@ -127,17 +122,18 @@
         </div>
       </div>
       <div>
-        <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.font_size.label') %></p>    <div class="tab__row tab__row--between">
-        <div class="counter">
-          <button class="counter__button" id="font-size-plus" data-increment="-1" data-target=".verse .arabic" data-trigger="font-size"></button>
-          <p class="counter__text"><%= _t('settings.font_size.arabic') %></p>
-          <button class="counter__button" id="font-size-minus" data-increment="1" data-target=".verse .arabic" data-trigger="font-size"></button>
-        </div>
-        <div class="counter">
-          <button class="counter__button" data-increment="-1" data-target=".translation" data-trigger="font-size"></button>
-          <p class="counter__text"><%= _t('settings.font_size.translation') %></p>
-          <button class="counter__button" data-increment="1" data-target=".translation" data-trigger="font-size"></button>
-        </div>
+        <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.font_size.label') %></p>
+        <div class="tab__row tab__row--between">
+          <div class="counter">
+            <button class="counter__button" id="font-size-plus" data-increment="-1" data-target=".verse .arabic" data-trigger="font-size"></button>
+            <p class="counter__text"><%= _t('settings.font_size.arabic') %></p>
+            <button class="counter__button" id="font-size-minus" data-increment="1" data-target=".verse .arabic" data-trigger="font-size"></button>
+          </div>
+          <div class="counter">
+            <button class="counter__button" data-increment="-1" data-target=".translation" data-trigger="font-size"></button>
+            <p class="counter__text"><%= _t('settings.font_size.translation') %></p>
+            <button class="counter__button" data-increment="1" data-target=".translation" data-trigger="font-size"></button>
+          </div>
         </div>
       </div>
     </div>
@@ -151,7 +147,6 @@
           <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_title') %></p>
         </label>
       </div>
-    
       <div class="audio-control hidden">
         <div class="repeat-ayah tab__row tab__row--between tab__row--small">
           <label class="radio-label radio-label--border"><%= _t('player.repeat_single') %> <input id="repeat-single" class="single-ayah-radio" name="ayah-repeat" type="radio" checked>
@@ -164,7 +159,6 @@
         <div class="single-ayah">
           <div class="flexx">
             <div class="audio-select tab__row tab__row--col">
-    
               <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.select_verse') %></p>
               <div class="simple-select-div" >
                 <select id=repeat-single-ayah class="simple-select">
@@ -177,7 +171,6 @@
                 </select>
               </div>
             </div>
-    
             <div class="audio-select tab__row tab__row--col">
               <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_times') %></p>
               <div class="simple-select-div">
@@ -238,7 +231,6 @@
               </select>
             </div>
           </div>
-    
         </div>
       </div>
       <div class="tab__row">
@@ -274,8 +266,6 @@
     </div>
   </div>
 </div> 
-
-
 
 <div class="translations hidden" id="translations-sidebar">
   <div class="tab__container">

@@ -20,6 +20,8 @@ global.GoogleAnalytic = GoogleAnalytic;
 
 require("service-worker-companion");
 
+require("./selection.js");
+
 import "controllers";
 
 document.addEventListener("turbolinks:request-start", function(event) {

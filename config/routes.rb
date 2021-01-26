@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/settings/locales', to: 'settings#locales'
 
   get '/audio', to: 'audio_files#index'
+  get '/chapters/:id/clipboard', to: 'chapters#clipboard'
   get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
   get 'آیت الکرسی/', to: 'chapters#ayatul_kursi', id: '2', range: '255'
 
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
       get :share
       get :select_tafsirs
       get :tafsir
+      get :copy_advanced
     end
   end
 
