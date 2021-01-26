@@ -41,8 +41,8 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses-translation" class='verses' data-controller="infinite-page" data-items-container="#verses-translation #verses">
-        <div id="verses">
+      <div id="verses-translation" class='verses' data-controller="infinite-page" data-items-container="#verses-translation-list">
+        <div class="verses" id="verses-translation-list">
           <% if 'translation' == @presenter.active_tab %>
             <%= render 'verses' %>
           <% else %>
@@ -61,8 +61,8 @@
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
-        <div id='verses'>
+      <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading-list">
+        <div class='verses' id="verses-reading-list">
           <% if 'reading' == @presenter.active_tab %>
             <%= render 'verses' %>
           <% else %>
