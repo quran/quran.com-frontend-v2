@@ -1,30 +1,12 @@
-@import url(//db.onlinewebfonts.com/c/0b51833ff62e4af8acb5fd3e2bf59e97?family=SF+Pro+Display);
-@font-face {
-  font-family: 'SF Pro Display';
-  src: url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.eot');
-  src: url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.eot?#iefix')
-  format('embedded-opentype'),
-  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.woff2')
-  format('woff2'),
-  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.woff')
-  format('woff'),
-  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.ttf')
-  format('truetype'),
-  url('//db.onlinewebfonts.com/t/0b51833ff62e4af8acb5fd3e2bf59e97.svg#SF Pro Display')
-  format('svg');
-}
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 body {
-  font-family: 'SF Pro Display' !important;
- // font-family: 'Roboto' !important;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: $font-regular;
+  font-variant: normal;
+  font-style: normal;
 }
-
 
 .dark {
-  // background-color: $dark-grey;
   background-color: #1c1c20;
-  // padding: 30px 10px;
 }
 
 @mixin scrollbarStyle {

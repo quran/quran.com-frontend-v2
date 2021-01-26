@@ -129,6 +129,7 @@
     border-radius: 8px;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   }
+
   @include sm {
     border-radius: 10px;
     position: absolute;
@@ -136,11 +137,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   a {
     display: flex;
     align-items: center;
     color: #71727e;
-    font-family: 'SF Pro Display' !important;
   }
 
   .icon-duplicate,
