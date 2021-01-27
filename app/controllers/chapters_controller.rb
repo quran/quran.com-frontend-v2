@@ -2,7 +2,7 @@
 
 class ChaptersController < ApplicationController
   before_action :check_routes, only: :show
-  before_action :init_presenter, except: [:clipboard]
+  before_action :init_presenter
 
   caches_action :index,
                 :show,
@@ -31,14 +31,6 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
-    render layout: false
-  end
-  
-  def clipboard
-    @verses = Verse.where(chapter_id: params[:id]).where('verses.verse_number >= ? AND verses.verse_number <= ?', params[:from].to_i, params[:to].to_i)
-    if params[:translations].present?
-      @verses = @verses.where(translations: { resource_content_id: params[:translations] }).eager_load(:translations).order('translations.priority ASC')
-    end
     render layout: false
   end
   
