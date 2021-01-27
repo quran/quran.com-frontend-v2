@@ -23,12 +23,12 @@ export default class extends Controller {
     });
     this.element[this.identifier] = this;
     this.settings = document.body.setting;
-
     this.playWordQueue = [];
     this.resumeOnWordPlayEnd = false;
     this.preloadTrack = {};
     this.segmentTimers = [];
     this.track = {};
+    this.playerRepeatEnabled = false;
     this.audioData = {};
     this.playerProgressInterval = null;
     this.pauseSeconds = 0;
@@ -62,10 +62,6 @@ export default class extends Controller {
     this.pauseSeconds = 0;
     this.currentVerse = currentVerse;
     this.lastVerse = lastVerse;
-    //this.updateVerses().then(() => {
-    //  this.createHowl(this.currentVerse, false);
-    //  if (this.isPlaying()) this.play(this.currentVerse);
-    //});
   }
 
   updatePause(pauseSec) {
@@ -141,19 +137,18 @@ export default class extends Controller {
     // auto scroll component
     this.scrollButton = this.element.querySelector("#auto-scroll-btn");
 
-    //new Tooltip(this.scrollButton, {
-    //  placement: "top",
-    //  boundary: "window",
-    //  html: true,
-    //  sanitize: false,
-    //  title: this.scrollButton.dataset.title
-    //});
+    new Tooltip(this.scrollButton, {
+      placement: "top",
+      boundary: "window",
+      html: true,
+      sanitize: false,
+      title: this.scrollButton.dataset.title
+    });
 
     let scrollBtnClasses = this.scrollButton.classList;
 
     if (this.config.autoScroll) {
-      scrollBtnClasses.add("text-primary");
-      scrollBtnClasses.remove("text-muted");
+      scrollBtnClasses.add("selected");
     }
 
     this.scrollButton.addEventListener("click", event => {
@@ -161,15 +156,13 @@ export default class extends Controller {
       this.config.autoScroll = !this.config.autoScroll;
 
       if (this.config.autoScroll) {
-        scrollBtnClasses.add("text-primary");
-        scrollBtnClasses.remove("text-muted");
-
+        scrollBtnClasses.add("selected");
+        //scrollBtnClasses.remove("text-muted");
         this.chapter && this.chapter.scrollToVerse(this.currentVerse);
       } else {
-        scrollBtnClasses.remove("text-primary");
-        scrollBtnClasses.add("text-muted");
+        scrollBtnClasses.remove("selected");
       }
-
+      
       this.settings.saveSettings();
     });
   }
@@ -272,13 +265,20 @@ export default class extends Controller {
   }
 
   handleNextBtnClick() {
+    this.config.repeat.iteration = 1;
     const next = this.getNextTrackVerse();
     if (next) this.play(next);
   }
 
   handlePreviousBtnClick() {
+    this.config.repeat.iteration = 1;
     const previous = this.getPreviousTrackVerse();
     if (previous) this.play(previous);
+  }
+  
+  handleRepeatBtnClick(){
+    this.playerRepeatEnabled = !this.playerRepeatEnabled;
+    $("#player .icon-repeat").toggleClass("selected");
   }
 
   bindPlayerEvents() {
@@ -288,12 +288,17 @@ export default class extends Controller {
       this.handlePlayBtnClick();
     });
 
-    $("#player .previous-btn").on("click", event => {
+    $("#player .icon-prev").on("click", event => {
       event.preventDefault();
       this.handlePreviousBtnClick();
     });
+    
+    $("#player .icon-repeat").on("click", event => {
+      event.preventDefault();
+      this.handleRepeatBtnClick();
+    });
 
-    $("#player .next-btn").on("click", event => {
+    $("#player .icon-next").on("click", event => {
       event.preventDefault();
       this.handleNextBtnClick();
     });
@@ -328,15 +333,15 @@ export default class extends Controller {
 
     let thisVerse = $(
       `#verses .verse[data-verse-number=${this.currentVerse}]`
-    ).find(".play .fa");
+    ).find(".play .icon");
 
     thisVerse.removeClass(
       "icon-play1 icon-pause"
     );
 
     if ("loading" == type) {
-      p.addClass("fa-spinner animate-spin");
-      thisVerse.addClass("fa-spinner animate-spin");
+      //p.addClass("fa-spinner animate-spin");
+      //thisVerse.addClass("fa-spinner animate-spin");
     } else {
       p.addClass(`icon-${type}`);
       thisVerse.addClass(`icon-${type}`);
@@ -362,9 +367,9 @@ export default class extends Controller {
     if (next) {
       this.createHowl(next, false);
 
-      $(".next-btn").removeAttr("disabled");
+      $(".icon-next").removeAttr("disabled");
     } else {
-      $(".next-btn").attr("disabled", "disabled");
+      $(".icon-next").attr("disabled", "disabled");
     }
   }
 
@@ -413,7 +418,11 @@ export default class extends Controller {
         Math.floor((currentTime / totalDuration) * 1000) / 10;
 
       this.progressBar.value = progressPercentage;
-      $("#player-range").css({"background": "linear-gradient(to right, #00acc2 0%, #00acc2 "+progressPercentage+"%, #fff "+progressPercentage+"%, #fff 100%);"});
+      document.getElementById('player-range').style.background = 'linear-gradient(to right, #00acc2 0%, #00acc2 ' +
+        progressPercentage +
+        '%, #fff ' +
+        progressPercentage +
+        '%, white 100%)';
       $("#player .current-time").text(this.formatTime(currentTime));
     }, 500);
   }
@@ -438,7 +447,9 @@ export default class extends Controller {
   }
 
   onVerseEnded() {
-    if (this.config.repeat.enabled) {
+    if(this.playerRepeatEnabled){
+      this.repeatSingleVerse(0,10000);
+    }else if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()
         : this.repeatRangeVerses();
@@ -447,8 +458,8 @@ export default class extends Controller {
     }
   }
 
-  repeatSingleVerse() {
-    if (this.config.repeat.iteration <= this.config.repeat.count) {
+  repeatSingleVerse(iteration = this.config.repeat.iteration, count = this.config.repeat.count) {
+    if (iteration <= count) {
       //  play the same verse
       this.config.repeat.iteration++;
       this.play();

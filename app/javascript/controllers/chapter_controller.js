@@ -166,7 +166,7 @@ export default class extends Controller {
       let currentScroll = $(window).scrollTop();
       let windowHeight = window.innerHeight;
       let headerHeight =
-        $("header").outerHeight() + $(".surah-actions").outerHeight();
+        $(".header").outerHeight() + $(".surah-actions").outerHeight();
       let playerHeight = $("#player").outerHeight();
 
       // scroll if there isn't a space to appear completely

@@ -79,7 +79,7 @@ export default class extends Controller {
       $('.play-selected-wrapper').removeClass('active');
     });
     //document.addEventListener("el:selected", (e,items) => {
-    //  document.querySelector('#play-segment').classList.add("active");
+    //  document.querySelector('#segment-player').classList.add("active");
     //  document.querySelector('#play-selected-wrapper').classList.add("active");
     //});
     $(document).on('el:deselected', function() {
@@ -92,7 +92,7 @@ export default class extends Controller {
     document.querySelector('#play-selected--playbutton').addEventListener("click", e => this.play(e));
     document.querySelector('#play-bar-close').addEventListener("click", e => this.closePlayer(e));
     document.querySelector('#close-play-selected').addEventListener("click", () => this.closePlaySegment());
-    document.querySelector('#play-segment').addEventListener("click", () => this.showPlaySegment());
+    document.querySelector('#segment-player').addEventListener("click", () => this.showPlaySegment());
     document.querySelectorAll(".counter__button").forEach(item => {
       item.addEventListener("click", e => this.handleCounterButtons(e));
     });
@@ -101,12 +101,12 @@ export default class extends Controller {
   
   showPlaySegment(){
     document.querySelector('#play-selected-wrapper').classList.add("active");
-    document.querySelector('#play-segment').classList.add("active");
+    document.querySelector('#segment-player').classList.add("active");
   }
   
   closePlaySegment(){
     document.querySelector('#play-selected-wrapper').classList.remove("active");
-    document.querySelector('#play-segment').classList.remove("active");
+    document.querySelector('#segment-player').classList.remove("active");
   }
   
   handleCounterButtons(e){

@@ -49,7 +49,7 @@ export default class extends Controller {
       from =  document.querySelector("#copy-range-ayah-from").value;
     }
     const selectedTransaltions = [...document.querySelectorAll('input[name="copy-translation"]:checked')].map(x => x.value);
-    const url = `/chapters/${this.chapterId}/clipboard.text?to=${to}&from=${from}&translations=${selectedTransaltions}&add_footnotes=${this.addFootnotes}`;
+    const url = `/${this.chapterId}/load_verses.text?to=${to}&from=${from}&translations=${selectedTransaltions.join()}&add_footnotes=${this.addFootnotes}`;
     fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(resp => resp.text())
       .then(content => {

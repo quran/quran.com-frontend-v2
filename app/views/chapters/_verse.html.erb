@@ -7,15 +7,15 @@
   <div>
     <div class="translation__icons">
       <a class="translation__icon surah-ayah-link" href="/<%=verse.chapter_id%>/<%=verse.verse_number%><%=@presenter.params_for_verse_link%>"><span class="surah-ayah"><%=verse.verse_key%></span></a>
-      <a class="translation__icon"
+      <a class="translation__icon play"
          data-title="<%= t('action.play') %>"
           data-controller="track"
           data-name='ayah-action'
           data-category="play">
-         <span class="icon-play1"></span>
+         <span class="icon-play1 icon"></span>
       </a>
       <div class="actions-menu">
-        <a class="translation__icon open-actions" data-action="click->verse#toggleActions"><span class="icon-menu"></span></a>
+        <a class="translation__icon open-actions" data-title="Actions"><span class="icon-menu"></span></a>
         <div class="actions-wrapper hidden" data-verse-id="<%=verse.verse_index%>">
           <div class="actions-items">
             <div class="actions-header">
