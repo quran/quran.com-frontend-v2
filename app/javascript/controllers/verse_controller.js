@@ -124,21 +124,15 @@ export default class extends Controller {
 
   copy() {
     copyToClipboard(this.el.data("text"));
-    
-    // no tooltip?
-    
-    //let {title, done} = this.copyDom.dataset;
-    //
-    //this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
-    //this.copyDom.tooltip._fixTitle()
-    //
-    //this.copyDom.tooltip.show();
-    //
-    //this.copyDom.addEventListener("hidden.bs.tooltip", () => {
-    //    this.copyDom.setAttribute("title", title);
-    //    this.copyDom.tooltip._fixTitle()
-    //  }
-    //);
+    let {title, done} = this.copyDom.dataset;
+    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`;
+    this.copyDom.tooltip._fixTitle();
+    this.copyDom.tooltip.show();
+    setTimeout(() => {
+      this.copyDom.setAttribute("title", title);
+      this.copyDom.tooltip._fixTitle();
+      this.copyDom.tooltip.hide();
+    }, 3000);
   }
   
   toggleActions(e){

@@ -46,8 +46,14 @@ export default class extends Controller {
         this.lastVerse = +player.lastVerse;
         this.currentVerse = +player.currentVerse;
       }
-      const segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.position)-1);
+      const firstSegment = +document.querySelector('.word.selected').dataset.position;
+      let nonArabicWordCount = 1; // we need atleast 1 in order to use it as index
       const verseNumber = document.querySelector('.word.selected').dataset.key.split(":")[1];
+      document.querySelector(`[data-verse-number='${verseNumber}']`).querySelectorAll('.arabic.w').forEach(node => {
+        if(!!node.dataset.audio == false && node.dataset.position <= firstSegment)
+          nonArabicWordCount += 1;
+      });
+      let segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.position)-(nonArabicWordCount));
       player.updatePause(this.config.seconds);
       player.updateRepeatConfig({
         repeatEnabled: true,
