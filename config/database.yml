@@ -9,10 +9,20 @@ default: &default
   timeout: 5000
   schema_search_path: quran,"$user",content,audio,i18n,public
 
+local:
+  <<: *default
+  host: localhost
+  user: postgres
+  password: root
+  database: quran_dev
+
 development:
   <<: *default
   host: localhost
+  user: postgres
+  password: root
   database: quran_dev
+
 
 production:
   <<: *default
