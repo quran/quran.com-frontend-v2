@@ -29,7 +29,7 @@ sq:
   local: anglisht
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet në faqe
-  local_native_name: Anglisht
+  local_native_name: Shqip
   language: Gjuhë
   settings:
     label: Cilësimet
