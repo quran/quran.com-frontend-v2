@@ -16,7 +16,6 @@ export default class extends Controller {
   bindFootnotes() {
     let el = $(this.element);
     let foodnotes = el.find("sup");
-
     foodnotes.click(e => {
       e.preventDefault();
       e.stopImmediatePropagation();

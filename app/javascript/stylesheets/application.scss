@@ -60,7 +60,6 @@
   outline: none !important;
 }
 
-::selection {
-  background-color: $primary-400;
-  color: white;
+.break-space {
+  white-space: break-spaces;
 }

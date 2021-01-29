@@ -11,7 +11,7 @@
            data-filter-tags="<%= recitation.reciter_name.downcase %> <%= reciter_name.name %> <%= recitation.style.to_s.downcase %>">
         <div>
           <input class="form-check-input" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
-          <label class="form-check-label text-muted ff-r" for="recitation-<%= recitation.id %>">
+          <label class="form-check-label text-muted" for="recitation-<%= recitation.id %>">
             <span class="<%= reciter_name.language_name %>">
               <%= reciter_name.name %>
             </span>

@@ -8,17 +8,26 @@
 hi:
   noble_quran:
   errors:
-    not_found:
-    invalid_verse:
-    invalid_chapter:
+    not_found: क्षमा करें, यह पेज मौजूद नहीं है
+    invalid_verse: अपने अयाह चयन की जाँच करें। यह सीमा से बाहर है।
+    invalid_chapter: अपने सूरह चयन की जाँच करें। यह सीमा से बाहर है।
     no_script:
+      ऐसा लगता है कि या तो आपका ब्राउज़र जावास्क्रिप्ट का समर्थन नहीं करता
+      है या बंद करा गया है। Quran.com जावास्क्रिप्ट के साथ बेहतर काम करता है। जावास्क्रिप्ट
+      को सक्षम करने के बारे में अधिक निर्देश के लिए
     unavailable_session:
-    unacceptable_request:
-    connection_refused:
+      "सत्र %{id} अब मेमोरी में उपलब्ध नहीं है।\n\nयदि आप मल्टी-प्रोसेस
+      सर्वर (जैसे यूनिकॉर्न या प्यूमा) को चलाने के लिए प्रक्रिया करते हैं\nयह अनुरोध
+      मेमोरी में %{id} को संग्रहीत नहीं करता है। \nएक (1) के लिए प्रक्रियाओं / श्रमिकों
+      या विकास में एक अलग सर्वर का उपयोग कर।\n"
+    unacceptable_request: Accept शीर्षलेख में एक समर्थित संस्करण अपेक्षित है।
+    connection_refused: |
+      ऊप्स! वेब कंसोल मिडलवेयर से कनेक्ट करने में विफल।
+      कृपया सुनिश्चित करें कि रेलस सर्वर चल रहा है।
     format: "%{attribute} %{message}"
   local:
   site_local:
-  change_local:
+  change_local: वह भाषा चुनें जिस भाषा में आप साइट देखना चाहते हैं
   local_native_name:
   language:
   page:
@@ -65,35 +74,35 @@ hi:
     go:
     not_found:
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
+    label: सूरत
+    next: अगली सूरत
+    previous: पिछली सूरत
+    verses: आयत
+    pages: पेज
+    revelation_place: प्रत्यक्ष स्थान
+    continue: आगे बढ़ें
     quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
+    go_to_beginning: सुराह की शुरुआत
+    read_full: पूरी सूरत पढें
+    invalid: खोज में सूरत नहीं मिली
   footnote:
   share_ayah:
   action:
-    play:
-    pause:
-    share:
-    quran_reflect:
-    addNote:
+    play: चलाएँ
+    pause: ठहरिये
+    share: शेयर करें
+    quran_reflect: QuranReflect पर इस अयाह के लिए विचार पढ़ें
+    addNote: नोट लिखिए
     tafsir:
-      label:
-      select:
-      filter_tafsir: 'भाषा द्वारा फ़िल्टर करें:'
+      label: विवरण
+      select: विवरण का चयन करें
+      filter_tafsir: "भाषा द्वारा फ़िल्टर करें:"
     bookmark:
-      label:
-      done:
+      label: बुकमार्क करें
+      done: बुकमार्क हो गया!
     copy:
-      label:
-      done:
+      label: कॉपी करें
+      done: कॉपी हो गया!
   search:
     label:
     placeholder:
@@ -145,9 +154,10 @@ hi:
     legacy_site:
     blog:
     forum:
+    privacy:
   juz:
-  click_here:
-  download:
+  click_here: यहां क्लिक करे
+  download: डाउनलोड
   home:
   related_sites:
     label:
@@ -157,4 +167,4 @@ hi:
     salah_description:
     audio:
     audio_description:
-  close:
+  close: बंद करे

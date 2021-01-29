@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   include LanguageBoost
-  # caches_action :search, :suggestion, expires_in: 7.days, cache_path: :action_cache_key
+  QUERY_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   def search
     if do_search
@@ -30,7 +30,7 @@ class SearchController < ApplicationController
 
   def query
     query = (params[:q] || params[:query]).to_s.strip.first(150)
-    params[:q] = query
+    params[:q] = QUERY_SANITIZER.sanitize(query)
   end
 
   def size(default = 20)

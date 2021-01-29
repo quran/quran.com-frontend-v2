@@ -25,33 +25,6 @@
       }
     }
   }
-  #translation-dropdown {
-    span.select2-container {
-      width: 193px !important;
-      height: 36px;
-      display: block !important;
-      overflow-y: hidden;
-      border-radius: 6px !important;
-      ul{
-        margin-right: 27px;
-        span.select2-selection__clear {
-          left: 164px;
-          position: absolute;
-          margin-top: 7px;
-          padding: 1px 1px 2px 7px;
-          border-radius: 50%;
-          height: 21px;
-          background-color: #00acc1;
-          width: 21px;
-          color: white;
-          margin-top: 12px;
-          @media (max-width: 767px) {
-            margin-top: 7px;
-          }
-        }
-      }
-    }
-  }
 }
 
 #chapter-info {

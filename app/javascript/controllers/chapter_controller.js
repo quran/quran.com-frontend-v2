@@ -13,7 +13,6 @@ export default class extends Controller {
     this.translationTab = document.querySelector("#pill-translation-tab");
     this.readingTab = document.querySelector("#pill-reading-tab");
     this.infoTab = document.querySelector("#pill-surah-info-tab");
-
     // this.setURLState();
     this.bindAyahJump();
   }
@@ -127,7 +126,6 @@ export default class extends Controller {
         document.body.loader.show();
 
         e.preventDefault();
-        e.stopImmediatePropagation();
 
         const ayah = e.currentTarget.dataset.verse;
         // TODO: we need to refactor this now, repeating this a lot
@@ -153,6 +151,11 @@ export default class extends Controller {
   }
 
   scrollToVerse(verse) {
+    $("#verse-list .dropdown-item").removeClass("active");
+    let activeVerse = $("#verse-list").find(`[data-filter-tags=${verse}]`);
+    activeVerse.addClass("active");
+    $(".verse-dropdown strong").html(activeVerse.find(".verse-num").html());
+
     let verseElement = this.activeTab.find(
       `.verse[data-verse-number=${verse}]`
     );
@@ -325,19 +328,7 @@ export default class extends Controller {
     const reading = this.isReadingMode();
     let from, to;
 
-    //const verses = this.activeTab.find(".verse");
-    //const firstVerse = verses.first().data().verseNumber;
-    //const lastVerse = verses.last().data().verseNumber;
-
-    /*if (verse > lastVerse) {
-      from = lastVerse;
-      to = Math.ceil(verse / 10) * 10;
-    } else {
-      from = verse;
-      to = firstVerse;
-    }*/
-
-    // instead of loading all ayah, lets say load batch of 10 around the select verse
+    // instead of loading all ayah, let's load batch of 10 around the selected verse
     // i.e if user want to jump to 200, we'll load 195 to 205
     from = Math.max(1, verse - 2);
     to = Math.min(verse + 5, this.totalVerses);
@@ -360,9 +351,9 @@ export default class extends Controller {
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
 
-    const readingPage = document.querySelector(`${readingTarget} #verses`);
+    const readingPage = document.querySelector(`${readingTarget} .verses`);
     const translationPage = document.querySelector(
-      `${translationTarget} #verses`
+      `${translationTarget} .verses`
     );
 
     readingPage.innerHTML = this.getLazyTab(
@@ -412,14 +403,14 @@ export default class extends Controller {
       translations: translationsToLoad
     })}`;
 
-    let verseList = $(this.translationTab.dataset.target).find("#verses");
+    let verseList = $(this.translationTab.dataset.target).find(".verses");
 
     fetch(`${path}`)
       .then(response => response.text())
       .then(verses => {
         verseList.html(
           $(verses)
-            .find("#verses")
+            .find(".verses")
             .html()
         );
 
@@ -428,40 +419,10 @@ export default class extends Controller {
   }
 
   insertVerses(newVerses) {
-    //let dom = $("<div>").html(newVerses);
     let verseList = this.activeTab;
-    //let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
-
-    /*while (
-      verseList.find(`.verse[data-verse-number=${previousVerse}]`).length ==
-      0 &&
-      previousVerse > 0
-      ) {
-      previousVerse = previousVerse - 1;
-    }
-
-    if (previousVerse > 0) {
-      let targetDom = verseList.find(
-        `.verse[data-verse-number=${previousVerse}]`
-      );
-      targetDom.after(newVerses);
-    } else {
-      let nextVerse = $(dom.find(".verse")[dom.find(".verse").length - 1]).data(
-        "verseNumber"
-      );
-
-      while (
-        verseList.find(`.verse[data-verse-number=${nextVerse}]`).length == 0
-        ) {
-        nextVerse = nextVerse + 1;
-      }
-
-      let targetDom = verseList.find(`.verse[data-verse-number=${nextVerse}]`);
-      targetDom.before(newVerses);
-    }*/
 
     // simply replace current page with newly loaded verses
-    verseList.find("#verses").html(newVerses);
+    verseList.find(".verses").html(newVerses);
     this.activeTab[0].infinitePage.resume();
 
     return Promise.resolve(verseList);

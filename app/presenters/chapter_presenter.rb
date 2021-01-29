@@ -277,7 +277,7 @@ class ChapterPresenter < HomePresenter
   def fetch_verses_range(verse_start, verse_end)
     @results = Verse
                  .where(chapter_id: chapter.id)
-                 .where('verse_number >= ? AND verse_number <= ?', verse_start.to_i, verse_end.to_i)
+                 .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
   end
 
   def load_words
@@ -340,7 +340,7 @@ class ChapterPresenter < HomePresenter
 
   def verse_pagination_end(start, per)
     if reading_mode?
-      first = Verse.where(chapter_id: chapter.id, verse_number: start).first
+      first = Verse.where(chapter_id: chapter.id, 'verses.verse_number': start).first
       last_on_page = Verse.where(chapter_id: chapter.id, page_number: first.page_number).last
 
       return min(last_on_page.verse_number, range_end)

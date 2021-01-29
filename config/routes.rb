@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/settings/translations', to: 'settings#translations'
   get '/settings/recitations', to: 'settings#recitations'
   get '/settings/fonts', to: 'settings#fonts'
+  get '/settings/locales', to: 'settings#locales'
 
   get '/audio', to: 'audio_files#index'
   get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   get :apps, to: 'pages#apps'
   get :donations, to: 'pages#donations'
   get :support, to: 'pages#support'
+  get :privacy, to: 'pages#privacy'
   get :developers, to: 'pages#developers'
 
   resources :verses, only: :show do

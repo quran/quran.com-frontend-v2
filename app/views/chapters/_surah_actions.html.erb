@@ -5,15 +5,15 @@
   <div class="container position-relative">
     <div class="row align-items-center actions-row">
       <div class="col-md-2 col-5">
-        <div class="dropdown surah-dropdown">
-          <button class="btn btn-white dropdown-toggle position-relative" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown surah-dropdown chapters">
+          <a class="btn btn-white dropdown-toggle position-relative" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="text-left pr-3 text-primary">
               <strong>
                 <%= @presenter.chapter.name_simple %>
               </strong>
-              <p class="text-muted mb-0"><%= @presenter.chapters[current_chapter-1].translated_name.name %></p>
+              <p class="text-muted mb-0 text-wrap"><%= @presenter.chapters[current_chapter-1].translated_name.name %></p>
             </div>
-          </button>
+          </a>
 
           <div
             class="dropdown-menu border-0 custom-shadow pt-0"
@@ -43,7 +43,7 @@
                       <div class="col-3">
                         <%= chapter.name_arabic %>
                       </div>
-                      <div class="col-10 offset-2">
+                      <div class="col-10 offset-2 text-wrap">
                         <%= chapter.translated_name.name %>
                       </div>
                     </div>
@@ -56,12 +56,12 @@
       </div>
 
       <div class="col-md-1 col-4">
-        <div class="dropdown verse-dropdown">
-          <button class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown verse-dropdown verse-list">
+          <a class="btn btn-white dropdown-toggle position-relative" type="button" id="verseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="text-left pr-3 text-primary">
               <strong> <%= verse_locale %> <%= @presenter.paginate[0].verse_number %></strong>
             </div>
-          </button>
+          </a>
 
           <div class="dropdown-menu border-0 custom-shadow pt-0"
                aria-labelledby="verseDropdown"
@@ -80,7 +80,11 @@
               <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
                 <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
                   <%= link_to "/#{current_chapter}/#{verse_num}", data: {verse: verse_num} do %>
-                    <%= verse_locale %> <%= verse_num %>
+                    <div class="row">
+                      <div class="col-12 verse-num">
+                        <%= verse_locale %> <%= verse_num %>
+                      </div>
+                    </div>
                   <% end %>
                 </div>
               <% end %>
@@ -122,12 +126,12 @@
       </div>
 
       <div class="col text-right">
-        <button class="btn btn-outline-secondary setting-button" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
+        <a class="btn btn-outline-secondary setting-button" data-controller="sidebar" data-target="#right-sidebar" data-close=".close-right-sidebar">
           <i class="fa fa-cog fa-center-1" , class="c-pointer"></i>
           <span class="d-md-inline d-none">
             <%= _t('settings.label') %>
           </span>
-        </button>
+        </a>
       </div>
     </div>
   </div>

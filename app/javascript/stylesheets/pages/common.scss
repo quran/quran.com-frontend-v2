@@ -3,7 +3,7 @@ a {
 }
 
 body {
-  font-family: SFProText-Regular;
+  // font-family: $font-regular;
 }
 
 ul {
@@ -13,15 +13,7 @@ ul {
 
 /*Font Family FF*/
 .ff-b {
-  font-family: SFProText-Bold;
-}
-
-.ff-m {
-  font-family: SFProText-Medium;
-}
-
-.ff-r {
-  font-family: SFProText-Regular;
+  font-weight: 700;
 }
 
 /*Line Height*/
@@ -195,6 +187,13 @@ ul {
       padding-right: 48px;
     }
   }
+  @media #{$phone-xs} {
+    .search-form {
+      .form-search {
+        right: 5px;
+      }
+    }
+  }
 }
 
 /*checboxes*/
@@ -338,13 +337,15 @@ ul {
 
 h2,
 .h2 {
-  font-family: $font-bold;
+  //font-family: $font-bold;
   font-size: 30px;
+  //font-weight: bold;
   color: $color-primary;
   margin-bottom: 15px;
 
   span {
-    font-family: $font-regular;
+    // font-family: $font-regular;
+    font-weight: 100;
   }
 }
 

@@ -7,6 +7,16 @@ import { Controller } from "stimulus";
 export default class extends Controller {
   selectedLang = "";
 
+  connect() {
+    $("#tafsir-results a").on("click", () => {
+      if (window.dialog) {
+        window.dialog.hide();
+        window.dialog.disable();
+        window.dialog = null;
+      }
+    });
+  }
+
   filter(e) {
     const currentLang = e.currentTarget.dataset.selectedLang;
     if (currentLang === this.selectedLang) {

@@ -155,6 +155,7 @@ ur:
     blog: بلاگ
     forum: فورم
     mobile_apps: موبائل ایپ
+    privacy: رازداری کی پالیسی
   juz: سپارے
   click_here: یہاں کلک کریں
   download: ڈاؤن لوڈ کریں
@@ -163,7 +164,7 @@ ur:
   related_sites:
     label: متعلقہ سائٹس
     sunnah: سنت
-    sunnah_description: "نبی صلی اللہ علیہ وسلم کی حدیث "
+    sunnah_description: حضرت محمد ﷺ کی احادیث
     salah: نماز کا وقت
     salah_description: کسی بھی جگہ کے لئے نماز کا وقت تلاش کریں
     audio: آڈیو میں نوبل قرآن

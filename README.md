@@ -17,7 +17,7 @@
   <p align="center">
     The official source code repository for Quran.com
     <br />
-    <a href="#contact"><strong>Join the Slack Channel »</strong></a>
+    <strong><a href="https://quranslack.herokuapp.com">Join the Slack Channel <img src="http://i.imgur.com/Lk5HsBo.png"/></a></strong>
     <br />
     <br />
     <a href="https://quran.com">Visit Quran.com</a>
@@ -29,12 +29,15 @@
 </p>
 
 <!-- PROJECT SHIELDS -->
+<div align="center">
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 [![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
+[![GPL v3 License][license-shield]][license-url]
+
+</div>
 
 <!-- TABLE OF CONTENTS -->
 
@@ -89,7 +92,7 @@ You'll need:
 - [Git](https://git-scm.com/downloads) for source code version control. If you want, you may use another Version Control Software, such as SVN.
 - [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser
 - [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it's an Apache Hadoop technology
-- Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.6.2`
+- Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.7.1`
 - [pgAdmin](https://www.pgadmin.org/) is a GUI for PostgreSQL
 - You're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). [RVM](https://rvm.io/) is a command-line tool that lets you easily install and manage multiple Ruby environments.
 
@@ -241,5 +244,5 @@ Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) w
 [issues-shield]: https://img.shields.io/github/issues/quran/quran.com-frontend-v2?style=for-the-badge
 [issues-url]: https://github.com/quran/quran.com-frontend-v2/issues
 [license-shield]: https://img.shields.io/github/license/quran/quran.com-frontend-v2?style=for-the-badge
-[license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE.txt
+[license-url]: https://github.com/quran/quran.com-frontend-v2/blob/master/LICENSE
 [product-screenshot]: images/screenshot.png

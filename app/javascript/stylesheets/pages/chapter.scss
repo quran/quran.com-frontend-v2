@@ -9,7 +9,7 @@
   }
 }
 
-#verses {
+.verses {
   // reading/translation mode page are lazy loaded
   // need to set min height to wrapper give for interaction observer to see this dom's presence within page
   min-height: 50px;
@@ -122,12 +122,16 @@
   .arabic {
     font-size: 30px;
     line-height: normal;
-    word-spacing: 55px;
-    display: flex;
     flex-flow: row wrap;
+
+    &.v1 {
+      // add line spacing for FF wrap bug
+      word-spacing: 55px;
+    }
   }
 
-  .result-verse, .text_uthmani_tajweed {
+  .result-verse,
+  .text_uthmani_tajweed {
     word-spacing: initial;
     display: inline-block;
     float: right;
@@ -138,6 +142,17 @@
   }
 }
 
+.verse .arabic {
+  display: flex;
+}
+
+.line .arabic {
+  display: inline-flex;
+}
+
+.verse .text_uthmani_tajweed {
+  display: inline-block !important;
+}
 
 #verses-reading {
   .arabic {
@@ -162,11 +177,21 @@
     &:hover,
     &.highlight {
       color: $color-primary !important;
+
+      &::selection {
+        //TODO: move this to design system.Hard coding this for now
+        color: #ff7416;
+      }
     }
   }
 
   .w {
-    margin: 0 5px;
+    padding: 0 4px;
+  }
+
+  .pause:not(.v1) {
+    // don't show pause marks for Uthmai and Indopak script
+    display: none;
   }
 
   .bg-secondary {

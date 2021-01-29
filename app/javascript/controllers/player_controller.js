@@ -294,7 +294,7 @@ export default class extends Controller {
     p.removeClass("fa-play-circle fa-pause-circle fa-spinner animate-spin");
 
     let thisVerse = $(
-      `#verses .verse[data-verse-number=${this.currentVerse}]`
+      `.verses .verse[data-verse-number=${this.currentVerse}]`
     ).find(".play .fa");
 
     thisVerse.removeClass(
