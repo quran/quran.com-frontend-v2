@@ -11,10 +11,9 @@ th:
     not_found: ขออภัย ไม่พบหน้าดังกล่าว
     invalid_verse: ไม่พบอายะห์ดังกล่าว กรุณาตรวจสอบอายะห์ที่คุณเลือก
     invalid_chapter: ไม่พบซูเราะห์ดังกล่าว กรุณาตรวจสอบซูเราะห์ที่คุณเลือก
-    no_script:
-      ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
+    no_script: ดูเหมือนว่าเบราว์เซอร์ของคุณไม่รองรับ Javascript หรือถูกปิดการใช้งานไว้.
       Quran.com ทำงานได้ดีที่สุดเมื่อเปิดใช้งาน JavaScript. สำหรับคำแนะนำเพิ่มเติมเกี่ยวกับวิธีเปิดใช้งาน
-      JavaScript
+      JavaScript <a href="http://www.enable-javascript.com/" target="_blank" rel="nofollow">คลิ๊กที่นี่</a>.
     unavailable_session: |
       เซสชัน %{id} ไม่สามารถใช้งานในหน่วยความจำได้
 
@@ -59,8 +58,8 @@ th:
     fonts:
       tajweed: อักษรแบบแสดงตัจวีด
       uthmani: อักษรแบบอุษมานีย์
-      qcf_v1: QCF V1.0
-      qcf_v2: QCF V2
+      qcf_v1: ศูนย์กษัตริย์ฟะฮัดเพื่อการจัดพิมพ์อัลกุรอาน เวอร์ชัน 1
+      qcf_v2: ศูนย์กษัตริย์ฟะฮัดเพื่อการจัดพิมพ์อัลกุรอาน เวอร์ชัน 2
       indopak: อักษรแบบอินเดีย-ปากีสถาน
     translation_count:
       one: กำลังแสดงหนึ่งคำแปล
@@ -96,7 +95,7 @@ th:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร
-      filter_tafsir: "กรองตามภาษา:"
+      filter_tafsir: 'กรองตามภาษา:'
     quran_reflect: อ่านข้อความสะท้อนบทเรียนสำหรับอายะห์นี้ใน QuranReflect
   search:
     label: ค้นหา
@@ -142,8 +141,7 @@ th:
     other_links: ลิงค์อื่น ๆ
     contact_us: ติดต่อเรา
     help: แนะนำติชม
-    about_project:
-      Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
+    about_project: Quran.com เป็นโครงการสาธารณประโยชน์ที่จัดทำขึ้น เพื่อหวังให้การอ่าน
       ศึกษา และเรียนรู้อัลกุรอานเป็นเรื่องง่ายสำหรับทุกคน.
     rights: สงวนลิขสิทธิ์
     navigate: นำทาง
@@ -151,7 +149,7 @@ th:
     blog: บล็อก
     forum: ฟอรัม
     mobile_apps: แอปพลิเคชันมือถือ
-    privacy:
+    privacy: ความเป็นส่วนตัว
   juz: ญุซ
   click_here: คลิกที่นี่
   download: ดาวน์โหลด
@@ -159,7 +157,7 @@ th:
   related_sites:
     label: เว็บไซต์ที่เกี่ยวข้อง
     sunnah: ซุนนะฮฺ
-    sunnah_description: หะดิษของท่านนบีมุฮัมหมัด (ศ็อลฯ)
+    sunnah_description: หะดิษของท่านนบีมุฮัมหมัด (ﷺ)
     salah: ละหมาด
     salah_description: ค้นหาเวลาละหมาดสำหรับสถานที่ต่างๆ
     audio: เสียงอ่านอัลกุรอาน

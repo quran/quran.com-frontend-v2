@@ -12,21 +12,20 @@ nl:
     invalid_chapter: Controleer uw Surah-selectie. Het is buiten bereik.
     no_script:
     unavailable_session:
-    unacceptable_request:
-      "Een geaccepteerde versie is verwacht in de Accept header.
+    unacceptable_request: 'Een geaccepteerde versie is verwacht in de Accept header.
 
-      "
+      '
     connection_refused:
     format: "%{attribute} %{message}"
-  local: engels
+  local: dutch
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
-  local_native_name: Engels
+  local_native_name: Dutch
   language: Taal
   settings:
-    label: "Instellingen
+    label: 'Instellingen
 
-      "
+      '
     chapters: Selecteer Surah
     reciters: Kies Reciteurs
     translations: Kies Vertalingen
@@ -64,12 +63,12 @@ nl:
     go: Ga naar Ayah
     not_found: Ayah niet gevonden
   chapters:
-    label: "Surah
+    label: 'Surah
 
-      "
-    next: "Volgende Surah
+      '
+    next: 'Volgende Surah
 
-      "
+      '
     previous: Vorige Surah
     verses: Ayah
     pages: pagina's
@@ -89,14 +88,14 @@ nl:
     copy:
       label: Kopiëren
       done: Gekopieerd!
-    share: "Deel "
-    addNote: "Notitie Toevoegen
-
-      "
+    share: 'Deel '
+    addNote: |-
+      Notitie Toevoegen
+      sq
     tafsir:
       label: Tafsirs
       select: Selecteer Tafsir
-      filter_tafsir: "Filter op taal:"
+      filter_tafsir: 'Filter op taal:'
     quran_reflect: Lees Reflections voor deze Ayah op QuranReflect
   search:
     placeholder: Zoek "Noah"
@@ -126,8 +125,7 @@ nl:
     repeat_loop: lus
     scroll: Scroll automatisch naar de huidige ayah
     select_verse: Selecteer een vers
-    pause_bw_ayah:
-      Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
+    pause_bw_ayah: Stel in hoelang je moet pauzeren voordat het volgende couplet wordt
       afgespeeld
     pause_seconds: Seconden
     pause: Pauzeer voor
@@ -136,9 +134,9 @@ nl:
   loading: Laden...
   nav:
     title: Koran
-    settings: "Instellingen
+    settings: 'Instellingen
 
-      "
+      '
     contribute: Bijdragen
     about_us: Over ons
     developers: ontwikkelaars
@@ -146,8 +144,7 @@ nl:
     other_links: Andere links
     contact_us: Contacteer ons
     help: Hulp en feedback
-    about_project:
-      Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
+    about_project: Quran.com is een Sadaqah Jariyah. We hopen het iedereen gemakkelijk
       te maken om The Noble Quran te lezen, bestuderen en leren. De Edele Koran heeft
       veel namen, waaronder Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr en Al-Noor.
@@ -162,9 +159,9 @@ nl:
   click_here: Klik hier
   download: Download
   home: Thuis
-  noble_quran: "De edele Koran
+  noble_quran: 'De edele Koran
 
-    "
+    '
   related_sites:
     label: Gerelateerde sites
     sunnah: Sunnah
@@ -176,9 +173,9 @@ nl:
   close: Gesloten
   page: Pagina
   reader_mode:
-    reading: "Lezen
+    reading: 'Lezen
 
-      "
+      '
     translation: Vertalingen
     info: Soera Info
   share_ayah: Deel ayah

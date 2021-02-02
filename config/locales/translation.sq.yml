@@ -10,8 +10,7 @@ sq:
     not_found: Na vjen keq, kjo faqe nuk ekziston
     invalid_verse: Kontrolloni zgjedhjen tuaj të ajetit.  Është jashtë kapacitetit.
     invalid_chapter: Kontrolloni zgjedhjen tuaj të sures. Është jashtë kapacitetit.
-    no_script:
-      Mesa duket sikur shfletuesi juaj nuk e suporton Javascript ose është
+    no_script: Mesa duket sikur shfletuesi juaj nuk e suporton Javascript ose është
       i çaktivizuar. Quran.com punon më  mirë me JavaScript të aktivizuar. Për më
       shumë udhëzime se si të aktivizoni Javascript <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">klikoni këtu</a> .
@@ -19,17 +18,16 @@ sq:
       Sesioni nuk është më i disponueshëm në memorje.
 
       Nëse ndodh që të ekzekutoni në një server me shumë procese (si Unicorn ose Puma) procesimi i kësaj kërkese nuk e ruan numrin id në memorje. Konsideroni ndryshimin e numrit të proceseve / punëtorëve në një (1) ose të përdorni një server tjetër në zhvillim.
-    unacceptable_request: "Në header-in Prano pritet një version i suportuar.
+    unacceptable_request: 'Në header-in Prano pritet një version i suportuar.
 
-      "
-    connection_refused:
-      "Ups! Dështim në lidhjen me shtresën e Web Console. Ju lutem,
-      sigurohuni që një server zhvillimi rails është aktiv. "
+      '
+    connection_refused: 'Ups! Dështim në lidhjen me shtresën e Web Console. Ju lutem,
+      sigurohuni që një server zhvillimi rails është aktiv. '
     format: "%{attribute} %{message}"
-  local: anglisht
+  local: Shqip
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet në faqe
-  local_native_name: Anglisht
+  local_native_name: Shqip
   language: Gjuhë
   settings:
     label: Cilësimet
@@ -53,7 +51,7 @@ sq:
       night_tip: Kaloni në modalitetin e natës
     reset: Rivendosja e Vendosjes
     font_type: Zgjidhni shkronjën
-    sample_audio:
+    sample_audio: Luaj Modelin
     display: Parametrat e ekranit
     audio: Cilësimet e audios
     fonts:
@@ -87,20 +85,20 @@ sq:
     pause: Pushim
     bookmark:
       label: Ruaje
-      done: "U ruajt për aksesim të shpejtë!
+      done: 'U ruajt për aksesim të shpejtë!
 
-        "
+        '
     copy:
       label: Kopjo
       done: U kopjua!
     share: Shpërndani
-    addNote: Shto Shënim
+    addNote: Shtoni shënim
     tafsir:
-      label: "Tefsir
+      label: 'Tefsir
 
-        "
+        '
       select: Zgjidhni Tefsirin
-      filter_tafsir: "Filtro sipas gjuhës:"
+      filter_tafsir: 'Filtro sipas gjuhës:'
     quran_reflect: Lexoni Reflektimet për këtë Ajet në QuranReflect
   search:
     placeholder: Kërko "Noah"
@@ -134,8 +132,7 @@ sq:
     pause_seconds: sekonda
     pause: Bëni pauzë për
     play_continuously: Vazhdoni të luani pa ndalur
-    show_word_tooltip:
-      Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
+    show_word_tooltip: Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
       ayah
   loading: Duke u ngarkuar...
   nav:
@@ -148,8 +145,7 @@ sq:
     other_links: Lidhje të tjera
     contact_us: Na kontaktoni
     help: Ndihmë & reagime
-    about_project:
-      Quran.com është një sadaka e rrjedhshme. Ne shpresojmë që ta lehtësojmë  për
+    about_project: Quran.com është një sadaka e rrjedhshme. Ne shpresojmë që ta lehtësojmë  për
       të leximin, studimin dhe mësimin e Kuranit Fisnik. Kurani Fisnik ka shumë emra
       përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr dhe
       Al-Noor.
@@ -159,7 +155,7 @@ sq:
     blog: Blog
     forum: Forum
     mobile_apps: Aplikacione Celulare
-    privacy:
+    privacy: Privatësia
   juz: Xhuzi
   click_here: Kliko këtu
   download: Shkarko
