@@ -11,19 +11,16 @@ ha-Latn-NG:
     not_found: Yi hakuri, wannan shafin babu shi
     invalid_verse: Duba zabin Ayah. Ya yi nisa
     invalid_chapter: Duba zabin Surar ka. Ya yi nisa
-    no_script:
-      Yayi kama da kodai burauzar ba ta tallafawa Javascript ko ta kashe.
+    no_script: Yayi kama da kodai burauzar ba ta tallafawa Javascript ko ta kashe.
       Quran.com yana aiki mafi kyau tare da kunna Javascript. Don karin koyarwa kan
       yadda za'a kunna Javascript <a href="http://www.enable-javascript.com/" target="_blank"rel="nofollow">latsa
       nan</a>
-    unavailable_session:
-      Ba a samun zama %{id} a cikin kwakwalwa. Idan kuna gudana
+    unavailable_session: Ba a samun zama %{id} a cikin kwakwalwa. Idan kuna gudana
       akan sabar-tsari mai yawa (kamar Unicorn ko Puma) aikin wannan bukatar da aka
       buga ba ta adana %{id} a kwakwalwa. Yi la'akari da juya lambar aiwatar/ma'aikata
       zuwa daya (1) ko amfani da sabar daban a ci gaba
     unacceptable_request: Ana tsammanin sigar da aka tallafawa a cikin karbar take
-    connection_refused:
-      Kash! Ba a yi nasarar hadi zuwa tsaka-tsakin kayan yanar gizo
+    connection_refused: Kash! Ba a yi nasarar hadi zuwa tsaka-tsakin kayan yanar gizo
       ba. Da fatan za a tabbatar da sabar ci gaban ci gaban rails tana gudana
     format:
   local: turanci
@@ -148,8 +145,7 @@ ha-Latn-NG:
     other_links: Sauran hanyoyi
     contact_us: Tuntube mu
     help: Taimako & ra'ayoyi
-    about_project:
-      Quran.com sadaqah jariyah ce. Muna fatan saukake ga kowa da kowa
+    about_project: Quran.com sadaqah jariyah ce. Muna fatan saukake ga kowa da kowa
       don karantawa, yin karatu, da kuma koyon Karatun Alkur'ani mai girma. Al-Kur'ani
       mai girma yana da sunaye da yawa da suka hada da Al-Qur'ani, Al-Kareem, Al-Kitab,
       Al-Furqan, Al-Maw'itha, Al-Thikr da Al-Noor

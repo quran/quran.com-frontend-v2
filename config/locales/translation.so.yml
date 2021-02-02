@@ -6,156 +6,176 @@
 #
 ---
 so:
-  noble_quran:
+  noble_quran: Quraanka kariimka ah
   errors:
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
-    format:
-  local:
-  site_local:
-  change_local:
-  local_native_name:
-  language:
-  page:
+    not_found: Waanu ka xunnahay, beejkan ma jiro
+    invalid_verse: Iska fiiri aayadda aad dooratay. Xadka ayey ka baxsantahay
+    invalid_chapter: Iska fiiri suuradda aad dooratay. Xadka ayey ka baxsantahay
+    no_script: Waxay u egtahay in barowsarkaagu uusan taageerin Javascript ama laga
+      xayiray. Quran.com wuxuu si fiican ugu shaqeeyaa JavaScript. Halkaan ka fiirso
+      sida xayiraada looga qaado javascript  <a href="http://www.enable-javascript.com/"
+      target="_blank" rel="nofollow">click here</a>
+    unavailable_session: |-
+      Session %{id} is no longer available in memory.
+
+      If you happen to run on a multi-process server (like Unicorn or Puma) the process
+      this request hit doesn't store %{id} in memory. Consider turning the number of
+      processes/workers to one (1) or using a different server in development.
+    unacceptable_request: Waxaa laga rajeynaynayaa feershan taageeri karo Accept header-ka.
+    connection_refused: |
+      hay! Wuu ku guuldareystay inuu ku xirmo Web Console middleware.
+      Fadlan hubso in kuu shaqeynaayo rails development server.
+    format: "%{attribute} %{message}"
+  local: ingiriis
+  site_local: Luqadda beejka
+  change_local: Dooro luqadda aa ku isticmaaleyso beejka
+  local_native_name: Ingiriis
+  language: Luuqad
+  page: Bag
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: Aqri
+    translation: Turjamaadaha
+    info: Xogta suuradda
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: Sixitaanno
+    display: Iska sax muuqaalka
+    audio: Iska sax maqalka
+    chapters: Dooro suurad
+    reciters: Dooro Qaari`ga
+    sample_audio: Daaro qeyb yar
+    translations: Dooro turjumaad
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: Muujinaya hal tarjumaad
+      other: Dhowr turjumaado muujinaya
+    remove_all: Kulli meesha ka saar
+    translation_english: Ingiriis
+    translation_other: Luqadaha kale
+    reset: Asalka ku celi
+    font_type: Dooro nooca farta
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Qoraalka leh calaamadaha tajwiidka
+      uthmani: Hab qoraalka Cusmaan Bin Cafaan
+      qcf_v1: Hab qoraalka Qur'aanka ee Boqor Fahad v1
+      qcf_v2: Hab qoraalka Qur'aanka ee Boqor Fahad v2
+      indopak: Qoraalka IndoPak
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Farta weyninkeeda
+      arabic: Af-carabi
+      translation: Turjumaadaha
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Bandhiga tooltip
+      translation: Tarjumaad
+      transliteration: Hiingaad
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: Muudka habeenka
+      day_tip: U bedelo  muudka maalinta
+      night_tip: U bedelo muudka habeenka
   verses:
-    media:
-    go:
-    not_found:
+    media: Daawo muuqaalo kommanti ah
+    go: Aad aayada
+    not_found: Lama helin aayadda
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-  footnote:
-  share_ayah:
+    label: Suurad
+    next: Suuradda ku xigto
+    previous: Suuradda ka horeyso
+    verses: Aayado
+    pages: Beejajka
+    revelation_place: Halka ey kusoo degtay
+    continue: Sii wado
+    quick_links: Linkiyo deg deg ah
+    go_to_beginning: Billoowga Suuradda
+    read_full: Aqri suurada oo dhan
+    invalid: Suuradda laguma helin raandintaan
+  footnote: Tixraac hoosaad
+  share_ayah: Aayada share garee
   action:
-    play:
-    pause:
-    share:
-    quran_reflect:
-    addNote:
+    play: Daaro
+    pause: Joojiso
+    share: La Wadaag dadka kale
+    quran_reflect: Ka akhriso faa`idooyinka Aayadaan QurankReflect
+    addNote: Kudar Fiiro
     tafsir:
-      label:
-      select:
-      filter_tafsir:
+      label: Tafsiiro
+      select: Dooro tafsiir
+      filter_tafsir: Ku raadi luuqad
     bookmark:
-      label:
-      done:
+      label: Halka sare ku muuji
+      done: Kor ayaa lagu muujiyay!
     copy:
-      label:
-      done:
+      label: Koobiyeey
+      done: La koobiyeeyay!
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+    label: Raadi
+    placeholder: Raadi "Noah"
+    result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-primary>%{query}</span>"
+    error: Waanu ka xunnahay, qalad ayaa ku jiro raadintaada.
+    no_query: Kan raadin ma leh
+    no_result: Wax natiijo ah ma leh.
+    popular: Waxa inta bada la raadiyo
+    ayatul_kursi: 'Ayatul Kursi
+
+      '
+    yaseen: Suuradda Yaseen
+    al_mulk: Suuradda Al Mulk
+    ar_rahman: Suuradda Ar-Raxmaan
+    al_waqiah: Suuradda Al Waaqicah
+    al_kahf: Suuradda Al Kahf
+    al_muzammil: Suuradda Al Muzzammil
   player:
-    current_verse:
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
-    show_word_tooltip:
-    scroll:
-  loading:
+    current_verse: Aayad
+    select_verse: Dooro aayad
+    next_verse: Aayadda xigta
+    previous_verse: Aayadda ka horeyso
+    repeat_title: Aayada kusoo celi
+    repeat_single: Keli
+    repeat_range: Xadka
+    repeat_from: Ka bilaw aayadda
+    repeat_to: Illaa aayadda
+    repeat_times: Kusoo celi tirinta
+    repeat_loop: Inta jeer ee lagu cel celinayyo
+    pause_bw_ayah: go`aanso inta uu la egyahay joogsiga ka hor inta aan loo gudbin
+      aayadda xigta
+    pause_seconds: Ilbiriqsiyo
+    pause: U joojiso
+    play_continuously: Daaro joogsi la`aan
+    show_word_tooltip: Ku muuji shaashadda fasiraadda ereyada inta ey aayadda socoto
+    scroll: Si otomaatig ah ayuu isku geynayyaa aayada hadda socoto
+  loading: Waa soo socdaa ...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-    privacy:
-  juz:
-  click_here:
-  download:
-  home:
+    title: Quraan
+    settings: 'Habeyso
+
+      '
+    contribute: Wax ku darso
+    about_us: Nagu saabsan
+    developers: Horumariyayaasha
+    useful_sites: Beejaj waxtar leh
+    other_links: 'Linkiyaal kale
+
+      '
+    contact_us: Nagala soo xiriir
+    help: Caawimaad & jawaab celin
+    about_project: Quran.com waa Sadaqo jaariyo ah. Waxaan rabnaa in ann qof kasta
+      u fududeyno aqrinta iyo barasha quraanka kariiimka. Quraanka kariimka wuxuu
+      leeyahay magacyo kala duwan sida; Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
+      Al-Thikr, and Al-Noor.
+    rights: Xuquuqaha dhan waa kuwa gaar ah
+    mobile_apps: Ababka moobillada
+    navigate: Daadihiye
+    legacy_site: Legacy Quran.com
+    blog: Beej shaqsiyeed
+    forum: Madasha
+    privacy: Asturnaanta macluumaadka
+  juz: Juz
+  click_here: Inta taabo
+  download: Soo Degso
+  home: Bogga hore
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
+    label: Beejajka la Xiriira
+    sunnah: Sunno
+    sunnah_description: Xadiiska Nebi Muxamed (ﷺ)
+    salah: Salaad
+    salah_description: "Raadi wakhtiyada salaada meel walba \n"
+    audio: Quraanka kariimka oo maqal ah
+    audio_description: Barashada & dhageysiga oo isku mar ah
+  close: Xir

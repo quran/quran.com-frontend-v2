@@ -6,156 +6,181 @@
 #
 ---
 ru:
-  noble_quran:
+  noble_quran: Благородный Коран
   errors:
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
+    not_found: Извините, этой страницы не существует
+    invalid_verse: Проверьте свой выбор Аят. Это вне диапазона.
+    invalid_chapter: Проверьте свой выбор суры. Это вне диапазона.
+    no_script: Похоже что ваш браузер не поддерживает Javascript либо он отключен.
+      Quran.com лучше всего работает с включенным JavaScript. Для дополнительных инструкций
+      о том, как включить JavaScript, <a href="http://www.enable-javascript.com/"
+      target="_blank" rel="nofollow">нажмите сюда</a> .
+    unavailable_session: |
+      Сессия %{id} более не доступна в памяти.
+
+      Если вы работаете на многопроцессорном сервере (например, Unicorn или Puma), процесс
+      попадание этого запроса не сохраняет %{id} в памяти. Рассмотрите возможность поворота числа
+      процессов / работников одного (1) или другого сервера в разработке.
+    unacceptable_request: 'Поддерживаемая версия ожидается в Accept header.
+
+      '
+    connection_refused: |-
+      Не удалось подключиться к промежуточному програмному обеспечению веб-консоли.
+      Пожалуйста убедитесь что сервер разработки рельсов работает.
     format: "%{attribute} %{message}"
-  local:
-  site_local:
-  change_local:
-  local_native_name:
-  language:
-  page:
+  local: английский
+  site_local: Язык сайта
+  change_local: Выбрать язык
+  local_native_name: Английский
+  language: Язык
+  page: страница
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: Чтение
+    translation: Переводы
+    info: Информация о суре
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: Настройки
+    display: Настройки экрана
+    audio: Настройки звука
+    chapters: Выберите суру
+    reciters: Выберите чтецов
+    sample_audio: Воспроизвести образец
+    translations: Выберите перевод
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: Отображение один перевод
+      other: отображение %{count} перевод
+    remove_all: Удалить все
+    translation_english: английский
+    translation_other: Другие языки
+    reset: Восстановление значений по умолчанию
+    font_type: Выбрать шрифт
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Текст таджвида
+      uthmani: Текст Усмани
+      qcf_v1: 'King Fahd Quran Complex v1
+
+        '
+      qcf_v2: 'King Fahd Quran Complex v2
+
+        '
+      indopak: 'Текст IndoPak
+
+        '
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Размер шрифта
+      arabic: арабский
+      translation: Переводы
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Отображение всплывающей подсказки
+      translation: Перевод
+      transliteration: Транслитерация
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: Ночной режим
+      day_tip: Перейти в дневной режим
+      night_tip: Перейти в ночной режим
   verses:
-    media:
-    go:
-    not_found:
+    media: Посмотреть видео-комментарий от %{from}
+    go: перейти к аяту
+    not_found: Аят не найден
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-  footnote:
-  share_ayah:
+    label: Сура
+    next: Следующая сура
+    previous: Предыдущая сура
+    verses: Аяты
+    pages: Страницы
+    revelation_place: Место откровения
+    continue: Продолжить
+    quick_links: Быстрые ссылки
+    go_to_beginning: Начало суры
+    read_full: Читать суру полностью
+    invalid: Сура не найдена при поиске
+  footnote: Сноска
+  share_ayah: Поделись аятом
   action:
-    play:
-    pause:
-    share:
-    quran_reflect:
-    addNote:
+    play: Прослушать
+    pause: Поставить на паузу
+    share: Поделиться
+    quran_reflect: Прочтите размышления об этом аяте на QuranReflect
+    addNote: Добавить заметку
     tafsir:
-      label:
-      select:
-      filter_tafsir:
+      label: Тафсиры
+      select: Выбрать тафсир
+      filter_tafsir: Отфильтровать по языку
     bookmark:
-      label:
-      done:
+      label: Добавить в закладки
+      done: Добавлено в закладки!
     copy:
-      label:
-      done:
+      label: Копировать
+      done: Скопированo!
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+    label: Поиск
+    placeholder: Искать "Нух"
+    result: "%{from} - %{to}  <span>%{total}</span> РЕЗУЛЬТАТЫ ПОИСКА: <span class=text-primary>%{query}</span>"
+    error: К сожалению, при поиске произошла ошибка.
+    no_query: Искать "Нух"
+    no_result: Результаты не найдены.
+    popular: Популярные запросы
+    ayatul_kursi: Аятуль Курси
+    yaseen: Сура Ясин
+    al_mulk: Сура Аль Мульк
+    ar_rahman: Сура Ар-Рахман
+    al_waqiah: Сура Аль-Вакия
+    al_kahf: Сура Аль Кахф
+    al_muzammil: Сура Аль Муззаммиль
   player:
-    current_verse:
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
-    show_word_tooltip:
-    scroll:
-  loading:
+    current_verse: Аят
+    select_verse: Выбрать аят
+    next_verse: Следующий аят
+    previous_verse: Предыдущий аят
+    repeat_title: Повторите Аят
+    repeat_single: одиночный
+    repeat_range: 'Пределы
+
+      '
+    repeat_from: От аята
+    repeat_to: К аяту
+    repeat_times: Количество повторов
+    repeat_loop: цикл
+    pause_bw_ayah: Установите время паузы перед воспроизведением следующего аята
+    pause_seconds: секунды
+    pause: Пауза для
+    play_continuously: Продолжить воспроизведение без пауз
+    show_word_tooltip: Показывать перевод слова во всплывающей подсказке при воспроизведении
+      аята
+    scroll: Автоматический переход к проигрывающемуся в данный момент аяту
+  loading: Загружается ...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-    privacy:
-  juz:
-  click_here:
-  download:
-  home:
+    title: Коран
+    settings: Настройки
+    contribute: Способствовать
+    about_us: О нас
+    developers: Разработчики
+    useful_sites: Полезные сайты
+    other_links: Прочие ссылки
+    contact_us: Свяжитесь с нами
+    help: Помощь и обратная связь
+    about_project: Quran.com - это садака Джария. Мы надеемся, что всем будет легко
+      читать, учить и изучать Благородный Коран. В Благородном Коране много имен,
+      включая Аль-Коран (Чтение, читать) аль-Карим (Щедрый), Китаб (Книга), Фуркан
+      (Различение — добра и зла, истины и лжи, дозволенного и запретного), Аль-Мав'иза
+      (Увещевание), Зикр (Напоминание) и Нур (Свет).
+    rights: Все права защищены
+    mobile_apps: Мобильные приложения
+    navigate: Навигация
+    legacy_site: Legacy Quran.com
+    blog: Блог
+    forum: Форум
+    privacy: Конфиденциальность
+  juz: Джуз
+  click_here: Кликните сюда!
+  download: Скачать
+  home: Главная
   related_sites:
-    label:
-    sunnah:
+    label: Связанные сайты
+    sunnah: Сунна
     sunnah_description: Хадис пророка Мухаммеда (ﷺ)
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
+    salah: Молитва
+    salah_description: Найдите время молитв для любого места
+    audio: Благородный Коран в аудио
+    audio_description: Учить и слушать одновременно
+  close: Закрыть

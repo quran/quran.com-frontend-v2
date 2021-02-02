@@ -22,9 +22,9 @@ te:
       long: "%B %d, %Y"
       short: "%b %d"
     order:
-      - :day
-      - :month
-      - :year
+    - :day
+    - :month
+    - :year
   number:
     currency:
       format:
@@ -45,9 +45,9 @@ te:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ""
+          unit: ''
       format:
-        delimiter: ""
+        delimiter: ''
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -55,11 +55,11 @@ te:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ""
+        delimiter: ''
         format: "%n%"
     precision:
       format:
-        delimiter: ""
+        delimiter: ''
   time:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"

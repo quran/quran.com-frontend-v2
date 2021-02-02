@@ -79,9 +79,13 @@ ja:
   footnote:
   share_ayah:
   action:
-    play:
+    play: '再生する
+
+      '
     pause:
-    share:
+    share: '共有する。
+
+      '
     quran_reflect:
     addNote:
     tafsir:
@@ -92,7 +96,9 @@ ja:
       label:
       done:
     copy:
-      label:
+      label: 'コピー
+
+        '
       done:
   search:
     label:
