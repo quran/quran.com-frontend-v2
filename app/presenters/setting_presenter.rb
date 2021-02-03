@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SettingPresenter < AudioPresenter
+  
   def selected_reciter
     load_recitations
       .find(recitation_id)
@@ -11,7 +12,7 @@ class SettingPresenter < AudioPresenter
   def current_chapter
     Chapter.find(params[:chapter])
   end
-
+  
   def recitations
     load_recitations
   end
@@ -47,7 +48,7 @@ class SettingPresenter < AudioPresenter
     font = session[:font]
     font == 'v1' ? 'qcf_v1' : font
   end
-
+  
   protected
 
   def load_recitations

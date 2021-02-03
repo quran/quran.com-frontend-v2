@@ -13,8 +13,9 @@ export default class extends Controller {
     this.translationTab = document.querySelector(".translation-tab");
     this.readingTab = document.querySelector(".reading-tab");
     this.infoTab = document.querySelector(".surah-info-tab");
-    // this.setURLState();
+    //this.setURLState();
     this.bindAyahJump();
+    this.bindBackdrop();
   }
 
   connect() {
@@ -40,34 +41,34 @@ export default class extends Controller {
     // intervals for each words of current ayah
     this.segmentTimers = [];
     
-    this.translationTab.addEventListener("tab-shown", e => {
+    this.translationTab.addEventListener("tab.shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: false });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
-      chapter.activeTab.trigger("visibility:visible");
+      chapter.activeTab.find("#verses").trigger("visibility:visible");
     });
     
-    this.readingTab.addEventListener("tab-shown", e => {
+    this.readingTab.addEventListener("tab.shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: true });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
-      chapter.activeTab.trigger("visibility:visible");
+      chapter.activeTab.find("#verses").trigger("visibility:visible");
     });
     
-    this.infoTab.addEventListener("tab-shown", e => {
+    this.infoTab.addEventListener("tab.shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, {});
     });
     
-    this.translationTab.addEventListener("hidden.bs.tab", e => {
+    this.translationTab.addEventListener("tab.hidden", e => {
       $(e.target.dataset.target)
-        .find(".verses")
+        .find(".verses #verses")
         .trigger("visibility:hidden");
     });
     
-    this.readingTab.addEventListener("hidden.bs.tab", e => {
+    this.readingTab.addEventListener("tab.hidden", e => {
       $(e.target.dataset.target)
-        .find(".verses")
+        .find(".verses #verses")
         .trigger("visibility:hidden");
     });
     
@@ -121,12 +122,11 @@ export default class extends Controller {
 
   bindAyahJump() {
     $("#verse-list")
-      .find(".dropdown-item a")
+      .find(".dropdown-item")
       .on("click", e => {
         document.body.loader.show();
 
         e.preventDefault();
-
         const ayah = e.currentTarget.dataset.verse;
         // TODO: we need to refactor this now, repeating this a lot
         // create a utility to load verses, update page, tell player to load audio etc
@@ -467,5 +467,30 @@ export default class extends Controller {
     this.activeTab[0].infinitePage.resume();
 
     return Promise.resolve(verseList);
+  }
+  
+  bindBackdrop(){
+    document.body.addEventListener("click", e => {
+      if (
+        $(e.target).parents('.actions-menu').length == 0 &&
+        !$(e.target).is('.actions-menu')
+      ) {
+        $('.actions-wrapper').addClass('hidden');
+      }
+      if (
+        $(e.target).parents('.side-menu').length == 0 &&
+        !$(e.target).is('.sidebar-btns')
+      ) {
+        $('.menus').addClass('hidden');
+        $('.side-menu').addClass('hidden');
+      }
+      if (
+        $(e.target).parents('.label-nav').length == 0 &&
+        !$(e.target).is('.label-nav')
+      ) {
+        $('.label-nav').removeClass('label--open');
+        $('.label-nav').removeClass('label__opened');
+      }
+    });
   }
 }

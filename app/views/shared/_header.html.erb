@@ -3,7 +3,7 @@
     <div class="header-inner__firstpart">
       <div class="header-inner__firstpart__menu">
         <!-- TODO add hamburger to fonts -->
-        <%= image_tag 'icon/hamburger.svg', id:'site-menu--trigger' %>
+        <%= image_tag 'icon/hamburger.svg', id:'site-menu--trigger', class: 'sidebar-btns' %>
       </div>
 
       <%= link_to root_path, class: 'logo' do %>
@@ -21,12 +21,9 @@
       <div class="theme-language">
         <div class="language-wrapper">
           <select class="language" name="" id="">
-            <option value="1">English</option>
-            <option value="1">Albanian</option>
-            <option value="1">Turkish</option>
-            <option value="1">Arabic</option>
-            <option value="1">German</option>
-            <option value="1">Spanish</option>
+            <% available_locales.each do |locale, name| %>
+              <option value="<%=locale%>"><%=name%></option>
+            <%end%>
           </select>
         </div>
 

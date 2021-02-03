@@ -38,7 +38,6 @@ export default class extends Controller {
     this.bindTooltip();
     this.bindFontSize();
     this.updateFontSize();
-    
     //this.element[this.identifier] = this;
   }
   
@@ -90,7 +89,7 @@ export default class extends Controller {
   bindReset() {
     $("#reset-settings").on("click", event => this.resetSetting(event));
   }
-
+  
   bindFontSize() {
     $("[data-trigger=font-size]").on("click", e => this.handleFontSize(e));
   }
@@ -224,7 +223,7 @@ export default class extends Controller {
 
     this.resetPage();
   }
-
+  
   resetPage() {
     //$("style.setting").remove();
     this.styles.innerText = "";
