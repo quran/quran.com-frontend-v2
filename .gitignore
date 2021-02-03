@@ -53,3 +53,7 @@ app/javascript/stylesheets/.sass-cache/
 app/javascript/stylesheets/extentions/.sass-cache/
 app/javascript/stylesheets/pages/.sass-cache/
 app/assets/stylesheets/icons/.sass-cache/
+
+# rbenv
+.rbenv-gemsets
+vendor
