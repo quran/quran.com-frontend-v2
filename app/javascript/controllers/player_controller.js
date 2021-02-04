@@ -21,15 +21,14 @@ export default class extends Controller {
       Howl = howler.Howl;
       Howler = howler.Howler;
     });
-
     this.element[this.identifier] = this;
     this.settings = document.body.setting;
-
     this.playWordQueue = [];
     this.resumeOnWordPlayEnd = false;
     this.preloadTrack = {};
     this.segmentTimers = [];
     this.track = {};
+    this.playerRepeatEnabled = false;
     this.audioData = {};
     this.playerProgressInterval = null;
     this.pauseSeconds = 0;
@@ -38,11 +37,19 @@ export default class extends Controller {
     this.firstVerse = null;
     this.lastVerse = null;
     this.currentVerse = null;
-
+    
+    this.defaultConfig();
+    this.buildPlayer();
+    this.bindPlayerEvents();
+  }
+  
+  defaultConfig(currentVerse = null, lastVerse = null){
     this.config = {
       autoScroll: this.settings.get("autoScroll"),
       recitation: this.settings.get("recitation"),
       showTooltip: false,
+      segmentPlayer: false,
+      customSegments: null,
       repeat: {
         verse: null,
         type: this.settings.get("repeatType") || "single", // or range
@@ -52,16 +59,20 @@ export default class extends Controller {
         iteration: 1
       }
     };
-
-    this.buildPlayer();
-    this.bindPlayerEvents();
+    this.pauseSeconds = 0;
+    this.currentVerse = currentVerse;
+    this.lastVerse = lastVerse;
   }
 
   updatePause(pauseSec) {
     this.pauseSeconds = pauseSec;
   }
+  
+  updateRepeatCount(count) {
+    this.config.repeat.count = count;
+  }
 
-  updateRepeatConfig(setting, repeatRange) {
+  updateRepeatConfig(setting, repeatRange, customSegments = false) {
     this.config.repeat = {
       enabled: setting.repeatEnabled,
       count: setting.repeatCount,
@@ -71,16 +82,20 @@ export default class extends Controller {
       to: setting.repeatTo,
       iteration: 1
     };
-
+    
     // Rest next ayah to play when user change the repeat setting
     // rollback to previously playing ayah if user has not set repeat start
-
     this.firstVerse = repeatRange.first;
     this.lastVerse = repeatRange.last;
     this.currentVerse = repeatRange.first;
-
+    if(!!customSegments){
+      this.config.segmentPlayer = true;
+      this.config.autoScroll = false;
+      this.config.customSegments = customSegments;
+      this.currentVerse = setting.repeatAyah;
+    }
     this.updateVerses().then(() => {
-      this.createHowl(this.currentVerse, false);
+      this.createHowl(this.currentVerse, this.config.segmentPlayer);
       if (this.isPlaying()) this.play(this.currentVerse);
     });
   }
@@ -92,6 +107,7 @@ export default class extends Controller {
 
     const that = this;
     this.updateVerses().then(() => {
+      
       // set first ayah track to play, if player isn't already playing any ayah
       that.currentVerse = that.currentVerse || that.firstVerse;
 
@@ -132,8 +148,7 @@ export default class extends Controller {
     let scrollBtnClasses = this.scrollButton.classList;
 
     if (this.config.autoScroll) {
-      scrollBtnClasses.add("text-primary");
-      scrollBtnClasses.remove("text-muted");
+      scrollBtnClasses.add("selected");
     }
 
     this.scrollButton.addEventListener("click", event => {
@@ -141,15 +156,13 @@ export default class extends Controller {
       this.config.autoScroll = !this.config.autoScroll;
 
       if (this.config.autoScroll) {
-        scrollBtnClasses.add("text-primary");
-        scrollBtnClasses.remove("text-muted");
-
+        scrollBtnClasses.add("selected");
+        //scrollBtnClasses.remove("text-muted");
         this.chapter && this.chapter.scrollToVerse(this.currentVerse);
       } else {
-        scrollBtnClasses.remove("text-primary");
-        scrollBtnClasses.add("text-muted");
+        scrollBtnClasses.remove("selected");
       }
-
+      
       this.settings.saveSettings();
     });
   }
@@ -205,24 +218,26 @@ export default class extends Controller {
     if (this.isPlaying()) {
       this.track.howl.stop();
     }
-
     verse = verse || this.currentVerse;
-
+    
     // enable progress bar if disabled
     this.progressBar.disabled = false;
     this.progressBar.value = this.progressBar.value || 0;
-
     this.chapter.removeSegmentHighlight();
     this.currentVerse = verse;
-
     // play
     if (this.preloadTrack[verse]) {
       this.track = this.preloadTrack[verse];
-      this.track.howl.play();
+      if(this.config.segmentPlayer){
+        this.track.howl.play("selectedWords");
+      }else{
+        this.track.howl.play();
+      }
     } else {
       this.loading();
       this.track = this.createHowl(verse, true);
     }
+    
   }
 
   handlePlayBtnClick() {
@@ -234,18 +249,36 @@ export default class extends Controller {
   }
 
   handlePauseBtnClick() {
-    if (this.isPlaying()) this.track.howl.pause();
+    if(this.config.segmentPlayer){
+      if (this.preloadTrack[this.currentVerse].howl){
+        this.preloadTrack[this.currentVerse].howl.pause();
+      }
+    }else{
+      if (this.isPlaying()) this.track.howl.pause();
+    }
+  }
+  
+  stopHowler(){
+    if (this.preloadTrack[this.currentVerse].howl){
+      this.preloadTrack[this.currentVerse].howl.stop();
+    }
   }
 
   handleNextBtnClick() {
+    this.config.repeat.iteration = 1;
     const next = this.getNextTrackVerse();
     if (next) this.play(next);
   }
 
   handlePreviousBtnClick() {
+    this.config.repeat.iteration = 1;
     const previous = this.getPreviousTrackVerse();
-
     if (previous) this.play(previous);
+  }
+  
+  handleRepeatBtnClick(){
+    this.playerRepeatEnabled = !this.playerRepeatEnabled;
+    $("#player .icon-repeat").toggleClass("selected");
   }
 
   bindPlayerEvents() {
@@ -255,12 +288,17 @@ export default class extends Controller {
       this.handlePlayBtnClick();
     });
 
-    $("#player .previous-btn").on("click", event => {
+    $("#player .icon-prev").on("click", event => {
       event.preventDefault();
       this.handlePreviousBtnClick();
     });
+    
+    $("#player .icon-repeat").on("click", event => {
+      event.preventDefault();
+      this.handleRepeatBtnClick();
+    });
 
-    $("#player .next-btn").on("click", event => {
+    $("#player .icon-next").on("click", event => {
       event.preventDefault();
       this.handleNextBtnClick();
     });
@@ -282,7 +320,7 @@ export default class extends Controller {
 
   updatePlayerControls() {
     if (this.isPlaying()) this.setPlayCtrls("pause");
-    else this.setPlayCtrls("play");
+    else this.setPlayCtrls("play1");
   }
 
   loading() {
@@ -291,22 +329,22 @@ export default class extends Controller {
 
   setPlayCtrls(type) {
     let p = $("#player .play-btn");
-    p.removeClass("fa-play-circle fa-pause-circle fa-spinner animate-spin");
+    p.removeClass("icon-play1 icon-pause");
 
     let thisVerse = $(
       `#verses .verse[data-verse-number=${this.currentVerse}]`
-    ).find(".play .fa");
+    ).find(".play .icon");
 
     thisVerse.removeClass(
-      "fa-play-circle fa-pause-circle fa-spinner animate-spin"
+      "icon-play1 icon-pause"
     );
 
     if ("loading" == type) {
-      p.addClass("fa-spinner animate-spin");
-      thisVerse.addClass("fa-spinner animate-spin");
+      //p.addClass("fa-spinner animate-spin");
+      //thisVerse.addClass("fa-spinner animate-spin");
     } else {
-      p.addClass(`fa-${type}-circle`);
-      thisVerse.addClass(`fa-${type}-circle`);
+      p.addClass(`icon-${type}`);
+      thisVerse.addClass(`icon-${type}`);
     }
   }
 
@@ -329,9 +367,9 @@ export default class extends Controller {
     if (next) {
       this.createHowl(next, false);
 
-      $(".next-btn").removeAttr("disabled");
+      $(".icon-next").removeAttr("disabled");
     } else {
-      $(".next-btn").attr("disabled", "disabled");
+      $(".icon-next").attr("disabled", "disabled");
     }
   }
 
@@ -343,11 +381,11 @@ export default class extends Controller {
     if (this.config.autoScroll) {
       this.chapter.scrollToVerse(this.currentVerse);
     }
-
-    this.setProgressBarInterval();
-    this.setSegmentInterval();
-
-    this.preloadNextVerse();
+    if(this.config.segmentPlayer == false){
+      this.setProgressBarInterval();
+      this.setSegmentInterval();
+      this.preloadNextVerse();
+    }
   }
 
   getNextTrackVerse() {
@@ -366,12 +404,12 @@ export default class extends Controller {
     clearInterval(this.playerProgressInterval);
     const totalDuration = this.track.duration || this.track.howl.duration();
 
-    $("#player .timer")
-      .removeClass("d-none")
+    $("#player .current-time")
+      .removeClass("hidden")
       .text("00:00");
 
-    $("#player .total-time")
-      .removeClass("d-none")
+    $("#player .all-time")
+      .removeClass("hidden")
       .text(this.formatTime(totalDuration));
 
     this.playerProgressInterval = setInterval(() => {
@@ -380,8 +418,12 @@ export default class extends Controller {
         Math.floor((currentTime / totalDuration) * 1000) / 10;
 
       this.progressBar.value = progressPercentage;
-
-      $("#player .timer").text(this.formatTime(currentTime));
+      document.getElementById('player-range').style.background = 'linear-gradient(to right, #00acc2 0%, #00acc2 ' +
+        progressPercentage +
+        '%, #fff ' +
+        progressPercentage +
+        '%, white 100%)';
+      $("#player .current-time").text(this.formatTime(currentTime));
     }, 500);
   }
 
@@ -393,8 +435,10 @@ export default class extends Controller {
   }
 
   onVerseEnd() {
-    this.progressBar.value = 0;
-
+    if(this.config.segmentPlayer == false){
+      this.progressBar.value = 0;
+    }
+    
     if (this.pauseSeconds > 0) {
       setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
     } else {
@@ -403,25 +447,29 @@ export default class extends Controller {
   }
 
   onVerseEnded() {
-    if (this.config.repeat.enabled) {
+    if(this.playerRepeatEnabled){
+      this.repeatSingleVerse(0,10000);
+    }else if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()
         : this.repeatRangeVerses();
     } else {
-      // simply play next ayah
       this.handleNextBtnClick();
     }
   }
 
-  repeatSingleVerse() {
-    if (this.config.repeat.iteration <= this.config.repeat.count) {
+  repeatSingleVerse(iteration = this.config.repeat.iteration, count = this.config.repeat.count) {
+    if (iteration <= count) {
       //  play the same verse
       this.config.repeat.iteration++;
       this.play();
     } else {
       this.config.repeat.iteration = 1;
-
-      this.handleNextBtnClick();
+      if(this.config.segmentPlayer){
+        document.getElementById("segment-player").segmentPlayer.resetPlayButton();
+      }else{
+        this.handleNextBtnClick();
+      }
     }
   }
 
@@ -454,26 +502,37 @@ export default class extends Controller {
   }
 
   setSegmentInterval() {
-    this.chapter.setSegmentInterval(
-      this.track.howl.seek(),
-      this.preloadTrack[this.currentVerse].segments,
-      this.isPlaying()
-    );
+    if(this.config.segmentPlayer == false){
+      this.chapter.setSegmentInterval(
+        this.track.howl.seek(),
+        this.preloadTrack[this.currentVerse].segments,
+        this.isPlaying()
+      );
+    }
   }
 
   createHowl(verse, autoplay) {
-    if (this.preloadTrack[verse]) {
+    if (this.preloadTrack[verse] && this.config.segmentPlayer == false) {
       // howl is already created
       return this.preloadTrack[verse];
     }
-
     let audioData = this.audioData[verse];
     let audioPath = this.buildAudioUrl(audioData.path);
-
+    let sprite = {};
+    if(this.config.segmentPlayer){
+      const secondsToSkip = (+audioData.segments[this.config.customSegments[0]][2]);
+      const lastSegment = this.config.customSegments[this.config.customSegments.length - 1];
+      const endsAt = (+audioData.segments[lastSegment][3]);
+      const duration = endsAt - secondsToSkip;
+      sprite.selectedWords = [secondsToSkip, duration];
+      sprite.__default =  [0, +(audioData.segments[audioData.segments.length-1][3])];
+      autoplay = false;
+    }
     let howl = new Howl({
       src: [audioPath],
       html5: USE_HTML5,
       autoplay: autoplay,
+      sprite: sprite,
       onloaderror: () => {
         // when audio is failed to load.
       },
@@ -512,21 +571,21 @@ export default class extends Controller {
         this.onVerseEnd();
       }
     });
-
     this.preloadTrack[verse] = {
       howl: howl,
       segments: audioData.segments,
       verse: verse
     };
-
+    if(this.config.segmentPlayer){
+      howl.play("selectedWords");
+    }
     return this.preloadTrack[verse];
   }
-
+  
   buildAudioUrl(path) {
     if (!/(http)?s?:?\/\//.test(path)) {
       path = AUDIO_CDN + path;
     }
-
     return path;
   }
 

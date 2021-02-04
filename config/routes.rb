@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get :share
       get :select_tafsirs
       get :tafsir
+      get :copy_advanced
     end
   end
 

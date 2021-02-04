@@ -1,0 +1,14 @@
+.selected::before{
+  color: #00acc2 !important;
+}
+.player-section .player__controls .icon-pause::before {
+  color: #00acc2;
+  font-size: 30px;
+}
+.translation__item .translation__icons .translation__icon .icon-pause::before {
+  color: #00acc2;
+  font-size: 22px;
+}
+.player-section .player__bar #player-range{
+  background: linear-gradient(to right, rgb(0, 172, 194) 0%, rgb(0, 172, 194) 0%, rgb(255, 255, 255) 0%, white 100%);
+}

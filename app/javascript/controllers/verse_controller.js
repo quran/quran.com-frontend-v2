@@ -54,16 +54,21 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     let el = $(this.element);
-
-    $('.open-actions').click(function() {
-      $('.actions-wrapper').addClass('hidden');
-
-        el.find('.actions-wrapper')
-        .removeClass('hidden');
+    
+    this.element.querySelector(".translation__icon.open-actions").addEventListener('click', (e) => {
+      //this.element.querySelectorAll(".actions-wrapper").ClassList.add("hidden");
+      let node = e.target.parentNode.nextElementSibling;//.classList.toggle("hidden");
+      if(node.classList == "actions-wrapper"){
+        $('.actions-wrapper').addClass('hidden');
+      }else{
+        node.classList.remove("hidden");
+      }
+      
+      //this.element.querySelector(".actions-wrapper").ClassList.remove("hidden");
     });
 
     //TODO: enable these action only for reading mode.
-    this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
+    this.element.querySelectorAll(".translation__icon").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
         trigger: "hover",
         placement: "right",
@@ -78,7 +83,7 @@ export default class extends Controller {
       });
     });
 
-    let copyDom = this.element.querySelector(".copy");
+    let copyDom = this.element.querySelector(".icon-duplicate");
 
     copyDom && copyDom.addEventListener('click', e => {
       e.preventDefault();
@@ -86,19 +91,17 @@ export default class extends Controller {
     });
 
     this.copyDom = copyDom;
-
-    let playButton = el.find(".ayah-action.play");
+    let playButton = el.find(".translation__icon.play");
 
     playButton.on("click", event => {
       event.preventDefault();
       event.stopImmediatePropagation();
-
       let player,
         playerDom = document.getElementById("player");
 
       if (playerDom) player = playerDom.player;
 
-      if (playButton.find(".fa").hasClass("fa-play-circle")) {
+      if (playButton.find("span").hasClass("icon-play1")) {
         if (player) {
           return player.play(el.data("verseNumber"));
         }
@@ -121,19 +124,21 @@ export default class extends Controller {
 
   copy() {
     copyToClipboard(this.el.data("text"));
-
     let {title, done} = this.copyDom.dataset;
-
-    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
-    this.copyDom.tooltip._fixTitle()
-
+    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`;
+    this.copyDom.tooltip._fixTitle();
     this.copyDom.tooltip.show();
-
-    this.copyDom.addEventListener("hidden.bs.tooltip", () => {
-        this.copyDom.setAttribute("title", title);
-        this.copyDom.tooltip._fixTitle()
-      }
-    );
+    setTimeout(() => {
+      this.copyDom.setAttribute("title", title);
+      this.copyDom.tooltip._fixTitle();
+      this.copyDom.tooltip.hide();
+    }, 3000);
+  }
+  
+  toggleActions(e){
+    e.preventDefault();
+    //document.querySelector(".actions-wrapper").classList.add("hidden");
+    e.target.parentNode.nextElementSibling.classList.toggle("hidden");
   }
 
   bindTajweedTooltip() {

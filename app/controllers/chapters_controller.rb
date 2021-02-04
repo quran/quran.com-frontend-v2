@@ -33,7 +33,7 @@ class ChaptersController < ApplicationController
   def load_verses
     render layout: false
   end
-
+  
   protected
 
   def check_routes

@@ -15,7 +15,11 @@ class VersesController < ApplicationController
   def select_tafsirs
     render layout: false
   end
-
+  
+  def copy_advanced
+    render layout: false
+  end
+  
   def tafsir; end
 
   protected

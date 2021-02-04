@@ -23,8 +23,8 @@ export default class extends Controller {
     let target = $(e.currentTarget);
     let url = target.data("url");
     let classes = target.data("class");
-
-    this.createModel(classes);
+    const type = target.data("type");
+    this.createModel(classes, type);
 
     $("#ajax-modal").on("hidden.bs.modal", function(e) {
       $("#ajax-modal")
@@ -36,11 +36,10 @@ export default class extends Controller {
       .then(resp => resp.text())
       .then(content => {
         const response = $("<div>").html(content);
-
-        document.getElementById("modal-title").innerHTML = response
+        document.getElementById("ajax-modal-title").innerHTML = response
           .find("#title")
           .html();
-        document.getElementById("modal-body").innerHTML = response
+        document.getElementById("ajax-modal-body").innerHTML = response
           .find("#modal")
           .html();
       })
@@ -49,19 +48,33 @@ export default class extends Controller {
       });
   }
 
-  createModel(classes) {
+  createModel(classes, type) {
     this.removeModal("#ajax-modal");
-
-    let modal = `
+    $(".actions-wrapper").addClass("hidden");
+    let modal;
+    if(type == "copy"){
+      modal = `
+        <div class="copy-wrapper">
+          <div class="copy">
+            <div class="copy__header">
+              <p class="text text--black text--large2 text--semibold" id="ajax-modal-title">Copy options</p>
+              <div class="icon-x" id="advance-copy-wraper-close"></div>
+            </div>
+            <div id="ajax-modal-body"><p class="text-center">Loading..</p></div>
+          </div>
+        </div>
+      `;
+    }else{
+      modal = `
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modal-title">Loading</h5>
+              <h5 class="modal-title" id="ajax-modal-title">Loading</h5>
               <a class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" class="fa fa-times fa-center"></span>
               </a>
             </div>
-            <div class="modal-body" id="modal-body">
+            <div class="modal-body" id="ajax-modal-body">
               <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
             </div>
             <div class="modal-footer" id="modal-footer">
@@ -69,19 +82,22 @@ export default class extends Controller {
             </div>
           </div>
         </div>`;
-
+    }
     let ajaxModal = document.createElement("div");
-    ajaxModal.classList.add("modal");
+    if(type != "copy")
+      ajaxModal.classList.add("modal");
     ajaxModal.id = "ajax-modal";
     ajaxModal.innerHTML = modal;
     document.body.append(ajaxModal);
-
+    if(type == "copy")
+      document.querySelector("#advance-copy-wraper-close").addEventListener("click", () => this.removeModal());
     ajaxModal.addEventListener("hidden.bs.modal", () => {
       this.removeModal(ajaxModal);
     });
-
-    global.dialog = new Modal(ajaxModal, { backdrop: "static" });
-    global.dialog.show();
+    if(type != "copy"){
+      global.dialog = new Modal(ajaxModal, { backdrop: "static" });
+      global.dialog.show(); 
+    }
   }
 
   removeModal() {

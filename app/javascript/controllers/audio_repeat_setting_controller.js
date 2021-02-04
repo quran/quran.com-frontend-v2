@@ -1,8 +1,17 @@
 import SettingController from "./setting_controller";
+//import 'select2';
+require('select2/dist/js/select2.full.js');
 
 export default class extends SettingController {
   connect() {
     super.connect();
+    $('.simple-select').select2({
+      // dropdownAutoWidth: true,
+      width: '100%',
+      dropdownCssClass: 'select-stylee',
+      placeholder: 'selected option',
+      minimumResultsForSearch: -1,
+    });
     this.bindSwitch();
     this.bindRepeatSingle();
     this.bindRepeatRange();
@@ -20,9 +29,9 @@ export default class extends SettingController {
       this.updatePlayerRepeat();
 
       if (enabled) {
-        $("#repeat-wrapper").removeClass("d-none fade");
+        $(".audio-control").removeClass("hidden fade");
       } else {
-        $("#repeat-wrapper").addClass("d-none fade");
+        $(".audio-control").addClass("hidden fade");
       }
     });
 
@@ -39,14 +48,21 @@ export default class extends SettingController {
   }
 
   bindRepeatSingle() {
+    
     this.repeatSingle = $("#repeat-single-ayah");
     this.repeatSingleTimes = $("#repeat-single-times");
 
     this.repeatSingle.on("change", () => this.updateRepeatSingle());
     this.repeatSingleTimes.on("change", () => this.updateRepeatSingle());
 
-    let signeTab = document.querySelector("#repeat-single");
-    signeTab.addEventListener("shown.bs.tab", () => this.updateRepeatSingle());
+    let singleTab = document.querySelector("#repeat-single");
+    singleTab.addEventListener("shown.bs.tab", () => this.updateRepeatSingle());
+    singleTab.addEventListener("change", () => this.toggle());
+  }
+  
+  toggle(){
+    document.querySelector(".single-ayah").classList.toggle("hidden");
+    document.querySelector(".range-ayah").classList.toggle("hidden");
   }
 
   bindRepeatRange() {
@@ -74,6 +90,7 @@ export default class extends SettingController {
 
     let rangeTab = document.querySelector("#repeat-range");
     rangeTab.addEventListener("shown.bs.tab", () => this.updateRepeatRange());
+    rangeTab.addEventListener("change", () => this.toggle());
   }
 
   updateRepeatSingle() {

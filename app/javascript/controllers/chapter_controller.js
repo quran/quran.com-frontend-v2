@@ -10,9 +10,9 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
   initialize() {
-    this.translationTab = document.querySelector("#pill-translation-tab");
-    this.readingTab = document.querySelector("#pill-reading-tab");
-    this.infoTab = document.querySelector("#pill-surah-info-tab");
+    this.translationTab = document.querySelector(".translation-tab");
+    this.readingTab = document.querySelector(".reading-tab");
+    this.infoTab = document.querySelector(".surah-info-tab");
     // this.setURLState();
     this.bindAyahJump();
   }
@@ -39,42 +39,42 @@ export default class extends Controller {
 
     // intervals for each words of current ayah
     this.segmentTimers = [];
-
-    this.translationTab.addEventListener("shown.bs.tab", e => {
+    
+    this.translationTab.addEventListener("tab-shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: false });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
     
-    this.readingTab.addEventListener("shown.bs.tab", e => {
+    this.readingTab.addEventListener("tab-shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: true });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.trigger("visibility:visible");
     });
-
-    this.infoTab.addEventListener("shown.bs.tab", e => {
+    
+    this.infoTab.addEventListener("tab-shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, {});
     });
-
+    
     this.translationTab.addEventListener("hidden.bs.tab", e => {
       $(e.target.dataset.target)
         .find(".verses")
         .trigger("visibility:hidden");
     });
-
+    
     this.readingTab.addEventListener("hidden.bs.tab", e => {
       $(e.target.dataset.target)
         .find(".verses")
         .trigger("visibility:hidden");
     });
-
+    
     this.activeTab.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
       // new ayah are added to page. Refresh the player's first and last ayah
-
+    
       const player = document.getElementById("player").player;
       const verses = chapter.activeTab.find(".verse");
       player.init(
@@ -166,7 +166,7 @@ export default class extends Controller {
       let currentScroll = $(window).scrollTop();
       let windowHeight = window.innerHeight;
       let headerHeight =
-        $("header").outerHeight() + $(".surah-actions").outerHeight();
+        $(".header").outerHeight() + $(".surah-actions").outerHeight();
       let playerHeight = $("#player").outerHeight();
 
       // scroll if there isn't a space to appear completely
@@ -379,7 +379,7 @@ export default class extends Controller {
       !this.isTranslationsMode()
     );
   }
-
+  
   getLazyTab(url, target, lazy) {
     const lazyParent = `{"root":"${target}"}`;
     const id = Math.random()
@@ -414,7 +414,6 @@ export default class extends Controller {
     const path = `${this.translationTab.href}&${$.param({
       translations: translationsToLoad
     })}`;
-
     let verseList = $(this.translationTab.dataset.target).find("#verses");
 
     fetch(`${path}`)

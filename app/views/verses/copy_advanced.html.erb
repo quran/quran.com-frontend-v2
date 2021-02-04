@@ -1,0 +1,80 @@
+<div id="title">
+  Copy options
+</div>
+<% verse = @presenter.verse %>
+<% chapter = verse.chapter %>
+<div id="modal">
+  <div data-controller="copy-advanced" data-verse-id = "<%=@presenter.verse.verse_number%>" data-chapter-id = "<%=chapter.id%>">
+    <div>
+      <p class="text text--darkgrey text--medium text--semibold">Select ayah range</p>
+      <div class="display-settings__radios">
+        <label class="radio-label radio-label--border radio-label--black copy-current-ayah-radio" id="copy-current-ayah-radio">Current ayah <input checked data-name="single" name="ayah" type="radio" checked>
+          <span class="checkmark"></span>
+        </label>
+        <label class="radio-label radio-label--border radio-label--black copy-range-ayah-radio" id="copy-range-ayah-radio">Range of ayah <input data-name="multiple" name="ayah" type="radio">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+  
+      <div class="copy-range-ayah hidden ">
+        <div class="copy-range-labels">
+          <div class="audio-select tab__row tab__row--col">
+            <p class="text text--darkgrey text--medium text--semibold">From Ayah</p>
+            <div class="simple-select-div">
+              <select class="simple-select" id="copy-range-ayah-from">
+                <option selected value="0">
+                  <%= _t('player.select_verse') %>
+                </option>
+                <% 1.upto(chapter.verses_count) do |verse_number| %>
+                  <option value="<%= verse_number %>"><%= verse_number %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+          <div class="audio-select tab__row tab__row--col">
+            <p class="text text--darkgrey text--medium text--semibold">To Ayah</p>
+            <div class="simple-select-div">
+              <select class="simple-select" id="copy-range-ayah-to">
+                 <option selected value="0">
+                   <%= _t('player.select_verse') %>
+                 </option>
+                 <% 1.upto(chapter.verses_count) do |verse_number| %>
+                   <option value="<%= verse_number %>"><%= verse_number %></option>
+                 <% end %>
+               </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="text text--darkgrey text--medium text--semibold">What do you want to copy?</p>
+      <div class="copy-translation">
+        <label class="check-label copy-arabic-check">Arabic text <input type="checkbox" checked>
+          <span class="checkmark"></span>
+        </label>
+        <p class="text text--darkgrey text--large text--regular">Translations</p>
+        <div class="copy-translation-languages">
+          <%@presenter.translations.each do |translation|%>
+            <label class="check-label"><%=translation.translated_name.name%><input type="checkbox" value="<%=translation.id%>" name="copy-translation" data-action="change->copy-advanced#translationsHandler">
+              <span class="checkmark"></span>
+            </label>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <div class="copy-footnote-section hidden">
+      <p class="text text--darkgrey text--medium text--semibold">Copy also the Footnote(s)</p>
+      <label class="radio-label">Yes <input value="yes" name="radio" type="radio" data-action="change->copy-advanced#footnoteHandler">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio-label ">No <input checked value="no" name="radio" type="radio" data-action="change->copy-advanced#footnoteHandler">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  
+    <div class="copy-footer">
+      <button id="" class="btn btn--darkgreen btn--medium close-copy" data-action="click->copy-advanced#copyHandler">Copy text</button>
+    </div>
+  </div>
+</div>

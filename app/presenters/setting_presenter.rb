@@ -42,6 +42,11 @@ class SettingPresenter < AudioPresenter
   def selected_translation_count
     valid_translations.size
   end
+  
+  def selected_font_name
+    font = session[:font]
+    font == 'v1' ? 'qcf_v1' : font
+  end
 
   protected
 

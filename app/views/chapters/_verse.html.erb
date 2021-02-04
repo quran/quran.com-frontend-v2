@@ -1,16 +1,74 @@
-<div class="verse p-3 my-3 border-bottom"
-     id="<%= verse.id %>"
+<div class="translation__item verse"
+  id="<%= verse.id %>"
      data-verse-number="<%= verse.verse_number %>"
      data-controller="verse"
      data-key="<%= verse.verse_key %>"
-     data-text="<%= verse.text_uthmani %>"
->
-  <div class="row">
-    <div class="col-1 verse-actions-below-above text-center">
-        <%= link_to verse.verse_key, "/#{verse.chapter_id}/#{verse.verse_number}#{@presenter.params_for_verse_link}", target: :blank, class: 'badge bg-secondary p-1' %>
+     data-text="<%= verse.text_uthmani %>">
+  <div>
+    <div class="translation__icons">
+      <a class="translation__icon surah-ayah-link" href="/<%=verse.chapter_id%>/<%=verse.verse_number%><%=@presenter.params_for_verse_link%>"><span class="surah-ayah"><%=verse.verse_key%></span></a>
+      <a class="translation__icon play"
+         data-title="<%= t('action.play') %>"
+          data-controller="track"
+          data-name='ayah-action'
+          data-category="play">
+         <span class="icon-play1 icon"></span>
+      </a>
+      <div class="actions-menu">
+        <a class="translation__icon open-actions" data-title="Actions"><span class="icon-menu"></span></a>
+        <div class="actions-wrapper hidden" data-verse-id="<%=verse.verse_index%>">
+          <div class="actions-items">
+            <div class="actions-header">
+              <p class="text text--darkgrey text--medium text--regular"><%=verse.chapter.name_simple%>: <%=verse.verse_number%></p>
+              <span class="icon-x close-actions"></span>
+            </div>
+            <a class="translation__icon icon-duplicate"
+              data-title="<%= t('action.copy.label') %>"
+              data-done="<%= t('action.copy.done') %>"
+              data-controller="track"
+              data-name='ayah-action'
+              data-category="copy"><%= _t('action.copy.label') %>
+            </a>
+            <a class="translation__icon icon-copy action-copy"
+              data-title="Copy options"
+              data-controller="ajax-modal"
+              data-url="<%= copy_advanced_verse_path(verse.id, translation_ids: @presenter.valid_translations) %>"
+              data-controller="track"
+              data-type="copy"
+              data-name='ayah-action'>Copy advanced
+            </a>
+            <a class="translation__icon icon-book-open"
+              data-title="<%= t('action.tafsir.label', default: 'Tafsir') %>"
+              data-controller="ajax-modal"
+              data-url="<%= select_tafsirs_verse_path(verse.id) %>"
+              data-controller="track"
+              data-type="tafsir"
+              data-name='ayah-action'
+              data-category="tafsir-list"><%= t('action.tafsir.label', default: 'Tafsir') %>
+            </a>
+            <a class="translation__icon icon-share-2"
+              data-title="<%= t('action.share', default: 'Share ayah') %>"
+              data-controller="ajax-modal"
+              data-url="<%= share_verse_path(verse.id) %>"
+              data-controller="track"
+              data-type="share"
+              data-name='ayah-action'
+              data-category="share-list"><%= t('action.share') %>
+            </a>
+            <a class="translation__icon icon-quran-reflect "
+              data-title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>"
+              href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank"
+              data-controller="track"
+              data-name='ayah-action'
+              data-category="QuranReflect">QuranReflect
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="col-11">
+  </div>
+  <div class="traslation__text">
+    <div class="translation__arabic">
       <div class="arabic text-right <%= @presenter.font_method %>">
         <% if @presenter.render_verse_words? %>
           <%= render partial: 'chapters/word', collection: verse.words %>
@@ -19,80 +77,9 @@
         <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="row verse-actions-below">
-    <div class="col-md-1 order-1 order-md-0">
-      <div class="d-flex flex-md-column justify-content-between justify-content-md-center align-items-center py-2 py-md-0 flex-wrap">
-        <a
-          class="play ayah-action my-3 text-muted text-center"
-          data-title="<%= t('action.play') %>"
-          data-controller="track"
-          data-name='ayah-action'
-          data-category="play"
-        >
-
-          <i class="fa fa-play-circle h4"></i>
-          <small class="d-md-none d-block">
-            <%= _t('action.play') %>
-          </small>
-        </a>
-
-        <a class="ayah-action copy my-3 text-muted text-center"
-           data-title="<%= t('action.copy.label') %>"
-           data-done="<%= t('action.copy.done') %>"
-           data-controller="track"
-           data-name='ayah-action'
-           data-category="copy">
-          <i class="fa fa-copy"></i>
-          <small class="d-md-none d-block mt-2">
-            <%= _t('action.copy.label') %>
-          </small>
-        </a>
-
-        <a class="ayah-action my-3 text-muted text-center"
-           data-title="<%= t('action.tafsir.label', default: 'Tafsir') %>"
-           data-controller="ajax-modal"
-           data-url="<%= select_tafsirs_verse_path(verse.id) %>"
-           data-controller="track"
-           data-name='ayah-action'
-           data-category="tafsir-list">
-          <i class="fa fa-book"></i>
-          <small class="d-md-none d-block mt-2"><%= t('action.tafsir.label', default: 'Tafsir') %></small>
-        </a>
-
-        <a href="#"
-           class="ayah-action my-3 text-muted text-center"
-           data-title="<%= t('action.share', default: 'Share ayah') %>"
-           data-controller="ajax-modal"
-           data-url="<%= share_verse_path(verse.id) %>"
-           data-controller="track"
-           data-name='ayah-action'
-           data-category="share-list">
-          <i class="fa fa-share-alt"></i>
-          <small class="d-md-none d-block mt-2">
-            <%= t('action.share') %>
-          </small>
-        </a>
-
-        <a class="ayah-action text-center text-muted my-2 reflection-link"
-           data-title="<%= t('action.quran_reflect', default: 'Read Reflections for this ayah on QuranReflect') %>"
-           href="http://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}"%>?feed=true" target="_blank"
-           data-controller="track"
-           data-name='ayah-action'
-           data-category="QuranReflect">
-          <%= lazy_image_tag 'icon/QR-icon.png', width: 30 %>
-          <small class="d-md-none d-block mt-2">QuranReflect</small>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-md-11">
-      <div class="translation">
-        <% if @presenter.render_translations? %>
-          <%= render partial: 'translation', collection: verse.translations, as: :translation %>
-        <% end %>
-      </div>
-    </div>
+    <% if @presenter.render_translations? %>
+      <%= render partial: 'translation', collection: verse.translations, as: :translation %>
+    <% end %>
   </div>
 </div>
+<div class="horizontal-line"></div>

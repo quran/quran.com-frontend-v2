@@ -1,0 +1,53 @@
+<div class="play-segment el-selection-dropdown" data-controller="segment-player" id="segment-player">
+  <span class="icon-play1"></span>
+  <p> Play this segment</p>
+</div>
+<div class="play-selected-wrapper el-selection-dropdown" id="play-selected-wrapper">
+  <div class="play-selected">
+    <div class="play-selected--header">
+      <h5 class="play-selected--title">Choose settings</h5>
+      <span class="icon-x close-play-selected" id="close-play-selected"></span>
+    </div>
+    <p class="play-selected--counterlabel">Repeat count</p>
+    <div class="counter">
+      <button class="counter__button" data-increment="-1" data-type="times"></button>
+      <p class="counter__text times" data-value="2">2 times</p>
+      <button class="counter__button" data-increment="1" data-type="times"></button>
+    </div>
+    <p class="play-selected--counterlabel">Pause between</p>
+    <div class="counter">
+      <button class="counter__button" data-increment="-1" data-type="seconds"></button>
+      <p class="counter__text seconds" data-value="5">5 seconds</p>
+      <button class="counter__button" data-increment="1" data-type="seconds"></button>
+    </div>
+    <a class="play-selected--playbutton" id="play-selected--playbutton"><span class="icon-play1"></span><p>Play this part</p></a>
+  </div>
+</div>
+
+<div class="play-bar-wrapper">
+	<div class="play-bar ">
+		<div class="playing-part" id="playing-part">
+			<span class="icon-pause" data-action="verseEnded->segment-player#resetPlayButton"></span>
+			<p id="playing-status">Playing</p>
+		</div>
+		<div class="counter-part counter-part--first">
+			<p>Repeat count</p>
+			<div class="counter">
+				<button class="counter__button" data-increment="-1" data-type="times"></button>
+				<p class="counter__text times" data-value="2">2 times</p>
+				<button class="counter__button" data-increment="1" data-type="times"></button>
+			</div>
+		</div>
+		<div class="counter-part counter-part--second">
+			<p>Repeat count</p>
+			<div class="counter">
+				<button class="counter__button" data-increment="-1" data-type="seconds"></button>
+				<p class="counter__text seconds" data-value="5">5 seconds</p>
+				<button class="counter__button" data-increment="1" data-type="seconds"></button>
+			</div>
+		</div>
+		<div class="closing-part ">
+			<span class="play-bar-close icon-x" id="play-bar-close"></span>
+		</div>
+	</div>
+</div>
