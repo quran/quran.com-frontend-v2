@@ -71,7 +71,7 @@
             </div>
             <div class="dropdown--items" id="verse-list">
               <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
-                <a class="dropdown-item" data-filter-tags="<%= verse_num %>">
+                <a class="dropdown-item" data-filter-tags="<%= verse_num %>" data-verse="<%=verse_num%>">
                   <div class="dropdown-item__number">
                     <p><%= verse_num %></p>
                   </div>
@@ -112,7 +112,7 @@
     </div>
     <div class="nav-button">
       <button id="open-settings" class="btn btn--darkgrey btn--settings">
-        <%= _t('settings.label') %>
+        <%= _t('settings.label', {}, 'sidebar-btns') %>
       </button>
     </div>
   </div>

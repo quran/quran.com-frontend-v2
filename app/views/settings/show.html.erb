@@ -8,18 +8,26 @@
         <p class="text text--black text--large2 text--semibold"><%= _t('settings.label') %></p>
       </div>
       <div>
-        <button id="" class="btn btn--lightgreen btn--medium" id='reset-settings'><%= _t('settings.reset') %></button>
+        <button id="reset-settings" class="btn btn--lightgreen btn--medium" id='reset-settings'><%= _t('settings.reset') %></button>
       </div>
     </div>
     <div class="tab__row tab__row--center  hide-sm">
-      <div class="tabs">
-        <a class="tabs__item tabs__item--selected translation-tab" id="pill-translation-tab" data-toggle="pill" href="#pill-translation" role="tab" aria-controls="pill-translation" aria-selected="true">
-          <%= _t('reader_mode.translation') %>
+      <div class="tabs" data-controller="tabs">
+        <a class="tabs__item translation-tab <%#= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
+          href="/<%=@presenter.current_chapter.id%>?reading=false"
+          data-target="#translation-section"
+          data-tab="chapter-tabs">
+         <%= _t('reader_mode.translation') %>
         </a>
-        <a class="tabs__item reading-tab" id="pill-reading-tab" data-toggle="pill" href="#pill-reading" role="tab" aria-controls="pill-reading" aria-selected="false">
-          <%= _t('reader_mode.reading') %>
+        <a class="tabs__item reading-tab <%#= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
+          href="/<%=@presenter.current_chapter.id%>?reading=true"
+          data-target="#reading-section"
+          data-tab="chapter-tabs">
+         <%= _t('reader_mode.reading') %>
         </a>
-        <a class="tabs__item info-tab" id="pill-surah-info-tab" data-toggle="pill" href="#pill-info" role="tab" aria-controls="pill-info" aria-selected="false">
+        <a class="tabs__item info-tab surah-info-tab" href="<%#= chapter_info_path(@presenter.current_chapter.id, locale: I18n.locale) %>"
+          data-target="#info-section"
+          data-tab="chapter-tabs">
           <%= _t('reader_mode.info') %>
         </a>
       </div>
@@ -79,10 +87,10 @@
     <div class="tab__row tab__row--center">
       <div class="tabs" data-controller="tabs">
         <a id="display-settings" class="tabs__item tabs__item--selected" data-target=".display-settings" data-tab="basic-settings-tabs"><%= _t('settings.display') %></a>
-        <a id="audio-settings" class="tabs__item " data-target=".audio-settings" data-tab="basic-settings-tabs"><%= _t('settings.audio') %></a>
+        <a id="audio-settings" class="tabs__item" data-target=".audio-settings" data-tab="basic-settings-tabs"><%= _t('settings.audio') %></a>
       </div>
     </div>
-    <div class="display-settings" data-tab-group="basic-settings-tabs">
+    <div class="display-settings tab-pane fade active show" data-tab-group="basic-settings-tabs">
       <div>
         <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.tooltip.label') %></p>
         <div class="tab__row ">
@@ -137,7 +145,7 @@
         </div>
       </div>
     </div>
-    <div class="audio-settings hidden" data-tab-group="basic-settings-tabs" data-controller="audio-repeat-setting">
+    <div class="audio-settings tab-pane fade" data-tab-group="basic-settings-tabs" data-controller="audio-repeat-setting">
       <div class="tab__row tab__row--small">
         <label class="switch-wrapper">
           <div class="switch">

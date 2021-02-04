@@ -1,8 +1,7 @@
 <div class="menus hidden">
-  <%= yield :menus %>
-
-  <div class="menus__right-tab hidden" data-controller="menu" data-trigger="#site-menu--trigger" data-menu=".site-menu">
-    <div class="site-menu hidden">
+  <%=yield :menus%>
+  <div class="menus__right-tab hidden side-menu" data-controller="menu" data-trigger="#site-menu--trigger" data-menu=".site-menu">
+    <div class="site-menu">
       <div class="site-menu__header">
         <p class="text text--black text--large2 text--semibold">Menu</p>
         <div id="close-menu" class="icon-x site-menu__icon-x"></div>

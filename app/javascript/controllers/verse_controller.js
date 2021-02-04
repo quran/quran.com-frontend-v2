@@ -54,7 +54,56 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     let el = $(this.element);
+    const translationTab = this.element.dataset.translationTab;
+    if(translationTab != undefined){
+      this.bindTranslationIcons(el);
+    }
+    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+      this.bindTajweedTooltip();
+    }
+
+    this.el = el;
     
+  }
+
+  disconnect() {
+  }
+
+  copy() {
+    copyToClipboard(this.el.data("text"));
+    let {title, done} = this.copyDom.dataset;
+    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`;
+    this.copyDom.tooltip._fixTitle();
+    this.copyDom.tooltip.show();
+    setTimeout(() => {
+      this.copyDom.setAttribute("title", title);
+      this.copyDom.tooltip._fixTitle();
+      this.copyDom.tooltip.hide();
+    }, 3000);
+  }
+  
+  toggleActions(e){
+    e.preventDefault();
+    //document.querySelector(".actions-wrapper").classList.add("hidden");
+    e.target.parentNode.nextElementSibling.classList.toggle("hidden");
+  }
+
+  bindTajweedTooltip() {
+    let dom = this.element;
+
+    TAJWEED_RULES.forEach(name => {
+      dom.querySelectorAll(`.${name}`).forEach(tajweed => {
+        new Tooltip(tajweed, {
+          title: TAJWEED_RULE_DESCRIPTION[name],
+          html: true,
+          sanitize: false,
+          direction: "top"
+        });
+      });
+    });
+  }
+  
+  bindTranslationIcons(el){
     this.element.querySelector(".translation__icon.open-actions").addEventListener('click', (e) => {
       //this.element.querySelectorAll(".actions-wrapper").ClassList.add("hidden");
       let node = e.target.parentNode.nextElementSibling;//.classList.toggle("hidden");
@@ -63,10 +112,9 @@ export default class extends Controller {
       }else{
         node.classList.remove("hidden");
       }
-      
       //this.element.querySelector(".actions-wrapper").ClassList.remove("hidden");
     });
-
+    
     //TODO: enable these action only for reading mode.
     this.element.querySelectorAll(".translation__icon").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
@@ -110,49 +158,6 @@ export default class extends Controller {
           player.handlePauseBtnClick();
         }
       }
-    });
-
-    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
-      this.bindTajweedTooltip();
-    }
-
-    this.el = el;
-  }
-
-  disconnect() {
-  }
-
-  copy() {
-    copyToClipboard(this.el.data("text"));
-    let {title, done} = this.copyDom.dataset;
-    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`;
-    this.copyDom.tooltip._fixTitle();
-    this.copyDom.tooltip.show();
-    setTimeout(() => {
-      this.copyDom.setAttribute("title", title);
-      this.copyDom.tooltip._fixTitle();
-      this.copyDom.tooltip.hide();
-    }, 3000);
-  }
-  
-  toggleActions(e){
-    e.preventDefault();
-    //document.querySelector(".actions-wrapper").classList.add("hidden");
-    e.target.parentNode.nextElementSibling.classList.toggle("hidden");
-  }
-
-  bindTajweedTooltip() {
-    let dom = this.element;
-
-    TAJWEED_RULES.forEach(name => {
-      dom.querySelectorAll(`.${name}`).forEach(tajweed => {
-        new Tooltip(tajweed, {
-          title: TAJWEED_RULE_DESCRIPTION[name],
-          html: true,
-          sanitize: false,
-          direction: "top"
-        });
-      });
     });
   }
 }

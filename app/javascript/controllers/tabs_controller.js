@@ -27,25 +27,34 @@ export default class extends Controller {
     if (tabItem.classList.contains(TAB_ITEM_SELECTED_CLASS)) return;
 
     const { target, tab } = tabItem.dataset;
-
     this.hideTabs(tab);
 
     tabItem.classList.add(TAB_ITEM_SELECTED_CLASS);
     let ele = document.querySelector(target);
-    ele.classList.remove("hidden");
-    const event = new Event('shown.bs.tab');
-    ele.dispatchEvent(event);
+    ele.classList.add(...["show", "active"]);
+    const event = new Event('tab.shown');
+    (e.target.nodeName == "SPAN") ? e.target.parentElement.dispatchEvent(event) : e.target.dispatchEvent(event);
   }
 
   hideTabs(group) {
+    let ele = document.querySelector(`.tabs__item--selected[data-tab='${group}']`);
+    if(ele){
+      const event = new Event('tab.hidden');
+      ele.dispatchEvent(event);
+    }
+    
     // hide tab items
     document
       .querySelectorAll(`[data-tab=${group}]`)
       .forEach(item => item.classList.remove(TAB_ITEM_SELECTED_CLASS));
-
+    
     // hide tab panels
     document
       .querySelectorAll(`[data-tab-group=${group}]`)
-      .forEach(item => item.classList.add("hidden"));
+      .forEach(item => {
+        item.classList.remove(...["show", "active"]);
+      });
+      
+      
   }
 }

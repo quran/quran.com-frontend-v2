@@ -1,5 +1,5 @@
 <% content_for :menus do %>
-  <div class="menus__tab hidden" data-controller="menu" data-trigger="#open-settings" data-menu=".settings">
+  <div class="menus__tab hidden side-menu" data-controller="menu" data-trigger="#open-settings" data-menu=".settings">
     <%= render_async "/settings?chapter=#{@presenter.chapter.id}", lazy_load: {root: '#right-sidebar'} do %>
       <div class="text-center text--medium  p-3">
         <%= loading_spinner %>
@@ -12,7 +12,7 @@
 
 <div class="content">
   <div class="container" id="chapter-tabs" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="chapter">
-    <div class="translation-section tab-pane show" id="translation-section" data-tab-group="chapter-tabs">
+    <div class="translation-section tab-pane fade <%='show active' if 'translation' == @presenter.active_tab%>" id="translation-section" data-tab-group="chapter-tabs">
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
@@ -31,14 +31,13 @@
         </div>
       </div>
     </div>
-
-    <div class="reading-section tab-pane hidden" id="reading-section" data-tab-group="chapter-tabs">
+    
+    <div class="reading-section tab-pane fade <%='show active' if 'reading' == @presenter.active_tab%>" id="reading-section" data-tab-group="chapter-tabs">
       <div class="reading">
         <div class="reading__content">
           <% if @presenter.show_bismillah? %>
             <%= render 'bismillah' %>
           <% end %>
-
           <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
             <div id='verses' class="pages">
               <% if 'reading' == @presenter.active_tab %>
@@ -53,12 +52,12 @@
             </div>
           </div>
         </div>
-        <div class="reading__buttons">
+        <div class="">
         </div>
       </div>
     </div>
-
-    <div class="info-section hidden" id="info-section" data-tab-group="chapter-tabs">
+    
+    <div class="info-section tab-pane fade" id="info-section" data-tab-group="chapter-tabs">
       <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
         <div class="text-center text--medium  p-3">
           <%= loading_spinner %>

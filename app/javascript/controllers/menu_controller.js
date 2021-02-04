@@ -29,7 +29,5 @@ export default class extends Controller {
     this.isOpen = !this.isOpen;
     this.menuWraper.classList.toggle("hidden");
     this.element.classList.toggle("hidden");
-    if(e.target.id == "site-menu--trigger")
-      this.targetMenu.classList.toggle("hidden");
   }
 }

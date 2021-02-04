@@ -9,7 +9,7 @@
   <%= render partial: 'verse', collection: verses, as: :verse %>
 <% end %>
 
-<div class="text-center my-3 pagination" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
+<div class="reading__buttons" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
   <% if @presenter.next_page %>
     <%= chapter_next_page_link %>
   <% end %>
@@ -17,23 +17,23 @@
   <% reading = {reading: @presenter.reading_mode?} %>
 
   <% if @presenter.continue? %>
-    <%= link_to chapter_path(@presenter.chapter, reading), class: 'btn btn-outline-primary mt-3 mb-3' do %>
+    <%= link_to chapter_path(@presenter.chapter, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('chapters.read_full') %>
     <% end %>
 
-    <%= link_to @presenter.continue_range, class: 'btn btn-outline-primary mt-3 mb-3' do %>
+    <%= link_to @presenter.continue_range, class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('chapters.continue') %>
     <% end %>
   <% else %>
-    <%= link_to chapter_path(@presenter.chapter.chapter_number - 1, reading), class: 'btn btn-outline-primary mt-3 mb-3' do %>
+    <%= link_to chapter_path(@presenter.chapter.chapter_number - 1, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('chapters.previous') %>
     <% end if @presenter.previous_surah? %>
 
-    <%= link_to chapter_path(@presenter.chapter, reading), class: 'btn btn-outline-primary mt-3 mb-3' do %>
+    <%= link_to chapter_path(@presenter.chapter, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('chapters.go_to_beginning') %>
     <% end %>
 
-    <%= link_to chapter_path(@presenter.chapter.chapter_number + 1, reading), class: 'btn btn-outline-primary mt-3 mb-3' do %>
+    <%= link_to chapter_path(@presenter.chapter.chapter_number + 1, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('chapters.next') %>
     <% end if @presenter.next_surah? %>
   <% end %>
