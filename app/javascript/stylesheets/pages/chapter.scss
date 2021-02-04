@@ -9,7 +9,7 @@
   }
 }
 
-#verses {
+.verses {
   // reading/translation mode page are lazy loaded
   // need to set min height to wrapper give for interaction observer to see this dom's presence within page
   min-height: 50px;
@@ -142,12 +142,16 @@
   }
 }
 
-.verse .arabic{
+.verse .arabic {
   display: flex;
 }
 
-.line .arabic{
+.line .arabic {
   display: inline-flex;
+}
+
+.verse .text_uthmani_tajweed {
+  display: inline-block !important;
 }
 
 #verses-reading {
@@ -174,9 +178,9 @@
     &.highlight {
       color: $color-primary !important;
 
-      &::selection{
+      &::selection {
         //TODO: move this to design system.Hard coding this for now
-        color: #FF7416;
+        color: #ff7416;
       }
     }
   }
@@ -185,8 +189,8 @@
     padding: 0 4px;
   }
 
-  .pause:not(.v1){
-  // don't show pause marks for Uthmai and Indopak script
+  .pause:not(.v1) {
+    // don't show pause marks for Uthmai and Indopak script
     display: none;
   }
 

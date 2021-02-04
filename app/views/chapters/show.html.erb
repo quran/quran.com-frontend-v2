@@ -15,7 +15,7 @@
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
-      
+
       <div id="verses-translation" class='verses' data-controller="infinite-page" data-items-container="#verses-translation #verses">
         <div id="verses">
           <% if 'translation' == @presenter.active_tab %>
@@ -30,14 +30,14 @@
         </div>
       </div>
     </div>
-    
+
     <div class="reading-section tab-pane hidden" id="reading-section" data-tab-group="chapter-tabs">
       <div class="reading">
         <div class="reading__content">
           <% if @presenter.show_bismillah? %>
             <%= render 'bismillah' %>
           <% end %>
-          
+
           <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
             <div id='verses' class="pages">
               <% if 'reading' == @presenter.active_tab %>
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="info-section hidden" id="info-section" data-tab-group="chapter-tabs">
       <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
         <p class="text-center p-3">
@@ -64,7 +64,7 @@
         </p>
       <% end.html_safe %>
     </div>
-    
+
   </div>
 </div>
 
