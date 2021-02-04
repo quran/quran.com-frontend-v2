@@ -11,15 +11,6 @@
 #
 ---
 pl:
-  date:
-    formats:
-      default: "%d-%m-%Y"
-      long: "%B %d, %Y"
-      short: "%d %b"
-    order:
-    - :day
-    - :month
-    - :year
   i18n:
     transliterate:
       rule:
@@ -32,6 +23,23 @@ pl:
         ś: s
         ź: z
         ż: z
+  spree:
+    date_picker:
+      first_day: 0
+  support:
+    array:
+      last_word_connector: " oraz "
+      two_words_connector: " i "
+      words_connector: ", "
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      long: "%B %d, %Y"
+      short: "%d %b"
+    order:
+    - :day
+    - :month
+    - :year
   number:
     currency:
       format:
@@ -67,14 +75,6 @@ pl:
     precision:
       format:
         delimiter: ''
-  spree:
-    date_picker:
-      first_day: 0
-  support:
-    array:
-      last_word_connector: " oraz "
-      two_words_connector: " i "
-      words_connector: ", "
   time:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"

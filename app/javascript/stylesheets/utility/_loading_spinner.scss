@@ -1,0 +1,62 @@
+#loading-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1000;
+  background-color: $white;
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #00acc1 !important;
+}
+
+.spinner--swirl {
+  display: inline-flex;
+  font-size: 64px;
+  color: #fff;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  animation-duration: 2s;
+}
+
+.spinner--swirl:before {
+  top: 0.05em;
+  right: 0.05em;
+  bottom: 0.05em;
+  left: 0.05em;
+  animation-duration: 3s;
+}
+
+.spinner--swirl:after {
+  top: 0.135em;
+  right: 0.135em;
+  bottom: 0.135em;
+  left: 0.135em;
+  animation-duration: 1.5s;
+}
+
+.spinner--swirl,
+.spinner--swirl:after,
+.spinner--swirl:before {
+  border: 0.0333em solid transparent;
+  border-radius: 50%;
+  border-top-color: $color-primary;
+  animation-name: k-swirl;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.spinner--swirl:after,
+.spinner--swirl:before {
+  content: "";
+  position: absolute;
+}
+
+@keyframes k-swirl {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}

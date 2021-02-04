@@ -6,156 +6,171 @@
 #
 ---
 pl:
-  noble_quran:
+  noble_quran: Szlachetny Koran
   errors:
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    no_script:
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
+    not_found: Przepraszamy, strona nie istnieje
+    invalid_verse: Werset nie istnieje
+    invalid_chapter: Sura nie istnieje.
+    no_script: Wygląda na to, że twoja przeglądarka nie obsługuje JavaScript lub jest
+      ono wyłączone. Quran.com działa najlepiej z JavaScript. Aby uzyskać instrukcję
+      jak włączyć JavaScript <a href="http://www.enable-javascript.com/" target="_blank"
+      rel="nofollow"> kliknij tutaj</a>.
+    unavailable_session: |-
+      Sesja %{id} nie jest już dostępna w pamięci.
+      Jeżeli zdażyło ci się uruchomić ten proces na serwerze WWW (takim jak Unicorn czy Puma) to żądanie nie przechowywuje %{id} w pamięci. Weź pod uwagę zmianę liczby procesów na 1 lub użycie innego serwera.
+    unacceptable_request: Wersja wspomagana jest spodziewana w nagłówku Akceptuj
+    connection_refused: |-
+      Ups! Nie udało się połączyć z warstwą pośrednią Web Console.
+      Upewnij się, że serwer rails działa.
     format: "%{attribute} %{message}"
-  local:
-  site_local:
-  change_local:
-  local_native_name:
-  language:
-  page:
+  local: angielski
+  site_local: Język strony
+  change_local: Wybierz język strony
+  local_native_name: Angielski
+  language: Język
+  page: Strona
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: Tryb czytania
+    translation: Tłumaczenia
+    info: Informacje o rozdziale
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: Ustawienia
+    display: Ustawienia wyświetlania
+    audio: Ustawienia dźwięku
+    chapters: Wybierz surę
+    reciters: Wybierz recytatorów
+    sample_audio: Odtwórz kawałek
+    translations: Wybierz tłumaczenia
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: Wyświetlane jedno tłumaczenie
+      other: 'Ilość wyświetlanych tłumaczeń: %{count}'
+    remove_all: Usuń wszystko
+    translation_english: Angielski
+    translation_other: Inne języki
+    reset: Przywróć ustawienia domyślne
+    font_type: Wybierz czcionkę
     fonts:
-      tajweed:
-      uthmani:
-      qcf_v1:
-      qcf_v2:
-      indopak:
+      tajweed: Tajweed
+      uthmani: Uthmani
+      qcf_v1: King Fahd Quran Complex v1
+      qcf_v2: King Fahd Quran Complex v2
+      indopak: IndoPak
     font_size:
-      label:
-      arabic:
-      translation:
+      label: Rozmiar czcionki
+      arabic: Arabski
+      translation: Tłumaczenia
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: Wyświetlanie
+      translation: Tłumaczenie
+      transliteration: Transliteracja
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: Tryb nocny
+      day_tip: Przełącz na tryb dzienny
+      night_tip: Przełącz na tryb nocny
   verses:
-    media:
-    go:
-    not_found:
+    media: Obejrzył wideo komentarz %{from}
+    go: Idź do wersetu
+    not_found: Nie znaleziono wersetu
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-  footnote:
-  share_ayah:
+    label: Sura
+    next: Następna Sura
+    previous: Poprzednia Sura
+    verses: Wersety
+    pages: Strony
+    revelation_place: Miejsce Objawienia
+    continue: Kontynuuj
+    quick_links: Szybkie linki
+    go_to_beginning: Początek Sury
+    read_full: Przeczytaj całą surę
+    invalid: Nie znaleziono Sury
+  footnote: Przypis
+  share_ayah: Udostępnij werset
   action:
-    play:
-    pause:
-    share:
-    quran_reflect:
-    addNote:
+    play: Odtwórz
+    pause: Pauza
+    share: Udostępnij
+    quran_reflect: Przeczytaj refleksje do tego wersetu na QuranReflect
+    addNote: Dodaj notatkę
     tafsir:
-      label:
-      select:
-      filter_tafsir:
+      label: Tafsiry
+      select: Wybierz Tafsir
+      filter_tafsir: 'Filtruj według języka:'
     bookmark:
-      label:
-      done:
+      label: Zakładka
+      done: Dodano do zakładek!
     copy:
-      label:
-      done:
+      label: Kopiuj
+      done: Skopiowano!
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+    label: Szukaj
+    placeholder: Wyszukaj „Noe”
+    result: "%{from}-%{to} Z <span> %{total} </span> WYNIKI WYSZUKIWANIA DLA: <span
+      class=text-primary>%{query}</span>"
+    error: Przepraszamy, wystąpił błąd podczas wyszukiwania.
+    no_query: Nie znaleziono zapytania
+    no_result: Nie znaleziono wyników.
+    popular: Popularne wyszukiwania
+    ayatul_kursi: Ayatul Kursi
+    yaseen: Sura Yaseen (Ja sin)
+    al_mulk: Sura Al Mulk (Władztwo)
+    ar_rahman: Sura Ar-Rahman (Miłosierny)
+    al_waqiah: Sura Al Waqi'ah (Wydarzenia)
+    al_kahf: Sura Al Kahf (Grota)
+    al_muzammil: Sura Al Muzzammil (Owinięty szatą)
   player:
-    current_verse:
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
-    show_word_tooltip:
-    scroll:
-  loading:
+    current_verse: Werset
+    select_verse: Wybierz werset
+    next_verse: Następny werset
+    previous_verse: Poprzedni werset
+    repeat_title: Powtarzaj werset
+    repeat_single: Pojedynczy
+    repeat_range: Kilka
+    repeat_from: Od wersetu
+    repeat_to: Do wersetu
+    repeat_times: Liczba powtórzeń
+    repeat_loop: odtwarzaj w pętli
+    pause_bw_ayah: Ustaw czas przerwy przed odtworzeniem następnego wersetu
+    pause_seconds: s
+    pause: Wstrzymaj na
+    play_continuously: Odtwarzaj dalej bez wstrzymywania
+    show_word_tooltip: Pokaż tłumaczenie podczas odtwarzania
+    scroll: Automatycznie przewijaj do aktualnie odtwarzanego wersetu
+  loading: Ładowanie...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-    privacy:
-  juz:
-  click_here:
-  download:
-  home:
+    title: Koran
+    settings: Ustawienia
+    contribute: Przyczyń się
+    about_us: O nas
+    developers: Deweloperzy
+    useful_sites: Przydatne strony
+    other_links: Inne linki
+    contact_us: Kontakt
+    help: Pomoc i feedback
+    about_project: Quran.com jest projektem pro bono (Sadaqah Jariyah). Chcemy ułatwić
+      każdemu czytanie, studiowanie i naukę Koranu. Koran określany jest różnymi nazwami
+      m.in. Al-Quran (Recytacja), Al-Kareem (Wspaniały), Al-Ketab (Księga), Al-Furqan,
+      (Rozróżnienie), Al-Maw'itha (Przewodnictwo), Al-Thikr (Napomnienie) i Al-Noor
+      (Światło)
+    rights: Wszelkie prawa zastrzeżone
+    mobile_apps: Aplikacje mobilne
+    navigate: Przejdź do
+    legacy_site: Legacy Quran.com
+    blog: Blog
+    forum: Forum
+    privacy: Prywatność
+  juz: Juz
+  click_here: Kliknij tutaj
+  download: Pobierz
+  home: Strona główna
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
+    label: Powiązane witryny
+    sunnah: Sunna
+    sunnah_description: Hadis proroka Muhammada (ﷺ)
+    salah: Salah
+    salah_description: Wyszukaj godziny modlitw dla każdej lokalizacji
+    audio: Koran do słuchania
+    audio_description: Ucz się i słuchaj jednocześnie
+  close: Zamknij
+  tabs:
+    chapter:
+    juz:

@@ -24,7 +24,7 @@
         </a>
       </div>
     </div>
-    
+
     <div class="tab__row tab__row--col">
       <div class="tab__item" data-controller="sidebar" data-is-child=true data-target="#translations-sidebar" data-close=".close-translations">
         <div class="label label__large" id="open-translations">
@@ -50,7 +50,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="label label__large" id="open-reciters" data-controller="sidebar" data-is-child=true data-target="#reciters-sidebar" data-close=".close-reciters">
         <div class="label--text">
           <p class="label--title"><%= _t('settings.reciters') %></p>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="tab__row tab__row--center">
       <div class="tabs" data-controller="tabs">
         <a id="display-settings" class="tabs__item tabs__item--selected" data-target=".display-settings" data-tab="basic-settings-tabs"><%= _t('settings.display') %></a>
@@ -188,30 +188,30 @@
         <div class="range-ayah hidden">
           <div class="flexx ">
             <div class="audio-select tab__row tab__row--col">
-    
+
               <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_from') %></p>
               <div class="simple-select-div">
                 <select id=repeat-range-from class="simple-select">
                   <option selected value="0">
                     <%= _t('player.select_verse') %>
                   </option>
-    
+
                   <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
                     <option value="<%= verse %>"><%= verse %></option>
                   <% end %>
                 </select>
               </div>
             </div>
-    
+
             <div class="audio-select tab__row tab__row--col">
-    
+
               <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_to') %></p>
               <div class="simple-select-div">
                 <select id=repeat-range-to class="simple-select">
                   <option selected value="0">
                     <%= _t('player.select_verse') %>
                   </option>
-    
+
                   <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
                     <option value="<%= verse %>"><%= verse %></option>
                   <% end %>
@@ -265,7 +265,7 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <div class="translations hidden" id="translations-sidebar">
   <div class="tab__container">
@@ -276,7 +276,7 @@
           <p class="text text--black text--large2 text--semibold">translations</p>
         </div>
         <div>
-          <button id="" class="btn btn--lightgreen btn--medium">Clear All</button>
+          <button id="translation-clear-all" class="btn btn--lightgreen btn--medium">Clear All</button>
         </div>
       </div>
     </div>

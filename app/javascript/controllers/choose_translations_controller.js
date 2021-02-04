@@ -12,6 +12,7 @@ import SettingController from "./setting_controller";
 export default class extends SettingController {
   connect() {
     super.connect();
+    this.bindReset();
     const translations = this.get("translations");
 
     this.element.querySelectorAll(".translation").forEach(trans => {
@@ -30,11 +31,26 @@ export default class extends SettingController {
       });
   }
 
+  bindReset(){
+    $("#translation-clear-all").on("click", () => this.resetTransaltions());
+  }
+
+  resetTransaltions(){
+    document.querySelectorAll(".translation-checkbox").forEach(trans => {
+      trans.checked = false;
+    });
+
+    this.set("translations", []);
+    let controller = document.getElementById("chapter-tabs");
+    controller.chapter.changeTranslations([]);
+  }
+
+
   disconnect() {}
 
   updateTranslations() {
     let newTranslations = [];
-    document.querySelectorAll(".translation:checked").forEach(trans => {
+    document.querySelectorAll(".translation-checkbox:checked").forEach(trans => {
       newTranslations.push(trans.value);
     });
 

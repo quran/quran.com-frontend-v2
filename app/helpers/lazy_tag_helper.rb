@@ -11,6 +11,6 @@ module LazyTagHelper
   end
 
   def loading_spinner
-    "<i class='fa fa-spinner fa-spin'></i> #{_t('loading')}".html_safe
+    "<span class='spinner text text--grey'><i class='spinner--swirl'></i></span>".html_safe
   end
 end

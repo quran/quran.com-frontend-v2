@@ -1,34 +1,37 @@
 <% current_chapter = @presenter.chapter.id %>
 <% verse_locale = _t('player.current_verse') %>
 
-
 <div class="navbar surah-actions">
-	<div class="navbar-inner container">
-		<div class="navbar-inner--firstpart">
-			<div class="navbar-first-label">
+  <div class="navbar-inner container">
+    <div class="navbar-inner--firstpart">
+      <div class="navbar-first-label">
 
-				<div class="label label-nav label__right-border" id=>
-					<div class="label--text">
-						<p class="label--title"> <%= @presenter.chapter.name_simple %></p>
-						<p class="label--subtitle"><%= @presenter.chapters[current_chapter-1].translated_name.name %></p>
-					</div>
-					<div class="label--arrow"></div>
-					<div class="dropdown-wrapper" data-controller="filter-list" data-list="#chapter-list" data-input="#filter-chapter">
-						<div class="dropdown">
-							<div class="menu__header">
-								<div class='first'>
-									<div id="close-Surah" class="close-Surah icon-x"></div>
-									<p class="text text--black text--large2 text--semibold">Surah</p>
-								</div>
-							</div>
-							<div class="dropdown--input">
-								<div class="input-wrapper large">
-									<input type="text" placeholder="label" id="filter-chapter"/>
-								</div>
-							</div>
+        <div class="label label-nav label__right-border" id=>
+          <div class="label--text">
+            <p class="label--title"> <%= @presenter.chapter.name_simple %></p>
+            <p class="label--subtitle"><%= @presenter.chapters[current_chapter - 1].translated_name.name %></p>
+          </div>
+          <div class="label--arrow"></div>
+          <div class="dropdown-wrapper" data-controller="filter-list" data-list="#chapter-list" data-input="#filter-chapter">
+            <div class="dropdown">
+              <div class="menu__header">
+                <div class='first'>
+                  <div id="close-Surah" class="close-Surah icon-x"></div>
+                  <p class="text text--black text--large2 text--semibold">Surah</p>
+                </div>
+              </div>
+              <div class="dropdown--input">
+                <div class="input-wrapper large">
+                  <input id="filter-chapter" autocapitalize="none" autocomplete="off" autocorrect="off" type="search" spellcheck="false" placeholder="Search" aria-label="Search" aria-haspopup="false" role="combobox" aria-autocomplete="list">
+                </div>
+              </div>
               <div class="dropdown--items" id="chapter-list">
                 <% @presenter.chapters.each do |chapter| %>
-                  <div class="dropdown-item <%= 'dropdown-item--selected' if chapter.id == current_chapter %>" data-filter-tags="<%= chapter.chapter_number %> <%= chapter.name_simple.downcase %> <%= chapter.translated_name.name.downcase %> <%= chapter.name_arabic %>">
+                  <a
+                    class="dropdown-item <%= 'dropdown-item--selected' if chapter.id == current_chapter %>"
+                    data-filter-tags="<%= chapter.chapter_number %> <%= chapter.name_simple.downcase %> <%= chapter.translated_name.name.downcase %> <%= chapter.name_arabic %>"
+                    href=<%= chapter_path(chapter) %>
+                  >
                     <div class="dropdown-item__number">
                       <p><%= chapter.chapter_number %></p>
                     </div>
@@ -39,78 +42,78 @@
                     <div class="dropdown-item__name-arabic">
                       <p><%= chapter.translated_name.name %></p>
                     </div>
-                  </div>
-                <%end%>
-							</div>
-						</div>
-					</div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-				</div>
-			</div>
-			<div class="label label-nav label__small" id=>
-				<div class="label--text">
-					<p class="label--title"> <%= verse_locale %> <%= @presenter.paginate[0].verse_number %></p>
-					<p class="label--subtitle"></p>
-				</div>
-				<div class="label--arrow"></div>
-				<div class="dropdown-wrapper" data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah">
-					<div class="dropdown">
-						<div class="menu__header">
-							<div class='first'>
-								<div id="close-" class="close- icon-x"></div>
-								<p class="text text--black text--large2 text--semibold">label</p>
-							</div>
-						</div>
-						<div class="dropdown--input">
-							<div class="input-wrapper large">
-								<input type="text" placeholder="label" id="filter-ayah"/>
-							</div>
-						</div>
-						<div class="dropdown--items" id="verse-list">
+      <div class="label label-nav label__small" id=>
+        <div class="label--text">
+          <p class="label--title"> <%= verse_locale %> <%= @presenter.paginate[0].verse_number %></p>
+          <p class="label--subtitle"></p>
+        </div>
+        <div class="label--arrow"></div>
+        <div class="dropdown-wrapper" data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah">
+          <div class="dropdown">
+            <div class="menu__header">
+              <div class='first'>
+                <div id="close-" class="close- icon-x"></div>
+                <p class="text text--black text--large2 text--semibold">label</p>
+              </div>
+            </div>
+            <div class="dropdown--input">
+              <div class="input-wrapper large">
+                <input id="filter-ayah" autocapitalize="none" autocomplete="off" autocorrect="off" type="search" spellcheck="false" placeholder="Search" aria-label="Search" aria-haspopup="false" role="combobox" aria-autocomplete="list">
+              </div>
+            </div>
+            <div class="dropdown--items" id="verse-list">
               <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
-                <div class="dropdown-item" data-filter-tags="<%= verse_num %>">
+                <a class="dropdown-item" data-filter-tags="<%= verse_num %>">
                   <div class="dropdown-item__number">
                     <p><%= verse_num %></p>
                   </div>
                   <div class="dropdown-item__name-latin">
                     <p class="dropdown-item__arabic"><%= verse_locale %> <%= verse_num %></p>
                   </div>
-                </div>
-							<%end%>
-						</div>
-					</div>
-				</div>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
-			</div>
-		</div>
-		<div class="nav-tabs">
-			<div class="tabs" data-controller="tabs">
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <div class="tabs" data-controller="tabs">
         <a class="tabs__item translation-tab <%= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
-          href="<%= range_path range: @presenter.range, reading: false %>"
-          data-target="#translation-section"
-          data-tab="chapter-tabs">
-         <%= _t('reader_mode.translation') %>
+           href="<%= range_path range: @presenter.range, reading: false %>"
+           data-target="#translation-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.translation') %>
         </a>
-        
+
         <a class="tabs__item reading-tab <%= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
-          href="<%= range_path range: @presenter.range, reading: true %>"
-          data-target="#reading-section"
-          data-tab="chapter-tabs">
-         <%= _t('reader_mode.reading') %>
+           href="<%= range_path range: @presenter.range, reading: true %>"
+           data-target="#reading-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.reading') %>
         </a>
-        
+
         <a class="tabs__item info-tab surah-info-tab" href="<%= chapter_info_path(@presenter.chapter.id, locale: I18n.locale) %>"
-          data-target="#info-section"
-          data-tab="chapter-tabs">
+           data-target="#info-section"
+           data-tab="chapter-tabs">
           <%= _t('reader_mode.info') %>
         </a>
-        
-			</div>
-		</div>
-		<div class="nav-button">
-			<button id="open-settings" class="btn btn--darkgrey btn--settings">
+
+      </div>
+    </div>
+    <div class="nav-button">
+      <button id="open-settings" class="btn btn--darkgrey btn--settings">
         <%= _t('settings.label') %>
       </button>
     </div>
-	</div>
+  </div>
 </div>
