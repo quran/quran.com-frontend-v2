@@ -24,10 +24,10 @@ sq:
     connection_refused: 'Ups! Dështim në lidhjen me shtresën e Web Console. Ju lutem,
       sigurohuni që një server zhvillimi rails është aktiv. '
     format: "%{attribute} %{message}"
-  local: anglisht
+  local: Shqip
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet në faqe
-  local_native_name: Anglisht
+  local_native_name: Shqip
   language: Gjuhë
   settings:
     label: Cilësimet
@@ -51,7 +51,7 @@ sq:
       night_tip: Kaloni në modalitetin e natës
     reset: Rivendosja e Vendosjes
     font_type: Zgjidhni shkronjën
-    sample_audio:
+    sample_audio: Luaj Modelin
     display: Parametrat e ekranit
     audio: Cilësimet e audios
     fonts:
@@ -92,7 +92,7 @@ sq:
       label: Kopjo
       done: U kopjua!
     share: Shpërndani
-    addNote: Shto Shënim
+    addNote: Shtoni shënim
     tafsir:
       label: 'Tefsir
 
@@ -155,7 +155,7 @@ sq:
     blog: Blog
     forum: Forum
     mobile_apps: Aplikacione Celulare
-    privacy:
+    privacy: Privatësia
   juz: Xhuzi
   click_here: Kliko këtu
   download: Shkarko

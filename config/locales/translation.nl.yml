@@ -17,10 +17,10 @@ nl:
       '
     connection_refused:
     format: "%{attribute} %{message}"
-  local: engels
+  local: dutch
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
-  local_native_name: Engels
+  local_native_name: Dutch
   language: Taal
   settings:
     label: 'Instellingen
@@ -89,9 +89,7 @@ nl:
       label: Kopiëren
       done: Gekopieerd!
     share: 'Deel '
-    addNote: 'Notitie Toevoegen
-
-      '
+    addNote: Notitie Toevoegen
     tafsir:
       label: Tafsirs
       select: Selecteer Tafsir

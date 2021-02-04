@@ -134,9 +134,7 @@ ru:
     previous_verse: Предыдущий сура
     repeat_title: Повторите Аят
     repeat_single: одиночный
-    repeat_range: 'Пределы
-
-      '
+    repeat_range: 'Пределы'
     repeat_from: От аята
     repeat_to: К аяту
     repeat_times: Количество повторов
