@@ -11,9 +11,7 @@ import Modal from "bootstrap/js/src/modal";
 
 export default class extends Controller {
   connect() {
-    this.element.addEventListener("click", e => {
-      this.loadModal(e);
-    });
+    this.element.addEventListener("click", (e) => this.loadModal(e));
   }
 
   loadModal(e) {

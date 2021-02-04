@@ -28,7 +28,7 @@ export default class extends Controller {
     }catch(e){
       searchInput.trigger("focus");
     }
-    
+
     /* on change keyboard */
     if(searchInput.length){
       searchInput.change(
@@ -38,12 +38,12 @@ export default class extends Controller {
           return false;
         }, 100)
       );
-      
+
       // trigger change when user clear the search box
       searchInput[0].addEventListener("search", () =>
         searchInput.trigger("change")
       );
-  
+
       searchInput.keyup(() => {
         searchInput.trigger("change");
       });
@@ -54,12 +54,12 @@ export default class extends Controller {
     /* when user types more than 1 letter start search filter */
     if (text.length >= 1) {
       list
-        .find("[data-filter-tags]:not([data-filter-tags*='" + text + "'])")
+        .find(`[data-filter-tags]:not([data-filter-tags*="${text}"])`)
         .removeClass("filter-show")
         .addClass("hidden");
 
       list
-        .find("[data-filter-tags*='" + text + "']")
+        .find(`[data-filter-tags*="${text}"]`)
         .removeClass("hidden")
         .addClass("filter-show");
     } else {

@@ -13,7 +13,8 @@ export default class extends Controller {
     this.translationTab = document.querySelector(".translation-tab");
     this.readingTab = document.querySelector(".reading-tab");
     this.infoTab = document.querySelector(".surah-info-tab");
-    //this.setURLState();
+
+    // this.setURLState();
     this.bindAyahJump();
     this.bindBackdrop();
   }
@@ -40,21 +41,21 @@ export default class extends Controller {
 
     // intervals for each words of current ayah
     this.segmentTimers = [];
-    
+
     this.translationTab.addEventListener("tab.shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: false });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.find("#verses").trigger("visibility:visible");
     });
-    
+
     this.readingTab.addEventListener("tab.shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, { reading: true });
       chapter.activeTab = $(e.target.dataset.target).find(".verses");
       chapter.activeTab.find("#verses").trigger("visibility:visible");
     });
-    
+
     this.infoTab.addEventListener("tab.shown", e => {
       const url = e.target.href;
       url && this.updateURLState(url, {});
@@ -65,17 +66,16 @@ export default class extends Controller {
         .find(".verses #verses")
         .trigger("visibility:hidden");
     });
-    
+
     this.readingTab.addEventListener("tab.hidden", e => {
       $(e.target.dataset.target)
         .find(".verses #verses")
         .trigger("visibility:hidden");
     });
-    
+
     this.activeTab.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
       // new ayah are added to page. Refresh the player's first and last ayah
-    
       const player = document.getElementById("player").player;
       const verses = chapter.activeTab.find(".verse");
       player.init(
@@ -328,19 +328,7 @@ export default class extends Controller {
     const reading = this.isReadingMode();
     let from, to;
 
-    //const verses = this.activeTab.find(".verse");
-    //const firstVerse = verses.first().data().verseNumber;
-    //const lastVerse = verses.last().data().verseNumber;
-
-    /*if (verse > lastVerse) {
-      from = lastVerse;
-      to = Math.ceil(verse / 10) * 10;
-    } else {
-      from = verse;
-      to = firstVerse;
-    }*/
-
-    // instead of loading all ayah, lets say load batch of 10 around the select verse
+    // instead of loading all ayah, let's load batch of 10 around the selected verse
     // i.e if user want to jump to 200, we'll load 195 to 205
     from = Math.max(1, verse - 2);
     to = Math.min(verse + 5, this.totalVerses);
@@ -363,9 +351,9 @@ export default class extends Controller {
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
 
-    const readingPage = document.querySelector(`${readingTarget} #verses`);
+    const readingPage = document.querySelector(`${readingTarget} .verses`);
     const translationPage = document.querySelector(
-      `${translationTarget} #verses`
+      `${translationTarget} .verses`
     );
 
     readingPage.innerHTML = this.getLazyTab(
@@ -379,7 +367,7 @@ export default class extends Controller {
       !this.isTranslationsMode()
     );
   }
-  
+
   getLazyTab(url, target, lazy) {
     const lazyParent = `{"root":"${target}"}`;
     const id = Math.random()
@@ -414,6 +402,7 @@ export default class extends Controller {
     const path = `${this.translationTab.href}&${$.param({
       translations: translationsToLoad
     })}`;
+
     let verseList = $(this.translationTab.dataset.target).find("#verses");
 
     fetch(`${path}`)
@@ -421,7 +410,7 @@ export default class extends Controller {
       .then(verses => {
         verseList.html(
           $(verses)
-            .find("#verses")
+            .find(".verses")
             .html()
         );
 
@@ -430,40 +419,10 @@ export default class extends Controller {
   }
 
   insertVerses(newVerses) {
-    //let dom = $("<div>").html(newVerses);
     let verseList = this.activeTab;
-    //let previousVerse = $(dom.find(".verse")[0]).data("verseNumber");
-
-    /*while (
-      verseList.find(`.verse[data-verse-number=${previousVerse}]`).length ==
-      0 &&
-      previousVerse > 0
-      ) {
-      previousVerse = previousVerse - 1;
-    }
-
-    if (previousVerse > 0) {
-      let targetDom = verseList.find(
-        `.verse[data-verse-number=${previousVerse}]`
-      );
-      targetDom.after(newVerses);
-    } else {
-      let nextVerse = $(dom.find(".verse")[dom.find(".verse").length - 1]).data(
-        "verseNumber"
-      );
-
-      while (
-        verseList.find(`.verse[data-verse-number=${nextVerse}]`).length == 0
-        ) {
-        nextVerse = nextVerse + 1;
-      }
-
-      let targetDom = verseList.find(`.verse[data-verse-number=${nextVerse}]`);
-      targetDom.before(newVerses);
-    }*/
 
     // simply replace current page with newly loaded verses
-    verseList.find("#verses").html(newVerses);
+    verseList.find(".verses").html(newVerses);
     this.activeTab[0].infinitePage.resume();
 
     return Promise.resolve(verseList);

@@ -1,12 +1,13 @@
 <% content_for :menus do %>
   <div class="menus__tab hidden side-menu" data-controller="menu" data-trigger="#open-settings" data-menu=".settings">
     <%= render_async "/settings?chapter=#{@presenter.chapter.id}", lazy_load: {root: '#right-sidebar'} do %>
-      <p class="text-center p-3">
+      <div class="text-center text--medium  p-3">
         <%= loading_spinner %>
-      </p>
-    <% end.html_safe %>
+      </div>
+    <% end %>
   </div>
-<%end%>
+<% end %>
+
 <%= render 'surah_actions' %>
 
 <div class="content">
@@ -15,16 +16,16 @@
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
-      
+
       <div id="verses-translation" class='verses' data-controller="infinite-page" data-items-container="#verses-translation #verses">
         <div id="verses">
           <% if 'translation' == @presenter.active_tab %>
             <%= render 'verses' %>
           <% else %>
             <%= render_async range_path(range: @presenter.range, reading: false), lazy_load: {root: '#translation-section'} do %>
-              <p class="text-center p-3">
+              <div class="text-center text--medium  p-3">
                 <%= loading_spinner %>
-              </p>
+              </div>
             <% end.html_safe %>
           <% end %>
         </div>
@@ -43,9 +44,9 @@
                 <%= render 'verses' %>
               <% else %>
                 <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: {root: '#reading-section'} do %>
-                  <p class="text-center p-3">
+                  <div class="text-center text--medium  p-3">
                     <%= loading_spinner %>
-                  </p>
+                  </div>
                 <% end.html_safe %>
               <% end %>
             </div>
@@ -58,12 +59,11 @@
     
     <div class="info-section tab-pane fade" id="info-section" data-tab-group="chapter-tabs">
       <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
-        <p class="text-center p-3">
+        <div class="text-center text--medium  p-3">
           <%= loading_spinner %>
-        </p>
+        </div>
       <% end.html_safe %>
     </div>
-    
   </div>
 </div>
 

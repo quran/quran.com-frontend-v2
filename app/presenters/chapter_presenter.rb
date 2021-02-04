@@ -336,7 +336,7 @@ class ChapterPresenter < HomePresenter
 
   def verse_pagination_end(start, per)
     if reading_mode?
-      first = Verse.where(chapter_id: chapter.id, verse_number: start).first
+      first = Verse.where(chapter_id: chapter.id, 'verses.verse_number': start).first
       last_on_page = Verse.where(chapter_id: chapter.id, page_number: first.page_number).last
 
       return min(last_on_page.verse_number, range_end)
