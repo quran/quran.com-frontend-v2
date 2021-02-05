@@ -15,7 +15,7 @@ export default class extends SettingController {
     this.bindReset();
 
     const translations = this.get("translations");
-    
+
     this.element.querySelectorAll(".translation-checkbox").forEach(trans => {
       if (translations.includes(String(trans.value))) {
         trans.setAttribute("checked", "checked");
@@ -32,11 +32,11 @@ export default class extends SettingController {
       });
   }
 
-  bindReset(){
-    $("#translation-clear-all").on("click", () => this.resetTransaltions());
+  bindReset() {
+    $("#translation-clear-all").on("click", () => this.resetSelection());
   }
 
-  resetTransaltions(){
+  resetSelection() {
     document.querySelectorAll(".translation-checkbox").forEach(trans => {
       trans.checked = false;
     });
@@ -46,32 +46,31 @@ export default class extends SettingController {
     controller.chapter.changeTranslations([]);
   }
 
-
   disconnect() {}
 
   updateTranslations() {
     let newTranslations = [];
-    document.querySelectorAll(".translation-checkbox:checked").forEach(trans => {
-      newTranslations.push(trans.value);
-    });
+    document
+      .querySelectorAll(".translation-checkbox:checked")
+      .forEach(trans => {
+        newTranslations.push(trans.value);
+      });
 
     this.set("translations", newTranslations);
 
     let controller = document.getElementById("chapter-tabs");
     controller.chapter.changeTranslations(newTranslations);
   }
-  
-  bindTransaltionReset(){
-    $("#translation-clear-all").on("click", () => this.resetTransaltions());
-  }
-  
-  resetTransaltions(){
+
+  resetSelection() {
     document.querySelectorAll(".translation-checkbox").forEach(trans => {
       trans.checked = false;
     });
-    this.set("translations", []);
-    document.querySelector("#open-translations .label--subtitle").textContent = "Showing 0 translation";
+    document.querySelector("#open-translations .label--subtitle").textContent =
+      "Showing 0 translation";
     let controller = document.getElementById("chapter-tabs");
+
+    this.set("translations", []);
     controller.chapter.changeTranslations([]);
   }
 }

@@ -1,19 +1,20 @@
 .reading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:  50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //padding:  50px 0;
 }
 
 .reading__content {
-    text-align: center;
-    margin: 30px 15px;
+  text-align: center;
+  // margin: 30px 15px;
 }
 
 .reading__buttons {
-    display: flex;
-    flex-wrap: wrap;
-    button {
-        margin: 10px 10px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+    margin: 10px 10px;
+  }
 }

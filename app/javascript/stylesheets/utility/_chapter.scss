@@ -1,8 +1,12 @@
-#bismillah{
-  color: #000;
+#bismillah {
   font-family: bismillah;
-  //font-size: 40px;
-  padding: 25px 0;
+  font-size: 40px;
 }
-.tab-pane{display: none;}
-.tab-pane.active{display: block; visibility: visible;}
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+  visibility: visible;
+}

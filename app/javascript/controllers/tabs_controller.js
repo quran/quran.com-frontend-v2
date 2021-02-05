@@ -30,31 +30,33 @@ export default class extends Controller {
     this.hideTabs(tab);
 
     tabItem.classList.add(TAB_ITEM_SELECTED_CLASS);
-    let ele = document.querySelector(target);
-    ele.classList.add(...["show", "active"]);
-    const event = new Event('tab.shown');
-    (e.target.nodeName == "SPAN") ? e.target.parentElement.dispatchEvent(event) : e.target.dispatchEvent(event);
+    const tabPane = document.querySelector(target);
+    tabPane.classList.remove("hidden");
+    tabPane.classList.add(...["show", "active"]);
+    const event = new Event("tab.shown");
+    e.target.nodeName == "SPAN"
+      ? e.target.parentElement.dispatchEvent(event)
+      : e.target.dispatchEvent(event);
   }
 
   hideTabs(group) {
-    let ele = document.querySelector(`.tabs__item--selected[data-tab='${group}']`);
-    if(ele){
-      const event = new Event('tab.hidden');
+    let ele = document.querySelector(
+      `.tabs__item--selected[data-tab='${group}']`
+    );
+    if (ele) {
+      const event = new Event("tab.hidden");
       ele.dispatchEvent(event);
     }
-    
+
     // hide tab items
     document
       .querySelectorAll(`[data-tab=${group}]`)
       .forEach(item => item.classList.remove(TAB_ITEM_SELECTED_CLASS));
-    
+
     // hide tab panels
-    document
-      .querySelectorAll(`[data-tab-group=${group}]`)
-      .forEach(item => {
-        item.classList.remove(...["show", "active"]);
-      });
-      
-      
+    document.querySelectorAll(`[data-tab-group=${group}]`).forEach(item => {
+      item.classList.add("hidden");
+      item.classList.remove(...["show", "active"]);
+    });
   }
 }
