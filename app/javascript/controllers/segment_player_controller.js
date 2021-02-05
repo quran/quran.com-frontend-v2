@@ -54,6 +54,7 @@ export default class extends Controller {
           nonArabicWordCount += 1;
       });
       let segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.position)-(nonArabicWordCount));
+      segments = [...Array(segments.length).keys() ].map( i => i+segments[0]); // making segments array a sequential array
       player.updatePause(this.config.seconds);
       player.updateRepeatConfig({
         repeatEnabled: true,
