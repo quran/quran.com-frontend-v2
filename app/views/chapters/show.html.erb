@@ -1,7 +1,8 @@
 <% content_for :menus do %>
-  <div class="menus__tab hidden side-menu" data-controller="menu" data-trigger="#open-settings" data-menu=".settings">
-    <%= render_async "/settings?chapter=#{@presenter.chapter.id}", lazy_load: {root: '#right-sidebar'} do %>
-      <div class="text-center text--medium  p-3">
+  <div class="menus__tab hidden side-menu" data-controller="menu" data-trigger="#open-settings" data-menu=".settings" id="right-sidebar">
+    <%= render_async "/settings?chapter=#{@presenter.chapter.id}&reading=#{'reading' == @presenter.active_tab}", 
+      lazy_load: {root: '#right-sidebar'}, html_options: {class: 'settings-async-node'} do %>
+      <div class="text-center text--medium p-3" data-current-tab='<%=%>'>
         <%= loading_spinner %>
       </div>
     <% end %>

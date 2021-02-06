@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SettingPresenter < AudioPresenter
-  
+
   def selected_reciter
     load_recitations
       .find(recitation_id)
@@ -12,9 +12,13 @@ class SettingPresenter < AudioPresenter
   def current_chapter
     Chapter.find(params[:chapter])
   end
-  
+
   def recitations
     load_recitations
+  end
+
+  def active_tab
+    params[:reading] == 'true' ? 'reading' : 'translation'
   end
 
   def languages

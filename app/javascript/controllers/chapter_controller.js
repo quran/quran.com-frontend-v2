@@ -369,9 +369,6 @@ export default class extends Controller {
   }
 
   getLazyTab(url, target, lazy) {
-    console.log(url)
-    console.log(target)
-    console.log(lazy)
     const lazyParent = `{"root":"${target}"}`;
     const id = Math.random()
       .toString(36)
