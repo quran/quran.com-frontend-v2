@@ -1,7 +1,6 @@
 <% verse = Verse.find_by_verse_key('1:1') %>
 
 <style>
-  <% if false %>
   @font-face {
     font-family: 'p1-v2';
     src: local(QCF2001),
@@ -13,8 +12,6 @@
   .p1-v2 {
     font-family: 'p1-v2';
   }
-
-  <% end %>
 
   @font-face {
     font-family: 'p1-v1';
@@ -28,9 +25,6 @@
     font-family: 'p1-v1';
   }
 </style>
-
-
-
 
 
 <div class="all-fonts" data-controller="font">
@@ -47,20 +41,19 @@
     </div>
   </div>
 
-  <% if false %>
-    <div class="font">
-      <label class="radio-label "><%= _t('settings.fonts.qcf_v2') %> <input class="" name="font" type="radio" value="v2" id=v2>
-        <span class="checkmark"></span>
-      </label>
-      <div class="arabic">
-        <% verse.words.each do |word| %>
-          <span class="p1-v2 <%= word.char_type_name %>" id="w-<%= word.id %>">
-            <%= word.code_v2.html_safe %>
-          </span>
-        <% end %>
-      </div>
+  <div class="font">
+    <label class="radio-label "><%= _t('settings.fonts.qcf_v2') %> <input class="" name="font" type="radio" value="v2" id=v2>
+      <span class="checkmark"></span>
+    </label>
+    <div class="arabic">
+      <% verse.words.each do |word| %>
+        <span class="p1-v2 <%= word.char_type_name %>" id="w-<%= word.id %>">
+          <%= word.code_v2.html_safe %>
+        </span>
+      <% end %>
     </div>
-  <%end%>
+  </div>
+  
   
   <div class="font">
     <label class="radio-label "><%= _t('settings.fonts.uthmani') %> <input class="" name="font" type="radio" checked=checked name="font" value="uthmani" id=uthmani>

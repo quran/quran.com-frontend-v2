@@ -139,11 +139,11 @@ export default class extends Controller {
   }
 
   isReadingMode() {
-    return this.readingTab.classList.contains("active");
+    return this.readingTab.classList.contains("tabs__item--selected");
   }
 
   isTranslationsMode() {
-    return this.translationTab.classList.contains("active");
+    return this.translationTab.classList.contains("tabs__item--selected");
   }
 
   updateURLState(url, state) {
@@ -159,7 +159,7 @@ export default class extends Controller {
     let verseElement = this.activeTab.find(
       `.verse[data-verse-number=${verse}]`
     );
-
+    
     if (verseElement.length > 0) {
       let verseTopOffset = verseElement.offset().top;
       let verseHeight = verseElement.outerHeight();
@@ -369,6 +369,9 @@ export default class extends Controller {
   }
 
   getLazyTab(url, target, lazy) {
+    console.log(url)
+    console.log(target)
+    console.log(lazy)
     const lazyParent = `{"root":"${target}"}`;
     const id = Math.random()
       .toString(36)
@@ -420,7 +423,6 @@ export default class extends Controller {
 
   insertVerses(newVerses) {
     let verseList = this.activeTab;
-
     // simply replace current page with newly loaded verses
     verseList.find(".verses").html(newVerses);
     this.activeTab[0].infinitePage.resume();
@@ -442,6 +444,7 @@ export default class extends Controller {
       ) {
         $('.menus').addClass('hidden');
         $('.side-menu').addClass('hidden');
+        document.body.style = ``;
       }
       if (
         $(e.target).parents('.label-nav').length == 0 &&
