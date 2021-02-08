@@ -12,9 +12,10 @@ import {Controller} from "stimulus";
 export default class extends Controller {
   connect() {
     const el = $(this.element)
+    el.addClass('text text--grey');
 
-    el.find("p").addClass("text text--grey text--medium text--regular")
+    el.find("p, ul, span").addClass("text--medium text--regular")
     el.find("h2, h3").addClass("text text--darkgrey text--large text--semibold")
-    el.find("a").addClass("text text--green")
+    //el.find("a").addClass("text text--green")
   }
 }

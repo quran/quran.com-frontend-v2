@@ -3,10 +3,7 @@ $color-border: #eceff1;
 $color-primary: #00acc1;
 $color-success: #1dc9b7;
 $color-info: #f3f3f4;
-$color-warning: #ffc241;
-$color-danger: #fd3995;
-$color-secondary: #8a8a8a;
-$primary: $color-primary;
+$primary: $color-primary !default;
 $info: $color-info;
 $white: #fff !default;
 /* font vars below will auto change to rem values using function rem($value)*/
@@ -51,6 +48,7 @@ $font-small: 12px;
 $font-medium: 14px;
 $font-large: 16px;
 $font-xlarge: 24px;
+
 // Font colors
 $font-white: $grey1;
 $font-grey: $grey8;
@@ -76,6 +74,11 @@ $screen-lg-min: 992px;
 // Large tablets and desktops
 $screen-xl-min: 1200px;
 
+// reboot
+$link-color: $primary !default;
+$link-hover-color: darken($primary, 10%);
+$link-hover-decoration: 'none';
+
 /* tooltips 5*/
 $tooltip-max-width: 200px;
 $tooltip-color: $white;
@@ -91,3 +94,5 @@ $tooltip-arrow-height: 5px;
 // tooltip 4.3
 $tooltip-arrow-color: $dark-green;
 $tooltip-bg: $color-primary;
+
+$theme-colors: ("primary":    $primary);
