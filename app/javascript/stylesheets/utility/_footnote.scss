@@ -11,7 +11,8 @@
   border-radius: 6px;
 
   @at-root .dark & {
-    background-color: darken($black, 2%);
+    //background-color: darken($black, 2%);
+    background-color: $dark-grey;
     border: 1px solid #71727E;
   }
 }

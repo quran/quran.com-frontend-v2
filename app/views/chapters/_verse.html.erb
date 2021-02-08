@@ -43,8 +43,9 @@
               <span class="icon-x close-actions"></span>
             </div>
 
-            <a class="translation__icon"
-               data-copied="<%= t('action.copy.done') %>"
+            <a class="translation__icon quick-copy"
+               data-done="<%= t('action.copy.done') %>"
+               data-title="<%= t('action.copy.label') %>"
                data-controller="track"
                data-name='ayah-action'
                data-category="copy">
@@ -69,7 +70,7 @@
                data-name='ayah-action'
                data-category="tafsir-list">
               <i class="icon-book-open"></i>
-              <%= t('action.tafsir.label', default: 'Tafsir') %>
+              <%= _t('action.tafsir.label', default: 'Tafsir') %>
             </a>
 
             <a class="translation__icon"
@@ -80,7 +81,7 @@
                data-name='ayah-action'
                data-category="share-list">
               <i class="icon-share-2"></i>
-              <%= t('action.share') %>
+              <%= _t('action.share', default: 'Share ayah') %>
             </a>
 
             <a class="translation__icon"

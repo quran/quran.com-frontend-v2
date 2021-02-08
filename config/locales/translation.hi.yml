@@ -136,6 +136,7 @@ hi:
     pause: के लिए रुकें
     play_continuously: बिना रुके खेलते रहें
     show_word_tooltip: आयत चलते समय टूलटिप में शब्द अनुवाद दिखाएं
+    repeatCurrent:
   loading: लोड हो रहा है...
   nav:
     title: कुरान
@@ -174,3 +175,8 @@ hi:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

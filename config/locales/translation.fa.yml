@@ -131,6 +131,7 @@ fa:
     show_word_tooltip: 'Show word translation in tooltip while playing ayah
 
       '
+    repeatCurrent:
   loading: در حال بارگذاری...
   nav:
     title: قرآن
@@ -176,3 +177,8 @@ fa:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

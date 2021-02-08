@@ -148,6 +148,7 @@ ru:
     show_word_tooltip: Показывать перевод слова во всплывающей подсказке при воспроизведении
       аята
     scroll: Автоматический переход к проигрывающемуся в данный момент аяту
+    repeatCurrent:
   loading: Загружается ...
   nav:
     title: Коран
@@ -187,3 +188,8 @@ ru:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

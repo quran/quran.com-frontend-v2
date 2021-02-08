@@ -134,6 +134,7 @@ sq:
     play_continuously: Vazhdoni të luani pa ndalur
     show_word_tooltip: Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
       ayah
+    repeatCurrent:
   loading: Duke u ngarkuar...
   nav:
     title: Kuran
@@ -179,3 +180,8 @@ sq:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

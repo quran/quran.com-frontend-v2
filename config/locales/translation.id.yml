@@ -124,6 +124,7 @@ id:
     pause: Jeda untuk
     play_continuously: Terus mainkan tanpa jeda
     show_word_tooltip: Tampilkan terjemahan kata di tooltip saat memainkan ayat
+    repeatCurrent:
   loading: Memuat ...
   nav:
     title: Quran
@@ -167,3 +168,8 @@ id:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

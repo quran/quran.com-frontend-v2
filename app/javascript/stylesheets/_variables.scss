@@ -1,9 +1,8 @@
 $color-border: #eceff1;
 
-$color-primary: #00acc1;
+$primary: #00acc1;
 $color-success: #1dc9b7;
 $color-info: #f3f3f4;
-$primary: $color-primary !default;
 $info: $color-info;
 $white: #fff !default;
 /* font vars below will auto change to rem values using function rem($value)*/
@@ -75,14 +74,14 @@ $screen-lg-min: 992px;
 $screen-xl-min: 1200px;
 
 // reboot
-$link-color: $primary !default;
+$link-color: $primary;
 $link-hover-color: darken($primary, 10%);
 $link-hover-decoration: 'none';
 
 /* tooltips 5*/
 $tooltip-max-width: 200px;
 $tooltip-color: $white;
-$tooltip-bg: $color-primary;
+$tooltip-bg: $primary;
 $tooltip-border-radius: 5px;
 $tooltip-opacity: 1;
 $tooltip-padding-y: 0.3rem;
@@ -93,8 +92,9 @@ $tooltip-arrow-height: 5px;
 
 // tooltip 4.3
 $tooltip-arrow-color: $dark-green;
-$tooltip-bg: $color-primary;
+$tooltip-bg: $primary;
 
 $theme-colors: (
-  primary: $color-primary
+  primary: $primary,
+  secondary: $grey7
 );

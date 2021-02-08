@@ -132,6 +132,7 @@ ur:
     show_word_tooltip: 'آیت چلاتے ہوئے لفظ کا ترجمہ دکھائیں
 
       '
+    repeatCurrent:
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
@@ -176,3 +177,8 @@ ur:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

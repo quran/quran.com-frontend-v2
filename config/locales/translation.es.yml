@@ -138,6 +138,7 @@ es:
     show_word_tooltip: Mostrar traducción de palabras en la descripción emergente
       mientras se reproduce el ayah
     scroll: Baja automaticamente al ayah reproduciéndose actualmente
+    repeatCurrent:
   loading: Cargando...
   nav:
     title: Quran
@@ -176,3 +177,8 @@ es:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

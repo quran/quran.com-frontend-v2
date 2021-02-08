@@ -141,6 +141,7 @@ ta:
     show_word_tooltip: ஆயாஹ் ஓடும்பொழுது உதவிக்குறிப்பில் சொல்லின் மொழிபெயர்ப்பைக்
       காட்டப்படும்
     scroll: தற்போது ஓடும் ஆயத்திற்கு தானாக காட்சி உருளும்
+    repeatCurrent:
   loading: ஏறிக் கொண்டிருக்கிறது...
   nav:
     title: குர்ஆன்
@@ -179,3 +180,8 @@ ta:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

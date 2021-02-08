@@ -133,6 +133,7 @@ ja:
     play_continuously:
     show_word_tooltip:
     scroll:
+    repeatCurrent:
   loading:
   nav:
     title: コーラン
@@ -168,3 +169,8 @@ ja:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

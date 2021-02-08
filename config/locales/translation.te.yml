@@ -127,6 +127,7 @@ te:
     play_continuously:
     show_word_tooltip:
     scroll:
+    repeatCurrent:
   loading:
   nav:
     title:
@@ -162,3 +163,8 @@ te:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

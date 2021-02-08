@@ -2,16 +2,17 @@
 	<div class="container player__container">
 		<div class="player__controls">
 			<a class="icon-prev"></a>
-			<a class="control-play-icon icon-play1 play-btn"></a>
+			<a class="icon-play1 play-pause-btn"></a>
 			<a class="icon-next"></a>
-			<a class="icon-repeat"></a>
+			<a class="icon-repeat" data-title="<%= _t("player.repeatCurrent") %>"></a>
 			<a class="control-hidden-icon icon-link"></a>
 		</div>
+
 		<div class="player__bar">
 			<p class="current-time">00:00</p>
 			<input id="player-range" class="bar" type="range" min="0" max="100" step="1" value=0>
 			<p class="all-time">00:00</p>
-			<a class="bar-hidden-icon icon-link" id="auto-scroll-btn" data-title="<%= _t("player.scroll") %>"></a>
+			<a class="icon-link bar-hidden-icon" id="auto-scroll-btn" data-title="<%= _t("player.scroll") %>"></a>
 		</div>
 	</div>
 </div>

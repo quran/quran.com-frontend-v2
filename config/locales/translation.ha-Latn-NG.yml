@@ -134,6 +134,7 @@ ha-Latn-NG:
     play_continuously: Ci gaba da wasa ba tare da tsayawa ba
     show_word_tooltip: Nuna fassarar kalma a cikin kayan aiki yayin kunna ayah
     scroll: Yi ta atomatik zuwa ayah mai gudana a yanzu
+    repeatCurrent:
   loading: Ana lodawa
   nav:
     title: Qur'ani
@@ -172,3 +173,8 @@ ha-Latn-NG:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

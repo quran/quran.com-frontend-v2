@@ -167,6 +167,7 @@ de:
     scroll: 'Scrollt automatisch zum aktuell gespielten Vers
 
       '
+    repeatCurrent:
   loading: Laden...
   nav:
     title: Koran
@@ -211,5 +212,10 @@ de:
       '
   close: Schließen
   tabs:
-    chapter:
-    juz:
+    chapter: Sure anzeigen
+    juz: Juz anzeigen
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

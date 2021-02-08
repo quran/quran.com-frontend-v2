@@ -124,6 +124,7 @@ it:
     play_continuously: Continua a giocare senza pause
     show_word_tooltip: Mostra la traduzione delle parole nella descrizione comando
       durante la riproduzione di ayah
+    repeatCurrent:
   loading: Caricamento in corso...
   nav:
     title: Quran
@@ -167,3 +168,8 @@ it:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

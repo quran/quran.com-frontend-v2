@@ -39,7 +39,7 @@
 .spinner--swirl:before {
   border: 0.0333em solid transparent;
   border-radius: 50%;
-  border-top-color: $color-primary;
+  border-top-color: $primary;
   animation-name: k-swirl;
   animation-iteration-count: infinite;
   animation-timing-function: linear;

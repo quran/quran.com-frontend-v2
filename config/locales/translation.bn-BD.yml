@@ -130,6 +130,7 @@ bn-BD:
     pause: বিরতি দিন
     play_continuously: বিরতি না দিয়ে প্লে করুন
     show_word_tooltip: যখন প্লে হচ্ছে তখন টুলটিপ-এ শব্দ-এর অনুবাদ দেখান
+    repeatCurrent:
   loading: লোড হচ্ছে ...
   nav:
     title: কুরআন
@@ -173,3 +174,8 @@ bn-BD:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

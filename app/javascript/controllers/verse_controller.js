@@ -52,38 +52,45 @@ const TAJWEED_RULES = [
 
 export default class extends Controller {
   connect() {
-    let el = $(this.element);
-    const translationTab = this.element.dataset.translationTab;
-
-    if(translationTab != undefined){
-      this.bindTranslationIcons(el);
-    }
+    const el = $(this.element);
+    this.bindAction(el);
 
     if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
       this.bindTajweedTooltip();
     }
 
     this.el = el;
-
   }
 
   disconnect() {
   }
 
   copy() {
-    copyToClipboard(this.el.data("text"));
-    let {title, done} = this.copyDom.dataset;
-    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`;
-    this.copyDom.tooltip._fixTitle();
-    this.copyDom.tooltip.show();
+    copyToClipboard(this.copyText);
+
+    const copyBtn = this.el.find('.quick-copy');
+    let {title, done} = copyBtn.data();
+    copyBtn.find('span').text(done);
     setTimeout(() => {
-      this.copyDom.setAttribute("title", title);
-      this.copyDom.tooltip._fixTitle();
-      this.copyDom.tooltip.hide();
-    }, 3000);
+      copyBtn.find('span').text(title)
+    }, 2000);
   }
 
-  toggleActions(e){
+  togglePlay(playButton) {
+    let player,
+      playerDom = document.getElementById("player");
+
+    if (!playerDom) return;
+    player = playerDom.player;
+
+    if (playButton.find("span").hasClass("icon-play1")) {
+      return player.play(this.verseNumber);
+    } else {
+      player.handlePauseBtnClick();
+    }
+  }
+
+  toggleActions(e) {
     e.preventDefault();
     //document.querySelector(".actions-wrapper").classList.add("hidden");
     e.target.parentNode.nextElementSibling.classList.toggle("hidden");
@@ -104,60 +111,29 @@ export default class extends Controller {
     });
   }
 
-  bindTranslationIcons(el){
-    this.element.querySelector(".translation__icon.open-actions").addEventListener('click', (e) => {
-      let node = e.target.parentNode.nextElementSibling;
-      if(node.classList == "actions-wrapper"){
-        $('.actions-wrapper').addClass('hidden');
-      }else{
-        node.classList.remove("hidden");
-      }
-    });
+  bindAction(el) {
+    el.find('.open-actions').on('click', e => {
+      el.find('.actions-wrapper').toggleClass('hidden');
+    })
 
-    /*
-      this.element.querySelectorAll(".translation__icon").forEach(actionDom => {
-      actionDom.tooltip = new Tooltip(actionDom, {
-        trigger: "hover",
-        placement: "right",
-        html: true,
-        sanitize: false,
-        template:
-          "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
-        title: () => {
-          const locale = window.locale;
-          return `<div class='${locale}'>${actionDom.dataset.title}</div>`;
-        }
-      });
-    });
-    */
-
-    let copyDom = this.element.querySelector(".icon-duplicate");
-
-    copyDom && copyDom.addEventListener('click', e => {
+    el.find('.quick-copy').on('click', e => {
       e.preventDefault();
       this.copy();
-    });
+    })
 
-    this.copyDom = copyDom;
-    let playButton = el.find(".translation__icon.play");
+    let playButton = el.find(".play");
 
     playButton.on("click", event => {
       event.preventDefault();
-      event.stopImmediatePropagation();
-      let player,
-        playerDom = document.getElementById("player");
-
-      if (playerDom) player = playerDom.player;
-
-      if (playButton.find("span").hasClass("icon-play1")) {
-        if (player) {
-          return player.play(el.data("verseNumber"));
-        }
-      } else {
-        if (player) {
-          player.handlePauseBtnClick();
-        }
-      }
+      this.togglePlay(playButton);
     });
+  }
+
+  get verseNumber() {
+    return this.el.data("verseNumber")
+  }
+
+  get copyText() {
+    return this.el.data("text")
   }
 }

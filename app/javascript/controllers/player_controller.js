@@ -6,7 +6,7 @@
 // <div data-controller="player">
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
 
 const AUDIO_CDN = "https://audio.qurancdn.com/";
@@ -28,7 +28,7 @@ export default class extends Controller {
     this.preloadTrack = {};
     this.segmentTimers = [];
     this.track = {};
-    this.playerRepeatEnabled = false;
+    this.repeatCurrentAyah = false;
     this.audioData = {};
     this.playerProgressInterval = null;
     this.pauseSeconds = 0;
@@ -122,7 +122,8 @@ export default class extends Controller {
     this.playWordQueue = [];
     //unload all tracks
     Howler.unload();
-    this.progressBar.removeEventListener("change", () => {});
+    this.progressBar.removeEventListener("change", () => {
+    });
     this.progressBar.disabled = true;
   }
 
@@ -132,25 +133,28 @@ export default class extends Controller {
 
   buildPlayer() {
     this.progressBar = document.getElementById("player-range");
+    this.bindAutoScroll();
+    this.bindRepeatCurrentAyah();
+  }
 
+  bindAutoScroll() {
     // auto scroll component
-    this.scrollButton = this.element.querySelector("#auto-scroll-btn");
+    const scrollButton = this.element.querySelector("#auto-scroll-btn");
 
-    new Tooltip(this.scrollButton, {
+    new Tooltip(scrollButton, {
       placement: "top",
       boundary: "window",
       html: true,
       sanitize: false,
-      title: this.scrollButton.dataset.title
+      title: scrollButton.dataset.title
     });
 
-    let scrollBtnClasses = this.scrollButton.classList;
-
+    let scrollBtnClasses = scrollButton.classList;
     if (this.config.autoScroll) {
       scrollBtnClasses.add("selected");
     }
 
-    this.scrollButton.addEventListener("click", event => {
+    scrollButton.addEventListener("click", event => {
       event.preventDefault();
       this.config.autoScroll = !this.config.autoScroll;
 
@@ -163,6 +167,23 @@ export default class extends Controller {
       }
 
       this.settings.saveSettings();
+    });
+  }
+
+  bindRepeatCurrentAyah() {
+    const repeatBtn = $("#player .icon-repeat")
+    new Tooltip(repeatBtn[0], {
+      placement: "top",
+      boundary: "window",
+      html: true,
+      sanitize: false,
+      title: repeatBtn.data('title')
+    });
+
+    repeatBtn.on("click", event => {
+      event.preventDefault();
+      this.repeatCurrentAyah = !this.repeatCurrentAyah;
+      repeatBtn.toggleClass("selected");
     });
   }
 
@@ -274,14 +295,9 @@ export default class extends Controller {
     if (previous) this.play(previous);
   }
 
-  handleRepeatBtnClick() {
-    this.playerRepeatEnabled = !this.playerRepeatEnabled;
-    $("#player .icon-repeat").toggleClass("selected");
-  }
-
   bindPlayerEvents() {
     // player controls
-    $("#player .play-btn").on("click", event => {
+    $("#player .play-pause-btn").on("click", event => {
       event.preventDefault();
       this.handlePlayBtnClick();
     });
@@ -289,11 +305,6 @@ export default class extends Controller {
     $("#player .icon-prev").on("click", event => {
       event.preventDefault();
       this.handlePreviousBtnClick();
-    });
-
-    $("#player .icon-repeat").on("click", event => {
-      event.preventDefault();
-      this.handleRepeatBtnClick();
     });
 
     $("#player .icon-next").on("click", event => {
@@ -326,7 +337,7 @@ export default class extends Controller {
   }
 
   setPlayCtrls(type) {
-    let p = $("#player .play-btn");
+    let p = $("#player .play-pause-btn");
     p.removeClass("icon-play1 icon-pause");
 
     let thisVerse = $(
@@ -444,7 +455,7 @@ export default class extends Controller {
   }
 
   onVerseEnded() {
-    if (this.playerRepeatEnabled) {
+    if (this.repeatCurrentAyah) {
       this.repeatSingleVerse(0, 10000);
     } else if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
@@ -524,10 +535,10 @@ export default class extends Controller {
     if (this.config.segmentPlayer) {
       const secondsToSkip = +audioData.segments[
         this.config.customSegments[0]
-      ][2];
+        ][2];
       const lastSegment = this.config.customSegments[
-        this.config.customSegments.length - 1
-      ];
+      this.config.customSegments.length - 1
+        ];
       const endsAt = +audioData.segments[lastSegment][3];
       const duration = endsAt - secondsToSkip;
       sprite.selectedWords = [secondsToSkip, duration];

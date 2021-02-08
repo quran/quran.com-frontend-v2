@@ -135,6 +135,7 @@ pt-BR:
     pause: Pausa para
     play_continuously: Continue reproduzindo sem pausar
     show_word_tooltip: Mostrar tradução de palavras na dica ao reproduzir ayah
+    repeatCurrent:
   loading: Carregando...
   nav:
     title: Alcorão
@@ -174,5 +175,10 @@ pt-BR:
     info: Informações do capítulo
   share_ayah: Compartilhe ayah
   tabs:
-    chapter:
-    juz:
+    chapter: Mostrar Surah (Capítulo)
+    juz: Mostrar Juz
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

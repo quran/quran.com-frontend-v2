@@ -139,6 +139,7 @@ fr:
     play_continuously: Continuez à jouer sans pause
     show_word_tooltip: Afficher la traduction des mots dans l'info-bulle tout en jouant
       à ayah
+    repeatCurrent:
   loading: Chargement...
   nav:
     title: Coran
@@ -184,3 +185,8 @@ fr:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

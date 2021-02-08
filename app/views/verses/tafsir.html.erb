@@ -5,7 +5,7 @@
   <div class="row d-flex justify-content-center my-5">
     <div class="col-md-8">
       <div class="tafsir lh-n <%= @presenter.language_name %>">
-        <h2 class="border-bottom py-2">
+        <h2 class="border-bottom py-2 text text--black ">
           <%= @presenter.tafsir_name %>
         </h2>
 
@@ -13,7 +13,7 @@
           <%= verse.text_uthmani %>
         </h2>
 
-        <div class="h4" style="font-family: 'Amiri', serif; line-height: 40px;">
+        <div class="text text--medium text--large text--grey" style="font-family: 'Amiri', serif;">
           <%= @presenter.tafsir_text %>
         </div>
       </div>

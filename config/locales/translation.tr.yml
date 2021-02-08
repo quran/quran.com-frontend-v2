@@ -124,6 +124,7 @@ tr:
     pause: Duraklat
     play_continuously: Duraklatmadan oynamaya devam edin
     show_word_tooltip: Ayah oynarken araç ipucunda kelime çevirisini göster
+    repeatCurrent:
   loading: Yükleniyor...
   nav:
     title: Kuran
@@ -169,3 +170,8 @@ tr:
   tabs:
     chapter:
     juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

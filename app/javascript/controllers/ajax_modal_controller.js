@@ -68,8 +68,8 @@ export default class extends Controller {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="ajax-modal-title">Loading</h5>
-              <a class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" class="fa fa-times fa-center"></span>
+              <a class="close text--green" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="icon-times-circle"></span>
               </a>
             </div>
             <div class="modal-body" id="ajax-modal-body">
@@ -94,7 +94,7 @@ export default class extends Controller {
     });
     if(type != "copy"){
       global.dialog = new Modal(ajaxModal, { backdrop: "static" });
-      global.dialog.show(); 
+      global.dialog.show();
     }
   }
 
