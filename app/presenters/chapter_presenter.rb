@@ -10,7 +10,7 @@ class ChapterPresenter < HomePresenter
   ].freeze
 
   FONT_METHODS = {
-    'v1' => 'code',
+    'v1' => 'code_v1',
     'v2' => 'code_v2',
     'uthmani' => 'text_uthmani',
     'imlaei' => 'text_imlaei',
@@ -73,12 +73,12 @@ class ChapterPresenter < HomePresenter
         _font = 'uthmani'
       end
 
-      FONT_METHODS[_font].presence || 'code'
+      FONT_METHODS[_font].presence || 'code_v1'
     end
   end
 
   def showing_qcf_font?
-    %w[code_v2 code].include? font_method
+    %w[code_v2 code_v1].include? font_method
   end
 
   def render_verse_words?

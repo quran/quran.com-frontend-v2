@@ -65,7 +65,7 @@ class VersePresenter < BasePresenter
   end
 
   def font_method
-    'code'
+    'code_v1'
   end
 
   def show_verse_actions?
@@ -88,7 +88,7 @@ class VersePresenter < BasePresenter
   def language_name
     tafsir&.language_name
   end
-  
+
   def translations
     ResourceContent.where(id: params[:translation_ids])
   end
