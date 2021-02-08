@@ -1,6 +1,16 @@
 <div class="reciters__content" data-controller="filter-list choose-recitation" data-list=".all-reciters" data-input="#filter-recitation">
   <div class="input-wrapper large">
-    <input type="text" placeholder="Search Reciters" id="filter-recitation">
+    <input type="search"
+           id="filter-recitation"
+           placeholder="<%= t('filter.reciters', default: "Search Reciters") %>"
+           autocapitalize="none"
+           autocomplete="off"
+           autocorrect="off"
+           spellcheck="false"
+           aria-label="Search"
+           class="ytd-searchbox"
+           aria-haspopup="false"
+           role="combobox" aria-autocomplete="list"/>
   </div>
   <div class="all-reciters">
     <% @presenter.recitations.each do |recitation| %>
@@ -13,7 +23,7 @@
           <input class="" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
           <span class="checkmark"></span>
         </label>
-        
+
         <!--<button id="" class="btn btn--darkgrey btn--medium btn--play btn--reciter">Hear the voice</button>-->
       </div>
     <%end%>

@@ -1,0 +1,17 @@
+<div class="fonts hidden" id="fonts-sidebar">
+  <div class="tab__container">
+    <div class="menu__header">
+      <div class="first">
+        <div id="close-fonts" class="close-fonts "></div>
+        <p class="text text--black text--large2 text--semibold"><%= _t('settings.font_type') %></p>
+      </div>
+    </div>
+    <div>
+      <%= render_async '/settings/fonts', lazy_load: {root: '#fonts-sidebar'} do %>
+        <p class="text-center p-3">
+          <%= loading_spinner %>
+        </p>
+      <% end.html_safe %>
+    </div>
+  </div>
+</div>

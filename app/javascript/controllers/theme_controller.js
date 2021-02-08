@@ -13,20 +13,26 @@ import LocalStore from "../utility/local-store";
 export default class extends SettingController {
   connect() {
     super.connect();
+    this.themeButtons = $(this.element).find("a");
 
-    $(document).on("click", ".theme-switch", e => {
+    this.themeButtons.on("click", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
-      this.toggleNight();
+      const targetTheme = e.currentTarget;
+
+      if (targetTheme.classList.contains("active")) return;
+
+      this.themeButtons.removeClass("active");
+      e.currentTarget.classList.add("active");
+
+      this.toggle();
     });
 
     this.updatePage();
   }
 
-  disconnect() {
-    $(document).off("click", ".theme-switch", e => {});
-  }
+  disconnect() {}
 
   updatePage() {
     const isNightMode = this.get("nightMode");
@@ -56,8 +62,8 @@ export default class extends SettingController {
     setDark(darkModeMediaQuery);
   }
 
-  toggleNight() {
-    const isNightMode = document.body.classList.toggle("night");
+  toggle() {
+    const isNightMode = document.body.classList.toggle("dark");
     this.set("nightMode", isNightMode);
   }
 }

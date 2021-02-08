@@ -11,7 +11,17 @@
      data-input="#filter-translations">
   <div>
     <div class="input-wrapper large">
-      <input type="search" placeholder="Search Translations" id="filter-translations">
+      <input type="search"
+             id="filter-translations"
+             placeholder="<%= t('filter.translations', default: "Search 'Noah'") %>"
+             autocapitalize="none"
+             autocomplete="off"
+             autocorrect="off"
+             spellcheck="false"
+             aria-label="Search"
+             class="ytd-searchbox"
+             aria-haspopup="false"
+             role="combobox" aria-autocomplete="list"/>
     </div>
   </div>
 

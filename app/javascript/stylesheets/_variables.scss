@@ -9,22 +9,6 @@ $color-secondary: #8a8a8a;
 $primary: $color-primary;
 $info: $color-info;
 $white: #fff !default;
-
-// color variant
-$primary-400: lighten($color-primary, 5%) !default;
-
-/* tooltips */
-$tooltip-max-width: 200px;
-$tooltip-color: $white;
-$tooltip-bg: $color-primary;
-$tooltip-border-radius: 5px;
-$tooltip-opacity: 1;
-$tooltip-padding-y: 0.3rem;
-$tooltip-padding-x: 0.6rem;
-$tooltip-margin: 2px;
-$tooltip-arrow-width: 8px;
-$tooltip-arrow-height: 5px;
-
 /* font vars below will auto change to rem values using function rem($value)*/
 $fs-base: 13px;
 $fs-nano: $fs-base - 2; /* 11px   */
@@ -91,3 +75,19 @@ $screen-lg-min: 992px;
 
 // Large tablets and desktops
 $screen-xl-min: 1200px;
+
+/* tooltips 5*/
+$tooltip-max-width: 200px;
+$tooltip-color: $white;
+$tooltip-bg: $color-primary;
+$tooltip-border-radius: 5px;
+$tooltip-opacity: 1;
+$tooltip-padding-y: 0.3rem;
+$tooltip-padding-x: 0.6rem;
+$tooltip-margin: 2px;
+$tooltip-arrow-width: 8px;
+$tooltip-arrow-height: 5px;
+
+// tooltip 4.3
+$tooltip-arrow-color: $dark-green;
+$tooltip-bg: $color-primary;

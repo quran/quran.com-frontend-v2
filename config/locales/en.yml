@@ -13,6 +13,11 @@ en:
     reading: Reading
     translation: Translations
     info: Surah Info
+  filter:
+    translations: Search Translations
+    reciters: Search Seciters
+    surah: Search Surah
+    ayah: Search ayah
   settings:
     label: Settings
     display: Display settings

@@ -8,33 +8,42 @@
         <p class="text text--black text--large2 text--semibold"><%= _t('settings.label') %></p>
       </div>
       <div>
-        <button id="reset-settings" class="btn btn--lightgreen btn--medium" id='reset-settings'><%= _t('settings.reset') %></button>
+        <button id="reset-settings" class="btn btn--lightgreen btn--medium" id='reset-settings'>
+          <%= _t('settings.reset') %>
+        </button>
       </div>
     </div>
+
     <div class="tab__row tab__row--center  hide-sm">
       <div class="tabs" data-controller="tabs">
         <a class="tabs__item translation-tab <%= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
-          href="/<%=@presenter.current_chapter.id%>?reading=false"
-          data-target="#translation-section"
-          data-tab="chapter-tabs">
-         <%= _t('reader_mode.translation') %>
+           href="/<%= @presenter.current_chapter.id %>?reading=false"
+           data-target="#translation-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.translation') %>
         </a>
+
         <a class="tabs__item reading-tab <%= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
-          href="/<%=@presenter.current_chapter.id%>?reading=true"
-          data-target="#reading-section"
-          data-tab="chapter-tabs">
-         <%= _t('reader_mode.reading') %>
+           href="/<%= @presenter.current_chapter.id %>?reading=true"
+           data-target="#reading-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.reading') %>
         </a>
+
         <a class="tabs__item info-tab surah-info-tab" href="<%= chapter_info_path(@presenter.current_chapter.id, locale: I18n.locale) %>"
-          data-target="#info-section"
-          data-tab="chapter-tabs">
+           data-target="#info-section"
+           data-tab="chapter-tabs">
           <%= _t('reader_mode.info') %>
         </a>
       </div>
     </div>
 
     <div class="tab__row tab__row--col">
-      <div class="tab__item" data-controller="sidebar" data-is-child=true data-target="#translations-sidebar" data-close=".close-translations">
+      <div class="tab__item"
+           data-controller="sidebar"
+           data-is-child=true
+           data-target="#translations-sidebar"
+           data-close=".close-translations">
         <div class="label label__large" id="open-translations">
           <div class="label--text">
             <p class="label--title"><%= _t('settings.translations') %></p>
@@ -42,294 +51,50 @@
             <p class="label--subtitle"><%= _t('settings.translation_count', count: selected_count) %></p>
           </div>
           <div class="label--arrow"></div>
-          <div class="dropdown-wrapper">
-            <div class="dropdown">
-              <div class="menu__header">
-                <div class="first">
-                  <div id="close-" class="close- icon-x"></div>
-                  <p class="text text--black text--large2 text--semibold">label</p>
-                </div>
-              </div>  <div class="dropdown--input"><div class="input-wrapper large">
-              <input type="text" placeholder="label">
-            </div></div>
-              <div class="dropdown--items">
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div class="label label__large" id="open-reciters" data-controller="sidebar" data-is-child=true data-target="#reciters-sidebar" data-close=".close-reciters">
+      <div class="label label__large"
+           id="open-reciters"
+           data-controller="sidebar"
+           data-is-child=true
+           data-target="#reciters-sidebar"
+           data-close=".close-reciters">
         <div class="label--text">
-          <p class="label--title"><%= _t('settings.reciters') %></p>
-          <p class="label--subtitle <%= reciter.language_name %>"><%= reciter.name %></p>
+          <p class="label--title">
+            <%= _t('settings.reciters') %>
+          </p>
+          <p class="label--subtitle <%= reciter.language_name %>">
+            <%= reciter.name %>
+          </p>
         </div>
         <div class="label--arrow"></div>
-        <div class="dropdown-wrapper">
-          <div class="dropdown">
-            <div class="menu__header">
-              <div class="first">
-                <div id="close-" class="close- icon-x"></div>
-                <p class="text text--black text--large2 text--semibold">label</p>
-              </div>
-            </div>
-            <div class="dropdown--input">
-              <div class="input-wrapper large">
-                <input type="text" placeholder="label">
-              </div>
-            </div>
-            <div class="dropdown--items"></div>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="tab__row tab__row--center">
       <div class="tabs" data-controller="tabs">
-        <a id="display-settings" class="tabs__item tabs__item--selected" data-target=".display-settings" data-tab="basic-settings-tabs"><%= _t('settings.display') %></a>
-        <a id="audio-settings" class="tabs__item" data-target=".audio-settings" data-tab="basic-settings-tabs"><%= _t('settings.audio') %></a>
+        <a id="display-settings"
+           class="tabs__item tabs__item--selected"
+           data-target="#display-setting-tab"
+           data-tab="basic-settings-tabs">
+          <%= _t('settings.display') %>
+        </a>
+
+        <a id="audio-settings"
+           class="tabs__item audio-setting-tab"
+           data-target="#audio-setting-tab"
+           data-tab="basic-settings-tabs">
+          <%= _t('settings.audio') %>
+        </a>
       </div>
     </div>
-    <div class="display-settings tab-pane fade active show" data-tab-group="basic-settings-tabs">
-      <div>
-        <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.tooltip.label') %></p>
-        <div class="tab__row ">
-          <div class="display-settings__radios">
-            <label class="radio-label radio-label--border radio-label--black"><%= _t('settings.tooltip.translation') %> <input class="" name="tooltip-display" type="radio" data-value="t">
-              <span class="checkmark"></span>
-            </label>
-            <label class="radio-label radio-label--border radio-label--black"><%= _t('settings.tooltip.transliteration') %> <input class="" name="tooltip-display" type="radio" data-value="tr">
-            <span class="checkmark"></span>
-          </label>
-          </div>
-        </div>
-      </div>
-      <div class="tab__row">
-        <div class="label label__large" id="open-fonts" data-controller="sidebar" data-is-child=true data-target="#fonts-sidebar" data-close=".close-fonts">
-          <div class="label--text">
-            <p class="label--title"><%= _t('settings.font_type') %></p>
-            <p class="label--subtitle"><%= _t("settings.fonts.#{@presenter.selected_font_name}") %></p>
-          </div>
-          <div class="label--arrow"></div>
-          <div class="dropdown-wrapper">
-            <div class="dropdown">
-              <div class="menu__header">
-                <div class="first">
-                  <div id="close-" class="close- icon-x"></div>
-                  <p class="text text--black text--large2 text--semibold">label</p>
-                </div>
-              </div>
-              <div class="dropdown--input">
-                <div class="input-wrapper large">
-                  <input type="text" placeholder="label">
-                </div>
-              </div>
-              <div class="dropdown--items"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.font_size.label') %></p>
-        <div class="tab__row tab__row--between">
-          <div class="counter">
-            <button class="counter__button" id="font-size-plus" data-increment="-1" data-target=".verse .arabic" data-trigger="font-size"></button>
-            <p class="counter__text"><%= _t('settings.font_size.arabic') %></p>
-            <button class="counter__button" id="font-size-minus" data-increment="1" data-target=".verse .arabic" data-trigger="font-size"></button>
-          </div>
-          <div class="counter">
-            <button class="counter__button" data-increment="-1" data-target=".translation" data-trigger="font-size"></button>
-            <p class="counter__text"><%= _t('settings.font_size.translation') %></p>
-            <button class="counter__button" data-increment="1" data-target=".translation" data-trigger="font-size"></button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="audio-settings tab-pane fade" data-tab-group="basic-settings-tabs" data-controller="audio-repeat-setting">
-      <div class="tab__row tab__row--small">
-        <label class="switch-wrapper">
-          <div class="switch">
-            <input id="repeat-switch" type="checkbox">
-            <span class="slider round"></span>
-          </div>
-          <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_title') %></p>
-        </label>
-      </div>
-      <div class="audio-control hidden">
-        <div class="repeat-ayah tab__row tab__row--between tab__row--small">
-          <label class="radio-label radio-label--border"><%= _t('player.repeat_single') %> <input id="repeat-single" class="single-ayah-radio" name="ayah-repeat" type="radio" checked>
-            <span class="checkmark"></span>
-          </label>
-          <label class="radio-label radio-label--border"><%= _t('player.repeat_range') %> <input id="repeat-range" class="range-ayah-radio" name="ayah-repeat" type="radio">
-            <span class="checkmark"></span>
-          </label>
-        </div>
-        <div class="single-ayah">
-          <div class="flexx">
-            <div class="audio-select tab__row tab__row--col">
-              <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.select_verse') %></p>
-              <div class="simple-select-div" >
-                <select id=repeat-single-ayah class="simple-select">
-                  <option selected value="0">
-                    <%= _t('player.select_verse') %>
-                  </option>
-                  <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
-                    <option value="<%= verse %>"><%= verse %></option>
-                  <% end %>
-                </select>
-              </div>
-            </div>
-            <div class="audio-select tab__row tab__row--col">
-              <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_times') %></p>
-              <div class="simple-select-div">
-                <select id=repeat-single-times class="simple-select">
-                  <option selected value="1"><%= _t('player.repeat_times') %></option>
-                  <% 2.upto(10) do |count| %>
-                    <option value="<%= count %>"><%= count %></option>
-                  <% end %>
-                  <option value="1000"><%= _t('player.loop') %></option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="range-ayah hidden">
-          <div class="flexx ">
-            <div class="audio-select tab__row tab__row--col">
 
-              <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_from') %></p>
-              <div class="simple-select-div">
-                <select id=repeat-range-from class="simple-select">
-                  <option selected value="0">
-                    <%= _t('player.select_verse') %>
-                  </option>
-
-                  <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
-                    <option value="<%= verse %>"><%= verse %></option>
-                  <% end %>
-                </select>
-              </div>
-            </div>
-
-            <div class="audio-select tab__row tab__row--col">
-
-              <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_to') %></p>
-              <div class="simple-select-div">
-                <select id=repeat-range-to class="simple-select">
-                  <option selected value="0">
-                    <%= _t('player.select_verse') %>
-                  </option>
-
-                  <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
-                    <option value="<%= verse %>"><%= verse %></option>
-                  <% end %>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="audio-select half tab__row tab__row--col space-y-16 ">
-            <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_times') %></p>
-            <div class="simple-select-div">
-              <select id=repeat-range-times class="simple-select">
-                <option selected value="1"><%= _t('player.repeat_times') %></option>
-                <% 2.upto(10) do |count| %>
-                  <option value="<%= count %>"><%= count %></option>
-                <% end %>
-                <option value="1000"><%= _t('player.loop') %></option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab__row">
-        <div class="horizontal-line"></div>
-      </div>
-      <div class="tab__row tab__row--col">
-        <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.pause_bw_ayah') %></p>
-        <div class="radio-input">
-          <label class="radio-label "><%= _t('player.pause') %> <input class="" name="radio" type="radio" name="pause-bw-ayah" id="pause-ayah">
-          <span class="checkmark"></span>
-          </label>
-          <div class="mini-input">
-            <input class="mini-input__input" placeholder="0.5" type="number" id=pause-bw-ayah-seconds>
-            <p class="text  text--grey text--medium text--regular"><%= _t('player.pause_seconds') %></p>
-          </div>
-        </div>
-        <label class="radio-label "><%= _t('player.play_continuously') %> <input class="pause-bw-ayah" name="radio" type="radio" id="play-continuously" checked>
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="tab__row">
-        <div class="horizontal-line"></div>
-      </div>
-      <div>
-        <label class="switch-wrapper">
-          <div class="switch">
-            <input id="tooltip-switch" type="checkbox">
-            <span class="slider round"></span>
-          </div>
-          <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.show_word_tooltip') %></p>
-        </label>
-      </div>
-    </div>
+    <%= render 'display_settings' %>
+    <%= render 'audio_settings' %>
   </div>
 </div>
 
-<div class="translations hidden" id="translations-sidebar">
-  <div class="tab__container">
-    <div class="translations__header">
-      <div class="menu__header">
-        <div class="first">
-          <div id="close-translations" class="close-translations "></div>
-          <p class="text text--black text--large2 text--semibold">translations</p>
-        </div>
-        <div>
-          <button id="translation-clear-all" class="btn btn--lightgreen btn--medium">Clear All</button>
-        </div>
-      </div>
-    </div>
-    <div>
-      <%= render_async '/settings/translations', lazy_load: {root: '#translations-sidebar'} do %>
-        <p class="text-center p-3">
-          <%= loading_spinner %>
-        </p>
-      <% end.html_safe %>
-    </div>
-  </div>
-</div>
-
-<div class="reciters hidden" id="reciters-sidebar">
-  <div class="tab__container">
-    <div class="menu__header">
-      <div class="first">
-        <div id="close-reciters" class="close-reciters "></div>
-        <p class="text text--black text--large2 text--semibold"><%= _t('settings.reciters') %></p>
-      </div>
-    </div>
-    <div>
-      <%= render_async '/settings/recitations', lazy_load: {root: '#reciters-sidebar'} do %>
-        <p class="text-center p-3">
-          <%= loading_spinner %>
-        </p>
-      <% end.html_safe %>
-    </div>
-  </div>
-</div>
-
-<div class="fonts hidden" id="fonts-sidebar">
-  <div class="tab__container">
-    <div class="menu__header">
-      <div class="first">
-        <div id="close-fonts" class="close-fonts "></div>
-        <p class="text text--black text--large2 text--semibold"><%= _t('settings.font_type') %></p>
-      </div>
-    </div>
-    <div>
-      <%= render_async '/settings/fonts', lazy_load: {root: '#fonts-sidebar'} do %>
-        <p class="text-center p-3">
-          <%= loading_spinner %>
-        </p>
-      <% end.html_safe %>
-    </div>
-  </div>
-</div>
+<%= render 'translation_sidebar' %>
+<%= render 'reciter_sidebar' %>
+<%= render 'fonts_sidebar' %>

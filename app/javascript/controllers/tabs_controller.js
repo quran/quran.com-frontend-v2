@@ -28,9 +28,8 @@ export default class extends Controller {
 
     const { target, tab } = tabItem.dataset;
     this.hideTabs(tab);
-    document.querySelectorAll(`.${tabItem.classList.value.replace(/ /g,".")}`).forEach(item => {
-      item.classList.add(TAB_ITEM_SELECTED_CLASS);
-    });
+    tabItem.classList.add(TAB_ITEM_SELECTED_CLASS);
+
     const tabPane = document.querySelector(target);
     tabPane.classList.remove("hidden");
     tabPane.classList.add(...["show", "active"]);

@@ -1,0 +1,45 @@
+<div id='display-setting-tab'
+     class="display-settings tab-pane fade active show"
+     data-tab-group="basic-settings-tabs">
+  <div>
+    <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.tooltip.label') %></p>
+    <div class="tab__row ">
+      <div class="display-settings__radios">
+        <label class="radio-label radio-label--border radio-label--black"><%= _t('settings.tooltip.translation') %>
+          <input class="" name="tooltip-display" type="radio" data-value="t">
+          <span class="checkmark"></span>
+        </label>
+        <label class="radio-label radio-label--border radio-label--black"><%= _t('settings.tooltip.transliteration') %>
+          <input class="" name="tooltip-display" type="radio" data-value="tr">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab__row">
+    <div class="label label__large" id="open-fonts" data-controller="sidebar" data-is-child=true data-target="#fonts-sidebar" data-close=".close-fonts">
+      <div class="label--text">
+        <p class="label--title"><%= _t('settings.font_type') %></p>
+        <p class="label--subtitle"><%= _t("settings.fonts.#{@presenter.selected_font_name}") %></p>
+      </div>
+      <div class="label--arrow"></div>
+    </div>
+  </div>
+
+  <div>
+    <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.font_size.label') %></p>
+    <div class="tab__row tab__row--between">
+      <div class="counter">
+        <button class="counter__button" id="font-size-plus" data-increment="-1" data-target=".verse .arabic" data-trigger="font-size"></button>
+        <p class="counter__text"><%= _t('settings.font_size.arabic') %></p>
+        <button class="counter__button" id="font-size-minus" data-increment="1" data-target=".verse .arabic" data-trigger="font-size"></button>
+      </div>
+      <div class="counter">
+        <button class="counter__button" data-increment="-1" data-target=".translation" data-trigger="font-size"></button>
+        <p class="counter__text"><%= _t('settings.font_size.translation') %></p>
+        <button class="counter__button" data-increment="1" data-target=".translation" data-trigger="font-size"></button>
+      </div>
+    </div>
+  </div>
+</div>

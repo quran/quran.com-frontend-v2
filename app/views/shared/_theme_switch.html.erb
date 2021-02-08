@@ -1,0 +1,20 @@
+<div class="language-wrapper" data-controller="choose-locales">
+  <select class="language" name="locale" id="language">
+    <% available_locales.each do |locale, name| %>
+      <option value="<%= locale %>">
+        <%= name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<div class="theme-switch" data-controller="theme">
+  <div class="theme-switch__buttons">
+    <a class="theme-switch__button light active" data-theme="light"></a>
+    <a class="theme-switch__button dark" data-theme="dark"></a>
+  </div>
+
+  <div class="theme-switch__labels">
+    <p class="theme-switch__label">Mode</p>
+  </div>
+</div>

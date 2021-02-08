@@ -5,51 +5,63 @@ export default class extends Controller {
   connect() {
     this.verseId = this.element.dataset.verseId;
     this.chapterId = this.element.dataset.chapterId;
-    this.rangeType = 'single';
+    this.rangeType = "single";
     this.addFootnotes = false;
-    $('.simple-select').select2({
+
+    $(".simple-select").select2({
       // dropdownAutoWidth: true,
-      width: '100%',
-      dropdownCssClass: 'select-stylee',
-      placeholder: 'selected option',
-      minimumResultsForSearch: -1,
+      width: "100%",
+      dropdownCssClass: "select-stylee",
+      placeholder: "selected option",
+      minimumResultsForSearch: -1
     });
-    this.bindingElements(); 
+    this.bindingElements();
   }
-  
-  bindingElements(){
+
+  bindingElements() {
     this.copySingle = $("#repeat-single-ayah");
     this.copyRange = $("#copy-range-ayah-radio");
 
-    this.copySingle.on("change", (e) => this.toggleRangeWraper(e));
-    this.copyRange.on("change", (e) => this.toggleRangeWraper(e));
+    this.copySingle.on("change", e => this.toggleRangeWraper(e));
+    this.copyRange.on("change", e => this.toggleRangeWraper(e));
   }
-  
-  toggleRangeWraper(e){
+
+  toggleRangeWraper(e) {
     this.rangeType = e.target.dataset.name;
     document.querySelector(".copy-range-ayah").classList.toggle("hidden");
   }
-  
-  translationsHandler(){
-    if(document.querySelectorAll('input[name="copy-translation"]:checked').length > 0){
-      document.querySelector(".copy-footnote-section").classList.remove("hidden");
-    }else{
+
+  translationsHandler() {
+    if (
+      document.querySelectorAll('input[name="copy-translation"]:checked')
+        .length > 0
+    ) {
+      document
+        .querySelector(".copy-footnote-section")
+        .classList.remove("hidden");
+    } else {
       document.querySelector(".copy-footnote-section").classList.add("hidden");
     }
   }
-  
-  footnoteHandler(e){
-    this.addFootnotes = e.target.value == 'yes' ? true : false;
+
+  footnoteHandler(e) {
+    this.addFootnotes = e.target.value == "yes" ? true : false;
   }
-  
-  copyHandler(){
-    let [to,from] = [this.verseId, this.verseId];
-    if(this.rangeType == 'multiple'){
-      to =  document.querySelector("#copy-range-ayah-to").value;
-      from =  document.querySelector("#copy-range-ayah-from").value;
+
+  copyHandler() {
+    let [to, from] = [this.verseId, this.verseId];
+    if (this.rangeType == "multiple") {
+      to = document.querySelector("#copy-range-ayah-to").value;
+      from = document.querySelector("#copy-range-ayah-from").value;
     }
-    const selectedTransaltions = [...document.querySelectorAll('input[name="copy-translation"]:checked')].map(x => x.value);
-    const url = `/${this.chapterId}/load_verses.text?to=${to}&from=${from}&translations=${selectedTransaltions.join()}&add_footnotes=${this.addFootnotes}`;
+    const selectedTransaltions = [
+      ...document.querySelectorAll('input[name="copy-translation"]:checked')
+    ].map(x => x.value);
+    const url = `/${
+      this.chapterId
+    }/load_verses.text?to=${to}&from=${from}&translations=${selectedTransaltions.join()}&add_footnotes=${
+      this.addFootnotes
+    }`;
     fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(resp => resp.text())
       .then(content => {
@@ -59,11 +71,10 @@ export default class extends Controller {
         //TODO: show error
       });
   }
-  
-  removeModal(){
+
+  removeModal() {
     $("#ajax-modal")
-        .empty()
-        .remove();
+      .empty()
+      .remove();
   }
-  
 }

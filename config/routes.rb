@@ -99,26 +99,28 @@ Rails.application.routes.draw do
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 
-  # 2-3:5 => 2/3-5
-  get '/:chapter-:start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+  # 2-3:5 => 2:3-5
+  get '/:chapter-:start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
 
-  # 2/3:5 => 2/3-5
-  get '/:chapter/:start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+  # 2/3:5 => 2:3-5
+  get '/:chapter/:start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
 
-  # /2:2:3 => 1/2-3
-  get '/:chapter::start::end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+  # /2:2:3 => 1:2-3
+  get '/:chapter::start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
 
   # /2:2 => /2/2
-  get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 301)
+  # get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 301)
 
-  # /2/1/1 => /2/1-2
-  get '/:chapter/:start/:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+  # /2/1/1 => /2:1-2
+  get '/:chapter/:start/:end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
 
   # 2-3-5 => 2/3-5
+  # Can't redirect this format. Surah slug might have - as well
   # get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
 
-  get '/:id', to: 'chapters#show', as: :chapter
+  get '/:id::range', to: 'chapters#show', as: :key_range
   get '/:id/(:range)', to: 'chapters#show', as: :range
+  get '/:id', to: 'chapters#show', as: :chapter
 
   match '*unmatched_route', to: 'application#not_found', via: :all
 end

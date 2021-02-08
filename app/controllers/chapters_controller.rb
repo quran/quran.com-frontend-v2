@@ -33,7 +33,7 @@ class ChaptersController < ApplicationController
   def load_verses
     render layout: false
   end
-  
+
   protected
 
   def check_routes
@@ -62,19 +62,19 @@ class ChaptersController < ApplicationController
     if chapter_id < 1 || chapter_id > 114
       [root_path, t('chapters.invalid')]
     elsif chapter_id.to_s != chapter
-      range_path(chapter_id, get_valid_range_params)
+      key_range_path(chapter_id, get_valid_range_params)
     end
   end
 
   def validate_range_rules(range)
     expected = get_valid_range_params
 
-    range_path(params[:id], range: expected) if expected != range
+    key_range_path(params[:id], range: expected) if expected != range
   end
 
   def get_valid_range_params
     if params[:range].presence
-      start, finish = params[:range].split('-')
+      start, finish = params[:range].split(/-|:/)
       valid_start = start.to_i.abs
       valid_end = finish.to_i.abs
 

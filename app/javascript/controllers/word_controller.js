@@ -22,10 +22,10 @@ export default class extends Controller {
       html: true,
       sanitize: false,
       template:
-        "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
+        "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>",
       title: () => {
         const local = dataset.local;
-        const tooltip = document.body.setting.get('tooltip');
+        const tooltip = document.body.setting.get("tooltip");
 
         const text = dataset[tooltip];
         return `<div class='${local}'>${text}</div>`;
@@ -57,7 +57,7 @@ export default class extends Controller {
       playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
-    if (player&&data.audio) {
+    if (player && data.audio) {
       return player.playWord(data.audio);
     }
   }

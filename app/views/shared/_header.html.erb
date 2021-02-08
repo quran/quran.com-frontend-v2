@@ -3,7 +3,7 @@
     <div class="header-inner__firstpart">
       <div class="header-inner__firstpart__menu">
         <!-- TODO add hamburger to fonts -->
-        <%= image_tag 'icon/hamburger.svg', id:'site-menu--trigger', class: 'sidebar-btns' %>
+        <%= image_tag 'icon/hamburger.svg', id: 'site-menu--trigger', class: 'sidebar-btns' %>
       </div>
 
       <%= link_to root_path, class: 'logo' do %>
@@ -13,21 +13,13 @@
 
     <div class="header-input">
       <div class="input-wrapper medium">
-        <input type="text" placeholder="" />
+        <input type="search" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search" class="ytd-searchbox" aria-haspopup="false" role="combobox" aria-autocomplete="list"/>
       </div>
     </div>
 
     <div class="header-theme-switch">
       <div class="theme-language">
-        <div class="language-wrapper">
-          <select class="language" name="" id="">
-            <% available_locales.each do |locale, name| %>
-              <option value="<%=locale%>"><%=name%></option>
-            <%end%>
-          </select>
-        </div>
-
-       <%= render 'shared/theme_switch' %>
+        <%= render 'shared/theme_switch' %>
       </div>
     </div>
   </div>

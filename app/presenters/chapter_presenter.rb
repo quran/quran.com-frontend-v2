@@ -242,7 +242,11 @@ class ChapterPresenter < HomePresenter
 
     query_string = query_hash.present? ? "?#{query_hash.to_query}" : ''
 
-    "https://quran.com/#{first_verse.verse_key.sub(':', '/')}#{query_string}"
+    if params[:range]
+      "https://quran.com/#{chapter.id}:#{range}#{query_string}"
+    else
+      "https://quran.com/#{first_verse.verse_key.sub(':', '/')}#{query_string}"
+    end
   end
 
   def meta_title
