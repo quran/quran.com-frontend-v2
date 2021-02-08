@@ -10,7 +10,6 @@ import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 
-
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
   slnt: "Silent",
@@ -55,15 +54,17 @@ export default class extends Controller {
   connect() {
     let el = $(this.element);
     const translationTab = this.element.dataset.translationTab;
+
     if(translationTab != undefined){
       this.bindTranslationIcons(el);
     }
+
     if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
       this.bindTajweedTooltip();
     }
 
     this.el = el;
-    
+
   }
 
   disconnect() {
@@ -81,7 +82,7 @@ export default class extends Controller {
       this.copyDom.tooltip.hide();
     }, 3000);
   }
-  
+
   toggleActions(e){
     e.preventDefault();
     //document.querySelector(".actions-wrapper").classList.add("hidden");
@@ -102,21 +103,19 @@ export default class extends Controller {
       });
     });
   }
-  
+
   bindTranslationIcons(el){
     this.element.querySelector(".translation__icon.open-actions").addEventListener('click', (e) => {
-      //this.element.querySelectorAll(".actions-wrapper").ClassList.add("hidden");
-      let node = e.target.parentNode.nextElementSibling;//.classList.toggle("hidden");
+      let node = e.target.parentNode.nextElementSibling;
       if(node.classList == "actions-wrapper"){
         $('.actions-wrapper').addClass('hidden');
       }else{
         node.classList.remove("hidden");
       }
-      //this.element.querySelector(".actions-wrapper").ClassList.remove("hidden");
     });
-    
-    //TODO: enable these action only for reading mode.
-    this.element.querySelectorAll(".translation__icon").forEach(actionDom => {
+
+    /*
+      this.element.querySelectorAll(".translation__icon").forEach(actionDom => {
       actionDom.tooltip = new Tooltip(actionDom, {
         trigger: "hover",
         placement: "right",
@@ -130,6 +129,7 @@ export default class extends Controller {
         }
       });
     });
+    */
 
     let copyDom = this.element.querySelector(".icon-duplicate");
 

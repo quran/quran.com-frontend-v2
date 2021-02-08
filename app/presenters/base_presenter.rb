@@ -14,7 +14,7 @@ class BasePresenter
     @context = context
   end
 
-  delegate :params, :session, :request, to: :context
+  delegate :params, :session, :request, :action_name, to: :context
 
   def open_graph_hash
     {
@@ -121,22 +121,22 @@ class BasePresenter
     else
       strong_memoize :valid_translations do
         saved = saved_translations
-  
+
         if saved == 'no' || saved.blank?
           context.session[:translations] = 'no'
           []
         else
           saved = saved.split(',') if saved.is_a?(String)
-  
+
           approved_translations = ResourceContent
                                   .approved
                                   .translations
                                   .one_verse
-  
+
           with_ids = approved_translations.where(id: saved)
           translations = approved_translations
                          .where(slug: saved).or(with_ids).pluck(:id)
-  
+
           context.session[:translations] = translations
         end
       end

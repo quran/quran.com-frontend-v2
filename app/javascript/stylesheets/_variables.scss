@@ -95,4 +95,6 @@ $tooltip-arrow-height: 5px;
 $tooltip-arrow-color: $dark-green;
 $tooltip-bg: $color-primary;
 
-$theme-colors: ("primary":    $primary);
+$theme-colors: (
+  primary: $color-primary
+);

@@ -1,7 +1,8 @@
 <div class="language-wrapper" data-controller="choose-locales">
   <select class="language" name="locale" id="language">
     <% available_locales.each do |locale, name| %>
-      <option value="<%= locale %>">
+      <option value="<%= locale %>"
+              <%= 'selected' if current_locale == locale.to_s %>>
         <%= name %>
       </option>
     <% end %>

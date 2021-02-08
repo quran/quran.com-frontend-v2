@@ -1,8 +1,7 @@
 <div class="translation__item verse"
-     id="<%= verse.id %>"
+     id="<%= verse.verse_key %>"
      data-verse-number="<%= verse.verse_number %>"
      data-controller="verse"
-     data-translation-tab="true"
      data-key="<%= verse.verse_key %>"
      data-text="<%= verse.text_uthmani %>">
   <div>
@@ -20,6 +19,7 @@
          data-title="<%= t('action.play') %>"
          data-controller="track"
          data-name='ayah-action'
+         data-value='<%= verse.verse_key %>'
          data-category="play">
         <span class="icon-play1 icon"></span>
       </a>
@@ -29,6 +29,7 @@
            data-title="Actions"
            data-controller="track"
            data-name='ayah-action'
+           data-value='<%= verse.verse_key %>'
            data-category="actions">
           <span class="icon-menu"></span>
         </a>
@@ -53,7 +54,7 @@
 
             <a class="translation__icon"
                data-controller="ajax-modal"
-               data-url="<%= copy_advanced_verse_path(verse.id, translation_ids: @presenter.valid_translations) %>"
+               data-url="/<%= verse.id %>/copy_options<%= @presenter.params_for_verse_link %>"
                data-controller="track"
                data-name='ayah-action'>
               <i class="icon-copy"></i>

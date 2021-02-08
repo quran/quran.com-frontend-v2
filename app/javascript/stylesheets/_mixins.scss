@@ -6,7 +6,7 @@ body {
 }
 
 .dark {
-  background-color: #1c1c20;
+  background-color: $black;
 }
 
 @mixin scrollbarStyle {

@@ -4,3 +4,14 @@
     cursor: pointer;
   }
 }
+
+.footnote {
+  background-color: #FBFBFB;
+  border: 1px solid #DADBDE;
+  border-radius: 6px;
+
+  @at-root .dark & {
+    background-color: darken($black, 2%);
+    border: 1px solid #71727E;
+  }
+}

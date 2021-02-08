@@ -37,7 +37,6 @@ Rails.application.routes.draw do
       get :share
       get :select_tafsirs
       get :tafsir
-      get :copy_advanced
     end
   end
 
@@ -96,6 +95,9 @@ Rails.application.routes.draw do
       [open(Rails.root.join('public', 'sitemaps', filename)).read]
     ]
   }
+
+  get '/:verse_id/copy_options', to: 'advance_copy#copy_options'
+  get '/:verse_id/copy_text', to: 'advance_copy#copy_text'
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 
