@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get :support, to: 'pages#support'
   get :privacy, to: 'pages#privacy'
   get :developers, to: 'pages#developers'
+  get :api, to: 'pages#api'
 
   resources :verses, only: :show do
     member do

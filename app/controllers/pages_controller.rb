@@ -20,6 +20,10 @@ class PagesController < ApplicationController
 
   def developers; end
 
+  def api
+
+  end
+
   protected
 
   def set_presenter
