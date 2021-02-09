@@ -1,6 +1,6 @@
 class AdvanceCopyPresenter < BasePresenter
   def cache_key(action_name:)
-    "advance_copy:#{action_name}-#{verse.id}-#{translations_ids}:#{fetch_locale}"
+    "advance_copy:#{action_name}-#{verse.id}-#{valid_translations.join('-')}:#{fetch_locale}"
   end
 
   def translations
