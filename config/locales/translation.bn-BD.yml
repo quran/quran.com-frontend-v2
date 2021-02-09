@@ -131,6 +131,7 @@ bn-BD:
     play_continuously: বিরতি না দিয়ে প্লে করুন
     show_word_tooltip: যখন প্লে হচ্ছে তখন টুলটিপ-এ শব্দ-এর অনুবাদ দেখান
     repeatCurrent:
+    loading:
   loading: লোড হচ্ছে ...
   nav:
     title: কুরআন

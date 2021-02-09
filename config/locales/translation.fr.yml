@@ -140,6 +140,7 @@ fr:
     show_word_tooltip: Afficher la traduction des mots dans l'info-bulle tout en jouant
       à ayah
     repeatCurrent:
+    loading:
   loading: Chargement...
   nav:
     title: Coran

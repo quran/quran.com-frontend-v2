@@ -131,6 +131,7 @@ th:
     play_continuously: เล่นเสียงอ่านต่อเนื่องโดยไม่หยุดพัก
     show_word_tooltip: แสดงคำแปลเหนือข้อความในอายะห์ขณะเล่นเสียง
     repeatCurrent:
+    loading:
   loading: กำลังโหลด...
   nav:
     title: อัลกุรอาน

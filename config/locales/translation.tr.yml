@@ -125,6 +125,7 @@ tr:
     play_continuously: Duraklatmadan oynamaya devam edin
     show_word_tooltip: Ayah oynarken araç ipucunda kelime çevirisini göster
     repeatCurrent:
+    loading:
   loading: Yükleniyor...
   nav:
     title: Kuran

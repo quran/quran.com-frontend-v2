@@ -127,6 +127,7 @@ ar:
     play_continuously: استمر في اللعب دون توقف
     show_word_tooltip: إظهار ترجمة الكلمات في تلميح الأداة أثناء تشغيل الآية
     repeatCurrent:
+    loading:
   loading: جار التحميل...
   nav:
     title: القرآن

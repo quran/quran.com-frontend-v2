@@ -132,6 +132,7 @@ fa:
 
       '
     repeatCurrent:
+    loading:
   loading: در حال بارگذاری...
   nav:
     title: قرآن

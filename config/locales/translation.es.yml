@@ -139,6 +139,7 @@ es:
       mientras se reproduce el ayah
     scroll: Baja automaticamente al ayah reproduciéndose actualmente
     repeatCurrent:
+    loading:
   loading: Cargando...
   nav:
     title: Quran

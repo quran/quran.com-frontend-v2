@@ -125,6 +125,7 @@ id:
     play_continuously: Terus mainkan tanpa jeda
     show_word_tooltip: Tampilkan terjemahan kata di tooltip saat memainkan ayat
     repeatCurrent:
+    loading:
   loading: Memuat ...
   nav:
     title: Quran

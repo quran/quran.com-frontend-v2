@@ -128,6 +128,7 @@ ps-AF:
     show_word_tooltip:
     scroll:
     repeatCurrent:
+    loading:
   loading:
   nav:
     title:

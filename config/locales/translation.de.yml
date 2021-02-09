@@ -168,6 +168,7 @@ de:
 
       '
     repeatCurrent:
+    loading:
   loading: Laden...
   nav:
     title: Koran

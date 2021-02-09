@@ -132,6 +132,7 @@ nl:
     play_continuously: Blijf spelen zonder pauze
     show_word_tooltip: Toon woordvertaling in tooltip tijdens het spelen van ayah
     repeatCurrent:
+    loading:
   loading: Laden...
   nav:
     title: Koran

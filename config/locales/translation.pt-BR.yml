@@ -136,6 +136,7 @@ pt-BR:
     play_continuously: Continue reproduzindo sem pausar
     show_word_tooltip: Mostrar tradução de palavras na dica ao reproduzir ayah
     repeatCurrent:
+    loading:
   loading: Carregando...
   nav:
     title: Alcorão

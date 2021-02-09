@@ -5,8 +5,7 @@
       <a class="icon-play1" id=play-pause-btn></a>
       <a class='spinner text text--green d-none'
          id=play-loading
-         data-title="<%= _t("player.loading") %>"
-      >
+         data-title="<%= _t("player.loading", default: 'Loading audio') %>">
         <i class='spinner--swirl'></i>
       </a>
       <a class="icon-next"></a>

@@ -137,6 +137,7 @@ hi:
     play_continuously: बिना रुके खेलते रहें
     show_word_tooltip: आयत चलते समय टूलटिप में शब्द अनुवाद दिखाएं
     repeatCurrent:
+    loading:
   loading: लोड हो रहा है...
   nav:
     title: कुरान

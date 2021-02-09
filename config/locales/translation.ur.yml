@@ -132,7 +132,8 @@ ur:
     show_word_tooltip: 'آیت چلاتے ہوئے لفظ کا ترجمہ دکھائیں
 
       '
-    repeatCurrent:
+    repeatCurrent: موجودہ آیت کو چلاتے رہیں
+    loading: آڈیو لوڈ ہو رہا ہے
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
@@ -175,10 +176,10 @@ ur:
     info: سورہ کی معلومات
   share_ayah: آیت شیئر کریں
   tabs:
-    chapter:
-    juz:
+    chapter: سورتیں
+    juz: سپارے
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: ترجمہ تلاش کریں
+    reciters: قاری منتخب کریں
+    surah: سورہ تلاش کریں
+    ayah: آیہ تلاش کریں

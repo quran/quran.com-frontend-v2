@@ -135,6 +135,7 @@ sq:
     show_word_tooltip: Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
       ayah
     repeatCurrent:
+    loading:
   loading: Duke u ngarkuar...
   nav:
     title: Kuran

@@ -135,6 +135,7 @@ ha-Latn-NG:
     show_word_tooltip: Nuna fassarar kalma a cikin kayan aiki yayin kunna ayah
     scroll: Yi ta atomatik zuwa ayah mai gudana a yanzu
     repeatCurrent:
+    loading:
   loading: Ana lodawa
   nav:
     title: Qur'ani

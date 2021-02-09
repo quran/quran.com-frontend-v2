@@ -135,7 +135,8 @@ pl:
     play_continuously: Odtwarzaj dalej bez wstrzymywania
     show_word_tooltip: Pokaż tłumaczenie podczas odtwarzania
     scroll: Automatycznie przewijaj do aktualnie odtwarzanego wersetu
-    repeatCurrent:
+    repeatCurrent: Kontynuuj odtwarzanie wersetu
+    loading:
   loading: Ładowanie...
   nav:
     title: Koran
@@ -176,7 +177,7 @@ pl:
     chapter: Pokaż Surę
     juz: Pokaż Juz
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: Wyszukaj tłumaczenia
+    reciters: Wyszukaj recytatorów
+    surah: Wyszukaj Surę
+    ayah: Wyszukaj werset
