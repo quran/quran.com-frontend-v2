@@ -33,7 +33,7 @@ class ChapterPresenter < HomePresenter
       _end = 'buggy'
     end
 
-    "f:#{font_method}-ch:#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{_start}-#{_end}"
+    "#{current_locale}-#{font_method}-#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{_start}-#{_end}"
   end
 
   def chapter

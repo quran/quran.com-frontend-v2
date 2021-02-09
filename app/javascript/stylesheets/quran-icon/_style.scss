@@ -13,7 +13,7 @@ $quran-font-path: '../../#{$quran-font-family}';
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+.quran-icon, [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$quran-font-family}' !important;
   speak: never;

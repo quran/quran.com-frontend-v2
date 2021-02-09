@@ -72,7 +72,7 @@ class BasePresenter
   def related_links; end
 
   def meta_url
-    context.url_for(protocol: 'https', locale: context.fetch_locale)
+    context.url_for(protocol: 'https', locale: current_locale)
   end
 
   def canonical_url
@@ -160,5 +160,9 @@ class BasePresenter
       .where(
         translated_names: { language_id: language }
       ).or(defaults).order('translated_names.language_priority DESC')
+  end
+
+  def current_locale
+    context.fetch_locale
   end
 end

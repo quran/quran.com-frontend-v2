@@ -21,6 +21,6 @@ class HomePresenter < BasePresenter
   end
 
   def cache_key
-    'home'
+    "#{current_locale}-home"
   end
 end
