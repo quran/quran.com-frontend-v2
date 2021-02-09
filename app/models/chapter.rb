@@ -29,4 +29,8 @@ class Chapter < ApiCoreRecord
   serialize :pages
 
   default_scope { order 'chapter_number asc' }
+
+  def default_slug
+    slugs.where(is_default: true).first.slug
+  end
 end

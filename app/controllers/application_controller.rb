@@ -8,6 +8,20 @@ class ApplicationController < ActionController::Base
     redirect_to '/'
   end
 
+  def fetch_locale
+    if @locale
+      return @locale
+    end
+
+    requested_locale = params[:locale] ||
+        session[:locale] ||
+        cookies[:locale] ||
+        extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
+        I18n.default_locale
+
+    @locale = requested_locale.to_s.split('-').first
+  end
+
   protected
 
   def set_locale
@@ -16,16 +30,6 @@ class ApplicationController < ActionController::Base
 
     session[:locale] = locale
     I18n.locale = locale
-  end
-
-  def fetch_locale
-    requested_locale = params[:locale] ||
-                       session[:locale] ||
-                       cookies[:locale] ||
-                       extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
-                       I18n.default_locale
-
-    requested_locale.to_s.split('-').first
   end
 
   def handle_routing_error

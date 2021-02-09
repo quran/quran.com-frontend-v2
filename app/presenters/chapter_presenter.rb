@@ -10,12 +10,12 @@ class ChapterPresenter < HomePresenter
   ].freeze
 
   FONT_METHODS = {
-    'v1' => 'code_v1',
-    'v2' => 'code_v2',
-    'uthmani' => 'text_uthmani',
-    'imlaei' => 'text_imlaei',
-    'indopak' => 'text_indopak',
-    'tajweed' => 'text_uthmani_tajweed'
+      'v1' => 'code_v1',
+      'v2' => 'code_v2',
+      'uthmani' => 'text_uthmani',
+      'imlaei' => 'text_imlaei',
+      'indopak' => 'text_indopak',
+      'tajweed' => 'text_uthmani_tajweed'
   }.freeze
 
   def initialize(context)
@@ -231,26 +231,26 @@ class ChapterPresenter < HomePresenter
   end
 
   def meta_url
-    first_verse = paginate.first
+    strong_memoize :meta_url do
+      translations = valid_translations
 
-    translations = valid_translations
+      query_hash = {}
+      query_hash[:font] = params[:font]
+      query_hash[:translations] = translations.join(',').presence
+      query_hash.compact!
 
-    query_hash = {}
-    query_hash[:font] = params[:font]
-    query_hash[:translations] = translations.join(',').presence
-    query_hash.compact!
+      query_string = query_hash.present? ? "?locale=#{context.fetch_locale}&#{query_hash.to_query}" : "?locale=#{context.fetch_locale}"
 
-    query_string = query_hash.present? ? "?#{query_hash.to_query}" : ''
-
-    if params[:range]
-      "https://quran.com/#{chapter.id}:#{range}#{query_string}"
-    else
-      "https://quran.com/#{first_verse.verse_key.sub(':', '/')}#{query_string}"
+      if params[:range]
+        "https://quran.com/#{chapter.id}:#{range}#{query_string}"
+      else
+        "https://quran.com/#{chapter.default_slug}#{query_string}"
+      end
     end
   end
 
   def meta_title
-    "Surah #{chapter.name_simple} - #{paginate.first.verse_key}"
+    "Surah #{chapter.name_simple} - #{params[:range] || paginate.first.verse_key}"
   end
 
   def meta_image
@@ -276,21 +276,21 @@ class ChapterPresenter < HomePresenter
 
   def fetch_verses_range(verse_start, verse_end)
     @results = Verse
-               .where(chapter_id: chapter.id)
-               .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
+                   .where(chapter_id: chapter.id)
+                   .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
   end
 
   def load_words
-    words_with_default_translation = @results.where(word_translations: { language_id: Language.default.id })
+    words_with_default_translation = @results.where(word_translations: {language_id: Language.default.id})
 
     @results = if language.id == Language.default.id
                  words_with_default_translation
-                   .eager_load(words: :word_translation)
+                     .eager_load(words: :word_translation)
                else
                  @results
-                   .where(word_translations: { language_id: language.id })
-                   .or(words_with_default_translation)
-                   .eager_load(words: :word_translation)
+                     .where(word_translations: {language_id: language.id})
+                     .or(words_with_default_translation)
+                     .eager_load(words: :word_translation)
                end
   end
 
@@ -299,9 +299,9 @@ class ChapterPresenter < HomePresenter
 
     if translations.present?
       @results = @results
-                 .where(translations: { resource_content_id: translations })
-                 .eager_load(:translations)
-                 .order('translations.priority ASC')
+                     .where(translations: {resource_content_id: translations})
+                     .eager_load(:translations)
+                     .order('translations.priority ASC')
     end
   end
 

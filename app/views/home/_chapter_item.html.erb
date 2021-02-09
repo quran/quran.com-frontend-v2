@@ -13,8 +13,8 @@
       <div class="surah-card__latin">
         <h5><%= chapter.name_simple %></h5>
         <% translated_name = chapter.translated_name %>
-        <div class="ayah-number-wrapper <%= translated_name.language_name %>">
-          <p><%= translated_name.name %></p>
+        <div class="ayah-number-wrapper">
+          <p class="<%= translated_name.language_name %>"><%= translated_name.name %></p>
         </div>
       </div>
 

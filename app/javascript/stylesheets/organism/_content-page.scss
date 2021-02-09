@@ -188,9 +188,11 @@
   overflow-x: scroll;
   // margin: 0 -8px;
 
-  button {
+  a {
     white-space: nowrap;
     margin: 0 8px;
+    padding: 8px;
+
     &:nth-child(1) {
       margin-left: 0;
     }

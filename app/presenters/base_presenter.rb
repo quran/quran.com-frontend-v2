@@ -56,7 +56,7 @@ class BasePresenter
       description: meta_description,
       keywords: meta_keyword,
       image: meta_image,
-      canonical: canonical_href,
+      canonical: canonical_url,
       'apple-itunes-app': 'app-id=1118663303'
     }
   end
@@ -72,10 +72,12 @@ class BasePresenter
   def related_links; end
 
   def meta_url
-    context.url_for(protocol: 'https')
+    context.url_for(protocol: 'https', locale: context.fetch_locale)
   end
 
-  alias canonical_href meta_url
+  def canonical_url
+    meta_url
+  end
 
   def meta_description
     'The Quran and the explanation of the Quran in many language, available in a simple and easy application'
