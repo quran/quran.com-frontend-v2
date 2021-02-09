@@ -1,0 +1,19 @@
+.modal-header {
+  align-items: center;
+  border-bottom: none !important;
+  padding-bottom: 0.5rem;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-content {
+  @at-root .dark & {
+    background-color: $dark-grey;
+  }
+}
+
+.modal-body {
+  padding-top: 0;
+}

@@ -31,6 +31,7 @@ class Chapter < ApiCoreRecord
   default_scope { order 'chapter_number asc' }
 
   def default_slug
-    slugs.where(is_default: true).first.slug
+    default = slugs.where(is_default: true).first
+    default&.slug || chapter_number
   end
 end

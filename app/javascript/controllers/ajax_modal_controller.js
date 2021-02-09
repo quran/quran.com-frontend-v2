@@ -11,7 +11,7 @@ import Modal from "bootstrap/js/src/modal";
 
 export default class extends Controller {
   connect() {
-    this.element.addEventListener("click", (e) => this.loadModal(e));
+    this.element.addEventListener("click", e => this.loadModal(e));
   }
 
   loadModal(e) {
@@ -21,8 +21,7 @@ export default class extends Controller {
     let target = $(e.currentTarget);
     let url = target.data("url");
     let classes = target.data("class");
-    const type = target.data("type");
-    this.createModel(classes, type);
+    this.createModel(classes);
 
     $("#ajax-modal").on("hidden.bs.modal", function(e) {
       $("#ajax-modal")
@@ -46,56 +45,38 @@ export default class extends Controller {
       });
   }
 
-  createModel(classes, type) {
+  createModel(classes) {
     this.removeModal("#ajax-modal");
     $(".actions-wrapper").addClass("hidden");
     let modal;
-    if(type == "copy"){
-      modal = `
-        <div class="copy-wrapper">
-          <div class="copy">
-            <div class="copy__header">
-              <p class="text text--black text--large2 text--semibold" id="ajax-modal-title">Copy options</p>
-              <div class="icon-x" id="advance-copy-wraper-close"></div>
-            </div>
-            <div id="ajax-modal-body"><p class="text-center">Loading..</p></div>
-          </div>
-        </div>
-      `;
-    }else{
-      modal = `
+
+    modal = `
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="ajax-modal-title">Loading</h5>
+              <h5 class="modal-title text text--black" id="ajax-modal-title">Loading</h5>
               <a class="close text--green" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" class="icon-times-circle"></span>
               </a>
             </div>
             <div class="modal-body" id="ajax-modal-body">
-              <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
-            </div>
-            <div class="modal-footer" id="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <p class="text-center"><span class='spinner text text--grey'><i class='spinner--swirl'></i></span> Loading...</p>
             </div>
           </div>
         </div>`;
-    }
+
     let ajaxModal = document.createElement("div");
-    if(type != "copy")
-      ajaxModal.classList.add("modal");
+    ajaxModal.classList.add("modal");
     ajaxModal.id = "ajax-modal";
     ajaxModal.innerHTML = modal;
     document.body.append(ajaxModal);
-    if(type == "copy")
-      document.querySelector("#advance-copy-wraper-close").addEventListener("click", () => this.removeModal());
+
     ajaxModal.addEventListener("hidden.bs.modal", () => {
       this.removeModal(ajaxModal);
     });
-    if(type != "copy"){
-      global.dialog = new Modal(ajaxModal, { backdrop: "static" });
-      global.dialog.show();
-    }
+
+    global.dialog = new Modal(ajaxModal, { backdrop: "static" });
+    global.dialog.show();
   }
 
   removeModal() {

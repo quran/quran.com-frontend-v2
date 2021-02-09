@@ -3,7 +3,7 @@ class AjaxModal {
     this.createModel(title);
     var that = this;
 
-    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+    fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(resp => resp.text())
       .then(content => {
         const response = $("<div>").html(content);
@@ -37,7 +37,7 @@ class AjaxModal {
       </div>
       <div id="body">
       <div class="modal-body" id="modal-body">
-        <p class="text-center"><i class="fa fa-spinner1 animate-spin fa-2x my-3"></i> Loading</p>
+        <p class="text-center"><span class='spinner text text--grey'><i class='spinner--swirl'></i></span> Loading</p>
       </div>
       <div class="modal-footer" id="modal-footer"></div>
       </div>

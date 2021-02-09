@@ -60,7 +60,7 @@ export default class extends Controller {
       const url = e.target.href;
       url && this.updateURLState(url, {});
     });
-    
+
     this.translationTab.addEventListener("tab.hidden", e => {
       $(e.target.dataset.target)
         .find(".verses #verses")
@@ -159,7 +159,7 @@ export default class extends Controller {
     let verseElement = this.activeTab.find(
       `.verse[data-verse-number=${verse}]`
     );
-    
+
     if (verseElement.length > 0) {
       let verseTopOffset = verseElement.offset().top;
       let verseHeight = verseElement.outerHeight();
@@ -383,7 +383,7 @@ export default class extends Controller {
               data-lazy-load=${lazy ? lazyParent : false}
               data-controller="render-async">
                <p className="text-center p-3">
-                 <i className="fa fa-spinner fa-spin"></i>
+                 <span class='spinner text text--grey'><i class='spinner--swirl'></i></span>
                </p>
             </div>`;
   }
@@ -426,29 +426,29 @@ export default class extends Controller {
 
     return Promise.resolve(verseList);
   }
-  
-  bindBackdrop(){
+
+  bindBackdrop() {
     document.body.addEventListener("click", e => {
       if (
-        $(e.target).parents('.actions-menu').length == 0 &&
-        !$(e.target).is('.actions-menu')
+        $(e.target).parents(".actions-menu").length == 0 &&
+        !$(e.target).is(".actions-menu")
       ) {
-        $('.actions-wrapper').addClass('hidden');
+        $(".actions-wrapper").addClass("hidden");
       }
       if (
-        $(e.target).parents('.side-menu').length == 0 &&
-        !$(e.target).is('.sidebar-btns')
+        $(e.target).parents(".side-menu").length == 0 &&
+        !$(e.target).is(".sidebar-btns")
       ) {
-        $('.menus').addClass('hidden');
-        $('.side-menu').addClass('hidden');
+        $(".menus").addClass("hidden");
+        $(".side-menu").addClass("hidden");
         document.body.style = ``;
       }
       if (
-        $(e.target).parents('.label-nav').length == 0 &&
-        !$(e.target).is('.label-nav')
+        $(e.target).parents(".label-nav").length == 0 &&
+        !$(e.target).is(".label-nav")
       ) {
-        $('.label-nav').removeClass('label--open');
-        $('.label-nav').removeClass('label__opened');
+        $(".label-nav").removeClass("label--open");
+        $(".label-nav").removeClass("label__opened");
       }
     });
   }
