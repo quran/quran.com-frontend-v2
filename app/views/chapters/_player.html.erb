@@ -1,18 +1,36 @@
 <div class="player-section" id="player" data-controller="player player-manager">
-	<div class="container player__container">
-		<div class="player__controls">
-			<a class="icon-prev"></a>
-			<a class="icon-play1 play-pause-btn"></a>
-			<a class="icon-next"></a>
-			<a class="icon-repeat" data-title="<%= _t("player.repeatCurrent") %>"></a>
-			<a class="control-hidden-icon icon-link"></a>
-		</div>
+  <div class="container player__container">
+    <div class="player__controls">
+      <a class="icon-prev"></a>
+      <a class="icon-play1" id=play-pause-btn></a>
+      <a class='spinner text text--green d-none'
+         id=play-loading
+         data-title="<%= _t("player.loading") %>"
+      >
+        <i class='spinner--swirl'></i>
+      </a>
+      <a class="icon-next"></a>
+      <a class="icon-repeat"
+         data-title="<%= _t("player.repeatCurrent") %>">
+      </a>
+      <a class="control-hidden-icon icon-link"></a>
+    </div>
 
-		<div class="player__bar">
-			<p class="current-time">00:00</p>
-			<input id="player-range" class="bar" type="range" min="0" max="100" step="1" value=0>
-			<p class="all-time">00:00</p>
-			<a class="icon-link bar-hidden-icon" id="auto-scroll-btn" data-title="<%= _t("player.scroll") %>"></a>
-		</div>
-	</div>
+    <div class="player__bar">
+      <p class="current-time">00:00</p>
+      <input id="player-range"
+             class="bar"
+             type="range"
+             min="0" max="100"
+             step="1"
+             value=0
+             direction="rtl"
+        />
+      <p class="all-time">00:00</p>
+      <a class="icon-link bar-hidden-icon"
+         id="auto-scroll-btn"
+         data-title="<%= _t("player.scroll") %>">
+      </a>
+    </div>
+  </div>
 </div>

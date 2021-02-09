@@ -2,12 +2,14 @@
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid #dadbde !important;
   border-radius: 8px !important;
+
   .select2-search {
     // padding: 10px 15px;
     box-sizing: border-box;
     padding: 0;
     position: relative;
     margin: 10px 15px;
+
     &::after {
       content: $icon-search;
       font-family: quran-icon;
@@ -26,6 +28,7 @@
       background-color: $dark-green;
       z-index: 100 !important;
     }
+
     input {
       height: 32px;
       width: 260px;
@@ -40,6 +43,7 @@
     }
   }
 }
+
 .select2-container--default {
   .select2-selection--single {
     background-color: $grey1;
@@ -61,6 +65,7 @@
     &:focus {
       outline: none;
     }
+
     &::after {
       content: $icon-arrow-down;
       font-family: quran-icon;
@@ -73,16 +78,18 @@
       transform: translateY(-50%);
       transform-origin: center;
     }
+
     .select2-selection__rendered {
       color: $grey8;
     }
   }
 }
+
 .simple-select-div {
   .select2-container--default.select2-container--open.select2-container--below
-    .select2-selection--single,
+  .select2-selection--single,
   .select2-container--default.select2-container--open.select2-container--below
-    .select2-selection--multiple {
+  .select2-selection--multiple {
     border-radius: 4px;
     width: 100%;
 
@@ -91,11 +98,13 @@
     }
   }
 }
+
 .select2-container--default
-  .select2-results__option--highlighted.select2-results__option--selectable {
+.select2-results__option--highlighted.select2-results__option--selectable {
   background-color: $grey2;
   color: $font-darkgrey;
 }
+
 // .select2-container--default
 //   .select2-results__option--highlighted.select2-results__option--selectable {
 // }
@@ -104,11 +113,13 @@
   color: $dark-green !important;
   background: none !important;
 }
+
 .select2-container--default
-  .select2-selection--single
-  .select2-selection__arrow {
+.select2-selection--single
+.select2-selection__arrow {
   display: none;
 }
+
 // .simple-select-div {
 // }
 
@@ -116,6 +127,7 @@
   .select2-results__options {
     @include scrollbarStyle;
   }
+
   li {
     padding: 5px 16px;
     margin: 5px 0;

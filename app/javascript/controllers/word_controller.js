@@ -75,6 +75,9 @@ export default class extends Controller {
   disconnect() {
     this.el.removeEventListener("click", () => {});
     this.el.removeEventListener("dblclick", () => {});
-    this.el.removeEventListener("dispose", () => {});
+
+    if(this.el.tooltip){
+      this.el.tooltip.dispose()
+    }
   }
 }

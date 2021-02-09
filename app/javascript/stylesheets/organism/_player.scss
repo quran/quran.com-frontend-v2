@@ -25,6 +25,7 @@
       flex-direction: column-reverse;
     }
   }
+
   .player__controls {
     display: flex;
     align-items: center !important;
@@ -40,6 +41,7 @@
       &:nth-child(1) {
         margin: 0 6px 0 8px;
       }
+
       margin: 0 10px;
       padding: 0;
       height: 20px;
@@ -68,10 +70,21 @@
       }
     }
 
-    .play-pause-btn {
+    #play-pause-btn {
       width: 30px;
       height: 30px;
       text-decoration: none;
+    }
+
+    #play-loading {
+      background: #fff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+
+      .spinner--swirl {
+        font-size: 25px;
+      }
     }
 
     .icon-prev,
@@ -86,12 +99,14 @@
         color: #999aa2;
       }
     }
+
     .icon-play1 {
       &::before {
         color: $dark-green;
         font-size: 30px;
       }
     }
+
     .control-hidden-icon {
       display: none;
       @include md {
@@ -99,10 +114,12 @@
       }
     }
   }
+
   .player__bar {
     display: flex;
     align-items: center;
     height: 50px;
+
     p {
       margin: 0;
       padding: 0 10px;
@@ -111,6 +128,7 @@
         color: #fff;
       }
     }
+
     .bar {
       direction: ltr;
       width: 400px;
@@ -122,15 +140,16 @@
       transition: opacity 0.2s;
       cursor: pointer;
       background: linear-gradient(
-        to right,
-        $dark-green 0%,
-        $dark-green 50%,
-        #fff 50%,
-        #fff 100%
+          to right,
+          $dark-green 0%,
+          $dark-green 50%,
+          #fff 50%,
+          #fff 100%
       );
       border-radius: 8px;
       outline: none;
       -webkit-appearance: none;
+
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         height: 16px;
@@ -140,10 +159,12 @@
         box-shadow: -2px 0 4px 0 rgba(131, 131, 131, 0.5);
         background: $dark-green;
       }
+
       @include md {
         width: 100%;
       }
     }
+
     .icon-link {
       &::before {
         font-size: 20px;
@@ -152,10 +173,12 @@
         color: #999aa2;
       }
     }
+
     .bar-hidden-icon {
       @include md {
         display: none;
       }
+
       &:hover {
         text-decoration: none;
       }

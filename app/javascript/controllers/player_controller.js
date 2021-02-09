@@ -38,6 +38,9 @@ export default class extends Controller {
     this.lastVerse = null;
     this.currentVerse = null;
 
+    this.playBtn = null;
+    this.loadingBtn = null;
+
     this.defaultConfig();
     this.buildPlayer();
     this.bindPlayerEvents();
@@ -129,6 +132,10 @@ export default class extends Controller {
 
   isPlaying() {
     return this.track.howl && this.track.howl.playing();
+  }
+
+  isLoading() {
+    return this.track.howl && 'loaded' != this.track.howl.state();
   }
 
   buildPlayer() {
@@ -296,8 +303,19 @@ export default class extends Controller {
   }
 
   bindPlayerEvents() {
+    this.playBtn = $("#player #play-pause-btn");
+    this.loadingBtn = $("#play-loading");
+
+    new Tooltip(this.loadingBtn[0], {
+      placement: "top",
+      boundary: "window",
+      html: true,
+      sanitize: false,
+      title: this.loadingBtn.data('title')
+    });
+
     // player controls
-    $("#player .play-pause-btn").on("click", event => {
+    this.playBtn.on("click", event => {
       event.preventDefault();
       this.handlePlayBtnClick();
     });
@@ -328,8 +346,12 @@ export default class extends Controller {
   }
 
   updatePlayerControls() {
-    if (this.isPlaying()) this.setPlayCtrls("pause");
-    else this.setPlayCtrls("play1");
+    if (this.isPlaying())
+      this.setPlayCtrls("pause");
+    else if (this.isLoading()) {
+      this.setPlayCtrls("loading");
+    } else
+      this.setPlayCtrls("play1");
   }
 
   loading() {
@@ -337,20 +359,22 @@ export default class extends Controller {
   }
 
   setPlayCtrls(type) {
-    let p = $("#player .play-pause-btn");
-    p.removeClass("icon-play1 icon-pause");
+    this.playBtn.removeClass("icon-play1 icon-pause");
 
     let thisVerse = $(
       `#verses .verse[data-verse-number=${this.currentVerse}]`
     ).find(".play .icon");
 
-    thisVerse.removeClass("icon-play1 icon-pause");
-
     if ("loading" == type) {
-      //p.addClass("fa-spinner animate-spin");
-      //thisVerse.addClass("fa-spinner animate-spin");
+      this.playBtn.addClass('d-none');
+      this.loadingBtn.removeClass('d-none');
     } else {
-      p.addClass(`icon-${type}`);
+      thisVerse.removeClass("icon-play1 icon-pause");
+
+      this.loadingBtn.addClass('d-none');
+      this.playBtn.removeClass('d-none');
+
+      this.playBtn.addClass(`icon-${type}`);
       thisVerse.addClass(`icon-${type}`);
     }
   }
@@ -529,9 +553,11 @@ export default class extends Controller {
       // howl is already created
       return this.preloadTrack[verse];
     }
+
     let audioData = this.audioData[verse];
     let audioPath = this.buildAudioUrl(audioData.path);
     let sprite = {};
+
     if (this.config.segmentPlayer) {
       const secondsToSkip = +audioData.segments[
         this.config.customSegments[0]
@@ -548,6 +574,7 @@ export default class extends Controller {
       ];
       autoplay = false;
     }
+
     let howl = new Howl({
       src: [audioPath],
       html5: USE_HTML5,
@@ -591,6 +618,7 @@ export default class extends Controller {
         this.onVerseEnd();
       }
     });
+
     this.preloadTrack[verse] = {
       howl: howl,
       segments: audioData.segments,

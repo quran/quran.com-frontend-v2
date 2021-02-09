@@ -120,6 +120,7 @@ en:
     show_word_tooltip: Show word translation in tooltip while playing ayah
     scroll: Automatically scrolls to the currently playing ayah
     repeatCurrent: Keep playing current ayah
+    loading: Loading audio
   loading: Loading...
   nav:
     title: Quran

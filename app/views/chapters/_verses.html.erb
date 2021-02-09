@@ -9,7 +9,7 @@
   <%= render partial: 'verse', collection: verses, as: :verse %>
 <% end %>
 
-<div class="reading__buttons" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
+<div class="reading__buttons flexx-center" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">
   <% if @presenter.next_page %>
     <%= chapter_next_page_link %>
   <% end %>

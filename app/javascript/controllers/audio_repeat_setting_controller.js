@@ -6,11 +6,11 @@ export default class extends SettingController {
   connect() {
     super.connect();
     $('.simple-select').select2({
-      // dropdownAutoWidth: true,
+      dropdownAutoWidth: true,
       width: '100%',
       dropdownCssClass: 'select-stylee',
       placeholder: 'selected option',
-      minimumResultsForSearch: -1,
+      //minimumResultsForSearch: -1 // hide search box
     });
     this.bindSwitch();
     this.bindRepeatSingle();
@@ -48,7 +48,7 @@ export default class extends SettingController {
   }
 
   bindRepeatSingle() {
-    
+
     this.repeatSingle = $("#repeat-single-ayah");
     this.repeatSingleTimes = $("#repeat-single-times");
 
@@ -59,8 +59,8 @@ export default class extends SettingController {
     singleTab.addEventListener("shown.bs.tab", () => this.updateRepeatSingle());
     singleTab.addEventListener("change", () => this.toggle());
   }
-  
-  toggle(){
+
+  toggle() {
     document.querySelector(".single-ayah").classList.toggle("hidden");
     document.querySelector(".range-ayah").classList.toggle("hidden");
   }
@@ -180,7 +180,7 @@ export default class extends SettingController {
               repeatFrom: this.get("repeatFrom"),
               repeatTo: this.get("repeatTo")
             },
-            { first, last }
+            {first, last}
           );
         }
       });
