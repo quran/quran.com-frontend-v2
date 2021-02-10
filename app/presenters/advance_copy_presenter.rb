@@ -64,7 +64,6 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def chapter_with_range
-    binding.pry
     "#{chapter_id}-#{range}"
   end
 
