@@ -54,6 +54,8 @@ class AdvanceCopyPresenter < BasePresenter
   def range
     if params[:range].present?
       params[:range].split('-').map(&:to_i)
+    else
+      []
     end
   end
 end
