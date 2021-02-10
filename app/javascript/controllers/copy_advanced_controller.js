@@ -63,19 +63,30 @@ export default class extends Controller {
   doCopy(submit) {
     submit.innerHTML = 'Please wait..';
     submit.disabled = true;
+    $("#file-notice").addClass('hidden')
 
     this.getText().then(response => response.text()).then(text => {
       copyToClipboard(text);
-      submit.html('Copied!')
+      submit.innerHTML = 'Copied!';
+      submit.disabled = false;
+      this.prepareTextFile(text);
 
       setTimeout(() => {
         submit.innerHTML = 'Copy text';
-        submit.disabled = false;
       }, 3000)
     }).catch(err => {
       submit.innerHTML = 'Copy text';
       submit.disabled = false;
     })
+  }
+
+  prepareTextFile(content) {
+    const file = new Blob([content], {type: 'text/plain'})
+    const link = $("#file-notice").find("a")[0]
+    link.href = URL.createObjectURL(file);
+    link.download = "quran.copy.txt";
+
+    $("#file-notice").removeClass('hidden')
   }
 
   getText() {

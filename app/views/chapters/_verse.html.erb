@@ -56,7 +56,7 @@
 
             <a class="translation__icon"
                data-controller="ajax-modal"
-               data-url="/<%= verse.id %>/copy_options<%= @presenter.params_for_copy %>"
+               data-url="/<%= verse.chapter_id %>/copy_options<%= @presenter.params_for_copy(verse) %>"
                data-controller="track"
                data-name='ayah-action'>
               <i class="icon-copy"></i>

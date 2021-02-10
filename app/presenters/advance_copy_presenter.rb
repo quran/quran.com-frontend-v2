@@ -3,7 +3,7 @@ class AdvanceCopyPresenter < BasePresenter
   TAG_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   def cache_key(action_name:)
-    "#{current_locale}-advance_copy:#{action_name}-#{verse.id}-#{valid_translations.join('-')}"
+    "#{current_locale}-advance_copy:#{action_name}-#{chapter_with_range}-#{valid_translations.join('-')}"
   end
 
   def translations
@@ -11,7 +11,7 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def verse
-    Verse.find(params[:verse_id])
+    Verse.find(params[:from])
   end
 
   def verses_to_copy
@@ -48,14 +48,22 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def include_footnote?
-    'yes' == params[:footnote]
+    strong_memoize :footnote do
+      'yes' == params[:footnote]
+    end
   end
 
   def range
-    if params[:range].present?
-      params[:range].split('-').map(&:to_i)
-    else
-      []
+    strong_memoize :ayah_range do
+      if params[:range].present?
+        params[:range].split('-').map(&:to_i)
+      else
+        []
+      end
     end
+  end
+
+  def chapter_with_range
+    "#{params[:chapter_id]}-#{range}"
   end
 end

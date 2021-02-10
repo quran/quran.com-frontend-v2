@@ -208,8 +208,8 @@ class ChapterPresenter < HomePresenter
     end
   end
 
-  def params_for_copy
-    "#{params_for_verse_link}&range=#{range}"
+  def params_for_copy(verse)
+    "#{params_for_verse_link}&range=#{range}&from=#{verse.verse_number}"
   end
 
   def render_translations?
