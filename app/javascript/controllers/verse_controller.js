@@ -6,7 +6,7 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 import isChildOf from "../utility/child-of";
@@ -63,17 +63,16 @@ export default class extends Controller {
     this.el = el;
   }
 
-  disconnect() {
-  }
+  disconnect() {}
 
   copy() {
     copyToClipboard(this.copyText);
 
-    const copyBtn = this.el.find('.quick-copy');
-    let {title, done} = copyBtn.data();
-    copyBtn.find('span').text(done);
+    const copyBtn = this.el.find(".quick-copy");
+    let { title, done } = copyBtn.data();
+    copyBtn.find("span").text(done);
     setTimeout(() => {
-      copyBtn.find('span').text(title)
+      copyBtn.find("span").text(title);
     }, 2000);
   }
 
@@ -91,7 +90,6 @@ export default class extends Controller {
     }
   }
 
-
   bindTajweedTooltip() {
     let dom = this.element;
 
@@ -108,14 +106,21 @@ export default class extends Controller {
   }
 
   bindAction(el) {
-    el.find('.open-actions').on('click', e => {
-      el.find('.actions-wrapper').toggleClass('hidden');
-    })
+    this.actionOpened = false;
+    this.actionTrigger = el.find("#open-actions");
+    this.actionTrigger.on("click", e => this.toggleActions(e));
 
-    el.find('.quick-copy').on('click', e => {
+    this.element
+      .querySelector("#close-actions")
+      .addEventListener("click", e => {
+        e.stopImmediatePropagation();
+        this.closeAction();
+      });
+
+    el.find(".quick-copy").on("click", e => {
       e.preventDefault();
       this.copy();
-    })
+    });
 
     let playButton = el.find(".play");
 
@@ -125,11 +130,48 @@ export default class extends Controller {
     });
   }
 
+  toggleActions(event) {
+    if (this.actionOpened) {
+      this.closeAction();
+    } else {
+      this.openAction();
+    }
+  }
+
+  openAction() {
+    this.onClicked = this.click.bind(this);
+    this.el.find(".actions-wrapper").removeClass("hidden");
+    document.addEventListener("click", this.onClicked);
+
+    setTimeout(() => {
+      this.actionOpened = true;
+    }, 100);
+  }
+
+  closeAction() {
+    this.actionOpened = false;
+    this.el.find(".actions-wrapper").addClass("hidden");
+    document.removeEventListener("click", this.onClicked);
+  }
+
+  click(event) {
+    const target = event.target;
+    const clickedOut = !isChildOf(
+      this.element.querySelector("#ayah-actions"),
+      target
+    );
+
+    if (this.actionOpened && clickedOut) {
+      this.closeAction();
+    }
+    return true;
+  }
+
   get verseNumber() {
-    return this.el.data("verseNumber")
+    return this.el.data("verseNumber");
   }
 
   get copyText() {
-    return this.el.data("text")
+    return this.el.data("text");
   }
 }

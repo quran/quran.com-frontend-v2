@@ -7,12 +7,12 @@
 // <i class='fa fa-times' data-target='sidebar.trigger'></i>
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 import isChildOf from "../utility/child-of";
 
 export default class extends Controller {
   connect() {
-    const {trigger, menu} = this.element.dataset;
+    const { trigger, menu } = this.element.dataset;
 
     this.menuWraper = document.querySelector("#menus-wrapper");
     this.menuTrigger = document.querySelector(trigger);
@@ -20,8 +20,11 @@ export default class extends Controller {
     this.isOpen = false;
 
     this.menuTrigger.addEventListener("click", e => this.toggle(e));
+
     if (menu == ".site-menu")
-      this.element.querySelector("#close-menu").addEventListener("click", e => this.close(e));
+      this.element
+        .querySelector("#close-menu")
+        .addEventListener("click", e => this.close(e));
   }
 
   toggle(e) {
@@ -35,7 +38,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.menuWraper.removeEventListener('click', this.onClicked, false)
+    this.menuWraper.removeEventListener("click", this.onClicked, false);
   }
 
   click(event) {
@@ -47,17 +50,17 @@ export default class extends Controller {
   }
 
   close() {
-    this.isOpen = false
-    this.menuWraper.removeEventListener('click', this.onClicked, true)
+    this.isOpen = false;
+    this.menuWraper.removeEventListener("click", this.onClicked, true);
     this.menuWraper.classList.add("hidden");
     this.element.classList.add("hidden");
   }
 
   open() {
-    this.isOpen = true
+    this.isOpen = true;
     this.onClicked = this.click.bind(this);
 
-    this.menuWraper.addEventListener('click', this.onClicked, true)
+    this.menuWraper.addEventListener("click", this.onClicked, true);
     this.menuWraper.classList.remove("hidden");
     this.element.classList.remove("hidden");
   }

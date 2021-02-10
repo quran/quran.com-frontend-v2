@@ -25,7 +25,8 @@
       </a>
 
       <div class="actions-menu">
-        <a class="translation__icon open-actions"
+        <a class="translation__icon"
+           id=open-actions
            data-title="Actions"
            data-controller="track"
            data-name='ayah-action'
@@ -34,13 +35,13 @@
           <span class="quran-icon icon-menu"></span>
         </a>
 
-        <div class="actions-wrapper hidden">
+        <div class="actions-wrapper hidden" id=ayah-actions>
           <div class="actions-items">
             <div class="actions-header">
               <p class="text text--darkgrey text--medium text--regular">
                 <%= verse.chapter.name_simple %> - <%= verse.verse_key %>
               </p>
-              <span class="icon-x close-actions"></span>
+              <span class="quran-icon icon-x" id=close-actions></span>
             </div>
 
             <a class="translation__icon quick-copy"

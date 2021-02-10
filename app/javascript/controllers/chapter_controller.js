@@ -366,7 +366,7 @@ export default class extends Controller {
       !this.isTranslationsMode()
     );
 
-    return Promise.resolve()
+    return Promise.resolve();
   }
 
   getLazyTab(url, target, lazy) {
@@ -409,7 +409,7 @@ export default class extends Controller {
     fetch(`${path}`, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(response => response.text())
       .then(verses => {
-        verseList.html(verses)
+        verseList.html(verses);
         document.body.loader.hide();
       });
   }
@@ -421,24 +421,5 @@ export default class extends Controller {
     this.activeTab[0].infinitePage.resume();
 
     return Promise.resolve(verseList);
-  }
-
-  bindBackdrop() {
-    document.body.addEventListener("click", e => {
-      if (
-        $(e.target).parents(".actions-menu").length == 0 &&
-        !$(e.target).is(".actions-menu")
-      ) {
-        $(".actions-wrapper").addClass("hidden");
-      }
-
-      if (
-        $(e.target).parents(".label-nav").length == 0 &&
-        !$(e.target).is(".label-nav")
-      ) {
-        $(".label-nav").removeClass("label--open");
-        $(".label-nav").removeClass("label__opened");
-      }
-    });
   }
 }
