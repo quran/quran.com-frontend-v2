@@ -208,6 +208,10 @@ class ChapterPresenter < HomePresenter
     end
   end
 
+  def params_for_copy
+    "#{params_for_verse_link}&range=#{range}"
+  end
+
   def render_translations?
     strong_memoize :render_translation do
       valid_translations.present?

@@ -7,10 +7,9 @@ export default class extends Controller {
     this.verseId = verseId;
     this.chapterId = chapterId;
     this.rangeType = "single";
-    this.addFootnotes = false;
 
     this.selects = $(".simple-select").select2({
-      // dropdownAutoWidth: true,
+      dropdownAutoWidth: true,
       width: "100%",
       dropdownCssClass: "select-stylee",
       placeholder: "selected option",
@@ -43,6 +42,7 @@ export default class extends Controller {
     });
 
     const copyTypes = $(this.element).find("[name=copy-type]")
+
     copyTypes.on("change", e => {
       this.rangeType = e.currentTarget.value;
       const rangeClasses = document.querySelector(".copy-range-ayah").classList;
@@ -52,46 +52,62 @@ export default class extends Controller {
       else
         rangeClasses.remove('hidden')
     });
+
+    const submit = this.element.querySelector('#copy');
+    submit.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.doCopy(submit);
+    })
   }
 
-  translationsHandler() {
-    if (
-      document.querySelectorAll('input[name="copy-translation"]:checked')
-        .length > 0
-    ) {
-      document
-        .querySelector(".copy-footnote-section")
-        .classList.remove("hidden");
-    } else {
-      document.querySelector(".copy-footnote-section").classList.add("hidden");
-    }
+  doCopy(submit) {
+    submit.innerHTML = 'Please wait..';
+    submit.disabled = true;
+
+    this.getText().then(response => response.text()).then(text => {
+      copyToClipboard(text);
+      submit.html('Copied!')
+
+      setTimeout(() => {
+        submit.innerHTML = 'Copy text';
+        submit.disabled = false;
+      }, 3000)
+    }).catch(err => {
+      submit.innerHTML = 'Copy text';
+      submit.disabled = false;
+    })
   }
 
-  footnoteHandler(e) {
-    this.addFootnotes = e.target.value == "yes" ? true : false;
-  }
-
-  copyHandler() {
+  getText() {
     let [to, from] = [this.verseId, this.verseId];
     if (this.rangeType == "multiple") {
       to = document.querySelector("#copy-range-ayah-to").value;
       from = document.querySelector("#copy-range-ayah-from").value;
     }
-    const selectedTransaltions = [
-      ...document.querySelectorAll('input[name="copy-translation"]:checked')
-    ].map(x => x.value);
-    const url = `/${
-      this.chapterId
-    }/load_verses.text?to=${to}&from=${from}&translations=${selectedTransaltions.join()}&add_footnotes=${
-      this.addFootnotes
-    }`;
-    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
-      .then(resp => resp.text())
-      .then(content => {
-        copyToClipboard(content);
-      })
-      .catch(err => {
-        //TODO: show error
-      });
+
+    const copyOptions = {
+      arabic: this.addArabic(),
+      footnote: this.addFootnote(),
+      translations: this.selectedTranslations().join(","),
+      from,
+      to
+    }
+
+    let headers = {"X-Requested-With": "XMLHttpRequest"};
+    const copyUrl = `/${this.chapterId}/copy_text?${$.param(copyOptions)}`
+    return fetch(copyUrl, {headers: headers});
+  }
+
+  selectedTranslations() {
+    const selected = this.element.querySelectorAll('input[name="copy-translation"]:checked');
+    return [...selected].map(x => x.value)
+  }
+
+  addFootnote() {
+    return this.element.querySelector(".copy-footnote:checked").value
+  }
+
+  addArabic() {
+    return this.element.querySelector('#copy-arabic').checked;
   }
 }

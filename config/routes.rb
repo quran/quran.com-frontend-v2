@@ -97,7 +97,7 @@ Rails.application.routes.draw do
   }
 
   get '/:verse_id/copy_options', to: 'advance_copy#copy_options'
-  get '/:verse_id/copy_text', to: 'advance_copy#copy_text'
+  get '/:chapter_id/copy_text', to: 'advance_copy#copy_text'
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 
