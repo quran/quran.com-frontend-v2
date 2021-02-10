@@ -9,6 +9,7 @@
 import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
+import isChildOf from "../utility/child-of";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -90,11 +91,6 @@ export default class extends Controller {
     }
   }
 
-  toggleActions(e) {
-    e.preventDefault();
-    //document.querySelector(".actions-wrapper").classList.add("hidden");
-    e.target.parentNode.nextElementSibling.classList.toggle("hidden");
-  }
 
   bindTajweedTooltip() {
     let dom = this.element;

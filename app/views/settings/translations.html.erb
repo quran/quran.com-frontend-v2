@@ -27,7 +27,7 @@
 
   <div id='ordered-translations'>
     <div class="translations__languages">
-      <div class="tab__item">
+      <div>
         <%
           language = languages[38]
           translated = language.translated_name
@@ -37,11 +37,13 @@
           <%= translated.name %>
         </p>
       </div>
-      <div class="translations__padding">
+
+      <div class="translations__padding" data-filter-tags="<%= name_for_filters %>">
         <%= render partial: 'translation', collection: translations[trans_keys.delete(38)], as: :translation, locals: {language: name_for_filters} %>
       </div>
       <div class="horizontal-line"></div>
     </div>
+
     <div>
       <p class="text text--darkgrey text--large text--semibold"><%= _t('settings.translation_other') %></p>
       <div class="translations__padding">
@@ -51,12 +53,12 @@
             translated = language.translated_name
             name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
           %>
-          <div class="tab__item">
-            <p class="text text--darkgrey text--medium text--semibold country-name country-name--al <%= translated.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+          <div>
+            <p class="text text--darkgrey text--medium text--semibold country-name  <%#= translated.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
               <%= translated.name %>
             </p>
           </div>
-          <div class="translations__padding tab__row tab__row--col ">
+          <div class="translations__padding">
             <%= render partial: 'translation', collection: translations[lang], as: :translation, locals: {language: name_for_filters} %>
           </div>
         <% end %>

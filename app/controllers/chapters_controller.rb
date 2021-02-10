@@ -14,7 +14,6 @@ class ChaptersController < ApplicationController
 
   def show
     return redirect_to root_path, error: t('errors.invalid_chapter') unless @presenter.chapter
-
     return redirect_to chapter_path(@presenter.chapter), error: t('errors.invalid_verse') if @presenter.out_of_range?
 
     render partial: 'verses', layout: false if request.xhr?

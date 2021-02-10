@@ -4,15 +4,27 @@
 <div class="navbar surah-actions">
   <div class="navbar-inner container">
     <div class="navbar-inner--firstpart">
-      <div class="navbar-first-label">
-
-        <div class="label label-nav label__right-border" id=>
+      <div class="navbar-label navbar-first-label"
+           data-controller="filterable-dropdown"
+           data-trigger="#surah-dropdown"
+           data-dropdown="#filter-surah-dropdown">
+        <div class="label label-nav label__right-border"
+             id=surah-dropdown>
           <div class="label--text">
-            <p class="label--title"> <%= @presenter.chapter.name_simple %></p>
-            <p class="label--subtitle"><%= @presenter.chapters[current_chapter - 1].translated_name.name %></p>
+            <p class="label--title">
+              <%= @presenter.name_simple %>
+            </p>
+            <p class="label--subtitle">
+              <%= @presenter.translated_name %>
+            </p>
           </div>
           <div class="label--arrow"></div>
-          <div class="dropdown-wrapper" data-controller="filter-list" data-list="#chapter-list" data-input="#filter-chapter">
+          <div
+            id=filter-surah-dropdown
+            class="dropdown-wrapper"
+            data-controller="filter-list"
+            data-list="#chapter-list"
+            data-input="#filter-chapter">
             <div class="dropdown">
               <div class="menu__header">
                 <div class='first'>
@@ -50,40 +62,50 @@
         </div>
       </div>
 
-      <div class="label label-nav label__small" id=>
-        <div class="label--text">
-          <p class="label--title"> <%= verse_locale %> <%= @presenter.paginate[0].verse_number %></p>
-          <p class="label--subtitle"></p>
-        </div>
-        <div class="label--arrow"></div>
-        <div class="dropdown-wrapper" data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah">
-          <div class="dropdown">
-            <div class="menu__header">
-              <div class='first'>
-                <div id="close-" class="close- icon-x"></div>
-                <p class="text text--black text--large2 text--semibold">label</p>
+      <div class="navbar-label"
+           data-controller="filterable-dropdown"
+           data-trigger="#ayah-dropdown"
+           data-dropdown="#filter-ayah-dropdown">
+        <div
+          class="label label-nav label__small"
+          id=ayah-dropdown>
+          <div class="label--text">
+            <p class="label--title">
+              <%= verse_locale %>
+              <span id=current>
+                <%= @presenter.paginate[0].verse_number %>
+              </span>
+            </p>
+          </div>
+          <div class="label--arrow"></div>
+          <div class="dropdown-wrapper" id=filter-ayah-dropdown data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah">
+            <div class="dropdown">
+              <div class="menu__header">
+                <div class='first'>
+                  <div id="close-" class="close- icon-x"></div>
+                  <p class="text text--black text--large2 text--semibold">label</p>
+                </div>
               </div>
-            </div>
-            <div class="dropdown--input">
-              <div class="input-wrapper large">
-                <input id="filter-ayah" autocapitalize="none" autocomplete="off" autocorrect="off" type="search" spellcheck="false" placeholder="Search" aria-label="Search" aria-haspopup="false" role="combobox" aria-autocomplete="list">
+              <div class="dropdown--input">
+                <div class="input-wrapper large">
+                  <input id="filter-ayah" autocapitalize="none" autocomplete="off" autocorrect="off" type="search" spellcheck="false" placeholder="Search" aria-label="Search" aria-haspopup="false" role="combobox" aria-autocomplete="list">
+                </div>
               </div>
-            </div>
-            <div class="dropdown--items" id="verse-list">
-              <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
-                <a class="dropdown-item" data-filter-tags="<%= verse_num %>" data-verse="<%=verse_num%>">
-                  <div class="dropdown-item__number">
-                    <p><%= verse_num %></p>
-                  </div>
-                  <div class="dropdown-item__name-latin">
-                    <p class="dropdown-item__arabic"><%= verse_locale %> <%= verse_num %></p>
-                  </div>
-                </a>
-              <% end %>
+              <div class="dropdown--items" id="verse-list">
+                <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
+                  <a class="dropdown-item" data-filter-tags="<%= verse_num %>" data-verse="<%= verse_num %>">
+                    <div class="dropdown-item__number">
+                      <p><%= verse_num %></p>
+                    </div>
+                    <div class="dropdown-item__name-latin">
+                      <p class="dropdown-item__arabic"><%= verse_locale %> <%= verse_num %></p>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
     <div class="nav-tabs">

@@ -6,24 +6,16 @@
 // <div data-controller="player">
 // </div>
 
-import {Controller} from "stimulus";
+import AudioController from "./audio_controller";
 import Tooltip from "bootstrap/js/src/tooltip";
 
-const AUDIO_CDN = "https://audio.qurancdn.com/";
-//"https://download.quranicaudio.com/";
-// TODO: should set to false to use web audio instead, but that requires CORS
-const USE_HTML5 = false;
-let Howl, Howler;
-
-export default class extends Controller {
+export default class extends AudioController {
   connect() {
     this.element[this.identifier] = this;
-    this.settings = document.body.setting;
     this.playWordQueue = [];
     this.resumeOnWordPlayEnd = false;
-    this.preloadTrack = {};
+
     this.segmentTimers = [];
-    this.track = {};
     this.repeatCurrentAyah = false;
     this.audioData = {};
     this.playerProgressInterval = null;
@@ -65,17 +57,6 @@ export default class extends Controller {
 
   updatePause(pauseSec) {
     this.pauseSeconds = pauseSec;
-  }
-
-  getHowler() {
-    if (Howl) {
-      return Promise.resolve()
-    }
-
-    return import("howler").then(howler => {
-      Howl = howler.Howl;
-      Howler = howler.Howler;
-    });
   }
 
   updateRepeatCount(count) {
@@ -126,7 +107,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    if (this.isPlaying()) this.track.howl.stop();
+    if (this.isPlaying()) this.currentHowl.stop();
 
     this.preloadTrack = {};
     this.playWordQueue = [];
@@ -134,19 +115,28 @@ export default class extends Controller {
     Howler.unload();
     this.progressBar.removeEventListener("change", () => {
     });
+
     this.progressBar.disabled = true;
   }
 
   isPlaying() {
-    return this.track.howl && this.track.howl.playing();
+    if (this.currentHowl) {
+      return this.currentHowl.playing()
+    }
+
+    return false;
   }
 
   isLoading() {
-    return this.track.howl && 'loaded' != this.track.howl.state();
+    if (this.currentHowl)
+      return 'loaded' != this.currentHowl.state();
+
+    return true;
   }
 
   buildPlayer() {
     this.progressBar = document.getElementById("player-range");
+    this.progressBar.disabled = true;
     this.bindAutoScroll();
     this.bindRepeatCurrentAyah();
   }
@@ -204,7 +194,7 @@ export default class extends Controller {
   playWord(audioPath) {
     this.resumeOnWordPlayEnd = this.resumeOnWordPlayEnd || this.isPlaying();
 
-    this.getHowler().then(() => {
+    this.loadHowler().then(() => {
       let howl = new Howl({
         src: [`${AUDIO_CDN}${audioPath}`],
         html5: USE_HTML5,
@@ -252,7 +242,7 @@ export default class extends Controller {
   play(verse) {
     // stop previous track
     if (this.isPlaying()) {
-      this.track.howl.stop();
+      this.currentHowl.stop();
     }
     verse = verse || this.currentVerse;
 
@@ -265,9 +255,9 @@ export default class extends Controller {
     if (this.preloadTrack[verse]) {
       this.track = this.preloadTrack[verse];
       if (this.config.segmentPlayer) {
-        this.track.howl.play("selectedWords");
+        this.currentHowl.play("selectedWords");
       } else {
-        this.track.howl.play();
+        this.currentHowl.play();
       }
     } else {
       this.loading();
@@ -277,7 +267,7 @@ export default class extends Controller {
 
   handlePlayBtnClick() {
     if (this.isPlaying()) {
-      this.track.howl.pause();
+      this.currentHowl.pause();
     } else {
       this.play(this.currentVerse);
     }
@@ -289,7 +279,7 @@ export default class extends Controller {
         this.preloadTrack[this.currentVerse].howl.pause();
       }
     } else {
-      if (this.isPlaying()) this.track.howl.pause();
+      if (this.isPlaying()) this.currentHowl.pause();
     }
   }
 
@@ -348,10 +338,12 @@ export default class extends Controller {
   handleProgressBarChange(value) {
     // duration data for some audio file is missing,
     // let howler calculate duration for such files
-    let duration = this.track.duration || this.track.howl.duration();
+    if (this.currentHowl) {
+      let duration = this.track.duration || this.currentHowl.duration();
 
-    let time = (duration / 100) * value;
-    this.track.howl.seek(time);
+      let time = (duration / 100) * value;
+      this.currentHowl.seek(time);
+    }
   }
 
   updatePlayerControls() {
@@ -442,7 +434,7 @@ export default class extends Controller {
 
   setProgressBarInterval() {
     clearInterval(this.playerProgressInterval);
-    const totalDuration = this.track.duration || this.track.howl.duration();
+    const totalDuration = this.track.duration || this.currentHowl.duration();
 
     $("#player .current-time")
       .removeClass("hidden")
@@ -453,7 +445,7 @@ export default class extends Controller {
       .text(this.formatTime(totalDuration));
 
     this.playerProgressInterval = setInterval(() => {
-      let currentTime = this.track.howl.seek();
+      let currentTime = this.currentHowl.seek();
       let progressPercentage =
         Math.floor((currentTime / totalDuration) * 1000) / 10;
 
@@ -550,7 +542,7 @@ export default class extends Controller {
   setSegmentInterval() {
     if (this.config.segmentPlayer == false) {
       this.chapter.setSegmentInterval(
-        this.track.howl.seek(),
+        this.currentHowl.seek(),
         this.preloadTrack[this.currentVerse].segments,
         this.isPlaying()
       );
@@ -584,7 +576,7 @@ export default class extends Controller {
       autoplay = false;
     }
 
-    this.getHowler().then(() => {
+    this.loadHowler().then(() => {
       let howl = new Howl({
         src: [audioPath],
         html5: USE_HTML5,
@@ -597,8 +589,8 @@ export default class extends Controller {
           this.updatePlayerControls();
 
           //Fires when the sound is unable to play
-          this.track.howl.once("unlock", () => {
-            this.track.howl.play();
+          this.currentHowl.once("unlock", () => {
+            this.currentHowl.play();
           });
         },
         onplay: () => {
@@ -708,5 +700,10 @@ export default class extends Controller {
     }
 
     return Promise.all(requests);
+  }
+
+  get currentHowl() {
+    if (this.track)
+      return this.track.howl
   }
 }

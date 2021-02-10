@@ -12,7 +12,26 @@ import LocalStore from "../utility/local-store";
 import DeviceDetector from "../utility/deviceDetector";
 
 global.settings = {};
-const DEFAULT_FONT_SIZE = { mobile: 16, desktop: 30 };
+
+const DEFAULT_FONT_SIZE = {
+  v1: {
+    mobile: 25,
+    desktop: 30,
+  },
+  v2: {
+    mobile: 20,
+    desktop: 30,
+  },
+  indopak: {
+    mobile: 25,
+    desktop: 30,
+  },
+  default: {
+    mobile: 16,
+    desktop: 30,
+  }
+};
+
 const LOWER_FONT_SIZE_LIMIT = 10;
 const UPPER_FONT_SIZE_LIMIT = 150;
 const DISABLED_COLOR_VAL = "var(--bs-gray)";
@@ -25,6 +44,7 @@ export default class extends Controller {
     this.store = new LocalStore();
     this.loadSettings();
     this.device = new DeviceDetector();
+    this.mobile = this.device.isMobile();
 
     window.addEventListener("resize", () => this.resizeHandler());
 
@@ -38,9 +58,8 @@ export default class extends Controller {
     this.bindTooltip();
     this.bindFontSize();
     this.updateFontSize();
-    //this.element[this.identifier] = this;
   }
-  
+
   hideSetting(){
     document.querySelector(".menus").classList.add("hidden");
     document.querySelector(".menus__tab").classList.add("hidden");
@@ -70,8 +89,8 @@ export default class extends Controller {
     // rest repeat setting,
     // we shouldn't save this in local storage in first place
     // this could lead to unexpected behaviour
-    // say user has set to repeat 2:255 then switch to other surah that don't have ayah 255
-    // and our player will be clueless
+    // for example user has set to repeat 2:255 then switch to other surah that don't have ayah 255
+    // and our player will be clueless, there are lot of edge cases here.
     settings.repeatEnabled = false;
     settings.repeatFrom = 0;
     settings.repeatTo = 0;
@@ -89,7 +108,7 @@ export default class extends Controller {
   bindReset() {
     $("#reset-settings").on("click", event => this.resetSetting(event));
   }
-  
+
   bindFontSize() {
     $("[data-trigger=font-size]").on("click", e => this.handleFontSize(e));
   }
@@ -121,10 +140,7 @@ export default class extends Controller {
       repeatAyah: null,
       autoScroll: true,
       autoShowWordTooltip: false,
-      wordFontSize: {
-        mobile: 30,
-        desktop: 30
-      },
+      arabicFontSize: DEFAULT_FONT_SIZE,
       translationFontSize: {
         mobile: 16,
         desktop: 16
@@ -138,17 +154,16 @@ export default class extends Controller {
     let setting = document.body.setting.get;
 
     let translationFontSize = setting("translationFontSize")[device];
-    let wordFontSize =
-      setting("wordFontSize")[device] || DEFAULT_FONT_SIZE[device];
+    let arFontSize = parseInt(this.wordFontSize()[device]);
 
     const plus = document.getElementById("font-size-plus");
     const minus = document.getElementById("font-size-minus");
 
     if (plus) {
-      if (wordFontSize <= LOWER_FONT_SIZE_LIMIT) {
+      if (arFontSize <= LOWER_FONT_SIZE_LIMIT) {
         plus.style.color = ENABLED_COLOR_VAL;
         minus.style.color = DISABLED_COLOR_VAL;
-      } else if (wordFontSize >= UPPER_FONT_SIZE_LIMIT) {
+      } else if (arFontSize >= UPPER_FONT_SIZE_LIMIT) {
         plus.style.color = DISABLED_COLOR_VAL;
         minus.style.color = ENABLED_COLOR_VAL;
       } else {
@@ -158,11 +173,11 @@ export default class extends Controller {
     }
 
     const arabicFs = Math.min(
-      Math.max(parseInt(wordFontSize), LOWER_FONT_SIZE_LIMIT),
+      Math.max(arFontSize, LOWER_FONT_SIZE_LIMIT),
       UPPER_FONT_SIZE_LIMIT
     );
 
-    rules.push(`.verse .arabic, .w {font-size: ${arabicFs}px !important}`);
+    rules.push(`.verse .arabic, .w{font-size: ${arabicFs}px !important}`);
 
     rules.push(`.translation {font-size: ${translationFontSize}px !important}`);
 
@@ -223,11 +238,18 @@ export default class extends Controller {
 
     this.resetPage();
   }
-  
+
   resetPage() {
     //$("style.setting").remove();
     this.styles.innerText = "";
     let controller = document.getElementById("chapter-tabs");
     controller.chapter.changeTranslations(this.defaultSetting().translations);
+  }
+
+  wordFontSize(){
+    let setting = document.body.setting.get;
+    const fontSizes = setting("arabicFontSize") || DEFAULT_FONT_SIZE;
+
+    return fontSizes[setting('font')] || fontSizes.default;
   }
 }

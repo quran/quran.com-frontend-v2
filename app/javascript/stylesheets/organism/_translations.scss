@@ -5,7 +5,7 @@
 
     .country-name {
         position: relative;
-        margin-left: 16px;
+        //margin-left: 16px;
         &::before {
             content: "";
             position: absolute;
@@ -18,7 +18,7 @@
             background-repeat: no-repeat !important;
             background-size: contain !important;
         }
-        &.country-name--al {
+        /*&.country-name--al {
             &::before {
                // background-image: url("../../toolkit/images/albania.svg") !important;
             }
@@ -29,7 +29,7 @@
              //   background-image: url("../../toolkit/images/azerbaijan.svg") !important;
             }
 
-        }
+        }*/
     }
     .translations__content {
         @include sm {

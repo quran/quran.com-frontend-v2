@@ -30,11 +30,7 @@ document.addEventListener("turbolinks:request-start", function(event) {
   xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 });
 
-$(document).on("click", ".dropdown-menu", function(e) {
-  // don't close dropdown on click, within
-  e.stopPropagation();
-});
-
+/*
 $('.label-nav').click(function(e) {
   if ($(e.target).parents('.dropdown').length == 1) return;
   $(this).toggleClass('label--open');
@@ -49,6 +45,7 @@ $('.label-nav .icon-x').click(function() {
     .parents('.label-nav')
     .removeClass('label--open');
 });
+*/
 
 require("../stylesheets/application.scss");
 

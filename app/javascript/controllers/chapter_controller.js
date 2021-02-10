@@ -16,7 +16,6 @@ export default class extends Controller {
 
     // this.setURLState();
     this.bindAyahJump();
-    this.bindBackdrop();
   }
 
   connect() {
@@ -124,9 +123,9 @@ export default class extends Controller {
     $("#verse-list")
       .find(".dropdown-item")
       .on("click", e => {
+        e.preventDefault();
         document.body.loader.show();
 
-        e.preventDefault();
         const ayah = e.currentTarget.dataset.verse;
         // TODO: we need to refactor this now, repeating this a lot
         // create a utility to load verses, update page, tell player to load audio etc
@@ -154,8 +153,7 @@ export default class extends Controller {
     $("#verse-list .dropdown-item").removeClass("active");
     let activeVerse = $("#verse-list").find(`[data-filter-tags=${verse}]`);
     activeVerse.addClass("active");
-    $(".verse-dropdown strong").html(activeVerse.find(".verse-num").html());
-
+    $("#ayah-dropdown #current").html(verse);
     let verseElement = this.activeTab.find(
       `.verse[data-verse-number=${verse}]`
     );
@@ -334,11 +332,11 @@ export default class extends Controller {
     to = Math.min(verse + 5, this.totalVerses);
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({ from, to, verse, reading })}`
+      `/${chapter}/load_verses?${$.param({ from, to, verse, reading })}`,
+      { headers: { "X-Requested-With": "XMLHttpRequest" } }
     )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses))
-      //.then(updatedDom => this.updatePagination(updatedDom))
       .then(() => this.scrollToVerse(verse));
 
     return Promise.resolve(request);
@@ -361,11 +359,14 @@ export default class extends Controller {
       readingTarget,
       !this.isReadingMode()
     );
+
     translationPage.innerHTML = this.getLazyTab(
       translationUrl,
       translationTarget,
       !this.isTranslationsMode()
     );
+
+    return Promise.resolve()
   }
 
   getLazyTab(url, target, lazy) {
@@ -405,15 +406,10 @@ export default class extends Controller {
 
     let verseList = $(this.translationTab.dataset.target).find("#verses");
 
-    fetch(`${path}`)
+    fetch(`${path}`, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(response => response.text())
       .then(verses => {
-        verseList.html(
-          $(verses)
-            .find(".verses")
-            .html()
-        );
-
+        verseList.html(verses)
         document.body.loader.hide();
       });
   }
@@ -435,14 +431,7 @@ export default class extends Controller {
       ) {
         $(".actions-wrapper").addClass("hidden");
       }
-      if (
-        $(e.target).parents(".side-menu").length == 0 &&
-        !$(e.target).is(".sidebar-btns")
-      ) {
-        $(".menus").addClass("hidden");
-        $(".side-menu").addClass("hidden");
-        document.body.style = ``;
-      }
+
       if (
         $(e.target).parents(".label-nav").length == 0 &&
         !$(e.target).is(".label-nav")

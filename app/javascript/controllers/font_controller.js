@@ -24,13 +24,17 @@ export default class extends SettingController {
   }
 
   disconnect() {
-    $(document).off("change", "[name=font]", e => {});
+    $(document).off("change", "[name=font]", e => {
+    });
   }
 
   changeFont(target) {
     this.set("font", target.value);
     let controller = document.getElementById("chapter-tabs");
 
-    controller.chapter.changeFont(target.value);
+    controller.chapter.changeFont(target.value).then(()=> {
+      debugger
+      this.updateFontSize();
+    });
   }
 }

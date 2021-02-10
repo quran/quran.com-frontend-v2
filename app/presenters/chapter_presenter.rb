@@ -42,6 +42,14 @@ class ChapterPresenter < HomePresenter
     end
   end
 
+  def name_simple
+    chapter.name_simple
+  end
+
+  def translated_name
+    chapters[chapter.chapter_number - 1].translated_name.name
+  end
+
   def active_tab
     if reading_mode?
       'reading'

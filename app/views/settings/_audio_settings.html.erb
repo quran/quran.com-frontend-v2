@@ -116,7 +116,18 @@
         <span class="checkmark"></span>
       </label>
       <div class="mini-input">
-        <input class="mini-input__input" placeholder="0.5" type="number" id=pause-bw-ayah-seconds>
+        <select class="mini-input__input" id=pause-bw-ayah-seconds>
+          <% 0.upto(3) do |pause| %>
+            <option value="<%= pause %>" selected>
+              <%= pause %>
+            </option>
+          <% end %>
+
+          <% 4.step(30, 2) do |pause| %>
+            <option value="<%= pause %>"><%= pause %></option>
+          <% end %>
+        </select>
+
         <p class="text  text--grey text--medium text--regular"><%= _t('player.pause_seconds') %></p>
       </div>
     </div>
