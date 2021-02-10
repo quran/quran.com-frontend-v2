@@ -18,11 +18,16 @@ export default class extends Controller {
 
     this.menuTrigger = document.querySelector(trigger);
     this.dropdownWrapper = document.querySelector(dropdown);
+    this.closeTrigger = this.element.querySelector('#close-dropdown')
     this.isOpen = false;
     this.onClicked = this.click.bind(this);
     this.onToggle = this.toggle.bind(this);
 
     this.menuTrigger.addEventListener("click", this.onToggle);
+    this.closeTrigger.addEventListener("click", (e) => {
+      e.stopImmediatePropagation();
+      this.close()
+    })
   }
 
   toggle(event) {

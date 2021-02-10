@@ -28,7 +28,7 @@
             <div class="dropdown">
               <div class="menu__header">
                 <div class='first'>
-                  <div id="close-Surah" class="close-Surah icon-x"></div>
+                  <div id="close-dropdown" class="quran-icon icon-x"></div>
                   <p class="text text--black text--large2 text--semibold">Surah</p>
                 </div>
               </div>
@@ -78,27 +78,46 @@
             </p>
           </div>
           <div class="label--arrow"></div>
-          <div class="dropdown-wrapper" id=filter-ayah-dropdown data-controller="filter-list" data-list="#verse-list" data-input="#filter-ayah">
+          <div class="dropdown-wrapper"
+               id=filter-ayah-dropdown
+               data-controller="filter-list"
+               data-list="#verse-list"
+               data-input="#filter-ayah">
             <div class="dropdown">
               <div class="menu__header">
                 <div class='first'>
-                  <div id="close-" class="close- icon-x"></div>
-                  <p class="text text--black text--large2 text--semibold">label</p>
+                  <div id="close-dropdown" class="quran-icon icon-x"></div>
+                  <p class="text text--black text--large2 text--semibold">
+                    <%= _t('verses.go') %>
+                  </p>
                 </div>
               </div>
+
               <div class="dropdown--input">
                 <div class="input-wrapper large">
-                  <input id="filter-ayah" autocapitalize="none" autocomplete="off" autocorrect="off" type="search" spellcheck="false" placeholder="Search" aria-label="Search" aria-haspopup="false" role="combobox" aria-autocomplete="list">
+                  <input id="filter-ayah"
+                         autocapitalize="none"
+                         autocomplete="off"
+                         autocorrect="off"
+                         type="search"
+                         spellcheck="false"
+                         placeholder="Search"
+                         aria-autocomplete="list">
                 </div>
               </div>
+
               <div class="dropdown--items" id="verse-list">
                 <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
-                  <a class="dropdown-item" data-filter-tags="<%= verse_num %>" data-verse="<%= verse_num %>">
+                  <a class="dropdown-item"
+                     data-filter-tags="<%= verse_num %>"
+                     data-verse="<%= verse_num %>">
                     <div class="dropdown-item__number">
                       <p><%= verse_num %></p>
                     </div>
                     <div class="dropdown-item__name-latin">
-                      <p class="dropdown-item__arabic"><%= verse_locale %> <%= verse_num %></p>
+                      <p class="dropdown-item__arabic">
+                        <%= verse_locale %> <%= verse_num %>
+                      </p>
                     </div>
                   </a>
                 <% end %>
