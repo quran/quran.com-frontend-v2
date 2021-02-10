@@ -11,12 +11,12 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def verse
-    Verse.find(params[:from])
+    Verse.where(chapter_id: chapter_id, verse_number: params[:from]).first
   end
 
   def verses_to_copy
     @verses = Verse.order('verses.verse_number asc')
-                  .where(chapter_id: params[:chapter_id])
+                  .where(chapter_id: chapter_id)
                   .where("verses.verse_number >= ? AND verses.verse_number <= ?", params[:from], params[:to])
 
     if (valid_translations.present?)
@@ -64,6 +64,11 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def chapter_with_range
-    "#{params[:chapter_id]}-#{range}"
+    binding.pry
+    "#{chapter_id}-#{range}"
+  end
+
+  def chapter_id
+    params[:chapter_id]
   end
 end
