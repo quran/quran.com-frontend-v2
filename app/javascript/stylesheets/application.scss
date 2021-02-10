@@ -17,6 +17,7 @@
 /**
  * Toolkit styles
  */
+@import "select2/dist/css/select2.css";
 @import "quran-icon";
 @import "locals";
 @import "mixins";
@@ -24,7 +25,7 @@
 @import "molecules";
 @import "organism";
 @import "utility";
-@import "select2/dist/css/select2.css";
+
 body {
   font-family: sans-serif;
 }

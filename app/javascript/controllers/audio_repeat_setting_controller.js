@@ -48,7 +48,6 @@ export default class extends SettingController {
   }
 
   bindRepeatSingle() {
-
     this.repeatSingle = $("#repeat-single-ayah");
     this.repeatSingleTimes = $("#repeat-single-times");
 

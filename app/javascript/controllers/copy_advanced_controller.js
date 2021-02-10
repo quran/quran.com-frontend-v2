@@ -1,34 +1,41 @@
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 
 export default class extends Controller {
   connect() {
-    this.verseId = this.element.dataset.verseId;
-    this.chapterId = this.element.dataset.chapterId;
+    const {verseId, chapterId} = this.element.dataset;
+    this.verseId = verseId;
+    this.chapterId = chapterId;
     this.rangeType = "single";
     this.addFootnotes = false;
 
-    $(".simple-select").select2({
+    this.selects = $(".simple-select").select2({
       // dropdownAutoWidth: true,
       width: "100%",
       dropdownCssClass: "select-stylee",
       placeholder: "selected option",
-      minimumResultsForSearch: -1
+      //minimumResultsForSearch: -1
     });
+
     this.bindingElements();
   }
 
-  bindingElements() {
-    this.copySingle = $("#repeat-single-ayah");
-    this.copyRange = $("#copy-range-ayah-radio");
-
-    this.copySingle.on("change", e => this.toggleRangeWraper(e));
-    this.copyRange.on("change", e => this.toggleRangeWraper(e));
+  disconnect() {
+    const select = this.selects.data("select2");
+    if (select) select.destroy();
   }
 
-  toggleRangeWraper(e) {
-    this.rangeType = e.target.dataset.name;
-    document.querySelector(".copy-range-ayah").classList.toggle("hidden");
+  bindingElements() {
+    const copyTypes = $(this.element).find("[name=copy-type]")
+    copyTypes.on("change", e => {
+      this.rangeType = e.currentTarget.value;
+      const rangeClasses = document.querySelector(".copy-range-ayah").classList;
+
+      if ('single' == this.rangeType)
+        rangeClasses.add('hidden')
+      else
+        rangeClasses.remove('hidden')
+    });
   }
 
   translationsHandler() {
@@ -62,7 +69,7 @@ export default class extends Controller {
     }/load_verses.text?to=${to}&from=${from}&translations=${selectedTransaltions.join()}&add_footnotes=${
       this.addFootnotes
     }`;
-    fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
+    fetch(url, {headers: {"X-Requested-With": "XMLHttpRequest"}})
       .then(resp => resp.text())
       .then(content => {
         copyToClipboard(content);
@@ -70,11 +77,5 @@ export default class extends Controller {
       .catch(err => {
         //TODO: show error
       });
-  }
-
-  removeModal() {
-    $("#ajax-modal")
-      .empty()
-      .remove();
   }
 }

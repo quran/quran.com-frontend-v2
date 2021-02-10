@@ -31,7 +31,8 @@
 
     input {
       height: 32px;
-      width: 260px;
+      // let select2 calculate the width
+      //width: 260px;
       padding-left: 10px;
       margin: 10px 15px;
       border-radius: 30px;
@@ -105,13 +106,13 @@
   color: $font-darkgrey;
 }
 
-// .select2-container--default
-//   .select2-results__option--highlighted.select2-results__option--selectable {
-// }
-
-.select2-container--default .select2-results__option--selected {
+.select2-results__option--selected {
   color: $dark-green !important;
   background: none !important;
+}
+
+.select2-results__option--highlighted[aria-selected]{
+  background: $dark-green !important;
 }
 
 .select2-container--default

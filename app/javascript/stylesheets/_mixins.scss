@@ -28,30 +28,38 @@ body {
     width: 6px;
   }
 }
+
 html {
   overflow-x: hidden;
+
   ::-webkit-scrollbar {
     width: 5px;
     background-color: $grey9;
     border-radius: 4px;
+
     &:hover {
       width: 12px;
     }
   }
+
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 4px;
+
     &:hover {
       width: 12px;
     }
+
     @at-root .dark & {
       background-color: $dark-grey;
     }
   }
+
   ::-webkit-scrollbar-thumb {
     background: #808696;
     border-radius: 4px;
     width: 6px;
+
     &:hover {
       width: 12px;
     }
@@ -64,11 +72,13 @@ html {
     @content;
   }
 }
+
 @mixin sm {
   @media (max-width: #{$screen-sm-min}) {
     @content;
   }
 }
+
 @mixin smmin {
   @media (min-width: #{$screen-sm-min}) {
     @content;
@@ -81,6 +91,7 @@ html {
     @content;
   }
 }
+
 @mixin mdmin {
   @media (min-width: #{$screen-md-min}) {
     @content;
@@ -124,6 +135,7 @@ html {
     top: 0;
     bottom: 0;
   }
+
   &::after {
     content: '';
     position: absolute;
@@ -139,6 +151,7 @@ html {
     }
   }
 }
+
 .arabic .start-circle {
   transform: rotate(180deg);
 }
