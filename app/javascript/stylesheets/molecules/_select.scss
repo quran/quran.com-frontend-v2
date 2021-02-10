@@ -145,3 +145,9 @@
     width: 100%;
   }
 }
+
+
+[aria-disabled=true]{
+  color: #666;
+  cursor: not-allowed;
+}
