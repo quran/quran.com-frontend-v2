@@ -17,10 +17,6 @@ let Howl, Howler;
 
 export default class extends Controller {
   connect() {
-    import("howler").then(howler => {
-      Howl = howler.Howl;
-      Howler = howler.Howler;
-    });
     this.element[this.identifier] = this;
     this.settings = document.body.setting;
     this.playWordQueue = [];
@@ -69,6 +65,17 @@ export default class extends Controller {
 
   updatePause(pauseSec) {
     this.pauseSeconds = pauseSec;
+  }
+
+  getHowler() {
+    if (Howl) {
+      return Promise.resolve()
+    }
+
+    return import("howler").then(howler => {
+      Howl = howler.Howl;
+      Howler = howler.Howler;
+    });
   }
 
   updateRepeatCount(count) {
@@ -197,39 +204,41 @@ export default class extends Controller {
   playWord(audioPath) {
     this.resumeOnWordPlayEnd = this.resumeOnWordPlayEnd || this.isPlaying();
 
-    let howl = new Howl({
-      src: [`${AUDIO_CDN}${audioPath}`],
-      html5: USE_HTML5,
-      onload: () => {
-        this.isPlaying() && this.handlePauseBtnClick();
-      },
-      onplayerror: () => {
-        this.playWordQueue = [];
+    this.getHowler().then(() => {
+      let howl = new Howl({
+        src: [`${AUDIO_CDN}${audioPath}`],
+        html5: USE_HTML5,
+        onload: () => {
+          this.isPlaying() && this.handlePauseBtnClick();
+        },
+        onplayerror: () => {
+          this.playWordQueue = [];
 
-        this.resumeOnWordPlayEnd && this.handlePlayBtnClick();
-        this.resumeOnWordPlayEnd = false;
-      },
-      onend: () => {
-        this.playWordQueue.shift();
-
-        if (this.playWordQueue[0]) {
-          this.playWordQueue[0].play();
-        } else {
           this.resumeOnWordPlayEnd && this.handlePlayBtnClick();
           this.resumeOnWordPlayEnd = false;
+        },
+        onend: () => {
+          this.playWordQueue.shift();
+
+          if (this.playWordQueue[0]) {
+            this.playWordQueue[0].play();
+          } else {
+            this.resumeOnWordPlayEnd && this.handlePlayBtnClick();
+            this.resumeOnWordPlayEnd = false;
+          }
         }
+      });
+
+      this.playWordQueue.push(howl);
+
+      if (this.playWordQueue.length == 1) {
+        // don't play this word if system is playing another word.
+        // we'll play next word using howler's onend callback
+        howl.play();
       }
-    });
 
-    this.playWordQueue.push(howl);
-
-    if (this.playWordQueue.length == 1) {
-      // don't play this word if system is playing another word.
-      // we'll play next word using howler's onend callback
-      howl.play();
-    }
-
-    return howl;
+      return howl;
+    })
   }
 
   seekToWord(wordPosition) {
@@ -575,59 +584,61 @@ export default class extends Controller {
       autoplay = false;
     }
 
-    let howl = new Howl({
-      src: [audioPath],
-      html5: USE_HTML5,
-      autoplay: autoplay,
-      sprite: sprite,
-      onloaderror: () => {
-        // when audio is failed to load.
-      },
-      onplayerror: () => {
-        this.updatePlayerControls();
+    this.getHowler().then(() => {
+      let howl = new Howl({
+        src: [audioPath],
+        html5: USE_HTML5,
+        autoplay: autoplay,
+        sprite: sprite,
+        onloaderror: () => {
+          // when audio is failed to load.
+        },
+        onplayerror: () => {
+          this.updatePlayerControls();
 
-        //Fires when the sound is unable to play
-        this.track.howl.once("unlock", () => {
-          this.track.howl.play();
-        });
-      },
-      onplay: () => {
-        this.updatePlayerControls();
+          //Fires when the sound is unable to play
+          this.track.howl.once("unlock", () => {
+            this.track.howl.play();
+          });
+        },
+        onplay: () => {
+          this.updatePlayerControls();
 
-        this.onPlay();
-      },
-      onpause: () => {
-        this.updatePlayerControls();
+          this.onPlay();
+        },
+        onpause: () => {
+          this.updatePlayerControls();
 
-        this.removePlayerListeners();
-      },
-      onstop: () => {
-        this.updatePlayerControls();
+          this.removePlayerListeners();
+        },
+        onstop: () => {
+          this.updatePlayerControls();
 
-        this.removePlayerListeners();
-      },
-      onseek: () => {
-        this.removePlayerListeners();
+          this.removePlayerListeners();
+        },
+        onseek: () => {
+          this.removePlayerListeners();
 
-        this.onSeek();
-      },
-      onend: () => {
-        this.updatePlayerControls();
+          this.onSeek();
+        },
+        onend: () => {
+          this.updatePlayerControls();
 
-        this.removePlayerListeners();
-        this.onVerseEnd();
+          this.removePlayerListeners();
+          this.onVerseEnd();
+        }
+      });
+
+      this.preloadTrack[verse] = {
+        howl: howl,
+        segments: audioData.segments,
+        verse: verse
+      };
+      if (this.config.segmentPlayer) {
+        howl.play("selectedWords");
       }
-    });
-
-    this.preloadTrack[verse] = {
-      howl: howl,
-      segments: audioData.segments,
-      verse: verse
-    };
-    if (this.config.segmentPlayer) {
-      howl.play("selectedWords");
-    }
-    return this.preloadTrack[verse];
+      return this.preloadTrack[verse];
+    })
   }
 
   buildAudioUrl(path) {

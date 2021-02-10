@@ -17,6 +17,10 @@ export default class extends Controller {
       //minimumResultsForSearch: -1
     });
 
+    this.copyRangeFrom = $("#copy-range-ayah-from");
+    this.copyRangeTo = $("#copy-range-ayah-to");
+    this.copyRangeTo.attr("disabled", true);
+
     this.bindingElements();
   }
 
@@ -26,6 +30,18 @@ export default class extends Controller {
   }
 
   bindingElements() {
+    this.copyRangeFrom.on("change", e => {
+      const from = Number(this.copyRangeFrom.val());
+      this.copyRangeTo.val(0);
+
+      this.copyRangeTo.find("option").each((i, option) => {
+        // disable all options which are less then copy start
+        const val = Number(option.value);
+        option.disabled = val > 0 && val < from;
+      });
+      this.copyRangeTo.attr("disabled", false);
+    });
+
     const copyTypes = $(this.element).find("[name=copy-type]")
     copyTypes.on("change", e => {
       this.rangeType = e.currentTarget.value;

@@ -1,6 +1,4 @@
 import SettingController from "./setting_controller";
-//import 'select2';
-require('select2/dist/js/select2.full.js');
 
 export default class extends SettingController {
   connect() {
@@ -84,6 +82,7 @@ export default class extends SettingController {
 
       this.updateRepeatRange();
     });
+
     this.repeatRangeTo.on("change", () => this.updateRepeatRange());
     this.repeatRangeTimes.on("change", () => this.updateRepeatRange());
 

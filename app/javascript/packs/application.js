@@ -5,6 +5,7 @@
 
 require("turbolinks").start();
 require("partial_replacement");
+require('select2/dist/js/select2.full');
 
 import JQuery from "jquery";
 window.$ = window.JQuery = JQuery;
