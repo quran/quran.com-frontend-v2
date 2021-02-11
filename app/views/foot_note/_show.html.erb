@@ -7,7 +7,10 @@
       </a>
     </div>
 
-    <div data-controller="translation" class="text text--grey text--medium text--regular translation">
+    <div data-controller="translation footnote" 
+      class="text text--grey text--medium text--regular translation"
+      data-resource-content-id='<%=params[:resource_content_id]%>'
+    >
       <%= @foot_note.text.html_safe %>
     </div>
   </div>

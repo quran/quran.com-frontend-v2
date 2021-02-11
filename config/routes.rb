@@ -101,6 +101,8 @@ Rails.application.routes.draw do
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 
+  get '/:id/referenced_verse', to: 'chapters#referenced_verse'
+
   # 2-3:5 => 2:3-5
   get '/:chapter-:start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
 

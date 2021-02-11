@@ -118,8 +118,8 @@ class BasePresenter
   end
 
   def valid_translations
-    if request.format.text?
-      params[:translations].split(",")
+    if request.format.text? || params[:skip_sessions] == 'true'
+      params[:translations].split(',')
     else
       strong_memoize :valid_translations do
         saved = saved_translations

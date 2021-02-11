@@ -1,0 +1,10 @@
+<% verses = @presenter.paginate %>
+<div id="title">
+  <a href='<%= verses.first.verse_key %>'><%= verses.first.verse_key %></a>
+</div>
+<div id="modal">
+  <div>
+    <%= render 'fonts', verses: verses if @presenter.showing_qcf_font?%>
+    <%= render 'verse', skip_menu: true, verse: verses.first %>
+  </div>
+</div>
