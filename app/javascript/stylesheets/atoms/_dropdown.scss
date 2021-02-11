@@ -120,23 +120,10 @@
 .dropdown--items {
   overflow-y: scroll;
   height: 100%;
+  padding-bottom: 50px;//give some space to last element
   @include scrollbarStyle;
-  // &::-webkit-scrollbar {
-  //   width: 5px;
-  //   background-color: $grey9;
-  //   border-radius: 4px;
-  // }
-  // &::-webkit-scrollbar-track {
-  //   background: #f1f1f1;
-  //   border-radius: 4px;
-  // }
-  // &::-webkit-scrollbar-thumb {
-  //   background: #808696;
-  //   border-radius: 4px;
-  //   width: 6px;
-  // }
-  
-}
+ }
+
 .dropdown-item {
   display: flex;
   padding: 4px 8px;
