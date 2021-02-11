@@ -2,12 +2,12 @@
   Copy options
 </div>
 
-<% verse = @presenter.verse %>
+<% verse = @presenter.current_verse %>
 <% chapter = verse.chapter %>
 <% range = @presenter.range %>
 
 <div id="modal">
-  <div data-controller="copy-advanced" data-verse-id="<%= @presenter.verse.verse_number %>" data-chapter-id="<%= chapter.id %>">
+  <div data-controller="copy-advanced" data-verse-id="<%= verse.verse_number %>" data-chapter-id="<%= chapter.id %>">
     <div>
       <p class="text text--darkgrey text--medium text--semibold">Select ayah range</p>
       <div class="display-settings__radios">
