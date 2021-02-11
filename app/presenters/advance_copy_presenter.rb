@@ -9,8 +9,8 @@ class AdvanceCopyPresenter < BasePresenter
     ResourceContent.where(id: valid_translations)
   end
 
-  def verse
-    Verse.where(chapter_id: chapter_id, verse_number: params[:from]).first
+  def current_verse
+    Verse.where(chapter_id: chapter_id, verse_number: range).first
   end
 
   def verses_to_copy
@@ -57,13 +57,13 @@ class AdvanceCopyPresenter < BasePresenter
       if params[:range].present?
         params[:range].split('-').map(&:to_i)
       else
-        []
+        [params[:from].to_i]
       end
     end
   end
 
   def chapter_with_range
-    "#{chapter_id}-#{range}"
+    "#{chapter_id}-#{range}-#{include_footnote?}"
   end
 
   def chapter_id
