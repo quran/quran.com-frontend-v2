@@ -33,7 +33,6 @@ export default class extends SettingController {
     let controller = document.getElementById("chapter-tabs");
 
     controller.chapter.changeFont(target.value).then(()=> {
-      debugger
       this.updateFontSize();
     });
   }

@@ -1,6 +1,5 @@
 class AdvanceCopyPresenter < BasePresenter
   FOOT_NOTE_REG = /<sup foot_note=\d+>(\d+)<\/sup>/
-  TAG_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   def cache_key(action_name:)
     "#{current_locale}-advance_copy:#{action_name}-#{chapter_with_range}-#{valid_translations.join('-')}"

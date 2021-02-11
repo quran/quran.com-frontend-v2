@@ -31,14 +31,38 @@
     <p class="text text--darkgrey text--medium text--semibold"><%= _t('settings.font_size.label') %></p>
     <div class="tab__row tab__row--between">
       <div class="counter">
-        <button class="counter__button" id="font-size-plus" data-increment="-1" data-target=".verse .arabic" data-trigger="font-size"></button>
-        <p class="counter__text"><%= _t('settings.font_size.arabic') %></p>
-        <button class="counter__button" id="font-size-minus" data-increment="1" data-target=".verse .arabic" data-trigger="font-size"></button>
+        <button
+          class="counter__button"
+          id="font-size-minus--arabic"
+          data-increment="-1"
+          data-target="arabic"
+          data-trigger="font-size"></button>
+        <p class="counter__text">
+          <%= _t('settings.font_size.arabic') %>
+        </p>
+        <button
+          class="counter__button"
+          id="font-size-plus--arabic"
+          data-increment="1"
+          data-target="arabic"
+          data-trigger="font-size"></button>
       </div>
       <div class="counter">
-        <button class="counter__button" data-increment="-1" data-target=".translation" data-trigger="font-size"></button>
-        <p class="counter__text"><%= _t('settings.font_size.translation') %></p>
-        <button class="counter__button" data-increment="1" data-target=".translation" data-trigger="font-size"></button>
+        <button
+          class="counter__button"
+          id="font-size-minus--translation"
+          data-increment="-1"
+          data-target="translation"
+          data-trigger="font-size"></button>
+        <p class="counter__text">
+          <%= _t('settings.font_size.translation') %>
+        </p>
+        <button
+          class="counter__button"
+          id="font-size-plus--translation"
+          data-increment="1"
+          data-target="translation"
+          data-trigger="font-size"></button>
       </div>
     </div>
   </div>

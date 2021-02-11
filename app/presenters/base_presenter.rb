@@ -6,7 +6,7 @@ class BasePresenter
   HOST = 'https://www.quran.com'
   DEFAULT_RECITATION = 7
   DEFAULT_TRANSLATION = 131 # Clear Quran with footnotes is default translation
-  TEXT_SANITIZER = Rails::Html::WhiteListSanitizer.new
+  TAG_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   attr_reader :context, :resource_class, :request
 
@@ -114,7 +114,7 @@ class BasePresenter
   end
 
   def sanitize_meta_description_text(text)
-    context.view_context.truncate(TEXT_SANITIZER.sanitize(text.to_s, tags: []), length: 160, separator: '.')
+    context.view_context.truncate(TAG_SANITIZER.sanitize(text.to_s, tags: [], attributes: []), length: 160, separator: '.')
   end
 
   def valid_translations

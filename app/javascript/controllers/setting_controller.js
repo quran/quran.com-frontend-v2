@@ -7,7 +7,7 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import LocalStore from "../utility/local-store";
 import DeviceDetector from "../utility/deviceDetector";
 
@@ -32,9 +32,14 @@ const DEFAULT_FONT_SIZE = {
   }
 };
 
-const LOWER_FONT_SIZE_LIMIT = 10;
+const DEFAULT_TRANSLATION_SIZE = {
+  mobile: 16,
+  desktop: 16
+}
+
+const LOWER_FONT_SIZE_LIMIT = 15;
 const UPPER_FONT_SIZE_LIMIT = 150;
-const DISABLED_COLOR_VAL = "var(--bs-gray)";
+const DISABLED_COLOR_VAL = "var(--gray)";
 const ENABLED_COLOR_VAL = "#b1bec5";
 
 export default class extends Controller {
@@ -60,7 +65,7 @@ export default class extends Controller {
     this.updateFontSize();
   }
 
-  hideSetting(){
+  hideSetting() {
     document.querySelector(".menus").classList.add("hidden");
     document.querySelector(".menus__tab").classList.add("hidden");
   }
@@ -141,36 +146,16 @@ export default class extends Controller {
       autoScroll: true,
       autoShowWordTooltip: false,
       arabicFontSize: DEFAULT_FONT_SIZE,
-      translationFontSize: {
-        mobile: 16,
-        desktop: 16
-      }
+      translationFontSize: DEFAULT_TRANSLATION_SIZE
     };
   }
 
   updateFontSize() {
     let rules = [];
     let device = this.mobile ? "mobile" : "desktop";
-    let setting = document.body.setting.get;
 
-    let translationFontSize = setting("translationFontSize")[device];
+    let translationFontSize = parseInt(this.translationFontSize()[device]);
     let arFontSize = parseInt(this.wordFontSize()[device]);
-
-    const plus = document.getElementById("font-size-plus");
-    const minus = document.getElementById("font-size-minus");
-
-    if (plus) {
-      if (arFontSize <= LOWER_FONT_SIZE_LIMIT) {
-        plus.style.color = ENABLED_COLOR_VAL;
-        minus.style.color = DISABLED_COLOR_VAL;
-      } else if (arFontSize >= UPPER_FONT_SIZE_LIMIT) {
-        plus.style.color = DISABLED_COLOR_VAL;
-        minus.style.color = ENABLED_COLOR_VAL;
-      } else {
-        plus.style.color = ENABLED_COLOR_VAL;
-        minus.style.color = ENABLED_COLOR_VAL;
-      }
-    }
 
     const arabicFs = Math.min(
       Math.max(arFontSize, LOWER_FONT_SIZE_LIMIT),
@@ -178,18 +163,17 @@ export default class extends Controller {
     );
 
     rules.push(`.verse .arabic, .w{font-size: ${arabicFs}px !important}`);
-
     rules.push(`.translation {font-size: ${translationFontSize}px !important}`);
 
     // add word spacing for v1 font to fix weird word overlapping issue on FF
     rules.push(
       `#verses-reading .arabic .v1{word-spacing: ${arabicFs *
-        0.323}px !important}`
+      0.323}px !important}`
     );
 
     rules.push(
       `#verses-reading .v1.pause {word-spacing: ${arabicFs *
-        0.423}px !important}`
+      0.423}px !important}`
     );
 
     global.styles = this.styles;
@@ -211,22 +195,66 @@ export default class extends Controller {
     let device = this.mobile ? "mobile" : "desktop";
     let setting = document.body.setting || this;
 
+    let targetDom, defaultFs;
+
     const data = e.target.dataset;
-    const targetDom = $(data.target);
     const increment = +data.increment;
 
+    if ('arabic' == data.target) {
+      targetDom = $(".verse .arabic");
+      defaultFs = this.wordFontSize()[device];
+    } else {
+      targetDom = $(".verse .translation");
+      defaultFs = this.translationFontSize()[device];
+    }
+
     let size =
-      parseInt(targetDom.css("font-size"), 10) || DEFAULT_FONT_SIZE[device];
+      parseInt(targetDom.css("font-size") || defaultFs, 10)
+
     size = size + increment;
 
-    if (".verse .arabic" == data.target) {
-      let sizes = setting.get("wordFontSize");
-      sizes[device] = size;
-      setting.set("wordFontSize", sizes);
+    let plusBtn;
+    let minusBtn;
+
+    if ("arabic" == data.target) {
+      // each Arabic script script has different font sizes
+      let arabicSizes = setting.get("arabicFontSize") || DEFAULT_FONT_SIZE;
+
+      if(arabicSizes[setting.get("font")]){
+        arabicSizes[setting.get("font")][device] = size
+      } else{
+        arabicSizes['default'][device] = size
+      }
+      setting.set("arabicFontSize", arabicSizes);
+
+      plusBtn = document.getElementById("font-size-plus--arabic");
+      minusBtn = document.getElementById("font-size-minus--arabic");
     } else {
-      let sizes = setting.get("translationFontSize");
+      let sizes = setting.get("translationFontSize") || DEFAULT_TRANSLATION_SIZE;
       sizes[device] = size;
       setting.set("translationFontSize", sizes);
+      plusBtn = document.getElementById("font-size-plus--translation");
+      minusBtn = document.getElementById("font-size-minus--translation");
+    }
+
+    if (size <= LOWER_FONT_SIZE_LIMIT) {
+      minusBtn.style.color = DISABLED_COLOR_VAL
+      minusBtn.disabled = true
+      minusBtn.ariaDisabled = true
+    } else {
+      minusBtn.style.color = ENABLED_COLOR_VAL
+      minusBtn.disabled = false
+      minusBtn.ariaDisabled = false
+    }
+
+    if (size >= UPPER_FONT_SIZE_LIMIT) {
+      plusBtn.style.color = DISABLED_COLOR_VAL
+      plusBtn.disabled = true
+      plusBtn.ariaDisabled = true
+    } else {
+      plusBtn.style.color = ENABLED_COLOR_VAL;
+      plusBtn.disabled = null
+      plusBtn.ariaDisabled = null
     }
 
     this.updateFontSize();
@@ -240,16 +268,20 @@ export default class extends Controller {
   }
 
   resetPage() {
-    //$("style.setting").remove();
     this.styles.innerText = "";
     let controller = document.getElementById("chapter-tabs");
     controller.chapter.changeTranslations(this.defaultSetting().translations);
   }
 
-  wordFontSize(){
+  wordFontSize() {
     let setting = document.body.setting.get;
     const fontSizes = setting("arabicFontSize") || DEFAULT_FONT_SIZE;
 
     return fontSizes[setting('font')] || fontSizes.default;
+  }
+
+  translationFontSize() {
+    let setting = document.body.setting.get;
+    return setting("translationFontSize") || DEFAULT_TRANSLATION_SIZE
   }
 }
