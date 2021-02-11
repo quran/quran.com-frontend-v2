@@ -10,7 +10,7 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def current_verse
-    Verse.where(chapter_id: chapter_id, verse_number: range).first
+    Verse.where(chapter_id: chapter_id, verse_number: params[:from]).first
   end
 
   def verses_to_copy
@@ -52,6 +52,12 @@ class AdvanceCopyPresenter < BasePresenter
     end
   end
 
+  def include_arabic?
+    strong_memoize :arabic do
+      'yes' == params[:arabic]
+    end
+  end
+
   def range
     strong_memoize :ayah_range do
       if params[:range].present?
@@ -63,7 +69,7 @@ class AdvanceCopyPresenter < BasePresenter
   end
 
   def chapter_with_range
-    "#{chapter_id}-#{range}-#{include_footnote?}"
+    "#{chapter_id}-#{range}-#{params[:from]}-#{include_footnote?}-#{include_arabic?}"
   end
 
   def chapter_id
