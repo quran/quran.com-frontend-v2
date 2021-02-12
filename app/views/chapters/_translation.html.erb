@@ -1,5 +1,6 @@
 <div class="traslation__translations <%= translation.language_name %>"
      id="<%= dom_id translation %>"
+      data-resource-content-id='<%=translation.resource_content_id%>'
      data-controller="translation">
   <p class="text text--grey text--medium text--regular translation">
     <%= translation.text.html_safe %>

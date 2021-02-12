@@ -33,6 +33,10 @@ class ChaptersController < ApplicationController
     render layout: false
   end
 
+  def referenced_verse
+    render layout: false
+  end
+
   protected
 
   def check_routes
@@ -92,7 +96,7 @@ class ChaptersController < ApplicationController
     @presenter = case action_name
                  when 'ayatul_kursi'
                    AyatulKursiPresenter.new(self)
-                 when 'load_verses'
+                 when 'load_verses', 'referenced_verse'
                    start = params[:verse].to_i
                    from = params[:from] || start
                    to = params[:to].to_i || start + 10
