@@ -2,11 +2,11 @@ class AdvanceCopyPresenter < BasePresenter
   FOOT_NOTE_REG = /<sup foot_note=\d+>(\d+)<\/sup>/
 
   def cache_key(action_name:)
-    "#{current_locale}-advance_copy:#{action_name}-#{chapter_with_range}-#{valid_translations.join('-')}"
+    "#{current_locale}-advance_copy:#{action_name}-#{chapter_with_range}-#{fetch_approved_translations.join('-')}"
   end
 
   def translations
-    ResourceContent.where(id: valid_translations)
+    ResourceContent.where(id: fetch_approved_translations)
   end
 
   def current_verse
@@ -18,9 +18,9 @@ class AdvanceCopyPresenter < BasePresenter
                   .where(chapter_id: chapter_id)
                   .where("verses.verse_number >= ? AND verses.verse_number <= ?", params[:from], params[:to])
 
-    if (valid_translations.present?)
+    if (fetch_approved_translations.present?)
       @verses = @verses
-                    .where(translations: {resource_content_id: valid_translations})
+                    .where(translations: {resource_content_id: fetch_approved_translations})
                     .eager_load(:translations)
                     .order('translations.priority ASC')
     end
@@ -74,5 +74,11 @@ class AdvanceCopyPresenter < BasePresenter
 
   def chapter_id
     params[:chapter_id]
+  end
+
+  def fetch_approved_translations
+    strong_memoize :approve_translations do
+      valid_translations(store_result: false)
+    end
   end
 end
