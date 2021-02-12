@@ -10,8 +10,6 @@ require('select2/dist/js/select2.full');
 import JQuery from "jquery";
 window.$ = window.JQuery = JQuery;
 
-require("popper.js/dist/umd/popper");
-//require('bootstrap/dist/js/bootstrap');
 import "custom-bootstrap";
 import "../utility/trubolink-patch";
 

@@ -25,12 +25,14 @@
   }
   margin-right: 20px;
 }
-.label__opened {
+
+.label-nav:hover, label__opened {
   background-color: $grey4;
   @at-root .dark & {
     background-color: #1c1c20;
   }
 }
+
 .label__large {
   max-width: 400px;
   width: 100%;
@@ -69,7 +71,7 @@
     // flex-direction: column;
     // justify-content: space-around;
   }
-  p {
+  p, h1 {
     padding: 0;
     margin: 0;
   }
@@ -80,11 +82,6 @@
   font-weight: $font-semibold;
   font-size: $font-medium;
   white-space: nowrap;
-
-  h1{
-    padding: 0;
-    margin: 0;
-  }
 
   @at-root .label__small & {
     color: $font-darkgrey;
