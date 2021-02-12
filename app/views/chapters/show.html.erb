@@ -1,8 +1,8 @@
 <% content_for :menus do %>
   <div class="menus__tab hidden side-menu" data-controller="menu" data-trigger="#open-settings" data-menu=".settings" id="right-sidebar">
-    <%= render_async "/settings?chapter=#{@presenter.chapter.id}&reading=#{'reading' == @presenter.active_tab}", 
+    <%= render_async "/settings?chapter=#{@presenter.chapter.id}&reading=#{'reading' == @presenter.active_tab}",
       lazy_load: {root: '#right-sidebar'}, html_options: {class: 'settings-async-node'} do %>
-      <div class="text-center text--medium p-3" data-current-tab='<%=%>'>
+      <div class="text-center text--medium p-3">
         <%= loading_spinner %>
       </div>
     <% end %>
@@ -12,13 +12,23 @@
 <%= render 'surah_actions' %>
 
 <div class="content">
-  <div class="container" id="chapter-tabs" data-chapter-id="<%= @presenter.chapter.id %>" data-total-verses="<%= @presenter.chapter.verses_count %>" data-controller="chapter">
-    <div class="translation-section tab-pane fade <%='show active' if 'translation' == @presenter.active_tab%>" id="translation-section" data-tab-group="chapter-tabs">
+  <div class="container"
+       id="chapter-tabs"
+       data-chapter-id="<%= @presenter.chapter.id %>"
+       data-total-verses="<%= @presenter.chapter.verses_count %>"
+       data-controller="chapter">
+    <div class="translation-section tab-pane fade <%='show active' if 'translation' == @presenter.active_tab%>"
+         id="translation-section"
+         data-tab-group="chapter-tabs">
+
       <% if @presenter.show_bismillah? %>
         <%= render 'bismillah' %>
       <% end %>
 
-      <div id="verses-translation" class='verses' data-controller="infinite-page" data-items-container="#verses-translation #verses">
+      <div id="verses-translation"
+           class='verses'
+           data-controller="infinite-page"
+           data-items-container="#verses-translation #verses">
         <div id="verses" class='verses'>
           <% if 'translation' == @presenter.active_tab %>
             <%= render 'verses' %>
@@ -32,14 +42,19 @@
         </div>
       </div>
     </div>
-    
-    <div class="reading-section tab-pane fade <%='show active' if 'reading' == @presenter.active_tab%>" id="reading-section" data-tab-group="chapter-tabs">
+
+    <div class="reading-section tab-pane fade <%='show active' if 'reading' == @presenter.active_tab%>"
+         id="reading-section"
+         data-tab-group="chapter-tabs">
       <div class="reading">
         <div class="reading__content">
           <% if @presenter.show_bismillah? %>
             <%= render 'bismillah' %>
           <% end %>
-          <div id="verses-reading" class='verses' data-controller="infinite-page" data-items-container="#verses-reading #verses">
+          <div id="verses-reading"
+               class='verses'
+               data-controller="infinite-page"
+               data-items-container="#verses-reading #verses">
             <div id='verses' class="pages verses">
               <% if 'reading' == @presenter.active_tab %>
                 <%= render 'verses' %>
@@ -53,11 +68,9 @@
             </div>
           </div>
         </div>
-        <div class="">
-        </div>
       </div>
     </div>
-    
+
     <div class="info-section tab-pane fade" id="info-section" data-tab-group="chapter-tabs">
       <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
         <div class="text-center text--medium  p-3">

@@ -8,7 +8,7 @@
 // </div>
 
 import { Controller } from "stimulus";
-import { debounce } from "lodash-es";
+import { debounce } from "lodash.debounce";
 
 export default class extends Controller {
   connect() {

@@ -45,6 +45,14 @@
   }
 }
 
+.select2-dropdown{
+  @at-root .dark & {
+    background-color: $dark-grey;
+    border-color: #71727e;
+    color: $white;
+  }
+}
+
 .select2-container--default {
   .select2-selection--single {
     background-color: $grey1;
@@ -136,6 +144,10 @@
     font-size: $font-medium;
     font-weight: $font-semibold;
     line-height: 20px;
+
+    @at-root .dark & {
+      color: $font-softgrey;
+    }
   }
 }
 

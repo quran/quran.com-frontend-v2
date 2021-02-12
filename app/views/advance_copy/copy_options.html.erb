@@ -2,12 +2,12 @@
   Copy options
 </div>
 
-<% verse = @presenter.verse %>
+<% verse = @presenter.current_verse %>
 <% chapter = verse.chapter %>
 <% range = @presenter.range %>
 
 <div id="modal">
-  <div data-controller="copy-advanced" data-verse-id="<%= @presenter.verse.verse_number %>" data-chapter-id="<%= chapter.id %>">
+  <div data-controller="copy-advanced" data-verse-id="<%= verse.verse_number %>" data-chapter-id="<%= chapter.id %>">
     <div>
       <p class="text text--darkgrey text--medium text--semibold">Select ayah range</p>
       <div class="display-settings__radios">
@@ -119,7 +119,7 @@
       </label>
     </div>
 
-    <div class="p-2 my-2 border-dark rounded-sm hidden" id=file-notice style="border: 1px dashed;">
+    <div class="p-2 my-2 text--black header--border rounded-sm hidden" id=file-notice style="border: 1px dashed;">
       Text is copied successfully in your clipboard. <a href="">Click here</a> if you want to download text file.
     </div>
 

@@ -69,10 +69,12 @@ gem 'sitemap_generator'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'annotate', '>= 3.1.1'
-  gem 'pry-rails'
-  gem 'puma-ngrok-tunnel', '>= 1.0.0'
   gem 'web-console', '>= 4.0.4'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+
+  gem 'annotate', '>= 3.1.1'
+  gem 'puma-ngrok-tunnel', '>= 1.0.0'
   # gem 'rails_real_favicon', '>= 0.1.0'
   gem 'listen'
   gem 'rubocop', '>= 1.8.1', require: false

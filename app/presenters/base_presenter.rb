@@ -18,46 +18,46 @@ class BasePresenter
 
   def open_graph_hash
     {
-      og: {
+        og: {
+            title: meta_title,
+            description: meta_description,
+            url: meta_url,
+            type: meta_page_type,
+            image: meta_image,
+            'image:alt': 'Quran.com',
+            see_also: related_links
+        },
+        # FB Applinks meta tags
+        al:
+            {
+                web: {url: meta_url},
+                ios: {
+                    url: 'https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303',
+                    app_store_id: '1118663303',
+                    app_name: 'Quran - by Quran.com - قرآن'
+                },
+                android: {
+                    url: 'https://play.google.com/store/apps/details?id=com.quran.labs.androidquran',
+                    app_name: 'Quran for Android',
+                    package: 'com.quran.labs.androidquran'
+                }
+            },
+        twitter: {
+            creator: '@app_quran',
+            site: '@app_auran',
+            card: 'summary_large_image'
+        },
+        fb: {
+            app_id: '342185219529773',
+            pages: '603289706669016',
+            article_style: 'quran'
+        },
         title: meta_title,
         description: meta_description,
-        url: meta_url,
-        type: meta_page_type,
+        keywords: meta_keyword,
         image: meta_image,
-        'image:alt': 'Quran.com',
-        see_also: related_links
-      },
-      # FB Applinks meta tags
-      al:
-        {
-          web: { url: meta_url },
-          ios: {
-            url: 'https://itunes.apple.com/us/app/quran-by-quran.com-qran/id1118663303',
-            app_store_id: '1118663303',
-            app_name: 'Quran - by Quran.com - قرآن'
-          },
-          android: {
-            url: 'https://play.google.com/store/apps/details?id=com.quran.labs.androidquran',
-            app_name: 'Quran for Android',
-            package: 'com.quran.labs.androidquran'
-          }
-        },
-      twitter: {
-        creator: '@app_quran',
-        site: '@app_auran',
-        card: 'summary_large_image'
-      },
-      fb: {
-        app_id: '342185219529773',
-        pages: '603289706669016',
-        article_style: 'quran'
-      },
-      title: meta_title,
-      description: meta_description,
-      keywords: meta_keyword,
-      image: meta_image,
-      canonical: canonical_url,
-      'apple-itunes-app': 'app-id=1118663303'
+        canonical: canonical_url,
+        'apple-itunes-app': 'app-id=1118663303'
     }
   end
 
@@ -117,49 +117,53 @@ class BasePresenter
     context.view_context.truncate(TAG_SANITIZER.sanitize(text.to_s, tags: [], attributes: []), length: 160, separator: '.')
   end
 
-  def valid_translations
-    if request.format.text? || params[:skip_sessions] == 'true'
-      params[:translations].split(',')
-    else
-      strong_memoize :valid_translations do
-        saved = saved_translations
+  def valid_translations(store_result: true)
+    strong_memoize :valid_translations do
+      saved = saved_translations
 
-        if saved == 'no' || saved.blank?
-          context.session[:translations] = 'no'
-          []
-        else
-          saved = saved.split(',') if saved.is_a?(String)
+      if saved == 'no' || saved.blank?
+        context.session[:translations] = 'no'
+        []
+      else
+        saved = saved.split(',') if saved.is_a?(String)
 
-          approved_translations = ResourceContent
-                                  .approved
-                                  .translations
-                                  .one_verse
+        approved_translations = ResourceContent
+                                    .approved
+                                    .translations
+                                    .one_verse
 
-          with_ids = approved_translations.where(id: saved)
-          translations = approved_translations
-                         .where(slug: saved).or(with_ids).pluck(:id)
+        with_ids = approved_translations.where(id: saved)
+        translations = approved_translations
+                           .where(slug: saved).or(with_ids).pluck(:id)
 
+        if store_result
           context.session[:translations] = translations
         end
+
+        translations
       end
     end
   end
 
-  def saved_translations
-    params[:translations].presence ||
-      session[:translations].presence ||
-      params[:translations].presence || DEFAULT_TRANSLATION
+  def saved_translations(load_stored: true)
+    from_params = params[:translations].presence
+
+    if load_stored
+      from_params || session[:translations].presence || DEFAULT_TRANSLATION
+    else
+      from_params
+    end
   end
 
   def eager_load_translated_name(records)
     defaults = records.where(
-      translated_names: { language_id: Language.default.id }
+        translated_names: {language_id: Language.default.id}
     )
 
     records
-      .where(
-        translated_names: { language_id: language }
-      ).or(defaults).order('translated_names.language_priority DESC')
+        .where(
+            translated_names: {language_id: language}
+        ).or(defaults).order('translated_names.language_priority DESC')
   end
 
   def current_locale
