@@ -64,6 +64,8 @@ export default class extends Controller {
   open() {
     document.addEventListener('click', this.onClicked)
     this.menuTrigger.classList.add(...OPEN_CLASSES);
+    const input = this.element.querySelector('input');
+    if(input) input.focus();
 
     // do not immediately open the dropdown
     // body click event we just registered will close the it

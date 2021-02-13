@@ -1,5 +1,5 @@
 import { Controller } from "stimulus";
-import { debounce } from "lodash.debounce";
+import debounce from "lodash/debounce";
 import DeviceDetector from "../utility/deviceDetector";
 
 const FILTER_DELAY = 150;

@@ -170,3 +170,4 @@ class BasePresenter
     context.fetch_locale
   end
 end
+
