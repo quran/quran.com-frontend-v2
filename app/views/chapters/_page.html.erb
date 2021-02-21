@@ -8,13 +8,15 @@
     <div class="lines text-center px-3">
       <% lines.each do |k, line| %>
         <div class="line <%= @presenter.font_method %>">
-          <div class="line-verses  <%= 'single-ayah' if line.keys.size == 1 %>">
+          <div class="line-verses  <%= 'line--single-verse' if line.keys.size == 1 %>">
             <% line.each do |verse_number, words| %>
-              <div class="arabic verse"
+              <div class="verse"
                    data-verse-number="<%= verse_number %>"
                    data-controller="verse"
                    data-key="<%= verse_number %>">
-                <%= render partial: 'word', collection: words %>
+                <div class="arabic" data-verse="<%= verse_number %>">
+                  <%= render partial: 'word', collection: words %>
+                </div>
               </div>
             <% end %>
           </div>

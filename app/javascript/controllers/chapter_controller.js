@@ -145,6 +145,10 @@ export default class extends Controller {
     return this.translationTab.classList.contains("tabs__item--selected");
   }
 
+  isInfoMode(){
+    return this.infoTab.classList.contains("tabs__item--selected");
+  }
+
   updateURLState(url, state) {
     window.history.pushState(state, "", url);
   }

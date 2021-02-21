@@ -43,7 +43,7 @@ export default class extends Controller {
       e.preventDefault();
       e.stopImmediatePropagation();
 
-      this.play();
+      //this.play();
     });
 
     this.el = el;

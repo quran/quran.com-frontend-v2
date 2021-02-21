@@ -54,7 +54,7 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     const el = $(this.element);
-    const chapter = document.getElementById('chapter');
+    const chapter = document.getElementById('chapter').chapterEl;
 
     if(chapter.isTranslationsMode())
       this.bindAction(el);

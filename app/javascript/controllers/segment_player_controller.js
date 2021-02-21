@@ -1,27 +1,16 @@
 import {Controller} from "stimulus";
 
 export default class extends Controller {
-  
   connect() {
     this.config = {times: 2, seconds: 5};
-    this.element[
-      (str => {
-        return str
-          .split('--')
-          .slice(-1)[0]
-          .split(/[-_]/)
-          .map(w => w.replace(/./, m => m.toUpperCase()))
-          .join('')
-          .replace(/^\w/, c => c.toLowerCase());
-      })(this.identifier)
-    ] = this;
-    
+    this.element.segmentPlayer = this;
+
     this.playerConfig = {};
     this.currentVerse = null;
     this.lastVerse = null;
-    this.initListners();
+    this.bindListener();
   }
-  
+
   handlePlayButton(event){
     let target = event.target;
     let player = this.getPlayer();
@@ -36,7 +25,7 @@ export default class extends Controller {
       target.nextElementSibling.innerText = "Playing";
     }
   }
-  
+
   play(){
     document.querySelector('body').classList.add("small-player");
     document.querySelector('#play-selected-wrapper').classList.remove("active");
@@ -64,13 +53,13 @@ export default class extends Controller {
       }, {}, segments);
     }
   }
-  
+
   getPlayer(){
     let player,playerDom = document.getElementById("player");
     if (playerDom) player = playerDom.player;
     return player;
   }
-  
+
   closePlayer(){
     document.querySelector('body').classList.remove("small-player");
     let player = this.getPlayer();
@@ -79,23 +68,21 @@ export default class extends Controller {
       return player.defaultConfig(this.currentVerse, this.lastVerse);
     }
   }
-  
-  initListners(){
-    $(document).on('el:selected', function(e, items) {
+
+  bindListener(){
+    $(document).on('segment:selected', function(e, items) {
       $('.play-segment').addClass('active');
       $('.play-selected-wrapper').removeClass('active');
     });
-    //document.addEventListener("el:selected", (e,items) => {
-    //  document.querySelector('#segment-player').classList.add("active");
-    //  document.querySelector('#play-selected-wrapper').classList.add("active");
-    //});
-    $(document).on('el:deselected', function() {
+
+    $(document).on('segment:removed', function() {
       $('.play-segment, .play-selected-wrapper').removeClass('active');
     });
+
     $(document).on('el:selecting', function() {
       $('.play-segment, .play-selected-wrapper').removeClass('active');
     });
-    
+
     document.querySelector('#play-selected--playbutton').addEventListener("click", e => this.play(e));
     document.querySelector('#play-bar-close').addEventListener("click", e => this.closePlayer(e));
     document.querySelector('#close-play-selected').addEventListener("click", () => this.closePlaySegment());
@@ -105,17 +92,17 @@ export default class extends Controller {
     });
     document.querySelector("#playing-part").addEventListener("click", event => this.handlePlayButton(event));
   }
-  
+
   showPlaySegment(){
     document.querySelector('#play-selected-wrapper').classList.add("active");
     document.querySelector('#segment-player').classList.add("active");
   }
-  
+
   closePlaySegment(){
     document.querySelector('#play-selected-wrapper').classList.remove("active");
     document.querySelector('#segment-player').classList.remove("active");
   }
-  
+
   handleCounterButtons(e){
     const data = e.target.dataset;
     const increment = +data.increment;
@@ -132,7 +119,7 @@ export default class extends Controller {
       }
     }
   }
-  
+
   resetPlayButton(){
     document.querySelector("#playing-part").children[0].classList = "icon-play1";
     document.querySelector("#playing-part").children[1].innerText = "Play";

@@ -9,7 +9,7 @@
       -webkit-box-pack: justify;
       justify-content: space-between;
 
-      &.single-ayah{
+      &.line--single-verse{
         .verse {
           flex: 1 0 100%;
           display: flex;
@@ -25,7 +25,7 @@
   .line-verses{
     justify-content: center;
 
-    &.single-ayah{
+    &.line--single-verse{
       .verse {
         flex: 1 0 100%;
         justify-content: center;
