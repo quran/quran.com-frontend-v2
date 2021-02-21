@@ -54,7 +54,10 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     const el = $(this.element);
-    this.bindAction(el);
+    const chapter = document.getElementById('chapter');
+
+    if(chapter.isTranslationsMode())
+      this.bindAction(el);
 
     if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
       this.bindTajweedTooltip();

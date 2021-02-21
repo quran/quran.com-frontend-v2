@@ -20,7 +20,7 @@ export default class extends Controller {
 
   connect() {
     const chapter = this;
-    this.element[this.identifier] = chapter;
+    this.element.chapterEl = chapter;
 
     // disable turbolink scroll position.
     // we want to scroll to first ayah on page
