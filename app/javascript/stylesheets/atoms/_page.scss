@@ -1,0 +1,35 @@
+.lines{
+  .line{
+    display: block;
+    direction: rtl;
+
+    .line-verses{
+      line-break: anywhere;
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+
+      &.single-ayah{
+        .verse {
+          flex: 1 0 100%;
+          display: flex;
+          justify-content: space-between;
+          -webkit-box-pack: justify;
+        }
+      }
+    }
+  }
+}
+
+#page-1, #page-2{
+  .line-verses{
+    justify-content: center;
+
+    &.single-ayah{
+      .verse {
+        flex: 1 0 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

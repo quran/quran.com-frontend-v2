@@ -1,15 +1,19 @@
-<div class="row page my-2" id="page-num-<%= verses[0] %>">
-  <div class="col-md-12">
-    <h4 class="text-muted"><%= _t('page') %> <%= verses[0] %></h4>
+<% page = verses[0] %>
+<% first_verse = verses[1].first %>
 
+<div class="row page my-3" id="page-<%= page %>">
+  <div class="col-md-12">
     <% lines = group_ayah_by_lines(verses[1]) %>
 
-    <div class="lines">
+    <div class="lines text-center px-3">
       <% lines.each do |k, line| %>
-        <div class="line">
-          <div class="text-center">
+        <div class="line <%= @presenter.font_method %>">
+          <div class="line-verses  <%= 'single-ayah' if line.keys.size == 1 %>">
             <% line.each do |verse_number, words| %>
-              <div class="arabic d-inline verse <%= @presenter.font_method %>" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
+              <div class="arabic verse"
+                   data-verse-number="<%= verse_number %>"
+                   data-controller="verse"
+                   data-key="<%= verse_number %>">
                 <%= render partial: 'word', collection: words %>
               </div>
             <% end %>
@@ -17,11 +21,25 @@
         </div>
       <% end %>
     </div>
+  </div>
+</div>
 
-    <div class="row d-flex justify-content-end row-border">
-      <div class="col-md-11">
-        <hr class="hr-border">
-      </div>
+<div class="row my-2">
+  <div class="col-6">
+    <div class="text-left text text--grey text--medium">
+      <%= _t('page') %> <%= page %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="text-right text text--grey text--medium juz-art">
+      <%= image_tag "juz-art-right.svg", width: '30px', class: 'art' %>
+      <span class="info">
+        جزء  <%= first_verse.juz_number %>
+        حزب <%= first_verse.hizb_number %>
+      </span>
+      <%= image_tag "juz-art-left.svg", width: '30px', class: 'art' %>
     </div>
   </div>
 </div>
+<div class="horizontal-line"></div>

@@ -89,7 +89,7 @@
 }
 
 .play-selected--playbutton {
-  background-color: #00acc2;
+  background-color: $dark-green;
   border-radius: 4px;
   width: 127px;
   height: 32px;
@@ -99,7 +99,7 @@
   margin-top: 8px;
   &:hover {
     text-decoration: none;
-    background-color: darken($color: #00acc2, $amount: 5%);
+    background-color: darken($color: $dark-green, $amount: 5%);
   }
   p {
     margin: 0;

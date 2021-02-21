@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class ChapterPresenter < HomePresenter
+  DEFAULT_FONT_METHOD = 'code_v2'
+  DEFAULT_FONT_TYPE = 'v2'
+  QCF_FONTS = %w[v2 v1].freeze
+
   WORD_TEXT_TYPES = %w[
     v1
     v2
@@ -26,14 +30,14 @@ class ChapterPresenter < HomePresenter
 
   def cache_key
     begin
-      _start = verse_pagination_start
-      _end = verse_pagination_end(_start, per_page)
+      start = verse_pagination_start
+      last = verse_pagination_end(_start, per_page)
     rescue Exception => e
-      _start = 'buggy'
-      _end = 'buggy'
+      start = 'invalid'
+      last = 'invalid'
     end
 
-    "#{current_locale}-#{font_method}-#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{_start}-#{_end}"
+    "#{current_locale}-#{font_method}-#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{start}-#{last}"
   end
 
   def chapter
@@ -65,33 +69,39 @@ class ChapterPresenter < HomePresenter
     end
   end
 
-  def font
-    strong_memoize :font do
-      _font = params[:font].presence || session[:font] || 'v1'
-      _font = FONT_METHODS.key?(_font) ? _font : 'v1'
-      session[:font] = _font
+  def font_type(store: true)
+    strong_memoize :font_type do
+      font = params[:font].presence || session[:font]
+      font = FONT_METHODS.key?(font) ? font : DEFAULT_FONT_TYPE
+
+      if store
+        session[:font] = font
+      end
+
+      font
     end
   end
 
   def font_method
     strong_memoize :font_method do
-      _font = font
-      if reading_mode? && _font == 'tajweed'
+      font = font_type
+
+      if reading_mode? && font == 'tajweed'
         # we don't have wbw data for tajweed, fallback to uthmani script
-        _font = 'uthmani'
+        font = 'uthmani'
       end
 
-      FONT_METHODS[_font].presence || 'code_v1'
+      FONT_METHODS[font]
     end
   end
 
   def showing_qcf_font?
-    %w[code_v2 code_v1].include? font_method
+    QCF_FONTS.include? font_type
   end
 
   def render_verse_words?
     strong_memoize :render_words do
-      WORD_TEXT_TYPES.include?(font)
+      WORD_TEXT_TYPES.include?(font_type)
     end
   end
 
@@ -247,7 +257,7 @@ class ChapterPresenter < HomePresenter
       translations = valid_translations
 
       query_hash = {}
-      query_hash[:font] = params[:font]
+      query_hash[:font] = font_type
       query_hash[:translations] = translations.join(',').presence
       query_hash.compact!
 

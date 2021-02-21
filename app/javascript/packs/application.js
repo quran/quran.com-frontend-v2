@@ -19,7 +19,7 @@ global.GoogleAnalytic = GoogleAnalytic;
 
 require("service-worker-companion");
 
-require("./selection.js");
+//require("./selection.js");
 
 import "controllers";
 

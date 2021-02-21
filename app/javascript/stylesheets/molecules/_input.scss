@@ -45,7 +45,7 @@
     }
     &:focus {
       border: 1px solid $dark-green;
-      box-shadow: 0 0 4px 0 #00acc285;
+      box-shadow: 0 0 4px 0 $dark-green;
       @at-root .dark {
         input {
           background-color: $black;

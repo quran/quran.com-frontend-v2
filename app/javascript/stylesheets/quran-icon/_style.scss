@@ -36,7 +36,7 @@ $quran-font-path: '../../#{$quran-font-family}';
 .icon-copy {
   &:before {
     content: $icon-copy;
-    color: #00acc2;
+    color: $dark-green;
   }
 }
 .icon-menu {

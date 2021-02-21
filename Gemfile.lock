@@ -293,7 +293,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
-    web-console (4.0.4)
+    web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -353,7 +353,7 @@ DEPENDENCIES
   turbolinks (~> 5.2.1)
   typhoeus!
   tzinfo-data
-  web-console (>= 4.0.4)
+  web-console (>= 4.1.0)
   webpacker (>= 5.2.1)
 
 RUBY VERSION
