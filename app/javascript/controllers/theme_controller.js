@@ -11,6 +11,13 @@ import SettingController from "./setting_controller";
 import LocalStore from "../utility/local-store";
 
 export default class extends SettingController {
+  initialize() {
+    try{
+      console["log"]("%c ﷽\n\n %s", "background: #00acc2; color: #fff; padding: 2px; border-radius:2px", "Salam, found any bug? Please report it here https://github.com/quran/quran.com-frontend-v2/issues")
+    }catch (e){
+    }
+  }
+
   connect() {
     super.connect();
     this.themeButtons = $(this.element).find("a");
@@ -32,7 +39,8 @@ export default class extends SettingController {
     this.updatePage();
   }
 
-  disconnect() {}
+  disconnect() {
+  }
 
   updatePage() {
     const isNightMode = this.get("nightMode");
@@ -40,7 +48,7 @@ export default class extends SettingController {
       "(prefers-color-scheme: dark)"
     );
 
-    const setDark = function(e) {
+    const setDark = function (e) {
       let bodyClasses = document.body.classList;
       if (e && e.matches && null == isNightMode) {
         bodyClasses.add("dark");

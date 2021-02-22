@@ -80,12 +80,7 @@ export default class extends AudioController {
     this.firstVerse = repeatRange.first;
     this.lastVerse = repeatRange.last;
     this.currentVerse = repeatRange.first;
-    if (!!customSegments) {
-      this.config.segmentPlayer = true;
-      this.config.autoScroll = false;
-      this.config.customSegments = customSegments;
-      this.currentVerse = setting.repeatAyah;
-    }
+
     this.updateVerses().then(() => {
       this.createHowl(this.currentVerse, this.config.segmentPlayer);
       if (this.isPlaying()) this.play(this.currentVerse);
@@ -103,7 +98,8 @@ export default class extends AudioController {
       that.currentVerse = that.currentVerse || that.firstVerse;
 
       // preload howl for first ayah
-      that.createHowl(that.currentVerse, false);
+      if (that.currentVerse)
+        that.loading(that.currentVerse);
     });
   }
 
@@ -190,20 +186,12 @@ export default class extends AudioController {
     });
   }
 
-  seekToWord(wordPosition) {
-    let segments = this.audioData[this.track.currentVerse].segments || [];
-    let wordSegment = segments[wordPosition];
-
-    if (wordSegment) {
-    }
-  }
-
   play(verse) {
     // stop previous track
-    if (this.isPlaying()) {
+    if (this.currentHowl) {
       this.currentHowl.pause();
     }
-    verse = verse || this.currentVerse;
+    verse = Number(verse || this.currentVerse);
 
     // enable progress bar if disabled
     this.progressBar.disabled = false;
@@ -217,6 +205,7 @@ export default class extends AudioController {
   }
 
   playCurrent() {
+    this.loading();
     this.play(this.currentVerse);
   }
 
@@ -228,7 +217,8 @@ export default class extends AudioController {
       this.setPlayerCtrls('play');
     }
 
-    this.currentVerse = verse;
+    this.currentVerse = Number(verse);
+
     this.playCurrent();
   }
 
@@ -239,9 +229,7 @@ export default class extends AudioController {
   playNext() {
     this.config.repeat.currentIteration = 1;
     const next = this.getNextTrackVerse();
-    if(next){
-      this.loading();
-
+    if (next) {
       this.playVerse(next);
     }
   }
@@ -250,9 +238,7 @@ export default class extends AudioController {
     this.config.repeat.currentIteration = 1;
     const previous = this.getPreviousTrackVerse();
 
-    if(previous){
-      this.loading();
-
+    if (previous) {
       this.playVerse(previous);
     }
   }
@@ -428,10 +414,6 @@ export default class extends AudioController {
   }
 
   onVerseEnd() {
-    if (this.config.segmentPlayer == false) {
-      this.progressBar.value = 0;
-    }
-
     if (this.pauseSeconds > 0) {
       setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
     } else {
@@ -441,8 +423,10 @@ export default class extends AudioController {
 
   onVerseEnded() {
     if (this.repeatCurrent) {
-      this.repeatSingleVerse(0, 10000);
-    } else if (this.config.repeat.enabled) {
+      return this.playCurrent();
+    }
+
+    if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()
         : this.repeatRangeVerses();
@@ -451,23 +435,16 @@ export default class extends AudioController {
     }
   }
 
-  repeatSingleVerse(
-    currentIteration = this.config.repeat.currentIteration,
-    count = this.config.repeat.count
-  ) {
-    if (currentIteration <= count) {
+  repeatSingleVerse() {
+    const iteration = this.config.repeat.currentIteration;
+
+    if (iteration <= this.config.repeat.count) {
       //  play the same verse
       this.config.repeat.currentIteration++;
-      this.play();
+      this.playCurrent();
     } else {
       this.config.repeat.currentIteration = 1;
-      if (this.config.segmentPlayer) {
-        document
-          .getElementById("segment-player")
-          .segmentPlayer.resetPlayButton();
-      } else {
-        this.playNext();
-      }
+      this.playNext();
     }
   }
 
@@ -518,6 +495,8 @@ export default class extends AudioController {
 
   createHowl(verse) {
     return this.loadVerseAudio(verse).then(() => {
+      // make sure play has loaded audio data for this ayah
+
       let audio = this.audioData[verse];
       let audioPath = this.buildAudioUrl(audio.path);
 
@@ -557,7 +536,6 @@ export default class extends AudioController {
           },
           onend: () => {
             this.setPlayerCtrls("play");
-
             this.removePlayerListeners();
             this.onVerseEnd();
           }
@@ -594,10 +572,11 @@ export default class extends AudioController {
   }
 
   loadVerseAudio(verse) {
+    verse = parseInt(verse, 10);
+
     if (this.audioData[verse]) {
       return Promise.resolve(this.audioData[verse])
     } else {
-      verse = parseInt(verse)
       return this.fetchAudioData(verse, verse + 10)
     }
   }

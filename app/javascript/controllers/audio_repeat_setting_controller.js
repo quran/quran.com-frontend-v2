@@ -4,13 +4,16 @@ import {getChapterController} from "../utility/controller-helpers";
 export default class extends SettingController {
   connect() {
     super.connect();
-    $('.simple-select').select2({
+    const el=$(this.element);
+
+    el.find('.simple-select').select2({
       dropdownAutoWidth: true,
       width: '100%',
       dropdownCssClass: 'select-stylee',
       placeholder: 'selected option',
       //minimumResultsForSearch: -1 // hide search box
     });
+
     this.bindSwitch();
     this.bindRepeatSingle();
     this.bindRepeatRange();
@@ -102,7 +105,7 @@ export default class extends SettingController {
   }
 
   jumpTo(verse) {
-    getChapterController().loadVerses(verse);
+    return getChapterController().loadVerses(verse);
   }
 
   updateRepeatRange() {
@@ -117,21 +120,20 @@ export default class extends SettingController {
   }
 
   bindPause() {
-    const pause = $("#pause-ayah");
     const pauseSelect = $("#pause-bw-ayah-seconds");
-    let enablePause = pause.is(":checked");
 
     $("[name='pause-bw-ayah']").on("change", () => {
-      enablePause = pause.is(":checked");
-      this.updatePause(enablePause, pauseSelect.val());
+      this.updatePause(pauseSelect.val());
     });
 
     pauseSelect.on("change", () => {
-      this.updatePause(enablePause, pauseSelect.val());
+      this.updatePause(pauseSelect.val());
     });
   }
 
-  updatePause(enabled, seconds) {
+  updatePause(seconds) {
+    const enabled = $("#pause-ayah").is(":checked");
+
     if (enabled) this.set("pauseBwAyah", Number(seconds));
     else this.set("pauseBwAyah", 0);
 
