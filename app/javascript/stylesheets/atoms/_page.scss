@@ -21,8 +21,8 @@
   }
 }
 //ayah ul kursi
-#page-1, #page-2, #page-42{
-  .line-verses{
+.page--center{
+  .lines .line .line-verses{
     justify-content: center;
 
     &.line--single-verse{

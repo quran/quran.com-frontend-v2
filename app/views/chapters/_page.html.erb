@@ -1,7 +1,7 @@
 <% page = verses[0] %>
 <% first_verse = verses[1].first %>
 
-<div class="row page my-3" id="page-<%= page %>">
+<div class="row page my-3 <%= 'page--center' if [1, 2, 42].include?(page) %>" id="page-<%= page %>">
   <div class="col-md-12">
     <% lines = group_ayah_by_lines(verses[1]) %>
 
