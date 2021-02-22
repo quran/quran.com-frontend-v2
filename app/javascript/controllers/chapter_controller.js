@@ -78,6 +78,15 @@ export default class extends Controller {
     this.resumePageLoader();
 
     this.activeTab = pageVerses.find(".verses");
+
+    if (this.currentVerse) {
+      // player is playing this ayah. Scroll to it and start highlighting
+      this.jumpToVerse(this.currentVerse).then(() => {
+        const player = document.getElementById("player").player;
+        player.pauseCurrent();
+        player.playCurrent();
+      });
+    }
   }
 
   disconnect() {
@@ -93,18 +102,21 @@ export default class extends Controller {
       .find(".dropdown-item")
       .on("click", e => {
         e.preventDefault();
-        document.body.loader.show();
-
         const verse = e.currentTarget.dataset.verse;
 
-        this.loadVerses(verse).then(() => {
-          this.scrollToVerse(verse);
-          this.highlightVerse(verse);
-
-          document.body.loader.hide();
-          this.activeTab.trigger("items:added");
-        });
+        this.jumpToVerse(verse)
       });
+  }
+
+  jumpToVerse(verse) {
+    document.body.loader.show();
+
+    return this.loadVerses(verse).then(() => {
+      this.scrollToVerse(verse);
+      this.highlightVerse(verse);
+
+      document.body.loader.hide();
+    });
   }
 
   isReadingMode() {
@@ -149,7 +161,6 @@ export default class extends Controller {
       let topOffsetCheck = verseTopOffset < currentScroll + headerHeight;
 
       const scrollLength = verseTopOffset - (headerHeight + 50);
-      const scrollTime = Math.min(500, scrollLength * 10);
 
       if (bottomOffsetCheck || topOffsetCheck) {
         document.scrollingElement.scrollTo({
@@ -397,6 +408,7 @@ export default class extends Controller {
     let verseList = this.activeTab;
     // simply replace current page with newly loaded verses
     verseList.html(newVerses);
+    this.activeTab.trigger("items:added");
 
     this.resumePageLoader();
     return Promise.resolve(verseList);

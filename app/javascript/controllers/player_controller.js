@@ -201,7 +201,7 @@ export default class extends AudioController {
   play(verse) {
     // stop previous track
     if (this.isPlaying()) {
-      this.currentHowl.stop();
+      this.currentHowl.pause();
     }
     verse = verse || this.currentVerse;
 
@@ -349,7 +349,7 @@ export default class extends AudioController {
     let next = this.getNextTrackVerse();
 
     if (next) {
-      this.createHowl(next);
+      this.loadTrack(next);
 
       this.nextBtn.removeAttr("disabled");
     } else {
@@ -366,11 +366,9 @@ export default class extends AudioController {
       this.chapter.scrollToVerse(this.currentVerse);
     }
 
-    if (this.config.segmentPlayer == false) {
-      this.setProgressBarInterval();
-      this.setSegmentInterval();
-      this.preloadNextVerse();
-    }
+    this.setProgressBarInterval();
+    this.setSegmentInterval();
+    this.preloadNextVerse();
   }
 
   getNextTrackVerse() {
@@ -386,8 +384,8 @@ export default class extends AudioController {
   }
 
   setProgressBarInterval() {
-    clearInterval(this.progressInterval);
-    const totalDuration = this.track.duration || this.currentHowl.duration();
+    this.removeProgressInterval();
+    const totalDuration = this.currentHowl.duration();
 
     $("#player .current-time")
       .removeClass("hidden")
@@ -493,13 +491,11 @@ export default class extends AudioController {
   }
 
   setSegmentInterval() {
-    if (this.config.segmentPlayer == false) {
-      this.chapter.setSegmentInterval(
-        this.currentHowl.seek(),
-        this.preloadTrack[this.currentVerse].segments,
-        this.isPlaying()
-      );
-    }
+    this.chapter.setSegmentInterval(
+      this.currentHowl.seek(),
+      this.preloadTrack[this.currentVerse].segments,
+      this.isPlaying()
+    );
   }
 
   loadTrack(verse) {
