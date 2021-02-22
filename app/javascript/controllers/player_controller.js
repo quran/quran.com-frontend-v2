@@ -82,7 +82,7 @@ export default class extends AudioController {
     this.currentVerse = repeatRange.first;
 
     this.updateVerses().then(() => {
-      this.createHowl(this.currentVerse, this.config.segmentPlayer);
+      this.createHowl(this.currentVerse);
       if (this.isPlaying()) this.play(this.currentVerse);
     });
   }
@@ -98,8 +98,11 @@ export default class extends AudioController {
       that.currentVerse = that.currentVerse || that.firstVerse;
 
       // preload howl for first ayah
-      if (that.currentVerse)
-        that.loading(that.currentVerse);
+      if (that.currentVerse){
+        that.loadTrack(that.currentVerse).then(()=>{
+          that.setPlayerCtrls('play');
+        });
+      }
     });
   }
 

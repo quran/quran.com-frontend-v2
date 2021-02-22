@@ -54,7 +54,7 @@ export default class extends Controller {
     el.on('mousedown touchstart', wordClass, (e) => this.start(e))
     el.on('mousemove touchmove', (e) => this.mouseMoved(e))
     el.on('mouseup touchend', (e) => this.mouseUp(e))
-    el.on('click', '.close-selection', (e) => this.deselect())
+    el.on('click', '.close-selection', (e) => this.deselect(e))
 
     $(window).on('resize', function () {
       if (!this.selectableWords) return;
@@ -212,23 +212,26 @@ export default class extends Controller {
     let firstItem = selectedItems[0];
     let lastItem = selectedItems[selectedItems.length - 1];
 
+    const leftCircleX = firstItem.rect.x - pos.x + firstItem.rect.width;
+    const rightCircleX = lastItem.rect.x - pos.x;
+
     this.startCircle.css({
       top: firstItem.rect.y - pos.y,
-      left: firstItem.rect.x - pos.x + firstItem.rect.width,
+      left: leftCircleX,
       height: firstItem.rect.height
     });
 
-    this.closeSelection.css({
-      top: firstItem.rect.y - pos.y - 20,
-      left: (firstItem.rect.x + firstItem.rect.width)/2,
-      fontSize: '20px'
-    })
-
     this.endCircle.css({
       top: lastItem.rect.y - pos.y,
-      left: lastItem.rect.x - pos.x,
+      left: rightCircleX,
       height: lastItem.rect.height
     });
+
+    this.closeSelection.css({
+      top: firstItem.rect.y - pos.y - 30,
+      left: (leftCircleX + rightCircleX) / 2 - 20,
+      fontSize: '20px'
+    })
   }
 
   updateDropdownPositions() {
@@ -251,7 +254,12 @@ export default class extends Controller {
     root.style.setProperty('--el-selection-x', ((corners.left + corners.right) / 2) + "px");
   }
 
-  deselect() {
+  deselect(e) {
+    if (e) {
+      e.preventDefault()
+      e.stopImmediatePropagation();
+    }
+
     this.selectableWords.forEach((item) => {
       item.selected = false;
       item.el.removeClass('selected');
@@ -304,7 +312,10 @@ export default class extends Controller {
         let leftSelect = (item.el.index() >= this.startWord.index()) && ((item.rect.x + item.rect.width > mousePos.x && item.rect.y < mousePos.y) || (item.rect.y + item.rect.height < mousePos.y));
 
         item.selected = leftSelect || rightSelect;
-        item.el.toggleClass('selected');
+        if (item.selected)
+          item.el.addClass('selected');
+        else
+          item.el.removeClass('selected');
       });
 
       this.positionCircles();

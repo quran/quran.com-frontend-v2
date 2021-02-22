@@ -4,6 +4,8 @@
   width: 100vw;
   height: 50px;
   background-color: #f3f3f4;
+  z-index: 5;
+
   @include md {
     height: 100px;
   }

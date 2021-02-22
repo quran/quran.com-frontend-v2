@@ -17,6 +17,7 @@
   font-size: 30px;
   line-height: 2em;
   color: $black;
+  z-index: 1;
 
   @at-root .dark & {
     color: white;
