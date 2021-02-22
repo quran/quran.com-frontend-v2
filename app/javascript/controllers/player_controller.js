@@ -11,7 +11,7 @@ import Tooltip from "bootstrap/js/src/tooltip";
 
 export default class extends AudioController {
   connect() {
-    this.element[this.identifier] = this;
+    this.element.player = this;
     this.playWordQueue = [];
     this.resumeOnWordPlayEnd = false;
 

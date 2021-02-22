@@ -31,7 +31,7 @@ class ChapterPresenter < HomePresenter
   def cache_key
     begin
       start = verse_pagination_start
-      last = verse_pagination_end(_start, per_page)
+      last = verse_pagination_end(start, per_page)
     rescue Exception => e
       start = 'invalid'
       last = 'invalid'
