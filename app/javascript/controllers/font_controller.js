@@ -8,6 +8,7 @@
 // </div>
 
 import SettingController from "./setting_controller";
+import {getChapterController} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
@@ -30,9 +31,8 @@ export default class extends SettingController {
 
   changeFont(target) {
     this.set("font", target.value);
-    let controller = document.getElementById("chapter-tabs");
 
-    controller.chapter.changeFont(target.value).then(()=> {
+    getChapterController().changeFont(target.value).then(()=> {
       this.updateFontSize();
     });
   }

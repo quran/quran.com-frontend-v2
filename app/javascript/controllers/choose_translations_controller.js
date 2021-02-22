@@ -8,11 +8,12 @@
 // </div>
 
 import SettingController from "./setting_controller";
+import {getChapterController} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
     super.connect();
-    this.bindReset();
+    this.bindClearAll();
 
     const translations = this.get("translations");
 
@@ -32,21 +33,12 @@ export default class extends SettingController {
       });
   }
 
-  bindReset() {
-    $("#translation-clear-all").on("click", () => this.resetSelection());
+  bindClearAll() {
+    $("#translation-clear-all").on("click", () => this.clearAllTranslations());
   }
 
-  resetSelection() {
-    document.querySelectorAll(".translation-checkbox").forEach(trans => {
-      trans.checked = false;
-    });
-
-    this.set("translations", []);
-    let controller = document.getElementById("chapter-tabs");
-    controller.chapter.changeTranslations([]);
+  disconnect() {
   }
-
-  disconnect() {}
 
   updateTranslations() {
     let newTranslations = [];
@@ -57,20 +49,15 @@ export default class extends SettingController {
       });
 
     this.set("translations", newTranslations);
-
-    let controller = document.getElementById("chapter-tabs");
-    controller.chapter.changeTranslations(newTranslations);
+    getChapterController().changeTranslations(newTranslations)
   }
 
-  resetSelection() {
+  clearAllTranslations() {
     document.querySelectorAll(".translation-checkbox").forEach(trans => {
       trans.checked = false;
     });
-    document.querySelector("#open-translations .label--subtitle").textContent =
-      "Showing 0 translation";
-    let controller = document.getElementById("chapter-tabs");
 
     this.set("translations", []);
-    controller.chapter.changeTranslations([]);
+    getChapterController().changeTranslations([])
   }
 }

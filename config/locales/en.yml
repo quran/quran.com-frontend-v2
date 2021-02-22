@@ -27,7 +27,7 @@ en:
     sample_audio: Play Sample
     translations: Choose Translations
     translation_count:
-      one: Showing one translation
+      one: Showing <count>one</count> translation
       other: Showing <count>%{count}</count> translations
     remove_all: Remove all
     translation_english: English

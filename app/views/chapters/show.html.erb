@@ -21,12 +21,15 @@
     <%= render 'reader_modes/translations' %>
     <%= render 'reader_modes/page' %>
 
-    <div class="info-section tab-pane fade" id="info-section" data-tab-group="chapter-tabs">
-      <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
-        <div class="text-center text--medium  p-3">
-          <%= loading_spinner %>
-        </div>
-      <% end.html_safe %>
+    <div class="info-section tab-pane fade" id="info-section"
+         data-tab-group="chapter-tabs">
+      <div class="verses-wrapper">
+        <%= render_async chapter_info_path(@presenter.chapter), lazy_load: {root: '#pill-info'} do %>
+          <div class="text-center text--medium  p-3">
+            <%= loading_spinner %>
+          </div>
+        <% end.html_safe %>
+      </div>
     </div>
   </div>
 </div>

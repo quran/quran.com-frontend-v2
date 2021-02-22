@@ -13,7 +13,7 @@ export default class extends Controller {
     this.translationTab = document.querySelector(".translation-tab");
     this.readingTab = document.querySelector(".reading-tab");
     this.infoTab = document.querySelector(".surah-info-tab");
-
+    this.pageLoader = null
     this.bindAyahJump();
   }
 
@@ -41,64 +41,38 @@ export default class extends Controller {
     // intervals for each words of current ayah
     this.segmentTimers = [];
 
-    this.translationTab.addEventListener("tab.shown", e => {
-      const tab = e.currentTarget;
-      const url = tab.href;
-      url && this.updateURLState(url, {reading: false});
-      chapter.activeTab = $(tab.dataset.target).find(".verses-wrapper .verses");
-      chapter.activeTab.trigger("visibility:visible");
-    });
-
-    this.readingTab.addEventListener("tab.shown", e => {
-      const tab = e.currentTarget;
-      const url = tab.href;
-      url && this.updateURLState(url, {reading: true});
-      chapter.activeTab = $(tab.dataset.target).find(".verses-wrapper");
-      chapter.activeTab.find(".verses").trigger("visibility:visible");
-    });
-
-    this.infoTab.addEventListener("tab.shown", e => {
-      const url = e.target.href;
-      url && this.updateURLState(url, {});
-    });
-
-    this.translationTab.addEventListener("tab.hidden", e => {
-      const tab = e.currentTarget;
-      $(tab.dataset.target)
-        .find(".verses-wrapper")
-        .find(".verses")
-        .trigger("visibility:hidden");
-    });
-
-    this.readingTab.addEventListener("tab.hidden", e => {
-      const tab = e.currentTarget;
-      $(tab.dataset.target)
-        .find(".verses-wrapper")
-        .find(".verses")
-        .trigger("visibility:hidden");
-    });
+    this.translationTab.addEventListener("tab.shown", e => this.tabChanged(e, 'translation'));
+    this.readingTab.addEventListener("tab.shown", e => this.tabChanged(e, 'reading'));
+    this.infoTab.addEventListener("tab.shown", e => this.tabChanged(e, 'info'));
 
     this.activeTab.on("items:added", () => {
       // this event is triggered from infinite scrolling controller
       // new ayah are added to page. Refresh the player's first and last ayah
-      const player = document.getElementById("player").player;
-      const verses = chapter.activeTab.find(".verse");
-      player.init(
-        chapter,
-        verses.first().data("verseNumber"),
-        verses.last().data("verseNumber")
-      );
+      this.initPlayer();
     });
 
     setTimeout(() => {
-      const player = document.getElementById("player").player;
-      const verses = chapter.activeTab.find(".verse");
-      player.init(
-        chapter,
-        verses.first().data("verseNumber"),
-        verses.last().data("verseNumber")
-      );
+      this.initPlayer();
     }, 100);
+  }
+
+  tabChanged(e, mode) {
+    this.pausePageLoader();
+
+    const tab = e.currentTarget;
+    const url = tab.href;
+    let query = {};
+
+    if ('info' != mode) {
+      query.reading = 'reading' == mode
+    }
+    url && this.updateURLState(url, query);
+
+    const pageVerses = $(tab.dataset.target).find(".verses-wrapper");
+    this.pageLoader = pageVerses.get(0).infinitePage;
+    this.resumePageLoader();
+
+    this.activeTab = pageVerses.find(".verses");
   }
 
   disconnect() {
@@ -117,8 +91,7 @@ export default class extends Controller {
         document.body.loader.show();
 
         const ayah = e.currentTarget.dataset.verse;
-        // TODO: we need to refactor this now, repeating this a lot
-        // create a utility to load verses, update page, tell player to load audio etc
+
         this.loadVerses(ayah).then(() => {
           this.scrollToVerse(ayah);
           document.body.loader.hide();
@@ -148,11 +121,14 @@ export default class extends Controller {
     let activeVerse = $("#verse-list").find(`[data-filter-tags=${verse}]`);
     activeVerse.addClass("active");
     $("#ayah-dropdown #current").html(verse);
+
     let verseElement = this.activeTab.find(
       `.verse[data-verse-number=${verse}]`
     );
 
     if (verseElement.length > 0) {
+      this.highlightVerse(verse);
+
       let verseTopOffset = verseElement.offset().top;
       let verseHeight = verseElement.outerHeight();
       let currentScroll = $(window).scrollTop();
@@ -285,6 +261,7 @@ export default class extends Controller {
   }
 
   updatePagination(dom) {
+    /*
     const verses = this.activeTab.find(".verse");
     const lastVerse = verses.last().data().verseNumber;
 
@@ -299,9 +276,12 @@ export default class extends Controller {
       nextPage.attr("href", updatedRef);
     }
     // resume the infinite pagination
-    this.activeTab[0].infinitePage.resume();
+    const page = this.getInfinitePage()
+    if (page) {
+      page.resume();
+    }
 
-    return Promise.resolve([]);
+    return Promise.resolve([]);*/
   }
 
   loadVerses(verse) {
@@ -315,7 +295,8 @@ export default class extends Controller {
     }
 
     // pause infinite page loader
-    this.activeTab[0].infinitePage.pause();
+    this.pausePageLoader();
+
     const chapter = this.chapterId();
     const reading = this.isReadingMode();
     let from, to;
@@ -343,6 +324,7 @@ export default class extends Controller {
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
 
+    debugger
     const readingPage = document.querySelector(`${readingTarget} .verses`);
     const translationPage = document.querySelector(
       `${translationTarget} .verses`
@@ -384,6 +366,8 @@ export default class extends Controller {
   }
 
   changeTranslations(newTranslationIds) {
+    document.querySelector("#open-translations count").textContent = newTranslationIds.length
+
     // changing translation should always update the translation tab
     let translationsToLoad;
 
@@ -398,7 +382,7 @@ export default class extends Controller {
       translations: translationsToLoad
     })}`;
 
-    let verseList = $(this.translationTab.dataset.target).find("#verses");
+    const verseList = $(this.translationTab.dataset.target).find(".verses");
 
     fetch(`${path}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
       .then(response => response.text())
@@ -411,9 +395,28 @@ export default class extends Controller {
   insertVerses(newVerses) {
     let verseList = this.activeTab;
     // simply replace current page with newly loaded verses
-    verseList.find(".verses").html(newVerses);
-    this.activeTab[0].infinitePage.resume();
+    verseList.html(newVerses);
 
+    this.resumePageLoader();
     return Promise.resolve(verseList);
+  }
+
+  initPlayer() {
+    const player = document.getElementById("player").player;
+    const verses = this.activeTab.find(".verse");
+
+    player.init(
+      this,
+      verses.first().data("verseNumber"),
+      verses.last().data("verseNumber")
+    );
+  }
+
+  pausePageLoader() {
+    if (this.pageLoader) this.pageLoader.pause()
+  }
+
+  resumePageLoader() {
+    if (this.pageLoader) this.pageLoader.resume()
   }
 }

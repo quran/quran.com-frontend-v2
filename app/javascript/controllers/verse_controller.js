@@ -54,10 +54,7 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     const el = $(this.element);
-    const chapter = document.getElementById('chapter').chapterEl;
-
-    if(chapter.isTranslationsMode())
-      this.bindAction(el);
+    this.bindAction(el);
 
     if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
       this.bindTajweedTooltip();
@@ -109,6 +106,10 @@ export default class extends Controller {
   }
 
   bindAction(el) {
+    if(el.data('reading')){
+      return
+    }
+
     this.actionOpened = false;
     this.actionTrigger = el.find("#open-actions");
     this.actionTrigger.on("click", e => this.toggleActions(e));

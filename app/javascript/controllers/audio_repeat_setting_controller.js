@@ -1,4 +1,5 @@
 import SettingController from "./setting_controller";
+import {getChapterController} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
@@ -101,8 +102,7 @@ export default class extends SettingController {
   }
 
   jumpTo(verse) {
-    let controller = document.getElementById("chapter-tabs");
-    return controller.chapter.loadVerses(verse);
+    getChapterController().loadVerses(verse);
   }
 
   updateRepeatRange() {

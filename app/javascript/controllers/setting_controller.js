@@ -10,6 +10,7 @@
 import {Controller} from "stimulus";
 import LocalStore from "../utility/local-store";
 import DeviceDetector from "../utility/deviceDetector";
+import {getChapterController} from "../utility/controller-helpers";
 
 global.settings = {};
 
@@ -269,8 +270,7 @@ export default class extends Controller {
 
   resetPage() {
     this.styles.innerText = "";
-    let controller = document.getElementById("chapter-tabs");
-    controller.chapter.changeTranslations(this.defaultSetting().translations);
+    getChapterController().changeTranslations(this.defaultSetting().translations)
   }
 
   wordFontSize() {
