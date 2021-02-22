@@ -104,7 +104,13 @@ export default class extends Controller {
         e.preventDefault();
         const verse = e.currentTarget.dataset.verse;
 
-        this.jumpToVerse(verse)
+        this.jumpToVerse(verse).then(() => {
+          if (this.currentVerse) {
+            // player was playing, switch to this ayah
+            const player = document.getElementById("player").player;
+            player.playVerse(verse);
+          }
+        })
       });
   }
 

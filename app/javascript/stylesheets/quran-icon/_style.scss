@@ -28,6 +28,12 @@ $quran-font-path: '../../#{$quran-font-family}';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-loading {
+  &:before {
+    content: $icon-loading;
+  }
+}
+
 .icon-times-circle {
   &:before {
     content: $icon-times-circle;
