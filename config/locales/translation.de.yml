@@ -32,7 +32,7 @@ de:
     '
   change_local: Wählen Sie die Sprache aus, in der Sie die Website anzeigen lassen
     möchten
-  local_native_name: Englisch
+  local_native_name: Deutsch
   language: Sprache
   page: Seite
   reader_mode:
@@ -167,8 +167,12 @@ de:
     scroll: 'Scrollt automatisch zum aktuell gespielten Vers
 
       '
-    repeatCurrent:
-    loading:
+    repeatCurrent: 'Derzeitige Sure weiterhin abspielen lassen
+
+      '
+    loading: 'Audio laden
+
+      '
   loading: Laden...
   nav:
     title: Koran
@@ -216,7 +220,9 @@ de:
     chapter: Sure anzeigen
     juz: Juz anzeigen
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: Übersetzungen suchen
+    reciters: 'Rezitatoren suchen
+
+      '
+    surah: Sure suchen
+    ayah: Sure suchen

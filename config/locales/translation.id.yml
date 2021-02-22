@@ -17,7 +17,7 @@ id:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
-  local: indonesian
+  local: Inggris
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
   local_native_name: Indonesia

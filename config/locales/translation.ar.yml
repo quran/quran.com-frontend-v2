@@ -58,8 +58,8 @@ ar:
       qcf_v2: مجمع الملك فهد للقرآن الإصدار ٢
       indopak: نص الأوردو
     translation_count:
-      one: عرض ترجمة واحدة
-      other: عرض ترجمات %{count}
+      one: عرض ترجمة <count>واحدة</count>
+      other: عرض<count> %{count}</count> الترجمات
   verses:
     media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية
@@ -124,10 +124,10 @@ ar:
     pause_bw_ayah: حدد مدة التوقف قبل تشغيل الآية التالية
     pause_seconds: ثواني
     pause: أوقف
-    play_continuously: استمر في اللعب دون توقف
+    play_continuously: استمر في التشغيل دون توقف
     show_word_tooltip: إظهار ترجمة الكلمات في تلميح الأداة أثناء تشغيل الآية
-    repeatCurrent:
-    loading:
+    repeatCurrent: كرّر هذه الآية
+    loading: جار تجهيز الصوت
   loading: جار التحميل...
   nav:
     title: القرآن
@@ -166,16 +166,14 @@ ar:
   page: صفحة
   reader_mode:
     reading: قراءة
-    translation: 'الترجمة
-
-      '
+    translation: الترجمة
     info: معلومات عن السورة
   share_ayah: شارك الآية
   tabs:
-    chapter:
-    juz:
+    chapter: عرض فهرس السور
+    juz: عرض فهرس الأجزاء
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: بحث عن ترجمة
+    reciters: بحث عن قارئ
+    surah: بحث عن سورة
+    ayah: بحث عن آية

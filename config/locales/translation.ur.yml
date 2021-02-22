@@ -60,8 +60,8 @@ ur:
       qcf_v2: QCF v2 فونٹ
       indopak: انڈوپاک مصحف
     translation_count:
-      one: آپ ایک ترجمہ پڑھ رہے ہیں
-      other: آپ %{count} ترجمے پڑھ رہے ہیں
+      one: " آپ <count>%{count}</count> ترجمہ پڑھ رہے ہیں"
+      other: آپ <count>%{count}</count> ترجمے پڑھ رہے ہیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں

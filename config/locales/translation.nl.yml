@@ -17,7 +17,7 @@ nl:
       '
     connection_refused:
     format: "%{attribute} %{message}"
-  local: dutch
+  local: Engels
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
   local_native_name: Dutch

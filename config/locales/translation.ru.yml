@@ -28,10 +28,10 @@ ru:
       Не удалось подключиться к промежуточному програмному обеспечению веб-консоли.
       Пожалуйста убедитесь что сервер разработки рельсов работает.
     format: "%{attribute} %{message}"
-  local: английский
+  local: Английский
   site_local: Язык сайта
   change_local: Выбрать язык
-  local_native_name: Английский
+  local_native_name: русский
   language: Язык
   page: страница
   reader_mode:

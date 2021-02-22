@@ -23,10 +23,10 @@ ha-Latn-NG:
     connection_refused: Kash! Ba a yi nasarar hadi zuwa tsaka-tsakin kayan yanar gizo
       ba. Da fatan za a tabbatar da sabar ci gaban ci gaban rails tana gudana
     format:
-  local: turanci
+  local: English
   site_local: Yaren Yanar gizo
   change_local: Zabi yaren da kake son shafin ya nuna a ciki
-  local_native_name: Turanci
+  local_native_name: Hausa
   language: Harshe
   page: Shafi
   reader_mode:

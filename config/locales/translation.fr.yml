@@ -28,7 +28,7 @@ fr:
       Oops! Impossible de se connecter à la console Web middleware.
       faire S'il vous plaît assurer un serveur de développement de rails est en cours d'exécution.
     format: "%{attribute} %{message}"
-  local: french
+  local: Anglais
   site_local: 'Langue du Site
 
     '

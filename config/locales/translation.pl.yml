@@ -23,10 +23,10 @@ pl:
       Ups! Nie udało się połączyć z warstwą pośrednią Web Console.
       Upewnij się, że serwer rails działa.
     format: "%{attribute} %{message}"
-  local: angielski
+  local: Angielski
   site_local: Język strony
   change_local: Wybierz język strony
-  local_native_name: Angielski
+  local_native_name: Polskie
   language: Język
   page: Strona
   reader_mode:
@@ -136,7 +136,7 @@ pl:
     show_word_tooltip: Pokaż tłumaczenie podczas odtwarzania
     scroll: Automatycznie przewijaj do aktualnie odtwarzanego wersetu
     repeatCurrent: Kontynuuj odtwarzanie wersetu
-    loading:
+    loading: Ładowanie dźwięku
   loading: Ładowanie...
   nav:
     title: Koran

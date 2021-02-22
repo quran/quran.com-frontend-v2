@@ -24,7 +24,7 @@ sq:
     connection_refused: 'Ups! Dështim në lidhjen me shtresën e Web Console. Ju lutem,
       sigurohuni që një server zhvillimi rails është aktiv. '
     format: "%{attribute} %{message}"
-  local: Shqip
+  local: Anglisht
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet në faqe
   local_native_name: Shqip
