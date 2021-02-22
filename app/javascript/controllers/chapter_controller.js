@@ -52,6 +52,10 @@ export default class extends Controller {
     });
 
     setTimeout(() => {
+      if (!this.isInfoMode()) {
+        this.pageLoader = this.activeTab.closest('.verses-wrapper')[0].infinitePage
+      }
+
       this.initPlayer();
     }, 100);
   }
@@ -69,6 +73,7 @@ export default class extends Controller {
     url && this.updateURLState(url, query);
 
     const pageVerses = $(tab.dataset.target).find(".verses-wrapper");
+
     this.pageLoader = pageVerses.get(0).infinitePage;
     this.resumePageLoader();
 
@@ -90,10 +95,12 @@ export default class extends Controller {
         e.preventDefault();
         document.body.loader.show();
 
-        const ayah = e.currentTarget.dataset.verse;
+        const verse = e.currentTarget.dataset.verse;
 
-        this.loadVerses(ayah).then(() => {
-          this.scrollToVerse(ayah);
+        this.loadVerses(verse).then(() => {
+          this.scrollToVerse(verse);
+          this.highlightVerse(verse);
+
           document.body.loader.hide();
           this.activeTab.trigger("items:added");
         });
@@ -127,8 +134,6 @@ export default class extends Controller {
     );
 
     if (verseElement.length > 0) {
-      this.highlightVerse(verse);
-
       let verseTopOffset = verseElement.offset().top;
       let verseHeight = verseElement.outerHeight();
       let currentScroll = $(window).scrollTop();
@@ -290,7 +295,6 @@ export default class extends Controller {
 
     // If this ayah is already loaded, scroll to it
     if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
-      this.scrollToVerse(verse);
       return Promise.resolve([]);
     }
 
@@ -312,7 +316,6 @@ export default class extends Controller {
     )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses))
-      .then(() => this.scrollToVerse(verse));
 
     return Promise.resolve(request);
   }
@@ -324,7 +327,6 @@ export default class extends Controller {
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
 
-    debugger
     const readingPage = document.querySelector(`${readingTarget} .verses`);
     const translationPage = document.querySelector(
       `${translationTarget} .verses`
@@ -368,7 +370,6 @@ export default class extends Controller {
   changeTranslations(newTranslationIds) {
     document.querySelector("#open-translations count").textContent = newTranslationIds.length
 
-    // changing translation should always update the translation tab
     let translationsToLoad;
 
     if (0 == newTranslationIds.length) {
@@ -408,7 +409,8 @@ export default class extends Controller {
     player.init(
       this,
       verses.first().data("verseNumber"),
-      verses.last().data("verseNumber")
+      verses.last().data("verseNumber"),
+      this.currentVerse
     );
   }
 

@@ -10,7 +10,7 @@
       justify-content: space-between;
 
       &.line--single-verse{
-        .verse {
+        .verse, .arabic {
           flex: 1 0 100%;
           display: flex;
           justify-content: space-between;
@@ -26,7 +26,7 @@
     justify-content: center;
 
     &.line--single-verse{
-      .verse {
+      .verse, .arabic {
         flex: 1 0 100%;
         justify-content: center;
       }

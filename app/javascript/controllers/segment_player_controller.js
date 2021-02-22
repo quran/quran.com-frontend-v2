@@ -15,7 +15,7 @@ export default class extends Controller {
     let target = event.target;
     let player = this.getPlayer();
     if (player) {
-      (target.classList == "icon-pause") ? player.handlePauseBtnClick() : player.handlePlayBtnClick();
+      (target.classList == "icon-pause") ? player.pauseCurrent() : player.playCurrent();
     }
     if(target.classList == 'icon-pause'){
       target.classList = "icon-play1";
@@ -45,7 +45,7 @@ export default class extends Controller {
       let segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.position)-(nonArabicWordCount));
       segments = [...Array(segments.length).keys() ].map( i => i+segments[0]); // making segments array a sequential array
       player.updatePause(this.config.seconds);
-      player.updateRepeatConfig({
+      player.updateRepeat({
         repeatEnabled: true,
         repeatCount: this.config.times,
         repeatType: 'single',

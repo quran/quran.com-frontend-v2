@@ -9,16 +9,18 @@
 import AudioController from "./audio_controller";
 import Tooltip from "bootstrap/js/src/tooltip";
 
+const USE_HTML5 = false;
+
 export default class extends AudioController {
   connect() {
+    super.connect();
     this.element.player = this;
-    this.playWordQueue = [];
-    this.resumeOnWordPlayEnd = false;
+    this.el = $(this.element);
 
-    this.segmentTimers = [];
-    this.repeatCurrentAyah = false;
+    this.progressInterval = null;
+    this.repeatCurrent = false;
+
     this.audioData = {};
-    this.playerProgressInterval = null;
     this.pauseSeconds = 0;
 
     this.chapter = null;
@@ -29,27 +31,26 @@ export default class extends AudioController {
     this.playBtn = null;
     this.loadingBtn = null;
 
-    this.defaultConfig();
+    this.loadSettings();
     this.buildPlayer();
     this.bindPlayerEvents();
   }
 
-  defaultConfig(currentVerse = null, lastVerse = null) {
+  loadSettings(currentVerse = null, lastVerse = null) {
     this.config = {
-      autoScroll: this.settings.get("autoScroll"),
-      recitation: this.settings.get("recitation"),
+      autoScroll: this.getSetting("autoScroll"),
+      recitation: this.getSetting("recitation"),
       showTooltip: false,
-      segmentPlayer: false,
-      customSegments: null,
       repeat: {
         verse: null,
-        type: this.settings.get("repeatType") || "single", // or range
-        count: this.settings.get("repeatCount"), // number of time to play each ayah
-        from: this.settings.get("repeatFrom"),
-        to: this.settings.get("repeatTo"),
+        type: this.getSetting("repeatType") || "single", // or range
+        count: this.getSetting("repeatCount"), // number of time to play each ayah
+        from: this.getSetting("repeatFrom"),
+        to: this.getSetting("repeatTo"),
         iteration: 1
       }
     };
+
     this.pauseSeconds = 0;
     this.currentVerse = currentVerse;
     this.lastVerse = lastVerse;
@@ -63,7 +64,7 @@ export default class extends AudioController {
     this.config.repeat.count = count;
   }
 
-  updateRepeatConfig(setting, repeatRange, customSegments = false) {
+  updateRepeat(setting, repeatRange) {
     this.config.repeat = {
       enabled: setting.repeatEnabled,
       count: setting.repeatCount,
@@ -109,13 +110,12 @@ export default class extends AudioController {
   disconnect() {
     if (this.isPlaying()) this.currentHowl.stop();
 
-    this.preloadTrack = {};
-    this.playWordQueue = [];
     //unload all tracks
-    Howler.unload();
-    this.progressBar.removeEventListener("change", () => {
-    });
+    this.preloadTrack = {};
+    this.audioData = {};
 
+    Howler.unload();
+    this.progressBar.removeEventListener("change", this.onProgressChanged);
     this.progressBar.disabled = true;
   }
 
@@ -135,7 +135,7 @@ export default class extends AudioController {
   }
 
   buildPlayer() {
-    this.progressBar = document.getElementById("player-range");
+    this.progressBar = this.el.find("#player-range").get(0);
     this.progressBar.disabled = true;
     this.bindAutoScroll();
     this.bindRepeatCurrentAyah();
@@ -143,7 +143,8 @@ export default class extends AudioController {
 
   bindAutoScroll() {
     // auto scroll component
-    const scrollButton = this.element.querySelector("#auto-scroll-btn");
+    const scrollButton = this.element.querySelector("#btn-scroll");
+    let classList = scrollButton.classList;
 
     new Tooltip(scrollButton, {
       placement: "top",
@@ -153,9 +154,8 @@ export default class extends AudioController {
       title: scrollButton.dataset.title
     });
 
-    let scrollBtnClasses = scrollButton.classList;
     if (this.config.autoScroll) {
-      scrollBtnClasses.add("selected");
+      classList.add("selected");
     }
 
     scrollButton.addEventListener("click", event => {
@@ -163,11 +163,10 @@ export default class extends AudioController {
       this.config.autoScroll = !this.config.autoScroll;
 
       if (this.config.autoScroll) {
-        scrollBtnClasses.add("selected");
-        //scrollBtnClasses.remove("text-muted");
+        classList.add("selected");
         this.chapter && this.chapter.scrollToVerse(this.currentVerse);
       } else {
-        scrollBtnClasses.remove("selected");
+        classList.remove("selected");
       }
 
       this.settings.saveSettings();
@@ -186,49 +185,9 @@ export default class extends AudioController {
 
     repeatBtn.on("click", event => {
       event.preventDefault();
-      this.repeatCurrentAyah = !this.repeatCurrentAyah;
+      this.repeatCurrent = !this.repeatCurrent;
       repeatBtn.toggleClass("selected");
     });
-  }
-
-  playWord(audioPath) {
-    this.resumeOnWordPlayEnd = this.resumeOnWordPlayEnd || this.isPlaying();
-
-    this.loadHowler().then(() => {
-      let howl = new Howl({
-        src: [`${AUDIO_CDN}${audioPath}`],
-        html5: USE_HTML5,
-        onload: () => {
-          this.isPlaying() && this.handlePauseBtnClick();
-        },
-        onplayerror: () => {
-          this.playWordQueue = [];
-
-          this.resumeOnWordPlayEnd && this.handlePlayBtnClick();
-          this.resumeOnWordPlayEnd = false;
-        },
-        onend: () => {
-          this.playWordQueue.shift();
-
-          if (this.playWordQueue[0]) {
-            this.playWordQueue[0].play();
-          } else {
-            this.resumeOnWordPlayEnd && this.handlePlayBtnClick();
-            this.resumeOnWordPlayEnd = false;
-          }
-        }
-      });
-
-      this.playWordQueue.push(howl);
-
-      if (this.playWordQueue.length == 1) {
-        // don't play this word if system is playing another word.
-        // we'll play next word using howler's onend callback
-        howl.play();
-      }
-
-      return howl;
-    })
   }
 
   seekToWord(wordPosition) {
@@ -249,63 +208,55 @@ export default class extends AudioController {
     // enable progress bar if disabled
     this.progressBar.disabled = false;
     this.progressBar.value = this.progressBar.value || 0;
-    this.chapter.removeSegmentHighlight();
     this.currentVerse = verse;
-    // play
-    if (this.preloadTrack[verse]) {
-      this.track = this.preloadTrack[verse];
-      if (this.config.segmentPlayer) {
-        this.currentHowl.play("selectedWords");
-      } else {
-        this.currentHowl.play();
-      }
-    } else {
-      this.loading();
-      this.track = this.createHowl(verse, true);
-    }
+
+    this.loadTrack(this.currentVerse).then((track) => {
+      this.currentTrack = track;
+      track.howl.play()
+    })
   }
 
-  handlePlayBtnClick() {
+  playCurrent() {
+    this.play(this.currentVerse);
+  }
+
+  playVerse(verse) {
+    // called outside of player
     if (this.isPlaying()) {
-      this.currentHowl.pause();
-    } else {
-      this.play(this.currentVerse);
+      this.currentHowl.stop();
+      // stop event isn't working?
+      this.setPlayerCtrls('play');
     }
+
+    this.currentVerse = verse;
+    this.playCurrent();
   }
 
-  handlePauseBtnClick() {
-    if (this.config.segmentPlayer) {
-      if (this.preloadTrack[this.currentVerse].howl) {
-        this.preloadTrack[this.currentVerse].howl.pause();
-      }
-    } else {
-      if (this.isPlaying()) this.currentHowl.pause();
-    }
+  pauseCurrent() {
+    if (this.isPlaying()) this.currentHowl.pause();
   }
 
-  stopHowler() {
-    if (this.preloadTrack[this.currentVerse].howl) {
-      this.preloadTrack[this.currentVerse].howl.stop();
-    }
-  }
-
-  handleNextBtnClick() {
+  playNext() {
     this.config.repeat.iteration = 1;
     const next = this.getNextTrackVerse();
     if (next) this.play(next);
   }
 
-  handlePreviousBtnClick() {
+  playPrevious() {
     this.config.repeat.iteration = 1;
     const previous = this.getPreviousTrackVerse();
     if (previous) this.play(previous);
   }
 
   bindPlayerEvents() {
-    this.playBtn = $("#player #play-pause-btn");
-    this.loadingBtn = $("#play-loading");
+    this.playBtn = this.el.find("#btn-play");
+    this.pauseBtn = this.el.find("#btn-pause");
+    this.loadingBtn = this.el.find("#btn-loading");
 
-    new Tooltip(this.loadingBtn[0], {
+    this.previousBtn = this.el.find("#btn-previous");
+    this.nextBtn = this.el.find("#btn-next");
+
+    new Tooltip(this.loadingBtn.get(0), {
       placement: "top",
       boundary: "window",
       html: true,
@@ -316,26 +267,31 @@ export default class extends AudioController {
     // player controls
     this.playBtn.on("click", event => {
       event.preventDefault();
-      this.handlePlayBtnClick();
+      this.playCurrent();
     });
 
-    $("#player .icon-prev").on("click", event => {
+    this.pauseBtn.on("click", event => {
       event.preventDefault();
-      this.handlePreviousBtnClick();
+      this.pauseCurrent();
     });
 
-    $("#player .icon-next").on("click", event => {
+    this.previousBtn.on("click", event => {
       event.preventDefault();
-      this.handleNextBtnClick();
+      this.playPrevious();
+    });
+
+    this.nextBtn.on("click", event => {
+      event.preventDefault();
+      this.playNext();
     });
 
     // slider
     this.progressBar.addEventListener("change", e =>
-      this.handleProgressBarChange(e.target.value)
+      this.onProgressChanged(e.target.value)
     );
   }
 
-  handleProgressBarChange(value) {
+  onProgressChanged(value) {
     // duration data for some audio file is missing,
     // let howler calculate duration for such files
     if (this.currentHowl) {
@@ -346,37 +302,33 @@ export default class extends AudioController {
     }
   }
 
-  updatePlayerControls() {
-    if (this.isPlaying())
-      this.setPlayCtrls("pause");
-    else if (this.isLoading()) {
-      this.setPlayCtrls("loading");
-    } else
-      this.setPlayCtrls("play1");
-  }
-
   loading() {
-    this.setPlayCtrls("loading");
+    this.setPlayerCtrls("loading");
   }
 
-  setPlayCtrls(type) {
-    this.playBtn.removeClass("icon-play1 icon-pause");
-
+  setPlayerCtrls(type) {
     let thisVerse = $(
-      `#verses .verse[data-verse-number=${this.currentVerse}]`
-    ).find(".play .icon");
+      `.verse[data-verse-number=${this.currentVerse}]`
+    ).find(".play .quran-icon");
 
-    if ("loading" == type) {
+    thisVerse.removeClass('icon-play1 icon-pause');
+
+    if ("play" == type) {
+      this.playBtn.removeClass('d-none');
+      this.loadingBtn.addClass('d-none');
+      this.pauseBtn.addClass('d-none');
+      thisVerse.addClass('icon-play1');
+    } else if ("pause" == type) {
+      this.playBtn.addClass('d-none');
+      this.loadingBtn.addClass('d-none');
+      this.pauseBtn.removeClass('d-none');
+      thisVerse.addClass('icon-pause');
+    } else {
+      // loading
       this.playBtn.addClass('d-none');
       this.loadingBtn.removeClass('d-none');
-    } else {
-      thisVerse.removeClass("icon-play1 icon-pause");
-
-      this.loadingBtn.addClass('d-none');
-      this.playBtn.removeClass('d-none');
-
-      this.playBtn.addClass(`icon-${type}`);
-      thisVerse.addClass(`icon-${type}`);
+      this.pauseBtn.addClass('d-none');
+      thisVerse.addClass('icon-loading');
     }
   }
 
@@ -397,11 +349,11 @@ export default class extends AudioController {
     let next = this.getNextTrackVerse();
 
     if (next) {
-      this.createHowl(next, false);
+      this.createHowl(next);
 
-      $(".icon-next").removeAttr("disabled");
+      this.nextBtn.removeAttr("disabled");
     } else {
-      $(".icon-next").attr("disabled", "disabled");
+      this.nextBtn.attr("disabled", "disabled");
     }
   }
 
@@ -413,6 +365,7 @@ export default class extends AudioController {
     if (this.config.autoScroll) {
       this.chapter.scrollToVerse(this.currentVerse);
     }
+
     if (this.config.segmentPlayer == false) {
       this.setProgressBarInterval();
       this.setSegmentInterval();
@@ -429,11 +382,11 @@ export default class extends AudioController {
   }
 
   removeProgressInterval() {
-    clearInterval(this.playerProgressInterval);
+    clearInterval(this.progressInterval);
   }
 
   setProgressBarInterval() {
-    clearInterval(this.playerProgressInterval);
+    clearInterval(this.progressInterval);
     const totalDuration = this.track.duration || this.currentHowl.duration();
 
     $("#player .current-time")
@@ -444,7 +397,7 @@ export default class extends AudioController {
       .removeClass("hidden")
       .text(this.formatTime(totalDuration));
 
-    this.playerProgressInterval = setInterval(() => {
+    this.progressInterval = setInterval(() => {
       let currentTime = this.currentHowl.seek();
       let progressPercentage =
         Math.floor((currentTime / totalDuration) * 1000) / 10;
@@ -464,7 +417,7 @@ export default class extends AudioController {
     this.chapter.removeHighlighting();
 
     this.removeProgressInterval();
-    this.updatePlayerControls();
+    this.setPlayerCtrls("play");
   }
 
   onVerseEnd() {
@@ -480,14 +433,14 @@ export default class extends AudioController {
   }
 
   onVerseEnded() {
-    if (this.repeatCurrentAyah) {
+    if (this.repeatCurrent) {
       this.repeatSingleVerse(0, 10000);
     } else if (this.config.repeat.enabled) {
       "single" == this.config.repeat.type
         ? this.repeatSingleVerse()
         : this.repeatRangeVerses();
     } else {
-      this.handleNextBtnClick();
+      this.playNext();
     }
   }
 
@@ -506,7 +459,7 @@ export default class extends AudioController {
           .getElementById("segment-player")
           .segmentPlayer.resetPlayButton();
       } else {
-        this.handleNextBtnClick();
+        this.playNext();
       }
     }
   }
@@ -524,7 +477,7 @@ export default class extends AudioController {
         this.currentVerse = repeatSetting.from;
       }
     } else {
-      this.handleNextBtnClick();
+      this.playNext();
     }
   }
 
@@ -549,44 +502,29 @@ export default class extends AudioController {
     }
   }
 
-  createHowl(verse, autoplay) {
-    if (this.preloadTrack[verse] && this.config.segmentPlayer == false) {
-      // howl is already created
-      return this.preloadTrack[verse];
+  loadTrack(verse) {
+    if (this.preloadTrack[verse]) {
+      return Promise.resolve(this.preloadTrack[verse])
+    } else {
+      this.loading();
+      return this.createHowl(verse);
     }
+  }
 
+  createHowl(verse) {
     let audioData = this.audioData[verse];
     let audioPath = this.buildAudioUrl(audioData.path);
-    let sprite = {};
 
-    if (this.config.segmentPlayer) {
-      const secondsToSkip = +audioData.segments[
-        this.config.customSegments[0]
-        ][2];
-      const lastSegment = this.config.customSegments[
-      this.config.customSegments.length - 1
-        ];
-      const endsAt = +audioData.segments[lastSegment][3];
-      const duration = endsAt - secondsToSkip;
-      sprite.selectedWords = [secondsToSkip, duration];
-      sprite.__default = [
-        0,
-        +audioData.segments[audioData.segments.length - 1][3]
-      ];
-      autoplay = false;
-    }
-
-    this.loadHowler().then(() => {
+    return this.loadHowler().then(() => {
       let howl = new Howl({
         src: [audioPath],
         html5: USE_HTML5,
-        autoplay: autoplay,
-        sprite: sprite,
+        autoplay: false,
         onloaderror: () => {
           // when audio is failed to load.
         },
         onplayerror: () => {
-          this.updatePlayerControls();
+          this.setPlayerCtrls("play");
 
           //Fires when the sound is unable to play
           this.currentHowl.once("unlock", () => {
@@ -594,18 +532,16 @@ export default class extends AudioController {
           });
         },
         onplay: () => {
-          this.updatePlayerControls();
-
           this.onPlay();
+          this.setPlayerCtrls("pause")
         },
         onpause: () => {
-          this.updatePlayerControls();
+          this.setPlayerCtrls("play")
 
           this.removePlayerListeners();
         },
         onstop: () => {
-          this.updatePlayerControls();
-
+          this.setPlayerCtrls("play")
           this.removePlayerListeners();
         },
         onseek: () => {
@@ -614,7 +550,7 @@ export default class extends AudioController {
           this.onSeek();
         },
         onend: () => {
-          this.updatePlayerControls();
+          this.setPlayerCtrls("play");
 
           this.removePlayerListeners();
           this.onVerseEnd();
@@ -626,35 +562,27 @@ export default class extends AudioController {
         segments: audioData.segments,
         verse: verse
       };
-      if (this.config.segmentPlayer) {
-        howl.play("selectedWords");
-      }
-      return this.preloadTrack[verse];
-    })
-  }
 
-  buildAudioUrl(path) {
-    if (!/(http)?s?:?\/\//.test(path)) {
-      path = AUDIO_CDN + path;
-    }
-    return path;
+      return Promise.resolve(this.preloadTrack[verse]);
+    })
   }
 
   updateVerses() {
     return this.fetchAudioData(this.firstVerse, this.lastVerse);
   }
 
-  setRecitation(recitationId) {
-    this.config.recitation = recitationId;
-    this.settings.set("recitation", recitationId);
+  setRecitation(id) {
+    const wasPlaying = this.isPlaying();
+
+    this.config.recitation = id;
     this.preloadTrack = {};
     this.audioData = {};
 
     this.fetchAudioData(this.firstVerse, this.lastVerse).then(() => {
-      let wasPlaying = this.isPlaying();
-      wasPlaying && this.handlePauseBtnClick();
-
-      wasPlaying && this.play(this.currentVerse);
+      if (wasPlaying) {
+        this.pauseCurrent();
+        this.play(this.currentVerse);
+      }
     });
   }
 
@@ -703,7 +631,7 @@ export default class extends AudioController {
   }
 
   get currentHowl() {
-    if (this.track)
-      return this.track.howl
+    if (this.currentTrack)
+      return this.currentTrack.howl
   }
 }

@@ -18,7 +18,7 @@
       <div class="reciter" data-filter-tags="<%= recitation.reciter_name.downcase %> <%= reciter_name.name %> <%= recitation.style.to_s.downcase %>">
         <label class="radio-label <%= reciter_name.language_name %>"><%= reciter_name.name %>
           <% if recitation.style.present? %>
-            <small class="rounded-pill bg-primary text-white p-1 style" data-style="<%= recitation.style.downcase %>"><%= recitation.style %></small>
+            <small class="rounded-pill bg-info text-white p-1 style" data-style="<%= recitation.style.downcase %>"><%= recitation.style %></small>
           <% end %>
           <input class="" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
           <span class="checkmark"></span>

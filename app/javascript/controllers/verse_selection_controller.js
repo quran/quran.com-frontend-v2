@@ -58,10 +58,12 @@ export default class extends Controller {
 
     $(window).on('resize', function () {
       if (!this.selectableWords) return;
+
       this.selectableWords = this.selectableWords.map((item) => {
         item.rect = item.el.get(0).getBoundingClientRect();
         return item;
       });
+
       positionCircles();
       setSelection();
       updateDropdownPositions(this.selectableWords.filter(i => i.selected));
@@ -158,11 +160,12 @@ export default class extends Controller {
     let rowsCount = 0;
     let pos = this.selectedAyah.get(0).getBoundingClientRect();
 
-    selectedItems.map(item => {
+    selectedItems.forEach(item => {
       let top = Math.round(item.rect.y - pos.y);
       let left = Math.round(item.rect.x - pos.x);
       let right = Math.round(item.rect.x - pos.x + item.rect.width);
       let bottom = Math.round(item.rect.y - pos.y + item.rect.height);
+
       if (rows[top]) {
         rows[top] = {
           top,
@@ -217,7 +220,7 @@ export default class extends Controller {
 
     this.closeSelection.css({
       top: firstItem.rect.y - pos.y - 20,
-      left: firstItem.rect.x - pos.x + firstItem.rect.width + 10,
+      left: (firstItem.rect.x + firstItem.rect.width)/2,
       fontSize: '20px'
     })
 

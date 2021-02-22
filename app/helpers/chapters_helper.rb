@@ -31,6 +31,7 @@ module ChaptersHelper
       link_to 'load more',
               next_page_link,
               rel: 'next',
+              data: {remote: true},
               class: 'btn btn--lightgrey btn--large  btn--arrow-down'
 
     end

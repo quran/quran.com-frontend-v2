@@ -7,12 +7,19 @@ let Howl, Howler;
 
 export default class extends Controller {
   connect(){
-    this.settings = document.body.setting;
+    this.getSetting = document.body.setting.get;
     this.preloadTrack = {};
     this.currentTrack = {
       howl: null,
       segments: []
     };
+  }
+
+  buildAudioUrl(path) {
+    if (!/(http)?s?:?\/\//.test(path)) {
+      path = AUDIO_CDN + path;
+    }
+    return path;
   }
 
   loadHowler() {

@@ -1,13 +1,16 @@
 <% if @foot_note %>
-  <div class="footnote alert alert-dismissible p-2 mb-2 <%= @foot_note.language_name %>" role="alert" id="footnote-<%= @foot_note.id %>">
+  <div class="footnote p-2 mb-2 <%= @foot_note.language_name %>"
+       data-controller="footnote"
+       role="alert" id="footnote-<%= @foot_note.id %>">
     <div class="flexx">
       <span class="text text--black text--large text--semibold"><%= _t('footnote') %></span>
-      <a class="close text text--semibold text--green" id='close-footnote' data-dismiss="alert" aria-label="Close">
-        <span class="icon-times-circle"></span>
+      <a class="close text text--semibold text--green"
+         id='close-footnote' aria-label="Close">
+        <span class="quran-icon icon-times-circle"></span>
       </a>
     </div>
 
-    <div data-controller="translation footnote" 
+    <div data-controller="translation"
       class="text text--grey text--medium text--regular translation"
       data-resource-content-id='<%=params[:resource_content_id]%>'
     >

@@ -6,7 +6,7 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 import isChildOf from "../utility/child-of";
@@ -63,13 +63,14 @@ export default class extends Controller {
     this.el = el;
   }
 
-  disconnect() {}
+  disconnect() {
+  }
 
   copy() {
     copyToClipboard(this.copyText);
 
     const copyBtn = this.el.find(".quick-copy");
-    let { title, done } = copyBtn.data();
+    let {title, done} = copyBtn.data();
     copyBtn.find("span").text(done);
     setTimeout(() => {
       copyBtn.find("span").text(title);
@@ -84,9 +85,9 @@ export default class extends Controller {
     player = playerDom.player;
 
     if (playButton.find("span").hasClass("icon-play1")) {
-      return player.play(this.verseNumber);
+      return player.playVerse(this.verseNumber);
     } else {
-      player.handlePauseBtnClick();
+      player.pauseCurrent();
     }
   }
 
@@ -106,7 +107,7 @@ export default class extends Controller {
   }
 
   bindAction(el) {
-    if(el.data('reading')){
+    if (el.data('reading')) {
       return
     }
 

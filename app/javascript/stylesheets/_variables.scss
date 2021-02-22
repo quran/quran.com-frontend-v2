@@ -94,10 +94,13 @@ $tooltip-arrow-height: 5px;
 $tooltip-arrow-color: $dark-green;
 $tooltip-bg: $primary;
 
+// dropdown
+$dropdown-link-active-bg: $dark-green;
+
 $theme-colors: (
   primary: $primary,
   secondary: $grey7
-);
+) !default;
 
 
 // select2

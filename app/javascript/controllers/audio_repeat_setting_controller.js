@@ -169,7 +169,7 @@ export default class extends SettingController {
 
         if (playerDom) player = playerDom.player;
         if (player) {
-          return player.updateRepeatConfig(
+          return player.updateRepeat(
             {
               repeatEnabled: this.get("repeatEnabled"),
               repeatCount: this.get("repeatCount"),
