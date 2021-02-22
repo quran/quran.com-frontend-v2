@@ -6,7 +6,7 @@
 // <div data-controller="chapter" data-chapter=CHAPTER_NUMBER>
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 
 export default class extends Controller {
   initialize() {
@@ -14,26 +14,26 @@ export default class extends Controller {
     this.readingTab = document.querySelector(".reading-tab");
     this.infoTab = document.querySelector(".surah-info-tab");
 
-    // this.setURLState();
     this.bindAyahJump();
   }
 
   connect() {
     const chapter = this;
+    const el = $(this.element)
+    // store ref of controller in dom
     this.element.chapterEl = chapter;
 
     // disable turbolink scroll position.
-    // we want to scroll to first ayah on page
+    // we want to scroll to first ayah on page load
     document.addEventListener("turbolinks:load", () => this.scrollToTop());
 
     // using same controller for reading, and translation mode
     // active tab keep track of current active view
-    this.activeTab = $(this.element).find(".tab-pane.show .verses");
+    this.activeTab = el.find(".tab-pane.show .verses");
 
     // currently playing ayah
     this.currentVerse = null;
-
-    this.totalVerses = Number(this.element.dataset.totalVerses);
+    this.totalVerses = Number(el.data('totalVerses'));
 
     // currently highlighted word
     this.activeWord = null;
@@ -42,17 +42,19 @@ export default class extends Controller {
     this.segmentTimers = [];
 
     this.translationTab.addEventListener("tab.shown", e => {
-      const url = e.target.href;
-      url && this.updateURLState(url, { reading: false });
-      chapter.activeTab = $(e.target.dataset.target).find(".verses");
-      chapter.activeTab.find("#verses").trigger("visibility:visible");
+      const tab = e.currentTarget;
+      const url = tab.href;
+      url && this.updateURLState(url, {reading: false});
+      chapter.activeTab = $(tab.dataset.target).find(".verses-wrapper .verses");
+      chapter.activeTab.trigger("visibility:visible");
     });
 
     this.readingTab.addEventListener("tab.shown", e => {
-      const url = e.target.href;
-      url && this.updateURLState(url, { reading: true });
-      chapter.activeTab = $(e.target.dataset.target).find(".verses");
-      chapter.activeTab.find("#verses").trigger("visibility:visible");
+      const tab = e.currentTarget;
+      const url = tab.href;
+      url && this.updateURLState(url, {reading: true});
+      chapter.activeTab = $(tab.dataset.target).find(".verses-wrapper");
+      chapter.activeTab.find(".verses").trigger("visibility:visible");
     });
 
     this.infoTab.addEventListener("tab.shown", e => {
@@ -61,14 +63,18 @@ export default class extends Controller {
     });
 
     this.translationTab.addEventListener("tab.hidden", e => {
-      $(e.target.dataset.target)
-        .find(".verses #verses")
+      const tab = e.currentTarget;
+      $(tab.dataset.target)
+        .find(".verses-wrapper")
+        .find(".verses")
         .trigger("visibility:hidden");
     });
 
     this.readingTab.addEventListener("tab.hidden", e => {
-      $(e.target.dataset.target)
-        .find(".verses #verses")
+      const tab = e.currentTarget;
+      $(tab.dataset.target)
+        .find(".verses-wrapper")
+        .find(".verses")
         .trigger("visibility:hidden");
     });
 
@@ -103,22 +109,6 @@ export default class extends Controller {
     document.body.scrollIntoView();
   }
 
-  setURLState() {
-    // set the selected tab url and state in the url, if not already there
-    const paramString = window.location.search;
-    if (paramString.includes("reading=true")) {
-      this.updateURLState(window.location.href, { reading: true });
-    } else if (paramString.includes("reading=false")) {
-      this.updateURLState(window.location.href, { reading: false });
-    } else {
-      if (this.isTranslationsMode()) {
-        this.updateURLState(this.translationTab.href, { reading: false });
-      } else if (this.isReadingMode()) {
-        this.updateURLState(this.readingTab.href, { reading: true });
-      }
-    }
-  }
-
   bindAyahJump() {
     $("#verse-list")
       .find(".dropdown-item")
@@ -145,7 +135,7 @@ export default class extends Controller {
     return this.translationTab.classList.contains("tabs__item--selected");
   }
 
-  isInfoMode(){
+  isInfoMode() {
     return this.infoTab.classList.contains("tabs__item--selected");
   }
 
@@ -336,8 +326,8 @@ export default class extends Controller {
     to = Math.min(verse + 5, this.totalVerses);
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({ from, to, verse, reading })}`,
-      { headers: { "X-Requested-With": "XMLHttpRequest" } }
+      `/${chapter}/load_verses?${$.param({from, to, verse, reading})}`,
+      {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )
       .then(response => response.text())
       .then(verses => this.insertVerses(verses))
@@ -410,7 +400,7 @@ export default class extends Controller {
 
     let verseList = $(this.translationTab.dataset.target).find("#verses");
 
-    fetch(`${path}`, { headers: { "X-Requested-With": "XMLHttpRequest" } })
+    fetch(`${path}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
       .then(response => response.text())
       .then(verses => {
         verseList.html(verses);
