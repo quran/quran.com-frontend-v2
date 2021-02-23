@@ -117,6 +117,14 @@ export default class extends Controller {
   jumpToVerse(verse) {
     document.body.loader.show();
 
+    // If this ayah is already loaded, scroll to it
+    if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
+      this.scrollToVerse(verse);
+      this.highlightVerse(verse);
+
+      return Promise.resolve([]);
+    }
+
     return this.loadVerses(verse).then(() => {
       this.scrollToVerse(verse);
       this.highlightVerse(verse);
@@ -310,25 +318,22 @@ export default class extends Controller {
     // called when user jump to ayah from repeat setting
     verse = Number(verse);
 
-    // If this ayah is already loaded, scroll to it
-    if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
-      return Promise.resolve([]);
-    }
-
     // pause infinite page loader
     this.pausePageLoader();
 
     const chapter = this.chapterId();
     const reading = this.isReadingMode();
-    let from, to;
+    let from, to, font, translations;
 
     // instead of loading all ayah, let's load batch of 10 around the selected verse
     // i.e if user want to jump to 200, we'll load 195 to 205
     from = Math.max(1, verse - 2);
     to = Math.min(verse + 5, this.totalVerses);
+    font = document.body.setting.get("font");
+    translations = document.body.setting.get("translations").join(',')
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({from, to, verse, reading})}`,
+      `/${chapter}/load_verses?${$.param({from, to, verse, reading, font, translations})}`,
       {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )
       .then(response => response.text())
@@ -360,6 +365,10 @@ export default class extends Controller {
       translationTarget,
       !this.isTranslationsMode()
     );
+
+    if (this.currentVerse) {
+      return this.jumpToVerse(this.currentVerse)
+    }
 
     return Promise.resolve();
   }
