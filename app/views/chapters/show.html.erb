@@ -13,13 +13,13 @@
 
 <div class="content">
   <div class="container"
-       id="chapter"
-       data-chapter-id="<%= @presenter.chapter.id %>"
+       id="reader"
+       data-id="<%= @presenter.chapter.id %>"
        data-total-verses="<%= @presenter.chapter.verses_count %>"
        data-controller="chapter verse-selection">
 
-    <%= render 'reader_modes/translations' %>
-    <%= render 'reader_modes/page' %>
+    <%= render 'translations_view' %>
+    <%= render 'reading_view' %>
 
     <div class="info-section tab-pane fade" id="info-section"
          data-tab-group="chapter-tabs">
@@ -34,5 +34,5 @@
   </div>
 </div>
 
-<%= render 'player' %>
-<%= render 'segment_player' %>
+<%= render 'reader/player' %>
+<%= render 'reader/segment_player' %>

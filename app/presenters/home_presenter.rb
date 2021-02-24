@@ -1,19 +1,10 @@
 # frozen_string_literal: true
 
-class HomePresenter < BasePresenter
+class HomePresenter < QuranPresenter
   def chapters
-    return @chapters if @chapters
-
-    chapters = Chapter.eager_load(:translated_name)
-
-    # Eager load translated names to avoid n+1 queries
-    chapters_with_default_names = chapters
-                                  .where(translated_names: { language_id: Language.default.id })
-
-    @chapters = chapters
-                .where(translated_names: { language_id: language.id })
-                .or(chapters_with_default_names)
-                .order('translated_names.language_priority DESC')
+    strong_memoize :chapters do
+      ChapterFinder.new.all_with_translated_names(language: language)
+    end
   end
 
   def juz

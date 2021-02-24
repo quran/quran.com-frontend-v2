@@ -1,5 +1,7 @@
 <div class="juz-card">
-  <h5 class="juz-card__title"><%= juz.juz_number %></h5>
+  <h5 class="juz-card__title">
+    <%= link_to juz.juz_number, quran_juz_path(juz.juz_number) %>
+  </h5>
 
   <% juz.verse_mapping.each do |chapter_number, ayah_range| %>
     <% chapter = @presenter.chapters[chapter_number.to_i - 1] %>

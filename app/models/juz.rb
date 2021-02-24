@@ -13,7 +13,7 @@
 #  verse_mapping :json
 #
 
-class Juz < ApiCoreRecord
+class Juz < QuranCoreRecord
   serialize :verse_mapping, Hash
 
   include QuranNavigationSearchable

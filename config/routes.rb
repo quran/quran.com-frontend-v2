@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   get '/settings/locales', to: 'settings#locales'
 
   get '/audio', to: 'audio_files#index'
-  get '/ayatul-kursi', to: 'chapters#ayatul_kursi', id: '2', range: '255'
-  get 'آیت الکرسی/', to: 'chapters#ayatul_kursi', id: '2', range: '255'
+  get '/ayatul-kursi', to: 'chapters#ayatul_kursi'
+  get 'آیت الکرسی/', to: 'chapters#ayatul_kursi'
 
-  get '/about-us', to: 'pages#about_us', as: :about_us
+  get '/about-us', to: 'static#about_us', as: :about_us
   get :apps, to: 'pages#apps'
   get :donations, to: 'pages#donations'
   get :support, to: 'pages#support'
@@ -95,6 +95,9 @@ Rails.application.routes.draw do
       [open(Rails.root.join('public', 'sitemaps', filename)).read]
     ]
   }
+
+  get '/page/:page_number', to: 'quran#page', as: :quran_page
+  get '/juz/:juz_number', to: 'quran#juz', as: :quran_juz
 
   get '/:chapter_id/copy_options', to: 'advance_copy#copy_options'
   get '/:chapter_id/copy_text', to: 'advance_copy#copy_text'

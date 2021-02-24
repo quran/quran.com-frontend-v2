@@ -14,6 +14,6 @@
 #  updated_at  :datetime         not null
 #
 
-class WordCorpus < ApiCoreRecord
+class WordCorpus < QuranCoreRecord
   belongs_to :word
 end

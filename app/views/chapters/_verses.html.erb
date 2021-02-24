@@ -1,12 +1,11 @@
 <% verses = local_assigns[:verses] || @presenter.paginate %>
 
-<%= render 'fonts', verses: verses if @presenter.showing_qcf_font?%>
+<%= render 'reader/qcf_fonts', verses: verses if @presenter.showing_qcf_font?%>
 
 <% if @presenter.reading_mode? %>
-  <% pages = verses.group_by(&:page_number) %>
-  <%= render partial: 'page', collection: pages, as: :verses %>
+  <%= render partial: 'page', locals: {verses: verses} %>
 <% else %>
-  <%= render partial: 'verse', collection: verses, as: :verse %>
+  <%= render partial: 'reader/verse', collection: verses, as: :verse %>
 <% end %>
 
 <div class="reading__buttons flexx-center" id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination" data-url="<%= range_path(@presenter.chapter.id, @presenter.range) %>">

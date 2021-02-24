@@ -1,0 +1,27 @@
+<% content_for :menus do %>
+  <div class="menus__tab hidden side-menu" data-controller="menu" data-trigger="#open-settings" data-menu=".settings" id="right-sidebar">
+    <%= render_async "/settings?&reading=#{'reading' == @presenter.active_tab}",
+                     lazy_load: {root: '#right-sidebar'},
+                     html_options: {class: 'settings-async-node'} do %>
+      <div class="text-center text--medium p-3">
+        <%= loading_spinner %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render 'actions' %>
+
+<div class="content">
+  <div class="container"
+       id="reader"
+       data-id="<%= @presenter.current_page%>"
+       data-total-verses="<%= @presenter.total_records %>"
+       data-controller="quran-page">
+    <%= render 'translations_view' %>
+    <%= render 'reading_view' %>
+  </div>
+</div>
+
+<%= render 'reader/player' %>
+<%= render 'reader/segment_player' %>

@@ -8,18 +8,11 @@
 // </div>
 
 import SettingController from "./setting_controller";
-import LocalStore from "../utility/local-store";
 
 export default class extends SettingController {
-  initialize() {
-    try{
-      console["log"]("%c ﷽\n\n %s", "background: #00acc2; color: #fff; padding: 2px; border-radius:2px", "Salam, found any bug? Please report it here https://github.com/quran/quran.com-frontend-v2/issues")
-    }catch (e){
-    }
-  }
-
   connect() {
     super.connect();
+    this.logDevMessage();
     this.themeButtons = $(this.element).find("a");
 
     this.themeButtons.on("click", e => {
@@ -37,6 +30,13 @@ export default class extends SettingController {
     });
 
     this.updatePage();
+  }
+
+  logDevMessage() {
+    try {
+      console["log"]("%c ﷽\n\n %s", "background: #00acc2; color: #fff; padding: 2px; border-radius:2px", "Salam, found any bug? Please report it here https://github.com/quran/quran.com-frontend-v2/issues")
+    } catch (e) {
+    }
   }
 
   disconnect() {

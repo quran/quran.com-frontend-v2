@@ -8,13 +8,19 @@ class BasePresenter
   DEFAULT_TRANSLATION = 131 # Clear Quran with footnotes is default translation
   TAG_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
-  attr_reader :context, :resource_class, :request
+  attr_reader :context
+  attr_accessor :finder
 
   def initialize(context)
     @context = context
   end
 
   delegate :params, :session, :request, :action_name, to: :context
+  delegate :current_page, :next_page, :per_page, :total_records, to: :finder
+
+  def active_tab
+    params[:reading] == 'true' ? 'reading' : 'translation'
+  end
 
   def open_graph_hash
     {
@@ -117,44 +123,7 @@ class BasePresenter
     context.view_context.truncate(TAG_SANITIZER.sanitize(text.to_s, tags: [], attributes: []), length: 160, separator: '.')
   end
 
-  def valid_translations(store_result: true)
-    strong_memoize :valid_translations do
-      saved = saved_translations
-
-      if saved == 'no' || saved.blank?
-        context.session[:translations] = 'no'
-        []
-      else
-        saved = saved.split(',') if saved.is_a?(String)
-
-        approved_translations = ResourceContent
-                                    .approved
-                                    .translations
-                                    .one_verse
-
-        with_ids = approved_translations.where(id: saved)
-        translations = approved_translations
-                           .where(slug: saved).or(with_ids).pluck(:id)
-
-        if store_result
-          context.session[:translations] = translations
-        end
-
-        translations
-      end
-    end
-  end
-
-  def saved_translations(load_stored: true)
-    from_params = params[:translations].presence
-
-    if load_stored
-      from_params || session[:translations].presence || DEFAULT_TRANSLATION
-    else
-      from_params
-    end
-  end
-
+  #TODO: move to finder
   def eager_load_translated_name(records)
     defaults = records.where(
         translated_names: {language_id: Language.default.id}
@@ -168,6 +137,10 @@ class BasePresenter
 
   def current_locale
     context.fetch_locale
+  end
+
+  def verse_finder
+    VerseFinder.new(params)
   end
 end
 

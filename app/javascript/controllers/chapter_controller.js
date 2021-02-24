@@ -6,187 +6,26 @@
 // <div data-controller="chapter" data-chapter=CHAPTER_NUMBER>
 // </div>
 
-import {Controller} from "stimulus";
+import QuranController from "./quran_controller";
 
-export default class extends Controller {
-  initialize() {
-    this.translationTab = document.querySelector(".translation-tab");
-    this.readingTab = document.querySelector(".reading-tab");
-    this.infoTab = document.querySelector(".surah-info-tab");
-    this.pageLoader = null
-    this.bindAyahJump();
-  }
-
+export default class extends QuranController {
   connect() {
-    const chapter = this;
-    const el = $(this.element)
-    // store ref of controller in dom
-    this.element.chapterEl = chapter;
+    super.connect()
 
-    // disable turbolink scroll position.
-    // we want to scroll to first ayah on page load
-    document.addEventListener("turbolinks:load", () => this.scrollToTop());
-
-    // using same controller for reading, and translation mode
-    // active tab keep track of current active view
-    this.activeTab = el.find(".tab-pane.show .verses");
-
-    // currently playing ayah
-    this.currentVerse = null;
-    this.totalVerses = Number(el.data('totalVerses'));
-
-    // currently highlighted word
-    this.activeWord = null;
-
-    // intervals for each words of current ayah
-    this.segmentTimers = [];
-
-    this.translationTab.addEventListener("tab.shown", e => this.tabChanged(e, 'translation'));
-    this.readingTab.addEventListener("tab.shown", e => this.tabChanged(e, 'reading'));
+    this.infoTab = document.querySelector(".surah-info-tab");
     this.infoTab.addEventListener("tab.shown", e => this.tabChanged(e, 'info'));
-
-    this.activeTab.on("items:added", () => {
-      // this event is triggered from infinite scrolling controller
-      // new ayah are added to page. Refresh the player's first and last ayah
-      this.initPlayer();
-    });
-
-    setTimeout(() => {
-      if (!this.isInfoMode()) {
-        this.pageLoader = this.activeTab.closest('.verses-wrapper')[0].infinitePage
-      }
-
-      this.initPlayer();
-    }, 100);
   }
 
-  tabChanged(e, mode) {
-    this.pausePageLoader();
-
-    const tab = e.currentTarget;
-    const url = tab.href;
-    let query = {};
-
-    if ('info' != mode) {
-      query.reading = 'reading' == mode
-    }
-    url && this.updateURLState(url, query);
-
-    const pageVerses = $(tab.dataset.target).find(".verses-wrapper");
-
-    this.pageLoader = pageVerses.get(0).infinitePage;
-    this.resumePageLoader();
-
-    this.activeTab = pageVerses.find(".verses");
-
-    if (this.currentVerse) {
-      // player is playing this ayah. Scroll to it and start highlighting
-      this.jumpToVerse(this.currentVerse).then(() => {
-        const player = document.getElementById("player").player;
-        player.pauseCurrent();
-        player.playCurrent();
-      });
-    }
-  }
-
-  disconnect() {
-    document.removeEventListener("turbolinks:load", () => this.scrollToTop());
-  }
-
-  scrollToTop() {
-    document.body.scrollIntoView();
-  }
-
-  bindAyahJump() {
-    $("#verse-list")
-      .find(".dropdown-item")
-      .on("click", e => {
-        e.preventDefault();
-        const verse = e.currentTarget.dataset.verse;
-
-        this.jumpToVerse(verse).then(() => {
-          if (this.currentVerse) {
-            // player was playing, switch to this ayah
-            const player = document.getElementById("player").player;
-            player.playVerse(verse);
-          }
-        })
-      });
-  }
-
-  jumpToVerse(verse) {
-    document.body.loader.show();
-
-    // If this ayah is already loaded, scroll to it
-    if (this.activeTab.find(`.verse[data-verse-number=${verse}]`).length > 0) {
-      this.scrollToVerse(verse);
-      this.highlightVerse(verse);
-
-      return Promise.resolve([]);
-    }
-
-    return this.loadVerses(verse).then(() => {
-      this.scrollToVerse(verse);
-      this.highlightVerse(verse);
-
-      document.body.loader.hide();
-    });
-  }
-
-  isReadingMode() {
-    return this.readingTab.classList.contains("tabs__item--selected");
-  }
-
-  isTranslationsMode() {
-    return this.translationTab.classList.contains("tabs__item--selected");
+  verseText(verse, verseKey){
+    return verse;
   }
 
   isInfoMode() {
     return this.infoTab.classList.contains("tabs__item--selected");
   }
 
-  updateURLState(url, state) {
-    window.history.pushState(state, "", url);
-  }
-
-  scrollToVerse(verse) {
-    $("#verse-list .dropdown-item").removeClass("active");
-    let activeVerse = $("#verse-list").find(`[data-filter-tags=${verse}]`);
-    activeVerse.addClass("active");
-    $("#ayah-dropdown #current").html(verse);
-
-    let verseElement = this.activeTab.find(
-      `.verse[data-verse-number=${verse}]`
-    );
-
-    if (verseElement.length > 0) {
-      let verseTopOffset = verseElement.offset().top;
-      let verseHeight = verseElement.outerHeight();
-      let currentScroll = $(window).scrollTop();
-      let windowHeight = window.innerHeight;
-      let headerHeight =
-        $(".header").outerHeight() + $(".surah-actions").outerHeight();
-      let playerHeight = $("#player").outerHeight();
-
-      // scroll if there isn't a space to appear completely
-      let bottomOffsetCheck =
-        verseTopOffset + verseHeight >
-        currentScroll + windowHeight - playerHeight;
-      let topOffsetCheck = verseTopOffset < currentScroll + headerHeight;
-
-      const scrollLength = verseTopOffset - (headerHeight + 50);
-
-      if (bottomOffsetCheck || topOffsetCheck) {
-        document.scrollingElement.scrollTo({
-          top: scrollLength,
-          behavior: "smooth"
-        });
-      }
-    }
-  }
-
-  chapterId() {
-    return this.element.dataset.chapterId;
+  id() {
+    return this.el.data('id');
   }
 
   setSegmentInterval(seekTime, segmentTimings, isPlaying) {
@@ -225,18 +64,9 @@ export default class extends Controller {
     });
   }
 
-  removeSegmentTimers() {
-    if (this.segmentTimers.length > 0) {
-      for (let alignTimer of this.segmentTimers) {
-        clearTimeout(alignTimer);
-      }
-      return (this.segmentTimers = []);
-    }
-  }
-
   highlightSegment(startIndex, endIndex) {
     const words = this.activeTab.find(
-      `.verse[data-verse-number=${this.currentVerse}] .word`
+      `.verse[data-key=${this.getVerseKey(this.currentVerse)}] .word`
     );
 
     // tajweed mode don't show words
@@ -259,18 +89,6 @@ export default class extends Controller {
       }
     }
   }
-
-  highlightVerse(verseNumber) {
-    if (this.currentVerse) {
-      this.removeHighlighting();
-    }
-    this.currentVerse = verseNumber;
-
-    this.activeTab
-      .find(`.verse[data-verse-number=${verseNumber}]`)
-      .addClass("highlight");
-  }
-
   removeSegmentHighlight() {
     let words = $(".word.highlight");
 
@@ -283,45 +101,15 @@ export default class extends Controller {
     });
   }
 
-  removeHighlighting() {
-    let verse = $(`.verse[data-verse-number=${this.currentVerse}]`);
-    verse.removeClass("highlight");
-
-    this.removeSegmentTimers();
-  }
-
-  updatePagination(dom) {
-    /*
-    const verses = this.activeTab.find(".verse");
-    const lastVerse = verses.last().data().verseNumber;
-
-    // Update next page ref if it exists.
-    const nextPage = this.activeTab.find(".pagination a[rel=next]");
-    if (nextPage.length > 0) {
-      let ref = nextPage.attr("href");
-      const updatedRef = ref.replace(
-        /page=\d+/,
-        `page=${Math.ceil(lastVerse / 10) + 1}`
-      );
-      nextPage.attr("href", updatedRef);
-    }
-    // resume the infinite pagination
-    const page = this.getInfinitePage()
-    if (page) {
-      page.resume();
-    }
-
-    return Promise.resolve([]);*/
-  }
-
   loadVerses(verse) {
+    document.body.loader.show();
     // called when user jump to ayah from repeat setting
     verse = Number(verse);
 
     // pause infinite page loader
     this.pausePageLoader();
 
-    const chapter = this.chapterId();
+    const chapter = this.id();
     const reading = this.isReadingMode();
     let from, to, font, translations;
 
@@ -337,7 +125,10 @@ export default class extends Controller {
       {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )
       .then(response => response.text())
-      .then(verses => this.insertVerses(verses))
+      .then(verses => {
+        document.body.loader.hide();
+        this.insertVerses(verses)
+      })
 
     return Promise.resolve(request);
   }
@@ -419,16 +210,6 @@ export default class extends Controller {
       });
   }
 
-  insertVerses(newVerses) {
-    let verseList = this.activeTab;
-    // simply replace current page with newly loaded verses
-    verseList.html(newVerses);
-    this.activeTab.trigger("items:added");
-
-    this.resumePageLoader();
-    return Promise.resolve(verseList);
-  }
-
   initPlayer() {
     const player = document.getElementById("player").player;
     const verses = this.activeTab.find(".verse");
@@ -439,13 +220,5 @@ export default class extends Controller {
       verses.last().data("verseNumber"),
       this.currentVerse
     );
-  }
-
-  pausePageLoader() {
-    if (this.pageLoader) this.pageLoader.pause()
-  }
-
-  resumePageLoader() {
-    if (this.pageLoader) this.pageLoader.resume()
   }
 }

@@ -39,7 +39,7 @@
         }
       }
     }
-    .surah-ayah {
+    .ayah-badge {
       background-color: #ebebed;
       color: #71727e;
       border-radius: 4px;
@@ -64,7 +64,7 @@
     }
   }
 
-  .traslation__text {
+  .translation__text {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -74,7 +74,7 @@
       padding-left: 0px;
     }
   }
-  .traslation__translations {
+  .verse__translations {
     display: flex;
     flex-direction: column;
     flex: 3;

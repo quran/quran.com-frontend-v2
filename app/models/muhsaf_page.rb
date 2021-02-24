@@ -1,0 +1,3 @@
+class MuhsafPage < QuranCoreRecord
+
+end

@@ -3,10 +3,6 @@
      data-tab-group="chapter-tabs">
   <div class="reading">
     <div class="reading__content">
-      <% if @presenter.show_bismillah? %>
-        <%= render 'bismillah' %>
-      <% end %>
-
       <div id="verses-reading"
            class='verses-wrapper'
            data-controller="infinite-page"
@@ -15,7 +11,7 @@
           <% if 'reading' == @presenter.active_tab %>
             <%= render 'verses' %>
           <% else %>
-            <%= render_async range_path(range: @presenter.range, reading: true), lazy_load: {root: '#reading-section'} do %>
+            <%= render_async url_for(reading: true), lazy_load: {root: '#reading-section'} do %>
               <div class="text-center text--medium  p-3">
                 <%= loading_spinner %>
               </div>

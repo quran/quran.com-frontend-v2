@@ -12,5 +12,5 @@
 #  updated_at   :datetime         not null
 #
 
-class Token < ApiCoreRecord
+class Token < QuranCoreRecord
 end

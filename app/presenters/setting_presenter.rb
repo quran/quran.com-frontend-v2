@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SettingPresenter < AudioPresenter
-
   def selected_reciter
     load_recitations
       .find(recitation_id)
@@ -15,10 +14,6 @@ class SettingPresenter < AudioPresenter
 
   def recitations
     load_recitations
-  end
-
-  def active_tab
-    params[:reading] == 'true' ? 'reading' : 'translation'
   end
 
   def languages
@@ -47,12 +42,12 @@ class SettingPresenter < AudioPresenter
   def selected_translation_count
     valid_translations.size
   end
-  
+
   def selected_font_name
     font = session[:font]
     font == 'v1' ? 'qcf_v1' : font
   end
-  
+
   protected
 
   def load_recitations

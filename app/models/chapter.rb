@@ -18,7 +18,7 @@
 #  updated_at       :datetime         not null
 #
 
-class Chapter < ApiCoreRecord
+class Chapter < QuranCoreRecord
   include Slugable
   include QuranNavigationSearchable
   include NameTranslateable

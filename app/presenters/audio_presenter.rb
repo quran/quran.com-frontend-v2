@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AudioPresenter < BasePresenter
+class AudioPresenter < QuranPresenter
   def data
     json = {}
 

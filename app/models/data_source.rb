@@ -11,6 +11,6 @@
 #  updated_at :datetime         not null
 #
 
-class DataSource < ApiCoreRecord
+class DataSource < QuranCoreRecord
   has_many :resource_contents
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WordTranslation < ApiCoreRecord
+class WordTranslation < QuranCoreRecord
   belongs_to :word
   belongs_to :language
   belongs_to :resource_content

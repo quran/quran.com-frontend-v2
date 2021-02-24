@@ -18,7 +18,7 @@
 #  updated_at    :datetime         not null
 #
 
-class AudioFile < ApiCoreRecord
+class AudioFile < QuranCoreRecord
   belongs_to :verse
   belongs_to :recitation
 

@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 require("turbolinks").start();
-require("partial_replacement");
 require('select2/dist/js/select2.full');
 
 import JQuery from "jquery";

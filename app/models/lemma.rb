@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Lemma < ApiCoreRecord
+class Lemma < QuranCoreRecord
   has_many :word_lemmas
   has_many :words, through: :word_lemmas
   has_many :verses, through: :words

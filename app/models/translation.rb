@@ -16,7 +16,7 @@
 #  resource_name       :string
 #
 
-class Translation < ApiCoreRecord
+class Translation < QuranCoreRecord
   include LanguageFilterable
   include TranslationSearchable
 

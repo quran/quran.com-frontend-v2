@@ -10,6 +10,6 @@
 #  updated_at :datetime         not null
 #
 
-class Reciter < ApiCoreRecord
+class Reciter < QuranCoreRecord
   include NameTranslateable
 end

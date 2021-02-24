@@ -1,22 +1,27 @@
-<% page = verses[0] %>
-<% first_verse = verses[1].first %>
+<%
+  page = verses[0].page_number
+  first_verse = verses.first
+%>
 
-<div class="row page my-3 <%= 'page--center' if [1, 2, 42].include?(page) %>" id="page-<%= page %>">
+<div class="row page my-3 <%= 'page--center' if @presenter.center_align_page?(page) %>" id="page-<%= page %>">
   <div class="col-md-12">
-    <% lines = group_ayah_by_lines(verses[1]) %>
+    <% lines = group_ayah_by_lines(verses) %>
 
     <div class="lines text-center px-3">
       <% lines.each do |k, line| %>
         <div class="line <%= @presenter.font_method %>">
           <div class="line-verses  <%= 'line--single-verse' if line.keys.size == 1 %>">
-            <% line.each do |verse_number, words| %>
+            <% line.each do |verse_number, word_list| %>
+              <%
+                words = word_list[:words]
+                verse_key = words.first.verse_key
+              %>
               <div class="verse"
-                   data-verse-number="<%= verse_number %>"
                    data-controller="verse"
                    data-reading="true"
-                   data-key="<%= verse_number %>">
-                <div class="arabic" data-verse="<%= verse_number %>">
-                  <%= render partial: 'word', collection: words %>
+                   data-key="<%= verse_key %>">
+                <div class="arabic" data-key="<%= verse_key %>">
+                  <%= render partial: 'reader/word', collection: word_list[:words] %>
                 </div>
               </div>
             <% end %>

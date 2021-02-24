@@ -147,6 +147,8 @@ en:
     not_found: Sorry, this page does not exist
     invalid_verse: Check your Ayah selection. It's out of range.
     invalid_chapter: Check your Surah selection. It's out of range.
+    invalid_page: Page is out of range.
+    invalid_juz: Juz is out of range.
     no_script: Looks like either your browser does not support Javascript or its disabled.
       Quran.com workes best with JavaScript enabled. For more instruction on how to
       enable javascript <a href="http://www.enable-javascript.com/" target="_blank"

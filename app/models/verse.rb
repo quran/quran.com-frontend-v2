@@ -27,14 +27,10 @@
 #  verse_stem_id  :integer
 #
 
-class Verse < ApiCoreRecord
+class Verse < QuranCoreRecord
   include QuranSearchable
 
   belongs_to :chapter, inverse_of: :verses, counter_cache: true
-  # Don't need these relation for now
-  # belongs_to :verse_root
-  # belongs_to :verse_lemma
-  # belongs_to :verse_stem
 
   has_many :tafsirs
   has_many :words

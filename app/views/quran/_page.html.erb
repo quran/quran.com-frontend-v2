@@ -1,0 +1,60 @@
+<% lines = group_verse_by_page_and_lines(verses) %>
+
+<% lines.each do |page, page_lines| %>
+  <% first_verse = verses[page_lines.first[1].first[1][:index]] %>
+
+  <div class="row page my-3 <%= 'page--center' if @presenter.center_align_page?(page) %>"
+     id="page-<%= page %>"
+     data-page="<%= page %>"
+     data-controller="page"
+>
+  <div class="col-md-12">
+    <div class="lines text-center px-3">
+      <% page_lines.each do |_page, line| %>
+        <% if @presenter.show_chapter_name?(verses[line.first[1][:index]]) %>
+          <%= render 'reader/chapter_name', verse: verses[line.first[1][:index]] %>
+        <% end %>
+
+        <div class="line <%= @presenter.font_method %>">
+          <div class="line-verses  <%= 'line--single-verse' if line.keys.size == 1 %>">
+            <% line.each do |verse_number, word_list| %>
+              <%
+                words = word_list[:words]
+                verse_key = words.first.verse_key
+              %>
+              <div class="verse"
+                   data-controller="verse"
+                   data-reading="true"
+                   data-key="<%= verse_key %>">
+                <div class="arabic" data-key="<%= verse_key %>">
+                  <%= render partial: 'reader/word', collection: word_list[:words] %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row my-2">
+  <div class="col-4">
+    <div class="text-left text text--grey text--medium">
+      <%= _t('page') %> <%= page %>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <div class="text-right text text--grey text--medium juz-art">
+      <%= image_tag "juz-art-right.svg", width: '30px', class: 'art' %>
+      <span class="info">
+        جزء  <%= first_verse.juz_number %>
+        حزب <%= first_verse.hizb_number %>
+      </span>
+      <%= image_tag "juz-art-left.svg", width: '30px', class: 'art' %>
+    </div>
+  </div>
+</div>
+<div class="horizontal-line"></div>
+<% end %>

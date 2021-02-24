@@ -20,8 +20,6 @@ class ChaptersController < ApplicationController
   end
 
   def ayatul_kursi
-    return redirect_to root_path, error: t('chapters.invalid') unless @presenter.chapter
-
     if request.xhr?
       render partial: 'verses', layout: false
     else
@@ -30,6 +28,9 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
+    # Allow infinite pagination to load more ayah when user scroll
+    params[:continue] = true
+
     render layout: false
   end
 

@@ -14,7 +14,7 @@
 #  updated_at          :datetime         not null
 #
 
-class Language < ApiCoreRecord
+class Language < QuranCoreRecord
   include NameTranslateable
 
   serialize :es_indexes

@@ -1,0 +1,28 @@
+<div class="reading-section tab-pane fade <%= 'show active' if 'reading' == @presenter.active_tab %>"
+     id="reading-section"
+     data-tab-group="chapter-tabs">
+  <div class="reading">
+    <div class="reading__content">
+      <% if @presenter.show_bismillah? %>
+        <%= render 'bismillah' %>
+      <% end %>
+
+      <div id="verses-reading"
+           class='verses-wrapper'
+           data-controller="infinite-page"
+           data-items-container="#page-verses">
+        <div id='page-verses' class="verses">
+          <% if 'reading' == @presenter.active_tab %>
+            <%= render 'verses' %>
+          <% else %>
+            <%= render_async url_for(range: @presenter.range, reading: true, font: @presenter.font_type), lazy_load: {root: '#reading-section'} do %>
+              <div class="text-center text--medium  p-3">
+                <%= loading_spinner %>
+              </div>
+            <% end.html_safe %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

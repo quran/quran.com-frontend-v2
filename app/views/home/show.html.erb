@@ -47,6 +47,7 @@
   <div class="surah-section" data-tab-group="home-tabs" id="surah-list">
     <%= render partial: 'chapter_item', collection: @presenter.chapters, as: :chapter %>
   </div>
+
   <div class="juz-section hidden" data-tab-group="home-tabs" id="juz-list">
     <%= render partial: 'juz_item', collection: @presenter.juz, as: :juz %>
   </div>

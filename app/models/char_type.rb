@@ -12,7 +12,7 @@
 #  updated_at  :datetime         not null
 #
 
-class CharType < ApiCoreRecord
+class CharType < QuranCoreRecord
   belongs_to :parent, class_name: 'CharType'
   has_many :children, class_name: 'CharType', foreign_key: 'parent_id'
 end

@@ -8,8 +8,8 @@ let wordClass = '.w';
 export default class extends Controller {
   connect() {
     setTimeout(() => {
-      const chapter = document.getElementById('chapter').chapterEl;
-      if (!chapter.isInfoMode()) {
+      const reader = document.getElementById('reader').reader;
+      if (!reader.isInfoMode()) {
         this.bindSelection()
       }
     }, 300)

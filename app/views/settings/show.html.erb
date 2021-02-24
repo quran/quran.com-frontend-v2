@@ -17,20 +17,20 @@
     <div class="tab__row tab__row--center  hide-sm">
       <div class="tabs" data-controller="tabs">
         <a class="tabs__item translation-tab <%= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
-           href="/<%= @presenter.current_chapter.id %>?reading=false"
+           href="/<%#= @presenter.current_chapter.id %>?reading=false"
            data-target="#translation-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.translation') %>
         </a>
 
         <a class="tabs__item reading-tab <%= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
-           href="/<%= @presenter.current_chapter.id %>?reading=true"
+           href="/<%#= @presenter.current_chapter.id %>?reading=true"
            data-target="#reading-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.reading') %>
         </a>
 
-        <a class="tabs__item info-tab surah-info-tab" href="<%= chapter_info_path(@presenter.current_chapter.id, locale: I18n.locale) %>"
+        <a class="tabs__item info-tab surah-info-tab" href="<%#= chapter_info_path(@presenter.current_chapter.id, locale: I18n.locale) %>"
            data-target="#info-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.info') %>

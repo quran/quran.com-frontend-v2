@@ -76,6 +76,7 @@
     }
   }
 }
+
 .surah-card__arabic {
   display: flex;
   align-items: center;
@@ -84,7 +85,12 @@
     padding: 0;
     color: $dark-green;
   }
+
+  .icon-surah{
+    font-size: 25px;
+  }
 }
+
 .surah-section {
   display: grid;
   column-gap: 12px;

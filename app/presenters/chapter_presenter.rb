@@ -1,27 +1,6 @@
 # frozen_string_literal: true
 
 class ChapterPresenter < HomePresenter
-  DEFAULT_FONT_METHOD = 'code_v2'
-  DEFAULT_FONT_TYPE = 'v2'
-  QCF_FONTS = %w[v2 v1].freeze
-
-  WORD_TEXT_TYPES = %w[
-    v1
-    v2
-    indopak
-    uthmani
-    imlaei
-  ].freeze
-
-  FONT_METHODS = {
-      'v1' => 'code_v1',
-      'v2' => 'code_v2',
-      'uthmani' => 'text_uthmani',
-      'imlaei' => 'text_imlaei',
-      'indopak' => 'text_indopak',
-      'tajweed' => 'text_uthmani_tajweed'
-  }.freeze
-
   def initialize(context)
     super context
 
@@ -54,57 +33,6 @@ class ChapterPresenter < HomePresenter
     chapters[chapter.chapter_number - 1].translated_name.name
   end
 
-  def active_tab
-    if reading_mode?
-      'reading'
-    else
-      'translation'
-    end
-  end
-
-  def reading_mode?
-    strong_memoize :reading_mode do
-      reading = params[:reading].presence
-      @reading_mode = reading.to_s == 'true'
-    end
-  end
-
-  def font_type(store: true)
-    strong_memoize :font_type do
-      font = params[:font].presence || session[:font]
-      font = FONT_METHODS.key?(font) ? font : DEFAULT_FONT_TYPE
-
-      if store
-        session[:font] = font
-      end
-
-      font
-    end
-  end
-
-  def font_method
-    strong_memoize :font_method do
-      font = font_type
-
-      if reading_mode? && font == 'tajweed'
-        # we don't have wbw data for tajweed, fallback to uthmani script
-        font = 'uthmani'
-      end
-
-      FONT_METHODS[font]
-    end
-  end
-
-  def showing_qcf_font?
-    QCF_FONTS.include? font_type
-  end
-
-  def render_verse_words?
-    strong_memoize :render_words do
-      WORD_TEXT_TYPES.include?(font_type)
-    end
-  end
-
   def paginate
     strong_memoize :paginate do
       verses(verse_pagination_start, per_page)
@@ -122,6 +50,9 @@ class ChapterPresenter < HomePresenter
 
   # Next page number in the collection
   def next_page
+    if params[:continue] && has_more_verses?
+      return current_page + 1
+    end
     return nil if last_page? || out_of_range?
 
     return paginate.last.page_number + 1 if reading_mode?
@@ -208,24 +139,6 @@ class ChapterPresenter < HomePresenter
 
   def next_surah?
     chapter.chapter_number + 1 if chapter.chapter_number < 114
-  end
-
-  def params_for_verse_link
-    strong_memoize :verse_link_params do
-      if (translation = valid_translations).present?
-        "?translations=#{translation.join(',')}"
-      end
-    end
-  end
-
-  def params_for_copy(verse)
-    "#{params_for_verse_link}&range=#{range}&from=#{verse.verse_number}"
-  end
-
-  def render_translations?
-    strong_memoize :render_translation do
-      valid_translations.present?
-    end
   end
 
   def show_verse_actions?
@@ -345,9 +258,8 @@ class ChapterPresenter < HomePresenter
 
   def verse_pagination_start
     if reading_mode?
-      # on reading more, we render one page each request
-      # per_page is ignored
-      first_verse = nil
+      # on reading mode, we render one page each request
+
       first_verse = if params[:page]
                       Verse.where(chapter_id: chapter.id, page_number: params[:page]).first
                     else

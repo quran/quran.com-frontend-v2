@@ -22,7 +22,7 @@
 #  mobile_translation_id :integer
 #
 
-class ResourceContent < ApiCoreRecord
+class ResourceContent < QuranCoreRecord
   include LanguageFilterable
   include NameTranslateable
 

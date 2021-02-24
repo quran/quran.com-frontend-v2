@@ -1,6 +1,5 @@
 <div class="translation__item verse"
      id="<%= verse.verse_key %>"
-     data-verse-number="<%= verse.verse_number %>"
      data-controller="verse"
      data-key="<%= verse.verse_key %>"
      data-text="<%= verse.text_uthmani %>">
@@ -12,7 +11,7 @@
          data-name='ayah-key'
          data-value='<%= verse.verse_key %>'
          data-category='ayah-action'>
-        <span class="surah-ayah"><%= verse.verse_key %></span>
+        <span class="ayah-badge"><%= verse.verse_key %></span>
       </a>
 
       <a class="translation__icon play"
@@ -99,11 +98,11 @@
     </div>
   </div>
 
-  <div class="traslation__text">
+  <div class="translation__text">
     <div class="translation__arabic">
       <div class="arabic <%= @presenter.font_method %>" data-verse="<%= verse.id %>">
         <% if @presenter.render_verse_words? %>
-          <%= render partial: 'chapters/word', collection: verse.words %>
+          <%= render partial: 'reader/word', collection: verse.words %>
         <% else %>
           <%= verse.send(@presenter.font_method).to_s.html_safe %>
         <% end %>
@@ -111,7 +110,7 @@
     </div>
 
     <% if @presenter.render_translations? %>
-      <%= render partial: 'translation', collection: verse.translations, as: :translation %>
+      <%= render partial: 'reader/translation', collection: verse.translations, as: :translation %>
     <% end %>
   </div>
 </div>

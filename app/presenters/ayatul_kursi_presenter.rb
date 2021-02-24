@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class AyatulKursiPresenter < ChapterPresenter
+  def verses
+    finder = VerseFinder.new(params)
+  end
+
   def meta_url
     'https://quran.com/ayatul-kursi'
   end

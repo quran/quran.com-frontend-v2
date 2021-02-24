@@ -5,7 +5,6 @@ class VersePresenter < BasePresenter
     if params[:id].to_s.include?(':')
       Verse.find_by(verse_key: params[:id])
     else
-      #Verse.find_by(id_or_key: params[:id])
       Verse.find_by_id_or_key(params[:id])
     end
   end

@@ -1,11 +1,19 @@
-#bismillah {
+#bismillah, .bismillah {
   font-family: bismillah;
+}
+
+#bismillah{
   font-size: 40px;
+}
+
+.bismillah{
+  font-size: 30px;
 }
 
 .tab-pane {
   display: none;
 }
+
 .tab-pane.active {
   display: block;
   visibility: visible;

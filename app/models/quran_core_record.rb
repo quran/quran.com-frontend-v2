@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class ApiCoreRecord < ApplicationRecord
+class QuranCoreRecord < ApplicationRecord
   self.abstract_class = true
 end
