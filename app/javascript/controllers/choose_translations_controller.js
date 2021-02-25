@@ -8,7 +8,7 @@
 // </div>
 
 import SettingController from "./setting_controller";
-import {getChapterController} from "../utility/controller-helpers";
+import {getQuranReader} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
@@ -49,7 +49,7 @@ export default class extends SettingController {
       });
 
     this.set("translations", newTranslations);
-    getChapterController().changeTranslations(newTranslations)
+    getQuranReader().changeTranslations(newTranslations)
   }
 
   clearAllTranslations() {
@@ -58,6 +58,6 @@ export default class extends SettingController {
     });
 
     this.set("translations", []);
-    getChapterController().changeTranslations([])
+    getQuranReader().changeTranslations([])
   }
 }

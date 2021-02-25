@@ -117,7 +117,7 @@ export default class extends Controller {
       return this.setCurrentVerse(verseKey, dom)
     }
 
-    return this.loadVerses(verse).then(() => {
+    return this.loadVerses(verse, verseKey).then(() => {
       this.setCurrentVerse(verseKey)
     });
   }
@@ -232,6 +232,95 @@ export default class extends Controller {
     this.highlightCurrent();
 
     return Promise.resolve([]);
+  }
+
+  initPlayer() {
+    const player = document.getElementById("player").player;
+    const verses = this.activeTab.find(".verse");
+
+    player.init(
+      this,
+      verses.first().data("verseNumber"),
+      verses.last().data("verseNumber"),
+      this.currentVerse
+    );
+  }
+
+  getLazyTab(url, target, lazy) {
+    const lazyParent = `{"root":"${target}"}`;
+    const id = Math.random()
+      .toString(36)
+      .substring(7);
+
+    return `<div
+              class="render-async my-3"
+              id="render-async-${id}"
+              data-path="${url}"
+              data-method="GET"
+              data-headers="{}"
+              data-lazy-load=${lazy ? lazyParent : false}
+              data-controller="render-async">
+               <p class="text-center p-3">
+                 <span class='spinner text text--grey'><i class='spinner--swirl'></i></span>
+               </p>
+            </div>`;
+  }
+
+  changeFont(font) {
+    const readingUrl = `${this.readingTab.href}&font=${font}`;
+    const translationUrl = `${this.translationTab.href}&font=${font}`;
+
+    const readingTarget = this.readingTab.dataset.target;
+    const translationTarget = this.translationTab.dataset.target;
+
+    const readingPage = document.querySelector(`${readingTarget} .verses`);
+    const translationPage = document.querySelector(
+      `${translationTarget} .verses`
+    );
+
+    readingPage.innerHTML = this.getLazyTab(
+      readingUrl,
+      readingTarget,
+      !this.isReadingMode()
+    );
+
+    translationPage.innerHTML = this.getLazyTab(
+      translationUrl,
+      translationTarget,
+      !this.isTranslationsMode()
+    );
+
+    if (this.currentVerse.key) {
+      return this.jumpToVerse(this.currentVerse.number, this.currentVerse.key)
+    }
+
+    return Promise.resolve();
+  }
+
+  changeTranslations(newTranslationIds) {
+    document.querySelector("#open-translations count").textContent = newTranslationIds.length
+
+    let translationsToLoad;
+
+    if (0 == newTranslationIds.length) {
+      translationsToLoad = "no";
+    } else {
+      translationsToLoad = newTranslationIds.join(",");
+    }
+    document.body.loader.show();
+
+    const path = `${this.translationTab.href}&${$.param({
+      translations: translationsToLoad
+    })}`;
+
+    const verseList = $(this.translationTab.dataset.target).find(".verses");
+
+    fetch(`${path}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+      .then(response => response.text())
+      .then(verses => {
+        verseList.html(verses);
+        document.body.loader.hide();
+      });
   }
 
   get playingCurrentVerse() {

@@ -10,17 +10,17 @@
 import {Controller} from "stimulus";
 import LocalStore from "../utility/local-store";
 import DeviceDetector from "../utility/deviceDetector";
-import {getChapterController} from "../utility/controller-helpers";
+import {getQuranReader} from "../utility/controller-helpers";
 
 global.settings = {};
 
 const DEFAULT_FONT_SIZE = {
   v1: {
-    mobile: 25,
+    mobile: 20,
     desktop: 30,
   },
   v2: {
-    mobile: 20,
+    mobile: 16,
     desktop: 30,
   },
   indopak: {
@@ -221,9 +221,9 @@ export default class extends Controller {
       // each Arabic script script has different font sizes
       let arabicSizes = setting.get("arabicFontSize") || DEFAULT_FONT_SIZE;
 
-      if(arabicSizes[setting.get("font")]){
+      if (arabicSizes[setting.get("font")]) {
         arabicSizes[setting.get("font")][device] = size
-      } else{
+      } else {
         arabicSizes['default'][device] = size
       }
       setting.set("arabicFontSize", arabicSizes);
@@ -270,18 +270,39 @@ export default class extends Controller {
 
   resetPage() {
     this.styles.innerText = "";
-    getChapterController().changeTranslations(this.defaultSetting().translations)
+    getQuranReader().changeTranslations(this.defaultSetting().translations)
   }
 
   wordFontSize() {
     let setting = document.body.setting.get;
     const fontSizes = setting("arabicFontSize") || DEFAULT_FONT_SIZE;
 
-    return fontSizes[setting('font')] || fontSizes.default;
+    return fontSizes[this.currentFont] || fontSizes.default;
   }
 
   translationFontSize() {
     let setting = document.body.setting.get;
     return setting("translationFontSize") || DEFAULT_TRANSLATION_SIZE
+  }
+
+  get currentFont() {
+    let font = null;
+    if (window.pageSettings) {
+      font = pageSettings.font;
+    }
+
+    if (!font) {
+      const setting = document.body.setting.get;
+      font = setting('font')
+    }
+    return font
+  }
+
+  get selectedTranslations(){
+    if (window.pageSettings) {
+      return pageSettings.translations;
+    } else{
+      return [];
+    }
   }
 }

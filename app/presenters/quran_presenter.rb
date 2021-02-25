@@ -24,6 +24,9 @@ class QuranPresenter < BasePresenter
   def initialize(context)
     super
     params[:reading] = 'true' == params[:reading]
+
+    # Using this to track surah names shown
+    @chapter_name_shown = {}
   end
 
   def verse_actions_heading(verse)
@@ -31,7 +34,9 @@ class QuranPresenter < BasePresenter
   end
 
   def show_chapter_name?(verse)
-    1 == verse.verse_number
+    if 1 == verse.verse_number && @chapter_name_shown[verse.chapter_id].nil?
+      @chapter_name_shown[verse.chapter_id] = true
+    end
   end
 
   def show_bismillah?(verse)

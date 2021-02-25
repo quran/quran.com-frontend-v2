@@ -101,7 +101,7 @@ export default class extends QuranController {
     });
   }
 
-  loadVerses(verse) {
+  loadVerses(verse, verseKey) {
     document.body.loader.show();
     // called when user jump to ayah from repeat setting
     verse = Number(verse);
@@ -112,13 +112,13 @@ export default class extends QuranController {
     const chapter = this.id();
     const reading = this.isReadingMode();
     let from, to, font, translations;
-
+    const setting = document.body.setting;
     // instead of loading all ayah, let's load batch of 10 around the selected verse
     // i.e if user want to jump to 200, we'll load 195 to 205
     from = Math.max(1, verse - 2);
     to = Math.min(verse + 5, this.totalVerses);
-    font = document.body.setting.get("font");
-    translations = document.body.setting.get("translations").join(',')
+    font = setting.currentFont;
+    translations = setting.selectedTranslations.join(',')
 
     let request = fetch(
       `/${chapter}/load_verses?${$.param({from, to, verse, reading, font, translations})}`,
@@ -131,94 +131,5 @@ export default class extends QuranController {
       })
 
     return Promise.resolve(request);
-  }
-
-  changeFont(font) {
-    const readingUrl = `${this.readingTab.href}&font=${font}`;
-    const translationUrl = `${this.translationTab.href}&font=${font}`;
-
-    const readingTarget = this.readingTab.dataset.target;
-    const translationTarget = this.translationTab.dataset.target;
-
-    const readingPage = document.querySelector(`${readingTarget} .verses`);
-    const translationPage = document.querySelector(
-      `${translationTarget} .verses`
-    );
-
-    readingPage.innerHTML = this.getLazyTab(
-      readingUrl,
-      readingTarget,
-      !this.isReadingMode()
-    );
-
-    translationPage.innerHTML = this.getLazyTab(
-      translationUrl,
-      translationTarget,
-      !this.isTranslationsMode()
-    );
-
-    if (this.currentVerse) {
-      return this.jumpToVerse(this.currentVerse)
-    }
-
-    return Promise.resolve();
-  }
-
-  getLazyTab(url, target, lazy) {
-    const lazyParent = `{"root":"${target}"}`;
-    const id = Math.random()
-      .toString(36)
-      .substring(7);
-
-    return `<div
-              className="render-async"
-              id="render-async-${id}"
-              data-path="${url}"
-              data-method="GET"
-              data-headers="{}"
-              data-lazy-load=${lazy ? lazyParent : false}
-              data-controller="render-async">
-               <p className="text-center p-3">
-                 <span class='spinner text text--grey'><i class='spinner--swirl'></i></span>
-               </p>
-            </div>`;
-  }
-
-  changeTranslations(newTranslationIds) {
-    document.querySelector("#open-translations count").textContent = newTranslationIds.length
-
-    let translationsToLoad;
-
-    if (0 == newTranslationIds.length) {
-      translationsToLoad = "no";
-    } else {
-      translationsToLoad = newTranslationIds.join(",");
-    }
-    document.body.loader.show();
-
-    const path = `${this.translationTab.href}&${$.param({
-      translations: translationsToLoad
-    })}`;
-
-    const verseList = $(this.translationTab.dataset.target).find(".verses");
-
-    fetch(`${path}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
-      .then(response => response.text())
-      .then(verses => {
-        verseList.html(verses);
-        document.body.loader.hide();
-      });
-  }
-
-  initPlayer() {
-    const player = document.getElementById("player").player;
-    const verses = this.activeTab.find(".verse");
-
-    player.init(
-      this,
-      verses.first().data("verseNumber"),
-      verses.last().data("verseNumber"),
-      this.currentVerse
-    );
   }
 }

@@ -15,6 +15,31 @@ export default class extends QuranController {
   }
 
   id() {
-    return this.element.dataset.pageNumber;
+    return this.element.dataset.id;
+  }
+
+  loadVerses(verse, verseKey) {
+    document.body.loader.show();
+
+    // pause infinite page loader
+    this.pausePageLoader();
+
+    const juz = this.id();
+    const reading = this.isReadingMode();
+    const setting = document.body.setting;
+    const font = setting.currentFont;
+    const translations = setting.selectedTranslations.join(',');
+
+    let request = fetch(
+      `/juz/${juz}/load_verses?${$.param({verse: verseKey, reading, font, translations})}`,
+      {headers: {"X-Requested-With": "XMLHttpRequest"}}
+    )
+      .then(response => response.text())
+      .then(verses => {
+        document.body.loader.hide();
+        this.insertVerses(verses)
+      })
+
+    return Promise.resolve(request);
   }
 }

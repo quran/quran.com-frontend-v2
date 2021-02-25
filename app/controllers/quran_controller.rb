@@ -18,4 +18,11 @@ class QuranController < ApplicationController
 
     render partial: 'verses', layout: false if request.xhr?
   end
+
+  def juz_verses
+    params[:after] = Verse.find_by(verse_key: params[:verse]).id
+    @presenter = JuzPresenter.new(self)
+
+    render layout: false
+  end
 end

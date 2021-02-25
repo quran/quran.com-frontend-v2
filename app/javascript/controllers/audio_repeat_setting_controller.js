@@ -1,5 +1,5 @@
 import SettingController from "./setting_controller";
-import {getChapterController} from "../utility/controller-helpers";
+import {getQuranReader} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
@@ -105,7 +105,7 @@ export default class extends SettingController {
   }
 
   jumpTo(verse) {
-    return getChapterController().loadVerses(verse);
+    return getQuranReader().loadVerses(verse);
   }
 
   updateRepeatRange() {

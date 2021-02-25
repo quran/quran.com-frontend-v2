@@ -1,0 +1,5 @@
+<% if @presenter.valid_juz? %>
+  <%= render 'verses' %>
+<% else %>
+  Juz is out of range. Please select the valid juz
+<% end %>

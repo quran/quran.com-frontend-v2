@@ -8,7 +8,7 @@
 // </div>
 
 import SettingController from "./setting_controller";
-import {getChapterController} from "../utility/controller-helpers";
+import {getQuranReader} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
@@ -32,7 +32,7 @@ export default class extends SettingController {
   changeFont(target) {
     this.set("font", target.value);
 
-    getChapterController().changeFont(target.value).then(()=> {
+    getQuranReader().changeFont(target.value).then(()=> {
       this.updateFontSize();
     });
   }

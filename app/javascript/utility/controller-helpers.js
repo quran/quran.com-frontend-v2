@@ -1,6 +1,6 @@
-const getChapterController = () => {
-  const chapter = document.getElementById("chapter")
-  return chapter.chapterEl
+const getQuranReader = () => {
+  const chapter = document.getElementById("reader")
+  return chapter.reader
 }
 
-export {getChapterController}
+export {getQuranReader}

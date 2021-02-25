@@ -4,7 +4,7 @@
 </div>
 <div id="modal">
   <div>
-    <%= render 'fonts', verses: verses if @presenter.showing_qcf_font?%>
+    <%= render 'fonts', verses: verses %>
     <%= render 'verse', skip_menu: true, verse: verses.first %>
   </div>
 </div>

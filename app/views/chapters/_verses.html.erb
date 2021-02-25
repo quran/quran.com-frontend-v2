@@ -1,6 +1,6 @@
 <% verses = local_assigns[:verses] || @presenter.paginate %>
 
-<%= render 'reader/qcf_fonts', verses: verses if @presenter.showing_qcf_font?%>
+<%= render 'reader/qcf_fonts', verses: verses %>
 
 <% if @presenter.reading_mode? %>
   <%= render partial: 'page', locals: {verses: verses} %>
