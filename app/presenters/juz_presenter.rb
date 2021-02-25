@@ -19,6 +19,10 @@ class JuzPresenter < QuranPresenter
     end
   end
 
+  def continue?
+    true
+  end
+
   def valid_juz?
     current_juz > 0 && current_juz < 31
   end
@@ -39,4 +43,9 @@ class JuzPresenter < QuranPresenter
     params[:juz_number].to_i.abs
   end
   alias current current_juz
+
+  def last_verse
+    # For juz view, we don't use page for paginating.
+    verses.last
+  end
 end

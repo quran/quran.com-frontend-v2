@@ -120,14 +120,25 @@ class VerseFinder
     if juz = Juz.find_by(juz_number: params[:juz_number].to_i.abs)
       @total_records = juz.verses_count
 
-      if false && params[:reading]
-        binding.pry
-        verse_start = juz.first_verse_id + (current_page - 1) * per_page
+      if params[:reading]
+        # Reading mode will not use page, but start from last shown verse
+        # and load full page
+        last_verse = nil
+
+        if params[:after]
+          last_verse = Verse.where(juz_number: juz.id, id: params[:after]).first
+        end
+
+        last_verse ||= Verse.find(juz.first_verse_id)
 
         @results = rescope_verses('verse_index')
-                       .where(juz_number: juz.juz_number)
-                       .where('verses.verse_index >= ? AND verses.verse_index <= ?', verse_start.to_i, verse_end.to_i)
+                       .where(juz_number: juz.juz_number, page_number: last_verse.page_number)
 
+        if @results.last.id < juz.last_verse_id
+          @next_page = current_page + 1
+        end
+
+        @results
       else
         verse_start = juz.first_verse_id + (current_page - 1) * per_page
         verse_end = min(verse_start + per_page, juz.last_verse_id)
@@ -138,7 +149,7 @@ class VerseFinder
 
         @results = rescope_verses('verse_index')
                        .where(juz_number: juz.juz_number)
-                       .where('verses.verse_index >= ? AND verses.verse_index <= ?', verse_start.to_i, verse_end.to_i)
+                       .where('verses.verse_index >= ? AND verses.verse_index < ?', verse_start.to_i, verse_end.to_i)
       end
     else
       Verse.where('1=0')
