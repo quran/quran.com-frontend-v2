@@ -9,7 +9,7 @@
       <% if 'translation' == @presenter.active_tab %>
         <%= render 'verses' %>
       <% else %>
-        <%= render_async url_for(reading: false), lazy_load: {root: '#translation-section'} do %>
+        <%= render_async url_for(reading: false), lazy_load: {root: '#translation-section'}, success_event: 'lazy:loaded'  do %>
           <div class="text-center text--medium  p-3">
             <%= loading_spinner %>
           </div>

@@ -131,14 +131,14 @@
     <div class="nav-tabs">
       <div class="tabs" data-controller="tabs">
         <a class="tabs__item translation-tab <%= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
-           href="<%= range_path range: @presenter.range, reading: false, font: @presenter.font_type %>"
+           href="<%= range_path range: @presenter.range, reading: false %>"
            data-target="#translation-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.translation') %>
         </a>
 
         <a class="tabs__item reading-tab <%= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
-           href="<%= url_for range: @presenter.range, reading: true, font: @presenter.font_type %>"
+           href="<%= url_for range: @presenter.range, reading: true %>"
            data-target="#reading-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.reading') %>

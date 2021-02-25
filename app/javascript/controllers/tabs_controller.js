@@ -33,13 +33,11 @@ export default class extends Controller {
   }
 
   showTab(target) {
-    const event = new Event("tab.shown")
-
     // activate all tab items sharing same target
     const tabItems = document.querySelectorAll(`.tabs__item[data-target='${target}`)
     tabItems.forEach((tabItem) => {
       tabItem.classList.add(TAB_ITEM_SELECTED_CLASS);
-      tabItem.dispatchEvent(event)
+      this.fireEvent("tab.shown", tabItem);
     })
 
     // show all target tab panens
@@ -51,14 +49,12 @@ export default class extends Controller {
   }
 
   hideTabs(group) {
-    const event = new Event("tab.hidden");
-
     // hide tab items
     document
       .querySelectorAll(`[data-tab=${group}]`)
       .forEach(item => {
         item.classList.remove(TAB_ITEM_SELECTED_CLASS)
-        item.dispatchEvent(event)
+        this.fireEvent("tab.hidden", item);
       });
 
     // hide tab panels
@@ -66,5 +62,17 @@ export default class extends Controller {
       item.classList.add("hidden");
       item.classList.remove(...["show", "active"]);
     });
+  }
+
+  fireEvent(name, element){
+    let event;
+    if (typeof Event === "function")
+      event = new Event(name);
+    else {
+      event = document.createEvent("Event");
+      event.initEvent(name, true, true);
+    }
+
+    (element || document).dispatchEvent(event);
   }
 }

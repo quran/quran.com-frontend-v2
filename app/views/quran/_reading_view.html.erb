@@ -11,7 +11,7 @@
           <% if 'reading' == @presenter.active_tab %>
             <%= render 'verses' %>
           <% else %>
-            <%= render_async url_for(reading: true), lazy_load: {root: '#reading-section'} do %>
+            <%= render_async url_for(reading: true), lazy_load: {root: '#reading-section'}, success_event: 'lazy:loaded'  do %>
               <div class="text-center text--medium  p-3">
                 <%= loading_spinner %>
               </div>

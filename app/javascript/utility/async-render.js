@@ -73,6 +73,9 @@ class RenderAsync {
       } else {
         $(element).replaceWith(response);
       }
+
+      if(successEvent)
+        delayOnError
       fireEvent(successEvent);
     };
 

@@ -23,7 +23,7 @@ export default class extends Controller {
   connect() {
     this.translationTab = document.querySelector(".translation-tab");
     this.readingTab = document.querySelector(".reading-tab");
-    this.el = $(this.element)
+    this.el = $(this.element);
     this.totalVerses = Number(this.el.data('totalVerses'));
 
     // using same controller for reading, and translation mode
@@ -67,21 +67,18 @@ export default class extends Controller {
     url && this.updateURLState(url, query);
 
     const pageVerses = $(tab.dataset.target).find(".verses-wrapper");
-
-    this.pageLoader = pageVerses.get(0).infinitePage;
-    this.resumePageLoader();
-
     this.activeTab = pageVerses.find(".verses");
+    this.pageLoader = pageVerses.get(0).infinitePage;
 
-    if (this.playingCurrentVerse) {
-      // player is playing this ayah. Scroll to it and start highlighting
-      const current = this.currentVerse;
-
-      this.jumpToVerse(current.number, current.key).then(() => {
-        const player = document.getElementById("player").player;
-        player.pauseCurrent();
-        player.playCurrent();
-      });
+    if (this.activeTab.find(".render-async").length > 0) {
+      document.addEventListener('lazy:loaded', () => {
+        // jump to ayah once lazy tab is loaded.
+        this.jumpToCurrent();
+        this.resumePageLoader();
+      }, {once: true});
+    } else {
+      this.jumpToCurrent();
+      this.resumePageLoader();
     }
   }
 
@@ -100,13 +97,15 @@ export default class extends Controller {
         e.preventDefault();
         const {verse, verseKey} = e.currentTarget.dataset;
 
-        this.jumpToVerse(verse, verseKey).then(() => {
-          if (this.playingCurrentVerse) {
-            const player = document.getElementById("player").player;
-            player.playVerse(verseKey);
-          }
-        })
+        this.jumpToVerse(verse, verseKey);
       });
+  }
+
+  jumpToCurrent() {
+    const current = this.currentVerse;
+    if (current.key) {
+      this.jumpToVerse(current.number, current.key);
+    }
   }
 
   jumpToVerse(verse, verseKey) {
@@ -114,21 +113,23 @@ export default class extends Controller {
 
     // If this ayah is already loaded, scroll to it
     if (dom.length > 0) {
-      return this.setCurrentVerse(verseKey, dom)
+      return this.setCurrentVerse(verse, verseKey)
     }
 
     return this.loadVerses(verse, verseKey).then(() => {
-      this.setCurrentVerse(verseKey)
+      this.setCurrentVerse(verse, verseKey)
     });
   }
 
   highlightCurrent() {
     this.removeHighlighting();
-    this.currentVerse.el.addClass("highlight");
+    const verseEl = this.findVerse(this.currentVerse.key);
+    verseEl.addClass("highlight");
   }
 
   scrollToCurrent() {
     const current = this.currentVerse;
+    const verseEl = this.findVerse(current.key);
 
     // activate verse item in dropdown filter
     $("#verse-list .dropdown-item").removeClass("active");
@@ -136,8 +137,8 @@ export default class extends Controller {
     activeVerse.addClass("active");
     $("#ayah-dropdown #current").html(this.verseText(current.number, current.key));
 
-    let verseTopOffset = current.el.offset().top;
-    let verseHeight = current.el.outerHeight();
+    let verseTopOffset = verseEl.offset().top;
+    let verseHeight = verseEl.outerHeight();
     let currentScroll = $(window).scrollTop();
     let windowHeight = window.innerHeight;
     let headerHeight =
@@ -192,10 +193,13 @@ export default class extends Controller {
     return this.activeTab.find(`.verse[data-key='${key}']`)
   }
 
-  verseText(verse, verseKey) {
+  verseText(verseNumber, verseKey) {
     // in chapter mode, we'll show verse number
     // and verse key in juz or page view
-    return verseKey;
+    if (this.isChapterMode)
+      return verseNumber
+    else
+      return verseKey;
   }
 
   disconnect() {
@@ -218,14 +222,22 @@ export default class extends Controller {
     window.history.pushState(state, "", url);
   }
 
-  setCurrentVerse(key, verseEl) {
-    verseEl = verseEl || this.findVerse(key);
+  // private
+  setCurrentVerse(verseNum, verseKey) {
+    const verseEl = this.findVerse(verseKey);
+
+    const last = this.currentVerse;
 
     this.currentVerse = {
-      el: verseEl,
-      number: verseEl.data('verse'),
-      key: key,
+      number: verseNum,
+      key: verseKey,
       playing: verseEl.data('playing')
+    }
+
+    if (last.playing) {
+      const player = document.getElementById("player").player;
+      player.pauseCurrent();
+      player.playCurrent();
     }
 
     this.scrollToCurrent();
@@ -258,6 +270,7 @@ export default class extends Controller {
               data-path="${url}"
               data-method="GET"
               data-headers="{}"
+              data-success-event="lazy:loaded"
               data-lazy-load=${lazy ? lazyParent : false}
               data-controller="render-async">
                <p class="text-center p-3">
@@ -277,6 +290,8 @@ export default class extends Controller {
     const translationPage = document.querySelector(
       `${translationTarget} .verses`
     );
+
+    window.pageSettings.font = font;
 
     readingPage.innerHTML = this.getLazyTab(
       readingUrl,

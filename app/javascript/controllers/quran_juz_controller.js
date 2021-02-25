@@ -30,6 +30,7 @@ export default class extends QuranController {
     const font = setting.currentFont;
     const translations = setting.selectedTranslations.join(',');
 
+    debugger
     let request = fetch(
       `/juz/${juz}/load_verses?${$.param({verse: verseKey, reading, font, translations})}`,
       {headers: {"X-Requested-With": "XMLHttpRequest"}}
@@ -38,8 +39,12 @@ export default class extends QuranController {
       .then(verses => {
         document.body.loader.hide();
         this.insertVerses(verses)
-      })
+      });
 
     return Promise.resolve(request);
+  }
+
+  get isChapterMode(){
+    return false
   }
 }

@@ -16,10 +16,6 @@ export default class extends QuranController {
     this.infoTab.addEventListener("tab.shown", e => this.tabChanged(e, 'info'));
   }
 
-  verseText(verse, verseKey){
-    return verse;
-  }
-
   isInfoMode() {
     return this.infoTab.classList.contains("tabs__item--selected");
   }
@@ -89,6 +85,7 @@ export default class extends QuranController {
       }
     }
   }
+
   removeSegmentHighlight() {
     let words = $(".word.highlight");
 
@@ -103,25 +100,19 @@ export default class extends QuranController {
 
   loadVerses(verse, verseKey) {
     document.body.loader.show();
-    // called when user jump to ayah from repeat setting
-    verse = Number(verse);
 
     // pause infinite page loader
     this.pausePageLoader();
 
     const chapter = this.id();
     const reading = this.isReadingMode();
-    let from, to, font, translations;
+    let  font, translations;
     const setting = document.body.setting;
-    // instead of loading all ayah, let's load batch of 10 around the selected verse
-    // i.e if user want to jump to 200, we'll load 195 to 205
-    from = Math.max(1, verse - 2);
-    to = Math.min(verse + 5, this.totalVerses);
     font = setting.currentFont;
     translations = setting.selectedTranslations.join(',')
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({from, to, verse, reading, font, translations})}`,
+      `/${chapter}/load_verses?${$.param({verse: verseKey, reading, font, translations})}`,
       {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )
       .then(response => response.text())
@@ -131,5 +122,9 @@ export default class extends QuranController {
       })
 
     return Promise.resolve(request);
+  }
+
+  get isChapterMode(){
+    return true
   }
 }

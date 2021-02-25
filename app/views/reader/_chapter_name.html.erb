@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-12 text-center surah-name">
+  <div class="col-12 text-center surah-name text text--black">
     <span class="icon-surah icon-surah<%= verse.chapter_id %>"></span>
     <span class="icon-surah icon-surah-surah"></span>
   </div>
 
   <% if @presenter.show_bismillah?(verse) %>
-    <div class="col-12 text-center bismillah">
+    <div class="col-12 text-center bismillah text text--black">
       ﷽
     </div>
   <% end %>

@@ -98,11 +98,11 @@ class ChaptersController < ApplicationController
                  when 'ayatul_kursi'
                    AyatulKursiPresenter.new(self)
                  when 'load_verses', 'referenced_verse'
-                   start = params[:verse].to_i
-                   from = params[:from] || start
-                   to = params[:to].to_i || start + 10
+                   verse = Verse.find_by_verse_key(params[:verse])
+                   params[:from] = verse.verse_number - 2
+                   params[:to] = params[:from] + 5
 
-                   params[:range] = "#{from}-#{to}"
+                   params[:range] = "#{params[:from] }-#{params[:to]}"
                    @presenter = ChapterPresenter.new(self)
                  else
                    ChapterPresenter.new(self)

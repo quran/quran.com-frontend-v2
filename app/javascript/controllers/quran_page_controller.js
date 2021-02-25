@@ -21,4 +21,8 @@ export default class extends QuranController {
   getVerseKey(verse){
     return verse;
   }
+
+  get isChapterMode(){
+    return false
+  }
 }
