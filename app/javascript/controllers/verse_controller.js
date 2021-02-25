@@ -85,7 +85,8 @@ export default class extends Controller {
     player = playerDom.player;
 
     if (playButton.find("span").hasClass("icon-play1")) {
-      return player.playVerse(this.verseNumber);
+      debugger
+      return player.playVerse(this.verseKey);
     } else {
       player.pauseCurrent();
     }
@@ -174,6 +175,10 @@ export default class extends Controller {
 
   get verseNumber() {
     return this.el.data("verseNumber");
+  }
+
+  get verseKey(){
+    return this.el.data("key");
   }
 
   get copyText() {

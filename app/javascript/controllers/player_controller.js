@@ -23,7 +23,7 @@ export default class extends AudioController {
     this.audioData = {};
     this.pauseSeconds = 0;
 
-    this.chapter = null;
+    this.readerController = null;
     this.firstVerse = null;
     this.lastVerse = null;
     this.currentVerse = null;
@@ -36,7 +36,7 @@ export default class extends AudioController {
     this.bindPlayerEvents();
   }
 
-  loadSettings(currentVerse = null, lastVerse = null) {
+  loadSettings() {
     this.config = {
       autoScroll: this.getSetting("autoScroll"),
       recitation: this.getSetting("recitation"),
@@ -52,8 +52,6 @@ export default class extends AudioController {
     };
 
     this.pauseSeconds = 0;
-    this.currentVerse = currentVerse;
-    this.lastVerse = lastVerse;
   }
 
   updatePause(pauseSec) {
@@ -81,29 +79,30 @@ export default class extends AudioController {
     this.lastVerse = repeatRange.last;
     this.currentVerse = repeatRange.first;
 
-    this.updateVerses().then(() => {
-      this.createHowl(this.currentVerse);
+    this.createHowl(this.currentVerse).then(() => {
       if (this.isPlaying()) this.play(this.currentVerse);
-    });
+    })
   }
 
-  init(chapter, firstVerse, lastVerse) {
-    this.chapter = chapter;
+  init(reader, firstVerse, lastVerse) {
+    this.readerController = reader;
     this.firstVerse = firstVerse;
     this.lastVerse = lastVerse;
+    this.currentVerse = firstVerse
 
-    const that = this;
-    this.updateVerses().then(() => {
-      // set first ayah track to play, if player isn't already playing any ayah
-      that.currentVerse = that.currentVerse || that.firstVerse;
+    this.loadVerseAudio(this.currentVerse);
 
-      // preload howl for first ayah
-      if (that.currentVerse){
-        that.loadTrack(that.currentVerse).then(()=>{
-          that.setPlayerCtrls('play');
-        });
-      }
-    });
+    /*this.fetchAudioData().then(() => {
+       // set first ayah track to play, if player isn't already playing any ayah
+       that.currentVerse = that.currentVerse || that.firstVerse;
+
+       // preload howl for first ayah
+       if (that.currentVerse){
+         that.loadTrack(that.currentVerse).then(()=>{
+           that.setPlayerCtrls('play');
+         });
+       }
+    });*/
   }
 
   disconnect() {
@@ -163,7 +162,7 @@ export default class extends AudioController {
 
       if (this.config.autoScroll) {
         classList.add("selected");
-        this.chapter && this.chapter.scrollToVerse(this.currentVerse);
+        this.readerController.scrollToCurrent();
       } else {
         classList.remove("selected");
       }
@@ -194,7 +193,7 @@ export default class extends AudioController {
     if (this.currentHowl) {
       this.currentHowl.pause();
     }
-    verse = Number(verse || this.currentVerse);
+    verse = verse || this.currentVerse;
 
     // enable progress bar if disabled
     this.progressBar.disabled = false;
@@ -220,7 +219,7 @@ export default class extends AudioController {
       this.setPlayerCtrls('play');
     }
 
-    this.currentVerse = Number(verse);
+    this.currentVerse = verse;
 
     this.playCurrent();
   }
@@ -305,28 +304,27 @@ export default class extends AudioController {
   }
 
   setPlayerCtrls(type) {
-    let thisVerse = $(
-      `.verse[data-verse-number=${this.currentVerse}]`
-    ).find(".play .quran-icon");
+    let thisVerse = this.readerController.findVerse(this.currentVerse);
+    let versePlayBtn = thisVerse.find(".play .quran-icon");
 
-    thisVerse.removeClass('icon-play1 icon-pause icon-loading');
+    versePlayBtn.removeClass('icon-play1 icon-pause icon-loading');
 
     if ("play" == type) {
       this.playBtn.removeClass('d-none');
       this.loadingBtn.addClass('d-none');
       this.pauseBtn.addClass('d-none');
-      thisVerse.addClass('icon-play1');
+      versePlayBtn.addClass('icon-play1');
     } else if ("pause" == type) {
       this.playBtn.addClass('d-none');
       this.loadingBtn.addClass('d-none');
       this.pauseBtn.removeClass('d-none');
-      thisVerse.addClass('icon-pause');
+      versePlayBtn.addClass('icon-pause');
     } else {
       // loading
       this.playBtn.addClass('d-none');
       this.loadingBtn.removeClass('d-none');
       this.pauseBtn.addClass('d-none');
-      thisVerse.addClass('icon-loading');
+      versePlayBtn.addClass('icon-loading');
     }
   }
 
@@ -357,12 +355,7 @@ export default class extends AudioController {
 
   onPlay() {
     // highlight current ayah
-    this.chapter.highlightVerse(this.currentVerse);
-
-    //scroll to current ayah if setting is on
-    if (this.config.autoScroll) {
-      this.chapter.scrollToVerse(this.currentVerse);
-    }
+    this.readerController.setPlaying(this.currentVerse, this.config.autoScroll);
 
     this.setProgressBarInterval();
     this.setSegmentInterval();
@@ -410,7 +403,7 @@ export default class extends AudioController {
   }
 
   removePlayerListeners() {
-    this.chapter.removeHighlighting();
+    this.readerController.removeHighlighting();
 
     this.removeProgressInterval();
     this.setPlayerCtrls("play");
@@ -480,7 +473,7 @@ export default class extends AudioController {
   }
 
   setSegmentInterval() {
-    this.chapter.setSegmentInterval(
+    this.readerController.setSegmentInterval(
       this.currentHowl.seek(),
       this.preloadTrack[this.currentVerse].segments,
       this.isPlaying()
@@ -555,10 +548,6 @@ export default class extends AudioController {
     })
   }
 
-  updateVerses() {
-    return this.fetchAudioData(this.firstVerse, this.lastVerse);
-  }
-
   setRecitation(id) {
     const wasPlaying = this.isPlaying();
 
@@ -566,64 +555,50 @@ export default class extends AudioController {
     this.preloadTrack = {};
     this.audioData = {};
 
-    this.fetchAudioData(this.firstVerse, this.lastVerse).then(() => {
+    this.loadVerseAudio(this.currentVerse).then(() => {
       if (wasPlaying) {
         this.pauseCurrent();
         this.play(this.currentVerse);
       }
-    });
+    })
   }
 
   loadVerseAudio(verse) {
-    verse = parseInt(verse, 10);
-
     if (this.audioData[verse]) {
       return Promise.resolve(this.audioData[verse])
     } else {
-      return this.fetchAudioData(verse, verse + 10)
+      return this.fetchAudioData(verse)
     }
   }
 
-  fetchAudioData(firstVerse, lastVerse) {
+  fetchAudioData(verse) {
     let audioData = this.audioData;
     let requests = [];
 
-    let firstPage = Math.floor((firstVerse - 1) / 10);
-    let lastPage = Math.floor((lastVerse - 1) / 10);
+    // get page
+    let audioRequestQuery = {
+      recitation: this.config.recitation,
+      verse
+    };
 
-    //TODO: We can detect page number without loop. For ayah 1-10 page is 1, for 11-20 page is 2
-    for (let page = firstPage, end = lastPage + 1; page < end; page++) {
-      // continue if data exist
-      if (audioData.hasOwnProperty(page * 10 + 1)) {
-        continue;
+    let callback = data => {
+      let enteries = Object.entries(data);
+
+      for (const [key, file] of enteries) {
+        audioData[key] = {
+          path: file.audio,
+          duration: file.duration,
+          segments: file.segments
+        };
       }
+    };
 
-      // get page
-      let audioRequestQuery = {
-        chapter: this.chapter.chapterId(),
-        recitation: this.config.recitation,
-        page
-      };
+    let audioRequest = fetch(`/audio?${$.param(audioRequestQuery)}`)
+      .then(response => response.json())
+      .then(verses => callback(verses))
+      .catch(error => callback({}));
 
-      let callback = data => {
-        let enteries = Object.entries(data);
-
-        for (const [key, file] of enteries) {
-          audioData[key] = {
-            path: file.audio,
-            duration: file.duration,
-            segments: file.segments
-          };
-        }
-      };
-
-      let audioRequest = fetch(`/audio?${$.param(audioRequestQuery)}`)
-        .then(response => response.json())
-        .then(verses => callback(verses))
-        .catch(error => callback({}));
-
-      requests.push(audioRequest);
-    }
+    requests.push(audioRequest);
 
     return Promise.all(requests);
   }

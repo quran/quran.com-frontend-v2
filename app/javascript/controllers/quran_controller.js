@@ -108,6 +108,10 @@ export default class extends Controller {
     }
   }
 
+  setPlaying(verseKey) {
+
+  }
+
   jumpToVerse(verse, verseKey) {
     const dom = this.findVerse(verseKey);
 
@@ -130,6 +134,9 @@ export default class extends Controller {
   scrollToCurrent() {
     const current = this.currentVerse;
     const verseEl = this.findVerse(current.key);
+
+    if (verseEl.length == 0)
+      return
 
     // activate verse item in dropdown filter
     $("#verse-list .dropdown-item").removeClass("active");
@@ -252,9 +259,8 @@ export default class extends Controller {
 
     player.init(
       this,
-      verses.first().data("verseNumber"),
-      verses.last().data("verseNumber"),
-      this.currentVerse
+      verses.first().data("key"),
+      verses.last().data("key")
     );
   }
 
