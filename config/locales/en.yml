@@ -86,6 +86,7 @@ en:
     copy:
       label: Copy
       done: Copied!
+      advance: Advance Copy
   search:
     label: Search
     placeholder: Search "Noah"

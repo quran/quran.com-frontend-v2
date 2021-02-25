@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class VersePresenter < BasePresenter
+class VersePresenter < QuranPresenter
   def verse
     if params[:id].to_s.include?(':')
       Verse.find_by(verse_key: params[:id])
@@ -11,6 +11,10 @@ class VersePresenter < BasePresenter
 
   def approved_tafsirs
     ResourceContent.tafsirs.approved
+  end
+
+  def verse_key
+    verse.verse_key
   end
 
   def tafsir_languages
@@ -41,9 +45,9 @@ class VersePresenter < BasePresenter
     translations = valid_translations
 
     if translations.present?
-      "https://www.quran.com/#{verse.verse_key.sub(':', '/')}?translations=#{translations.join(',')}"
+      "https://www.quran.com/#{verse.verse_key}?translations=#{translations.join(',')}"
     else
-      "https://www.quran.com/#{verse.verse_key.sub(':', '/')}"
+      "https://www.quran.com/#{verse.verse_key}"
     end
   end
 

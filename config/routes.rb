@@ -99,8 +99,8 @@ Rails.application.routes.draw do
   get '/page/:page_number', to: 'quran#page', as: :quran_page
   get '/juz/:juz_number', to: 'quran#juz', as: :quran_juz
 
-  get '/:chapter_id/copy_options', to: 'advance_copy#copy_options'
-  get '/:chapter_id/copy_text', to: 'advance_copy#copy_text'
+  get '/advance_copy/copy_options', to: 'advance_copy#copy_options', as: :advance_copy_options
+  get '/advance_copy/copy_text', to: 'advance_copy#copy_text'
 
   get '/:id/load_verses', to: 'chapters#load_verses'
 

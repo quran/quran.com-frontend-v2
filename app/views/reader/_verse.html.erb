@@ -5,7 +5,7 @@
      data-text="<%= verse.text_uthmani %>">
   <div>
     <div class="translation__icons">
-      <a class="translation__icon surah-ayah-link"
+      <a class="translation__icon ayah-badge-link"
          href="/<%= verse.verse_key %><%= @presenter.params_for_verse_link %>"
          data-controller='track'
          data-name='ayah-key'
@@ -38,7 +38,7 @@
           <div class="actions-items">
             <div class="actions-header">
               <p class="text text--darkgrey text--medium text--regular">
-                <%= verse.chapter.name_simple %> - <%= verse.verse_key %>
+                <%= @presenter.verse_actions_heading(verse) %>
               </p>
               <span class="quran-icon icon-x" id=close-actions></span>
             </div>
@@ -55,11 +55,11 @@
 
             <a class="translation__icon"
                data-controller="ajax-modal"
-               data-url="/<%= verse.chapter_id %>/copy_options<%= @presenter.params_for_copy(verse) %>"
+               data-url="/advance_copy/copy_options<%= @presenter.params_for_copy(verse) %>"
                data-controller="track"
                data-name='ayah-action'>
               <i class="icon-copy"></i>
-              Copy advanced
+              <%= _t('action.copy.advance', default: 'Copy advanced') %>
             </a>
 
             <a class="translation__icon"
@@ -100,7 +100,8 @@
 
   <div class="translation__text">
     <div class="translation__arabic">
-      <div class="arabic <%= @presenter.font_method %>" data-verse="<%= verse.id %>">
+      <div class="arabic <%= @presenter.font_method %>"
+           data-verse="<%= verse.verse_key %>">
         <% if @presenter.render_verse_words? %>
           <%= render partial: 'reader/word', collection: verse.words %>
         <% else %>

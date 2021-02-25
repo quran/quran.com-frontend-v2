@@ -26,6 +26,10 @@ class QuranPresenter < BasePresenter
     params[:reading] = 'true' == params[:reading]
   end
 
+  def verse_actions_heading(verse)
+    "#{chapter_name_simple(verse)} - #{verse.verse_key}"
+  end
+
   def show_chapter_name?(verse)
     1 == verse.verse_number
   end
@@ -46,12 +50,6 @@ class QuranPresenter < BasePresenter
 
   def params_for_copy(verse)
     #"#{params_for_verse_link}&range=#{range}&from=#{verse.verse_number}"
-  end
-
-  def render_translations?
-    strong_memoize :render_translation do
-      valid_translations.present?
-    end
   end
 
   def reading_mode?
@@ -101,14 +99,13 @@ class QuranPresenter < BasePresenter
 
   def params_for_verse_link
     strong_memoize :verse_link_params do
+      query = {font: font_type}
       if (translation = valid_translations).present?
-        "?translations=#{translation.join(',')}"
+        query[:translations] = translation.join(',')
       end
-    end
-  end
 
-  def params_for_copy(verse)
-    #"#{params_for_verse_link}&range=#{range}&from=#{verse.verse_number}"
+      "?#{query.to_param}"
+    end
   end
 
   def render_translations?
@@ -152,6 +149,12 @@ class QuranPresenter < BasePresenter
       from_params || session[:translations].presence || DEFAULT_TRANSLATION
     else
       from_params
+    end
+  end
+
+  def chapter_name_simple(verse)
+    strong_memoize "chapter_#{verse.chapter_id}_name" do
+      verse.chapter.name_simple
     end
   end
 end

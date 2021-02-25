@@ -1,4 +1,4 @@
-class AdvanceCopyPresenter < BasePresenter
+class AdvanceCopyPresenter < QuranPresenter
   FOOT_NOTE_REG = /<sup foot_note=\d+>(\d+)<\/sup>/
 
   def cache_key(action_name:)
