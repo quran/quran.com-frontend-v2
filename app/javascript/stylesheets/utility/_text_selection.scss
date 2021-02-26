@@ -2,3 +2,15 @@
   background-color: $dark-green;
   color: $white;
 }
+
+.word {
+  &:hover,
+  &.highlight {
+    color: $dark-green !important;
+
+    &::selection {
+      //TODO: move this to design system.Hard coding this for now
+      color: #ff7416;
+    }
+  }
+}

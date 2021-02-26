@@ -41,7 +41,7 @@ export default class extends Controller {
         this.pageLoader = this.activeTab.closest('.verses-wrapper')[0].infinitePage
       }
 
-      this.initPlayer();
+      this.updatePlayer();
     }, 100);
   }
 
@@ -52,7 +52,7 @@ export default class extends Controller {
     this.activeTab.on("items:added", () => {
       // new ayah are added to page.
       // Refresh the player's first and last ayah
-      this.initPlayer();
+      this.updatePlayer(true);
     });
   }
 
@@ -323,15 +323,22 @@ export default class extends Controller {
     return Promise.resolve([]);
   }
 
-  initPlayer() {
+  updatePlayer(added) {
     const verses = this.activeTab.find(".verse");
 
-    this.player.init(
-      this,
-      verses.first().data("key"),
-      verses.last().data("key")
-    );
-  }
+    if(added){
+      this.player.updateVerses(
+        verses.first().data("key"),
+        verses.last().data("key")
+      );
+    } else{
+      this.player.init(
+        this,
+        verses.first().data("key"),
+        verses.last().data("key")
+      );
+    }
+   }
 
   getLazyTab(url, target, lazy) {
     const lazyParent = `{"root":"${target}"}`;

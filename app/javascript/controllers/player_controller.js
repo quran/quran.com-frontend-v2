@@ -106,6 +106,11 @@ export default class extends AudioController {
     });*/
   }
 
+  updateVerses(firstVerse, lastVerse){
+    this.firstVerse = firstVerse;
+    this.lastVerse = lastVerse;
+  }
+
   disconnect() {
     if (this.isPlaying()) this.currentHowl.stop();
 
@@ -370,6 +375,8 @@ export default class extends AudioController {
 
     if(currentId < lastId)
       return getAyahKeyFromId(currentId+1);
+    else
+      alert("end of ..")
   }
 
   getPreviousTrackVerse() {
