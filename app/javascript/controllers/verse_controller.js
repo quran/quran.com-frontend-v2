@@ -85,7 +85,6 @@ export default class extends Controller {
     player = playerDom.player;
 
     if (playButton.find("span").hasClass("icon-play1")) {
-      debugger
       return player.playVerse(this.verseKey);
     } else {
       player.pauseCurrent();

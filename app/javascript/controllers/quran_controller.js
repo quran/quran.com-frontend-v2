@@ -1,4 +1,5 @@
 import {Controller} from "stimulus";
+import {getAyahIdFromKey} from "../utility/quran_utils";
 
 export default class extends Controller {
   initialize() {
@@ -49,7 +50,8 @@ export default class extends Controller {
     this.readingTab.addEventListener("tab.shown", e => this.tabChanged(e, 'reading'));
 
     this.activeTab.on("items:added", () => {
-      // new ayah are added to page. Refresh the player's first and last ayah
+      // new ayah are added to page.
+      // Refresh the player's first and last ayah
       this.initPlayer();
     });
   }
@@ -109,7 +111,75 @@ export default class extends Controller {
   }
 
   setPlaying(verseKey) {
+    this.currentVerse.playing = false
 
+    this.setCurrentVerse(getAyahIdFromKey(verseKey), verseKey)
+    this.currentVerse.playing = true;
+  }
+
+  resetSegments(seekTime, segmentTimings, isPlaying) {
+    this.removeSegments();
+    let segments = segmentTimings || [];
+
+    let currentTime = seekTime * 1000;
+
+    $.each(segments, (index, segment) => {
+      let startTime = parseInt(segment[2], 10);
+      let endTime = parseInt(segment[3], 10);
+
+      //continue if the segment is passed
+      if (currentTime > endTime) return true;
+
+      if (currentTime > startTime) {
+        this.highlightSegment(segment[0], segment[1]);
+        if (!isPlaying) {
+          // if player is not playing, just highlight seek the word
+          return;
+        }
+      } else {
+        let highlightAfter = startTime - currentTime;
+
+        this.segmentTimers.push(
+          setTimeout(() => {
+            this.highlightSegment(segment[0], segment[1]);
+          }, highlightAfter)
+        );
+      }
+    });
+  }
+
+  highlightSegment(startIndex, endIndex) {
+    const words = this.findVerse(this.currentVerse.key).find('.word')
+
+    // tajweed mode don't show words
+    if (0 == words.length) return;
+
+    const showWordTooltip = document.body.setting.get("autoShowWordTooltip");
+    this.removeSegmentHighlight();
+
+    const start = parseInt(startIndex, 10) + 1;
+    const end = parseInt(endIndex, 10) + 1;
+
+    for (let word = start, end1 = end; word < end1; word++) {
+      words.eq(word - 1).addClass("highlight");
+
+      if (showWordTooltip) {
+        let tip = words.eq(word - 1)[0].tooltip;
+        tip && tip.show();
+      }
+    }
+  }
+
+  removeSegmentHighlight() {
+    let words = $(".word.highlight");
+
+    words.each((i, word) => {
+      let tip = word.tooltip;
+
+      if (tip && tip._popper) tip.hide();
+
+      word.classList.remove("highlight");
+    });
   }
 
   jumpToVerse(verse, verseKey) {
@@ -182,11 +252,11 @@ export default class extends Controller {
 
     if (highlightedVerses.length > 0) {
       highlightedVerses.removeClass("highlight");
-      this.removeSegmentTimers();
+      this.removeSegments();
     }
   }
 
-  removeSegmentTimers() {
+  removeSegments() {
     if (this.segmentTimers.length > 0) {
       for (let alignTimer of this.segmentTimers) {
         clearTimeout(alignTimer);
@@ -194,6 +264,7 @@ export default class extends Controller {
 
       return (this.segmentTimers = []);
     }
+    this.removeSegmentHighlight();
   }
 
   findVerse(key) {
@@ -242,9 +313,8 @@ export default class extends Controller {
     }
 
     if (last.playing) {
-      const player = document.getElementById("player").player;
-      player.pauseCurrent();
-      player.playCurrent();
+      //this.player.pauseCurrent();
+      this.player.playVerse(verseKey);
     }
 
     this.scrollToCurrent();
@@ -254,10 +324,9 @@ export default class extends Controller {
   }
 
   initPlayer() {
-    const player = document.getElementById("player").player;
     const verses = this.activeTab.find(".verse");
 
-    player.init(
+    this.player.init(
       this,
       verses.first().data("key"),
       verses.last().data("key")
@@ -346,5 +415,9 @@ export default class extends Controller {
 
   get playingCurrentVerse() {
     return this.currentVerse.playing
+  }
+
+  get player() {
+    return document.getElementById("player").player;
   }
 }

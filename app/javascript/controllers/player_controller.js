@@ -8,6 +8,7 @@
 
 import AudioController from "./audio_controller";
 import Tooltip from "bootstrap/js/src/tooltip";
+import {getAyahIdFromKey, getAyahKeyFromId} from "../utility/quran_utils";
 
 const USE_HTML5 = false;
 
@@ -358,16 +359,25 @@ export default class extends AudioController {
     this.readerController.setPlaying(this.currentVerse, this.config.autoScroll);
 
     this.setProgressBarInterval();
-    this.setSegmentInterval();
+    this.resetSegments();
     this.preloadNextVerse();
   }
 
   getNextTrackVerse() {
-    return this.currentVerse < this.lastVerse ? this.currentVerse + 1 : null;
+    // return this.currentVerse < this.lastVerse ? this.currentVerse + 1 : null;
+    const lastId = getAyahIdFromKey(this.lastVerse);
+    const currentId = getAyahIdFromKey(this.currentVerse)
+
+    if(currentId < lastId)
+      return getAyahKeyFromId(currentId+1);
   }
 
   getPreviousTrackVerse() {
-    return this.currentVerse > this.firstVerse ? this.currentVerse - 1 : null;
+    const firstId = getAyahIdFromKey(this.firstVerse);
+    const currentId = getAyahIdFromKey(this.currentVerse)
+
+    if(currentId > firstId)
+      return getAyahKeyFromId(currentId - 1);
   }
 
   removeProgressInterval() {
@@ -377,8 +387,9 @@ export default class extends AudioController {
   setProgressBarInterval() {
     this.removeProgressInterval();
     const totalDuration = this.currentHowl.duration();
+    const currentTimeEl = $("#player .current-time");
 
-    $("#player .current-time")
+    currentTimeEl
       .removeClass("hidden")
       .text("00:00");
 
@@ -398,7 +409,7 @@ export default class extends AudioController {
         "%, #fff " +
         progressPercentage +
         "%, white 100%)";
-      $("#player .current-time").text(this.formatTime(currentTime));
+      currentTimeEl.text(this.formatTime(currentTime));
     }, 500);
   }
 
@@ -467,13 +478,13 @@ export default class extends AudioController {
       // due to howl bug, run @setAlignHighlight() after 100ms, this reduced occurance of bug
       // note: this won't affect align accuracy
       setTimeout(() => {
-        this.setSegmentInterval();
-      }, 100);
-    } else this.setSegmentInterval();
+        this.resetSegments();
+      }, 50);
+    } else this.resetSegments();
   }
 
-  setSegmentInterval() {
-    this.readerController.setSegmentInterval(
+  resetSegments() {
+    this.readerController.resetSegments(
       this.currentHowl.seek(),
       this.preloadTrack[this.currentVerse].segments,
       this.isPlaying()

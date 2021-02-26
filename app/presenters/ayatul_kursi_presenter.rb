@@ -20,4 +20,8 @@ class AyatulKursiPresenter < ChapterPresenter
   def cache_key
     'ayat-ul-kursi'
   end
+
+  def chapter
+    Chapter.find(2)
+  end
 end
