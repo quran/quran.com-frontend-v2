@@ -22,15 +22,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def cache_key
-    begin
-      start = verse_pagination_start
-      last = verse_pagination_end(start)
-    rescue Exception => e
-      start = 'invalid'
-      last = 'invalid'
-    end
-
-    "#{current_locale}-#{font_method}-#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{start}-#{last}"
+    "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}#{current_page}"
   end
 
   def translation_view_path

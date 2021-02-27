@@ -13,10 +13,20 @@ class AdvanceCopyPresenter < QuranPresenter
     Verse.where(verse_key: params[:verse]).first
   end
 
+  def fetch_ayah_keys
+    if copying_from_surah?
+      Verse.order("verse_index ASC").where(chapter_id: params[:chapter]).pluck(:verse_key)
+    elsif copying_from_juz?
+      Verse.order("verse_index ASC").where(juz_number: params[:juz]).pluck(:verse_key)
+    elsif copying_from_page?
+      Verse.order("verse_index ASC").where(page_number: params[:page]).pluck(:verse_key)
+    else
+      []
+    end
+  end
+
   def verses_to_copy
-    @verses = Verse.order('verses.verse_number asc')
-                  .where(chapter_id: chapter_id)
-                  .where("verses.verse_number >= ? AND verses.verse_number <= ?", params[:from], params[:to])
+    @verses = Verse.order('verses.verse_index asc')
 
     if (fetch_approved_translations.present?)
       @verses = @verses
@@ -58,27 +68,25 @@ class AdvanceCopyPresenter < QuranPresenter
     end
   end
 
-  def ayah_range
-    strong_memoize :ayah_range do
-      if params[:range].present?
-        params[:range].split('-').map(&:to_i)
-      else
-        [params[:from].to_i]
-      end
-    end
-  end
-
   def copy_resource_with_range
     "#{include_footnote?}-#{include_arabic?}"
-  end
-
-  def chapter_id
-    params[:chapter_id]
   end
 
   def fetch_approved_translations
     strong_memoize :approve_translations do
       valid_translations(store_result: false)
     end
+  end
+
+  def copying_from_surah?
+    params[:chapter].present?
+  end
+
+  def copying_from_juz?
+    params[:juz].present?
+  end
+
+  def copying_from_page?
+    params[:page].present?
   end
 end

@@ -1,5 +1,5 @@
 <div id="title">
-  Copy options
+  Advance copy options
 </div>
 
 <% verse = @presenter.current_verse %>
@@ -33,10 +33,12 @@
                 <option selected value="0">
                   <%= _t('player.select_verse') %>
                 </option>
-                <% 1.upto(4) do |verse_number| %>
+                <% @presenter.fetch_ayah_keys.each do |key| %>
                   <option
-                    value="<%= verse_number %>" <%= 'selected' if 2 == verse_number %>>
-                    <%= verse_number %>
+                    value="<%= key %>"
+                    <%= 'selected' if key == verse.verse_key %>
+                  >
+                    <%= key %>
                   </option>
                 <% end %>
               </select>
@@ -50,11 +52,12 @@
                 <option selected value="0">
                   <%= _t('player.select_verse') %>
                 </option>
-                <% 1.upto(2) do |verse_number| %>
+                <% @presenter.fetch_ayah_keys.each do |key| %>
                   <option
-                    value="<%= verse_number %>"
-                    <%= 'selected' if 2 == verse_number %>>
-                    <%= verse_number %>
+                    value="<%= key %>"
+                    <%= 'selected' if key == verse.verse_key %>
+                  >
+                    <%= key %>
                   </option>
                 <% end %>
               </select>
