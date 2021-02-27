@@ -28,6 +28,15 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
+    # Start from ayah user has selected from dropdown
+    # Reset the pagination etc
+    # TODO: move this to presenter
+    verse = Verse.find_by(verse_key: params[:verse])
+    params[:after] = verse.id
+    params[:from] = verse.verse_number
+    params[:to] = verse.chapter.verses_count
+    params[:page] = nil
+
     render layout: false
   end
 
@@ -101,9 +110,6 @@ class ChaptersController < ApplicationController
                  when 'ayatul_kursi'
                    AyatulKursiPresenter.new(self)
                  when 'load_verses', 'referenced_verse'
-                   verse = Verse.find_by_verse_key(params[:verse])
-                   params[:from] = verse.verse_number - 2
-                   params[:to] = params[:from] + 5
                    @presenter = ChapterPresenter.new(self)
                  else
                    ChapterPresenter.new(self)

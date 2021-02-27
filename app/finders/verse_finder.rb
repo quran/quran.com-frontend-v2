@@ -172,7 +172,7 @@ class VerseFinder
     end
 
     last_verse ||= Verse.where(chapter_id: chapter.id, verse_number: params[:from] || 1).first
-    verse_to = (params[:to] || params[:from]).to_i
+    verse_to = (params[:to] || params[:from] || chapter.verses_count).to_i
 
     @results = rescope_verses('verse_index')
                    .where(chapter_id: chapter.id, page_number: last_verse.page_number)
