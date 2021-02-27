@@ -17,6 +17,10 @@ class ChapterPresenter < HomePresenter
     end
   end
 
+  def params_for_copy(verse)
+    "#{params_for_verse_link}&verse=#{verse.verse_key}&chapter=#{chapter.id}"
+  end
+
   def cache_key
     begin
       start = verse_pagination_start

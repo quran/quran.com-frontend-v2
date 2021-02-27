@@ -3,11 +3,9 @@
 </div>
 
 <% verse = @presenter.current_verse %>
-<% chapter = verse.chapter %>
-<% range = @presenter.ayah_range %>
 
 <div id="modal">
-  <div data-controller="copy-advanced" data-verse-id="<%= verse.verse_number %>" data-chapter-id="<%= chapter.id %>">
+  <div data-controller="copy-advanced" data-verse-id="<%= verse.verse_number %>" data-chapter-id="<%#= chapter.id %>">
     <div>
       <p class="text text--darkgrey text--medium text--semibold">Select ayah range</p>
       <div class="display-settings__radios">
@@ -35,9 +33,9 @@
                 <option selected value="0">
                   <%= _t('player.select_verse') %>
                 </option>
-                <% 1.upto(chapter.verses_count) do |verse_number| %>
+                <% 1.upto(4) do |verse_number| %>
                   <option
-                    value="<%= verse_number %>" <%= 'selected' if range[0] == verse_number %>>
+                    value="<%= verse_number %>" <%= 'selected' if 2 == verse_number %>>
                     <%= verse_number %>
                   </option>
                 <% end %>
@@ -52,10 +50,10 @@
                 <option selected value="0">
                   <%= _t('player.select_verse') %>
                 </option>
-                <% 1.upto(chapter.verses_count) do |verse_number| %>
+                <% 1.upto(2) do |verse_number| %>
                   <option
                     value="<%= verse_number %>"
-                    <%= 'selected' if range[1] == verse_number %>>
+                    <%= 'selected' if 2 == verse_number %>>
                     <%= verse_number %>
                   </option>
                 <% end %>

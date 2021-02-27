@@ -8,6 +8,18 @@ class PagePresenter < QuranPresenter
     "Page #{current_page}"
   end
 
+  def meta_description
+    "Muhsaf page view, page number #{current_page}"
+  end
+
+  def meta_title
+    "Mushaf page #{current_page}"
+  end
+
+  def meta_keyword
+    ['Quran Muhsaf view', "Muhsaf page #{current_page}"]
+  end
+
   def verses
     @finder = verse_finder
 
@@ -17,6 +29,10 @@ class PagePresenter < QuranPresenter
         translations: valid_translations,
         words: true
     )
+  end
+
+  def params_for_copy(verse)
+    "#{params_for_verse_link}&verse=#{verse.verse_key}&page=#{current_page}"
   end
 
   def valid_page?

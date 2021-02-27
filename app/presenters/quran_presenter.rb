@@ -53,10 +53,6 @@ class QuranPresenter < BasePresenter
     end
   end
 
-  def params_for_copy(verse)
-    #"#{params_for_verse_link}&range=#{range}&from=#{verse.verse_number}"
-  end
-
   def reading_mode?
     strong_memoize :reading_mode do
       reading = params[:reading].presence
