@@ -7,6 +7,7 @@
 // </div>
 
 import QuranController from "./quran_controller";
+import {getPageFromKey} from "../utility/quran_utils";
 
 export default class extends QuranController {
   connect() {
@@ -38,7 +39,7 @@ export default class extends QuranController {
     translations = setting.selectedTranslations.join(',')
 
     let request = fetch(
-      `/${chapter}/load_verses?${$.param({verse: verseKey, reading, font, translations})}`,
+      `/${chapter}/load_verses?${$.param({verse: verseKey, page: getPageFromKey(verseKey), reading, font, translations})}`,
       {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )
       .then(response => response.text())

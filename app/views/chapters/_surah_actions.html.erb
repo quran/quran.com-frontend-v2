@@ -10,7 +10,7 @@
            data-dropdown="#filter-surah-dropdown">
         <div class="label label-nav label__right-border"
              id=surah-dropdown>
-          <div class="label--text">
+          <div class="label--text my-auto">
             <h1 class="label--title">
               <%= @presenter.name_simple %>
             </h1>
@@ -109,9 +109,9 @@
               <div class="dropdown--items" id="verse-list">
                 <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
                   <a class="dropdown-item"
-                     data-filter-tags="<%= verse_num %>"
-                     data-verse-key="<%= current_chapter %>:<%= verse_num %>"
-                     data-verse="<%= verse_num %>">
+                    data-filter-tags="<%= verse_num %>"
+                    data-verse-key="<%= current_chapter %>:<%= verse_num %>"
+                    data-verse="<%= verse_num %>">
                     <div class="dropdown-item__number">
                       <p><%= verse_num %></p>
                     </div>
