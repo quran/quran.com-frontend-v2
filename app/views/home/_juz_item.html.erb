@@ -6,7 +6,7 @@
   <% juz.verse_mapping.each do |chapter_number, ayah_range| %>
     <% chapter = @presenter.chapters[chapter_number.to_i - 1] %>
 
-    <%= link_to range_path(chapter, ayah_range),
+    <%= link_to ayah_range_path(chapter, ayah_range),
                 data: {
                   controller: 'track',
                   name: 'juz',

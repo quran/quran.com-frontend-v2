@@ -28,9 +28,6 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
-    # Allow infinite pagination to load more ayah when user scroll
-    params[:continue] = true
-
     render layout: false
   end
 
@@ -50,12 +47,11 @@ class ChaptersController < ApplicationController
     #  /1/8 => invalid ayah
     #  /1/0 => /1
 
-    range = params[:range]
     chapter = params[:id][/\d+/]
 
     if (path, error = chapter.presence && validate_chapter_rules(chapter))
       redirect_to path, error: error
-    elsif (path, error = range.presence && validate_range_rules(range))
+    elsif (path, error = validate_range_rules)
       redirect_to path, error: error
     end
   end
@@ -70,26 +66,33 @@ class ChaptersController < ApplicationController
     end
   end
 
-  def validate_range_rules(range)
+  def validate_range_rules
     expected = get_valid_range_params
 
-    key_range_path(params[:id], range: expected) if expected != range
+    ayah_range_path(params[:id], range: expected) if expected != current_ayah_range
   end
 
   def get_valid_range_params
-    if params[:range].presence
-      start, finish = params[:range].split(/-|:/)
+    if params[:from].presence
+      start = params[:from]
+      finish = params[:to]
+
       valid_start = start.to_i.abs
       valid_end = finish.to_i.abs
 
-      unless finish
+      if finish.nil?
         return valid_start.zero? ? nil : valid_start.to_s
       end
 
       valid_start, valid_end = valid_end, valid_start if valid_start > valid_end
       valid_end = valid_start if valid_end.zero?
 
-      "#{valid_start}-#{valid_end}" if valid_start.positive?
+      if valid_start == valid_end
+        # 2/4-4 should redirect to 2/4
+        valid_start.to_s
+      else
+        "#{valid_start}-#{valid_end}"
+      end
     end
   end
 
@@ -101,8 +104,6 @@ class ChaptersController < ApplicationController
                    verse = Verse.find_by_verse_key(params[:verse])
                    params[:from] = verse.verse_number - 2
                    params[:to] = params[:from] + 5
-
-                   params[:range] = "#{params[:from] }-#{params[:to]}"
                    @presenter = ChapterPresenter.new(self)
                  else
                    ChapterPresenter.new(self)
@@ -111,5 +112,15 @@ class ChaptersController < ApplicationController
 
   def generate_localised_cache_key
     "verses:xhr#{request.xhr?}/#{@presenter.cache_key}/#{fetch_locale}"
+  end
+
+  def current_ayah_range
+    if params[:from]
+      if params[:to]
+        "#{params[:from]}-#{params[:to]}"
+      else
+        params[:from]
+      end
+    end
   end
 end

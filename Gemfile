@@ -96,6 +96,9 @@ group :development do
   # gem 'pronto-flay', require: false
   # gem 'pronto-rubocop', require: false
   # gem 'pronto-scss', require: false
+  # if you need to run webrick server for development
+  # rails server -u webrick
+  gem "webrick"
 end
 
 group :test do

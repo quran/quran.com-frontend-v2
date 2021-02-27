@@ -107,28 +107,39 @@ Rails.application.routes.draw do
 
   get '/:id/referenced_verse', to: 'chapters#referenced_verse'
 
-  # 2-3:5 => 2:3-5
-  get '/:chapter-:start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
+  # 2-3:5 => 2/3-5
+  get '/:chapter-:from::to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301)
 
-  # 2/3:5 => 2:3-5
-  get '/:chapter/:start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
+  # 2/3:5 => 2/3-5
+  get '/:chapter/:from::to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301)
 
-  # /2:2:3 => 1:2-3
-  get '/:chapter::start::end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
+  # /1:2:3 => 1/2-3
+  get '/:chapter::from::to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301)
 
-  # /2:2 => /2/2
-  # get '/:chapter::verse', to: redirect('/%{chapter}/%{verse}', status: 301)
-
-  # /2/1/1 => /2:1-2
-  get '/:chapter/:start/:end', to: redirect('/%{chapter}:%{start}-%{end}', status: 301)
+  # /2/1/3 => /2/1-3
+  get '/:chapter/:from/:to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301)
 
   # 2-3-5 => 2/3-5
   # Can't redirect this format. Surah slug might have - as well
-  # get '/:chapter-:start-:end', to: redirect('/%{chapter}/%{start}-%{end}', status: 301)
+  get '/:chapter-:from-:to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301), constraints: { chapter: /\d.+/ }
 
-  get '/:id::range', to: 'chapters#show', as: :key_range
-  get '/:id/(:range)', to: 'chapters#show', as: :range
+  # 4:2-3 => 4/2-3
+  get '/:chapter::from-:to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301), constraints: { id: /\d.+/ }
+
+  # 4/2-3 is valid and final route for range
+  get '/:id/:from-:to', to: 'chapters#show'
+
+  get '/:id::from::to', to: 'chapters#show', as: :key_range
+  # /2/2
+  get '/:id/:from', to: 'chapters#show'
+  # /2:2
+  get '/:id::from', to: 'chapters#show'
+  # /2
   get '/:id', to: 'chapters#show', as: :chapter
+
+  # Need this for to generate ayah range path for juz listing
+  # and route will not use :from, :to keys
+  get '/:id/:range', to: 'chapters#show', as: :ayah_range
 
   match '*unmatched_route', to: 'application#not_found', via: :all
 end

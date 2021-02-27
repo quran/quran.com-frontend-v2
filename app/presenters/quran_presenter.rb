@@ -162,4 +162,12 @@ class QuranPresenter < BasePresenter
       verse.chapter.name_simple
     end
   end
+
+  def first_verse
+    verses.first
+  end
+
+  def last_verse
+    verses.last
+  end
 end

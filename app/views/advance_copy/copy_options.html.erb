@@ -4,7 +4,7 @@
 
 <% verse = @presenter.current_verse %>
 <% chapter = verse.chapter %>
-<% range = @presenter.range %>
+<% range = @presenter.ayah_range %>
 
 <div id="modal">
   <div data-controller="copy-advanced" data-verse-id="<%= verse.verse_number %>" data-chapter-id="<%= chapter.id %>">

@@ -19,8 +19,8 @@ class VersePresenter < QuranPresenter
 
   def tafsir_languages
     list = Language
-           .eager_load(:translated_name)
-           .where(id: approved_tafsirs.select(:language_id))
+               .eager_load(:translated_name)
+               .where(id: approved_tafsirs.select(:language_id))
 
     eager_load_translated_name(list).each_with_object({}) do |translation, hash|
       hash[translation.id] = translation
@@ -84,16 +84,24 @@ class VersePresenter < QuranPresenter
     end
   end
 
-  def meta_page_type
-    'article'
-  end
-
   def language_name
     tafsir&.language_name
   end
 
   def translations
     ResourceContent.where(id: params[:translation_ids])
+  end
+
+  def meta_title
+    if 'tafsir' == action_name
+      "#{tafsir_name} - #{verse_key} - #{language_name}"
+    end
+  end
+
+  def meta_description
+    if 'tafsir' == action_name
+      sanitize_meta_description_text(tafsir_text)
+    end
   end
 
   protected
@@ -109,10 +117,10 @@ class VersePresenter < QuranPresenter
     return 16 if params[:tafsir_id].blank?
 
     ResourceContent
-      .approved
-      .tafsirs
-      .where(id: params[:tafsir_id])
-      .or(ResourceContent.where(slug: params[:tafsir_id]))
-      .first&.id || 16
+        .approved
+        .tafsirs
+        .where(id: params[:tafsir_id])
+        .or(ResourceContent.where(slug: params[:tafsir_id]))
+        .first&.id || 16
   end
 end

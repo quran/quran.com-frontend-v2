@@ -10,24 +10,21 @@ class VerseFinder
     @params = params
   end
 
-  def random_verse(filters, language_code, words: true, translations: false, audio: false)
+  def random_verse(filters, language, words: true, translations: false)
     @results = Verse.unscope(:order).where(filters).order('RANDOM()').limit(3)
 
     load_translations(translations) if translations.present?
-    load_words(language_code) if words
-    load_audio(audio) if audio
+    load_words(language) if words
 
     words_ordering = words ? ', words.position ASC, word_translations.priority ASC' : ''
     @results.order("verses.verse_index ASC #{words_ordering}".strip).sample
   end
 
-  def find_by_key(key, language_code, words: true, tafsirs: false, translations: false, audio: false)
+  def find_by_key(key, language:, words: true, translations: false)
     @results = Verse.where(verse_key: key).limit(1)
 
     load_translations(translations) if translations.present?
-    load_words(language_code) if words
-    load_audio(audio) if audio
-    load_tafsirs(tafsirs) if tafsirs.present?
+    load_words(language) if words
 
     words_ordering = words ? ', words.position ASC, word_translations.priority ASC' : ''
     @results.order("verses.verse_index ASC #{words_ordering}".strip).first
@@ -62,16 +59,22 @@ class VerseFinder
   protected
 
   def fetch_by_chapter
-    if chapter = Chapter.find_by(id: params[:chapter_number].to_i.abs)
+    if chapter = Chapter.find_using_slug(params[:id])
       @total_records = chapter.verses_count
-      verse_start = verse_pagination_start(@total_records)
-      verse_end = verse_pagination_end(verse_start, @total_records)
 
-      @next_page = current_page + 1 if verse_end < params[:to]
+      if params[:reading]
+        fetch_chapter_page(chapter)
 
-      @results = Verse
-                     .where(chapter_id: params[:chapter_number].to_i.abs)
-                     .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
+        @results
+      else
+        verse_start = verse_pagination_start(@total_records)
+        verse_end = verse_pagination_end(verse_start, @total_records)
+
+        @next_page = current_page + 1 if verse_end < (params[:to] || @total_records).to_i
+        @results = Verse
+                       .where(chapter_id: chapter)
+                       .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
+      end
     else
       @results = Verse.where('1=0')
     end
@@ -159,22 +162,41 @@ class VerseFinder
     end
   end
 
+  def fetch_chapter_page(chapter)
+    # Reading mode will not use page, but start from last shown verse
+    # and load full page
+    last_verse = nil
+
+    if params[:after]
+      last_verse = Verse.where(chapter_id: chapter.id, id: params[:after]).first
+    end
+
+    last_verse ||= Verse.where(chapter_id: chapter.id, verse_number: params[:from] || 1).first
+    verse_to = (params[:to] || params[:from]).to_i
+
+    @results = rescope_verses('verse_index')
+                   .where(chapter_id: chapter.id, page_number: last_verse.page_number)
+                   .where('verses.verse_number >= ? AND verses.verse_number <= ?', params[:from].to_i, verse_to)
+
+    if @results.last.verse_number < verse_to
+      @next_page = current_page + 1
+    end
+  end
+
   def verse_pagination_start(total_verses)
     if (from = (params[:from] || 1).to_i.abs).zero?
       from = 1
     end
 
-    start = from + (current_page - 1) * per_page
+    verse_from = from + (current_page - 1) * per_page
 
-    min(start, total_verses)
+    min(verse_from, total_verses)
   end
 
   def verse_pagination_end(start, total_verses)
-    to = params[:to].presence ? params[:to].to_i.abs : nil
-    verse_to = min(to || total_verses, total_verses)
-    params[:to] = verse_to
+    verses_to = (params[:to] || params[:from] || total_verses).to_i
 
-    min((start + per_page), verse_to)
+    min((start + per_page), verses_to)
   end
 
   def load_words(word_trans_language)

@@ -43,9 +43,4 @@ class JuzPresenter < QuranPresenter
     params[:juz_number].to_i.abs
   end
   alias current current_juz
-
-  def last_verse
-    # For juz view, we don't use page for paginating.
-    verses.last
-  end
 end

@@ -16,7 +16,7 @@ class BasePresenter
   end
 
   delegate :params, :session, :request, :action_name, to: :context
-  delegate :current_page, :next_page, :per_page, :total_records, to: :finder
+  delegate :current_page, :next_page, :per_page, :total_pages, :total_records, to: :finder
 
   def active_tab
     params[:reading] == 'true' ? 'reading' : 'translation'
