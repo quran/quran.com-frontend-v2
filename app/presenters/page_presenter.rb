@@ -4,6 +4,10 @@ class PagePresenter < QuranPresenter
     @finder = verse_finder
   end
 
+  def cache_key
+    "p#{current_page}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}"
+  end
+
   def page_heading
     "Page #{current_page}"
   end

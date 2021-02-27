@@ -8,6 +8,14 @@ class JuzPresenter < QuranPresenter
     "Juz #{current_juz}"
   end
 
+  def cache_key
+    if 'juz_verses' == action_name
+      "j#{params[:verse]}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}"
+    else
+      "j#{current_juz}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}-p:#{params[:page]}-#{params[:per_page]}"
+    end
+  end
+
   def meta_description
     "Quran juz reader for juz number #{current_juz} #{'juz amma' if juz_amma?}"
   end

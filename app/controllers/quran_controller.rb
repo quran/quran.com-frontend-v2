@@ -1,4 +1,9 @@
 class QuranController < ApplicationController
+  caches_action :page,
+                :juz,
+                :juz_verses,
+                cache_path: :generate_localised_cache_key
+
   def page
     @presenter = PagePresenter.new(self)
 
@@ -24,5 +29,10 @@ class QuranController < ApplicationController
     @presenter = JuzPresenter.new(self)
 
     render layout: false
+  end
+
+  protected
+  def generate_localised_cache_key
+    "quran:xhr#{request.xhr?}/#{@presenter.cache_key}/#{fetch_locale}"
   end
 end
