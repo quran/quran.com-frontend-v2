@@ -110,11 +110,16 @@ export default class extends Controller {
     }
   }
 
-  setPlaying(verseKey) {
-    this.currentVerse.playing = false
+  setPlaying(verseKey, isPlaying) {
+    this.currentVerse.playing = false;
 
-    this.setCurrentVerse(getAyahIdFromKey(verseKey), verseKey)
-    this.currentVerse.playing = true;
+    if(isPlaying){
+      this.setCurrentVerse(getAyahIdFromKey(verseKey), verseKey)
+    } else{
+      this.removeHighlighting()
+    }
+
+    this.currentVerse.playing = isPlaying;
   }
 
   resetSegments(seekTime, segmentTimings, isPlaying) {
@@ -262,8 +267,9 @@ export default class extends Controller {
         clearTimeout(alignTimer);
       }
 
-      return (this.segmentTimers = []);
+      this.segmentTimers = []
     }
+
     this.removeSegmentHighlight();
   }
 

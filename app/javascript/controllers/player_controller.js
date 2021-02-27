@@ -361,7 +361,7 @@ export default class extends AudioController {
 
   onPlay() {
     // highlight current ayah
-    this.readerController.setPlaying(this.currentVerse, this.config.autoScroll);
+    this.readerController.setPlaying(this.currentVerse, true);
 
     this.setProgressBarInterval();
     this.resetSegments();
@@ -375,8 +375,6 @@ export default class extends AudioController {
 
     if(currentId < lastId)
       return getAyahKeyFromId(currentId+1);
-    else
-      alert("end of ..")
   }
 
   getPreviousTrackVerse() {
@@ -436,6 +434,8 @@ export default class extends AudioController {
   }
 
   onVerseEnded() {
+    this.readerController.setPlaying(this.currentVerse, false);
+
     if (this.repeatCurrent) {
       return this.playCurrent();
     }
