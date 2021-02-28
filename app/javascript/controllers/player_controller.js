@@ -32,6 +32,9 @@ export default class extends AudioController {
     this.playBtn = null;
     this.loadingBtn = null;
 
+    this.segmentPlayer = false;
+    this.customSegments = [];
+
     this.loadSettings();
     this.buildPlayer();
     this.bindPlayerEvents();
@@ -79,7 +82,10 @@ export default class extends AudioController {
     this.firstVerse = repeatRange.first;
     this.lastVerse = repeatRange.last;
     this.currentVerse = repeatRange.first;
+    //this.createHowlAndPlay()
+  }
 
+  createHowlAndPlay(){
     this.createHowl(this.currentVerse).then(() => {
       if (this.isPlaying()) this.play(this.currentVerse);
     })
@@ -90,7 +96,7 @@ export default class extends AudioController {
     this.firstVerse = firstVerse;
     this.lastVerse = lastVerse;
     this.currentVerse = firstVerse
-
+    
     this.loadVerseAudio(this.currentVerse);
 
     /*this.fetchAudioData().then(() => {
@@ -106,9 +112,11 @@ export default class extends AudioController {
     });*/
   }
 
-  updateVerses(firstVerse, lastVerse){
+  updateVerses(firstVerse, lastVerse, segmentPlayer = false, customSegments = []){
     this.firstVerse = firstVerse;
     this.lastVerse = lastVerse;
+    this.segmentPlayer = segmentPlayer;
+    this.customSegments = customSegments;
   }
 
   disconnect() {
@@ -172,8 +180,7 @@ export default class extends AudioController {
       } else {
         classList.remove("selected");
       }
-
-      this.settings.saveSettings();
+      //this.settings.saveSettings();
     });
   }
 
@@ -208,7 +215,12 @@ export default class extends AudioController {
 
     this.loadTrack(this.currentVerse).then((track) => {
       this.currentTrack = track;
-      track.howl.play()
+      if (this.segmentPlayer) {
+        track.howl.play("selectedWords");
+      }else{
+        track.howl.play()
+      }
+      
     })
   }
 
@@ -325,12 +337,14 @@ export default class extends AudioController {
       this.loadingBtn.addClass('d-none');
       this.pauseBtn.removeClass('d-none');
       versePlayBtn.addClass('icon-pause');
+      document.querySelector('#playing-part span').classList = 'icon-pause';
     } else {
       // loading
       this.playBtn.addClass('d-none');
       this.loadingBtn.removeClass('d-none');
       this.pauseBtn.addClass('d-none');
       versePlayBtn.addClass('icon-loading');
+      document.querySelector('#playing-part span').classList = 'icon-loading';
     }
   }
 
@@ -451,14 +465,19 @@ export default class extends AudioController {
 
   repeatSingleVerse() {
     const iteration = this.config.repeat.currentIteration;
-
     if (iteration <= this.config.repeat.count) {
       //  play the same verse
       this.config.repeat.currentIteration++;
       this.playCurrent();
     } else {
-      this.config.repeat.currentIteration = 1;
-      this.playNext();
+      if (this.segmentPlayer) {
+        document
+          .getElementById("segment-player")
+          .segmentPlayer.resetPlayButton();
+      } else {
+        this.config.repeat.currentIteration = 1;
+        this.playNext();
+      }
     }
   }
 
@@ -514,10 +533,28 @@ export default class extends AudioController {
       let audio = this.audioData[verse];
       let audioPath = this.buildAudioUrl(audio.path);
 
+      let sprite = {};
+      if (this.segmentPlayer) {
+        const secondsToSkip = +audio.segments[
+          this.customSegments[0]
+        ][2];
+        const lastSegment = this.customSegments[
+          this.customSegments.length - 1
+        ];
+        const endsAt = +audio.segments[lastSegment][3];
+        const duration = endsAt - secondsToSkip;
+        sprite.selectedWords = [secondsToSkip, duration];
+        sprite.__default = [
+          0,
+          +audio.segments[audio.segments.length - 1][3]
+        ];
+      }
+
       return this.loadHowler().then(() => {
         let howl = new Howl({
           src: [audioPath],
           html5: USE_HTML5,
+          sprite: sprite,
           autoplay: false,
           onloaderror: () => {
             // when audio is failed to load.

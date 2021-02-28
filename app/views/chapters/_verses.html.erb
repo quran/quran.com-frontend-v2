@@ -1,12 +1,13 @@
 <% verses = @presenter.verses %>
 
 <%= render 'reader/qcf_fonts', verses: verses %>
-
-<% if @presenter.reading_mode? %>
-  <%= render partial: 'page', locals: {verses: verses} %>
-<% else %>
-  <%= render partial: 'reader/verse', collection: verses, as: :verse %>
-<% end %>
+<div id="word-player" data-controller="word-player">
+  <% if @presenter.reading_mode? %>
+    <%= render partial: 'page', locals: {verses: verses} %>
+  <% else %>
+    <%= render partial: 'reader/verse', collection: verses, as: :verse %>
+  <% end %>
+</div>
 
 <div class="reading__buttons flexx-center"
      id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination"

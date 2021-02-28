@@ -7,6 +7,7 @@ let wordClass = '.w';
 
 export default class extends Controller {
   connect() {
+    this.element.segmentSelection = this;
     setTimeout(() => {
       const reader = document.getElementById('reader').reader;
       if (!reader.isInfoMode()) {

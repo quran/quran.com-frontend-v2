@@ -1,7 +1,9 @@
 import {Controller} from "stimulus";
+import ChapterController from "./chapter_controller";
 
 export default class extends Controller {
   connect() {
+    //super.connect();
     this.config = {times: 2, seconds: 5};
     this.element.segmentPlayer = this;
 
@@ -32,8 +34,8 @@ export default class extends Controller {
     let player = this.getPlayer();
     if (player) {
       if(this.currentVerse == null){ //backup player's currentVerse/lastVerse
-        this.lastVerse = +player.lastVerse;
-        this.currentVerse = +player.currentVerse;
+        this.lastVerse = player.lastVerse;
+        this.currentVerse = player.currentVerse;
       }
       // const firstSegment = +document.querySelector('.word.selected').dataset.position;
       // let nonArabicWordCount = 1; // we need atleast 1 in order to use it as index
@@ -43,8 +45,13 @@ export default class extends Controller {
       //   if(!!node.dataset.audio == false && node.dataset.position <= firstSegment)
       //     nonArabicWordCount += 1;
       // });
-      let segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.key.split(':').slice(-1)));
+      const segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.key.split(':').slice(-1)) - 1);
       // segments = [...Array(segments.length).keys() ].map( i => i+segments[0]); // making segments array a sequential array
+      player.updateVerses(verseNumber, verseNumber, true, segments);
+      // player.updateVerses(
+      //   verseNumber,
+      //   verseNumber
+      // );
       player.updatePause(this.config.seconds);
       player.updateRepeat({
         repeatEnabled: true,
@@ -52,6 +59,7 @@ export default class extends Controller {
         repeatType: 'single',
         repeatAyah: verseNumber,
       }, {'first': verseNumber, 'last': verseNumber}, segments);
+      player.play(verseNumber);
     }
   }
 
@@ -65,9 +73,11 @@ export default class extends Controller {
     document.querySelector('body').classList.remove("small-player");
     let player = this.getPlayer();
     if (player) {
-      player.stopHowler();
-      return player.defaultConfig(this.currentVerse, this.lastVerse);
+      if (player.isPlaying()) player.currentHowl.stop()
+      player.updateVerses(this.currentVerse, this.lastVerse);
+      player.loadSettings();
     }
+    document.getElementById("reader").segmentSelection.deselect();
   }
 
   bindListener(){

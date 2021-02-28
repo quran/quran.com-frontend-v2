@@ -12,6 +12,7 @@ import LocalStore from "../utility/local-store";
 
 export default class extends Controller {
   connect() {
+    super.connect();
     let el = this.element;
     const store = new LocalStore();
     const dataset = el.dataset;
@@ -31,37 +32,17 @@ export default class extends Controller {
         return `<div class='${local}'>${text}</div>`;
       }
     });
-
-    el.addEventListener("dblclick", e => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      this.dbClick(e);
-    });
-
-    el.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      //this.play();
-    });
-
+    
+    this.wordPlayer = null;
+    let wordPlayer, playerDom = document.getElementById("word-player");
+    if (playerDom) wordPlayer = playerDom.wordPlayer;
+    if (wordPlayer){
+      this.wordPlayer = wordPlayer;
+    }
+    this.bindEvents();
     this.el = el;
   }
-
-  play() {
-    let data = this.element.dataset;
-    GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
-
-    let player,
-      playerDom = document.getElementById("player");
-
-    if (playerDom) player = playerDom.player;
-    if (player && data.audio) {
-      return player.playWord(data.audio);
-    }
-  }
-
+  
   dbClick() {
     let player,
       playerDom = document.getElementById("player");
@@ -79,5 +60,21 @@ export default class extends Controller {
     if(this.el.tooltip){
       this.el.tooltip.dispose()
     }
+  }
+
+  bindEvents(){
+    this.element.addEventListener("dblclick", e => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      this.dbClick(e);
+    });
+
+    this.element.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      let data = e.target.dataset;
+      GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
+      this.wordPlayer.play(data.audio);
+    });
   }
 }

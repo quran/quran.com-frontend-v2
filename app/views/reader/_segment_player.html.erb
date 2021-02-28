@@ -32,10 +32,10 @@
 <div class="play-bar-wrapper">
 	<div class="play-bar ">
 		<div class="playing-part" id="playing-part">
-			<span class="icon-pause" data-action="verseEnded->segment-player#resetPlayButton"></span>
+			<span class="icon-loading" data-action="verseEnded->segment-player#resetPlayButton"></span>
 			<p id="playing-status">Playing</p>
-		</div>
-		<div class="counter-part counter-part--first">
+    </div>
+    <div class="counter-part counter-part--first">
 			<p>Repeat count</p>
 			<div class="counter">
 				<button class="counter__button" name=counter data-increment="-1" data-type="times"></button>
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div class="counter-part counter-part--second">
-			<p>Repeat count</p>
+			<p>Pause between</p>
 			<div class="counter">
 				<button class="counter__button" name=counter data-increment="-1" data-type="seconds"></button>
 				<p class="counter__text seconds" data-value="5">5 seconds</p>
