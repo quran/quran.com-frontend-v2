@@ -2,6 +2,7 @@
   id='audio-setting-tab'
   class="audio-settings tab-pane fade"
   data-tab-group="basic-settings-tabs"
+  data-page-mode="<%=@presenter.page_mode?%>"
   data-controller="audio-repeat-setting">
   <div class="tab__row tab__row--small">
     <label class="switch-wrapper">
@@ -13,7 +14,7 @@
     </label>
   </div>
 
-  <% if false %>
+  
   <div class="audio-control hidden">
     <div class="repeat-ayah tab__row tab__row--between tab__row--small">
       <label class="radio-label radio-label--border"><%= _t('player.repeat_single') %>
@@ -35,8 +36,8 @@
               <option selected value="0">
                 <%= _t('player.select_verse') %>
               </option>
-              <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
-                <option value="<%= verse %>"><%= verse %></option>
+              <% @presenter.verse_keys.each do |key| %>
+                <option value="<%= key %>"><%= key %></option>
               <% end %>
             </select>
           </div>
@@ -67,8 +68,8 @@
                 <%= _t('player.select_verse') %>
               </option>
 
-              <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
-                <option value="<%= verse %>"><%= verse %></option>
+              <% @presenter.verse_keys.each do |key| %>
+                <option value="<%= key %>"><%= key %></option>
               <% end %>
             </select>
           </div>
@@ -82,8 +83,8 @@
                 <%= _t('player.select_verse') %>
               </option>
 
-              <% 1.upto(@presenter.current_chapter.verses_count) do |verse| %>
-                <option value="<%= verse %>"><%= verse %></option>
+              <% @presenter.verse_keys.each do |key| %>
+                <option value="<%= key %>"><%= key %></option>
               <% end %>
             </select>
           </div>
@@ -104,7 +105,7 @@
       </div>
     </div>
   </div>
-  <% end %>
+  
   <div class="tab__row">
     <div class="horizontal-line"></div>
   </div>

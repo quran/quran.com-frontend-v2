@@ -74,6 +74,7 @@ class JuzPresenter < QuranPresenter
   def current_juz
     params[:juz_number].to_i.abs
   end
+  
   alias current current_juz
 
   def juz_amma?

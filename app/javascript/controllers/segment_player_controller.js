@@ -37,21 +37,11 @@ export default class extends Controller {
         this.lastVerse = player.lastVerse;
         this.currentVerse = player.currentVerse;
       }
-      // const firstSegment = +document.querySelector('.word.selected').dataset.position;
-      // let nonArabicWordCount = 1; // we need atleast 1 in order to use it as index
+      
       const verseNumber = document.querySelector('.word.selected').dataset.key.split(':').slice(0,2).join(':');
-
-      // document.querySelector(`[data-verse-number='${verseNumber}']`).querySelectorAll('.arabic.w').forEach(node => {
-      //   if(!!node.dataset.audio == false && node.dataset.position <= firstSegment)
-      //     nonArabicWordCount += 1;
-      // });
       const segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.key.split(':').slice(-1)) - 1);
-      // segments = [...Array(segments.length).keys() ].map( i => i+segments[0]); // making segments array a sequential array
+
       player.updateVerses(verseNumber, verseNumber, true, segments);
-      // player.updateVerses(
-      //   verseNumber,
-      //   verseNumber
-      // );
       player.updatePause(this.config.seconds);
       player.updateRepeat({
         repeatEnabled: true,

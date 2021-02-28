@@ -1,5 +1,6 @@
 import SettingController from "./setting_controller";
 import {getQuranReader} from "../utility/controller-helpers";
+import {getAyahKey} from "../utility/quran_utils";
 
 export default class extends SettingController {
   connect() {
@@ -13,6 +14,8 @@ export default class extends SettingController {
       placeholder: 'selected option',
       //minimumResultsForSearch: -1 // hide search box
     });
+
+    this.pageMode = this.element.dataset.pageMode == 'true'
 
     this.bindSwitch();
     this.bindRepeatSingle();
@@ -96,7 +99,7 @@ export default class extends SettingController {
   }
 
   updateRepeatSingle() {
-    const verseToRepeat = Number(this.repeatSingle.val());
+    const verseToRepeat = this.repeatSingle.val();
     this.set("repeatType", "single");
     this.set("repeatCount", Number(this.repeatSingleTimes.val()));
     this.set("repeatAyah", verseToRepeat);
@@ -105,16 +108,20 @@ export default class extends SettingController {
   }
 
   jumpTo(verse) {
-    return getQuranReader().loadVerses(verse);
+    if(this.pageMode == false){
+      return getQuranReader().loadVerses(null,verse);
+    }else{
+      return getQuranReader().setCurrentVerse(verse, verse)
+    }
   }
 
   updateRepeatRange() {
-    const rangeStart = Number(this.repeatRangeFrom.val());
+    const rangeStart = this.repeatRangeFrom.val();
     this.set("repeatType", "range");
 
     this.set("repeatCount", Number(this.repeatRangeTimes.val()));
     this.set("repeatFrom", rangeStart);
-    this.set("repeatTo", Number(this.repeatRangeTo.val()));
+    this.set("repeatTo", this.repeatRangeTo.val());
 
     this.updatePlayerRepeat();
   }
@@ -153,16 +160,15 @@ export default class extends SettingController {
     if ("single" == this.get("repeatType")) {
       verseToRepeat = this.get("repeatAyah");
       first = verseToRepeat;
-      last = first + 5;
+      last = verseToRepeat;
     } else {
       verseToRepeat = this.get("repeatFrom");
       first = verseToRepeat;
       last = this.get("repeatTo");
     }
-
-    if (verseToRepeat > 0) {
+    
+    if (!!verseToRepeat) {
       document.body.loader.show();
-
       this.jumpTo(verseToRepeat).then(() => {
         document.body.loader.hide();
 
@@ -171,7 +177,7 @@ export default class extends SettingController {
 
         if (playerDom) player = playerDom.player;
         if (player) {
-          return player.updateRepeat(
+          player.updateRepeat(
             {
               repeatEnabled: this.get("repeatEnabled"),
               repeatCount: this.get("repeatCount"),
@@ -182,8 +188,11 @@ export default class extends SettingController {
             },
             {first, last}
           );
+          player.createHowlAndPlay();
         }
       });
     }
   }
+
+  
 }
