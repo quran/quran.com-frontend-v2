@@ -17,16 +17,16 @@ class ChapterPresenter < HomePresenter
     end
   end
 
-  def cache_key
-    begin
-      start = verse_pagination_start
-      last = verse_pagination_end(start)
-    rescue Exception => e
-      start = 'invalid'
-      last = 'invalid'
-    end
+  def params_for_copy(verse)
+    "#{params_for_verse_link}&verse=#{verse.verse_key}&chapter=#{chapter.id}"
+  end
 
-    "#{current_locale}-#{font_method}-#{params[:id]}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{start}-#{last}"
+  def cache_key
+    if 'load_verses' == action_name
+      "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{params[:verse]}"
+    else
+      "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}#{current_page}"
+    end
   end
 
   def translation_view_path

@@ -71,7 +71,7 @@ class ChaptersController < ApplicationController
     if chapter_id < 1 || chapter_id > 114
       [root_path, t('chapters.invalid')]
     elsif chapter_id.to_s != chapter
-      key_range_path(chapter_id, get_valid_range_params)
+      ayah_range_path(chapter_id, get_valid_range_params)
     end
   end
 
