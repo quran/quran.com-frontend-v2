@@ -4,7 +4,7 @@
     direction: rtl;
 
     .line-verses{
-      line-break: anywhere;
+      //line-break: anywhere; safari don't play nicely with this
       display: flex;
       -webkit-box-pack: justify;
       justify-content: space-between;
@@ -32,9 +32,4 @@
       }
     }
   }
-}
-
-// page specific
-#page-604{
-
 }
