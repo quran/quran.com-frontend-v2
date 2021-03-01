@@ -9,11 +9,7 @@ class JuzPresenter < QuranPresenter
   end
 
   def cache_key
-    if 'juz_verses' == action_name
-      "j#{params[:verse]}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}"
-    else
-      "j#{current_juz}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}-p:#{params[:page]}-#{params[:per_page]}"
-    end
+    "j#{current_juz}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}-#{params[:verse]||params[:after]}"
   end
 
   def meta_description

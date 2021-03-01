@@ -5,7 +5,7 @@ var PRE_DEFINED_FOOTNOTES = {
   sg: "Singular",
   pl: "Plural",
   dl:
-    "<b>Dual</b> <br/> A form for verbs and pronouns in Arabic language when addressing two people" //A form for verbs and pronouns in Arabic language when addressing two people
+    "<b>Dual</b> <br/> A form for verbs and pronouns in Arabic language when addressing two people"
 };
 
 export default class extends Controller {

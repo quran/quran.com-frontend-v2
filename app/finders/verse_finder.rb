@@ -70,10 +70,16 @@ class VerseFinder
         verse_start = verse_pagination_start(@total_records)
         verse_end = verse_pagination_end(verse_start, @total_records)
 
-        @next_page = current_page + 1 if verse_end < (params[:to] || @total_records).to_i
+        if params[:to].nil? && params[:from].present?
+          # Single ayah request, no next page.
+          @next_page = nil
+        else
+          @next_page = current_page + 1 if verse_end < params[:to].to_i
+        end
+
         @results = Verse
                        .where(chapter_id: chapter)
-                       .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
+                       .where('verses.verse_number >= ? AND verses.verse_number < ?', verse_start.to_i, verse_end.to_i + 1)
       end
     else
       @results = Verse.where('1=0')
@@ -123,21 +129,8 @@ class VerseFinder
     if juz = Juz.find_by(juz_number: params[:juz_number].to_i.abs)
       @total_records = juz.verses_count
 
-      if params[:reading] || params[:after].present?
-        fetch_juz_page(juz)
-        @results
-      else
-        verse_start = juz.first_verse_id + (current_page - 1) * per_page
-        verse_end = min(verse_start + per_page, juz.last_verse_id)
-
-        if verse_end < juz.last_verse_id
-          @next_page = current_page + 1
-        end
-
-        @results = rescope_verses('verse_index')
-                       .where(juz_number: juz.juz_number)
-                       .where('verses.verse_index >= ? AND verses.verse_index < ?', verse_start.to_i, verse_end.to_i)
-      end
+      fetch_juz_page(juz)
+      @results
     else
       Verse.where('1=0')
     end
@@ -149,7 +142,7 @@ class VerseFinder
     last_verse = nil
 
     if params[:after]
-      last_verse = Verse.where(juz_number: juz.id, id: params[:after]).first
+      last_verse = Verse.where(juz_number: juz.id).find_with_id_or_key(params[:after])
     end
 
     last_verse ||= Verse.find(juz.first_verse_id)
@@ -168,7 +161,7 @@ class VerseFinder
     last_verse = nil
 
     if params[:after]
-      last_verse = Verse.where(chapter_id: chapter.id, id: params[:after]).first
+      last_verse = Verse.where(chapter_id: chapter.id).find_with_id_or_key(params[:after])
     end
 
     last_verse ||= Verse.where(chapter_id: chapter.id, verse_number: params[:from] || 1).first

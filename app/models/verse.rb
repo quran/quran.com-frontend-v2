@@ -43,8 +43,16 @@ class Verse < QuranCoreRecord
 
   attr_accessor :highlighted_text
 
-  def self.find_by_id_or_key(id)
-    where(verse_key: id).or(where(id: id)).first
+  def self.find_with_id_or_key(id)
+    if(id.to_s.include?(':'))
+      where(verse_key: id)
+    else
+      where(id: id)
+    end.first
+  end
+
+  def self.filter_with_id_or_key(id)
+    where(verse_key: id).or(where(id: id))
   end
 
   def highlighted_text

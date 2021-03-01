@@ -12,9 +12,7 @@
 <div class="reading__buttons flexx-center"
      id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination"
      data-url="<%= ayah_range_path(@presenter.chapter.id, @presenter.ayah_range) %>">
-  <% if @presenter.next_page %>
-    <%= chapter_next_page_link %>
-  <% end %>
+  <%= chapter_next_page_link %>
 
   <% reading = {reading: @presenter.reading_mode?} %>
 

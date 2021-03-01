@@ -22,7 +22,7 @@ class QuranController < ApplicationController
   end
 
   def juz_verses
-    params[:after] = Verse.find_by(verse_key: params[:verse]).id
+    params[:after] = Verse.find_by(verse_key: params[:verse]).verse_key
 
     render layout: false
   end

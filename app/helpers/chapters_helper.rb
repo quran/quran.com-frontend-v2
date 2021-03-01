@@ -44,42 +44,33 @@ module ChaptersHelper
 
   def surah_reading_page_link
     if (last = @presenter.last_verse)
+      next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(last.id + 1)
+
       ayah_range_path(
           @presenter.chapter,
           @presenter.ayah_range,
           page: @presenter.next_page,
-          after: last.id + 1,
+          after: next_ayah_key,
           reading: true
       )
     end
   end
 
   def juz_next_page_link
-    if @presenter.next_page
-      if @presenter.reading_mode?
-        next_page_link = juz_next_page_for_reading
-      else
-        next_page_link = quran_juz_path(@presenter.current_juz,
-                                        page: @presenter.next_page,
-                                        reading: @presenter.reading_mode?)
-      end
+    if @presenter.next_page && @presenter.last_verse
+      next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(@presenter.last_verse.id + 1)
 
-      if next_page_link
-        link_to 'load more',
-                next_page_link,
-                rel: 'next',
-                data: {remote: true},
-                class: 'btn btn--lightgrey btn--large  btn--arrow-down'
-      end
-    end
-  end
+      next_link = quran_juz_path(@presenter.current_juz,
+                                 page: @presenter.next_page,
+                                 after: next_ayah_key,
+                                 reading: @presenter.reading_mode?)
 
-  def juz_next_page_for_reading
-    if (last = @presenter.last_verse)
-      quran_juz_path(@presenter.current_juz,
-                     page: @presenter.next_page,
-                     after: last.id + 1,
-                     reading: @presenter.reading_mode?)
+      link_to 'load more',
+              next_link,
+              rel: 'next',
+              data: {remote: true},
+              class: 'btn btn--lightgrey btn--large  btn--arrow-down'
+
     end
   end
 
