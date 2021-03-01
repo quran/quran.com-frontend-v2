@@ -14,16 +14,16 @@
     <p class="play-selected--counterlabel">Repeat count</p>
 
     <div class="counter">
-      <button class="counter__button" name=counter data-increment="-1" data-type="times"></button>
+      <button class="counter__button" name=counter data-increment="-1" data-type="times" data-min=1></button>
       <p class="counter__text times" data-value="2">2 times</p>
-      <button class="counter__button" name=counter data-increment="1" data-type="times"></button>
+      <button class="counter__button" name=counter data-increment="1" data-type="times" data-min=1></button>
     </div>
 
     <p class="play-selected--counterlabel">Pause between</p>
     <div class="counter">
-      <button class="counter__button" name=counter data-increment="-1" data-type="seconds"></button>
+      <button class="counter__button" name=counter data-increment="-1" data-type="seconds" data-min=0></button>
       <p class="counter__text seconds" data-value="5">5 seconds</p>
-      <button class="counter__button" name=counter data-increment="1" data-type="seconds"></button>
+      <button class="counter__button" name=counter data-increment="1" data-type="seconds" data-min=0></button>
     </div>
     <a class="play-selected--playbutton" id="play-selected--playbutton"><span class="icon-play1"></span><p>Play this part</p></a>
   </div>
@@ -32,23 +32,23 @@
 <div class="play-bar-wrapper">
 	<div class="play-bar ">
 		<div class="playing-part" id="playing-part">
-			<span class="icon-loading" data-action="verseEnded->segment-player#resetPlayButton"></span>
-			<p id="playing-status">Playing</p>
+			<a class="icon-loading"></a>
+			<p id="playing-status">Loading</p>
     </div>
     <div class="counter-part counter-part--first">
 			<p>Repeat count</p>
 			<div class="counter">
-				<button class="counter__button" name=counter data-increment="-1" data-type="times"></button>
+				<button class="counter__button" name=counter data-increment="-1" data-type="times" data-min=1></button>
 				<p class="counter__text times" data-value="2">2 times</p>
-				<button class="counter__button" name=counter data-increment="1" data-type="times"></button>
+				<button class="counter__button" name=counter data-increment="1" data-type="times" data-min=1></button>
 			</div>
 		</div>
 		<div class="counter-part counter-part--second">
 			<p>Pause between</p>
 			<div class="counter">
-				<button class="counter__button" name=counter data-increment="-1" data-type="seconds"></button>
+				<button class="counter__button" name=counter data-increment="-1" data-type="seconds" data-min=0></button>
 				<p class="counter__text seconds" data-value="5">5 seconds</p>
-				<button class="counter__button" name=counter data-increment="1" data-type="seconds"></button>
+				<button class="counter__button" name=counter data-increment="1" data-type="seconds" data-min=0></button>
 			</div>
 		</div>
 		<div class="closing-part ">

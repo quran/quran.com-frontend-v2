@@ -337,15 +337,14 @@ export default class extends AudioController {
       this.loadingBtn.addClass('d-none');
       this.pauseBtn.removeClass('d-none');
       versePlayBtn.addClass('icon-pause');
-      document.querySelector('#playing-part span').classList = 'icon-pause';
     } else {
       // loading
       this.playBtn.addClass('d-none');
       this.loadingBtn.removeClass('d-none');
       this.pauseBtn.addClass('d-none');
       versePlayBtn.addClass('icon-loading');
-      document.querySelector('#playing-part span').classList = 'icon-loading';
     }
+    if(this.segmentPlayer) document.getElementById("segment-player").segmentPlayer.setPlayerCtrls(type);
   }
 
   pad(n, width) {
@@ -441,6 +440,7 @@ export default class extends AudioController {
 
   onVerseEnd() {
     if (this.pauseSeconds > 0) {
+      if(this.segmentPlayer) document.getElementById("segment-player").segmentPlayer.setPlayerCtrls();
       setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
     } else {
       this.onVerseEnded();
@@ -471,9 +471,7 @@ export default class extends AudioController {
       this.playCurrent();
     } else {
       if (this.segmentPlayer) {
-        document
-          .getElementById("segment-player")
-          .segmentPlayer.resetPlayButton();
+        document.getElementById("segment-player").segmentPlayer.closePlayer();
       } else {
         this.config.repeat.currentIteration = 1;
         this.playNext();
@@ -518,12 +516,10 @@ export default class extends AudioController {
   }
 
   loadTrack(verse) {
-    if (this.preloadTrack[verse]) {
-      return Promise.resolve(this.preloadTrack[verse])
-    } else {
+    if(this.preloadTrack[verse] == undefined || this.segmentPlayer){
       this.loading();
       return this.createHowl(verse);
-    }
+    }else return Promise.resolve(this.preloadTrack[verse]);
   }
 
   createHowl(verse) {

@@ -1,9 +1,7 @@
 import {Controller} from "stimulus";
-import ChapterController from "./chapter_controller";
 
 export default class extends Controller {
   connect() {
-    //super.connect();
     this.config = {times: 2, seconds: 5};
     this.element.segmentPlayer = this;
 
@@ -11,21 +9,6 @@ export default class extends Controller {
     this.currentVerse = null;
     this.lastVerse = null;
     this.bindListener();
-  }
-
-  handlePlayButton(event){
-    let target = event.target;
-    let player = this.getPlayer();
-    if (player) {
-      (target.classList == "icon-pause") ? player.pauseCurrent() : player.playCurrent();
-    }
-    if(target.classList == 'icon-pause'){
-      target.classList = "icon-play1";
-      target.nextElementSibling.innerText = "Play";
-    }else{
-      target.classList = "icon-pause";
-      target.nextElementSibling.innerText = "Playing";
-    }
   }
 
   play(){
@@ -45,32 +28,25 @@ export default class extends Controller {
       player.updatePause(this.config.seconds);
       player.updateRepeat({
         repeatEnabled: true,
-        repeatCount: this.config.times,
+        repeatCount: (this.config.times - 1),
         repeatType: 'single',
         repeatAyah: verseNumber,
       }, {'first': verseNumber, 'last': verseNumber}, segments);
+      //player.createHowl(verseNumber);
       player.play(verseNumber);
     }
   }
 
   getPlayer(){
-    let player,playerDom = document.getElementById("player");
-    if (playerDom) player = playerDom.player;
-    return player;
+    return document.getElementById("player").player;
   }
 
   closePlayer(){
-    document.querySelector('body').classList.remove("small-player");
-    let player = this.getPlayer();
-    if (player) {
-      if (player.isPlaying()) player.currentHowl.stop()
-      player.updateVerses(this.currentVerse, this.lastVerse);
-      player.loadSettings();
-    }
     document.getElementById("reader").segmentSelection.deselect();
   }
 
   bindListener(){
+
     $(document).on('segment:selected', function(e, items) {
       $('.play-segment').addClass('active');
       $('.play-selected-wrapper').removeClass('active');
@@ -78,6 +54,18 @@ export default class extends Controller {
 
     $(document).on('segment:removed', function() {
       $('.play-segment, .play-selected-wrapper').removeClass('active');
+      document.querySelector("#playing-part").children[0].classList = "icon-loading";
+      document.querySelector("#playing-part").children[1].innerText = "Loading";
+      document.querySelector('body').classList.remove("small-player");
+      let segmentPlayer = document.getElementById("segment-player").segmentPlayer;
+      let player = segmentPlayer.getPlayer();
+      if (player) {
+        if (player.isPlaying()) player.currentHowl.stop();
+        if(!!segmentPlayer.currentVerse){
+          player.updateVerses(segmentPlayer.currentVerse, segmentPlayer.lastVerse);
+          player.loadSettings();
+        }
+      }
     });
 
     $(document).on('el:selecting', function() {
@@ -91,7 +79,7 @@ export default class extends Controller {
     document.querySelectorAll(".counter__button").forEach(item => {
       item.addEventListener("click", e => this.handleCounterButtons(e));
     });
-    document.querySelector("#playing-part").addEventListener("click", event => this.handlePlayButton(event));
+    document.querySelector("#playing-part").addEventListener("click", event => this.handlePlayerButton(event));
   }
 
   showPlaySegment(){
@@ -109,14 +97,13 @@ export default class extends Controller {
     const increment = +data.increment;
     let textNode = $(`.counter__text.${data.type}`);
     let value = (+textNode.data("value")) + increment;
-    if(value > -1){
+    const min = +data.min;
+    if(value >= min){
       this.config[data.type] = value;
       textNode.data("value", value).text(`${value} ${data.type}`);
-      let player,
-      playerDom = document.getElementById("player");
-      if (playerDom) player = playerDom.player;
+      let player = document.getElementById("player").player;
       if (player) {
-        (data.type == "seconds") ? player.updatePause(value) : player.updateRepeatCount(value);
+        (data.type == "seconds") ? player.updatePause(value) : player.updateRepeatCount(value-1);
       }
     }
   }
@@ -124,5 +111,41 @@ export default class extends Controller {
   resetPlayButton(){
     document.querySelector("#playing-part").children[0].classList = "icon-play1";
     document.querySelector("#playing-part").children[1].innerText = "Play";
+  }
+
+  handlePlayerButton(event){
+    const target = event.target;
+    if(target.dataset.disabled == "false"){
+      let player = this.getPlayer();
+      if(target.classList == "icon-pause"){
+        this.setPlayerCtrls('play');
+        player.pauseCurrent();
+      }else{
+        this.setPlayerCtrls('pause');
+        player.playCurrent();
+      }
+    }
+  }
+
+  setPlayerCtrls(type){
+    let btn = document.querySelector('#playing-part a');
+    let state = document.querySelector('#playing-part p');
+    btn.dataset.disabled = false
+    if ("play" == type) {
+      btn.classList = 'icon-play1';
+      state.innerHTML = "Paused";
+    } else if ("pause" == type) {
+      btn.classList = 'icon-pause';
+      state.innerHTML = "Playing";
+    } else if("loading" == type) {
+      // loading
+      btn.classList = 'icon-loading';
+      state.innerHTML = "Loading";
+      btn.dataset.disabled = true;
+    }else{
+      btn.classList = 'icon-play1';
+      state.innerHTML = "Waiting";
+      btn.dataset.disabled = true;
+    }
   }
 }

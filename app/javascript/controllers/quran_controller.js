@@ -82,6 +82,7 @@ export default class extends Controller {
       this.jumpToCurrent();
       this.resumePageLoader();
     }
+    document.getElementById("segment-player").segmentPlayer.closePlayer();
   }
 
   isReadingMode() {

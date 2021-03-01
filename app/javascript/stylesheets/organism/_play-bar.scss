@@ -81,7 +81,7 @@
         margin-left: 0px;
       }
     }
-    span {
+    a {
       @include md {
         margin-bottom: 4px;
       }
@@ -90,6 +90,9 @@
         font-size: 28px;
         color: $dark-green;
       }
+    }
+    a.icon-loading::before{
+      font-size: 20px;
     }
   }
   .counter-part {
