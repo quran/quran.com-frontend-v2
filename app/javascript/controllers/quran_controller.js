@@ -1,5 +1,5 @@
 import {Controller} from "stimulus";
-import {getAyahIdFromKey} from "../utility/quran_utils";
+import {getAyahIdFromKey, getAyahNumberFromKey} from "../utility/quran_utils";
 
 export default class extends Controller {
   initialize() {
@@ -216,9 +216,9 @@ export default class extends Controller {
 
     // activate verse item in dropdown filter
     $("#verse-list .dropdown-item").removeClass("active");
-    let activeVerse = $("#verse-list").find(`[verse-key='${current.key}']`);
+    let activeVerse = $("#verse-list").find(`[data-verse-key='${current.key}']`);
     activeVerse.addClass("active");
-    $("#ayah-dropdown #current").html(this.verseText(current.number, current.key));
+    $("#ayah-dropdown #current").html(this.verseText(current.key));
 
     let verseTopOffset = verseEl.offset().top;
     let verseHeight = verseEl.outerHeight();
@@ -278,11 +278,11 @@ export default class extends Controller {
     return this.activeTab.find(`.verse[data-key='${key}']`)
   }
 
-  verseText(verseNumber, verseKey) {
+  verseText(verseKey) {
     // in chapter mode, we'll show verse number
     // and verse key in juz or page view
     if (this.isChapterMode)
-      return verseNumber
+      return getAyahNumberFromKey(verseKey)
     else
       return verseKey;
   }

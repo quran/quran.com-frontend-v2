@@ -86,6 +86,17 @@ function getAyahKeyFromId(verseId) {
   return getAyahKey(surah, ayah)
 }
 
+function getAyahNumberFromKey(key) {
+  const parts = key.split(':')
+
+  return parts[1];
+}
+function getAyahNumberFromId(id) {
+  const key =  getAyahKeyFromId(id)
+  return getAyahNumberFromKey(key);
+}
+
+
 function getAyahIdFromKey(key) {
   const parts = key.split(':')
 
@@ -135,5 +146,7 @@ export {
   getAyahKey,
   getAyahId,
   getAyahIdFromKey,
-  getAyahKeyFromId
+  getAyahNumberFromKey,
+  getAyahKeyFromId,
+  getAyahNumberFromId
 }
