@@ -10,6 +10,7 @@ import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 import isChildOf from "../utility/child-of";
+import DeviceDetector from "../utility/deviceDetector";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -54,13 +55,14 @@ const TAJWEED_RULES = [
 export default class extends Controller {
   connect() {
     const el = $(this.element);
+    this.el = el;
+
     this.bindAction(el);
 
     if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+      this.fixTajweedForSarari();
       this.bindTajweedTooltip();
     }
-
-    this.el = el;
   }
 
   disconnect() {
@@ -104,6 +106,23 @@ export default class extends Controller {
         });
       });
     });
+  }
+
+  fixTajweedForSarari(){
+    const deviceDetector = new DeviceDetector();
+
+     if(deviceDetector.isSafari()){
+       const text = this.el.find(".arabic").html()
+       const textWithZwj = this.addZwj(text);
+       //console.log("text before", text);
+       //console.log("text after", textWithZwj);
+
+       this.el.find(".arabic").html(textWithZwj);
+     }
+  }
+
+  addZwj(text){
+   return  text.replace(/([ئبت-خس-غف-نهيی])([^ء-يی\n ]*<[^>]+>[ً-ْٰۖۗۚۛۜ]*)(?=[آ-يی])/g, '$1&zwj;$2&zwj;');
   }
 
   bindAction(el) {

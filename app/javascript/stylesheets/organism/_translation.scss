@@ -85,7 +85,7 @@
   .translation__arabic {
     display: flex;
     justify-content: flex-end;
-    flex: 2;
+    //flex: 2; safari
     padding-top: 30px;
     @include sm {
       padding-top: 0;
