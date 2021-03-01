@@ -2,10 +2,15 @@
   Advance copy options
 </div>
 
-<% verse = @presenter.current_verse %>
+<%
+  verse = @presenter.current_verse
+  first_ayah = @presenter.first_ayah_in_range
+  last_ayah = @presenter.last_ayah_in_range
+%>
 
 <div id="modal">
-  <div data-controller="copy-advanced" data-verse-id="<%= verse.verse_number %>" data-chapter-id="<%#= chapter.id %>">
+  <div data-controller="copy-advanced"
+       data-verse-key="<%= verse.verse_key %>">
     <div>
       <p class="text text--darkgrey text--medium text--semibold">Select ayah range</p>
       <div class="display-settings__radios">
@@ -36,7 +41,7 @@
                 <% @presenter.fetch_ayah_keys.each do |key| %>
                   <option
                     value="<%= key %>"
-                    <%= 'selected' if key == verse.verse_key %>
+                    <%= 'selected' if key == first_ayah %>
                   >
                     <%= key %>
                   </option>
@@ -55,7 +60,7 @@
                 <% @presenter.fetch_ayah_keys.each do |key| %>
                   <option
                     value="<%= key %>"
-                    <%= 'selected' if key == verse.verse_key %>
+                    <%= 'selected' if key == last_ayah %>
                   >
                     <%= key %>
                   </option>
@@ -122,6 +127,10 @@
 
     <div class="p-2 my-2 text--black header--border rounded-sm hidden" id=file-notice style="border: 1px dashed;">
       Text is copied successfully in your clipboard. <a href="">Click here</a> if you want to download text file.
+    </div>
+
+    <div class="p-2 my-2 text--black header--border rounded-sm hidden" id=error-notice style="border: 1px dashed;">
+      Please select valid ayah range and try again.
     </div>
 
     <div class="copy-footer">

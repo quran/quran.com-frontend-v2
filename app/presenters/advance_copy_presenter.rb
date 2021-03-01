@@ -19,14 +19,17 @@ class AdvanceCopyPresenter < QuranPresenter
     elsif copying_from_juz?
       Verse.order("verse_index ASC").where(juz_number: params[:juz]).pluck(:verse_key)
     elsif copying_from_page?
-      Verse.order("verse_index ASC").where(page_number: params[:page]).pluck(:verse_key)
+      Verse.order("verse_index ASC").where(page_number: params[:muhsaf_page]).pluck(:verse_key)
     else
       []
     end
   end
 
   def verses_to_copy
-    @verses = Verse.order('verses.verse_index asc')
+    verse_from = QuranUtils::Quran.get_ayah_id_from_key(params[:from])
+    verse_to = QuranUtils::Quran.get_ayah_id_from_key(params[:to])
+
+    @verses = Verse.order('verses.verse_index asc').where("verses.verse_index >= :from AND verses.verse_index <= :to", from: verse_from, to: verse_to)
 
     if (fetch_approved_translations.present?)
       @verses = @verses
@@ -62,14 +65,30 @@ class AdvanceCopyPresenter < QuranPresenter
     end
   end
 
+  def first_ayah_in_range
+    strong_memoize :range_first do
+      if id = params[:range].to_s.split('-').first
+        QuranUtils::Quran.get_ayah_key_from_id(id.to_i)
+      end
+    end
+  end
+
+  def last_ayah_in_range
+    strong_memoize :range_last do
+      if id = params[:range].to_s.split('-').last
+        QuranUtils::Quran.get_ayah_key_from_id(id.to_i)
+      end
+    end
+  end
+
   def include_arabic?
     strong_memoize :arabic do
-      'yes' == params[:arabic]
+      !ActiveRecord::Type::Boolean::FALSE_VALUES.include?(params[:arabic])
     end
   end
 
   def copy_resource_with_range
-    "#{include_footnote?}-#{include_arabic?}"
+    "#{include_footnote?}-#{include_arabic?}-#{params[:range]}-#{params[:from]}-#{params[:to]}"
   end
 
   def fetch_approved_translations
@@ -87,6 +106,6 @@ class AdvanceCopyPresenter < QuranPresenter
   end
 
   def copying_from_page?
-    params[:page].present?
+    params[:muhsaf_page].present?
   end
 end

@@ -1,11 +1,11 @@
 import {Controller} from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
+import {getAyahIdFromKey} from "../utility/quran_utils";
 
 export default class extends Controller {
   connect() {
-    const {verseId, chapterId} = this.element.dataset;
-    this.verseId = verseId;
-    this.chapterId = chapterId;
+    const {verseKey} = this.element.dataset;
+    this.verseKey = verseKey;
     this.rangeType = "single";
 
     this.selects = $(".simple-select").select2({
@@ -18,7 +18,9 @@ export default class extends Controller {
 
     this.copyRangeFrom = $("#copy-range-ayah-from");
     this.copyRangeTo = $("#copy-range-ayah-to");
-    this.copyRangeTo.attr("disabled", true);
+
+    if (this.copyRangeTo.val().length == 0)
+      this.copyRangeTo.attr("disabled", true);
 
     this.bindingElements();
   }
@@ -30,14 +32,23 @@ export default class extends Controller {
 
   bindingElements() {
     this.copyRangeFrom.on("change", e => {
-      const from = Number(this.copyRangeFrom.val());
-      this.copyRangeTo.val(0);
+      const from = this.copyRangeFrom.val();
+      if ('0' == from) {
+        this.copyRangeTo.attr("disabled", true);
+        this.copyRangeTo.find("option").attr("disabled", "disabled")
+        return
+      }
+
+      const selectedId = getAyahIdFromKey(from);
 
       this.copyRangeTo.find("option").each((i, option) => {
         // disable all options which are less then copy start
-        const val = Number(option.value);
-        option.disabled = val > 0 && val < from;
+        if (0 != option.value) {
+          const id = getAyahIdFromKey(option.value);
+          option.disabled = id < selectedId;
+        }
       });
+
       this.copyRangeTo.attr("disabled", false);
     });
 
@@ -77,6 +88,7 @@ export default class extends Controller {
     }).catch(err => {
       submit.innerHTML = 'Copy text';
       submit.disabled = false;
+      $("#error-notice").removeClass('hidden');
     })
   }
 
@@ -86,14 +98,20 @@ export default class extends Controller {
     link.href = URL.createObjectURL(file);
     link.download = "quran.copy.txt";
 
-    $("#file-notice").removeClass('hidden')
+    $("#file-notice").removeClass('hidden');
   }
 
   getText() {
-    let [to, from] = [this.verseId, this.verseId];
+    $("#error-notice").addClass('hidden');
+    let [from, to] = [this.verseKey, this.verseKey];
+
     if (this.rangeType == "multiple") {
-      to = document.querySelector("#copy-range-ayah-to").value;
-      from = document.querySelector("#copy-range-ayah-from").value;
+      from = this.copyRangeFrom.val();
+      to = this.copyRangeTo.val();
+    }
+
+    if (! this.validSelection(from, to)) {
+      return Promise.reject("Invalid ayah range");
     }
 
     const copyOptions = {
@@ -105,8 +123,22 @@ export default class extends Controller {
     }
 
     let headers = {"X-Requested-With": "XMLHttpRequest"};
-    const copyUrl = `/${this.chapterId}/copy_text?${$.param(copyOptions)}`
+    const copyUrl = `/advance_copy/copy_text?${$.param(copyOptions)}`
     return fetch(copyUrl, {headers: headers});
+  }
+
+  validSelection(from, to) {
+    if (
+      0 == from || 0 == to ||
+      undefined == from || undefined == to ||
+      0 == from.length || 0 == to.length
+    )
+      return false;
+
+    const idFrom = getAyahIdFromKey(from);
+    const idTo = getAyahIdFromKey(to);
+
+    return idFrom <= idTo;
   }
 
   selectedTranslations() {

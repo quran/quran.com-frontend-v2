@@ -106,7 +106,7 @@ export default class extends Controller {
       .map(key => `${key}=${options[key]}`)
       .join(", ");
 
-    let content = `<div class='col-4 col-md-3 align-items-center justify-content-center'>
+    let content = `<div class='col-4 col-md-3 text-center'>
                   <span class='share-icon ${icon}'>
                    <a target='_blank' rel='noopener'
                    title='Share on ${name}'

@@ -18,14 +18,14 @@ class ChapterPresenter < HomePresenter
   end
 
   def params_for_copy(verse)
-    "#{params_for_verse_link}&verse=#{verse.verse_key}&chapter=#{chapter.id}"
+    "#{params_for_verse_link}&verse=#{verse.verse_key}&chapter=#{chapter.id}&range=#{ayah_range_for_copy}"
   end
 
   def cache_key
     if 'load_verses' == action_name
-      "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{params[:verse]||params[:after]}"
+      "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{params[:verse] || params[:after]}"
     else
-      "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}#{current_page}"
+      "c:#{chapter.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:verse] || params[:after]}"
     end
   end
 
@@ -75,8 +75,24 @@ class ChapterPresenter < HomePresenter
     end
   end
 
+  def ayah_range_for_copy
+    strong_memoize :ayah_range_copy do
+      from = ayah_range_from
+      to = ayah_range_to
+
+      id_from =  QuranUtils::Quran.get_ayah_id(chapter.id, from)
+      id_to =  QuranUtils::Quran.get_ayah_id(chapter.id, to)
+
+      "#{id_from}-#{id_to}"
+    end
+  end
+
   def has_more_verses?
-    ayah_range_to < total_verses
+    if params[:to]
+      params[:to].to_i < total_verses
+    else
+      true
+    end
   end
 
   def has_previous_verses?

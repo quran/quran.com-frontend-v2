@@ -74,7 +74,7 @@ class VerseFinder
           # Single ayah request, no next page.
           @next_page = nil
         else
-          @next_page = current_page + 1 if verse_end < params[:to].to_i
+          @next_page = current_page + 1 if verse_end < (params[:to] || @total_records).to_i
         end
 
         @results = Verse

@@ -44,11 +44,17 @@ class JuzPresenter < QuranPresenter
   end
 
   def params_for_copy(verse)
-    "#{params_for_verse_link}&verse=#{verse.verse_key}&juz=#{current_juz}"
+    "#{params_for_verse_link}&verse=#{verse.verse_key}&juz=#{current_juz}&range=#{ayah_range}"
   end
 
   def continue?
     true
+  end
+
+  def ayah_range
+    strong_memoize :juz_ayah_range do
+      "#{first_verse.id}-#{last_verse.id}"
+    end
   end
 
   def valid_juz?
@@ -70,7 +76,7 @@ class JuzPresenter < QuranPresenter
   def current_juz
     params[:juz_number].to_i.abs
   end
-  
+
   alias current current_juz
 
   def juz_amma?

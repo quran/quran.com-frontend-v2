@@ -2,11 +2,7 @@
 
 class VersePresenter < QuranPresenter
   def verse
-    if params[:id].to_s.include?(':')
-      Verse.find_by(verse_key: params[:id])
-    else
-      Verse.find_by_id_or_key(params[:id])
-    end
+    Verse.find_with_id_or_key(params[:id])
   end
 
   def approved_tafsirs

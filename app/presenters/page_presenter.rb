@@ -36,7 +36,13 @@ class PagePresenter < QuranPresenter
   end
 
   def params_for_copy(verse)
-    "#{params_for_verse_link}&verse=#{verse.verse_key}&page=#{current_page}"
+    "#{params_for_verse_link}&verse=#{verse.verse_key}&muhsaf_page=#{current_page}&range=#{ayah_range}"
+  end
+
+  def ayah_range
+    strong_memoize :page_ayah_range do
+      "#{first_verse.id}-#{last_verse.id}"
+    end
   end
 
   def valid_page?
