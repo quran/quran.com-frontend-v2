@@ -26,6 +26,10 @@ module QuranUtils
       get_ayah_id surah, ayah
     end
 
+    def self.get_ayah_number_from_key(key)
+       key.split(':')[1].to_i
+    end
+
     def self.get_ayah_id(surah, ayah)
       abs_ayahs[surah - 1] + ayah if valid_ayah?(surah, ayah)
     end
@@ -55,6 +59,10 @@ module QuranUtils
         count += s
         e
       end
+    end
+
+    def self.get_ayah_count(surah)
+      SURAH_AYAH[surah - 1]
     end
 
     # MUHSAF_PAGES:

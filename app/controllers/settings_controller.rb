@@ -26,6 +26,7 @@ class SettingsController < ApplicationController
   end
 
   def generate_localised_cache_key
-    "#{controller_name}/#{action_name}/#{params[:chapter]}/#{fetch_locale}"
+    resource_key = params.permit(:chapter, :juz_number, :page_number).to_query
+    "#{controller_name}/#{action_name}/#{resource_key}/#{fetch_locale}"
   end
 end

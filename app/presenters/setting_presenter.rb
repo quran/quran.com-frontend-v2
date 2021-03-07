@@ -33,7 +33,7 @@ class SettingPresenter < AudioPresenter
   def verse_keys
     strong_memoize :verse_keys do
       if params[:chapter]
-        verses_count = QuranUtils::Quran::SURAH_AYAH[params[:chapter].to_i]
+        verses_count = QuranUtils::Quran.get_ayah_count(params[:chapter].to_i)
         1.upto(verses_count).map { |verse_number| "#{params[:chapter]}:#{verse_number}"}
       elsif params[:juz_number]
         Verse.where(juz_number: params[:juz_number]).order('verse_index ASC').pluck(:verse_key)
