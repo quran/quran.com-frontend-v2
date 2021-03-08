@@ -22,11 +22,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def cache_key
-    if 'load_verses' == action_name
-      "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{params[:verse] || params[:after]}"
-    else
-      "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:verse] || params[:after]}"
-    end
+     "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:after]}"
   end
 
   def translation_view_path

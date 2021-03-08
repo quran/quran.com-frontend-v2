@@ -10,10 +10,10 @@ class AyatulKursiPresenter < ChapterPresenter
   def verses
     strong_memoize :verses do
       [@finder.find_by_key(
-          '2:255',
-          language: language,
-          translations: valid_translations,
-          words: true
+        '2:255',
+        language: language,
+        translations: valid_translations,
+        words: true
       )]
     end
   end
@@ -54,11 +54,9 @@ class AyatulKursiPresenter < ChapterPresenter
     ['آیت الکرسی', 'ayatul kursi', 'Quran 2:255']
   end
 
-  def cache_key
-    "ayat-ul-kursi-#{context.fetch_locale}"
-  end
-
   def chapter
-    Chapter.find(2)
+    strong_memoize :chapter do
+      Chapter.find(2)
+    end
   end
 end

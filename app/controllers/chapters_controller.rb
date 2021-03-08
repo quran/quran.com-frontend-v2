@@ -118,7 +118,7 @@ class ChaptersController < ApplicationController
 
   def generate_localised_cache_key
     key = @presenter.cache_key rescue 'invalid-route'
-    "verses:xhr#{request.xhr?}/#{key}/#{fetch_locale}"
+    "#{fetch_locale}-verses-#{action_name}:xhr#{request.xhr?}-#{key}"
   end
 
   def current_ayah_range

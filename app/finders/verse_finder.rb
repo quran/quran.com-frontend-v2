@@ -209,6 +209,7 @@ class VerseFinder
     @results = @results
                    .where(translations: {resource_content_id: translations})
                    .eager_load(:translations)
+                   .order('translations.priority ASC')
   end
 
   def rescope_verses(by)
