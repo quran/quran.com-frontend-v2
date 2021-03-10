@@ -44,6 +44,15 @@
         </div>
 
         <div class="menu-item">
+          <%= link_to 'javascript:;', class: 'menu-item__link', data: {action: 'click->menu#showFeedbackModal'} do %>
+            <span class="quran-icon icon-help"></span>
+            <p class="text text--grey text--large text--semibold">
+              Feedback
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
           <%= link_to support_path, class: 'menu-item__link' do %>
             <span class="quran-icon icon-help"></span>
             <p class="text text--grey text--large text--semibold">

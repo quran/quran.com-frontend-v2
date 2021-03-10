@@ -64,4 +64,9 @@ export default class extends Controller {
     this.menuWraper.classList.remove("hidden");
     this.element.classList.remove("hidden");
   }
+
+  showFeedbackModal(){
+    this.close();
+    $('#feedback-modal').modal('show');
+  }
 }
