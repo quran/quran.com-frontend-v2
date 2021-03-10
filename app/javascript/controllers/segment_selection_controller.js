@@ -236,23 +236,10 @@ export default class extends Controller {
   }
 
   updateDropdownPositions() {
-    const corners = {
-      left: 99999,
-      bottom: 0,
-      right: 0
-    }
-
-    this.selectedItems.forEach((item) => {
-      corners.left = Math.min(corners.left, item.rect.x);
-      corners.bottom = Math.max(corners.bottom, item.rect.y + item.rect.height);
-      corners.right = Math.max(corners.right, item.rect.x + item.rect.width);
-    });
-
-    const scrollPos = $(window).scrollTop();
     const root = document.documentElement;
-
-    root.style.setProperty('--el-selection-y', corners.bottom + scrollPos + "px");
-    root.style.setProperty('--el-selection-x', ((corners.left + corners.right) / 2) + "px");
+    const lastItem = this.selectedItems[this.selectedItems.length - 1]
+    root.style.setProperty('--el-selection-y', lastItem.rect.y + 50 + "px");
+    root.style.setProperty('--el-selection-x', lastItem.rect.x + "px");
   }
 
   deselect(e) {
