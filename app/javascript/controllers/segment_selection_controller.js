@@ -237,8 +237,9 @@ export default class extends Controller {
 
   updateDropdownPositions() {
     const root = document.documentElement;
+    const scrollPos = $(window).scrollTop();
     const lastItem = this.selectedItems[this.selectedItems.length - 1]
-    root.style.setProperty('--el-selection-y', lastItem.rect.y + 50 + "px");
+    root.style.setProperty('--el-selection-y', lastItem.rect.y + scrollPos + 50 + "px");
     root.style.setProperty('--el-selection-x', lastItem.rect.x + "px");
   }
 
