@@ -135,7 +135,7 @@ export default class extends Controller {
       recitation: 7,
       nightMode: null,
       readingMode: false,
-      translations: [131],
+      translations: [131, 20],
       repeatEnabled: false,
       repeatCount: 1,
       repeatFrom: null,

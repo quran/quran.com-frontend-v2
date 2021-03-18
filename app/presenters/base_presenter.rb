@@ -5,7 +5,7 @@ class BasePresenter
 
   HOST = 'https://www.quran.com'
   DEFAULT_RECITATION = 7
-  DEFAULT_TRANSLATION = 131 # Clear Quran with footnotes is default translation
+  DEFAULT_TRANSLATION = [ 131, 20] # Clear Quran with footnotes is default translation
   TAG_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   attr_reader :context
