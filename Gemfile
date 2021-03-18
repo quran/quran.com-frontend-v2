@@ -99,6 +99,7 @@ group :development do
   # if you need to run webrick server for development
   # rails server -u webrick
   gem "webrick"
+  gem 'foreman'
 end
 
 group :test do

@@ -46,7 +46,7 @@ module QuranUtils
     end
 
     def self.valid_ayah?(surah, ayah)
-      ayah.positive? && SURAH_AYAH[surah - 1] && ayah <= SURAH_AYAH[surah - 1]
+      surah && ayah && ayah.positive? && SURAH_AYAH[surah - 1] && ayah <= SURAH_AYAH[surah - 1]
     end
 
     def self.abs_ayahs

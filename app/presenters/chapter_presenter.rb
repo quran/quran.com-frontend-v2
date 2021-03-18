@@ -22,7 +22,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def cache_key
-     "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:after]}"
+     "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:start_from]}"
   end
 
   def translation_view_path

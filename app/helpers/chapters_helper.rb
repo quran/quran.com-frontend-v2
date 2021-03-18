@@ -21,38 +21,22 @@ module ChaptersHelper
   end
 
   def chapter_next_page_link
-    if @presenter.next_page
-      next_page_link = if @presenter.reading_mode?
-                         surah_reading_page_link
-                       else
-                         ayah_range_path(@presenter.chapter.id,
-                                         @presenter.ayah_range,
-                                         page: @presenter.next_page,
-                                         translations: @presenter.valid_translations,
-                                         reading: @presenter.reading_mode?)
+    if (last = @presenter.last_verse)
+      next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(last.id + 1)
 
-                       end
+      next_page_link = ayah_range_path(
+        @presenter.chapter,
+        @presenter.ayah_range,
+        page: @presenter.next_page,
+        start_from: next_ayah_key,
+        reading: @presenter.reading_mode?
+      )
 
       link_to 'load more',
               next_page_link,
               rel: 'next',
               data: {remote: true},
               class: 'btn btn--lightgrey btn--large  btn--arrow-down'
-
-    end
-  end
-
-  def surah_reading_page_link
-    if (last = @presenter.last_verse)
-      next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(last.id + 1)
-
-      ayah_range_path(
-          @presenter.chapter,
-          @presenter.ayah_range,
-          page: @presenter.next_page,
-          after: next_ayah_key,
-          reading: true
-      )
     end
   end
 

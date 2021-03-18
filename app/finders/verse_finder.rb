@@ -141,8 +141,8 @@ class VerseFinder
     # and load full page
     last_verse = nil
 
-    if params[:after]
-      last_verse = Verse.where(juz_number: juz.id).find_with_id_or_key(params[:after])
+    if params[:start_from]
+      last_verse = Verse.where(juz_number: juz.id).find_with_id_or_key(params[:start_from])
     end
 
     last_verse ||= Verse.find(juz.first_verse_id)
@@ -160,8 +160,8 @@ class VerseFinder
     # and load full page
     last_verse = nil
 
-    if params[:after]
-      last_verse = Verse.where(chapter_id: chapter.id).find_with_id_or_key(params[:after])
+    if params[:start_from]
+      last_verse = Verse.where(chapter_id: chapter.id).find_with_id_or_key(params[:start_from])
     end
 
     last_verse ||= Verse.where(chapter_id: chapter.id, verse_number: params[:from] || 1).first
@@ -177,11 +177,17 @@ class VerseFinder
   end
 
   def verse_pagination_start(total_verses)
-    if (from = (params[:from] || 1).to_i.abs).zero?
-      from = 1
+    verse_from = nil
+
+    if params[:start_from]
+      verse_from = QuranUtils::Quran.get_ayah_number_from_key(params[:start_from])
     end
 
-    verse_from = from + (current_page - 1) * per_page
+    if (verse_from = (verse_from || params[:from] || 1).to_i.abs).zero?
+      verse_from = 1
+    end
+
+    #verse_from = from + (current_page - 1) * per_page
 
     min(verse_from, total_verses)
   end

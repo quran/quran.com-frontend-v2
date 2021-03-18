@@ -1,9 +1,9 @@
-import {Controller} from "stimulus";
-import {getAyahIdFromKey, getAyahNumberFromKey} from "../utility/quran_utils";
+import { Controller } from "stimulus";
+import { getAyahIdFromKey, getAyahNumberFromKey } from "../utility/quran_utils";
 
 export default class extends Controller {
   initialize() {
-    this.pageLoader = null
+    this.pageLoader = null;
     this.element.reader = this;
 
     // current verse
@@ -12,7 +12,7 @@ export default class extends Controller {
       number: null,
       key: null,
       playing: false
-    }
+    };
 
     this.bindAyahJump();
 
@@ -25,7 +25,7 @@ export default class extends Controller {
     this.translationTab = document.querySelector(".translation-tab");
     this.readingTab = document.querySelector(".reading-tab");
     this.el = $(this.element);
-    this.totalVerses = Number(this.el.data('totalVerses'));
+    this.totalVerses = Number(this.el.data("totalVerses"));
 
     // using same controller for reading, and translation mode
     // active tab keep track of current active view
@@ -38,7 +38,9 @@ export default class extends Controller {
 
     setTimeout(() => {
       if (!this.isInfoMode()) {
-        this.pageLoader = this.activeTab.closest('.verses-wrapper')[0].infinitePage
+        this.pageLoader = this.activeTab.closest(
+          ".verses-wrapper"
+        )[0].infinitePage;
       }
 
       this.updatePlayer();
@@ -46,8 +48,12 @@ export default class extends Controller {
   }
 
   bindTabs() {
-    this.translationTab.addEventListener("tab.shown", e => this.tabChanged(e, 'translation'));
-    this.readingTab.addEventListener("tab.shown", e => this.tabChanged(e, 'reading'));
+    this.translationTab.addEventListener("tab.shown", e =>
+      this.tabChanged(e, "translation")
+    );
+    this.readingTab.addEventListener("tab.shown", e =>
+      this.tabChanged(e, "reading")
+    );
 
     this.activeTab.on("items:added", () => {
       // new ayah are added to page.
@@ -63,8 +69,8 @@ export default class extends Controller {
     const url = tab.href;
     let query = {};
 
-    if ('info' != mode) {
-      query.reading = 'reading' == mode
+    if ("info" != mode) {
+      query.reading = "reading" == mode;
     }
     url && this.updateURLState(url, query);
 
@@ -73,11 +79,15 @@ export default class extends Controller {
     this.pageLoader = pageVerses.get(0).infinitePage;
 
     if (this.activeTab.find(".render-async").length > 0) {
-      document.addEventListener('lazy:loaded', () => {
-        // jump to ayah once lazy tab is loaded.
-        this.jumpToCurrent();
-        this.resumePageLoader();
-      }, {once: true});
+      document.addEventListener(
+        "lazy:loaded",
+        () => {
+          // jump to ayah once lazy tab is loaded.
+          this.jumpToCurrent();
+          this.resumePageLoader();
+        },
+        { once: true }
+      );
     } else {
       this.jumpToCurrent();
       this.resumePageLoader();
@@ -98,7 +108,7 @@ export default class extends Controller {
       .find(".dropdown-item")
       .on("click", e => {
         e.preventDefault();
-        const {verse, verseKey} = e.currentTarget.dataset;
+        const { verse, verseKey } = e.currentTarget.dataset;
 
         this.jumpToVerse(verse, verseKey);
       });
@@ -114,10 +124,10 @@ export default class extends Controller {
   setPlaying(verseKey, isPlaying) {
     this.currentVerse.playing = false;
 
-    if(isPlaying){
-      this.setCurrentVerse(getAyahIdFromKey(verseKey), verseKey)
-    } else{
-      this.removeHighlighting()
+    if (isPlaying) {
+      this.setCurrentVerse(getAyahIdFromKey(verseKey), verseKey);
+    } else {
+      this.removeHighlighting();
     }
 
     this.currentVerse.playing = isPlaying;
@@ -155,7 +165,7 @@ export default class extends Controller {
   }
 
   highlightSegment(startIndex, endIndex) {
-    const words = this.findVerse(this.currentVerse.key).find('.word')
+    const words = this.findVerse(this.currentVerse.key).find(".word");
 
     // tajweed mode don't show words
     if (0 == words.length) return;
@@ -193,11 +203,11 @@ export default class extends Controller {
 
     // If this ayah is already loaded, scroll to it
     if (dom.length > 0) {
-      return this.setCurrentVerse(verse, verseKey)
+      return this.setCurrentVerse(verse, verseKey);
     }
 
     return this.loadVerses(verse, verseKey).then(() => {
-      this.setCurrentVerse(verse, verseKey)
+      this.setCurrentVerse(verse, verseKey);
     });
   }
 
@@ -211,12 +221,13 @@ export default class extends Controller {
     const current = this.currentVerse;
     const verseEl = this.findVerse(current.key);
 
-    if (verseEl.length == 0)
-      return
+    if (verseEl.length == 0) return;
 
     // activate verse item in dropdown filter
     $("#verse-list .dropdown-item").removeClass("active");
-    let activeVerse = $("#verse-list").find(`[data-verse-key='${current.key}']`);
+    let activeVerse = $("#verse-list").find(
+      `[data-verse-key='${current.key}']`
+    );
     activeVerse.addClass("active");
     $("#ayah-dropdown #current").html(this.verseText(current.key));
 
@@ -268,23 +279,21 @@ export default class extends Controller {
         clearTimeout(alignTimer);
       }
 
-      this.segmentTimers = []
+      this.segmentTimers = [];
     }
 
     this.removeSegmentHighlight();
   }
 
   findVerse(key) {
-    return this.activeTab.find(`.verse[data-key='${key}']`)
+    return this.activeTab.find(`.verse[data-key='${key}']`);
   }
 
   verseText(verseKey) {
     // in chapter mode, we'll show verse number
     // and verse key in juz or page view
-    if (this.isChapterMode)
-      return getAyahNumberFromKey(verseKey)
-    else
-      return verseKey;
+    if (this.isChapterMode) return getAyahNumberFromKey(verseKey);
+    else return verseKey;
   }
 
   disconnect() {
@@ -296,11 +305,11 @@ export default class extends Controller {
   }
 
   pausePageLoader() {
-    if (this.pageLoader) this.pageLoader.pause()
+    if (this.pageLoader) this.pageLoader.pause();
   }
 
   resumePageLoader() {
-    if (this.pageLoader) this.pageLoader.resume()
+    if (this.pageLoader) this.pageLoader.resume();
   }
 
   updateURLState(url, state) {
@@ -316,8 +325,8 @@ export default class extends Controller {
     this.currentVerse = {
       number: verseNum,
       key: verseKey,
-      playing: verseEl.data('playing')
-    }
+      playing: verseEl.data("playing")
+    };
 
     if (last.playing) {
       //this.player.pauseCurrent();
@@ -333,19 +342,19 @@ export default class extends Controller {
   updatePlayer(added) {
     const verses = this.activeTab.find(".verse");
 
-    if(added){
+    if (added) {
       this.player.updateVerses(
         verses.first().data("key"),
         verses.last().data("key")
       );
-    } else{
+    } else {
       this.player.init(
         this,
         verses.first().data("key"),
         verses.last().data("key")
       );
     }
-   }
+  }
 
   getLazyTab(url, target, lazy) {
     const lazyParent = `{"root":"${target}"}`;
@@ -395,14 +404,15 @@ export default class extends Controller {
     );
 
     if (this.currentVerse.key) {
-      return this.jumpToVerse(this.currentVerse.number, this.currentVerse.key)
+      return this.jumpToVerse(this.currentVerse.number, this.currentVerse.key);
     }
 
     return Promise.resolve();
   }
 
   changeTranslations(newTranslationIds) {
-    document.querySelector("#open-translations count").textContent = newTranslationIds.length
+    document.querySelector("#open-translations count").textContent =
+      newTranslationIds.length;
 
     let translationsToLoad;
 
@@ -413,13 +423,17 @@ export default class extends Controller {
     }
     document.body.loader.show();
 
-    const path = `${this.translationTab.href}&${$.param({
+    let params = {
       translations: translationsToLoad
-    })}`;
+    };
+
+    if (this.currentVerse.key) params.start_from = this.currentVerse.key;
+
+    const path = `${this.translationTab.href}&${$.param(params)}`;
 
     const verseList = $(this.translationTab.dataset.target).find(".verses");
 
-    fetch(`${path}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
+    fetch(`${path}`, { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(response => response.text())
       .then(verses => {
         verseList.html(verses);
@@ -428,7 +442,7 @@ export default class extends Controller {
   }
 
   get playingCurrentVerse() {
-    return this.currentVerse.playing
+    return this.currentVerse.playing;
   }
 
   get player() {

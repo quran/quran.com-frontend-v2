@@ -28,22 +28,27 @@ export default class extends QuranController {
     const reading = this.isReadingMode();
     const setting = document.body.setting;
     const font = setting.currentFont;
-    const translations = setting.selectedTranslations.join(',');
+    const translations = setting.selectedTranslations.join(",");
 
     let request = fetch(
-      `/juz/${juz}/load_verses?${$.param({verse: verseKey, reading, font, translations})}`,
-      {headers: {"X-Requested-With": "XMLHttpRequest"}}
+      `/juz/${juz}/load_verses?${$.param({
+        start_from: verseKey,
+        reading,
+        font,
+        translations
+      })}`,
+      { headers: { "X-Requested-With": "XMLHttpRequest" } }
     )
       .then(response => response.text())
       .then(verses => {
         document.body.loader.hide();
-        this.insertVerses(verses)
+        this.insertVerses(verses);
       });
 
     return Promise.resolve(request);
   }
 
-  get isChapterMode(){
-    return false
+  get isChapterMode() {
+    return false;
   }
 }

@@ -28,14 +28,9 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
-    # Start from ayah user has selected from dropdown
-    # Reset the pagination etc
-    # TODO: move this to presenter
-    verse = Verse.find_by(verse_key: params[:verse])
-    params[:after] = verse.id
+    verse = Verse.find_by(verse_key: params[:start_from])
     params[:from] = verse.verse_number
     params[:to] = verse.chapter.verses_count
-    params[:page] = nil
 
     render layout: false
   end

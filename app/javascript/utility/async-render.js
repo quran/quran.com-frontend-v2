@@ -74,9 +74,7 @@ class RenderAsync {
         $(element).replaceWith(response);
       }
 
-      if(successEvent)
-        delayOnError
-      fireEvent(successEvent);
+      if (successEvent) fireEvent(successEvent);
     };
 
     var onError = function(currentRetryCount) {
