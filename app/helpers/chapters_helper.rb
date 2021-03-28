@@ -21,7 +21,8 @@ module ChaptersHelper
   end
 
   def chapter_next_page_link
-    if (last = @presenter.last_verse)
+    if @presenter.next_page
+      last = @presenter.last_verse
       next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(last.id + 1)
 
       next_page_link = ayah_range_path(
