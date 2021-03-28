@@ -1,5 +1,5 @@
 // update this version when need to expire the cached settings
-const LOCAL_STORE_CACHE_VERSION = 'quran-v1.1'
+const LOCAL_STORE_CACHE_VERSION = 'quran-v1.2'
 
 class CookieStore {
   getItem(key) {
