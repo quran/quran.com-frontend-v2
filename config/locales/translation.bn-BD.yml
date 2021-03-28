@@ -23,6 +23,8 @@ bn-BD:
       ওহ! ওয়েব কনসোল মিডলওয়্যারের সাথে সংযোগ স্থাপন সম্ভব হয়নি।
       দয়া করে নিশ্চিত করুন যে রেল উন্নয়ন সার্ভার চলছে।
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: ইংরেজি
   site_local: সাইট-এর ভাষা
   change_local: 'ভাষা নির্বাচন করুন, যে ভাষায় আপনি সাইট দেখতে চান '
@@ -59,6 +61,7 @@ bn-BD:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: 'ইন্দোপাক টেক্সট '
+      imlaei:
     translation_count:
       one: 'একটি অনুবাদ দেখানো হচ্ছে '
       other: "%{count} অনুবাদগুলি দেখানো হচ্ছে"
@@ -90,6 +93,7 @@ bn-BD:
     copy:
       label: কপি
       done: কপি করা হয়েছে
+      advance:
     tafsir:
       label: 'তাফসির '
       select: তাফসির নির্বাচন করুন

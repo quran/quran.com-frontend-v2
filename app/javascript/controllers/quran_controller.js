@@ -1,5 +1,5 @@
-import { Controller } from "stimulus";
-import { getAyahIdFromKey, getAyahNumberFromKey } from "../utility/quran_utils";
+import {Controller} from "stimulus";
+import {getAyahIdFromKey, getAyahNumberFromKey} from "../utility/quran_utils";
 
 export default class extends Controller {
   initialize() {
@@ -86,7 +86,7 @@ export default class extends Controller {
           this.jumpToCurrent();
           this.resumePageLoader();
         },
-        { once: true }
+        {once: true}
       );
     } else {
       this.jumpToCurrent();
@@ -108,7 +108,7 @@ export default class extends Controller {
       .find(".dropdown-item")
       .on("click", e => {
         e.preventDefault();
-        const { verse, verseKey } = e.currentTarget.dataset;
+        const {verse, verseKey} = e.currentTarget.dataset;
 
         this.jumpToVerse(verse, verseKey);
       });
@@ -208,6 +208,7 @@ export default class extends Controller {
 
     return this.loadVerses(verse, verseKey).then(() => {
       this.setCurrentVerse(verse, verseKey);
+      this.updatePlayer();
     });
   }
 
@@ -378,8 +379,16 @@ export default class extends Controller {
   }
 
   changeFont(font) {
-    const readingUrl = `${this.readingTab.href}&font=${font}`;
-    const translationUrl = `${this.translationTab.href}&font=${font}`;
+    const setting = document.body.setting;
+
+    let params = {
+      translations: setting.selectedTranslations.join(","),
+      start: this.currentVerse.key,
+      font: font
+    };
+
+    const readingUrl = `${this.readingTab.href}&${$.param(params)}`;
+    const translationUrl = `${this.translationTab.href}&${$.param(params)}`;
 
     const readingTarget = this.readingTab.dataset.target;
     const translationTarget = this.translationTab.dataset.target;
@@ -424,20 +433,23 @@ export default class extends Controller {
     document.body.loader.show();
 
     let params = {
-      translations: translationsToLoad
+      translations: translationsToLoad,
+      start: this.currentVerse.key
     };
-
-    if (this.currentVerse.key) params.start_from = this.currentVerse.key;
 
     const path = `${this.translationTab.href}&${$.param(params)}`;
 
     const verseList = $(this.translationTab.dataset.target).find(".verses");
 
-    fetch(`${path}`, { headers: { "X-Requested-With": "XMLHttpRequest" } })
+    fetch(`${path}`, {headers: {"X-Requested-With": "XMLHttpRequest"}})
       .then(response => response.text())
       .then(verses => {
         verseList.html(verses);
         document.body.loader.hide();
+
+        if (this.currentVerse.key) {
+          return this.jumpToVerse(this.currentVerse.number, this.currentVerse.key);
+        }
       });
   }
 

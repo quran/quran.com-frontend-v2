@@ -78,8 +78,8 @@ class VerseFinder
         end
 
         @results = Verse
-                       .where(chapter_id: chapter)
-                       .where('verses.verse_number >= ? AND verses.verse_number < ?', verse_start.to_i, verse_end.to_i + 1)
+                     .where(chapter_id: chapter)
+                     .where('verses.verse_number >= ? AND verses.verse_number < ?', verse_start.to_i, verse_end.to_i + 1)
       end
     else
       @results = Verse.where('1=0')
@@ -99,7 +99,7 @@ class VerseFinder
 
   def fetch_by_rub
     results = rescope_verses('verse_index')
-                  .where(rub_number: params[:rub_number].to_i.abs)
+                .where(rub_number: params[:rub_number].to_i.abs)
 
     @total_records = results.size
     @results = results.limit(per_page).offset((current_page - 1) * per_page)
@@ -113,7 +113,7 @@ class VerseFinder
 
   def fetch_by_hizb
     results = rescope_verses('verse_index')
-                  .where(hizb_number: params[:hizb_number].to_i.abs)
+                .where(hizb_number: params[:hizb_number].to_i.abs)
 
     @total_records = results.size
     @results = results.limit(per_page).offset((current_page - 1) * per_page)
@@ -141,14 +141,14 @@ class VerseFinder
     # and load full page
     last_verse = nil
 
-    if params[:start_from]
-      last_verse = Verse.where(juz_number: juz.id).find_with_id_or_key(params[:start_from])
+    if params[:start]
+      last_verse = Verse.where(juz_number: juz.id).find_with_id_or_key(params[:start])
     end
 
     last_verse ||= Verse.find(juz.first_verse_id)
 
     @results = rescope_verses('verse_index')
-                   .where(juz_number: juz.juz_number, page_number: last_verse.page_number)
+                 .where(juz_number: juz.juz_number, page_number: last_verse.page_number)
 
     if @results.last.id < juz.last_verse_id
       @next_page = current_page + 1
@@ -160,16 +160,16 @@ class VerseFinder
     # and load full page
     last_verse = nil
 
-    if params[:start_from]
-      last_verse = Verse.where(chapter_id: chapter.id).find_with_id_or_key(params[:start_from])
+    if params[:start]
+      last_verse = Verse.where(chapter_id: chapter.id).find_with_id_or_key(params[:start])
     end
 
     last_verse ||= Verse.where(chapter_id: chapter.id, verse_number: params[:from] || 1).first
     verse_to = (params[:to] || params[:from] || chapter.verses_count).to_i
 
     @results = rescope_verses('verse_index')
-                   .where(chapter_id: chapter.id, page_number: last_verse.page_number)
-                   .where('verses.verse_number >= ? AND verses.verse_number <= ?', params[:from].to_i, verse_to)
+                 .where(chapter_id: chapter.id, page_number: last_verse.page_number)
+                 .where('verses.verse_number >= ? AND verses.verse_number <= ?', params[:from].to_i, verse_to)
 
     if @results.last.verse_number < verse_to
       @next_page = current_page + 1
@@ -179,15 +179,13 @@ class VerseFinder
   def verse_pagination_start(total_verses)
     verse_from = nil
 
-    if params[:start_from]
-      verse_from = QuranUtils::Quran.get_ayah_number_from_key(params[:start_from])
+    if params[:start].presence
+      verse_from = QuranUtils::Quran.get_ayah_number_from_key(params[:start])
     end
 
     if (verse_from = (verse_from || params[:from] || 1).to_i.abs).zero?
       verse_from = 1
     end
-
-    #verse_from = from + (current_page - 1) * per_page
 
     min(verse_from, total_verses)
   end
@@ -199,13 +197,13 @@ class VerseFinder
   end
 
   def load_words(word_trans_language)
-    words_with_default_translation = @results.where(word_translations: {language_id: Language.default.id})
+    words_with_default_translation = @results.where(word_translations: { language_id: Language.default.id })
 
     if word_trans_language
       @results = @results
-                     .where(word_translations: {language_id: word_trans_language.id})
-                     .or(words_with_default_translation)
-                     .eager_load(words: eager_load_words)
+                   .where(word_translations: { language_id: word_trans_language.id })
+                   .or(words_with_default_translation)
+                   .eager_load(words: eager_load_words)
     else
       @results = words_with_default_translation.eager_load(words: eager_load_words)
     end
@@ -213,9 +211,9 @@ class VerseFinder
 
   def load_translations(translations)
     @results = @results
-                   .where(translations: {resource_content_id: translations})
-                   .eager_load(:translations)
-                   .order('translations.priority ASC')
+                 .where(translations: { resource_content_id: translations })
+                 .eager_load(:translations)
+                 .order('translations.priority ASC')
   end
 
   def rescope_verses(by)

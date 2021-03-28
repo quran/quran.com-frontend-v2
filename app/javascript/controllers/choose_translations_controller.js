@@ -15,10 +15,10 @@ export default class extends SettingController {
     super.connect();
     this.bindClearAll();
 
-    const translations = this.get("translations");
+    const translations = window.pageSettings ? window.pageSettings.translations : this.get("translations");
 
     this.element.querySelectorAll(".translation-checkbox").forEach(trans => {
-      if (translations.includes(String(trans.value))) {
+      if (translations.includes(Number(trans.value))) {
         trans.setAttribute("checked", "checked");
       }
     });

@@ -24,6 +24,8 @@ th:
       อุปส์! การเชื่อมต่อกับ Web Console middleware ล้มเหลว.
       กรุณาตรวจสอบให้แน่ใจว่าเซิฟเวอร์ rails ทำงานอยู่.
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: ภาษาอังกฤษ
   site_local: ภาษาของเว็บไซต์
   change_local: เลือกภาษาที่คุณต้องการให้แสดงผล
@@ -61,6 +63,7 @@ th:
       qcf_v1: ศูนย์กษัตริย์ฟะฮัดเพื่อการจัดพิมพ์อัลกุรอาน เวอร์ชัน 1
       qcf_v2: ศูนย์กษัตริย์ฟะฮัดเพื่อการจัดพิมพ์อัลกุรอาน เวอร์ชัน 2
       indopak: อักษรแบบอินเดีย-ปากีสถาน
+      imlaei:
     translation_count:
       one: กำลังแสดงหนึ่งคำแปล
       other: กำลังแสดง %{count} คำแปล
@@ -92,6 +95,7 @@ th:
     copy:
       label: คัดลอก
       done: คัดลอกสำเร็จ!
+      advance:
     tafsir:
       label: ตัฟซีร
       select: เลือกตัฟซีร

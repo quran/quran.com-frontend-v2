@@ -38,23 +38,6 @@
   </div>
 </div>
 
-<div class="row my-2">
-  <div class="col-4">
-    <div class="text-left text text--grey text--medium">
-      <%= _t('page') %> <%= page %>
-    </div>
-  </div>
-
-  <div class="col-8">
-    <div class="text-right text text--grey text--medium juz-art">
-      <%= image_tag "juz-art-right.svg", width: '30px', class: 'art' %>
-      <span class="info">
-        جزء  <%= first_verse.juz_number %>
-        حزب <%= first_verse.hizb_number %>
-      </span>
-      <%= image_tag "juz-art-left.svg", width: '30px', class: 'art' %>
-    </div>
-  </div>
-</div>
+<%= render 'reader/juz_art', verse: first_verse, page: page  %>
 <div class="horizontal-line"></div>
 <% end %>

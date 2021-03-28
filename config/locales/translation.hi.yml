@@ -23,6 +23,8 @@ hi:
       उफ़! वेब कंसोल मिडलवेयर से कनेक्ट करने में विफल।
       कृपया सुनिश्चित करें कि रेल सर्वर चल रहा है।
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: अंग्रेज़ी
   site_local: साइट की भाषा
   change_local: |2-
@@ -54,6 +56,7 @@ hi:
       qcf_v1: सम्राट फहद कुरान कॉम्प्लेक्स v1
       qcf_v2: सम्राट फहद कुरान कॉम्प्लेक्स v2
       indopak: भारत-पाक टेक्स्ट
+      imlaei:
     font_size:
       label: फ़ॉन्ट आकार
       arabic: अरबी भाषा मे
@@ -103,6 +106,7 @@ hi:
     copy:
       label: कॉपी करें
       done: कॉपी हो गया!
+      advance:
   search:
     label: तलाशी
     placeholder: '"नूह" खोजें'

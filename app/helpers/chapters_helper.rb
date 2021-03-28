@@ -27,8 +27,7 @@ module ChaptersHelper
       next_page_link = ayah_range_path(
         @presenter.chapter,
         @presenter.ayah_range,
-        page: @presenter.next_page,
-        start_from: next_ayah_key,
+        start: next_ayah_key,
         reading: @presenter.reading_mode?
       )
 
@@ -45,8 +44,7 @@ module ChaptersHelper
       next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(@presenter.last_verse.id + 1)
 
       next_link = quran_juz_path(@presenter.current_juz,
-                                 page: @presenter.next_page,
-                                 after: next_ayah_key,
+                                 start: next_ayah_key,
                                  reading: @presenter.reading_mode?)
 
       link_to 'load more',

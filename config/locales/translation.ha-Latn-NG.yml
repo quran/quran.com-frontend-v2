@@ -23,6 +23,8 @@ ha-Latn-NG:
     connection_refused: Kash! Ba a yi nasarar hadi zuwa tsaka-tsakin kayan yanar gizo
       ba. Da fatan za a tabbatar da sabar ci gaban ci gaban rails tana gudana
     format:
+    invalid_page:
+    invalid_juz:
   local: English
   site_local: Yaren Yanar gizo
   change_local: Zabi yaren da kake son shafin ya nuna a ciki
@@ -55,6 +57,7 @@ ha-Latn-NG:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: Rubutun IndoPak
+      imlaei:
     font_size:
       label: Girman rubutu
       arabic: Larabci
@@ -101,6 +104,7 @@ ha-Latn-NG:
     copy:
       label: Kwafa
       done: Kwafa
+      advance:
   search:
     label: Bincika
     placeholder: Binciko "Nuhu"

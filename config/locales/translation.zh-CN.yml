@@ -16,6 +16,8 @@ zh-CN:
     unacceptable_request:
     connection_refused:
     format: "%{attribute}%{message}"
+    invalid_page:
+    invalid_juz:
   local:
   site_local:
   change_local:
@@ -48,6 +50,7 @@ zh-CN:
       qcf_v1:
       qcf_v2:
       indopak:
+      imlaei:
     font_size:
       label:
       arabic:
@@ -94,6 +97,7 @@ zh-CN:
     copy:
       label:
       done:
+      advance:
   search:
     label:
     placeholder:

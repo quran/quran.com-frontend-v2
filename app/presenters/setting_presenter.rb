@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class SettingPresenter < AudioPresenter
+  FONT_LOCAL_KEYS = {
+      'v1' => 'qcf_v1',
+      'v2' => 'qcf_v2',
+      'uthmani' => 'uthmani',
+      'imlaei' => 'imlaei',
+      'indopak' => 'indopak',
+      'tajweed' => 'tajweed'
+  }
+
   def selected_reciter
     load_recitations
       .find(recitation_id)
@@ -60,9 +69,8 @@ class SettingPresenter < AudioPresenter
     valid_translations.size
   end
 
-  def selected_font_name
-    font = session[:font]
-    font == 'v1' ? 'qcf_v1' : font
+  def selected_font_key
+    FONT_LOCAL_KEYS[font_type]
   end
 
   protected

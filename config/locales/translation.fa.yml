@@ -24,6 +24,8 @@ fa:
       اوه!  اتصال به میان افزار Web Console انجام نشد.
        لطفا مطمئن شوید که یک سرور توسعه ریل در حال اجرا است.
     format: "%{attribute} %{message}\n"
+    invalid_page:
+    invalid_juz:
   local: انگلیسی
   site_local: زبان سایت
   change_local: زبانی را که می خواهید سایت در آن نمایش داده شود را انتخاب کنید
@@ -60,6 +62,7 @@ fa:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: متن ایندوپاک
+      imlaei:
     translation_count:
       one: نمایش یک ترجمه
       other: نمایش ترجمه های %{count}
@@ -89,6 +92,7 @@ fa:
     copy:
       label: کپی
       done: کپی شد!
+      advance:
     share: اشتراک گذاری
     addNote: یادداشت را اضافه کنید
     tafsir:

@@ -23,6 +23,8 @@ ur:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: urdu
   site_local: سائٹ کی زبان
   change_local: جس زبان میں سایٹ دیکھنا چاہتے ہیں اس زبان کا انتخاب کریں
@@ -59,6 +61,7 @@ ur:
       qcf_v1: QCF v1 فونٹ
       qcf_v2: QCF v2 فونٹ
       indopak: انڈوپاک مصحف
+      imlaei:
     translation_count:
       one: " آپ <count>%{count}</count> ترجمہ پڑھ رہے ہیں"
       other: آپ <count>%{count}</count> ترجمے پڑھ رہے ہیں
@@ -88,6 +91,7 @@ ur:
     copy:
       label: کاپی
       done: کاپی کر لیا
+      advance:
     share: بانٹیں
     addNote: نوٹ شامل کریں
     tafsir:

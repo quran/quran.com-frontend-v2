@@ -16,6 +16,8 @@ te-IN:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local:
   site_local:
   change_local:
@@ -48,6 +50,7 @@ te-IN:
       qcf_v1:
       qcf_v2:
       indopak:
+      imlaei:
     font_size:
       label:
       arabic:
@@ -94,6 +97,7 @@ te-IN:
     copy:
       label:
       done:
+      advance:
   search:
     label:
     placeholder:

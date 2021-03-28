@@ -17,6 +17,8 @@ nl:
       '
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: Engels
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
@@ -55,6 +57,7 @@ nl:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: IndoPak-tekst
+      imlaei:
     translation_count:
       one: Er wordt één vertaling weergegeven
       other: Vertalingen van %{count} worden weergegeven
@@ -88,6 +91,7 @@ nl:
     copy:
       label: Kopiëren
       done: Gekopieerd!
+      advance:
     share: 'Deel '
     addNote: |-
       Notitie Toevoegen

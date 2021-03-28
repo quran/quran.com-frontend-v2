@@ -9,7 +9,7 @@ class JuzPresenter < QuranPresenter
   end
 
   def cache_key
-    "j#{current_juz}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}-#{params[:start_from]}"
+    "j#{current_juz}-#{font_type}-r:#{reading_mode?}-t:#{valid_translations.join('-')}-#{params[:start]}"
   end
 
   def meta_description

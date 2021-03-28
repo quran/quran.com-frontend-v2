@@ -1,6 +1,7 @@
 class QuranPresenter < BasePresenter
-  DEFAULT_FONT_METHOD = 'code_v2'
-  DEFAULT_FONT_TYPE = 'v2'
+  DEFAULT_FONT_METHOD = 'code_v1'
+  DEFAULT_FONT_TYPE = 'v1'
+
   QCF_FONTS = %w[v2 v1].freeze
   PAGES_WITH_CENTER_ALIGN = [1, 2, 42, 601, 602, 603, 604].freeze
 
@@ -72,10 +73,10 @@ class QuranPresenter < BasePresenter
     end
   end
 
-  def font_type(store: true)
-    strong_memoize :font_type do
+  def font_type(store: false)
+    strong_memoize "font_type_#{store}" do
       font = params[:font].presence || session[:font]
-      font = FONT_METHODS.key?(font) ? font : DEFAULT_FONT_TYPE
+      font = FONT_METHODS[font].presence ? font : DEFAULT_FONT_TYPE
 
       if store
         session[:font] = font
@@ -87,14 +88,14 @@ class QuranPresenter < BasePresenter
 
   def font_method
     strong_memoize :font_method do
-      font = font_type
+      font = font_type(store: true)
 
       if reading_mode? && font == 'tajweed'
         # we don't have wbw data for tajweed, fallback to uthmani script
         font = 'uthmani'
       end
 
-      FONT_METHODS[font]
+      FONT_METHODS[font] || DEFAULT_FONT_METHOD
     end
   end
 

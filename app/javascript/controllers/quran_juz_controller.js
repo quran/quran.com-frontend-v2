@@ -32,7 +32,7 @@ export default class extends QuranController {
 
     let request = fetch(
       `/juz/${juz}/load_verses?${$.param({
-        start_from: verseKey,
+        start: verseKey,
         reading,
         font,
         translations

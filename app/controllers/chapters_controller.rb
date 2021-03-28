@@ -28,7 +28,7 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
-    verse = Verse.find_by(verse_key: params[:start_from])
+    verse = Verse.find_by(verse_key: params[:start])
     params[:from] = verse.verse_number
     params[:to] = verse.chapter.verses_count
 

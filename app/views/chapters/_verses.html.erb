@@ -1,20 +1,19 @@
 <% verses = @presenter.verses %>
 
 <%= render 'reader/qcf_fonts', verses: verses %>
-<div id="word-player" data-controller="word-player">
-  <% if @presenter.reading_mode? %>
-    <%= render partial: 'page', locals: {verses: verses} %>
-  <% else %>
-    <%= render partial: 'reader/verse', collection: verses, as: :verse %>
-  <% end %>
-</div>
+
+<% if @presenter.reading_mode? %>
+  <%= render partial: 'page', locals: { verses: verses } %>
+<% else %>
+  <%= render partial: 'reader/verse', collection: verses, as: :verse %>
+<% end %>
 
 <div class="reading__buttons flexx-center"
      id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination"
      data-url="<%= ayah_range_path(@presenter.chapter.id, @presenter.ayah_range) %>">
   <%= chapter_next_page_link %>
 
-  <% reading = {reading: @presenter.reading_mode?} %>
+  <% reading = { reading: @presenter.reading_mode? } %>
 
   <% if @presenter.continue? %>
     <%= link_to chapter_path(@presenter.chapter, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>

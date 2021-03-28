@@ -26,6 +26,8 @@ so:
       hay! Wuu ku guuldareystay inuu ku xirmo Web Console middleware.
       Fadlan hubso in kuu shaqeynaayo rails development server.
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: Ingiriis
   site_local: Luqadda beejka
   change_local: Dooro luqadda aa ku isticmaaleyso beejka
@@ -58,6 +60,7 @@ so:
       qcf_v1: Hab qoraalka Qur'aanka ee Boqor Fahad v1
       qcf_v2: Hab qoraalka Qur'aanka ee Boqor Fahad v2
       indopak: Qoraalka IndoPak
+      imlaei:
     font_size:
       label: Farta weyninkeeda
       arabic: Af-carabi
@@ -104,6 +107,7 @@ so:
     copy:
       label: Koobiyeey
       done: La koobiyeeyay!
+      advance:
   search:
     label: Raadi
     placeholder: Raadi "Noah"

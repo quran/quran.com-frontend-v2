@@ -17,6 +17,8 @@ dv:
     connection_refused: މާފްކުރައްވާ! ވެބް ކޮންސޯލް މިޑިލްވެއާރް ގުޅުންވަނީ ކެޑިފާ.
       ރެއިލް ޑެވެލޮޕމެންޓް ސާރްވާ  ކުރިއައް ދޭތޯ ބައްލަވާލާ.
     format:
+    invalid_page:
+    invalid_juz:
   local: އިގިރޭސި
   site_local:
   change_local: ބޭނުންފުޅުވާ ބަސް ސައިޓް އިން ފެނުމަށް
@@ -49,6 +51,7 @@ dv:
       qcf_v1:
       qcf_v2:
       indopak:
+      imlaei:
     font_size:
       label: ފޮންޓް ސައިޒް
       arabic: އަރަބި ބަސް
@@ -97,6 +100,7 @@ dv:
     copy:
       label: ކޮޕީ ކުރުމަށް
       done: ކޮޕީ ކުރެވިއްޖެ
+      advance:
   search:
     label:
     placeholder:

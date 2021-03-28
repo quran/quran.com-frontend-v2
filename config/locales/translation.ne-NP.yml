@@ -16,6 +16,8 @@ ne-NP:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local:
   site_local:
   change_local:
@@ -48,6 +50,7 @@ ne-NP:
       qcf_v1:
       qcf_v2:
       indopak:
+      imlaei:
     font_size:
       label:
       arabic:
@@ -94,6 +97,7 @@ ne-NP:
     copy:
       label:
       done:
+      advance:
   search:
     label:
     placeholder:

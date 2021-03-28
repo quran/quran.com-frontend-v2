@@ -21,6 +21,8 @@ ar:
       يعمل بشكل أفضل مع تفعيل جافا سكريبت. لمزيد من التعليمات حول كيفية تفعيل جافا
       سكريبت
     format: "%{message}"
+    invalid_page:
+    invalid_juz:
   local: الإنجليزية
   site_local: لغة الموقع
   change_local: أختر اللغة المرجو إظهار الموقع بها
@@ -57,6 +59,7 @@ ar:
       qcf_v1: مجمع الملك فهد للقرآن الإصدار ١
       qcf_v2: مجمع الملك فهد للقرآن الإصدار ٢
       indopak: نص الأوردو
+      imlaei:
     translation_count:
       one: عرض ترجمة <count>واحدة</count>
       other: عرض<count> %{count}</count> الترجمات
@@ -86,6 +89,7 @@ ar:
     copy:
       label: نسخ
       done: تم النسخ!
+      advance:
     share: شارك الآية
     addNote: اضف ملاحظة
     tafsir:

@@ -59,6 +59,9 @@ ne-NP:
     precision:
       format:
         delimiter: ''
+  spree:
+    date_picker:
+      first_day: 0
   time:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"

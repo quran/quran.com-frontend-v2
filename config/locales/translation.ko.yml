@@ -16,6 +16,8 @@ ko:
     unacceptable_request:
     connection_refused:
     format: "%{message}"
+    invalid_page:
+    invalid_juz:
   local:
   site_local:
   change_local:
@@ -48,6 +50,7 @@ ko:
       qcf_v1:
       qcf_v2:
       indopak:
+      imlaei:
     font_size:
       label:
       arabic:
@@ -94,6 +97,7 @@ ko:
     copy:
       label:
       done:
+      advance:
   search:
     label:
     placeholder:

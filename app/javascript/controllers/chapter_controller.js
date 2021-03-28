@@ -7,7 +7,7 @@
 // </div>
 
 import QuranController from "./quran_controller";
-import { getPageFromKey } from "../utility/quran_utils";
+import {getPageFromKey} from "../utility/quran_utils";
 
 export default class extends QuranController {
   connect() {
@@ -40,12 +40,12 @@ export default class extends QuranController {
 
     let request = fetch(
       `/${chapter}/load_verses?${$.param({
-        start_from: verseKey,
+        start: verseKey,
         reading,
         font,
         translations
       })}`,
-      { headers: { "X-Requested-With": "XMLHttpRequest" } }
+      {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )
       .then(response => response.text())
       .then(verses => {
