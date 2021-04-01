@@ -147,7 +147,7 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 
 9. Download the [mini database dump](https://drive.google.com/drive/folders/1tkm0nYVTZaOYSbFcSJIc6Lq1rM-PIUBy). This dump has the first 15 Ayahs of each surah, for all the Surahs, along with two translations, two audio recitations, and a other required data.
 
-10. Inside the `quran.com-fronted-v2` directory, run:
+10. Inside the `quran.com-frontend-v2` directory, run:
 
   ```sh
   bundle exec rails db:create
