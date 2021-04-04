@@ -23,7 +23,7 @@ export default class extends Controller {
         const url = `${
           chapterId
         }/referenced_verse?to=${verseId}&from=${verseId}
-        &translations=${this.element.dataset.resourceContentId}&skip_sessions=true`;
+        &translations=${this.element.parentNode.parentNode.dataset.resourceContentId}&skip_sessions=true`;
 
         item.setAttribute('data-url', url)
         item.href = 'javascript:;';
