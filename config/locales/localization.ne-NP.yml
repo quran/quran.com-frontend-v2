@@ -16,15 +16,18 @@ ne-NP:
       last_word_connector: ", र "
       two_words_connector: " र "
       words_connector: ", "
+  spree:
+    date_picker:
+      first_day: 0
   date:
     formats:
       default: "%Y-%m-%d"
       long: "%B %d, %Y"
       short: "%b %d"
     order:
-    - :year
-    - :month
-    - :day
+      - :year
+      - :month
+      - :day
   number:
     currency:
       format:
@@ -45,9 +48,9 @@ ne-NP:
       decimal_units:
         format: "%n %u"
         units:
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -55,13 +58,10 @@ ne-NP:
         format: "%n %u"
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
     precision:
       format:
-        delimiter: ''
-  spree:
-    date_picker:
-      first_day: 0
+        delimiter: ""
   time:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"

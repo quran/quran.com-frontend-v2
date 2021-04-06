@@ -22,6 +22,10 @@ class BasePresenter
     params[:reading] == 'true' ? 'reading' : 'translation'
   end
 
+  def show_header_search?
+    true
+  end
+
   def open_graph_hash
     {
         og: {
@@ -143,4 +147,3 @@ class BasePresenter
     VerseFinder.new(params)
   end
 end
-

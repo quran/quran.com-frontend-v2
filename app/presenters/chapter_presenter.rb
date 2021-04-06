@@ -6,6 +6,10 @@ class ChapterPresenter < HomePresenter
     @finder = VerseFinder.new(params)
   end
 
+  def show_header_search?
+    true
+  end
+
   def verses
     strong_memoize :verses do
       @finder.load_verses(

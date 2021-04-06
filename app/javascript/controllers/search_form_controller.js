@@ -6,45 +6,29 @@ const FILTER_DELAY = 150;
 
 export default class extends Controller {
   connect() {
-    let el = this.element;
-
-    this.searchBox = $(el).find("[name=query]");
+    this.el = $(this.element);
     this.device = new DeviceDetector();
 
+    this.suggestions = this.el.find("#suggestions");
     this.bindSuggestion();
-    this.resizeHandler();
-
-    window.addEventListener("resize", () => this.resizeHandler());
-
-    this.element
-      .querySelector("#search-trigger")
-      .addEventListener("click", e => {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-
-        let mobile = this.device.isMobile();
-        let query = this.searchBox.val();
-
-        if (mobile && 0 == query.length) {
-          el.classList.toggle("expand-collapse");
-          el.classList.toggle("sb-search-open");
-        }
-
-        if (query.length > 0) {
-          this.doSearch(query);
-        }
-      });
 
     document.addEventListener("click", e => {
       if (this.element.contains(e.target)) {
-        $(".suggestions").show();
+        this.showSuggestions();
       } else {
-        $(".suggestions").hide();
+        this.hideSuggestions();
       }
     });
   }
 
   bindSuggestion() {
+    this.searchBox = this.el.find("[name=query]");
+
+    //trigger the change when search input is cleared
+    this.searchBox[0].addEventListener("search", () => {
+      this.searchBox.trigger("change");
+    });
+
     this.searchBox
       .change(e => {
         this.getSuggestions(e.target.value);
@@ -57,30 +41,27 @@ export default class extends Controller {
       );
   }
 
-  resizeHandler() {
-    let classes = this.element.classList;
-    const expandable = this.element.dataset.expand == "true";
-
-    if (this.device.isMobile() && expandable) {
-      // collapse the search bar
-      classes.remove("sb-search-open");
-    } else {
-      classes.add("sb-search-open");
-      classes.remove("expand-collapse");
-    }
-  }
-
   getSuggestions(text) {
     if (text && text.length > 0) {
+      this.showSuggestions();
+
       fetch(`/search/suggestion?query=${text}`)
         .then(response => response.text())
         .then(suggestions => {
-          $(".suggestions").html(suggestions);
+          this.suggestions.html(suggestions);
         })
         .catch(error => callback([]));
     } else {
-      $(".suggestions").empty();
+      this.hideSuggestions();
     }
+  }
+
+  showSuggestions() {
+    this.el.addClass("show-suggestion");
+  }
+
+  hideSuggestions() {
+    this.el.removeClass("show-suggestion");
   }
 
   doSearch(query) {

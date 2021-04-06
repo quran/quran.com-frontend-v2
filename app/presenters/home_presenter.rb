@@ -14,4 +14,8 @@ class HomePresenter < QuranPresenter
   def cache_key
     "#{current_locale}-home"
   end
+
+  def show_header_search?
+    false
+  end
 end

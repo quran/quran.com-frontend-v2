@@ -9,11 +9,14 @@ pt-BR:
   noble_quran: O Nobre Alcorão
   errors:
     not_found: Desculpe, esta página não existe
-    invalid_verse: O Ayah (verso) está fora dos limites. Por favor, vá para a página
+    invalid_verse:
+      O Ayah (verso) está fora dos limites. Por favor, vá para a página
       inicial.
-    invalid_chapter: O capítulo está fora dos limites. Por favor, vá para a página
+    invalid_chapter:
+      O capítulo está fora dos limites. Por favor, vá para a página
       inicial
-    no_script: Parece que seu navegador não suporta Javascript ou este está desativado.
+    no_script:
+      Parece que seu navegador não suporta Javascript ou este está desativado.
       O Quran.com funciona melhor com o JavaScript ativado. Para obter mais instruções
       sobre como ativar o javascript <a href="http://www.enable-javascript.com/" target="_blank"
       rel="nofollow">clique aqui</a>.
@@ -28,8 +31,8 @@ pt-BR:
       Opa! Falha ao conectar-se ao middleware do console da Web.
       Por favor, certifique-se de que um servidor de desenvolvimento rails está sendo executado.
     format: "%{attribute} %{message}"
-    invalid_page:
-    invalid_juz:
+    invalid_page: A página está fora dos limites.
+    invalid_juz: O Juz está fora dos limites.
   local: Inglês
   site_local: Idioma do Site
   change_local: Escolha o idioma no qual você deseja que o site seja exibido
@@ -67,7 +70,7 @@ pt-BR:
       qcf_v1: Alcorão do Complexo do Rei Fahd v1
       qcf_v2: Alcorão do Complexo do Rei Fahd v2
       indopak: Texto IndoPak
-      imlaei:
+      imlaei: Imlaei/Simples
     translation_count:
       one: Mostrando uma tradução
       other: Mostrando %{count} traduções
@@ -99,16 +102,17 @@ pt-BR:
     copy:
       label: Copiar
       done: Copiado!
-      advance:
+      advance: Cópia avançada
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
-      filter_tafsir: 'Filtrar por idioma:'
+      filter_tafsir: "Filtrar por idioma:"
     quran_reflect: Leia as reflexões para este Ayah no QuranReflect
   search:
     label: Pesquisar
     placeholder: Pesquisar "Noé"
-    result: "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa para:
+    result:
+      "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa para:
       <span>%{query}</span>"
     error: Desculpe, ocorreu um erro com sua busca.
     no_query: Nenhum texto de pesquisa.
@@ -139,8 +143,8 @@ pt-BR:
     pause: Pausa para
     play_continuously: Continue reproduzindo sem pausar
     show_word_tooltip: Mostrar tradução de palavras na dica ao reproduzir ayah
-    repeatCurrent:
-    loading:
+    repeatCurrent: Continuar reproduzindo ayah atual
+    loading: Carregando áudio
   loading: Carregando...
   nav:
     title: Alcorão
@@ -152,7 +156,8 @@ pt-BR:
     other_links: Outros links
     contact_us: Nos contate
     help: Ajuda e feedback
-    about_project: Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
+    about_project:
+      Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
       conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
     rights: Todos os direitos reservados
     navigate: Navegar
@@ -183,7 +188,7 @@ pt-BR:
     chapter: Mostrar Surah (Capítulo)
     juz: Mostrar Juz
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: Pesquisar Traduções
+    reciters: Pesquisar Recitadores
+    surah: Pesquisar Surah (capítulo)
+    ayah: Pesquisar Ayah (verso)

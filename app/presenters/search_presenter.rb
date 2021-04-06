@@ -7,6 +7,10 @@ class SearchPresenter < BasePresenter
     @results = @search.results
   end
 
+  def show_header_search?
+    false
+  end
+
   def no_results?
     return ture if @search.nil?
 

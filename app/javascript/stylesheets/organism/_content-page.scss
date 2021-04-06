@@ -217,7 +217,30 @@
 .space-b-24 {
   margin-bottom: 24px;
 }
+.space-b-32 {
+  margin-bottom: 32px;
+}
 .space-x-16 {
   margin-left: 16px;
   margin-right: 16px;
+}
+.space-x-12 {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.space-x-32 {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.relative {
+  position: relative;
+}
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.flex {
+  display: flex;
 }

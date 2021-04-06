@@ -8,8 +8,7 @@
 
     <div class="space-y-8">
       <div class="input-wrapper large">
-        <% query = (params[:q] || params[:query]).presence %>
-        <input type="search" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" name="query" autocomplete="off" value="<%= query %>">
+        <%= render 'shared/search_form' %>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 123455;
     @include lg {
       position: relative;
       left: 0;
@@ -21,7 +22,6 @@
   }
   @at-root .dropdown--input & {
     width: 100%;
-
   }
 
   @include sm {
@@ -45,7 +45,7 @@
     }
     &:focus {
       border: 1px solid $dark-green;
-      box-shadow: 0 0 4px 0 $dark-green;
+      box-shadow: 0 0 4px 0 #00acc285;
       @at-root .dark {
         input {
           background-color: $black;
@@ -60,7 +60,7 @@
   }
   &:after {
     content: $icon-search;
-    font-family: 'quran-icon';
+    font-family: "quran-icon";
     color: white;
     position: absolute;
     display: flex;
@@ -100,6 +100,12 @@
     &::after {
       width: 30px;
       height: 30px;
+    }
+  }
+  &.fluid {
+    display: inline;
+    input {
+      width: 100%;
     }
   }
 }

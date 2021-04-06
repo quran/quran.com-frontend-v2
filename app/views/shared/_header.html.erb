@@ -11,11 +11,13 @@
       <% end %>
     </div>
 
-    <div class="header-input">
-      <div class="input-wrapper medium">
-        <input type="search" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search" class="ytd-searchbox" aria-haspopup="false" role="combobox" aria-autocomplete="list"/>
+    <% if @presenter.show_header_search? %>
+      <div class="header-input">
+        <div class="input-wrapper medium">
+          <%= render 'shared/search_form' %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="header-theme-switch">
       <div class="theme-language">
