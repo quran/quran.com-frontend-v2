@@ -27,7 +27,7 @@ export default class extends Controller {
 
     this.startCircle = $('<div>').addClass(startCircleClass).css({position: 'absolute'});
     this.endCircle = $('<div>').addClass(endCircleClass).css({position: 'absolute'});
-    this.closeSelection = $('<span>').addClass("icon-times-circle close-selection text--green").css({position: 'absolute'});
+    //this.closeSelection = $('<span>').addClass("icon-times-circle close-selection text--green").css({position: 'absolute'});
 
     // modern Chrome requires { passive: false } when adding event
     var supportsPassive = false;
@@ -46,7 +46,7 @@ export default class extends Controller {
     el.on('mousedown touchstart', (e) => {
       let el = $(e.target);
       if (!el.is(wordClass) && !el.is(`.${startCircleClass}`) && !el.is(`.${endCircleClass}`) && (!el.is('.el-selection-dropdown') && el.parents('.el-selection-dropdown').length == 0)) {
-        // this.deselect();
+         this.deselect();
       }
     });
 
@@ -97,7 +97,7 @@ export default class extends Controller {
     this.selectedAyah = this.startWord.closest(".arabic")
     this.selectedAyah.css({position: 'relative'});
 
-    this.selectedAyah.append(this.closeSelection);
+    //this.selectedAyah.append(this.closeSelection);
     this.selectedAyah.append(this.startCircle);
     this.selectedAyah.append(this.endCircle);
 
@@ -228,19 +228,22 @@ export default class extends Controller {
       height: lastItem.rect.height
     });
 
-    this.closeSelection.css({
+    /*this.closeSelection.css({
       top: firstItem.rect.y - pos.y - 30,
       left: (leftCircleX + rightCircleX) / 2 - 20,
       fontSize: '20px'
-    })
+    })*/
   }
 
   updateDropdownPositions() {
     const root = document.documentElement;
     const scrollPos = $(window).scrollTop();
     const lastItem = this.selectedItems[this.selectedItems.length - 1]
-    root.style.setProperty('--el-selection-y', lastItem.rect.y + scrollPos + 50 + "px");
-    root.style.setProperty('--el-selection-x', lastItem.rect.x + "px");
+
+    if(lastItem){
+      root.style.setProperty('--el-selection-y', lastItem.rect.y + scrollPos + 50 + "px");
+      root.style.setProperty('--el-selection-x', lastItem.rect.x + "px");
+    }
   }
 
   deselect(e) {
@@ -260,7 +263,7 @@ export default class extends Controller {
     this.startPosition = null;
     this.startCircle.remove();
     this.endCircle.remove();
-    this.closeSelection.remove();
+    //this.closeSelection.remove();
 
     this.selections.splice(0).map(item => item.remove());
     $(document).trigger('segment:removed');

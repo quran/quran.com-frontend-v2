@@ -11,18 +11,24 @@ export default class extends Controller {
     this.bindListener();
   }
 
-  play(){
+  play() {
+    const selected = this.selectedWords;
+    if (selected.length == 0) {
+      return
+    }
+
     document.querySelector('body').classList.add("small-player");
     document.querySelector('#play-selected-wrapper').classList.remove("active");
+
     let player = this.getPlayer();
     if (player) {
-      if(this.currentVerse == null){ //backup player's currentVerse/lastVerse
+      if (this.currentVerse == null) {
         this.lastVerse = player.lastVerse;
         this.currentVerse = player.currentVerse;
       }
-      
-      const verseNumber = document.querySelector('.word.selected').dataset.key.split(':').slice(0,2).join(':');
-      const segments = [...document.querySelectorAll('.word.selected')].map(x => (+x.dataset.key.split(':').slice(-1)) - 1);
+
+      const verseNumber = selected[0].dataset.key.split(':').slice(0, 2).join(':');
+      const segments = [...selected].map(x => (+x.dataset.key.split(':').slice(-1)) - 1);
 
       player.updateVerses(verseNumber, verseNumber, true, segments);
       player.updatePause(this.config.seconds);
@@ -32,27 +38,25 @@ export default class extends Controller {
         repeatType: 'single',
         repeatAyah: verseNumber,
       }, {'first': verseNumber, 'last': verseNumber}, segments);
-      //player.createHowl(verseNumber);
       player.play(verseNumber);
     }
   }
 
-  getPlayer(){
+  getPlayer() {
     return document.getElementById("player").player;
   }
 
-  closePlayer(){
+  closePlayer() {
     document.getElementById("reader").segmentSelection.deselect();
   }
 
-  bindListener(){
-
-    $(document).on('segment:selected', function(e, items) {
+  bindListener() {
+    $(document).on('segment:selected', function (e, items) {
       $('.play-segment').addClass('active');
       $('.play-selected-wrapper').removeClass('active');
     });
 
-    $(document).on('segment:removed', function() {
+    $(document).on('segment:removed', function () {
       $('.play-segment, .play-selected-wrapper').removeClass('active');
       document.querySelector("#playing-part").children[0].classList = "icon-loading";
       document.querySelector("#playing-part").children[1].innerText = "Loading";
@@ -61,14 +65,14 @@ export default class extends Controller {
       let player = segmentPlayer.getPlayer();
       if (player) {
         if (player.isPlaying()) player.currentHowl.stop();
-        if(!!segmentPlayer.currentVerse){
+        if (!!segmentPlayer.currentVerse) {
           player.updateVerses(segmentPlayer.currentVerse, segmentPlayer.lastVerse);
           player.loadSettings();
         }
       }
     });
 
-    $(document).on('el:selecting', function() {
+    $(document).on('el:selecting', function () {
       $('.play-segment, .play-selected-wrapper').removeClass('active');
     });
 
@@ -82,52 +86,52 @@ export default class extends Controller {
     document.querySelector("#playing-part").addEventListener("click", event => this.handlePlayerButton(event));
   }
 
-  showPlaySegment(){
+  showPlaySegment() {
     document.querySelector('#play-selected-wrapper').classList.add("active");
     document.querySelector('#segment-player').classList.add("active");
   }
 
-  closePlaySegment(){
+  closePlaySegment() {
     document.querySelector('#play-selected-wrapper').classList.remove("active");
     document.querySelector('#segment-player').classList.remove("active");
   }
 
-  handleCounterButtons(e){
+  handleCounterButtons(e) {
     const data = e.target.dataset;
     const increment = +data.increment;
     let textNode = $(`.counter__text.${data.type}`);
     let value = (+textNode.data("value")) + increment;
     const min = +data.min;
-    if(value >= min){
+    if (value >= min) {
       this.config[data.type] = value;
       textNode.data("value", value).text(`${value} ${data.type}`);
       let player = document.getElementById("player").player;
       if (player) {
-        (data.type == "seconds") ? player.updatePause(value) : player.updateRepeatCount(value-1);
+        (data.type == "seconds") ? player.updatePause(value) : player.updateRepeatCount(value - 1);
       }
     }
   }
 
-  resetPlayButton(){
+  resetPlayButton() {
     document.querySelector("#playing-part").children[0].classList = "icon-play1";
     document.querySelector("#playing-part").children[1].innerText = "Play";
   }
 
-  handlePlayerButton(event){
+  handlePlayerButton(event) {
     const target = event.target;
-    if(target.dataset.disabled == "false"){
+    if (target.dataset.disabled == "false") {
       let player = this.getPlayer();
-      if(target.classList == "icon-pause"){
+      if (target.classList == "icon-pause") {
         this.setPlayerCtrls('play');
         player.pauseCurrent();
-      }else{
+      } else {
         this.setPlayerCtrls('pause');
         player.playCurrent();
       }
     }
   }
 
-  setPlayerCtrls(type){
+  setPlayerCtrls(type) {
     let btn = document.querySelector('#playing-part a');
     let state = document.querySelector('#playing-part p');
     btn.dataset.disabled = false
@@ -137,15 +141,19 @@ export default class extends Controller {
     } else if ("pause" == type) {
       btn.classList = 'icon-pause';
       state.innerHTML = "Playing";
-    } else if("loading" == type) {
+    } else if ("loading" == type) {
       // loading
       btn.classList = 'icon-loading';
       state.innerHTML = "Loading";
       btn.dataset.disabled = true;
-    }else{
+    } else {
       btn.classList = 'icon-play1';
       state.innerHTML = "Waiting";
       btn.dataset.disabled = true;
     }
+  }
+
+  get selectedWords() {
+    return document.querySelectorAll('.word.selected')
   }
 }

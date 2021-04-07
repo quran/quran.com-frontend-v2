@@ -6,15 +6,13 @@
 // <div data-controller="word">
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
-import LocalStore from "../utility/local-store";
 
 export default class extends Controller {
   connect() {
     super.connect();
     let el = this.element;
-    const store = new LocalStore();
     const dataset = el.dataset;
 
     el.tooltip = new Tooltip(el, {
@@ -32,17 +30,11 @@ export default class extends Controller {
         return `<div class='${local}'>${text}</div>`;
       }
     });
-    
-    this.wordPlayer = null;
-    let wordPlayer, playerDom = document.getElementById("word-player");
-    if (playerDom) wordPlayer = playerDom.wordPlayer;
-    if (wordPlayer){
-      this.wordPlayer = wordPlayer;
-    }
+
     this.bindEvents();
     this.el = el;
   }
-  
+
   dbClick() {
     let player,
       playerDom = document.getElementById("player");
@@ -54,15 +46,31 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.el.removeEventListener("click", () => {});
-    this.el.removeEventListener("dblclick", () => {});
+    this.el.removeEventListener("click", () => {
+    });
+    this.el.removeEventListener("dblclick", () => {
+    });
 
-    if(this.el.tooltip){
+    if (this.el.tooltip) {
       this.el.tooltip.dispose()
     }
   }
 
-  bindEvents(){
+  play() {
+    let wordPlayer;
+    let playerDom = document.getElementById("word-player");
+
+    if (playerDom) wordPlayer = playerDom.wordPlayer;
+
+    if (wordPlayer) {
+      wordPlayer.play()
+      const {audio, key} = this.element.dataset;
+      GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
+      wordPlayer.play(audio);
+    }
+  }
+
+  bindEvents() {
     this.element.addEventListener("dblclick", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
@@ -72,9 +80,7 @@ export default class extends Controller {
     this.element.addEventListener("click", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
-      let data = e.target.dataset;
-      GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
-      this.wordPlayer.play(data.audio);
+      this.play()
     });
   }
 }
