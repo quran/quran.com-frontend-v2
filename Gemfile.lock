@@ -125,7 +125,6 @@ GEM
     elasticsearch-transport (7.9.0)
       faraday (~> 1)
       multi_json
-    engtagger (0.2.1)
     erubi (1.10.0)
     ethon (0.12.0)
       ffi (>= 1.3.0)
@@ -327,7 +326,6 @@ DEPENDENCIES
   connection_pool
   dalli
   elasticsearch-model (>= 7.1.1)
-  engtagger
   excon
   fast_blank
   foreman
@@ -335,6 +333,7 @@ DEPENDENCIES
   listen
   memcachier
   meta-tags (>= 2.14.0)
+  mimemagic (~> 0.3.2)
   oj
   pagy (= 3.7.3)
   parallel

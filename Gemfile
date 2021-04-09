@@ -34,6 +34,8 @@ gem 'ruby-progressbar', require: false
 # seo
 gem 'meta-tags', '>= 2.14.0'
 
+gem 'mimemagic', '~> 0.3.2'
+
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
 gem 'sentry-raven'
