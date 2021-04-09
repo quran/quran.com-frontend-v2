@@ -16,9 +16,14 @@ module Search
       if empty?
         {}
       else
-        preppare_heighlights
+        prepare_highlights
+
         @record_highlights
       end
+    end
+
+    def get_me
+      @record_highlights
     end
 
     def pagination
@@ -43,60 +48,39 @@ module Search
       @search.response['hits']['total']['value']
     end
 
-    def preppare_heighlights
+    def prepare_highlights
       @search.response['hits']['hits'].each do |hit|
         if :navigation == @result_type
           @record_highlights[hit['_source']['url']] = fetch_navigational_highlighted_text(hit)
         else
-          @record_highlights[hit['_source']['verse_id']] = {
-              text: fetch_verse_highligted_text(hit['highlight']),
-              translations: fetch_translations(hit)
-          }
+          hit_source = hit['_source'].to_h
+          verse_id = hit_source['verse_id']
+
+          @record_highlights[verse_id] ||= []
+          @record_highlights[verse_id].push(
+            hit_source.merge(
+              text: fetch_verse_highligted_text(hit['highlight'])
+            )
+          )
         end
         @result_size += 1
       end
     end
 
     def fetch_navigational_highlighted_text(hit)
+      highlight = hit['_source']
+
       if hit['highlight'].present?
-        hit['highlight'].values[0][0]
-      else
-        hit['_source']['name']
+        highlight['highlight'] = hit['highlight'].values[0][0]
       end
+
+      highlight
     end
 
     def fetch_verse_highligted_text(highlight)
       if highlight.presence
         highlight.values[0][0]
       end
-    end
-
-    def fetch_translations(hit)
-      return [] if hit['inner_hits'].blank?
-
-      translations = []
-
-      hit['inner_hits'].each do |lang, inner_hit|
-        total = inner_hit['hits']['total']['value']
-
-        if total > 0
-          language = inner_hit['hits']['hits'][0]['_source']['language']
-          texts = inner_hit['hits']['hits'].map do |trans_hit|
-            _source = trans_hit['_source']
-            {
-                resource_id: _source['resource_id'],
-                resource_name: _source['resource_name'],
-                id: trans_hit['_id'],
-                text: trans_hit['highlight'].values[0][0],
-                language: language
-            }
-          end
-
-          translations << {language: language, texts: texts}
-        end
-      end
-
-      translations
     end
   end
 end

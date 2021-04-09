@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class SearchPresenter < BasePresenter
+  attr_accessor :navigation_results
+
+  def add_navigational_results(search)
+    @navigation_results = search.results
+  end
+
   def add_search_results(search_response)
     @search = search_response
     @translations = []
@@ -39,22 +45,6 @@ class SearchPresenter < BasePresenter
     @results[verse.id][:translations].present?
   end
 
-  def load_translations(verse)
-    strong_memoize "translations_#{verse.id}" do
-      translations = @results[verse.id][:translations].group_by do |t|
-        t[:language]
-      end
-
-      translations.each_key do |key|
-        translations[key] = translations[key].map do |t|
-          t[:texts]
-        end.flatten
-      end
-
-      translations
-    end
-  end
-
   def show_verse_actions?
     true
   end
@@ -72,19 +62,21 @@ class SearchPresenter < BasePresenter
     "?translations=#{translations_ids.join(',')}"
   end
 
-  def items
+  def verses
     strong_memoize :items do
-      if @search&.result_type == :navigation
-        @results
-      else
-        Verse.unscoped.where(id: @results.keys).each do |v|
-          highlights = @results[v.id]
-          v.highlighted_text = if highlights[:text].present?
-                                 highlights[:text].html_safe
-                               else
-                                 v.text_imlaei
-                               end
+      Verse.unscoped.where(id: @results.keys).each do |v|
+        documents = @results[v.id]
+        v.highlighted_translations = []
+
+        documents.each do |document|
+          if document['type'] == 'verse'
+            v.highlighted_text = document[:text]&.html_safe
+          else
+            v.highlighted_translations.push(document)
+          end
         end
+
+        v.highlighted_text ||= v.text_uthmani
       end
     end
   end

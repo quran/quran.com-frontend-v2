@@ -41,7 +41,8 @@ class Verse < QuranCoreRecord
   # For eager loading
   has_one  :audio, class_name: 'AudioFile'
 
-  attr_accessor :highlighted_text
+  attr_accessor :highlighted_text,
+                :highlighted_translations
 
   def self.find_with_id_or_key(id)
     if(id.to_s.include?(':'))
@@ -57,5 +58,9 @@ class Verse < QuranCoreRecord
 
   def highlighted_text
     @highlighted_text || text_uthmani
+  end
+
+  def verse_id
+    id
   end
 end

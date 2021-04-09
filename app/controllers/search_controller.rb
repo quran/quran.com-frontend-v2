@@ -30,7 +30,7 @@ class SearchController < ApplicationController
 
   def query
     query = (params[:q] || params[:query]).to_s.strip.first(150)
-    params[:q] = QUERY_SANITIZER.sanitize(query)
+    params[:q] = query #QUERY_SANITIZER.sanitize(query)
   end
 
   def size(default = 20)
@@ -51,12 +51,20 @@ class SearchController < ApplicationController
       lanugage: language,
       phrase_matching: force_phrase_matching?
     )
+    navigational_client = Search::NavigationClient.new(
+      query,
+      page: page,
+      size: size,
+      lanugage: language,
+      phrase_matching: force_phrase_matching?
+    )
+
     @presenter = SearchPresenter.new(self)
 
     begin
-      results = client.search
+      @presenter.add_search_results(client.search)
+      @presenter.add_navigational_results(navigational_client.search)
 
-      @presenter.add_search_results(results)
     rescue Faraday::ConnectionFailed => e
       false
     rescue Elasticsearch::Transport::Transport::ServerError => e
@@ -74,10 +82,19 @@ class SearchController < ApplicationController
       phrase_matching: force_phrase_matching?
     )
 
+    navigational_client = Search::NavigationClient.new(
+      query,
+      page: page,
+      size: size,
+      lanugage: language,
+      phrase_matching: force_phrase_matching?
+    )
+
     begin
-      results = client.suggest
       @presenter = SearchPresenter.new(self)
-      @presenter.add_search_results(results)
+      @presenter.add_search_results(client.suggest)
+      @presenter.add_navigational_results(navigational_client.search)
+
     rescue Faraday::ConnectionFailed => e
       false
     rescue Elasticsearch::Transport::Transport::ServerError => e

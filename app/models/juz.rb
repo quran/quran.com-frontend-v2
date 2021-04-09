@@ -15,7 +15,6 @@
 
 class Juz < QuranCoreRecord
   serialize :verse_mapping, Hash
-
   include QuranNavigationSearchable
 
   has_many :verses, foreign_key: :juz_number

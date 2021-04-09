@@ -1,32 +1,34 @@
 # frozen_string_literal: true
 
 module Search
-  class NavigationClient < Search::Client
-    SOURCE_ATTRS = %w[name url].freeze
-    SEARCH_ATTRS = [
-      'name^5',
-      'url'
-    ].freeze
+  class NavigationClient < Search::QuranSearchClient
+    SOURCE_ATTRS = %w[raw url type id].freeze
+    RESULT_SIZE = 5
 
     def initialize(query, options = {})
       super(query, options)
     end
 
     def search
-      search = Elasticsearch::Model.search(search_defination, [Chapter, Juz])
+      search = Elasticsearch::Model.search(search_definition, [Chapter, Juz, MuhsafPage])
+
+      # For debugging, copy the query and paste in kibana for debugging
+      #File.open("last_navigational_query.json", "wb") do |f|
+      #f << search_definition.to_json
+      #end
 
       Search::Results.new(search, page, :navigation)
     end
 
     protected
 
-    def search_defination
+    def search_definition
       {
         _source: source_attributes,
         query: search_query,
         highlight: highlight,
-        from: page * VERSES_PER_PAGE,
-        size: VERSES_PER_PAGE
+        from: page * RESULT_SIZE,
+        size: RESULT_SIZE
       }
     end
 
@@ -35,18 +37,19 @@ module Search
         bool: {
           should: navigational_query
         }
-
       }
     end
 
     def navigational_query
-      {
-        multi_match: {
-          query: query.query,
-          fields: SEARCH_ATTRS,
-          type: 'phrase'
-        }
-      }
+      [
+        multi_match_query(fields: [
+          "text.autocomplete",
+          "text.autocomplete._2gram",
+          "text.autocomplete._3gram"
+        ]),
+        simple_match_query(fields: ["text.autocomplete"]),
+        match_phrase_prefix_query(fields: "text.autocomplete")
+      ]
     end
 
     def source_attributes
@@ -56,9 +59,10 @@ module Search
     def highlight
       {
         fields: {
-          name: {
-            type: 'fvh',
-            fragment_size: 500
+          raw: {
+            type: 'fvh'
+          },
+          "text.autocomplete": {
           }
         },
         tags_schema: 'styled'
