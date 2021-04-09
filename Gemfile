@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 6.1.3.1'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.12.6'
@@ -33,8 +33,6 @@ gem 'ruby-progressbar', require: false
 
 # seo
 gem 'meta-tags', '>= 2.14.0'
-
-gem 'mimemagic', '= 0.3.10'
 
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
