@@ -76,10 +76,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'annotate', '= 2.7.4'
   gem 'rails_real_favicon', '>= 0.1.0'
-  gem 'rubocop', '>= 0.79', require: false
-  gem 'rubocop-performance'
+  gem 'rubocop', '>= 0.90.0', require: false
+  gem 'rubocop-performance', '>= 1.7.1'
   gem 'rubocop-rails', '~> 2.3.2'
-  gem 'rubocop-rspec'
+  gem 'rubocop-rspec', '>= 1.43.2'
 
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
@@ -93,7 +93,7 @@ group :development do
   gem 'pronto-erb_lint', '>= 0.1.5', require: false
   gem 'pronto-fasterer', require: false
   gem 'pronto-flay', require: false
-  gem 'pronto-rubocop', require: false
+  gem 'pronto-rubocop', '>= 0.10.0', require: false
   gem 'pronto-scss', require: false
 end
 
