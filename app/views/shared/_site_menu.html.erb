@@ -44,7 +44,7 @@
         </div>
 
         <div class="menu-item">
-          <%= link_to 'javascript:;', class: 'menu-item__link', data: { action: 'click->menu#showFeedbackModal' } do %>
+          <%= link_to '#_', class: 'menu-item__link', data: { controller: 'ajax-modal', url: '/popups/feedback' } do %>
             <span class="quran-icon icon-help"></span>
             <p class="text text--grey text--large text--semibold">
               Feedback

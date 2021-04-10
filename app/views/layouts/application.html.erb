@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= render 'shared/meta_tags' %>
+<head>
+  <%= csrf_meta_tags %>
+  <%= render 'shared/meta_tags' %>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" defer></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js defer"></script>
-    <![endif]-->
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" defer></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js defer"></script>
+  <![endif]-->
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" defer>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" defer>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'font-faces', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'font-faces', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+</head>
 
-  <body class="<%= page_classes %>" id="<%= page_id %>" data-controller="setting spinner">
-  <script>
-    window.locale = '<%= I18n.locale %>';
-  </script>
-    <noscript>
-      <div class="row">
-        Looks like either your browser does not support Javascript or its disabled. For a better
-        Quran.com experience, please enable JavaScript in your browser.
-        For more instruction on how to enable javascript
-        <a href="http://www.enable-javascript.com/" target="_blank" rel="nofollow">
-          click here
-        </a>.
-      </div>
-    </noscript>
-    <%= render 'shared/header' %>
+<body class="<%= page_classes %>" id="<%= page_id %>" data-controller="setting spinner">
+<script>
+  window.locale = '<%= I18n.locale %>';
+</script>
+<noscript>
+  <div class="row">
+    Looks like either your browser does not support Javascript or its disabled. For a better
+    Quran.com experience, please enable JavaScript in your browser.
+    For more instruction on how to enable javascript
+    <a href="http://www.enable-javascript.com/" target="_blank" rel="nofollow">
+      click here
+    </a>.
+  </div>
+</noscript>
+<%= render 'shared/header' %>
 
-    <main>
-      <%= render 'shared/alerts/notification' %>
+<main>
+  <%= render 'shared/alerts/notification' %>
+  <%= yield %>
+</main>
 
-      <%= yield %>
-    </main>
-
-    <%= render 'shared/footer' %>
-    <%= render 'shared/feedback_modal' %>
-  </body>
+<%= render 'shared/footer' %>
+</body>
 </html>

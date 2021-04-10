@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/surah/:id/info', to: 'chapter_info#show'
   get '/surah-info/:id', to: 'chapter_info#show'
   get '/:id/tafsirs/:tafsir_id', to: 'verses#tafsir', as: :verse_tafsir
+  get '/popups/:popup', to: 'popups#show'
 
   resources :chapter_info, only: :show
   resources :foot_note, only: :show
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   get '/ayatul-kursi', to: 'chapters#ayatul_kursi'
   get 'آیت الکرسی/', to: 'chapters#ayatul_kursi'
 
-  get '/about-us', to: 'static#about_us', as: :about_us
+  get 'about-us', to: 'pages#about_us', as: :about_us
   get :apps, to: 'pages#apps'
   get :donations, to: 'pages#donations'
   get :support, to: 'pages#support'

@@ -6,7 +6,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 123455;
+    z-index: $air;
     @include lg {
       position: relative;
       left: 0;
@@ -47,10 +47,11 @@
       border: 1px solid $dark-green;
       box-shadow: 0 0 4px 0 #00acc285;
       @at-root .dark {
-        input {
+        input, textarea {
           background-color: $black;
           border-color: #71727e !important;
           color: $grey1;
+
           &::placeholder {
             color: $grey8;
           }
@@ -58,6 +59,7 @@
       }
     }
   }
+
   &:after {
     content: $icon-search;
     font-family: "quran-icon";
@@ -84,6 +86,7 @@
       height: 32px;
     }
   }
+
   &.large {
     input {
       width: 400px;
@@ -97,13 +100,16 @@
         width: 100%;
       }
     }
+
     &::after {
       width: 30px;
       height: 30px;
     }
   }
+
   &.fluid {
     display: inline;
+
     input {
       width: 100%;
     }

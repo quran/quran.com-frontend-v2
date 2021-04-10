@@ -6,28 +6,65 @@
 // <div data-controller="feedback">
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 
 export default class extends Controller {
   connect() {
-    this.submitButton = document.getElementById('submit-feedback-btn');
-    this.submitButton.addEventListener("click", _ => this.submitForm());
+    this.form = $(this.element);
+    this.form.find("#submit").on("click", event => {
+      if (this.validate(event, this.form[0]) == false) {
+        return false;
+      }
+
+      this.submit();
+      return false;
+    });
+
+    this.form.on("submit", event => {
+      if (this.validate(event, this.form[0]) == false) {
+        return false;
+      }
+
+      this.submit();
+      return false;
+    });
   }
 
-  submitForm(){
+  validate(event, form) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (!$(form).hasClass("was-validated")) $(form).addClass("was-validated");
+
+    if (form.checkValidity() === false) {
+      form.reportValidity();
+      return false;
+    }
+
+    return true;
+  }
+
+  submit() {
+    const submitButton = this.form.find("[type='submit']")[0]
     this.element.querySelector('#current-url').value = window.location.href;
-    this.submitButton.innerHTML = '<span class="quran-icon icon-loading"></span>';
-    this.submitButton.disabled = true;
-    fetch(this.element.action, {
-      method: 'post',
-      body: (new FormData(this.element))
-    })
-      .then(_ => {
-        this.submitButton.innerHTML = 'Saved';
-        this.submitButton.disabled = false;
-        setInterval(() => {
-          this.submitButton.innerHTML = 'Submit';
-        }, 5000)
+
+    submitButton.innerHTML = '<span class="quran-icon icon-loading"></span>';
+    submitButton.disabled = true;
+
+    var requestOptions = {
+      mode: 'cors',
+     // credentials: 'include',
+      method: 'POST',
+      body: new FormData(this.element)
+    };
+
+    fetch(this.element.action, requestOptions)
+      .then((response) => response.json())
+      .then((json) => {
+        submitButton.innerHTML = 'Submit';
+        submitButton.disabled = false;
+
+        this.form.find('#notice').html(json.message).removeClass('hidden')
       })
       .catch(err => {
         console.log(err)
