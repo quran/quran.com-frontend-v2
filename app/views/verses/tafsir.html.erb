@@ -20,11 +20,11 @@
 
       <div class="text-center my-4">
         <% if prev_key = QuranUtils::Quran.get_ayah_key(verse.chapter_id, verse.verse_number - 1) %>
-          <%= link_to "<", "/#{prev_key}/tafsirs/#{params[:tafsir_id]}", class: 'btn btn-outline-info mt-4' %>
+          <%= link_to "Previous ayah", "/#{prev_key}/tafsirs/#{params[:tafsir_id]}", class: 'btn btn-outline-primary mt-4' %>
         <% end %>
-        <%= link_to "Back to ayah", "/#{verse.chapter_id}/#{verse.verse_number}", class: 'btn btn-outline-info mt-4' %>
+        <%= link_to "Back to ayah", "/#{verse.chapter_id}/#{verse.verse_number}", class: 'btn btn-outline-primary mt-4' %>
         <% if next_key = QuranUtils::Quran.get_ayah_key(verse.chapter_id, verse.verse_number + 1) %>
-          <%= link_to ">", "/#{next_key}/tafsirs/#{params[:tafsir_id]}", class: 'btn btn-outline-info mt-4' %>
+          <%= link_to "Next ayah", "/#{next_key}/tafsirs/#{params[:tafsir_id]}", class: 'btn btn-outline-primary mt-4' %>
         <% end %>
       </div>
     </div>

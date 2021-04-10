@@ -1,0 +1,14 @@
+#donation {
+  background: $dark-green;
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: $white;
+
+  .btn-outline-primary {
+    font-weight: bold;
+    &:hover {
+      background: $white;
+      color: $dark-green;
+    }
+  }
+}

@@ -4,20 +4,24 @@
   height: 32px;
   padding: 5px 8px;
 }
+
 .btn--large {
   padding: 8.5px 8px;
   height: 40px;
   //   line-height: 24px;
 }
+
 .btn--darkgreen {
   background-color: $dark-green;
   color: #ffffff;
+
   &:hover {
     color: white;
     background: darken($color: $dark-green, $amount: 10%);
     // background-color: #018899;
   }
 }
+
 .btn--lightgreen {
   background-color: $light-green !important;
   color: $dark-green;
@@ -28,10 +32,12 @@
     // background-color: #00ACC2;
   }
 }
+
 .btn--lightgrey {
   background-color: $grey2;
   color: $black;
   border: 1px solid #dfdfe0;
+
   &:hover {
     background: darken($color: $grey2, $amount: 10%);
     color: $black;
@@ -49,6 +55,11 @@
     // background-color: #018899;
   }
 }
+
+.btn-outline-primary {
+  background: $white;
+}
+
 .btn--reciter {
   background-color: #ebebed;
   border-radius: 4px;
@@ -58,13 +69,15 @@
     color: #71727e;
   }
 }
+
 .btn--reciter__playing {
   background-color: $light-green !important;
   color: $dark-green !important;
+
   &:focus {
     box-shadow: none !important;
-
   }
+
   &.btn--play {
     &::before {
       content: $icon-pause;
@@ -74,6 +87,7 @@
     }
   }
 }
+
 .btn--settings {
   @at-root .dark & {
     background-color: #71727e;
@@ -90,6 +104,7 @@
     }
   }
 }
+
 .btn--play {
   &::before {
     content: $icon-play1;
@@ -98,6 +113,7 @@
     color: #71727e;
   }
 }
+
 .btn--arrow-down {
   &::before {
     content: $icon-arrow-down;

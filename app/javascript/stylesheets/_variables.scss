@@ -76,7 +76,7 @@ $screen-xl-min: 1200px;
 // reboot
 $link-color: $primary;
 $link-hover-color: darken($primary, 10%);
-$link-hover-decoration: 'none';
+$link-hover-decoration: "none";
 
 /* tooltips 5*/
 $tooltip-max-width: 200px;
@@ -100,8 +100,7 @@ $dropdown-link-active-bg: $dark-green;
 $theme-colors: (
   primary: $primary,
   secondary: $grey7
-) !default;
-
+);
 
 // select2
 $results-choice-bg-hover-color: $dark-green;

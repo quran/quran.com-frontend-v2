@@ -44,7 +44,7 @@
         </div>
 
         <div class="menu-item">
-          <%= link_to 'javascript:;', class: 'menu-item__link', data: {action: 'click->menu#showFeedbackModal'} do %>
+          <%= link_to 'javascript:;', class: 'menu-item__link', data: { action: 'click->menu#showFeedbackModal' } do %>
             <span class="quran-icon icon-help"></span>
             <p class="text text--grey text--large text--semibold">
               Feedback
@@ -121,6 +121,39 @@
           </a>
         </div>
       </div>
+
+      <section id="donation" class="mt-3 py-3">
+        <h5 class="flexx align-items-center">
+            <span>
+              Join us in building te next version of Quran.com
+            </span>
+
+          <i class="quran-icon icon-exclamation-triangle"></i>
+        </h5>
+
+        <p class="text text--medium">
+          Your support will help accelerate the roadmap of new features by 7x and keep Quran.com an open-source and
+          un-biased source for Quranic study.
+        </p>
+
+        <p class="flexx align-items-center mt-4">
+          <a class="btn btn--lightgrey btn--large"
+             data-controller="track"
+             data-name="popular-search"
+             data-category="/surah-al-mulk"
+             href="/surah-al-mulk">
+            Learn more
+          </a>
+
+          <a class="btn btn-outline-primary btn--large"
+             data-controller="track"
+             data-name="popular-search"
+             data-category="/surah-al-mulk"
+             href="/surah-al-mulk">
+            Become a donor
+          </a>
+        </p>
+      </section>
     </div>
   </div>
 </div>
