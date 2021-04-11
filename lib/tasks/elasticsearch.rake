@@ -37,7 +37,7 @@ namespace :elasticsearch do
       end
 
       verses = Verse.all
-      Parallel.each(verses, in_processes: 3, progress: "Indexing verses") do |verse|
+      Parallel.each(verses, in_processes: 1, progress: "Indexing verses") do |verse|
         verse.__elasticsearch__.index_document
       end
 

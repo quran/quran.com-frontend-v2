@@ -1,10 +1,20 @@
 #notification-alert {
   align-items: center;
-  padding: 7.11795px 5.33846px;
   background: rgba(0, 0, 0, 0.05);
+  padding: 10px;
   border-bottom: 1px solid #dfdfe0;
 
   @at-root .dark & {
     background-color: #31333d;
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 7px
+  }
+
+  .text--green {
+    margin-top: 5px;
   }
 }

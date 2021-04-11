@@ -1,61 +1,94 @@
-<section class="row hidden"
+<section class="hidden"
          data-controller="announcement"
          data-id="donation-notification"
          data-url="/popups/donation"
 >
-  <div class="col-12">
-    <div id=notification-alert class="flexx align-items-center">
-      <div class="flexx align-items-center">
-        <div class="d-none d-sm-block">
-          <div class="flexx align-items-center text--grey">
-            <span class="quran-icon icon-exclamation-triangle text--green mr-2"></span>
-            <div>
-              <h3 class="m-0">
-                Join us in building te next version of Quran.com
-              </h3>
+  <div id=notification-alert>
+    <div class="container d-none d-sm-block pt-2">
+      <div class="flexx align-items-center flex-wrap">
+        <div class="text--grey">
+          <h3 class="m-0">
+            Join us in building te next version of Quran.com
+          </h3>
 
-              <p class="m-0">
-                Join us in building the next version of Quran.com. Your support will accelerate the roadmap of new
-                features by 7x!
-              </p>
-            </div>
-          </div>
-          <p class="text--green" style="margin-left: 2rem">
+          <p class="m-0">
+            Join us in building the next version of Quran.com. Your support will accelerate the roadmap of new
+            features by 7x!
+          </p>
+
+          <p class="text--green">
             ✔ Monthly transparency reports
           </p>
         </div>
 
-        <div class="d-block d-sm-none">
-          <strong>
-            Ramadan Campaign
-          </strong> now Live!
+        <div>
+          <a class="btn btn--lightgrey "
+             data-controller="track"
+             data-name="donation"
+             data-category="learn-more-notification"
+             target="_blank"
+             href="https://quranfund.com/">
+            Learn more
+          </a>
+
+          <a class="btn btn-outline-primary "
+             data-controller="track"
+             data-name="donation"
+             data-category="donate-notification"
+             href="/surah-al-mulk">
+            Become a donor
+          </a>
+
+          <a class="close text--grey cursor-pointer"
+             data-controller="track"
+             data-name="donation"
+             style="cursor: pointer"
+             data-category="dismiss-notification">
+            Dismiss
+          </a>
         </div>
       </div>
+    </div>
 
-      <div class="mr-2">
-        <a class="btn btn--lightgrey btn--large"
-           data-controller="track"
-           data-name="donation"
-           data-category="learn-more-notification"
-           href="/surah-al-mulk">
-          Learn more
-        </a>
+    <div class="container d-block d-sm-none">
+      <div class="row">
+        <div class="col-12">
+          <span style="font-weight: bold">
+            Ramadan Campaign
+          </span> now Live!
+        </div>
 
-        <a class="btn btn-outline-primary btn--large"
-           data-controller="track"
-           data-name="donation"
-           data-category="donate-notification"
-           href="/surah-al-mulk">
-          Become a donor
-        </a>
+        <div class="col-12 mt-2">
+          <div class="flexx align-content-center">
+            <div>
+              <a class="close text--grey cursor-pointer"
+                 data-controller="track"
+                 data-name="donation"
+                 style="cursor: pointer"
+                 data-category="dismiss-notification">
+                Dismiss
+              </a>
+            </div>
 
-        <a class="close text--grey cursor-pointer"
-           data-controller="track"
-           data-name="donation"
-           style="cursor: pointer"
-           data-category="dismiss-notification">
-          Dismiss
-        </a>
+            <div>
+              <a class="btn btn--lightgrey"
+                 data-controller="track"
+                 data-name="donation"
+                 data-category="learn-more-notification"
+                 href="/surah-al-mulk">
+                Learn more
+              </a>
+
+              <a class="btn btn-outline-primary"
+                 data-controller="track"
+                 data-name="donation"
+                 data-category="donate-notification"
+                 href="/surah-al-mulk">
+                Become a donor
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
