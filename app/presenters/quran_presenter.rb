@@ -112,7 +112,7 @@ class QuranPresenter < BasePresenter
 
   def render_translations?
     strong_memoize :render_translation do
-      valid_translations.present?
+      valid_translations(store_result: false).present?
     end
   end
 

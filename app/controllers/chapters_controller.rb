@@ -36,6 +36,7 @@ class ChaptersController < ApplicationController
   end
 
   def referenced_verse
+    params[:store] = false
     render layout: false
   end
 

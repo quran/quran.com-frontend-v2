@@ -15,7 +15,7 @@ class ChapterPresenter < HomePresenter
       @finder.load_verses(
           filter: 'chapter',
           language: language,
-          translations: valid_translations,
+          translations: valid_translations(store_result: store_translations?),
           words: true
       )
     end
@@ -189,5 +189,9 @@ class ChapterPresenter < HomePresenter
 
   def max(a, b)
     a > b ? a : b
+  end
+
+  def store_translations?
+    params[:store] != false
   end
 end

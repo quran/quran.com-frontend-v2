@@ -17,13 +17,14 @@ export default class extends Controller {
     this.element.querySelectorAll('a').forEach(item => {
       if (item.host === location.host) {
         item.setAttribute('data-controller', 'ajax-modal');
-        const verseId = item.pathname.split(':')[1];
-        const chapterId = item.pathname.split(':')[0];
+        item.setAttribute('data-class', 'modal-lg');
 
-        const url = `${
-          chapterId
-        }/referenced_verse?to=${verseId}&from=${verseId}
-        &translations=${this.element.parentNode.parentNode.dataset.resourceContentId}&skip_sessions=true`;
+        const path = item.pathname.replace('/', '').split(':')
+        const chapter = path[0];
+        const ayah = path[1].split('-')
+
+        const translation = $(this.element).closest('.verse__translations').data('resourceContentId')
+        const url = `/${chapter}/referenced_verse?from=${ayah[0]}&to=${ayah[1] || ayah[0]}&translations=${translation}`;
 
         item.setAttribute('data-url', url)
         item.href = 'javascript:;';
