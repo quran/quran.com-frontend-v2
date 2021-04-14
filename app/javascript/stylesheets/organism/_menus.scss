@@ -1,5 +1,5 @@
 .menus {
-  z-index: 12;
+  z-index: $cloud;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -10,7 +10,6 @@
   overflow: hidden;
   @at-root .dark & {
     background-color: #71727e6e;
-    
   }
   .menus__tab {
       position: absolute;
@@ -23,7 +22,7 @@
       overflow: hidden;
       background-color: white;
       border: none;
-      
+
       @include sm {
         width: 90%;
       }
@@ -31,7 +30,7 @@
         background-color: #31333D;
       }
 
-    
+
   }
 
   .tab__container {
@@ -43,7 +42,7 @@
     @include sm {
       padding: 0px
     }
-    
+
     & >  div  {
       margin-bottom: 32px;
       @include sm {
@@ -51,10 +50,10 @@
       }
     }
     p {
-        // margin-left: 0;  
+        // margin-left: 0;
     }
 }
-  
+
 }
 
 .tab__row {

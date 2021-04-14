@@ -2,6 +2,7 @@
          data-controller="announcement"
          data-id="donation-notification"
          data-url="/popups/donation"
+         data-page="<%= controller_name %>"
 >
   <div id=notification-alert>
     <div class="container d-none d-sm-block pt-2">
@@ -22,7 +23,7 @@
         </div>
 
         <div>
-          <a class="btn btn--lightgrey "
+          <a class="btn btn--lightgrey btn—large"
              data-controller="track"
              data-name="donation"
              data-category="learn-more-notification"
@@ -31,15 +32,15 @@
             Learn more
           </a>
 
-          <a class="btn btn-outline-primary "
-             data-controller="track"
-             data-name="donation"
-             data-category="donate-notification"
-             href="/surah-al-mulk">
+          <button class="btn btn-primary"
+                  data-controller="track"
+                  data-name="donation"
+                  data-category="donate-notification"
+                  gl-donate-button>
             Become a donor
-          </a>
+          </button>
 
-          <a class="close text--grey cursor-pointer"
+          <a class="close text--grey cursor-pointer btn—large"
              data-controller="track"
              data-name="donation"
              style="cursor: pointer"
@@ -61,7 +62,7 @@
         <div class="col-12 mt-2">
           <div class="flexx align-content-center">
             <div>
-              <a class="close text--grey cursor-pointer"
+              <a class="btn close text--grey cursor-pointer btn—large"
                  data-controller="track"
                  data-name="donation"
                  style="cursor: pointer"
@@ -71,7 +72,7 @@
             </div>
 
             <div>
-              <a class="btn btn--lightgrey"
+              <a class="btn btn--lightgrey btn—large"
                  data-controller="track"
                  data-name="donation"
                  data-category="learn-more-notification"
@@ -79,13 +80,13 @@
                 Learn more
               </a>
 
-              <a class="btn btn-outline-primary"
-                 data-controller="track"
-                 data-name="donation"
-                 data-category="donate-notification"
-                 href="/surah-al-mulk">
+              <button class="btn btn-primary"
+                      data-controller="track"
+                      data-name="donation"
+                      data-category="donate-notification"
+                      gl-donate-button>
                 Become a donor
-              </a>
+              </button>
             </div>
           </div>
         </div>

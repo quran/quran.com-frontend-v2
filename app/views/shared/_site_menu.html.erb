@@ -35,6 +35,15 @@
         </div>
 
         <div class="menu-item">
+          <%= link_to donations_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-contribute"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.contribute') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
           <%= link_to about_us_path, class: 'menu-item__link' do %>
             <span class="quran-icon icon-about"></span>
             <p class="text text--grey text--large text--semibold">
@@ -122,7 +131,7 @@
         </div>
       </div>
 
-     <%= render 'shared/alerts/sidebar' %>
+      <%= render 'shared/alerts/sidebar' %>
     </div>
   </div>
 </div>

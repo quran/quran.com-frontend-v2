@@ -16,14 +16,27 @@ export default class extends Controller {
     this.el = $(this.element);
     this.store = new LocalStore();
 
-    if (this.dismissedAt == null) {
+    /*if (this.dismissedAt == null) {
       this.show();
     } else if (this.shouldShowPopup()) {
       this.showPopup()
+    }*/
+
+    if (this.shouldShowPopup())
+      setTimeout(() => this.showPopup(), 5000)
+    else if (this.shouldShowNotification()) {
+      this.show()
     }
   }
 
   show() {
+    GoogleAnalytic.trackEvent(
+      "notification-shown",
+      "donation",
+      "donation-notification",
+      1
+    );
+
     this.el.find(".close").on("click", e => this.onHide(e));
     this.el.removeClass("hidden");
   }
@@ -31,6 +44,24 @@ export default class extends Controller {
   showPopup() {
     const url = this.element.dataset.url;
     new AjaxModal().loadModal(url);
+
+    GoogleAnalytic.trackEvent(
+      "popup-shown",
+      "donation",
+      "donation-popup",
+      1
+    );
+
+    $("#ajax-modal").on("hidden.bs.modal", (e) => {
+      this.store.set(`pop-${this.el.data("id")}-dismissed`, new Date().getTime())
+
+      GoogleAnalytic.trackEvent(
+        "popup-dismissed",
+        "donation",
+        "donation-popup",
+        1
+      );
+    });
 
     this.store.set(`pop-${this.el.data("id")}`, new Date().getTime())
   }
@@ -42,7 +73,7 @@ export default class extends Controller {
   }
 
   shouldShowPopup() {
-    const timestamp = this.dismissedAt;
+    /*const timestamp = this.dismissedAt;
 
     if (timestamp == null || this.element.dataset.url == null)
       return false;
@@ -50,7 +81,20 @@ export default class extends Controller {
     const dismissedAt = new Date(Number(timestamp));
     const min = Math.floor((new Date() - dismissedAt) / 1000) / 60;
 
-    return min >= 5 && this.popupShownAt == null;
+    return min >= 5 && this.popupShownAt == null;*/
+
+    // don't show popup on surah or home page
+    // also don't show if user is on donation page
+
+    const notOnDonation = location.pathname != '/donations'
+    const currentPage = this.element.dataset.page;
+    const readingQuran = currentPage == 'home' || currentPage == 'chapters';
+
+    return !this.popupShownAt && notOnDonation && !readingQuran
+  }
+
+  shouldShowNotification() {
+    return ! this.dismissedAt;
   }
 
   get dismissedAt() {

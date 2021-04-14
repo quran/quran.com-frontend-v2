@@ -14,12 +14,19 @@ class AjaxModal {
       .then(resp => resp.text())
       .then(content => {
         const response = $("<div>").html(content);
-        document.getElementById("ajax-modal-title").innerHTML = response
+
+        const title = response
           .find("#title")
           .html();
-        document.getElementById("ajax-modal-body").innerHTML = response
+
+        const body = response
           .find("#modal")
           .html();
+
+        if(title && title.length > 0){
+          document.getElementById("ajax-modal-title").innerHTML = title
+          document.getElementById("ajax-modal-body").innerHTML = body
+        }
       })
       .catch(err => {
         //TODO: show error

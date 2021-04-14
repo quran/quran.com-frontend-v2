@@ -13,6 +13,7 @@
         <%= image_tag "donate1.jpg", style: 'border-radius: 6px;' %>
       </div>
     </div>
+    
     <div class="text-image text-image--reverse">
       <div class="text-image__text">
         <h1>How you can help.</h1>
@@ -36,12 +37,17 @@
     <h1>Make a difference.</h1>
     <p>Making a difference to the Quran.com application is as simple as a Tweet, a Facebook share or an email with
       feedback. For those looking to make a stronger impact, support us by
-      <strike>contributing any monetary amount.</strike>
-      (EDIT: We're not taking donation at the moment)
+      contributing any monetary amount.
     </p>
 
     <div class="content-page__center">
-      <!--<a style="margin-top: 8px" class="green-link" disabled="">Support Quran.com</a>-->
+      <button class="btn btn-primary btn--large"
+              data-controller="track"
+              data-name="donation"
+              data-category="donate-page"
+              gl-donate-button>
+        Become a Donor
+      </button>
     </div>
   </div>
 </div>

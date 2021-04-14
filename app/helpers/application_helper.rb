@@ -20,7 +20,8 @@ module ApplicationHelper
   end
 
   def faq_list
-    [
+    [ ['Can I download the Quran.com to my computer?', "Unfortunately, no. We do not provide functionality to download our website or the Quran to your computer yet. You can, however install our <a href='/apps'>mobile app</a> for offline reading."],
+      ['Can I browse site in other languages?', "To change your preferred language, there is a drop down on the top right corner on each page( to right corner in the left side menu on mobile). Use this dropdown to choose your preferred language."],
       ['I found a translation bug, where do I file it?',
        "Please report this bug on Github repo <a target='_blank' href='https://github.com/quran/quran.com-api/issues/new?title=translation bug'>here</a> and we'll fix this bug ASAP inshAllah."],
       ['The site is not working, how do I tell you?',

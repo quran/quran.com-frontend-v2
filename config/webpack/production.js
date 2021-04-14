@@ -47,7 +47,7 @@ if (fs.existsSync(whitelist_path)) {
 environment.plugins.append(
   "PurgecssPlugin",
   new PurgecssPlugin({
-    whitelist: ["tajweed", ".h", "inline-comment", ".urdu", "sup", "select2"],
+    whitelist: ["tajweed", ".h", "inline-comment", ".urdu", "sup", "select2", '.modal'],
     whitelistPatterns: [/hlt|select2|aria-disabled/],
     whitelistPatternsChildren: [],
     paths: glob.sync([
