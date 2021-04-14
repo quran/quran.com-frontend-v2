@@ -1,12 +1,8 @@
 #notification-alert {
   align-items: center;
-  background: rgba(0, 0, 0, 0.05);
+  background: #cdecf1;
   padding: 10px;
-  border-bottom: 1px solid #dfdfe0;
-
-  @at-root .dark & {
-    background-color: #31333d;
-  }
+  border-bottom: 1px solid #00acc2;
 
   h3 {
     font-weight: bold;
