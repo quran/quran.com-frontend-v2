@@ -85,7 +85,7 @@ export default class extends AudioController {
     //this.createHowlAndPlay()
   }
 
-  createHowlAndPlay(){
+  createHowlAndPlay() {
     this.createHowl(this.currentVerse).then(() => {
       if (this.isPlaying()) this.play(this.currentVerse);
     })
@@ -96,7 +96,7 @@ export default class extends AudioController {
     this.firstVerse = firstVerse;
     this.lastVerse = lastVerse;
     this.currentVerse = firstVerse
-    
+
     this.loadVerseAudio(this.currentVerse);
 
     /*this.fetchAudioData().then(() => {
@@ -112,7 +112,7 @@ export default class extends AudioController {
     });*/
   }
 
-  updateVerses(firstVerse, lastVerse, segmentPlayer = false, customSegments = []){
+  updateVerses(firstVerse, lastVerse, segmentPlayer = false, customSegments = []) {
     this.firstVerse = firstVerse;
     this.lastVerse = lastVerse;
     this.segmentPlayer = segmentPlayer;
@@ -180,7 +180,6 @@ export default class extends AudioController {
       } else {
         classList.remove("selected");
       }
-      //this.settings.saveSettings();
     });
   }
 
@@ -204,8 +203,16 @@ export default class extends AudioController {
   play(verse) {
     // stop previous track
     if (this.currentHowl) {
+      if (verse == this.currentTrack.verse) {
+        if (!this.isPlaying())
+          this.currentHowl.play()
+
+        return
+      }
+
       this.currentHowl.pause();
     }
+
     verse = verse || this.currentVerse;
 
     // enable progress bar if disabled
@@ -217,10 +224,9 @@ export default class extends AudioController {
       this.currentTrack = track;
       if (this.segmentPlayer) {
         track.howl.play("selectedWords");
-      }else{
+      } else {
         track.howl.play()
       }
-      
     })
   }
 
@@ -232,13 +238,20 @@ export default class extends AudioController {
   playVerse(verse) {
     // called outside of player
     if (this.isPlaying()) {
+      if (verse == this.currentTrack.verse) {
+        setTimeout(() => {
+          this.resetSegments();
+        }, 50);
+        this.readerController.setPlaying(verse, true);
+
+        return
+      }
+
+      //this.setPlayerCtrls('play');
       this.currentHowl.stop();
-      // stop event isn't working?
-      this.setPlayerCtrls('play');
     }
 
     this.currentVerse = verse;
-
     this.playCurrent();
   }
 
@@ -344,7 +357,7 @@ export default class extends AudioController {
       this.pauseBtn.addClass('d-none');
       versePlayBtn.addClass('icon-loading');
     }
-    if(this.segmentPlayer) document.getElementById("segment-player").segmentPlayer.setPlayerCtrls(type);
+    if (this.segmentPlayer) document.getElementById("segment-player").segmentPlayer.setPlayerCtrls(type);
   }
 
   pad(n, width) {
@@ -386,15 +399,15 @@ export default class extends AudioController {
     const lastId = getAyahIdFromKey(this.lastVerse);
     const currentId = getAyahIdFromKey(this.currentVerse)
 
-    if(currentId < lastId)
-      return getAyahKeyFromId(currentId+1);
+    if (currentId < lastId)
+      return getAyahKeyFromId(currentId + 1);
   }
 
   getPreviousTrackVerse() {
     const firstId = getAyahIdFromKey(this.firstVerse);
     const currentId = getAyahIdFromKey(this.currentVerse)
 
-    if(currentId > firstId)
+    if (currentId > firstId)
       return getAyahKeyFromId(currentId - 1);
   }
 
@@ -440,7 +453,7 @@ export default class extends AudioController {
 
   onVerseEnd() {
     if (this.pauseSeconds > 0) {
-      if(this.segmentPlayer) document.getElementById("segment-player").segmentPlayer.setPlayerCtrls();
+      if (this.segmentPlayer) document.getElementById("segment-player").segmentPlayer.setPlayerCtrls();
       setTimeout(() => this.onVerseEnded(), this.pauseSeconds * 1000);
     } else {
       this.onVerseEnded();
@@ -516,10 +529,10 @@ export default class extends AudioController {
   }
 
   loadTrack(verse) {
-    if(this.preloadTrack[verse] == undefined || this.segmentPlayer){
+    if (this.preloadTrack[verse] == undefined || this.segmentPlayer) {
       this.loading();
       return this.createHowl(verse);
-    }else return Promise.resolve(this.preloadTrack[verse]);
+    } else return Promise.resolve(this.preloadTrack[verse]);
   }
 
   createHowl(verse) {
@@ -533,10 +546,10 @@ export default class extends AudioController {
       if (this.segmentPlayer) {
         const secondsToSkip = +audio.segments[
           this.customSegments[0]
-        ][2];
+          ][2];
         const lastSegment = this.customSegments[
-          this.customSegments.length - 1
-        ];
+        this.customSegments.length - 1
+          ];
         const endsAt = +audio.segments[lastSegment][3];
         const duration = endsAt - secondsToSkip;
         sprite.selectedWords = [secondsToSkip, duration];
@@ -608,7 +621,6 @@ export default class extends AudioController {
 
     this.loadVerseAudio(this.currentVerse).then(() => {
       if (wasPlaying) {
-        this.pauseCurrent();
         this.play(this.currentVerse);
       }
     })

@@ -92,7 +92,8 @@ export default class extends Controller {
       this.jumpToCurrent();
       this.resumePageLoader();
     }
-    document.getElementById("segment-player").segmentPlayer.closePlayer();
+
+    //document.getElementById("segment-player").segmentPlayer.closePlayer();
   }
 
   isReadingMode() {
@@ -124,13 +125,17 @@ export default class extends Controller {
   setPlaying(verseKey, isPlaying) {
     this.currentVerse.playing = false;
 
+    this.currentVerse = {
+      key: verseKey,
+      playing: isPlaying
+    };
+
     if (isPlaying) {
-      this.setCurrentVerse(getAyahIdFromKey(verseKey), verseKey);
+      this.scrollToCurrent();
+      this.highlightCurrent();
     } else {
       this.removeHighlighting();
     }
-
-    this.currentVerse.playing = isPlaying;
   }
 
   resetSegments(seekTime, segmentTimings, isPlaying) {
@@ -329,13 +334,12 @@ export default class extends Controller {
       playing: verseEl.data("playing")
     };
 
-    if (last.playing) {
-      //this.player.pauseCurrent();
-      this.player.playVerse(verseKey);
-    }
-
     this.scrollToCurrent();
     this.highlightCurrent();
+
+    if (last.playing) {
+      this.player.playVerse(verseKey);
+    }
 
     return Promise.resolve([]);
   }
