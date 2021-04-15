@@ -177,6 +177,9 @@ export default class extends Controller {
       0.423}px !important}`
     );
 
+    // 1.5x for translation view
+    rules.push(`.translation__arabic .verse .arabic, .translation__arabic .w{font-size: ${arabicFs*1.5}px !important}`);
+
     global.styles = this.styles;
     this.styles.innerText = rules.join(" ");
   }

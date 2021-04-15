@@ -40,9 +40,9 @@ export default class extends Controller {
       playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
-    if (player) {
-      return player.seekToWord(this.el.dataset.position);
-    }
+    //if (player) {
+    //  return player.seekToWord(this.el.dataset.position);
+    //}
   }
 
   disconnect() {
@@ -58,14 +58,13 @@ export default class extends Controller {
 
   play() {
     let wordPlayer;
-    let playerDom = document.getElementById("word-player");
+    let playerDom = document.getElementById("player");
 
     if (playerDom) wordPlayer = playerDom.wordPlayer;
 
     if (wordPlayer) {
-      wordPlayer.play()
       const {audio, key} = this.element.dataset;
-      GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
+      GoogleAnalytic.trackEvent("Play Word", "Play", key, 1);
       wordPlayer.play(audio);
     }
   }

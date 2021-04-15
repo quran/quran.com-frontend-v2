@@ -47,7 +47,9 @@ export default class extends Controller {
   }
 
   closePlayer() {
-    document.getElementById("reader").segmentSelection.deselect();
+    const selection = document.getElementById("reader").segmentSelection;
+    if (selection)
+      selection.deselect();
   }
 
   bindListener() {
