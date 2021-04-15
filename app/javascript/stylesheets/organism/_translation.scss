@@ -56,11 +56,12 @@
       //   }
     }
     .ayah-badge-link {
-      //   @include sm {
+         @include sm {
+           margin-top: 0;
       //     position: absolute;
       //     top: 0px;
       //     left: 5px;
-      //   }
+         }
     }
   }
 
