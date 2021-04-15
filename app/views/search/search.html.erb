@@ -15,19 +15,21 @@
               value="<%= @presenter.query %>"
             >
 
-            <div>
-              <div class="did-you-mean">
-                <p class="text-red">Did you mean:</p>
-                <a class="text--green" href="">Ar-Rrahman</a>
+            <% if false %>
+              <div>
+                <div class="did-you-mean">
+                  <p class="text-red">Did you mean:</p>
+                  <a class="text--green" href="">Ar-Rrahman</a>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
 
     <div class="search-results__second">
-      <div class="search-results__menu">
+      <div class="search-results__menu space-b-32">
         <div class="search-menu">
           <div class="space-b-32">
             <p class="text text  text--black text--large2 text--semibold">Filter</p>
@@ -64,15 +66,19 @@
               </select>
             </div>
           </div>
-          <div class="">
-            <p class="text text text  text--darkgrey text--medium text--semibold">Show</p>
-            <label class="radio-label ">All <input class="" name="radio" type="radio">
+
+          <% if false %>
+            <div class="">
+              <p class="text text text  text--darkgrey text--medium text--semibold">Show</p>
+              <label class="radio-label ">All <input class="" name="radio" type="radio">
+                <span class="checkmark"></span>
+              </label> <label class="radio-label ">Only English <input class="" name="radio" type="radio">
               <span class="checkmark"></span>
-            </label> <label class="radio-label ">Only English <input class="" name="radio" type="radio">
-            <span class="checkmark"></span>
-          </label> <label class="radio-label ">Only <input class="" name="radio" type="radio">
-            <span class="checkmark"></span>
-          </label></div>
+            </label> <label class="radio-label ">Only <input class="" name="radio" type="radio">
+              <span class="checkmark"></span>
+            </label>
+            </div>
+          <% end %>
         </div>
       </div>
 
@@ -83,11 +89,12 @@
             <a id="" class="tabs__item ">Surah</a>
             <a id="" class="tabs__item ">Ayah</a>
           </div>
-          <p class="text text text--grey text--small
-                    text--regular">
-            1-10 OF 20 SEARCH RESULTS
+
+          <p class="text text text--grey text--small text--regular">
+            1-10 OF <%= @presenter.result_size %> SEARCH RESULTS
           </p>
         </div>
+
         <div class="search-results__results--body">
           <div>
             <% if (suggestions = @presenter.navigation_results).present? %>

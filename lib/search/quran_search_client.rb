@@ -7,6 +7,7 @@ module Search
 
     QURAN_SOURCE_ATTRS = [
       'verse_path',
+      'verse_key',
       'verse_id',
       'type',
       'resource_id',
@@ -134,8 +135,8 @@ module Search
                   'text_uthmani_simple.*',
                   'text_uthmani.*',
                   'text_imlaei.*',
-                  'verse_key.keyword',
-                  'verse_path'
+                  'verse_key.keyword^2',
+                  'verse_path.keyword'
                 ],
                 type: "phrase"
               }

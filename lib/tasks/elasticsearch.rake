@@ -35,11 +35,7 @@ namespace :elasticsearch do
       Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
         model.import(force: true)
       end
-
-      verses = Verse.all
-      Parallel.each(verses, in_processes: 1, progress: "Indexing verses") do |verse|
-        verse.__elasticsearch__.index_document
-      end
+      Verse.import
 
       puts "Importing translations"
       QuranUtils::ContentIndex.import

@@ -73,8 +73,8 @@ export default class extends Controller {
   canShowDonation(){
     const notOnDonation = location.pathname != '/donations'
     const currentPage = this.element.dataset.page;
-    const readingQuran = currentPage == 'home' || currentPage == 'chapters';
-
+    const readingQuran = currentPage == 'juz' || currentPage == 'chapters';
+    debugger
     return notOnDonation && !readingQuran
   }
 

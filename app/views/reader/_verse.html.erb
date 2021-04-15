@@ -14,6 +14,7 @@
         <span class="ayah-badge"><%= verse.verse_key %></span>
       </a>
 
+
       <a class="translation__icon play"
          data-title="<%= t('action.play') %>"
          data-controller="track"
@@ -22,6 +23,17 @@
          data-category="play">
         <span class="quran-icon icon-play1"></span>
       </a>
+
+      <a class="translation__icon"
+         href="https://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}" %>?feed=true"
+         target="_blank"
+         rel="noopener"
+         data-controller="track"
+         data-name='ayah-action'
+         data-category="QuranReflect">
+        <i class="icon-quran-reflect" style="font-size: 27px"></i>
+      </a>
+
 
       <div class="actions-menu">
         <a class="translation__icon"

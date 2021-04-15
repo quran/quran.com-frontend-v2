@@ -6,9 +6,6 @@ class SearchController < ApplicationController
 
   def search
     if do_search
-      render partial: 'results', layout: false if request.xhr?
-    elsif request.xhr?
-      render 'error', layout: false
     else
       render 'error'
     end

@@ -54,7 +54,7 @@
         </div>
         <div class="relative space-y-16 ">
           <p class="text space-x-12 text text--grey text--small
-                      text--regular">14 results</p>
+                      text--regular"><%= @presenter.result_size %> results</p>
           <div class="absolute-center text-center">
             <a href="/search?query=<%= params[:query] %>">
               <div class="text text--green text--medium">
