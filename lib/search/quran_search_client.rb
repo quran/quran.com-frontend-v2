@@ -11,6 +11,7 @@ module Search
       'verse_id',
       'type',
       'resource_id',
+      'language_id',
       'resource_name',
       'language_name'
     ].freeze
@@ -41,9 +42,9 @@ module Search
       search = Elasticsearch::Model.search(search_definition, [], index: 'quran_verses,quran_content_*')
 
       # For debugging, copy the query and paste in kibana for debugging
-      File.open("last_query.json", "wb") do |f|
-        f << search_definition.to_json
-      end
+      #File.open("last_query.json", "wb") do |f|
+      #  f << search_definition.to_json
+      #end
 
       Search::Results.new(search, page)
     end
@@ -52,9 +53,9 @@ module Search
       search = Elasticsearch::Model.search(search_definition(100, 10), [], index: 'quran_verses,quran_content_*')
 
       # For debugging, copy the query and paste in kibana for debugging
-      File.open("last_suggest_query.json", "wb") do |f|
-        f << search_definition(100, 10).to_json
-      end
+      #File.open("last_suggest_query.json", "wb") do |f|
+      #  f << search_definition(100, 10).to_json
+      #end
 
       Search::Results.new(search, page)
     end
@@ -236,21 +237,21 @@ module Search
     end
 
     def filters
-      query_filters = {}
+      query_filters = []
 
       if filter_chapter?
-        query_filters[:match_phrase] = { chapter_id: options[:chapter].to_i }
+        query_filters.push(term: { chapter_id: options[:chapter].to_i })
       end
 
       if filter_translation?
-        query_filters[:match_phrase] = { resource_id: options[:translation].to_i }
+        query_filters.push(term: { resource_id: options[:translation].to_i })
       end
 
       if filter_language?
-        query_filters[:match_phrase] = { language_id: options[:language].id }
+        query_filters.push(term: { language_id: options[:language].id })
       end
 
-      [query_filters.presence].compact
+      query_filters
     end
 
     def filter_chapter?

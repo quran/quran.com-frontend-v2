@@ -13,10 +13,10 @@ class ChapterPresenter < HomePresenter
   def verses
     strong_memoize :verses do
       @finder.load_verses(
-          filter: 'chapter',
-          language: language,
-          translations: valid_translations(store_result: store_translations?),
-          words: true
+        filter: 'chapter',
+        language: language,
+        translations: valid_translations(store_result: store_translations?),
+        words: true
       )
     end
   end
@@ -26,7 +26,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def cache_key
-     "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:start]}"
+    "c:#{chapter&.id}-#{font_type}-r:#{reading_mode?}-tr:#{valid_translations.join('-')}-range:#{ayah_range}-p:#{current_page}-#{params[:start]}"
   end
 
   def translation_view_path
@@ -80,8 +80,8 @@ class ChapterPresenter < HomePresenter
       from = ayah_range_from
       to = ayah_range_to
 
-      id_from =  QuranUtils::Quran.get_ayah_id(chapter.id, from)
-      id_to =  QuranUtils::Quran.get_ayah_id(chapter.id, to)
+      id_from = QuranUtils::Quran.get_ayah_id(chapter.id, from)
+      id_to = QuranUtils::Quran.get_ayah_id(chapter.id, to)
 
       "#{id_from}-#{id_to}"
     end
@@ -153,7 +153,7 @@ class ChapterPresenter < HomePresenter
     strong_memoize :meta_url do
       translations = valid_translations
 
-      query_hash = {reading: reading_mode?, font: font_type}
+      query_hash = { reading: reading_mode?, font: font_type }
       query_hash[:translations] = translations.join(',').presence
       query_hash.compact!
 
@@ -192,6 +192,6 @@ class ChapterPresenter < HomePresenter
   end
 
   def store_translations?
-    params[:store] != false
+    params[:store].nil? || !ActiveRecord::Type::Boolean::FALSE_VALUES.include?(params[:store])
   end
 end

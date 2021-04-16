@@ -2,11 +2,14 @@
   translations = verse.highlighted_translations
   trans_count = translations.size
   translation_shown = translations.first(2)
+  trans_ids = translations.map do |t|
+    t['resource_id']
+  end
 %>
 
 <div class="search-item">
   <div>
-    <%= link_to verse.verse_key, verse.verse_key, class: 'number' %>
+    <%= link_to verse.verse_key, "/#{verse.verse_key}?store=false&translations=#{trans_ids.join(',')}", class: 'number' %>
   </div>
   <div class="search-item--results">
     <div class="search-item--ayah">

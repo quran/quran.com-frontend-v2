@@ -16,12 +16,20 @@ module QuranUtils
       end
     end
 
-    def self.import(content_type: Translation)
+    def self.import(content_type: Translation, language: nil)
       setup_language_index_classes(content_type)
 
-      TRANSLATION_LANGUAGES.each do |lang|
-        LANG_INDEX_CLASSES[lang.id].import scope: 'translations'
+      if language
+        import_translation_for_language(language)
+      else
+        TRANSLATION_LANGUAGES.each do |lang|
+          import_translation_for_language lang
+        end
       end
+    end
+
+    def self.import_translation_for_language(lang)
+      LANG_INDEX_CLASSES[lang.id].import scope: 'translations', force: true, index: "quran_content_#{lang.iso_code}"
     end
 
     def self.setup_indexes
@@ -43,7 +51,7 @@ module QuranUtils
         LANG_INDEX_CLASSES[language.id] = Class.new(content_type) do
           include Elasticsearch::Model
 
-          scope :translations, -> { where language_id: language.id }
+          scope :translations, -> { joins(:resource_content).where(language_id: language.id, resource_contents: {approved: true}) }
 
           settings index_settings
 

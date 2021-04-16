@@ -29,7 +29,7 @@ namespace :elasticsearch do
     [Chapter, Juz, MuhsafPage].each do |model|
       model.__elasticsearch__.create_index!
     end
-    QuranUtils::ContentIndex.setup_indexes
+    #QuranUtils::ContentIndex.setup_indexes
 
     ActiveRecord::Base.logger.silence do
       Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
