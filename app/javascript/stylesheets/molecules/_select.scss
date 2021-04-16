@@ -45,6 +45,27 @@
   }
 }
 
+.select2-search {
+  &::after {
+    content: $icon-search;
+    font-family: quran-icon;
+    font-size: 12px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $dark-green;
+    z-index: 100 !important;
+  }
+}
+
 .select2-dropdown{
   @at-root .dark & {
     background-color: $dark-grey;

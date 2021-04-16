@@ -1,6 +1,27 @@
 .input-wrapper {
   position: relative;
   width: fit-content;
+
+  .icon-search{
+    appearance: none !important;
+    border: none;
+    color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $dark-green;
+    z-index: $air;
+  }
+
   @at-root .header & {
     position: absolute;
     left: 50%;
@@ -60,7 +81,7 @@
     }
   }
 
-  &:after {
+  /*&:after {
     content: $icon-search;
     font-family: "quran-icon";
     color: white;
@@ -78,7 +99,7 @@
     z-index: 0;
     border-radius: 50%;
     background-color: $dark-green;
-  }
+  }*/
 
   &.medium {
     input {

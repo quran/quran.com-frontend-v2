@@ -2,12 +2,17 @@ import { Controller } from "stimulus";
 
 export default class extends Controller {
   connect() {
-    this.selects = $(".simple-select").select2({
+    const el = $(this.element)
+    this.selects = el.find(".simple-select").select2({
       dropdownAutoWidth: true,
       width: "100%",
       dropdownCssClass: "select-stylee",
       placeholder: "selected option"
     });
+
+    el.find(".simple-select").on('change', (e) => {
+      el.find('form').submit();
+    })
   }
 
   disconnect() {

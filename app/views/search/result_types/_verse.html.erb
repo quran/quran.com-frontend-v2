@@ -19,7 +19,7 @@
       <% translation_shown.each do |trans| %>
         <div class="search-item--translation">
           <p class="text text--grey text--medium">
-            <%= trans[:text].html_safe %>
+            <%= trans[:text].to_s.html_safe %>
           </p>
 
           <p class="text text--green text--medium">

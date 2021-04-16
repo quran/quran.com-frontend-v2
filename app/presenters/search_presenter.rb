@@ -31,6 +31,13 @@ class SearchPresenter < BasePresenter
     pagination.count
   end
 
+  def result_from
+    pagination.from
+  end
+
+  def result_to
+    pagination.to
+  end
   def meta_description
     "Quran search result for #{query}"
   end

@@ -17,7 +17,7 @@ export default class extends Controller {
     this.store = new LocalStore();
 
     if (this.shouldShowPopup())
-      setTimeout(() => this.showPopup(), 5000)
+      setTimeout(() => this.showPopup(), 1500)
     else if (this.shouldShowNotification()) {
       this.show()
     }
@@ -73,8 +73,7 @@ export default class extends Controller {
   canShowDonation(){
     const notOnDonation = location.pathname != '/donations'
     const currentPage = this.element.dataset.page;
-    const readingQuran = currentPage == 'juz' || currentPage == 'chapters';
-    debugger
+    const readingQuran = currentPage == 'quran' || currentPage == 'chapters';
     return notOnDonation && !readingQuran
   }
 

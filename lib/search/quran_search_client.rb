@@ -242,11 +242,27 @@ module Search
         query_filters[:match_phrase] = { chapter_id: options[:chapter].to_i }
       end
 
+      if filter_translation?
+        query_filters[:match_phrase] = { resource_id: options[:translation].to_i }
+      end
+
+      if filter_language?
+        query_filters[:match_phrase] = { language_id: options[:language].id }
+      end
+
       [query_filters.presence].compact
     end
 
     def filter_chapter?
       options[:chapter].presence && options[:chapter].to_i > 0
+    end
+
+    def filter_translation?
+      options[:translation].presence && options[:translation].to_i > 0
+    end
+
+    def filter_language?
+      options[:language]
     end
 
     def get_detected_languages_code

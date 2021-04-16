@@ -1,116 +1,126 @@
 <div class="search-results" data-controller="search-results">
-  <div class="container-xl search-results__content">
-    <div class="search-results__first space-b-32">
-      <div class="search-results__space"></div>
-      <div class="search-results__input space-x-32">
-        <div class="space-y-32">
-          <p class="text text--black text--xlarge text--semibold">Search</p>
-        </div>
+  <%= form_with url: search_path, method: :get do %>
+    <div class="container-xl search-results__content">
+      <div class="search-results__first space-b-32">
+        <div class="search-results__space"></div>
+        <div class="search-results__input space-x-32">
+          <div class="space-y-32">
+            <p class="text text--black text--xlarge text--semibold">Search</p>
+          </div>
 
-        <div class="search-suggestion-">
-          <div class="input-wrapper suggestion-input large fluid">
-            <input
-              type="search"
-              placeholder="Search for surah, ayah"
-              value="<%= @presenter.query %>"
-            >
+          <div class="search-suggestion-">
+            <div class="input-wrapper suggestion-input large fluid">
+              <input
+                type="search"
+                placeholder="Search for surah, ayah"
+                name=query
+                value="<%= @presenter.query %>"
+                />
+              <button type="submit" class="quran-icon icon-search">
+              </button>
+              <% if false %>
+                <div>
+                  <div class="did-you-mean">
+                    <p class="text-red">Did you mean:</p>
+                    <a class="text--green" href="">Ar-Rrahman</a>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-results__second">
+        <div class="search-results__menu space-b-32">
+          <div class="search-menu">
+            <div class="space-b-32">
+              <p class="text text  text--black text--large2 text--semibold">Filter</p>
+            </div>
+
+            <div class="space-b-32">
+              <p class="text text text  text--darkgrey text--medium text--semibold">
+                Language
+              </p>
+              <div class="simple-select-div">
+                <select class="simple-select" name="language">
+                  <option value="0">All Languages</option>
+                  <% Language.with_translations.each do |lang| %>
+                    <option value="<%= lang.iso_code %>"
+                         <% if lang.iso_code == params[:language] %>selected<% end %>
+                    >
+                      <small><%= lang.name %></small>
+                      (<%= lang.native_name %>)
+                    </option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-b-32">
+              <p class="text text text  text--darkgrey text--medium text--semibold">Translations</p>
+              <div class="simple-select-div">
+                <select class="simple-select" name="translation">
+                  <option value=0>All translations</option>
+                  <% ResourceContent.translations.one_verse.approved.order('priority asc').each do |trans| %>
+                    <option value="<%= trans.id %>"
+                            <% if trans.id.to_s == params[:translation] %>selected<% end %>
+                    >
+                      <%= trans.name %>
+                    </option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
 
             <% if false %>
-              <div>
-                <div class="did-you-mean">
-                  <p class="text-red">Did you mean:</p>
-                  <a class="text--green" href="">Ar-Rrahman</a>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="search-results__second">
-      <div class="search-results__menu space-b-32">
-        <div class="search-menu">
-          <div class="space-b-32">
-            <p class="text text  text--black text--large2 text--semibold">Filter</p>
-          </div>
-          <div class="space-b-32">
-            <p class="text text text  text--darkgrey text--medium text--semibold">
-              Language
-            </p>
-            <div class="simple-select-div">
-              <select class="simple-select">
-                <option value="1">option 1</option>
-                <option value="2">option 2</option>
-                <option value="3">option 3</option>
-                <option value="4">option 4</option>
-                <option value="5">option 5</option>
-                <option value="6">option 6</option>
-                <option value="7">option 7</option>
-                <option value="8">option 8</option>
-              </select>
-            </div>
-          </div>
-          <div class="space-b-32">
-            <p class="text text text  text--darkgrey text--medium text--semibold">Translations</p>
-            <div class="simple-select-div">
-              <select class="simple-select">
-                <option value="1">option 1</option>
-                <option value="2">option 2</option>
-                <option value="3">option 3</option>
-                <option value="4">option 4</option>
-                <option value="5">option 5</option>
-                <option value="6">option 6</option>
-                <option value="7">option 7</option>
-                <option value="8">option 8</option>
-              </select>
-            </div>
-          </div>
-
-          <% if false %>
-            <div class="">
-              <p class="text text text  text--darkgrey text--medium text--semibold">Show</p>
-              <label class="radio-label ">All <input class="" name="radio" type="radio">
+              <div class="">
+                <p class="text text text  text--darkgrey text--medium text--semibold">Show</p>
+                <label class="radio-label ">All <input class="" name="radio" type="radio">
+                  <span class="checkmark"></span>
+                </label> <label class="radio-label ">Only English <input class="" name="radio" type="radio">
                 <span class="checkmark"></span>
-              </label> <label class="radio-label ">Only English <input class="" name="radio" type="radio">
-              <span class="checkmark"></span>
-            </label> <label class="radio-label ">Only <input class="" name="radio" type="radio">
-              <span class="checkmark"></span>
-            </label>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="search-results__results space-x-32">
-        <div class="search-results__results--header space-b-32">
-          <div class="tabs">
-            <a id="" class="tabs__item tabs__item--selected ">All results</a>
-            <a id="" class="tabs__item ">Surah</a>
-            <a id="" class="tabs__item ">Ayah</a>
+              </label> <label class="radio-label ">Only <input class="" name="radio" type="radio">
+                <span class="checkmark"></span>
+              </label>
+              </div>
+            <% end %>
           </div>
-
-          <p class="text text text--grey text--small text--regular">
-            1-10 OF <%= @presenter.result_size %> SEARCH RESULTS
-          </p>
         </div>
 
-        <div class="search-results__results--body">
-          <div>
-            <% if (suggestions = @presenter.navigation_results).present? %>
-              <div class="space-b-24">
-                <p class="text text--grey text--medium text--regular">
-                  <strong>Jump to</strong>
-                </p>
-                <%= render partial: "search/result_types/navigate_suggestion", collection: suggestions, as: :suggestion %>
+        <div class="search-results__results space-x-32">
+          <div class="search-results__results--header space-b-32">
+            <% if false %>
+              <div class="tabs">
+                <a id="" class="tabs__item tabs__item--selected ">All results</a>
+                <a id="" class="tabs__item ">Surah</a>
+                <a id="" class="tabs__item ">Ayah</a>
               </div>
             <% end %>
 
-            <p class="text  text--grey text--medium text--regular">Results</p>
-            <%= render partial: 'search/result_types/verse', collection: @presenter.verses %>
+            <p class="text text text--grey text--small text--regular">
+              <%= pagy_nav(@presenter.pagination).html_safe %>
+              <%= @presenter.result_from %>-<%= @presenter.result_to %> OF <%= @presenter.result_size %> SEARCH RESULTS
+            </p>
+          </div>
+
+          <div class="search-results__results--body">
+            <div>
+              <% if (suggestions = @presenter.navigation_results).present? %>
+                <div class="space-b-24">
+                  <p class="text text--grey text--medium text--regular">
+                    <strong>Jump to</strong>
+                  </p>
+                  <%= render partial: "search/result_types/navigate_suggestion", collection: suggestions, as: :suggestion %>
+                </div>
+              <% end %>
+
+              <p class="text  text--grey text--medium text--regular">Results</p>
+              <%= render partial: 'search/result_types/verse', collection: @presenter.verses %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>

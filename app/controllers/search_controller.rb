@@ -22,7 +22,13 @@ class SearchController < ApplicationController
   protected
 
   def language
-    (params[:language] || params[:locale]).presence || 'en'
+    if (lang = (params[:language] || params[:locale])).presence
+      Language.find_by_iso_code(lang)
+    end
+  end
+
+  def filter_translation
+    params[:translation].presence
   end
 
   def query
@@ -45,14 +51,14 @@ class SearchController < ApplicationController
       query,
       page: page,
       size: size,
-      lanugage: language,
+      language: language,
+      translation: filter_translation,
       phrase_matching: force_phrase_matching?
     )
     navigational_client = Search::NavigationClient.new(
       query,
       page: page,
       size: size,
-      lanugage: language,
       phrase_matching: force_phrase_matching?
     )
 

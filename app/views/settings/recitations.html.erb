@@ -1,5 +1,5 @@
 <div class="reciters__content" data-controller="filter-list choose-recitation" data-list=".all-reciters" data-input="#filter-recitation">
-  <div class="input-wrapper large">
+  <div class="input-wrapper large select2-search">
     <input type="search"
            id="filter-recitation"
            placeholder="<%= t('filter.reciters', default: "Search Reciters") %>"
@@ -23,7 +23,6 @@
           <input class="" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
           <span class="checkmark"></span>
         </label>
-
         <!--<button id="" class="btn btn--darkgrey btn--medium btn--play btn--reciter">Hear the voice</button>-->
       </div>
     <%end%>

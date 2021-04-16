@@ -4,13 +4,18 @@ module Search
   VERSES_PER_PAGE = 20
 
   class Client
-    attr_accessor :query, :options, :page, :phrase_matching
+    attr_accessor :query,
+                  :options,
+                  :page,
+                  :phrase_matching,
+                  :language
 
     def initialize(query, options = {})
       @query = Search::Query.new(query)
       @options = options
       @page = options[:page].to_i.abs
       @language = options[:language]
+
       @phrase_matching = options[:phrase_matching]
     end
 
