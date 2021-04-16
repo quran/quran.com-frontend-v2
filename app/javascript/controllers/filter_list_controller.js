@@ -7,43 +7,34 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import { Controller } from "stimulus";
-import { debounce } from "lodash-es";
+import {Controller} from "stimulus";
 
 export default class extends Controller {
   connect() {
     this.el = $(this.element);
-
     this.listFilter(this.el.data("list"), this.el.data("input"));
   }
 
   listFilter(container, input) {
-    var that = this;
-    var list = $(container);
-    var searchInput = $(input);
-    try{
-      document.querySelector(".dropdown."+list.attr("id")).addEventListener("shown.bs.dropdown", () =>
-        searchInput.trigger("focus")
-      );
-    }catch(e){
-      searchInput.trigger("focus");
-    }
+    let that = this;
+    let list = $(container);
+    let searchInput = $(input);
+
     /* on change keyboard */
-    if(searchInput.length){
-      searchInput.change(
-        debounce(function(e) {
-          var filter = searchInput.val().toLowerCase();
-  
-          that.doFilter(filter, list);
-          return false;
-        }, 100)
-      );
-      
+    if (searchInput.length) {
+      if (searchInput.is(":visible"))
+        searchInput.trigger("focus");
+
+      searchInput.on("change", () => {
+        var filter = searchInput.val().toLowerCase();
+        that.doFilter(filter, list);
+      });
+
       // trigger change when user clear the search box
       searchInput[0].addEventListener("search", () =>
         searchInput.trigger("change")
       );
-  
+
       searchInput.keyup(() => {
         searchInput.trigger("change");
       });
@@ -51,19 +42,21 @@ export default class extends Controller {
   }
 
   doFilter(text, list) {
+    console.log("filtering", text);
+
     /* when user types more than 1 letter start search filter */
     if (text.length >= 1) {
       list
-        .find("[data-filter-tags]:not([data-filter-tags*='" + text + "'])")
+        .find(`[data-filter-tags]:not([data-filter-tags*="${text}"])`)
         .removeClass("filter-show")
-        .addClass("filter-hide");
+        .addClass("hidden");
 
       list
-        .find("[data-filter-tags*='" + text + "']")
-        .removeClass("filter-hide")
+        .find(`[data-filter-tags*="${text}"]`)
+        .removeClass("hidden")
         .addClass("filter-show");
     } else {
-      list.find("[data-filter-tags]").removeClass("filter-hide filter-show");
+      list.find("[data-filter-tags]").removeClass("hidden filter-show");
     }
   }
 }

@@ -32,7 +32,7 @@
 #  char_type_name :string
 #
 
-class Word < ApiCoreRecord
+class Word < ApplicationRecord
   belongs_to :verse
   belongs_to :char_type
   belongs_to :topic
@@ -48,7 +48,6 @@ class Word < ApiCoreRecord
   has_many :word_roots
   has_many :roots, through: :word_roots
 
-  has_one :audio, class_name: 'AudioFile', as: :resource
   has_one :word_corpus
 
   # For eager loading
@@ -57,11 +56,15 @@ class Word < ApiCoreRecord
 
   default_scope { order 'position asc' }
 
-  def code
+  def get_code_v1
     "&#x#{code_hex};"
   end
 
-  def code_v2
-    "&#x#{code_hex_v3};"
+  def get_code_v2
+    code_v2
+  end
+
+  def class_name
+    "p#{page_number}"
   end
 end

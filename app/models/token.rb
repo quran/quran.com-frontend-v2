@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tokens
@@ -11,5 +12,5 @@
 #  updated_at   :datetime         not null
 #
 
-class Token < ApiCoreRecord
+class Token < QuranCoreRecord
 end

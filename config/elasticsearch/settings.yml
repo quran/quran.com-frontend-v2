@@ -8,12 +8,14 @@ index:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html
   similarity:
     my_bm25:
+      # https://en.wikipedia.org/wiki/Okapi_BM25
       type: BM25
+      # Controls to what degree document length normalizes tf values. The default value is 0.75
       b: 0.236
 
   analysis:
     filter:
-      # english analyzer, see http://www.elasticsearch.org/guide/en/elasticsearch/reference/1.4/analysis-lang-analyzer.html#english-analyzer
+      # english analyzer, see https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html
       english_stop:
         type: stop
         stopwords_path: analysis/english_stop.txt
@@ -27,6 +29,7 @@ index:
           - Isa
           - Jesus
           - Noah
+          - Mecca
       arabic_keywords:
         type: keyword_marker
         keywords:
@@ -82,12 +85,13 @@ index:
           - arabic_keywords
       arabic_synonym_normalized:
         tokenizer: icu_tokenizer
+        char_filter:
+          - icu_normalizer
         filter:
           - arabic_keywords
           - quran_word_synonym
           - arabic_normalization
-          # - arabic_stemmer
-          - arabic_stop
+          - arabic_stemmer
           - icu_folding
 
       arabic_normalized:

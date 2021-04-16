@@ -18,7 +18,7 @@
 #  updated_at       :datetime         not null
 #
 
-class Chapter < ApiCoreRecord
+class Chapter < QuranCoreRecord
   include Slugable
   include QuranNavigationSearchable
   include NameTranslateable
@@ -29,4 +29,9 @@ class Chapter < ApiCoreRecord
   serialize :pages
 
   default_scope { order 'chapter_number asc' }
+
+  def default_slug
+    default = slugs.where(is_default: true).first
+    default&.slug || chapter_number
+  end
 end

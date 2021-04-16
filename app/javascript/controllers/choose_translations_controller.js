@@ -8,20 +8,23 @@
 // </div>
 
 import SettingController from "./setting_controller";
+import {getQuranReader} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
     super.connect();
-    const translations = this.get("translations");
+    this.bindClearAll();
 
-    this.element.querySelectorAll(".translation").forEach(trans => {
-      if (translations.includes(String(trans.value))) {
+    const translations = window.pageSettings ? window.pageSettings.translations : this.get("translations");
+
+    this.element.querySelectorAll(".translation-checkbox").forEach(trans => {
+      if (translations.includes(Number(trans.value))) {
         trans.setAttribute("checked", "checked");
       }
     });
 
     $(this.element)
-      .find(".translation")
+      .find(".translation-checkbox")
       .on("change", e => {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -30,18 +33,31 @@ export default class extends SettingController {
       });
   }
 
-  disconnect() {}
+  bindClearAll() {
+    $("#translation-clear-all").on("click", () => this.clearAllTranslations());
+  }
+
+  disconnect() {
+  }
 
   updateTranslations() {
     let newTranslations = [];
-    document.querySelectorAll(".translation:checked").forEach(trans => {
-      newTranslations.push(trans.value);
-    });
+    document
+      .querySelectorAll(".translation-checkbox:checked")
+      .forEach(trans => {
+        newTranslations.push(trans.value);
+      });
 
     this.set("translations", newTranslations);
+    getQuranReader().changeTranslations(newTranslations)
+  }
 
-    let controller = document.getElementById("chapter-tabs");
+  clearAllTranslations() {
+    document.querySelectorAll(".translation-checkbox").forEach(trans => {
+      trans.checked = false;
+    });
 
-    controller.chapter.changeTranslations(newTranslations);
+    this.set("translations", []);
+    getQuranReader().changeTranslations([])
   }
 }

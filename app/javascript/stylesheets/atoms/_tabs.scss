@@ -1,0 +1,56 @@
+.tabs {
+  display: flex;
+  border: 1px solid #c1c2c7;
+  border-radius: 4px;
+  padding: 2px;
+  @at-root .navbar & {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @include lg {
+      width: fit-content;
+      position: relative;
+      left: 0;
+      top: 0;
+      transform: translate(0px, 0px);
+    }
+  }
+  @at-root .dark & {
+    border-color: #71727e;
+  }
+}
+
+.tabs__item {
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: $font-medium;
+  padding: 3px 8px;
+  color: #71727e;
+  white-space: nowrap;
+  cursor: pointer;
+  @at-root .content-page & {
+    padding: 3px 8px;
+    margin: 0;
+  }
+  @at-root .dark & {
+    color: #999aa2;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $dark-green;
+  }
+}
+.tabs__item--selected {
+  background-color: #cdecf1;
+  color: $dark-green;
+  @at-root .content-page & {
+    @at-root .dark & {
+    }
+  }
+  @at-root .dark & {
+    // color: $light-green;
+    color: $dark-green !important;
+    background-color: #00abc24d;
+  }
+}

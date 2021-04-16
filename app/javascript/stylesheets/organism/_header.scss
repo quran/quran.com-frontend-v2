@@ -1,0 +1,35 @@
+.header {
+  //   background-color: rgba(226, 226, 226, 0.466);
+  position: relative;
+}
+.header--border {
+  box-shadow: 0 1px 0 0 #e1e1e4;
+  @at-root .dark & {
+    box-shadow: 0 1px 0 0 #333647;
+  }
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
+.header-inner__firstpart {
+  display: flex;
+  align-items: center;
+}
+.header-inner__firstpart__menu {
+  margin-right: 20px;
+}
+.header-input {
+  @include sm {
+    input {
+      display: none;
+    }
+  }
+}
+.header-theme-switch {
+  @include sm {
+    display: none;
+  }
+}

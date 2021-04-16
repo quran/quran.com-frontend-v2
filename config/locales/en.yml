@@ -6,10 +6,18 @@ en:
   local_native_name: English
   language: Language
   page: Page
+  tabs:
+    chapter: Show Surah
+    juz: Show Juz
   reader_mode:
     reading: Reading
     translation: Translations
     info: Surah Info
+  filter:
+    translations: Search Translations
+    reciters: Search Reciters
+    surah: Search Surah
+    ayah: Search ayah
   settings:
     label: Settings
     display: Display settings
@@ -19,8 +27,8 @@ en:
     sample_audio: Play Sample
     translations: Choose Translations
     translation_count:
-      one: Showing one translation
-      other: Showing %{count} translations
+      one: Showing <count>one</count> translation
+      other: Showing <count>%{count}</count> translations
     remove_all: Remove all
     translation_english: English
     translation_other: Other Languages
@@ -29,6 +37,7 @@ en:
     fonts:
       tajweed: Tajweed Text
       uthmani: Uthmani Text
+      imlaei: Imlaei/Simple
       qcf_v1: King Fahd Quran Complex v1
       qcf_v2: King Fahd Quran Complex v2
       indopak: IndoPak text
@@ -71,13 +80,14 @@ en:
     tafsir:
       label: Tafsirs
       select: Select Tafsir
-      filter_tafsir: "Filter by language:"
+      filter_tafsir: 'Filter by language:'
     bookmark:
       label: Bookmark
       done: Bookmarked!
     copy:
       label: Copy
       done: Copied!
+      advance: Advanced Copy
   search:
     label: Search
     placeholder: Search "Noah"
@@ -111,19 +121,20 @@ en:
     play_continuously: Keep playing without pause
     show_word_tooltip: Show word translation in tooltip while playing ayah
     scroll: Automatically scrolls to the currently playing ayah
+    repeatCurrent: Keep playing current ayah
+    loading: Loading audio
   loading: Loading...
   nav:
     title: Quran
     settings: Settings
-    contribute: Contribute
+    contribute: Donations
     about_us: About us
     developers: Developers
     useful_sites: Useful sites
     other_links: Other links
     contact_us: Contact us
     help: Help & feedback
-    about_project:
-      Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone
+    about_project: Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone
       to read, study, and learn The Noble Quran. The Noble Quran has many names including
       Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr, and Al-Noor.
     rights: All Rights Reserved
@@ -138,8 +149,9 @@ en:
     not_found: Sorry, this page does not exist
     invalid_verse: Check your Ayah selection. It's out of range.
     invalid_chapter: Check your Surah selection. It's out of range.
-    no_script:
-      Looks like either your browser does not support Javascript or its disabled.
+    invalid_page: Page is out of range.
+    invalid_juz: Juz is out of range.
+    no_script: Looks like either your browser does not support Javascript or its disabled.
       Quran.com workes best with JavaScript enabled. For more instruction on how to
       enable javascript <a href="http://www.enable-javascript.com/" target="_blank"
       rel="nofollow">click here</a>.

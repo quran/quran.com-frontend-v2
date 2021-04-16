@@ -26,13 +26,15 @@ de:
       Hoppla! Verbindung zur Web Konsolen-Middleware fehlgeschlagen.
       Bitte stellen Sie sicher, dass ein Rails-Entwicklungsserver läuft.
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: englisch
   site_local: 'Sprache der Website
 
     '
   change_local: Wählen Sie die Sprache aus, in der Sie die Website anzeigen lassen
     möchten
-  local_native_name: Englisch
+  local_native_name: Deutsch
   language: Sprache
   page: Seite
   reader_mode:
@@ -56,7 +58,7 @@ de:
 
       '
     translation_count:
-      one: Anzeigen einer Übersetzung
+      one: Zeigen <count>einer</count> Übersetzung
       other: Anzeigen von %{count} Übersetzungen
     remove_all: Alles entfernen
     translation_english: Englisch
@@ -71,6 +73,7 @@ de:
       qcf_v1: König Fahd Koran Komplex v1
       qcf_v2: König Fahd Koran Komplex v2
       indopak: IndoPak-Text
+      imlaei:
     font_size:
       label: Schriftgröße
       arabic: Arabisch
@@ -125,6 +128,7 @@ de:
     copy:
       label: Kopieren
       done: Kopiert!
+      advance:
   search:
     label: Suche
     placeholder: Suche "Noah"
@@ -165,6 +169,12 @@ de:
     play_continuously: Weiter abspielen ohne Pause
     show_word_tooltip: Wortübersetzung im Tooltip beim Abspielen von Vers anzeigen
     scroll: 'Scrollt automatisch zum aktuell gespielten Vers
+
+      '
+    repeatCurrent: 'Derzeitige Sure weiterhin abspielen lassen
+
+      '
+    loading: 'Audio laden
 
       '
   loading: Laden...
@@ -210,3 +220,13 @@ de:
 
       '
   close: Schließen
+  tabs:
+    chapter: Sure anzeigen
+    juz: Juz anzeigen
+  filter:
+    translations: Übersetzungen suchen
+    reciters: 'Rezitatoren suchen
+
+      '
+    surah: Sure suchen
+    ayah: Sure suchen

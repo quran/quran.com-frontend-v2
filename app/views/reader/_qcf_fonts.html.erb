@@ -1,0 +1,45 @@
+<script>
+  window.pageSettings = {
+    font: "<%= @presenter.font_type %>",
+    translations: <%= @presenter.valid_translations %>
+  }
+</script>
+
+<% if @presenter.showing_qcf_font? %>
+  <style>
+    <% font_ids(verses).each do |i| %>
+
+    <% if 'v2' == @presenter.font_type %>
+    @font-face {
+      font-family: 'p<%= i %>-v2';
+      src: local(QCF200<%=i%>),
+      url('<%= asset_url "quran_fonts/v2/woff2/p#{i}.woff2" %>') format('woff2'),
+      url('<%= asset_url "quran_fonts/v2/woff/p#{i}.woff" %>') format('woff');
+      font-display: swap;
+    }
+
+    <% end %>
+
+    <% if 'v1' == @presenter.font_type %>
+    @font-face {
+      font-family: 'p<%= i %>-v1';
+      src: local(QCF_P<%=i.to_s.rjust(3, '0')%>),
+      url('<%= asset_url "quran_fonts/v1/woff2/p#{i}.woff2" %>') format('woff2'),
+      url('<%= asset_url "quran_fonts/v1/woff/p#{i}.woff" %>') format('woff'),
+      url('<%= asset_url "quran_fonts/v1/ttf/p#{i}.ttf"%>') format('truetype');
+      font-display: swap;
+    }
+
+    <% end %>
+
+    .p<%= i %>-v2 {
+      font-family: 'p<%=i%>-v2';
+    }
+
+    .p<%= i %>-v1 {
+      font-family: 'p<%=i%>-v1';
+    }
+
+    <% end %>
+  </style>
+<% end %>

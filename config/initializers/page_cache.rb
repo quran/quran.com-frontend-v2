@@ -1,4 +1,6 @@
-require "action_controller/caching/pages"
+# frozen_string_literal: true
+
+require 'action_controller/caching/pages'
 
 Rails.configuration.to_prepare do
   ActionController::Caching::Pages::PageCache.class_eval do
@@ -6,11 +8,13 @@ Rails.configuration.to_prepare do
 
     def delete(path)
       return unless path
+
       Rails.cache.delete(path)
     end
 
-    def write(content, path, gzip)
+    def write(content, path, _gzip)
       return unless path
+
       Rails.cache.write(path, content, raw: true)
     end
   end

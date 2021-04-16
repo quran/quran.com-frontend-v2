@@ -1,0 +1,17 @@
+.theme-language {
+  display: flex;
+
+  @at-root .header & {
+      @include md {
+          display: none;
+      }
+  }
+  @at-root .site-menu & {
+      display: none;
+      @include md {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+      }
+  }
+}

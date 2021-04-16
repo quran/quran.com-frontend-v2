@@ -1,3 +1,6 @@
+// update this version when need to expire the cached settings
+const LOCAL_STORE_CACHE_VERSION = 'quran-v1.2'
+
 class CookieStore {
   getItem(key) {
     let values = document.cookie.match(`(^|;)\\s*${key}\\s*=\\s*([^;]+)`);
@@ -23,7 +26,7 @@ class LocalStore {
   }
 
   transformKey(key) {
-    return `quran-${key}`;
+    return `${LOCAL_STORE_CACHE_VERSION}-${key}`;
   }
 
   getStore() {

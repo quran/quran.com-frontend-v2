@@ -15,7 +15,7 @@
 #  updated_at          :datetime         not null
 #
 
-class Transliteration < ApiCoreRecord
+class Transliteration < QuranCoreRecord
   belongs_to :resource, polymorphic: true
   belongs_to :resource_content
 end

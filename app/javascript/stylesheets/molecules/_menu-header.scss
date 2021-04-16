@@ -1,0 +1,59 @@
+.menu__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include sm {
+        padding: 12px 18px;
+        border-bottom: 1px solid #DEE3E7;
+    }
+
+    @at-root .dropdown & {
+        .first {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+            width: 100%;
+            padding-right: 10px;
+        }
+        .icon-x {
+            // right: 20px;
+        }
+        @include smmin {
+            display: none;
+        }
+    }
+    .first {
+        display: flex;
+        align-items: center;
+        p {
+            text-transform: capitalize;
+            margin-left: 10px  !important;
+        }
+    }
+
+
+}
+.close-translations {
+
+}
+.close-reciters,.icon-x, .close-translations, .close-settings, .close-fonts {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &::before {
+      content: $icon-arrow-left2;
+      font-family: quran-icon;
+      font-size: 20px;
+      @at-root .dark & {
+        color: white;
+    }
+    }
+}
+.close-settings::before, .icon-x::before  {
+    content: $icon-x;
+    font-weight: bold;
+}

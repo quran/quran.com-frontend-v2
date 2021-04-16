@@ -16,6 +16,9 @@ ne-NP:
       last_word_connector: ", र "
       two_words_connector: " र "
       words_connector: ", "
+  spree:
+    date_picker:
+      first_day: 0
   date:
     formats:
       default: "%Y-%m-%d"

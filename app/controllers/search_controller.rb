@@ -1,16 +1,13 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
   include LanguageBoost
   QUERY_SANITIZER = Rails::Html::WhiteListSanitizer.new
 
   def search
     if do_search
-      render partial: 'results', layout: false if request.xhr?
     else
-      if request.xhr?
-        render 'error', layout: false
-      else
-        render 'error'
-      end
+      render 'error'
     end
   end
 
@@ -25,12 +22,18 @@ class SearchController < ApplicationController
   protected
 
   def language
-    (params[:language] || params[:locale]).presence || 'en'
+    if (lang = (params[:language] || params[:locale])).presence
+      Language.find_by_iso_code(lang)
+    end
+  end
+
+  def filter_translation
+    params[:translation].presence
   end
 
   def query
     query = (params[:q] || params[:query]).to_s.strip.first(150)
-    params[:q] = QUERY_SANITIZER.sanitize(query)
+    params[:q] = query #QUERY_SANITIZER.sanitize(query)
   end
 
   def size(default = 20)
@@ -48,15 +51,23 @@ class SearchController < ApplicationController
       query,
       page: page,
       size: size,
-      lanugage: language,
+      language: language,
+      translation: filter_translation,
       phrase_matching: force_phrase_matching?
     )
+    navigational_client = Search::NavigationClient.new(
+      query,
+      page: page,
+      size: size,
+      phrase_matching: force_phrase_matching?
+    )
+
     @presenter = SearchPresenter.new(self)
 
     begin
-      results = client.search
+      @presenter.add_search_results(client.search)
+      @presenter.add_navigational_results(navigational_client.search)
 
-      @presenter.add_search_results(results)
     rescue Faraday::ConnectionFailed => e
       false
     rescue Elasticsearch::Transport::Transport::ServerError => e
@@ -74,10 +85,19 @@ class SearchController < ApplicationController
       phrase_matching: force_phrase_matching?
     )
 
+    navigational_client = Search::NavigationClient.new(
+      query,
+      page: page,
+      size: size,
+      lanugage: language,
+      phrase_matching: force_phrase_matching?
+    )
+
     begin
-      results = client.suggest
       @presenter = SearchPresenter.new(self)
-      @presenter.add_search_results(results)
+      @presenter.add_search_results(client.suggest)
+      @presenter.add_navigational_results(navigational_client.search)
+
     rescue Faraday::ConnectionFailed => e
       false
     rescue Elasticsearch::Transport::Transport::ServerError => e

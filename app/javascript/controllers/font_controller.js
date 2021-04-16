@@ -8,6 +8,7 @@
 // </div>
 
 import SettingController from "./setting_controller";
+import {getQuranReader} from "../utility/controller-helpers";
 
 export default class extends SettingController {
   connect() {
@@ -24,13 +25,15 @@ export default class extends SettingController {
   }
 
   disconnect() {
-    $(document).off("change", "[name=font]", e => {});
+    $(document).off("change", "[name=font]", e => {
+    });
   }
 
   changeFont(target) {
     this.set("font", target.value);
-    let controller = document.getElementById("chapter-tabs");
 
-    controller.chapter.changeFont(target.value);
+    getQuranReader().changeFont(target.value).then(()=> {
+      this.updateFontSize();
+    });
   }
 }

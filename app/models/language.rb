@@ -14,18 +14,18 @@
 #  updated_at          :datetime         not null
 #
 
-class Language < ApiCoreRecord
+class Language < QuranCoreRecord
   include NameTranslateable
 
   serialize :es_indexes
-  scope :with_translations, -> {where 'translations_count > 0'}
+  scope :with_translations, -> { where 'translations_count > 0' }
 
   class << self
     def default
-      Language.find_by_iso_code(:en)
+      Language.find_by(iso_code: :en)
     end
 
-    def find_by_id_or_iso_code(id)
+    def find_with_id_or_iso_code(id)
       Language.where(id: id).or(Language.where(iso_code: id)).first
     end
   end

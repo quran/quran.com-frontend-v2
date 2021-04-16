@@ -10,26 +10,16 @@ class ChaptersController < ApplicationController
                 :load_verses,
                 cache_path: :generate_localised_cache_key
 
-  def index
-  end
+  def index; end
 
   def show
-    unless @presenter.chapter
-      return redirect_to root_path, error: t('errors.invalid_chapter')
-    end
-
-    if @presenter.out_of_range?
-      return redirect_to chapter_path(@presenter.chapter), error: t('errors.invalid_verse')
-    end
+    return redirect_to root_path, error: t('errors.invalid_chapter') unless @presenter.chapter
+    return redirect_to chapter_path(@presenter.chapter), error: t('errors.invalid_verse') if @presenter.out_of_range?
 
     render partial: 'verses', layout: false if request.xhr?
   end
 
   def ayatul_kursi
-    unless @presenter.chapter
-      return redirect_to root_path, error: t('chapters.invalid')
-    end
-
     if request.xhr?
       render partial: 'verses', layout: false
     else
@@ -38,6 +28,15 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
+    verse = Verse.find_by(verse_key: params[:start])
+    params[:from] = verse.verse_number
+    params[:to] = verse.chapter.verses_count
+
+    render layout: false
+  end
+
+  def referenced_verse
+    params[:store] = false
     render layout: false
   end
 
@@ -53,12 +52,11 @@ class ChaptersController < ApplicationController
     #  /1/8 => invalid ayah
     #  /1/0 => /1
 
-    range = params[:range]
     chapter = params[:id][/\d+/]
 
     if (path, error = chapter.presence && validate_chapter_rules(chapter))
       redirect_to path, error: error
-    elsif (path, error = range.presence && validate_range_rules(range))
+    elsif (path, error = validate_range_rules)
       redirect_to path, error: error
     end
   end
@@ -69,49 +67,45 @@ class ChaptersController < ApplicationController
     if chapter_id < 1 || chapter_id > 114
       [root_path, t('chapters.invalid')]
     elsif chapter_id.to_s != chapter
-      range_path(chapter_id, get_valid_range_params)
+      ayah_range_path(chapter_id, get_valid_range_params)
     end
   end
 
-  def validate_range_rules(range)
+  def validate_range_rules
     expected = get_valid_range_params
 
-    range_path(params[:id], range: expected) if expected != range
+    ayah_range_path(params[:id], range: expected) if expected != current_ayah_range
   end
 
   def get_valid_range_params
-    if params[:range].presence
-      start, finish = params[:range].split('-')
+    if params[:from].presence
+      start = params[:from]
+      finish = params[:to]
+
       valid_start = start.to_i.abs
       valid_end = finish.to_i.abs
 
-      unless finish
+      if finish.nil?
         return valid_start.zero? ? nil : valid_start.to_s
       end
 
       valid_start, valid_end = valid_end, valid_start if valid_start > valid_end
       valid_end = valid_start if valid_end.zero?
 
-      if valid_start > 0
-        "#{valid_start}-#{valid_end}"
+      if valid_start == valid_end
+        # 2/4-4 should redirect to 2/4
+        valid_start.to_s
       else
-        nil
+        "#{valid_start}-#{valid_end}"
       end
     end
   end
 
   def init_presenter
     @presenter = case action_name
-                 when 'index'
-                   HomePresenter.new(self)
                  when 'ayatul_kursi'
                    AyatulKursiPresenter.new(self)
-                 when 'load_verses'
-                   start = params[:verse].to_i
-                   from = params[:from] || start
-                   to = params[:to].to_i || start + 10
-
-                   params[:range] = "#{from}-#{to}"
+                 when 'load_verses', 'referenced_verse'
                    @presenter = ChapterPresenter.new(self)
                  else
                    ChapterPresenter.new(self)
@@ -119,6 +113,17 @@ class ChaptersController < ApplicationController
   end
 
   def generate_localised_cache_key
-    "verses:xhr#{request.xhr?}/#{@presenter.cache_key}/#{fetch_locale}"
+    key = @presenter.cache_key rescue 'invalid-route'
+    "#{fetch_locale}-verses-#{action_name}:xhr#{request.xhr?}-#{key}"
+  end
+
+  def current_ayah_range
+    if params[:from]
+      if params[:to]
+        "#{params[:from]}-#{params[:to]}"
+      else
+        params[:from]
+      end
+    end
   end
 end

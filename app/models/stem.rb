@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Stem < ApiCoreRecord
+class Stem < QuranCoreRecord
   has_many :word_stems
   has_many :words, through: :word_stems
   has_many :verses, through: :words

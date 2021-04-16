@@ -1,0 +1,143 @@
+<div id="title">
+  Advance copy options
+</div>
+
+<%
+  verse = @presenter.current_verse
+  first_ayah = @presenter.first_ayah_in_range
+  last_ayah = @presenter.last_ayah_in_range
+%>
+
+<div id="modal">
+  <div class="modal-body" data-controller="copy-advanced"
+       data-verse-key="<%= verse.verse_key %>">
+    <div>
+      <p class="text text--darkgrey text--medium text--semibold">Select ayah range</p>
+      <div class="display-settings__radios">
+        <label class="radio-label radio-label--border radio-label--black copy-current-ayah-radio"
+               id="copy-current-ayah-radio">
+          Current ayah(<%= verse.verse_key %>)
+          <input checked value="single" name="copy-type" type="radio" checked>
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="radio-label radio-label--border radio-label--black copy-range-ayah-radio"
+               id="copy-range-ayah-radio">
+          Range of ayah
+          <input value="multiple" name="copy-type" type="radio">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+      <div class="copy-range-ayah hidden ">
+        <div class="copy-range-labels">
+          <div class="audio-select tab__row tab__row--col">
+            <p class="text text--darkgrey text--medium text--semibold">From Ayah</p>
+            <div class="simple-select-div">
+              <select class="simple-select" id="copy-range-ayah-from">
+                <option selected value="0">
+                  <%= _t('player.select_verse') %>
+                </option>
+                <% @presenter.fetch_ayah_keys.each do |key| %>
+                  <option
+                    value="<%= key %>"
+                    <%= 'selected' if key == first_ayah %>
+                  >
+                    <%= key %>
+                  </option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+
+          <div class="audio-select tab__row tab__row--col">
+            <p class="text text--darkgrey text--medium text--semibold">To Ayah</p>
+            <div class="simple-select-div">
+              <select class="simple-select" id="copy-range-ayah-to">
+                <option selected value="0">
+                  <%= _t('player.select_verse') %>
+                </option>
+                <% @presenter.fetch_ayah_keys.each do |key| %>
+                  <option
+                    value="<%= key %>"
+                    <%= 'selected' if key == last_ayah %>
+                  >
+                    <%= key %>
+                  </option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="text text--darkgrey text--medium text--semibold">
+        What do you want to copy?
+      </p>
+      <div class="copy-translation">
+        <label class="check-label copy-arabic-check">
+          Arabic text(Uthmani text)
+          <input type="checkbox" checked id=copy-arabic>
+          <span class="checkmark"></span>
+        </label>
+
+        <p class="text text--darkgrey text--large text--regular">
+          Translations
+        </p>
+        <div class="copy-translation-languages">
+          <% @presenter.translations.each do |translation| %>
+            <label class="check-label">
+              <%= translation.translated_name.name %>
+              <input type="checkbox"
+                     value="<%= translation.id %>"
+                     name="copy-translation"
+                     class="copy-translation">
+              <span class="checkmark"></span>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy-footnote-section">
+      <p class="text text--darkgrey text--medium text--semibold">
+        Copy also the Footnote(s)
+      </p>
+      <label class="radio-label">
+        Yes
+        <input value="yes"
+               name="copy-footnote"
+               class="copy-footnote"
+               type="radio">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio-label ">
+        No
+        <input checked
+               value="no"
+               name="copy-footnote"
+               class="copy-footnote"
+               type="radio"
+        >
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <div class="p-2 my-2 text--black header--border rounded-sm hidden" id=file-notice style="border: 1px dashed;">
+      Text is copied successfully in your clipboard. <a href="">Click here</a> if you want to download text file.
+    </div>
+
+    <div class="p-2 my-2 text--black header--border rounded-sm hidden" id=error-notice style="border: 1px dashed;">
+      Please select valid ayah range and try again.
+    </div>
+
+    <div class="copy-footer">
+      <button id="copy"
+              class="btn btn--darkgreen btn--medium close-copy">
+        Copy text
+      </button>
+    </div>
+  </div>
+</div>

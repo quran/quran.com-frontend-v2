@@ -1,0 +1,5 @@
+<%
+  url, text = suggestion
+%>
+
+<%= render "search/result_types/#{text['type']}", url: url, text: text %>

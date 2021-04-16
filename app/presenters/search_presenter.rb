@@ -1,12 +1,25 @@
+# frozen_string_literal: true
+
 class SearchPresenter < BasePresenter
+  attr_accessor :navigation_results
+
+  def add_navigational_results(search)
+    @navigation_results = search.results
+  end
+
   def add_search_results(search_response)
     @search = search_response
     @translations = []
     @results = @search.results
   end
 
+  def show_header_search?
+    false
+  end
+
   def no_results?
     return ture if @search.nil?
+
     @search.empty?
   end
 
@@ -14,6 +27,17 @@ class SearchPresenter < BasePresenter
     pagination.next
   end
 
+  def result_size
+    pagination.count
+  end
+
+  def result_from
+    pagination.from
+  end
+
+  def result_to
+    pagination.to
+  end
   def meta_description
     "Quran search result for #{query}"
   end
@@ -30,22 +54,6 @@ class SearchPresenter < BasePresenter
 
   def render_translations?(verse)
     @results[verse.id][:translations].present?
-  end
-
-  def load_translations(verse)
-    strong_memoize "translations_#{verse.id}" do
-      translations = @results[verse.id][:translations].group_by do |t|
-        t[:language]
-      end
-
-      translations.keys.each do |key|
-        translations[key] = translations[key].map do |t|
-          t[:texts]
-        end.flatten
-      end
-
-      translations
-    end
   end
 
   def show_verse_actions?
@@ -65,19 +73,21 @@ class SearchPresenter < BasePresenter
     "?translations=#{translations_ids.join(',')}"
   end
 
-  def items
+  def verses
     strong_memoize :items do
-      if :navigation == @search&.result_type
-        @results
-      else
-        Verse.unscoped.where(id: @results.keys).each do |v|
-          highlights = @results[v.id]
-          if highlights[:text].present?
-            v.highlighted_text = highlights[:text].html_safe
+      Verse.unscoped.where(id: @results.keys).each do |v|
+        documents = @results[v.id]
+        v.highlighted_translations = []
+
+        documents.each do |document|
+          if document['type'] == 'verse'
+            v.highlighted_text = document[:text]&.html_safe
           else
-            v.highlighted_text = v.text_imlaei
+            v.highlighted_translations.push(document)
           end
         end
+
+        v.highlighted_text ||= v.text_uthmani
       end
     end
   end

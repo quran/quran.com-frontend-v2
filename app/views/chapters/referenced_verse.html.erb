@@ -1,0 +1,13 @@
+<%
+  verses = @presenter.verses
+%>
+<div id="title">
+  Referenced ayah <a href='/<%= @presenter.chapter.id %>/<%= @presenter.ayah_range %>'><%= @presenter.chapter.id %>:<%= @presenter.ayah_range %></a>
+</div>
+
+<div id="modal">
+  <div class="modal-body referenced--ayah">
+    <%= render 'reader/qcf_fonts', verses: verses %>
+    <%= render partial: 'reader/verse', collection: verses %>
+  </div>
+</div>

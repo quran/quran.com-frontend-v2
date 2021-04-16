@@ -1,7 +1,11 @@
-<%= render 'info' %>
+<div id='chapter-info'>
+  <div class="container">
+    <%= render 'info' %>
 
-<% unless request.xhr? %>
-  <div class="text-center my-4">
-  <%= link_to "Back to Surah", "/#{@presenter.chapter.chapter_number}", class: 'btn btn-primary' %>
+    <% unless request.xhr? %>
+      <div class="text-center my-4">
+        <%= link_to "Back to Surah", "/#{@presenter.chapter.chapter_number}", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

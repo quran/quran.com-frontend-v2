@@ -1,27 +1,36 @@
-<div class="row page my-2" id="page-num-<%= verses[0] %>">
+<%
+  page = verses[0].page_number
+  first_verse = verses.first
+%>
+
+<div class="row page my-3 <%= 'page--center' if @presenter.center_align_page?(page) %>" id="page-<%= page %>">
   <div class="col-md-12">
-    <h4 class="text-muted"><%= _t('page') %> <%= verses[0] %></h4>
+    <% lines = group_ayah_by_lines(verses) %>
 
-    <% lines = group_ayah_by_lines(verses[1]) %>
-
-    <div class="lines">
+    <div class="lines text-center px-3">
       <% lines.each do |k, line| %>
-        <div class="line">
-          <div class="text-center">
-            <% line.each do |verse_number, words| %>
-              <div class="arabic d-inline verse <%= @presenter.font_method %>" data-verse-number="<%= verse_number %>" data-controller="verse" data-key="<%= verse_number %>">
-                <%= render partial: 'word', collection: words %>
+        <div class="line <%= @presenter.font_method %>">
+          <div class="line-verses  <%= 'line--single-verse' if line.keys.size == 1 %>">
+            <% line.each do |verse_number, word_list| %>
+              <%
+                words = word_list[:words]
+                verse_key = words.first.verse_key
+              %>
+              <div class="verse"
+                   data-controller="verse"
+                   data-reading="true"
+                   data-key="<%= verse_key %>">
+                <div class="arabic" data-key="<%= verse_key %>">
+                  <%= render partial: 'reader/word', collection: word_list[:words] %>
+                </div>
               </div>
             <% end %>
           </div>
         </div>
       <% end %>
     </div>
-
-    <div class="row d-flex justify-content-end row-border">
-      <div class="col-md-11">
-        <hr class="hr-border">
-      </div>
-    </div>
   </div>
 </div>
+
+<%= render 'reader/juz_art', verse: first_verse, page: page  %>
+<div class="horizontal-line"></div>

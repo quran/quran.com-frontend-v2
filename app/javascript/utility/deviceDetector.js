@@ -9,4 +9,10 @@ export default class DeviceDetector {
   isChrome() {
     return /chrom(e|ium)/.test(navigator.userAgent.toLowerCase())
   }
+
+  isSafari(){
+    return window.safari || (/CriOS/i.test(navigator.userAgent) &&
+        /iphone|ipod|ipad/i.test(navigator.userAgent))
+  }
+
 }

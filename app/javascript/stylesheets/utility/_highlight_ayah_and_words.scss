@@ -1,0 +1,13 @@
+.word.highlight{
+  color: $dark-green !important;
+}
+
+.verse.highlight{
+  background-color: #f5fbf7;
+}
+
+.dark{
+  .verse.highlight{
+    background-color: #32312c;
+  }
+}

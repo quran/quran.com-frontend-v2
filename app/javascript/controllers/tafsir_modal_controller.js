@@ -8,10 +8,11 @@ export default class extends Controller {
   selectedLang = "";
 
   connect() {
-    $("#tafsir-results a").on("click", () => {
+    $("#tafsir-list a").on("click", () => {
       if (window.dialog) {
         window.dialog.hide();
-        window.dialog.disable();
+        //window.dialog.disable();
+        window.dialog.dispose();
         window.dialog = null;
       }
     });
@@ -44,7 +45,7 @@ export default class extends Controller {
 
     // filter the results
     document
-      .getElementById("tafsir-results")
+      .getElementById("tafsir-list")
       .querySelectorAll("li")
       .forEach(element => {
         element.hidden =

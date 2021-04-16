@@ -6,14 +6,13 @@
 // <div data-controller="word">
 // </div>
 
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
 import Tooltip from "bootstrap/js/src/tooltip";
-import LocalStore from "../utility/local-store";
 
 export default class extends Controller {
   connect() {
+    super.connect();
     let el = this.element;
-    const store = new LocalStore();
     const dataset = el.dataset;
 
     el.tooltip = new Tooltip(el, {
@@ -22,44 +21,18 @@ export default class extends Controller {
       html: true,
       sanitize: false,
       template:
-        "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
+        "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>",
       title: () => {
         const local = dataset.local;
-        const tooltip = document.body.setting.get('tooltip');
+        const tooltip = document.body.setting.get("tooltip");
 
         const text = dataset[tooltip];
         return `<div class='${local}'>${text}</div>`;
       }
     });
 
-    el.addEventListener("dblclick", e => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      this.dbClick(e);
-    });
-
-    el.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-
-      this.play();
-    });
-
+    this.bindEvents();
     this.el = el;
-  }
-
-  play() {
-    let data = this.element.dataset;
-    GoogleAnalytic.trackEvent("Play Word", "Play", data.key, 1);
-
-    let player,
-      playerDom = document.getElementById("player");
-
-    if (playerDom) player = playerDom.player;
-    if (player&&data.audio) {
-      return player.playWord(data.audio);
-    }
   }
 
   dbClick() {
@@ -67,14 +40,46 @@ export default class extends Controller {
       playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
-    if (player) {
-      return player.seekToWord(this.el.dataset.position);
-    }
+    //if (player) {
+    //  return player.seekToWord(this.el.dataset.position);
+    //}
   }
 
   disconnect() {
-    this.el.removeEventListener("click", () => {});
-    this.el.removeEventListener("dblclick", () => {});
-    this.el.removeEventListener("dispose", () => {});
+    this.el.removeEventListener("click", () => {
+    });
+    this.el.removeEventListener("dblclick", () => {
+    });
+
+    if (this.el.tooltip) {
+      this.el.tooltip.dispose()
+    }
+  }
+
+  play() {
+    let wordPlayer;
+    let playerDom = document.getElementById("player");
+
+    if (playerDom) wordPlayer = playerDom.wordPlayer;
+
+    if (wordPlayer) {
+      const {audio, key} = this.element.dataset;
+      GoogleAnalytic.trackEvent("Play Word", "Play", key, 1);
+      wordPlayer.play(audio);
+    }
+  }
+
+  bindEvents() {
+    this.element.addEventListener("dblclick", e => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      this.dbClick(e);
+    });
+
+    this.element.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      this.play()
+    });
   }
 }

@@ -28,6 +28,8 @@ pt-BR:
       Opa! Falha ao conectar-se ao middleware do console da Web.
       Por favor, certifique-se de que um servidor de desenvolvimento rails está sendo executado.
     format: "%{attribute} %{message}"
+    invalid_page: A página está fora dos limites.
+    invalid_juz: O Juz está fora dos limites.
   local: Inglês
   site_local: Idioma do Site
   change_local: Escolha o idioma no qual você deseja que o site seja exibido
@@ -65,6 +67,7 @@ pt-BR:
       qcf_v1: Alcorão do Complexo do Rei Fahd v1
       qcf_v2: Alcorão do Complexo do Rei Fahd v2
       indopak: Texto IndoPak
+      imlaei: Imlaei/Simples
     translation_count:
       one: Mostrando uma tradução
       other: Mostrando %{count} traduções
@@ -96,6 +99,7 @@ pt-BR:
     copy:
       label: Copiar
       done: Copiado!
+      advance: Cópia avançada
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
@@ -135,6 +139,8 @@ pt-BR:
     pause: Pausa para
     play_continuously: Continue reproduzindo sem pausar
     show_word_tooltip: Mostrar tradução de palavras na dica ao reproduzir ayah
+    repeatCurrent: Continuar reproduzindo ayah atual
+    loading: Carregando áudio
   loading: Carregando...
   nav:
     title: Alcorão
@@ -173,3 +179,11 @@ pt-BR:
     translation: Traduções
     info: Informações do capítulo
   share_ayah: Compartilhe ayah
+  tabs:
+    chapter: Mostrar Surah (Capítulo)
+    juz: Mostrar Juz
+  filter:
+    translations: Pesquisar Traduções
+    reciters: Pesquisar Recitadores
+    surah: Pesquisar Surah (capítulo)
+    ayah: Pesquisar Ayah (verso)

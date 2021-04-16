@@ -5,7 +5,7 @@ var PRE_DEFINED_FOOTNOTES = {
   sg: "Singular",
   pl: "Plural",
   dl:
-    "<b>Dual</b> <br/> A form for verbs and pronouns in Arabic language when addressing two people" //A form for verbs and pronouns in Arabic language when addressing two people
+    "<b>Dual</b> <br/> A form for verbs and pronouns in Arabic language when addressing two people"
 };
 
 export default class extends Controller {
@@ -30,7 +30,7 @@ export default class extends Controller {
           return existing.toggleClass("d-none");
         }
 
-        fetch(`/foot_note/${id}`, {
+        fetch(`/foot_note/${id}?resource_content_id=${this.element.dataset.resourceContentId}`, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
           .then(resp => resp.text())

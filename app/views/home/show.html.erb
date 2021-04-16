@@ -1,0 +1,55 @@
+<div class="container content-page">
+  <div class="content-page__center col">
+    <%= image_tag 'quran-logo.png', class: 'quran-logo', alt: 'quran.com logo' %>
+
+    <h1 class="green space-y-32">
+      <%= _t('noble_quran') %>
+    </h1>
+
+    <div class="space-y-8">
+      <div class="input-wrapper large">
+        <%= render 'shared/search_form' %>
+      </div>
+    </div>
+  </div>
+
+  <%= render 'popular_searches' %>
+
+  <div class="container content-page__center col">
+    <div class="">
+      <div class="tabs" data-controller="tabs">
+        <a id="tab--surah"
+           class="tabs__item tabs__item--selected show-surah"
+           data-target="#surah-list"
+           data-tab="home-tabs"
+           role="tab"
+           aria-controls="surah-list"
+           aria-selected="true">
+          <%= _t('tabs.chapter') %>
+        </a>
+
+        <a id="tab--juz"
+           class="tabs__item show-juz"
+           data-target="#juz-list"
+           data-tab="home-tabs"
+           role="tab"
+           aria-controls="juz-list"
+           aria-selected="false">
+          <%= _t('tabs.juz') %>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container space-y-32">
+  <div class="surah-section" data-tab-group="home-tabs" id="surah-list">
+    <%= render partial: 'chapter_item', collection: @presenter.chapters, as: :chapter %>
+  </div>
+
+  <div class="juz-section hidden" data-tab-group="home-tabs" id="juz-list">
+    <%= render partial: 'juz_item', collection: @presenter.juz, as: :juz %>
+  </div>
+</div>
+
+<%= render 'related_sites' %>

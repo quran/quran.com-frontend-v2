@@ -1,0 +1,218 @@
+// .dropdown {
+//   background-color: #ffffff;
+//   border: 1px solid $grey2;
+//   border-radius: 8px;
+//   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+//   width: 290px;
+//   height: 290px;
+//   overflow: hidden;
+//   @at-root .dark {
+//     background-color: #31333d;
+//     border: 1px solid #71727e;
+//     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+//   }
+//   .input {
+//     padding: 10px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//   .items {
+//     overflow-y: scroll;
+//     height: 100%;
+//     .item {
+//       // display: flex;
+//       // padding: 4px 8px;
+//       // margin: 2px 0;
+//       // cursor: pointer;
+//       // &:hover {
+//       //   background-color: $grey2;
+//       // }
+
+//       // @at-root .dark {
+//       //   .item:hover {
+//       //     background-color: #1c1c20 !important;
+//       //   }
+//       //   .arabic {
+//       //     color: white !important;
+//       //   }
+//       //   .name-arabic p {
+//       //     color: white !important;
+//       //     opacity: 0.5;
+//       //   }
+//       //   .number p {
+//       //     color: $grey1 !important;
+//       //   }
+//       // }
+//     }
+//     .number {
+//       // display: flex;
+//       // align-items: center;
+//       // margin-right: 15px;
+//       // p {
+//       //   color: $font-grey;
+//       //   font-size: $font-medium;
+//       //   margin: 0;
+//       //   padding: 0;
+//       // }
+//     }
+//     .name-latin {
+//       // flex: 1;
+//       // .arabic {
+//       //   color: $font-darkgrey;
+//       //   font-weight: $font-semibold;
+//       //   font-size: $font-medium;
+//       // }
+//       // .english {
+//       //   color: $font-grey;
+//       //   font-weight: $font-regular;
+//       //   font-size: $font-small;
+//       // }
+//       // p {
+//       //   margin: 0;
+//       //   padding: 0;
+//       // }
+//     }
+//     .name-arabic {
+//       // display: flex;
+//       // flex-direction: column;
+//       // justify-content: center;
+//       // p {
+//       //   color: $grey9;
+//       //   font-size: $font-medium;
+//       //   margin: 0;
+//       //   padding: 0;
+//       // }
+//     }
+//   }
+// }
+.dropdown {
+  background-color: #ffffff;
+  border: 1px solid $grey2;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  width: 290px;
+  height: 290px;
+  overflow: hidden;
+  @at-root .dark  & {
+    background-color: #31333d;
+    border: 1px solid #71727e;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+  .menu-header {
+    display: none;
+    @include sm {
+      display: block;
+    }
+  }
+
+
+}
+
+
+.dropdown--input {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown--items {
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 50px;//give some space to last element
+  @include scrollbarStyle;
+ }
+
+.dropdown-item {
+  display: flex;
+  padding: 4px 8px;
+  margin: 2px 0;
+  cursor: pointer;
+  &:hover {
+    background-color: $grey2;
+  }
+}
+
+.dropdown-item {
+  display: flex;
+  padding: 4px 8px;
+  margin: 2px 0;
+  cursor: pointer;
+  &:hover {
+    background-color: $grey2;
+  }
+
+  @at-root .dark & {
+    &:hover {
+      background-color: #1c1c20 !important;
+    }
+  }
+}
+.dropdown-item__number {
+  display: flex;
+  align-items: center;
+  p {
+    //color: $font-grey;
+    font-size: $font-medium;
+    margin: 0;
+    padding: 0;
+    @at-root .dark & {
+      color: $grey1;
+    }
+    @at-root .dropdown-item--selected & {
+      color: $dark-green !important;
+    }
+  }
+}
+.dropdown-item__name-latin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-left: 15px;
+  min-height: 30px;
+  p {
+    @at-root .dropdown-item--selected & {
+      color: $dark-green !important;
+    }
+    margin: 0;
+    padding: 0;
+  }
+}
+.dropdown-item__arabic {
+  //color: $font-darkgrey;
+  font-weight: $font-semibold;
+  font-size: $font-medium;
+
+  @at-root .dark & {
+    color: white;
+  }
+}
+.dropdown-item__english {
+  color: $font-grey;
+  font-weight: $font-regular;
+  font-size: $font-small;
+  @at-root .dark & {
+    color: $grey8;
+  }
+}
+
+.dropdown-item__name-arabic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    @at-root .dropdown-item--selected & {
+      color: $dark-green !important;
+    }
+    @at-root .dark & {
+      color: white;
+      opacity: 0.55;
+    }
+    color: $grey9;
+    font-size: $font-medium;
+    margin: 0;
+    padding: 0;
+  }
+}

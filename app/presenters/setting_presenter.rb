@@ -1,4 +1,15 @@
+# frozen_string_literal: true
+
 class SettingPresenter < AudioPresenter
+  FONT_LOCAL_KEYS = {
+      'v1' => 'qcf_v1',
+      'v2' => 'qcf_v2',
+      'uthmani' => 'uthmani',
+      'imlaei' => 'imlaei',
+      'indopak' => 'indopak',
+      'tajweed' => 'tajweed'
+  }
+
   def selected_reciter
     load_recitations
       .find(recitation_id)
@@ -18,38 +29,56 @@ class SettingPresenter < AudioPresenter
     strong_memoize :languages do
       list = Language.with_translations.eager_load(:translated_name)
 
-      eager_load_translated_name(list).reduce({}) do |hash, translation|
+      eager_load_translated_name(list).each_with_object({}) do |translation, hash|
         hash[translation.id] = translation
-        hash
+      end
+    end
+  end
+
+  def page_mode?
+    params[:page_number].present?
+  end
+
+  def verse_keys
+    strong_memoize :verse_keys do
+      if params[:chapter]
+        verses_count = QuranUtils::Quran.get_ayah_count(params[:chapter].to_i)
+        1.upto(verses_count).map { |verse_number| "#{params[:chapter]}:#{verse_number}"}
+      elsif params[:juz_number]
+        Verse.where(juz_number: params[:juz_number]).order('verse_index ASC').pluck(:verse_key)
+      elsif params[:page_number]
+        Verse.where(page_number: params[:page_number]).order('verse_index ASC').pluck(:verse_key)
       end
     end
   end
 
   def translations
     list = ResourceContent
-             .eager_load(:translated_name)
-             .one_verse
-             .translations
-             .approved
-             .order('priority ASC')
+           .eager_load(:translated_name)
+           .one_verse
+           .translations
+           .approved
+           .order('priority ASC')
 
     translations = eager_load_translated_name(list)
 
-    translations.group_by do |trans|
-      trans.language_id
-    end
+    translations.group_by(&:language_id)
   end
 
   def selected_translation_count
     valid_translations.size
   end
 
+  def selected_font_key
+    FONT_LOCAL_KEYS[font_type]
+  end
+
   protected
 
   def load_recitations
     list = Recitation
-             .eager_load(reciter: :translated_name)
-             .approved
+           .eager_load(reciter: :translated_name)
+           .approved
 
     eager_load_translated_name(list)
   end

@@ -1,0 +1,166 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: $font-regular;
+  font-variant: normal;
+  font-style: normal;
+}
+
+.dark {
+  background-color: $black;
+}
+
+@mixin scrollbarStyle {
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: $grey9;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+    @at-root .dark & {
+      background-color: $dark-grey;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #808696;
+    border-radius: 4px;
+    width: 6px;
+  }
+}
+
+html {
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: $grey9;
+    border-radius: 4px;
+
+    &:hover {
+      width: 12px;
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+
+    &:hover {
+      width: 12px;
+    }
+
+    @at-root .dark & {
+      background-color: $dark-grey;
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #808696;
+    border-radius: 4px;
+    width: 6px;
+
+    &:hover {
+      width: 12px;
+    }
+  }
+}
+
+// Small devices
+@mixin xsm {
+  @media (max-width: #{$screen-xsm-min}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+@mixin smmin {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+@mixin mdmin {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lgmin {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+.arabic .start-circle,
+.arabic .end-circle {
+  width: 3px;
+  height: 2em;
+  background-color: $dark-green;
+  @at-root .dark & {
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    left: -5px;
+    right: -5px;
+    top: 0;
+    bottom: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: -5px;
+    left: -3px;
+    // background: #31333d;
+    border-radius: 50%;
+    background-color: $dark-green;
+    @at-root .dark & {
+    }
+  }
+}
+
+.arabic .start-circle {
+  transform: rotate(180deg);
+}
+
+.arabic .selection {
+  position: absolute;
+  background: #cfeff4;
+  z-index: -1;
+  @at-root .dark & {
+    background-color: #183036;
+  }
+}

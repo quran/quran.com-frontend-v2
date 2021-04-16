@@ -1,0 +1,37 @@
+<div id="title">
+  Feedback
+</div>
+
+<div id="modal">
+  <form action='http://community-staging.quran.com/api/feedbacks'
+        method='POST'
+        data-remote=true
+        data-controller="feedback"
+        id='feedback-form'>
+    <div class="modal-body text--black">
+      <div class="form-group">
+        <label for="name">Your name</label>
+        <input id=name type="text" class="form-control" name='feedback[name]' placeholder="Enter your full name" autofocus required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your email address</label>
+        <input id=email type="email" class="form-control" name='feedback[email]' placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea class="form-control" name='feedback[message]' placeholder="Enter your message" required></textarea>
+      </div>
+
+      <input type="hidden" class="form-control" name='feedback[url]' id='current-url'>
+      <div class="p-2 my-2 text--black header--border rounded-sm hidden" id=notice style="border: 1px dashed;">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a class="btn btn-secondary btn--medium" data-dismiss="modal" aria-label="Close">Cancel</a>
+      <button type="submit" class="btn btn--darkgreen btn--medium" id=submit>Submit</button>
+    </div>
+  </form>
+</div>

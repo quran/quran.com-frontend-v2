@@ -1,0 +1,28 @@
+<% reading = {reading: @presenter.reading_mode?} %>
+
+<div class="reading__buttons flexx-center"
+     id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination"
+     data-url="<%= quran_juz_path(@presenter.current, reading) %>">
+
+  <% if @presenter.next_page %>
+    <%= juz_next_page_link %>
+  <% end %>
+
+  <% if @presenter.continue? %>
+    <%= link_to quran_juz_path(@presenter.current_juz, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
+      <%= _t('juz.read_full', default: 'Read full juz') %>
+    <% end %>
+  <% else %>
+    <% if juz = @presenter.previous_juz %>
+      <%= link_to quran_juz_path(juz, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
+        <%= _t('juz.previous', default: 'Previous Juz') %>
+      <% end %>
+    <% end %>
+
+    <% if juz = @presenter.next_juz %>
+      <%= link_to quran_juz_path(juz, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>
+        <%= _t('juz.next', default: 'Next Juz') %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

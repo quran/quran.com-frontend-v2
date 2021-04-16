@@ -27,14 +27,10 @@
 #  verse_stem_id  :integer
 #
 
-class Verse < ApiCoreRecord
+class Verse < QuranCoreRecord
   include QuranSearchable
 
   belongs_to :chapter, inverse_of: :verses, counter_cache: true
-  # Don't need these relation for now
-  # belongs_to :verse_root
-  # belongs_to :verse_lemma
-  # belongs_to :verse_stem
 
   has_many :tafsirs
   has_many :words
@@ -45,13 +41,26 @@ class Verse < ApiCoreRecord
   # For eager loading
   has_one  :audio, class_name: 'AudioFile'
 
-  attr_accessor :highlighted_text
+  attr_accessor :highlighted_text,
+                :highlighted_translations
 
-  def self.find_by_id_or_key(id)
-    where(verse_key: id).or(where(id: id)).first
+  def self.find_with_id_or_key(id)
+    if(id.to_s.include?(':'))
+      where(verse_key: id)
+    else
+      where(id: id)
+    end.first
+  end
+
+  def self.filter_with_id_or_key(id)
+    where(verse_key: id).or(where(id: id))
   end
 
   def highlighted_text
     @highlighted_text || text_uthmani
+  end
+
+  def verse_id
+    id
   end
 end

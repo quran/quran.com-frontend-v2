@@ -1,0 +1,40 @@
+.juz-section {
+  //   display: grid;
+  //   grid-template-columns: repeat(3, 1fr);
+  //   column-gap: 8px;
+  //   row-gap: 8px;
+  //   counter-reset: reset;
+  //   -moz-column-count: 3;
+  columns: 290px 3;
+}
+.juz-card {
+  background-color: #ebebed;
+  border-radius: 6px;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 0;
+  height: fit-content;
+  margin: 8px auto;
+  break-inside: avoid-column;
+  &:nth-child(1) {
+      margin-top: 0;
+  }
+  @at-root .dark & {
+    background-color: #31333d;
+    .surah-card {
+      background-color: #31333d;
+      border-color: #71727e;
+    }
+  }
+  .surah-card {
+    margin-bottom: 8px;
+  }
+}
+.juz-card__title {
+  color: #333647;
+  font-size: 14px;
+  font-weight: 600;
+  @at-root .dark & {
+    color: #ffffff;
+  }
+}

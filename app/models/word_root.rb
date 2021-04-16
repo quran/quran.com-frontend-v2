@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class WordRoot < ApiCoreRecord
+class WordRoot < QuranCoreRecord
   belongs_to :word
   belongs_to :root
 end

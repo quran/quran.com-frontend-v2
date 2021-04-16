@@ -17,7 +17,9 @@ id:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
-  local: indonesian
+    invalid_page:
+    invalid_juz:
+  local: Inggris
   site_local: Bahasa Situs
   change_local: Pilih bahasa yang diinginkan untuk tampilan situs
   local_native_name: Indonesia
@@ -53,6 +55,7 @@ id:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: Teks IndoPak
+      imlaei:
     translation_count:
       one: Menampilkan satu terjemahan
       other: Menampilkan terjemahan %{count}
@@ -84,6 +87,7 @@ id:
     copy:
       label: Salin
       done: Tersalin!
+      advance:
     share: Bagikan ayah
     addNote: Menambahkan catatan
     tafsir:
@@ -124,6 +128,8 @@ id:
     pause: Jeda untuk
     play_continuously: Terus mainkan tanpa jeda
     show_word_tooltip: Tampilkan terjemahan kata di tooltip saat memainkan ayat
+    repeatCurrent:
+    loading:
   loading: Memuat ...
   nav:
     title: Quran
@@ -164,3 +170,11 @@ id:
     translation: Terjemahan
     info: Info Surat
   share_ayah: Bagikan ayah
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

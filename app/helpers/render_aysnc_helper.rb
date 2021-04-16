@@ -18,7 +18,7 @@ module RenderAysncHelper
   def render_async(path, options = {}, &placeholder)
     placeholder = capture(&placeholder) if block_given?
 
-    event_name = options[:event_name]
+    event_name = options[:success_event]
     html_options = options[:html_options] || {}
     lazy_load = options[:lazy_load] || false
 

@@ -1,0 +1,274 @@
+$quran-font-family: "quran-icon";
+$quran-font-path: "../../#{$quran-font-family}";
+
+@font-face {
+  font-family: "#{$quran-font-family}";
+  src: url("#{$quran-font-path}/#{$quran-font-family}.eot?ht9x1d");
+  src: url("#{$quran-font-path}/#{$quran-font-family}.eot?ht9x1d#iefix")
+      format("embedded-opentype"),
+    url("#{$quran-font-path}/#{$quran-font-family}.ttf?ht9x1d")
+      format("truetype"),
+    url("#{$quran-font-path}/#{$quran-font-family}.woff?ht9x1d") format("woff"),
+    url("#{$quran-font-path}/#{$quran-font-family}.svg?ht9x1d##{$quran-font-family}")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.quran-icon,
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "#{$quran-font-family}" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-exclamation-triangle {
+  &:before {
+    content: $icon-exclamation-triangle;
+  }
+}
+.icon-star-exclamation {
+  &:before {
+    content: $icon-star-exclamation;
+  }
+}
+.icon-messenger {
+  &:before {
+    content: $icon-messenger;
+  }
+}
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+.icon-pocket {
+  &:before {
+    content: $icon-pocket;
+  }
+}
+.icon-line {
+  &:before {
+    content: $icon-line;
+  }
+}
+.icon-pinterest {
+  &:before {
+    content: $icon-pinterest;
+  }
+}
+.icon-reddit {
+  &:before {
+    content: $icon-reddit;
+  }
+}
+.icon-telegram {
+  &:before {
+    content: $icon-telegram;
+  }
+}
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+.icon-whatsapp {
+  &:before {
+    content: $icon-whatsapp;
+  }
+}
+.icon-envelope {
+  &:before {
+    content: $icon-envelope;
+  }
+}
+.icon-loading {
+  &:before {
+    content: $icon-loading;
+  }
+}
+
+.icon-times-circle {
+  &:before {
+    content: $icon-times-circle;
+  }
+}
+.icon-copy {
+  &:before {
+    content: $icon-copy;
+    color: $dark-green;
+  }
+}
+.icon-menu {
+  &:before {
+    content: $icon-menu;
+  }
+}
+.icon-next1 {
+  &:before {
+    content: $icon-next1;
+    color: #c1c2c7;
+  }
+}
+.icon-prev {
+  &:before {
+    content: $icon-prev;
+    color: #c1c2c7;
+  }
+}
+.icon-repeat {
+  &:before {
+    content: $icon-repeat;
+    color: #c1c2c7;
+  }
+}
+.icon-about {
+  &:before {
+    content: $icon-about;
+    color: #999aa3;
+  }
+}
+.icon-contribute {
+  &:before {
+    content: $icon-contribute;
+  }
+}
+.icon-dev {
+  &:before {
+    content: $icon-dev;
+  }
+}
+.icon-help {
+  &:before {
+    content: $icon-help;
+    color: #999ba3;
+  }
+}
+.icon-phone {
+  &:before {
+    content: $icon-phone;
+  }
+}
+.icon-play1 {
+  &:before {
+    content: $icon-play1;
+    color: #71727e;
+  }
+}
+
+.icon-minus {
+  &:before {
+    content: $icon-minus;
+    color: #999aa2;
+  }
+}
+.icon-plus {
+  &:before {
+    content: $icon-plus;
+    color: #999aa2;
+  }
+}
+.icon-arrow-down {
+  &:before {
+    content: $icon-arrow-down;
+    color: #999aa2;
+  }
+}
+.icon-arrow-right {
+  &:before {
+    content: $icon-arrow-right;
+    color: #93949c;
+  }
+}
+.icon-book-open {
+  &:before {
+    content: $icon-book-open;
+    color: #c1c2c7;
+  }
+}
+.icon-duplicate {
+  &:before {
+    content: $icon-duplicate;
+    color: #c1c2c7;
+  }
+}
+.icon-home {
+  &:before {
+    content: $icon-home;
+    color: #999aa2;
+  }
+}
+.icon-link {
+  &:before {
+    content: $icon-link;
+    color: #8e94a2;
+  }
+}
+.icon-next {
+  &:before {
+    content: $icon-next;
+    color: #8e94a2;
+  }
+}
+.icon-pause {
+  &:before {
+    content: $icon-pause;
+    color: #999aa2;
+  }
+}
+.icon-quran-reflect {
+  &:before {
+    content: $icon-quran-reflect;
+    color: #c1c2c7;
+  }
+}
+.icon-search {
+  &:before {
+    content: $icon-search;
+  }
+}
+.icon-share-2 {
+  &:before {
+    content: $icon-share-2;
+  }
+}
+.icon-x {
+  &:before {
+    content: $icon-x;
+  }
+}
+.icon-settings1 {
+  &:before {
+    content: $icon-settings1;
+  }
+}
+.icon-minus1 {
+  &:before {
+    content: $icon-minus1;
+  }
+}
+.icon-checkmark {
+  &:before {
+    content: $icon-checkmark;
+  }
+}
+.icon-arrow-right2 {
+  &:before {
+    content: $icon-arrow-right2;
+  }
+}
+.icon-arrow-left2 {
+  &:before {
+    content: $icon-arrow-left2;
+  }
+}

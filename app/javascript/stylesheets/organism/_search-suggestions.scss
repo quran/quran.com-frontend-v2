@@ -1,0 +1,30 @@
+.search-suggestions {
+  width: 521px;
+  overflow: hidden;
+  padding: 12px 0 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  border: solid 1px #f3f3f4;
+
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1234123;
+
+  @at-root .show-suggestion & {
+    display: block;
+  }
+  @include sm {
+    width: 100%;
+  }
+
+  @at-root .dark & {
+    background-color: #31333d;
+    border: 1px solid #71727e;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+}

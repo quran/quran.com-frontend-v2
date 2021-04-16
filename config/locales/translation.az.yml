@@ -16,6 +16,8 @@ az:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local:
   site_local:
   change_local:
@@ -48,6 +50,7 @@ az:
       qcf_v1:
       qcf_v2:
       indopak:
+      imlaei:
     font_size:
       label:
       arabic:
@@ -94,6 +97,7 @@ az:
     copy:
       label:
       done:
+      advance:
   search:
     label:
     placeholder:
@@ -127,6 +131,8 @@ az:
     play_continuously:
     show_word_tooltip:
     scroll:
+    repeatCurrent:
+    loading:
   loading:
   nav:
     title:
@@ -159,3 +165,11 @@ az:
     audio:
     audio_description:
   close:
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

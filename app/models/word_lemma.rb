@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class WordLemma < ApiCoreRecord
+class WordLemma < QuranCoreRecord
   belongs_to :word
   belongs_to :lemma
 end

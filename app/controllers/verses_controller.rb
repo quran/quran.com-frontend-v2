@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VersesController < ApplicationController
   before_action :init_presenter
 
@@ -14,17 +16,14 @@ class VersesController < ApplicationController
     render layout: false
   end
 
-  def tafsir
-  end
+  def tafsir; end
 
   protected
 
   def init_presenter
     @presenter = VersePresenter.new(self)
 
-    unless @presenter.verse
-      redirect_to '/', alert: t('errors.invalid_verse')
-    end
+    redirect_to '/', alert: t('errors.invalid_verse') unless @presenter.verse
   end
 
   def generate_localised_cache_key

@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class Topic < ApiCoreRecord
+class Topic < QuranCoreRecord
   belongs_to :parent, class_name: 'Topic'
   belongs_to :children, class_name: 'Topic', foreign_key: 'parent_id'
   has_many :words

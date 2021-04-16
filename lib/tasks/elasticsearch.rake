@@ -4,13 +4,17 @@ namespace :elasticsearch do
 
   desc 'deletes all elasticsearch indices'
   task delete_indices: :environment do
+    QuranUtils::ContentIndex.remove_indexes rescue nil
+
     begin
       Verse.__elasticsearch__.delete_index!
     rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
     end
 
     begin
-      Chapter.__elasticsearch__.delete_index!
+      [Chapter, Juz, MuhsafPage].each do |model|
+        model.__elasticsearch__.delete_index!
+      end
     rescue Elasticsearch::Transport::Transport::Errors::NotFound => e
     end
 
@@ -19,20 +23,22 @@ namespace :elasticsearch do
 
   desc 'reindex elasticsearch'
   task re_index: :environment do
-    Verse.__elasticsearch__.create_index!
-    Chapter.__elasticsearch__.create_index!
-
     require 'parallel'
 
-    ActiveRecord::Base.logger.silence do
-      Parallel.each([Chapter, Juz], in_processes: 2, progress: "Indexing chapters and juz data") do |model|
-        model.import
-      end
+    Verse.__elasticsearch__.create_index!
+    [Chapter, Juz, MuhsafPage].each do |model|
+      model.__elasticsearch__.create_index!
+    end
+    #QuranUtils::ContentIndex.setup_indexes
 
-      verses = Verse.includes(:words)
-      Parallel.each(verses, in_processes: 2, progress: "Indexing verses") do |verse|
-        verse.__elasticsearch__.index_document
+    ActiveRecord::Base.logger.silence do
+      Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
+        model.import(force: true)
       end
+      Verse.import
+
+      puts "Importing translations"
+      QuranUtils::ContentIndex.import
     end
 
     puts "Done #{Verse.__elasticsearch__.refresh_index!}"

@@ -16,7 +16,7 @@
 #  updated_at          :datetime         not null
 #
 
-class ChapterInfo < ApiCoreRecord
+class ChapterInfo < QuranCoreRecord
   include LanguageFilterable
 
   belongs_to :chapter

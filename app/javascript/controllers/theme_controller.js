@@ -8,24 +8,49 @@
 // </div>
 
 import SettingController from "./setting_controller";
-import LocalStore from "../utility/local-store";
 
 export default class extends SettingController {
   connect() {
     super.connect();
+    this.logDevMessage();
+    this.themeButtons = $(this.element).find("a");
 
-    $(document).on("click", ".theme-switch", e => {
+    this.themeButtons.on("click", e => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
-      this.toggleNight();
+      const targetTheme = e.currentTarget;
+
+      if (targetTheme.classList.contains("active")) return;
+
+      this.themeButtons.removeClass("active");
+      e.currentTarget.classList.add("active");
+
+      this.toggle();
     });
 
     this.updatePage();
   }
 
-  disconnect() {
-    $(document).off("click", ".theme-switch", e => {});
+  logDevMessage() {
+    try {
+      console["log"](
+        "%c ﷽\n\n %s",
+        "background: #00acc2; color: #fff; padding: 2px; border-radius:2px",
+        "Salam, found any bug? Please report it here https://github.com/quran/quran.com-frontend-v2/issues"
+      );
+    } catch (e) {}
+  }
+
+  disconnect() {}
+
+  setTheme(theme) {
+    this.themeButtons.removeClass("active");
+    $(`[data-theme='${theme}']`).addClass("active");
+
+    let bodyClasses = document.body.classList;
+    bodyClasses.remove("dark");
+    bodyClasses.add(theme);
   }
 
   updatePage() {
@@ -34,30 +59,29 @@ export default class extends SettingController {
       "(prefers-color-scheme: dark)"
     );
 
-    const setDark = function(e) {
-      let bodyClasses = document.body.classList;
+    const updateTheme = e => {
       if (e && e.matches && null == isNightMode) {
-        bodyClasses.add("night");
+        this.setTheme("dark");
       } else {
         if (isNightMode) {
-          bodyClasses.add("night");
+          this.setTheme("dark");
         } else {
-          bodyClasses.remove("night");
+          this.setTheme("light");
         }
       }
     };
 
     document.addEventListener("DOMContentLoaded", () => {
-      setDark(darkModeMediaQuery);
+      updateTheme(darkModeMediaQuery);
     });
     darkModeMediaQuery.addListener(event => {
-      setDark(event);
+      updateTheme(event);
     });
-    setDark(darkModeMediaQuery);
+    updateTheme(darkModeMediaQuery);
   }
 
-  toggleNight() {
-    const isNightMode = document.body.classList.toggle("night");
+  toggle() {
+    const isNightMode = document.body.classList.toggle("dark");
     this.set("nightMode", isNightMode);
   }
 }

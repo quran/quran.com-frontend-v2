@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class WordStem < ApiCoreRecord
+class WordStem < QuranCoreRecord
   belongs_to :word
   belongs_to :stem
 end

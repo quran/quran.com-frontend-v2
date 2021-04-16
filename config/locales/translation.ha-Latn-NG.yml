@@ -23,10 +23,12 @@ ha-Latn-NG:
     connection_refused: Kash! Ba a yi nasarar hadi zuwa tsaka-tsakin kayan yanar gizo
       ba. Da fatan za a tabbatar da sabar ci gaban ci gaban rails tana gudana
     format:
-  local: turanci
+    invalid_page:
+    invalid_juz:
+  local: English
   site_local: Yaren Yanar gizo
   change_local: Zabi yaren da kake son shafin ya nuna a ciki
-  local_native_name: Turanci
+  local_native_name: Hausa
   language: Harshe
   page: Shafi
   reader_mode:
@@ -55,6 +57,7 @@ ha-Latn-NG:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: Rubutun IndoPak
+      imlaei:
     font_size:
       label: Girman rubutu
       arabic: Larabci
@@ -101,6 +104,7 @@ ha-Latn-NG:
     copy:
       label: Kwafa
       done: Kwafa
+      advance:
   search:
     label: Bincika
     placeholder: Binciko "Nuhu"
@@ -134,6 +138,8 @@ ha-Latn-NG:
     play_continuously: Ci gaba da wasa ba tare da tsayawa ba
     show_word_tooltip: Nuna fassarar kalma a cikin kayan aiki yayin kunna ayah
     scroll: Yi ta atomatik zuwa ayah mai gudana a yanzu
+    repeatCurrent:
+    loading:
   loading: Ana lodawa
   nav:
     title: Qur'ani
@@ -169,3 +175,11 @@ ha-Latn-NG:
     audio: AlKur'ani mai girma a cikin sauti
     audio_description: Ilmantarwa & saurara a lokaci guda
   close: Rufe
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

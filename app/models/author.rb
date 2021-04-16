@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 
-class Author < ApiCoreRecord
+class Author < QuranCoreRecord
   include NameTranslateable
   has_many :resource_contents
 end

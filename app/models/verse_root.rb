@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 
-class VerseRoot < ApiCoreRecord
+class VerseRoot < QuranCoreRecord
   has_many :verses
   has_many :words, through: :verses
 end

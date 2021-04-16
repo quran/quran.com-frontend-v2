@@ -20,18 +20,6 @@ options.implementation = require("sass");
 
 environment.config.resolve.alias = {'jquery': "jquery/dist/jquery.slim.js"};
 
-/*
-environment.plugins.prepend(
-  "Provide",
-  new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery",
-    jquery: "jquery",
-    "window.jQuery": "jquery",
-    Popper: ["popper.js", "default"]
-  })
-);*/
-
 environment.splitChunks();
 
 environment.loaders.prepend("erb", erb);

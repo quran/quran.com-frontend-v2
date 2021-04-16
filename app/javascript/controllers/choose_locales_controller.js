@@ -12,13 +12,11 @@ import SettingController from "./setting_controller";
 export default class extends SettingController {
   connect() {
     super.connect();
-    
+
     $(this.element)
       .find("[name=locale]")
       .on("change", e => {
         e.preventDefault();
-        e.stopImmediatePropagation();
-
         this.updateLocale(e.target.value);
       });
   }
@@ -28,6 +26,11 @@ export default class extends SettingController {
   }
 
   updateLocale(locale) {
-    Turbolinks.visit(parent.window.location.origin + parent.window.location.pathname + '?locale=' + locale);
+    Turbolinks.visit(
+      parent.window.location.origin +
+        parent.window.location.pathname +
+        "?locale=" +
+        locale
+    );
   }
 }
