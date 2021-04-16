@@ -23,8 +23,8 @@ pl:
       Ups! Nie udało się połączyć z warstwą pośrednią Web Console.
       Upewnij się, że serwer rails działa.
     format: "%{attribute} %{message}"
-    invalid_page:
-    invalid_juz:
+    invalid_page: Strona nieosiągalna
+    invalid_juz: Juz nieosiągalny, poza skalą
   local: Angielski
   site_local: Język strony
   change_local: Wybierz język strony
@@ -57,7 +57,7 @@ pl:
       qcf_v1: King Fahd Quran Complex v1
       qcf_v2: King Fahd Quran Complex v2
       indopak: IndoPak
-      imlaei:
+      imlaei: Imlaei uproszczony
     font_size:
       label: Rozmiar czcionki
       arabic: Arabski

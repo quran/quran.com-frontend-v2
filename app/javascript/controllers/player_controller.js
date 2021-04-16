@@ -102,7 +102,6 @@ export default class extends AudioController {
     /*this.fetchAudioData().then(() => {
        // set first ayah track to play, if player isn't already playing any ayah
        that.currentVerse = that.currentVerse || that.firstVerse;
-
        // preload howl for first ayah
        if (that.currentVerse){
          that.loadTrack(that.currentVerse).then(()=>{

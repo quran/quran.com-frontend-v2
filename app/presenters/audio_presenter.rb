@@ -8,9 +8,9 @@ class AudioPresenter < QuranPresenter
       audio = verse.audio
 
       json[verse.verse_key] = {
-          audio: audio.url,
-          segments: audio.segments,
-          duration: audio.duration
+        audio: audio.url,
+        segments: audio.segments,
+        duration: audio.duration
       }
     end
 
@@ -27,8 +27,8 @@ class AudioPresenter < QuranPresenter
     current = verse
     verses = Verse.where("verse_index BETWEEN ? AND ?", current.id - 1, current.id + per_page - 1)
     verses
-        .eager_load(:audio)
-        .where(audio_files: {recitation_id: recitation_id})
+      .eager_load(:audio)
+      .where(audio_files: {recitation_id: recitation_id})
   end
 
   def per_page
