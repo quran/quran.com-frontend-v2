@@ -79,6 +79,12 @@ export default class extends Controller {
     }, 2000);
   }
 
+  bookmark(){
+    const btn = this.el.find(".bookmark");
+    let {title, done} = btn.data();
+    btn.find("span").text(done);
+  }
+
   togglePlay(playButton) {
     let player,
       playerDom = document.getElementById("player");
@@ -134,6 +140,12 @@ export default class extends Controller {
     this.actionTrigger = el.find("#open-actions");
     this.actionTrigger.on("click", e => this.toggleActions(e));
 
+    new Tooltip(this.element.querySelector('.qr'), {
+      html: true,
+      sanitize: false,
+      direction: "top"
+    });
+
     this.element
       .querySelector("#close-actions")
       .addEventListener("click", e => {
@@ -144,6 +156,11 @@ export default class extends Controller {
     el.find(".quick-copy").on("click", e => {
       e.preventDefault();
       this.copy();
+    });
+
+    el.find(".bookmark").on("click", e => {
+      e.preventDefault();
+      this.bookmark();
     });
 
     let playButton = el.find(".play");

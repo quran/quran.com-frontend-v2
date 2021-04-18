@@ -31,6 +31,43 @@ $quran-font-path: "../../#{$quran-font-family}";
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tag {
+  &:before {
+    content: $icon-tag;
+  }
+}
+.icon-tags-solid {
+  &:before {
+    content: $icon-tags-solid;
+  }
+}
+.icon-bookmarked {
+  &:before {
+    content: $icon-bookmarked;
+  }
+}
+.icon-taged {
+  &:before {
+    content: $icon-taged;
+  }
+}
+.icon-tags {
+  &:before {
+    content: $icon-tags;
+  }
+}
+
+.icon-book {
+  &:before {
+    content: $icon-book;
+  }
+}
+.icon-bookmark {
+  &:before {
+    content: $icon-bookmark;
+  }
+}
+
 .icon-qr-2 {
   &:before {
     content: $icon-qr-2;
