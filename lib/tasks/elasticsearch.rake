@@ -40,9 +40,11 @@ namespace :elasticsearch do
       puts "Setting up translation indexes"
       QuranUtils::ContentIndex.setup_language_index_classes
 
-      Parallel.each(Language.with_translations, in_processes: 5, progress: "Importing translations") do |language|
+      #Parallel.each(Language.with_translations, in_processes: 5, progress: "Importing translations") do |language|
+      Language.with_translations.each do |language|
         QuranUtils::ContentIndex.import_translation_for_language(language)
       end
+      #end
     end
 
     puts "Done #{Verse.__elasticsearch__.refresh_index!}"
