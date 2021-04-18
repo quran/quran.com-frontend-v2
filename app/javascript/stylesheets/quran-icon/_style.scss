@@ -16,9 +16,7 @@ $quran-font-path: "../../#{$quran-font-family}";
   font-display: block;
 }
 
-.quran-icon,
-[class^="icon-"],
-[class*=" icon-"] {
+.quran-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "#{$quran-font-family}" !important;
   speak: never;
@@ -32,6 +30,18 @@ $quran-font-path: "../../#{$quran-font-family}";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.icon-qr-2 {
+  &:before {
+    content: $icon-qr-2;
+  }
+}
+.icon-qr {
+  &:before {
+    content: $icon-qr;
+  }
+}
+
 .icon-exclamation-triangle {
   &:before {
     content: $icon-exclamation-triangle;
@@ -42,100 +52,94 @@ $quran-font-path: "../../#{$quran-font-family}";
     content: $icon-star-exclamation;
   }
 }
-.icon-messenger {
+.icon-arrow-down {
   &:before {
-    content: $icon-messenger;
+    content: $icon-arrow-down;
   }
 }
-.icon-facebook {
+.icon-arrow-right {
   &:before {
-    content: $icon-facebook;
+    content: $icon-arrow-right;
   }
 }
-.icon-pocket {
+.icon-book-open {
   &:before {
-    content: $icon-pocket;
+    content: $icon-book-open;
   }
 }
-.icon-line {
+.icon-moon-filled {
   &:before {
-    content: $icon-line;
+    content: $icon-moon-filled;
   }
 }
-.icon-pinterest {
+.icon-moon {
   &:before {
-    content: $icon-pinterest;
+    content: $icon-moon;
   }
 }
-.icon-reddit {
+.icon-duplicate {
   &:before {
-    content: $icon-reddit;
+    content: $icon-duplicate;
   }
 }
-.icon-telegram {
+.icon-home {
   &:before {
-    content: $icon-telegram;
+    content: $icon-home;
   }
 }
-.icon-twitter {
+.icon-link {
   &:before {
-    content: $icon-twitter;
+    content: $icon-link;
   }
 }
-.icon-whatsapp {
+.icon-next {
   &:before {
-    content: $icon-whatsapp;
+    content: $icon-next;
   }
 }
-.icon-envelope {
+.icon-pause {
   &:before {
-    content: $icon-envelope;
+    content: $icon-pause;
   }
 }
-.icon-loading {
+.icon-search {
   &:before {
-    content: $icon-loading;
+    content: $icon-search;
   }
 }
-
-.icon-times-circle {
+.icon-minus {
   &:before {
-    content: $icon-times-circle;
+    content: $icon-minus;
   }
 }
-.icon-copy {
+.icon-plus {
   &:before {
-    content: $icon-copy;
-    color: $dark-green;
+    content: $icon-plus;
   }
 }
-.icon-menu {
+.icon-settings1 {
   &:before {
-    content: $icon-menu;
+    content: $icon-settings1;
   }
 }
-.icon-next1 {
+.icon-x {
   &:before {
-    content: $icon-next1;
-    color: #c1c2c7;
+    content: $icon-x;
   }
 }
-.icon-prev {
+.icon-play1 {
   &:before {
-    content: $icon-prev;
-    color: #c1c2c7;
+    content: $icon-play1;
   }
 }
-.icon-repeat {
+.icon-share-2 {
   &:before {
-    content: $icon-repeat;
-    color: #c1c2c7;
+    content: $icon-share-2;
   }
 }
 .icon-about {
   &:before {
     content: $icon-about;
-    color: #999aa3;
   }
 }
 .icon-contribute {
@@ -151,7 +155,6 @@ $quran-font-path: "../../#{$quran-font-family}";
 .icon-help {
   &:before {
     content: $icon-help;
-    color: #999ba3;
   }
 }
 .icon-phone {
@@ -159,97 +162,29 @@ $quran-font-path: "../../#{$quran-font-family}";
     content: $icon-phone;
   }
 }
-.icon-play1 {
+.icon-next1 {
   &:before {
-    content: $icon-play1;
-    color: #71727e;
+    content: $icon-next1;
   }
 }
-
-.icon-minus {
+.icon-prev {
   &:before {
-    content: $icon-minus;
-    color: #999aa2;
+    content: $icon-prev;
   }
 }
-.icon-plus {
+.icon-repeat {
   &:before {
-    content: $icon-plus;
-    color: #999aa2;
+    content: $icon-repeat;
   }
 }
-.icon-arrow-down {
+.icon-menu {
   &:before {
-    content: $icon-arrow-down;
-    color: #999aa2;
+    content: $icon-menu;
   }
 }
-.icon-arrow-right {
+.icon-copy {
   &:before {
-    content: $icon-arrow-right;
-    color: #93949c;
-  }
-}
-.icon-book-open {
-  &:before {
-    content: $icon-book-open;
-    color: #c1c2c7;
-  }
-}
-.icon-duplicate {
-  &:before {
-    content: $icon-duplicate;
-    color: #c1c2c7;
-  }
-}
-.icon-home {
-  &:before {
-    content: $icon-home;
-    color: #999aa2;
-  }
-}
-.icon-link {
-  &:before {
-    content: $icon-link;
-    color: #8e94a2;
-  }
-}
-.icon-next {
-  &:before {
-    content: $icon-next;
-    color: #8e94a2;
-  }
-}
-.icon-pause {
-  &:before {
-    content: $icon-pause;
-    color: #999aa2;
-  }
-}
-.icon-quran-reflect {
-  &:before {
-    content: $icon-quran-reflect;
-    color: #c1c2c7;
-  }
-}
-.icon-search {
-  &:before {
-    content: $icon-search;
-  }
-}
-.icon-share-2 {
-  &:before {
-    content: $icon-share-2;
-  }
-}
-.icon-x {
-  &:before {
-    content: $icon-x;
-  }
-}
-.icon-settings1 {
-  &:before {
-    content: $icon-settings1;
+    content: $icon-copy;
   }
 }
 .icon-minus1 {
@@ -270,5 +205,65 @@ $quran-font-path: "../../#{$quran-font-family}";
 .icon-arrow-left2 {
   &:before {
     content: $icon-arrow-left2;
+  }
+}
+.icon-times-circle {
+  &:before {
+    content: $icon-times-circle;
+  }
+}
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+.icon-loading {
+  &:before {
+    content: $icon-loading;
+  }
+}
+.icon-pinterest {
+  &:before {
+    content: $icon-pinterest;
+  }
+}
+.icon-whatsapp {
+  &:before {
+    content: $icon-whatsapp;
+  }
+}
+.icon-pocket {
+  &:before {
+    content: $icon-pocket;
+  }
+}
+.icon-reddit {
+  &:before {
+    content: $icon-reddit;
+  }
+}
+.icon-envelope {
+  &:before {
+    content: $icon-envelope;
+  }
+}
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+.icon-messenger {
+  &:before {
+    content: $icon-messenger;
+  }
+}
+.icon-line {
+  &:before {
+    content: $icon-line;
+  }
+}
+.icon-telegram {
+  &:before {
+    content: $icon-telegram;
   }
 }

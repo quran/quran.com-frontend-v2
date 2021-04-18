@@ -23,14 +23,14 @@
         <span class="quran-icon icon-play1"></span>
       </a>
 
-      <a class="translation__icon"
+      <a class="translation__icon qr"
          href="https://quranreflect.com/<%= "#{verse.chapter_id}" %>/<%= "#{verse.verse_number}" %>?feed=true"
          target="_blank"
          rel="noopener"
          data-controller="track"
          data-name='ayah-action'
          data-category="QuranReflect">
-        <i class="icon-quran-reflect" style="font-size: 27px"></i>
+        <i class="quran-icon icon-qr-2" style="font-size: 26px"></i>
       </a>
 
       <div class="actions-menu">
@@ -59,7 +59,7 @@
                data-controller="track"
                data-name='ayah-action'
                data-category="copy">
-              <i class="icon-duplicate"></i>
+              <i class="quran-icon icon-duplicate"></i>
               <%= _t('action.copy.label') %>
             </a>
 
@@ -68,7 +68,7 @@
                data-url="/advance_copy/copy_options<%= @presenter.params_for_copy(verse) %>"
                data-controller="track"
                data-name='ayah-action'>
-              <i class="icon-copy"></i>
+              <i class="quran-icon icon-copy"></i>
               <%= _t('action.copy.advance', default: 'Copy advanced') %>
             </a>
 
@@ -78,7 +78,7 @@
                data-controller="track"
                data-name='ayah-action'
                data-category="tafsir-list">
-              <i class="icon-book-open"></i>
+              <i class="quran-icon icon-book-open"></i>
               <%= _t('action.tafsir.label', default: 'Tafsir') %>
             </a>
 
@@ -88,7 +88,7 @@
                data-controller="track"
                data-name='ayah-action'
                data-category="share-list">
-              <i class="icon-share-2"></i>
+              <i class="quran-icon icon-share-2"></i>
               <%= _t('action.share', default: 'Share ayah') %>
             </a>
 
@@ -99,7 +99,7 @@
                data-controller="track"
                data-name='ayah-action'
                data-category="QuranReflect">
-              <i class="icon-quran-reflect"></i>
+              <i class="quran-icon icon-qr-2"></i>
               QuranReflect
             </a>
           </div>
