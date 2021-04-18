@@ -45,7 +45,7 @@ class AjaxModal {
             <div class="modal-header">
               <h5 class="modal-title text text--black" id="ajax-modal-title">Loading</h5>
               <a class="close text--green" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" class="icon-times-circle"></span>
+                <span aria-hidden="true" class="quran-icon icon-times-circle"></span>
               </a>
             </div>
 
