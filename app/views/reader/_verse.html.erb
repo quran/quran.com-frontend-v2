@@ -29,7 +29,9 @@
          rel="noopener"
          data-controller="track"
          data-name='ayah-action'
-         data-category="QuranReflect">
+         data-category="QuranReflect"
+         data-title="<%= _t("action.quran_reflect") %>"
+      >
         <i class="quran-icon icon-qr-2" style="font-size: 26px"></i>
       </a>
 
@@ -101,6 +103,16 @@
                data-category="QuranReflect">
               <i class="quran-icon icon-qr-2"></i>
               QuranReflect
+            </a>
+
+            <a class="translation__icon bookmark"
+               data-controller="track"
+               data-name='ayah-action'
+               data-done="<%= t('action.bookmark.done') %>"
+               data-title="<%= t('action.bookmark.label') %>"
+               data-category="bookmark">
+              <i class="quran-icon icon-bookmark"></i>
+              <%= _t('action.bookmark.label') %>
             </a>
           </div>
         </div>
