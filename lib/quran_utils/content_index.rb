@@ -52,7 +52,10 @@ module QuranUtils
         LANG_INDEX_CLASSES[language.id] = Class.new(content_type) do
           include Elasticsearch::Model
 
-          scope :translations, -> { joins(:resource_content).where(language_id: language.id, resource_contents: {approved: true}) }
+          scope :translations, -> {
+            puts "#{language.name} translation record count #{joins(:resource_content).where(language_id: language.id, resource_contents: { approved: true }).size}"
+            joins(:resource_content).where(language_id: language.id, resource_contents: { approved: true })
+          }
 
           settings index_settings
 
