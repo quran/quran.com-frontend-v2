@@ -6,11 +6,12 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
 import isChildOf from "../utility/child-of";
 import DeviceDetector from "../utility/deviceDetector";
+import LocalStore from "../utility/local-store";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -53,6 +54,8 @@ const TAJWEED_RULES = [
 ];
 
 export default class extends Controller {
+  static store = new LocalStore(true);
+
   connect() {
     const el = $(this.element);
     this.el = el;
@@ -65,24 +68,61 @@ export default class extends Controller {
     }
   }
 
-  disconnect() {
-  }
+  disconnect() {}
 
   copy() {
     copyToClipboard(this.copyText);
 
     const copyBtn = this.el.find(".quick-copy");
-    let {title, done} = copyBtn.data();
+    let { title, done } = copyBtn.data();
     copyBtn.find("span").text(done);
     setTimeout(() => {
       copyBtn.find("span").text(title);
     }, 2000);
   }
 
-  bookmark(){
+  toggleBookmark() {
+    let bookmarks = this.loadBookmarks();
+
+    if (this.isBookmarked()) {
+      delete bookmarks[this.verseKey];
+    } else {
+      bookmarks[this.verseKey] = location.href;
+    }
+
+    this.constructor.store.set("bookmarks", JSON.stringify(bookmarks));
+    this.updateBookmarkState();
+  }
+
+  updateBookmarkState() {
     const btn = this.el.find(".bookmark");
-    let {title, done} = btn.data();
-    btn.find("span").text(done);
+    let { title, done } = btn.data();
+
+    if (this.isBookmarked()) {
+      btn.find("span").text(done);
+      btn
+        .find("i")
+        .removeClass("icon-bookmark")
+        .addClass("icon-bookmarked");
+    } else {
+      btn.find("span").text(title);
+      btn
+        .find("i")
+        .removeClass("icon-bookmarked")
+        .addClass("icon-bookmark");
+    }
+  }
+
+  isBookmarked() {
+    return !!this.loadBookmarks()[this.verseKey];
+  }
+
+  loadBookmarks() {
+    try {
+      return JSON.parse(this.constructor.store.get("bookmarks") || "{}");
+    } catch (e) {
+      return {};
+    }
   }
 
   togglePlay(playButton) {
@@ -114,33 +154,36 @@ export default class extends Controller {
     });
   }
 
-  fixTajweedForSarari(){
+  fixTajweedForSarari() {
     const deviceDetector = new DeviceDetector();
 
-     if(deviceDetector.isSafari()){
-       const text = this.el.find(".arabic").html()
-       const textWithZwj = this.addZwj(text);
-       //console.log("text before", text);
-       //console.log("text after", textWithZwj);
+    if (deviceDetector.isSafari()) {
+      const text = this.el.find(".arabic").html();
+      const textWithZwj = this.addZwj(text);
+      //console.log("text before", text);
+      //console.log("text after", textWithZwj);
 
-       this.el.find(".arabic").html(textWithZwj);
-     }
+      this.el.find(".arabic").html(textWithZwj);
+    }
   }
 
-  addZwj(text){
-   return  text.replace(/([ئبت-خس-غف-نهيی])([^ء-يی\n ]*<[^>]+>[ً-ْٰۖۗۚۛۜ]*)(?=[آ-يی])/g, '$1&zwj;$2&zwj;');
+  addZwj(text) {
+    return text.replace(
+      /([ئبت-خس-غف-نهيی])([^ء-يی\n ]*<[^>]+>[ً-ْٰۖۗۚۛۜ]*)(?=[آ-يی])/g,
+      "$1&zwj;$2&zwj;"
+    );
   }
 
   bindAction(el) {
-    if (el.data('reading')) {
-      return
+    if (el.data("reading")) {
+      return;
     }
 
     this.actionOpened = false;
     this.actionTrigger = el.find("#open-actions");
     this.actionTrigger.on("click", e => this.toggleActions(e));
 
-    new Tooltip(this.element.querySelector('.qr'), {
+    new Tooltip(this.element.querySelector(".qr"), {
       html: true,
       sanitize: false,
       direction: "top"
@@ -160,7 +203,7 @@ export default class extends Controller {
 
     el.find(".bookmark").on("click", e => {
       e.preventDefault();
-      this.bookmark();
+      this.toggleBookmark();
     });
 
     let playButton = el.find(".play");
@@ -175,6 +218,7 @@ export default class extends Controller {
     if (this.actionOpened) {
       this.closeAction();
     } else {
+      this.updateBookmarkState();
       this.openAction();
     }
   }
@@ -212,7 +256,7 @@ export default class extends Controller {
     return this.el.data("verseNumber");
   }
 
-  get verseKey(){
+  get verseKey() {
     return this.el.data("key");
   }
 
