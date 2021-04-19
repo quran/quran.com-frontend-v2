@@ -22,7 +22,7 @@
 
       <% if trans_count > 0 %>
         <% translations.each_with_index do |trans, index| %>
-          <div class="search-item--translation <%= 'hidden' if index > translation_to_show %>">
+          <div class="search-item--translation <%= 'hidden' if index >= translation_to_show %>">
             <p class="text text--grey text--medium">
               <%= trans[:text].to_s.html_safe %>
             </p>
@@ -36,14 +36,14 @@
     </div>
   </div>
 
-  <% if trans_count > 2 %>
+  <% if trans_count > translation_to_show %>
     <div class="text-center space-b-24 more-items">
       <p class="text--medium">
       <span class="text text--green">
         Also found in
       </span>
 
-        <% translations[2...].each do |trans| %>
+        <% translations[translation_to_show...].each do |trans| %>
           <span><%= trans['resource_name'] %></span> /
         <% end %>
         <a class="text text--green view-more" href="#_">View all</a>
