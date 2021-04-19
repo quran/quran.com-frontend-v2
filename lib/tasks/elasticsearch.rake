@@ -32,19 +32,19 @@ namespace :elasticsearch do
     end
     #QuranUtils::ContentIndex.setup_indexes
 
-    ActiveRecord::Base.logger.silence do
-      Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
-        model.import(force: true)
-      end
-      Verse.import
-
-      puts "Setting up translation indexes"
-      QuranUtils::ContentIndex.setup_language_index_classes
-
-      Language.with_translations.each do |language|
-        QuranUtils::ContentIndex.import_translation_for_language(language)
-      end
+    #ActiveRecord::Base.logger.silence do
+    Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
+      model.import(force: true)
     end
+    Verse.import
+
+    puts "Setting up translation indexes"
+    QuranUtils::ContentIndex.setup_language_index_classes
+
+    Language.with_translations.each do |language|
+      QuranUtils::ContentIndex.import_translation_for_language(language)
+    end
+    #end
 
     index_end = Time.now
 
