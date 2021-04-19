@@ -30,7 +30,14 @@ module QuranUtils
 
     def self.import_translation_for_language(lang)
       puts "importing #{lang.name} translations"
-      LANG_INDEX_CLASSES[lang.id].import scope: 'translations', force: true, index: "quran_content_#{lang.iso_code}"
+
+      LANG_INDEX_CLASSES[lang.id].import(
+        batch_size: 500,
+        refresh: false,
+        scope: 'translations',
+        force: true,
+        index: "quran_content_#{lang.iso_code}"
+      )
     end
 
     def self.setup_indexes

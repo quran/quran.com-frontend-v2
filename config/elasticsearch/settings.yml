@@ -1,4 +1,5 @@
 index:
+  refresh_interval: 30s
   number_of_shards: 5
   mapping:
     nested_fields:

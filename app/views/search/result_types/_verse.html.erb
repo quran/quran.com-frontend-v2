@@ -1,47 +1,53 @@
 <%
   translations = verse.highlighted_translations
   trans_count = translations.size
-  translation_shown = translations.first(2)
+  translation_to_show = 2
+
   trans_ids = translations.map do |t|
     t['resource_id']
   end
 %>
-
-<div class="search-item">
-  <div>
-    <%= link_to verse.verse_key, "/#{verse.verse_key}?store=false&translations=#{trans_ids.join(',')}", class: 'number' %>
-  </div>
-  <div class="search-item--results">
-    <div class="search-item--ayah">
-      <p class="arabic text_uthmani">
-        <%= verse.highlighted_text.html_safe %>
-      </p>
+<div data-controller="search-result">
+  <div class="search-item">
+    <div>
+      <%= link_to verse.verse_key, "/#{verse.verse_key}?store=false&translations=#{trans_ids.join(',')}", class: 'number' %>
     </div>
 
-    <% if trans_count > 0 %>
-      <% translation_shown.each do |trans| %>
-        <div class="search-item--translation">
-          <p class="text text--grey text--medium">
-            <%= trans[:text].to_s.html_safe %>
-          </p>
+    <div class="search-item--results">
+      <div class="search-item--ayah">
+        <p class="arabic text_uthmani">
+          <%= verse.highlighted_text.html_safe %>
+        </p>
+      </div>
 
-          <p class="text text--green text--medium">
-            <%= trans['resource_name'] %>
-          </p>
-        </div>
+      <% if trans_count > 0 %>
+        <% translations.each_with_index do |trans, index| %>
+          <div class="search-item--translation <%= 'hidden' if index > translation_to_show %>">
+            <p class="text text--grey text--medium">
+              <%= trans[:text].to_s.html_safe %>
+            </p>
+
+            <p class="text text--green text--medium">
+              <%= trans['resource_name'] %>
+            </p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
+
+  <% if trans_count > 2 %>
+    <div class="text-center space-b-24 more-items">
+      <p class="text--medium">
+      <span class="text text--green">
+        Also found in
+      </span>
+
+        <% translations[2...].each do |trans| %>
+          <span><%= trans['resource_name'] %></span> /
+        <% end %>
+        <a class="text text--green view-more" href="#_">View all</a>
+      </p>
+    </div>
+  <% end %>
 </div>
-
-<% if trans_count > 2 %>
-  <div class="text-center space-b-24">
-    <p class="text text--green text--medium">
-      Also found in
-
-      <% translations[2...].each do |trans| %>
-        <span><%= trans['resource_name'] %></span> /
-      <% end %>
-    </p>
-  </div>
-<% end %>
