@@ -16,7 +16,7 @@ module QuranUtils
       end
     end
 
-    def self.import(content_type: Translation, language: nil)
+    def self.import_all(content_type: Translation, language: nil)
       setup_language_index_classes(content_type)
 
       if language
@@ -35,16 +35,13 @@ module QuranUtils
         batch_size: 500,
         refresh: false,
         scope: 'translations',
-        force: true,
         index: "quran_content_#{lang.iso_code}"
       )
     end
 
     def self.setup_indexes
-      setup_language_index_classes
-
       TRANSLATION_LANGUAGES.each do |language|
-        LANG_INDEX_CLASSES[language.id].__elasticsearch__.create_index!
+        LANG_INDEX_CLASSES[language.id].__elasticsearch__.create_index!(index: "quran_content_#{language.iso_code}")
       end
     end
 
