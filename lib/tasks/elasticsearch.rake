@@ -40,7 +40,11 @@ namespace :elasticsearch do
     end
 
     puts "Importing ayah"
-    Verse.import
+
+    if Rails.cache.read("verses_index").nil?
+      Verse.import
+      Rails.cache.write("verses_index", true, expires_in: 2.day.from_now)
+    end
 
     puts "Setting up translation indexes"
     QuranUtils::ContentIndex.setup_language_index_classes
