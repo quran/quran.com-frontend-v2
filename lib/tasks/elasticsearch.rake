@@ -25,19 +25,21 @@ namespace :elasticsearch do
   task re_index: :environment do
     require 'parallel'
 
+    ar_logger = ActiveRecord::Base.logger
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
     index_start = Time.now
+
     Verse.__elasticsearch__.create_index!
     [Chapter, Juz, MuhsafPage].each do |model|
       model.__elasticsearch__.create_index!
     end
     #QuranUtils::ContentIndex.setup_indexes
 
-    #ActiveRecord::Base.logger.silence do
     Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
       model.import(force: true)
     end
-    Verse.import(batch_size: 500,
-                 refresh: false)
+
+    Verse.import
 
     puts "Setting up translation indexes"
     QuranUtils::ContentIndex.setup_language_index_classes
@@ -45,9 +47,9 @@ namespace :elasticsearch do
     Language.with_translations.each do |language|
       QuranUtils::ContentIndex.import_translation_for_language(language)
     end
-    #end
 
     index_end = Time.now
+    ActiveRecord::Base.logger = ar_logger
 
     puts "Done #{Verse.__elasticsearch__.refresh_index!}"
     puts "Indexing started at #{index_start.strftime("%B %d, %Y %I:%M %P")}"
