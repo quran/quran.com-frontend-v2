@@ -48,7 +48,10 @@ namespace :elasticsearch do
     QuranUtils::ContentIndex.setup_indexes
 
     Language.with_translations.each do |language|
-      QuranUtils::ContentIndex.import_translation_for_language(language)
+      if Rails.cache.read("lang_#{language.id}_index").nil?
+        QuranUtils::ContentIndex.import_translation_for_language(language)
+        Rails.cache.write("lang_#{language.id}_index", true, expires_in: 2.day.from_now)
+      end
     end
 
     index_end = Time.now
