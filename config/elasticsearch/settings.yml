@@ -14,7 +14,6 @@ index:
       type: BM25
       # Controls to what degree document length normalizes tf values. The default value is 0.75
       b: 0.236
-
   analysis:
     filter:
       # english analyzer, see https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html

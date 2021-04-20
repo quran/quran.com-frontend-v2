@@ -66,7 +66,7 @@ module QuranUtils
           es_analyzer = language.es_analyzer_default.presence || 'english'
           index_name lang_index_name
 
-          mappings dynamic: true do
+          mappings dynamic: false do
             indexes :verse_id, type: 'integer'
             indexes :language_id, type: 'keyword'
             indexes :resource_id, type: 'keyword'
