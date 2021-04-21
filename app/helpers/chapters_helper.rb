@@ -58,7 +58,13 @@ module ChaptersHelper
   end
 
   def font_ids(verses)
-    verses.map(&:page_number).uniq
+    pages = {}
+    verses.each do |v|
+      pages[v.page_number] = true
+      pages[v.v2_page] = true
+    end
+
+    pages.keys
   end
 
   def popular_searches
