@@ -7,6 +7,7 @@
 <%= verse.verse_key %>
 <%= verse.text_uthmani.strip if include_arabic %>
 
+<%if @presenter.fetch_approved_translations.any?%>
 <% verse.translations.each do |tr| %>
 <%= @presenter.format_translation_text(tr).html_safe %>
 — <%= tr.resource_name %>
@@ -17,5 +18,5 @@
 <% end %>
 <% end %>
 <% end %>
-
+<% end %>
 <% end %>

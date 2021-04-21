@@ -92,9 +92,7 @@ class AdvanceCopyPresenter < QuranPresenter
   end
 
   def fetch_approved_translations
-    strong_memoize :approve_translations do
-      valid_translations(store_result: false)
-    end
+    params[:translations].split(',')
   end
 
   def copying_from_surah?
