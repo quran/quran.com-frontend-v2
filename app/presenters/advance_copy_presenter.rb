@@ -6,7 +6,11 @@ class AdvanceCopyPresenter < QuranPresenter
   end
 
   def translations
-    ResourceContent.where(id: fetch_approved_translations)
+    if include_translations?
+      ResourceContent.where(id: fetch_approved_translations)
+    else
+      []
+    end
   end
 
   def current_verse
@@ -33,9 +37,9 @@ class AdvanceCopyPresenter < QuranPresenter
 
     if (fetch_approved_translations.present?)
       @verses = @verses
-                    .where(translations: {resource_content_id: fetch_approved_translations})
-                    .eager_load(:translations)
-                    .order('translations.priority ASC')
+                  .where(translations: { resource_content_id: fetch_approved_translations })
+                  .eager_load(:translations)
+                  .order('translations.priority ASC')
     end
 
     @verses
@@ -63,6 +67,10 @@ class AdvanceCopyPresenter < QuranPresenter
     strong_memoize :footnote do
       'yes' == params[:footnote]
     end
+  end
+
+  def include_translations?
+    fetch_approved_translations.any?
   end
 
   def first_ayah_in_range
@@ -93,6 +101,7 @@ class AdvanceCopyPresenter < QuranPresenter
 
   def fetch_approved_translations
     strong_memoize :approve_translations do
+      params[:translations] = 'no' if params[:translations].blank?
       valid_translations(store_result: false)
     end
   end

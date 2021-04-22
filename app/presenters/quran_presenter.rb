@@ -121,7 +121,7 @@ class QuranPresenter < BasePresenter
       saved = saved_translations
 
       if saved == 'no' || saved.blank?
-        context.session[:translations] = 'no'
+        context.session[:translations] = 'no' if store_result
         []
       else
         saved = saved.split(',') if saved.is_a?(String)
