@@ -53,12 +53,6 @@
   }
 }
 .label__small {
-  // &.label__opened {
-  //   @at-root .dark {
-  //     background-color: #31333d !important;
-  //   }
-  //   background-color: $grey4;
-  // }
   max-width: 100px;
   display: flex;
   align-items: center;
@@ -67,9 +61,6 @@
   margin: 0 5px;
   @at-root .label__large & {
     margin: 0 ;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-around;
   }
   p, h1 {
     padding: 0;

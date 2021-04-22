@@ -64,11 +64,10 @@ $searchMenuWidth: 262px;
   .search-menu {
     padding: 11px 16px 37px;
     border-radius: 6px;
-    background-color: #f3f3f4;
-    // margin-top: 206px;
+    background-color: $grey2;
 
     @at-root .dark & {
-      background-color: #31333d;
+      background-color: $dark-grey;
       border: 1px solid #71727e;
       border-radius: 8px;
       box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);

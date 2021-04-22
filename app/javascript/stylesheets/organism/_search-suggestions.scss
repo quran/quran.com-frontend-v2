@@ -4,7 +4,7 @@
   padding: 12px 0 0;
   border-radius: 8px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-  border: solid 1px #f3f3f4;
+  border: solid 1px $grey2;
 
   background-color: white;
   display: none;
@@ -22,7 +22,7 @@
   }
 
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey;
     border: 1px solid #71727e;
     border-radius: 8px;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);

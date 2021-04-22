@@ -9,7 +9,7 @@
     box-shadow: 0 2px 3px 0 #e1e1e4;
   }
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey;
     border: 1px solid #71727e;
   }
   @at-root .juz-card & {

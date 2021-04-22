@@ -2,7 +2,7 @@
   position: fixed;
   width: 100vw;
   height: 50px;
-  background-color: #f3f3f4;
+  background-color: $grey2;
   z-index: 222;
   bottom: 0;
   left: 0;
@@ -12,7 +12,7 @@
   transform: translateY(200%);
   transition: transform 0.3s;
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey;
   }
   @include md {
     height: 88px;

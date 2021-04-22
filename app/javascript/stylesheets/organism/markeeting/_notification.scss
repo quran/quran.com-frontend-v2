@@ -1,8 +1,7 @@
 #notification-alert {
   align-items: center;
-  background: #cdecf1;
+  background: $grey2;
   padding: 10px;
-  border-bottom: 1px solid #00acc2;
 
   h3 {
     font-weight: bold;
@@ -12,5 +11,13 @@
 
   .text--green {
     margin-top: 5px;
+  }
+
+  @at-root .dark & {
+    background-color: $dark-grey;
+
+    h3{
+      color: $grey6;
+    }
   }
 }

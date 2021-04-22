@@ -38,7 +38,7 @@
       display: none;
       font-size: 10px;
       @at-root .dark & {
-        color: #31333d;
+        color: $dark-grey;
       }
       color: white;
       font-family: 'quran-icon';

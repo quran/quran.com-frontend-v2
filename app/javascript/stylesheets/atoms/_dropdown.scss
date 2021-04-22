@@ -1,91 +1,3 @@
-// .dropdown {
-//   background-color: #ffffff;
-//   border: 1px solid $grey2;
-//   border-radius: 8px;
-//   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-//   width: 290px;
-//   height: 290px;
-//   overflow: hidden;
-//   @at-root .dark {
-//     background-color: #31333d;
-//     border: 1px solid #71727e;
-//     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-//   }
-//   .input {
-//     padding: 10px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//   }
-//   .items {
-//     overflow-y: scroll;
-//     height: 100%;
-//     .item {
-//       // display: flex;
-//       // padding: 4px 8px;
-//       // margin: 2px 0;
-//       // cursor: pointer;
-//       // &:hover {
-//       //   background-color: $grey2;
-//       // }
-
-//       // @at-root .dark {
-//       //   .item:hover {
-//       //     background-color: #1c1c20 !important;
-//       //   }
-//       //   .arabic {
-//       //     color: white !important;
-//       //   }
-//       //   .name-arabic p {
-//       //     color: white !important;
-//       //     opacity: 0.5;
-//       //   }
-//       //   .number p {
-//       //     color: $grey1 !important;
-//       //   }
-//       // }
-//     }
-//     .number {
-//       // display: flex;
-//       // align-items: center;
-//       // margin-right: 15px;
-//       // p {
-//       //   color: $font-grey;
-//       //   font-size: $font-medium;
-//       //   margin: 0;
-//       //   padding: 0;
-//       // }
-//     }
-//     .name-latin {
-//       // flex: 1;
-//       // .arabic {
-//       //   color: $font-darkgrey;
-//       //   font-weight: $font-semibold;
-//       //   font-size: $font-medium;
-//       // }
-//       // .english {
-//       //   color: $font-grey;
-//       //   font-weight: $font-regular;
-//       //   font-size: $font-small;
-//       // }
-//       // p {
-//       //   margin: 0;
-//       //   padding: 0;
-//       // }
-//     }
-//     .name-arabic {
-//       // display: flex;
-//       // flex-direction: column;
-//       // justify-content: center;
-//       // p {
-//       //   color: $grey9;
-//       //   font-size: $font-medium;
-//       //   margin: 0;
-//       //   padding: 0;
-//       // }
-//     }
-//   }
-// }
 .dropdown {
   background-color: #ffffff;
   border: 1px solid $grey2;
@@ -95,7 +7,7 @@
   height: 290px;
   overflow: hidden;
   @at-root .dark  & {
-    background-color: #31333d;
+    background-color: $dark-grey;
     border: 1px solid #71727e;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   }
@@ -105,8 +17,6 @@
       display: block;
     }
   }
-
-
 }
 
 

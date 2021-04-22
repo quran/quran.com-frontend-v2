@@ -125,7 +125,9 @@ export default class extends AudioController {
     this.preloadTrack = {};
     this.audioData = {};
 
-    Howler.unload();
+    if(typeof Howler != 'undefined')
+      Howler.unload();
+
     this.progressBar.removeEventListener("change", this.onProgressChanged);
     this.progressBar.disabled = true;
   }

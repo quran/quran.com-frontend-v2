@@ -20,9 +20,9 @@
       margin-top: 0;
   }
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey;
     .surah-card {
-      background-color: #31333d;
+      background-color: $dark-grey;
       border-color: #71727e;
     }
   }

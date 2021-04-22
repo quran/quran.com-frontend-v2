@@ -6,7 +6,7 @@
   top: 0px;
   z-index: 2;
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey
   }
 }
 .navbar-inner {
@@ -25,14 +25,14 @@
     width: 150px;
   }
 }
-.nav-tabs { 
+.nav-tabs {
   border-bottom: none;
 
   @include md {
     display: none;
   }
 }
-.nav-button { 
+.nav-button {
 
   button {
 

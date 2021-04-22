@@ -14,7 +14,7 @@
     max-width: 90%;
   }
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey;
   }
 }
 .site-menu__header {

@@ -3,7 +3,7 @@
   background-color: #fbfbfb;
   padding-bottom: 40px;
   @at-root .dark & {
-    background-color: #31333d;
+    background-color: $dark-grey;
   }
 
   a {
