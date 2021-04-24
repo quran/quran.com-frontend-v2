@@ -78,9 +78,10 @@ group :development do
   # gem 'rails_real_favicon', '>= 0.1.0'
   gem 'listen'
   gem 'rubocop', '>= 1.8.1', require: false
-  gem 'rubocop-performance'
+  gem 'rubocop-performance', '>= 1.7.1'
   gem 'rubocop-rails', '~> 2.3.2'
-  gem 'rubocop-rspec'
+  gem 'rubocop-rspec', '>= 1.43.2'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
