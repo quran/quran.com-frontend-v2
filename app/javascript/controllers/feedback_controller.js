@@ -51,7 +51,12 @@ export default class extends Controller {
     submitButton.innerHTML = '<span class="quran-icon icon-loading"></span>';
     submitButton.disabled = true;
 
+    var headers = { "X-Requested-With": "XMLHttpRequest" };
+    var csrfTokenElement = document.querySelector('meta[name="csrf-token"]');
+    if (csrfTokenElement) headers["X-CSRF-Token"] = csrfTokenElement.content;
+
     var requestOptions = {
+      headers: headers,
       mode: 'cors',
      // credentials: 'include',
       method: 'POST',

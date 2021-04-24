@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   post 'fb', to: 'chapters#index'
+  post 'api/feedbacks', to: 'feedback#create'
 
   # surah in url for seo
   get '/surah/:id/info', to: 'chapter_info#show'
