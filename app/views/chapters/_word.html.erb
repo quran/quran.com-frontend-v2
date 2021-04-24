@@ -1,7 +1,0 @@
-<%
-  w_translation = word.word_translation
-  w_transliteration = word.en_transliteration
-%>
-<span class="<%= word.char_type_name %> w <%= @presenter.font %> p<%= word.page_number %>-<%= @presenter.font %> arabic" id="w-<%= word.id %>" data-local='<%= w_translation&.language_name %>' data-audio="<%= word.audio_url %>" data-t="<%= w_translation&.text %>" data-tr="<%= w_transliteration %>" data-position="<%= word.position %>" data-key="<%= word.location %>" data-controller="word">
-  <%= word.send(@presenter.font_method).to_s.html_safe %>
-</span>

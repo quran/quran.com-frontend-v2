@@ -1,0 +1,97 @@
+<section class="hidden"
+         data-controller="announcement"
+         data-id="donation-notification"
+         data-url="/popups/donation"
+         data-page="<%= controller_name %>"
+>
+  <div id=notification-alert>
+    <div class="container d-none d-sm-block pt-2">
+      <div class="flexx align-items-center flex-wrap">
+        <div class="text--grey">
+          <h3 class="m-0">
+            Join us in building the next version of Quran.com
+          </h3>
+
+          <p class="m-0">
+            Your support will accelerate the roadmap of new features by 7x <br>
+            and further develop Quran.com as an open-source, un-biased, and non-sectarian source for Quranic study.
+          </p>
+
+          <p class="text--green">
+            <span class="mr-2"> ✔ Monthly transparency reports</span>
+            <span>✔ Tax deductible (US)</span>
+          </p>
+        </div>
+
+        <div>
+          <a class="btn btn--lightgrey btn--large"
+             data-controller="track"
+             data-name="donation"
+             data-action="learn-more-notification"
+             target="_blank"
+             href="https://quranfund.com/">
+            Learn more
+          </a>
+
+          <button class="btn btn-primary btn--large"
+                  data-controller="track donation"
+                  data-name="donation"
+                  data-category="donate-notification">
+            Become a donor
+          </button>
+
+          <a class="close text--grey cursor-pointer btn—large"
+             data-controller="track"
+             data-name="donation"
+             style="cursor: pointer"
+             data-category="dismiss-notification">
+            Dismiss
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-block d-sm-none">
+      <div class="row">
+        <div class="col-12">
+          <span style="font-weight: bold">
+            Join us in building the next version of Quran.com
+          </span> Your support will accelerate the roadmap by 7x and keep Quran an unbiased source for Quranic study.
+        </div>
+
+        <div class="col-12 mt-2">
+          <div class="flexx align-content-center">
+            <div>
+              <a class="btn close text--grey cursor-pointer btn--large"
+                 data-controller="track"
+                 data-name="donation"
+                 style="cursor: pointer"
+                 data-category="dismiss-notification">
+                Dismiss
+              </a>
+            </div>
+
+            <div>
+              <a class="btn btn--lightgrey btn--large"
+                 data-controller="track"
+                 data-name="donation"
+                 data-action="learn-more-notification"
+                 href="https://quranfund.com">
+                Learn more
+              </a>
+
+              <button class="btn btn-primary btn--large"
+                      data-controller="track donation"
+                      data-name="donation"
+                      data-category="donate-notification">
+                Become a donor
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- donations script -->
+<script>(function(gi,vi,n,g,l,oo,p){gi[l]=gi[l]||function(){(gi[l].q=gi[l].q||[]).push(arguments);gi.glObjName=l;},oo=vi.createElement(n),p=vi.getElementsByTagName(n)[0];oo.async=1;oo.src=g;oo.dataset.orgId=1728;p.parentNode.insertBefore(oo,p);oo.id="gl-donation-popup-script";})(window,document,"script","https://www.givingloop.org/js?"+ Array(1).fill(null).map(()=>Math.random().toString(20).substr(2)).join(""),"givingloop");</script>

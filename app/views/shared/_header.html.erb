@@ -1,21 +1,30 @@
-<%= render 'shared/left_side_bar' %>
+<div class="header header--border">
+  <div class="container header-inner">
+    <div class="header-inner__firstpart">
+      <div class="header-inner__firstpart__menu">
+        <!-- TODO add hamburger to fonts -->
+        <%= image_tag 'icon/hamburger.svg', id: 'site-menu--trigger', class: 'sidebar-btns', alt: 'quran.com menu' %>
+      </div>
 
-<header class="sticky-top">
-  <nav class="navbar navbar-light bg-white custom-shadow">
-    <div class="container">
-      <div class="row">
-        <div class="col d-flex align-items-center">
-          <button class="navbar-toggler" type="button" data-controller="sidebar" data-target="#left-sidebar" data-close=".close-left-sidebar">
-            <i class="fa fa-bars-regular"></i>
-          </button>
+      <%= link_to root_path, class: 'logo' do %>
+        <strong style="font-weight: bold">Quran</strong>.com
+      <% end %>
+    </div>
 
-          <%= link_to root_path, class: 'h2 ff-b mb-0 ml-3' do %>
-            Quran<span class="ff-m h4 ml-0">.com</span>
-          <% end %>
+    <% if @presenter.show_header_search? %>
+      <div class="header-input">
+        <div class="input-wrapper medium">
+          <%= render 'shared/search_form' %>
         </div>
+      </div>
+    <% end %>
 
-        <%= yield :header %>
+    <div class="header-theme-switch">
+      <div class="theme-language">
+        <%= render 'shared/theme_switch' %>
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+</div>
+
+<%= render 'shared/site_menu' %>

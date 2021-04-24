@@ -1,0 +1,16 @@
+<% verses = @presenter.verses %>
+<%= render 'reader/qcf_fonts', verses: verses %>
+
+<% if @presenter.reading_mode? %>
+  <%= render partial: 'page', locals: {verses: verses} %>
+<% else %>
+  <% verses.each do |verse| %>
+    <% if @presenter.show_chapter_name?(verse) %>
+      <%= render 'reader/chapter_name', verse: verse %>
+    <% end %>
+
+    <%= render partial: 'reader/verse', locals: {verse: verse} %>
+  <% end %>
+<% end %>
+
+<%= render "#{action_name}_pagination" %>

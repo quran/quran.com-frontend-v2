@@ -15,6 +15,8 @@ tr:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: İngilizce
   site_local: Site Dilini
   change_local: Sitenin görüntülenmesini istediğiniz dili seçin
@@ -53,6 +55,7 @@ tr:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: IndoPak metni
+      imlaei:
     translation_count:
       one: Bir çeviri gösteriliyor
       other: "%{count} çeviri gösteriliyor"
@@ -82,6 +85,7 @@ tr:
     copy:
       label: Kopyala
       done: Kopyalandı!
+      advance:
     share: Paylaş ayet
     addNote: Not ekle
     tafsir:
@@ -124,6 +128,8 @@ tr:
     pause: Duraklat
     play_continuously: Duraklatmadan oynamaya devam edin
     show_word_tooltip: Ayah oynarken araç ipucunda kelime çevirisini göster
+    repeatCurrent:
+    loading:
   loading: Yükleniyor...
   nav:
     title: Kuran
@@ -166,3 +172,11 @@ tr:
     translation: Çeviriler
     info: Bölüm Bilgisi
   share_ayah: Paylaş ayah
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

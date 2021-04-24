@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Slugable
   extend ActiveSupport::Concern
 
@@ -6,7 +8,7 @@ module Slugable
 
     def self.find_using_slug(slug)
       if slug.to_s[/\d+/] == slug.to_s
-        self.where(id: slug).first
+        where(id: slug).first
       else
         joins(:slugs).where('slugs.slug': slug).first
       end

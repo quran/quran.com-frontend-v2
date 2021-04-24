@@ -1,0 +1,35 @@
+<div class="juz-card">
+  <h5 class="juz-card__title">
+    <%= link_to juz.juz_number, quran_juz_path(juz.juz_number) %>
+  </h5>
+
+  <% juz.verse_mapping.each do |chapter_number, ayah_range| %>
+    <% chapter = @presenter.chapters[chapter_number.to_i - 1] %>
+
+    <%= link_to ayah_range_path(chapter, ayah_range),
+                data: {
+                  controller: 'track',
+                  name: 'juz',
+                  category: "#{chapter.id}-#{chapter.name_simple}"
+                } do %>
+      <div class="surah-card">
+        <div class="surah-card__text">
+          <div class="surah-card__latin">
+            <h5><%= chapter.name_simple %></h5>
+            <div class="ayah-number-wrapper">
+              <p class="ayah-number"><%= ayah_range %></p>
+              <% translated_name = chapter.translated_name %>
+              <p class="<%= translated_name.language_name %>"><%= translated_name.name %></p>
+            </div>
+          </div>
+          <div class="surah-card__arabic">
+            <p>
+              <span class="icon-surah icon-surah<%= chapter.chapter_number %>"></span>
+              <span class="icon-surah icon-surah-surah"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

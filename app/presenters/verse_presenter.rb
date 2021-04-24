@@ -1,24 +1,25 @@
-class VersePresenter < BasePresenter
+# frozen_string_literal: true
+
+class VersePresenter < QuranPresenter
   def verse
-    if params[:id].to_s.include?(':')
-      Verse.find_by_verse_key(params[:id])
-    else
-      Verse.find_by_id_or_key(params[:id])
-    end
+    Verse.find_with_id_or_key(params[:id])
   end
 
   def approved_tafsirs
     ResourceContent.tafsirs.approved
   end
 
+  def verse_key
+    verse.verse_key
+  end
+
   def tafsir_languages
     list = Language
-             .eager_load(:translated_name)
-             .where(id: approved_tafsirs.select(:language_id))
+               .eager_load(:translated_name)
+               .where(id: approved_tafsirs.select(:language_id))
 
-    eager_load_translated_name(list).reduce({}) do |hash, translation|
+    eager_load_translated_name(list).each_with_object({}) do |translation, hash|
       hash[translation.id] = translation
-      hash
     end
   end
 
@@ -30,9 +31,7 @@ class VersePresenter < BasePresenter
     tafsir&.resource_name || ResourceContent.find(tafirs_filter).name
   end
 
-  def chapter
-    verse.chapter
-  end
+  delegate :chapter, to: :verse
 
   def params_for_verse_link
     {}
@@ -42,9 +41,9 @@ class VersePresenter < BasePresenter
     translations = valid_translations
 
     if translations.present?
-      "https://www.quran.com/#{verse.verse_key.sub(':', '/')}?translations=#{translations.join(',')}"
+      "https://www.quran.com/#{verse.verse_key}?translations=#{translations.join(',')}"
     else
-      "https://www.quran.com/#{verse.verse_key.sub(':', '/')}"
+      "https://www.quran.com/#{verse.verse_key}"
     end
   end
 
@@ -65,7 +64,7 @@ class VersePresenter < BasePresenter
   end
 
   def font_method
-    'code'
+    'code_v1'
   end
 
   def show_verse_actions?
@@ -73,7 +72,7 @@ class VersePresenter < BasePresenter
   end
 
   def tafsir_text
-    if(t= tafsir)
+    if (t = tafsir)
       t.text.gsub(/[.]+/, '.<br/>').to_s.html_safe
       t.text.to_s.html_safe
     else
@@ -81,12 +80,24 @@ class VersePresenter < BasePresenter
     end
   end
 
-  def meta_page_type
-    'article'
-  end
-
   def language_name
     tafsir&.language_name
+  end
+
+  def translations
+    ResourceContent.where(id: params[:translation_ids])
+  end
+
+  def meta_title
+    if 'tafsir' == action_name
+      "#{tafsir_name} - #{verse_key} - #{language_name}"
+    end
+  end
+
+  def meta_description
+    if 'tafsir' == action_name
+      sanitize_meta_description_text(tafsir_text)
+    end
   end
 
   protected
@@ -102,10 +113,10 @@ class VersePresenter < BasePresenter
     return 16 if params[:tafsir_id].blank?
 
     ResourceContent
-      .approved
-      .tafsirs
-      .where(id: params[:tafsir_id])
-      .or(ResourceContent.where(slug: params[:tafsir_id]))
-      .first&.id || 16
+        .approved
+        .tafsirs
+        .where(id: params[:tafsir_id])
+        .or(ResourceContent.where(slug: params[:tafsir_id]))
+        .first&.id || 16
   end
 end

@@ -1,0 +1,16 @@
+.juz-art{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+
+  .art{
+    transform: rotate(90deg);
+  }
+  .info{
+    padding: 1px 8px 5px 8px;
+    margin: 0 -6px;
+    border-top: 1px solid $dark-green;
+    border-bottom: 1px solid $dark-green;
+    display: inline-block;
+  }
+}

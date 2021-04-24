@@ -1,0 +1,73 @@
+.radio-label {
+  display: block;
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  color: $grey8;  
+  margin-bottom: 0;
+  &.radio-label--border {
+    border-radius: 4px;
+    padding: 9px 8px;
+    padding-bottom: 8px;
+    padding-left: 30px;
+    flex: 1;
+    font-size: 14px;
+    border: 1px solid #E1E1E4;
+    @at-root .dark & {
+      border-color: #71727E;
+    }
+    &:nth-child(1) {
+      margin-right: 16px;
+    }
+  }
+  &.radio-label--black {
+    @at-root .dark & {
+      background-color: $black;
+    }
+  }
+  @at-root .dark & {
+    color: #999AA2;
+  }
+  padding-left: 30px;
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+  }
+  .checkmark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 8px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%; 
+    // background-color: #eee;
+    border: 2px solid #C1C2C7;
+    &::after {
+      content: '';
+      display: none;
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $dark-green;
+      border-radius: 50%;
+    }
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  input:checked ~ .checkmark {
+    border: 2px solid $dark-green;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+  }
+}

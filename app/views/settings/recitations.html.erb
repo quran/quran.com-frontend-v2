@@ -1,39 +1,30 @@
-<div data-controller="filter-list choose-recitation" class="px-4" data-list="#recitations" data-input="#filter-recitation">
-  <div class="rounded-search d-flex justify-content-end my-4">
-    <input class="form-control bg-light" placeholder="Filter" type="search" id="filter-recitation"/>
+<div class="reciters__content" data-controller="filter-list choose-recitation" data-list=".all-reciters" data-input="#filter-recitation">
+  <div class="input-wrapper large select2-search">
+    <input type="search"
+           id="filter-recitation"
+           placeholder="<%= t('filter.reciters', default: "Search Reciters") %>"
+           autocapitalize="none"
+           autocomplete="off"
+           autocorrect="off"
+           spellcheck="false"
+           aria-label="Search"
+           class="ytd-searchbox"
+           aria-haspopup="false"
+           role="combobox" aria-autocomplete="list"/>
   </div>
-
-  <div id="recitations">
+  <div class="all-reciters">
     <% @presenter.recitations.each do |recitation| %>
       <% reciter_name = recitation.reciter.translated_name %>
-
-      <div class="form-check my-4"
-           data-filter-tags="<%= recitation.reciter_name.downcase %> <%= reciter_name.name %> <%= recitation.style.to_s.downcase %>">
-        <div>
-          <input class="form-check-input" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
-          <label class="form-check-label text-muted" for="recitation-<%= recitation.id %>">
-            <span class="<%= reciter_name.language_name %>">
-              <%= reciter_name.name %>
-            </span>
-
-            <% if recitation.style.present? %>
-              <small class="rounded-pill bg-primary text-white p-1 style" data-style="<%= recitation.style.downcase %>"><%= recitation.style %></small>
-            <% end %>
-
-            <% if 'english' != reciter_name.language_name %>
-              <br/>
-              <small class="fs-xl">
-                <%= recitation.reciter_name %>
-              </small>
-            <% end %>
-          </label>
-        </div>
-
-        <!--<button class="btn btn-info d-flex align-items-center mt-2 hear-voice justify-content-between px-2">
-          <i class="fa fa-play fa-center-2"></i>
-          Hear the Voice
-        </button>-->
+      <div class="reciter" data-filter-tags="<%= recitation.reciter_name.downcase %> <%= reciter_name.name %> <%= recitation.style.to_s.downcase %>">
+        <label class="radio-label <%= reciter_name.language_name %>"><%= reciter_name.name %>
+          <% if recitation.style.present? %>
+            <small class="rounded-pill bg-info text-white p-1 style" data-style="<%= recitation.style.downcase %>"><%= recitation.style %></small>
+          <% end %>
+          <input class="" type="radio" name="recitation" value="<%= recitation.id %>" id="recitation-<%= recitation.id %>">
+          <span class="checkmark"></span>
+        </label>
+        <!--<button id="" class="btn btn--darkgrey btn--medium btn--play btn--reciter">Hear the voice</button>-->
       </div>
-    <% end %>
+    <%end%>
   </div>
 </div>

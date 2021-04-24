@@ -26,10 +26,12 @@ so:
       hay! Wuu ku guuldareystay inuu ku xirmo Web Console middleware.
       Fadlan hubso in kuu shaqeynaayo rails development server.
     format: "%{attribute} %{message}"
-  local: ingiriis
+    invalid_page:
+    invalid_juz:
+  local: Ingiriis
   site_local: Luqadda beejka
   change_local: Dooro luqadda aa ku isticmaaleyso beejka
-  local_native_name: Ingiriis
+  local_native_name: Soomaali
   language: Luuqad
   page: Bag
   reader_mode:
@@ -58,6 +60,7 @@ so:
       qcf_v1: Hab qoraalka Qur'aanka ee Boqor Fahad v1
       qcf_v2: Hab qoraalka Qur'aanka ee Boqor Fahad v2
       indopak: Qoraalka IndoPak
+      imlaei:
     font_size:
       label: Farta weyninkeeda
       arabic: Af-carabi
@@ -104,6 +107,7 @@ so:
     copy:
       label: Koobiyeey
       done: La koobiyeeyay!
+      advance:
   search:
     label: Raadi
     placeholder: Raadi "Noah"
@@ -140,6 +144,8 @@ so:
     play_continuously: Daaro joogsi la`aan
     show_word_tooltip: Ku muuji shaashadda fasiraadda ereyada inta ey aayadda socoto
     scroll: Si otomaatig ah ayuu isku geynayyaa aayada hadda socoto
+    repeatCurrent:
+    loading:
   loading: Waa soo socdaa ...
   nav:
     title: Quraan
@@ -179,3 +185,11 @@ so:
     audio: Quraanka kariimka oo maqal ah
     audio_description: Barashada & dhageysiga oo isku mar ah
   close: Xir
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

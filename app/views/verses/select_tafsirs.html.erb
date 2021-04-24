@@ -8,8 +8,7 @@
 <div id="modal">
   <div class="modal-body" data-controller="tafsir-modal">
     <div class="mb-4">
-      <h6 class="mr-2"><%= _t('action.tafsir.filter_tafsir') %></h6>
-
+      <h6 class="text text--black"><%= _t('action.tafsir.filter_tafsir') %></h6>
       <div id="filters" class="d-flex align-items-end">
         <% tafsir_languages.each do |lang_id, language| %>
           <button data-action="tafsir-modal#filter" data-selected-lang="<%= lang_id %>" type="button" class="btn btn-outline-secondary btn-sm mr-2">
@@ -19,9 +18,9 @@
       </div>
     </div>
 
-    <ul id="tafsir-results">
+    <ul id="tafsir-list">
       <% @presenter.approved_tafsirs.each do |tafsir| %>
-        <li class="mb-3 border-bottom pb-2" data-lang="<%= tafsir.language_id %>">
+        <li class="mb-3 pb-2" data-lang="<%= tafsir.language_id %>">
           <%= link_to verse_tafsir_path(verse.verse_key, tafsir_id: tafsir.slug.presence || tafsir.id) do %>
             <%= tafsir.name %>
             <br/>

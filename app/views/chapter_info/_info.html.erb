@@ -1,39 +1,44 @@
-<section id="chapter-info" class="mb-4">
-  <div class="container">
-    <div class="surah-info-area">
-      <div class="row pt-4">
-        <div class="col-md-4 order-1">
-          <div class="img-col">
-            <%= lazy_image_tag "#{@presenter.revelation_place}.jpg", class: 'img-fluid', alt: @presenter.revelation_place %>
+<div class="info-section">
+  <div class="page-info">
+    <div class="page-info__container">
+      <div class="page-info__image">
+        <%= image_tag "#{@presenter.revelation_place}.jpg", alt: @presenter.revelation_place %>
+      </div>
+
+      <div class="page-info__text">
+        <div class="page-info__text__header">
+          <div class="part1">
+            <p class="text text--black text--xlarge text--semibold">Surah <%= @presenter.name_simple %></p>
+          </div>
+
+          <div class="part2">
+            <div class="info-header">
+              <p class="text text--darkgrey text--medium text--semibold"><%= _t("chapters.verses") %></p>
+              <p class="text text--grey text--medium text--regular">
+                <%= @presenter.verses_count %>
+              </p>
+            </div>
+
+            <div class="info-header">
+              <p class="text text--darkgrey text--medium text--semibold"><%= _t("chapters.pages") %></p>
+              <p class="text text--grey text--medium text--regular">
+                <%= @presenter.pages.join('-') %>
+              </p>
+            </div>
+
+            <div class="info-header">
+              <p class="text text--darkgrey text--medium text--semibold"><%= _t("chapters.revelation_place") %></p>
+              <p class="text text--grey text--medium text--regular">
+                <%= @presenter.revelation_place.humanize %>
+              </p>
+            </div>
           </div>
         </div>
-
-        <div class="col-md-8 order-2 mt-md-0 mt-3">
-          <ul class="row align-items-center">
-            <div class="col-12 col-md">
-              <li><h4 class="ff-b">Surah <%= @presenter.name_simple %></h4></li>
-            </div>
-
-            <div class="col-12 col-md justify-content-md-evenly justify-content-between d-flex">
-              <li>
-                <%= _t("chapters.verses") %> <br><span class="info text-muted"><%= @presenter.verses_count %></span>
-              </li>
-
-              <li>
-                <%= _t("chapters.pages") %> <br><span class="info text-muted"><%= @presenter.pages.join('-') %></span>
-              </li>
-
-              <li>
-                <%= _t("chapters.revelation_place") %>
-                <br><span class="info text-muted"><%= @presenter.revelation_place.humanize %></span></li>
-            </div>
-          </ul>
-
-          <div class="<%= I18n.locale %>">
+        <div class="horizontal-line"></div>
+        <div class="page-info__content <%= I18n.locale %>" data-controller="chapter-info">
             <%= @presenter.info.text.html_safe %>
-          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>

@@ -1,80 +1,45 @@
-<footer class="footer pb-5">
+<div class="footer">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-2 col-md-3 col-sm-6">
-        <div class="footer-tab">
-          <h4><%= _t('nav.navigate') %></h4>
-          <ul>
-            <li>
-              <%= link_to _t('nav.about_us'), about_us_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.contribute'), donations_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.privacy'), privacy_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.help'), support_path %>
-            </li>
-            <li>
-              <%= link_to _t('nav.developers'), developers_path %>
-            </li>
-            <li>
-              <%= link_to _t('download'), apps_path %>
-            </li>
-          </ul>
+    <div class="content-page">
+      <div class="footer-links">
+        <div>
+          <h5><%= _t('nav.navigate') %></h5>
+          <%= link_to _t('nav.about_us'), about_us_path %>
+          <%= link_to _t('nav.contribute'), donations_path %>
+          <%= link_to _t('nav.help'), support_path %>
+          <%= link_to _t('nav.developers'), developers_path %>
+          <%= link_to _t('download'), apps_path %>
+          <%= link_to _t('nav.privacy'), privacy_path %>
         </div>
-      </div>
 
-      <div class="col-lg-2 col-md-3 col-sm-6">
-        <div class="footer-tab">
-          <h4><%= _t('nav.useful_sites') %></h4>
-          <ul>
-            <li>
-              <a href="https://quranicaudio.com/" target="_blank" rel="noopener noreferrer">Quranicaudio.com</a>
-            </li>
-            <li>
-              <a href="https://salah.com/" target="_blank" rel="noopener noreferrer">Salah.com</a>
-            </li>
-            <li>
-              <a href="https://sunnah.com/" target="_blank" rel="noopener noreferrer">Sunnah.com</a>
-            </li>
-            <li>
-              <a href="https://legacy.quran.com/" target="_blank" rel="noopener noreferrer"> Legacy Quran.com</a>
-            </li>
-            <li>
-              <a href="https://corpus.quran.com/wordbyword.jsp" target="_blank" rel="noopener noreferrer">Corpus.Quran.com</a>
-            </li>
-          </ul>
+        <div>
+          <h5><%= _t('nav.useful_sites') %></h5>
+          <a href="https://quranicaudio.com/" target="_blank" rel="noopener">Quranicaudio.com</a>
+          <a href="https://salah.com/" target="_blank" rel="noopener">Salah.com</a>
+          <a href="https://sunnah.com/" target="_blank" rel="noopener">Sunnah.com</a>
+          <a href="https://legacy.quran.com/" target="_blank" rel="noopener"> Legacy Quran.com</a>
+          <a href="https://corpus.quran.com/wordbyword.jsp" target="_blank" rel="noopener">Corpus.Quran.com</a>
+          <a href="https://quranreflect.com" target="_blank" rel="noopener">QuranReflect.com</a>
         </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 col-sm-6">
-        <div class="footer-tab">
-          <h4><%= _t('nav.other_links') %></h4>
-          <ul>
-            <li>
-              <a href="https://quran.com/sitemap.xml.gz" target="_blank" rel="noopener noreferrer">Sitemap</a>
-            </li>
-            <li>
-              <a href="https://quran.com/36" target="_blank" rel="noopener noreferrer">Surah Yaseen (يس)</a>
-            </li>
-            <li>
-              <a href="https://quran.com/2/255" target="_blank" rel="noopener noreferrer">Ayat Al-Kursi (آية الكرسي)</a>
-            </li>
-          </ul>
+        <div>
+          <h5><%= _t('nav.other_links') %></h5>
+          <a href="https://quran.com/sitemap.xml.gz" target="_blank">Sitemap</a>
+          <a href="/surah-ya-sin">Surah Yaseen (يس)</a>
+          <a href="/ayatul-kursi">Ayat Al-Kursi (آية الكرسي)</a>
+          <a href="/surah-al-kahf">Surah Al-Kahf (الكهف)</a>
         </div>
-      </div>
 
-      <div class="col-lg-4 col-md-6 col-sm-12 ml-auto">
-        <div class="copyright">
-          <p class="mb-4">
+        <div style="max-width: 345px;">
+          <p>
             <%= _t('nav.about_project').html_safe %>
           </p>
-          <p class="mb-0">&copy; <%= Date.today.year %> <a href="https://quran.com">Quran.com</a>. <%= _t('nav.rights') %></p>
+
+          <p>
+            &copy; <%= Date.today.year %>
+            <a href="https://quran.com" style="display: inline;" >Quran.com</a>. <%= _t('nav.rights') %>
+          </p>
         </div>
       </div>
     </div>
   </div>
-</footer>
+</div>

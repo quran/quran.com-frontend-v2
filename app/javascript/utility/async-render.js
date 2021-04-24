@@ -73,7 +73,8 @@ class RenderAsync {
       } else {
         $(element).replaceWith(response);
       }
-      fireEvent(successEvent);
+
+      if (successEvent) fireEvent(successEvent);
     };
 
     var onError = function(currentRetryCount) {

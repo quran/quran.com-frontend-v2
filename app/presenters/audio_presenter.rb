@@ -1,17 +1,13 @@
 # frozen_string_literal: true
 
-class AudioPresenter < BasePresenter
-  def initialize(context)
-    super context
-  end
-
+class AudioPresenter < QuranPresenter
   def data
     json = {}
 
     load_verses.each do |verse|
       audio = verse.audio
 
-      json[verse.verse_number] = {
+      json[verse.verse_key] = {
         audio: audio.url,
         segments: audio.segments,
         duration: audio.duration
@@ -22,32 +18,21 @@ class AudioPresenter < BasePresenter
   end
 
   def cache_key
-    "c:#{chapter_id}-r:#{recitation_id}-s:#{verse_start}-e:#{verse_end}"
+    "v:#{verse.verse_key}-r:#{recitation_id}-l:#{per_page}"
   end
 
   protected
 
   def load_verses
-    Verse
+    current = verse
+    verses = Verse.where("verse_index BETWEEN ? AND ?", current.id - 1, current.id + per_page - 1)
+    verses
       .eager_load(:audio)
-      .where(chapter_id: chapter_id, audio_files: {recitation_id: recitation_id})
-      .where('verses.verse_number >= ? AND verses.verse_number <= ?', verse_start.to_i, verse_end.to_i)
-  end
-
-  def verse_start
-    (current_page * per_page) + 1
-  end
-
-  def verse_end
-    verse_start + per_page - 1
+      .where(audio_files: {recitation_id: recitation_id})
   end
 
   def per_page
     10
-  end
-
-  def current_page
-    (params[:page].presence || 0).to_i
   end
 
   def recitation_id
@@ -58,7 +43,7 @@ class AudioPresenter < BasePresenter
     end
   end
 
-  def chapter_id
-    params[:chapter] || params[:chapter_id]
+  def verse
+    Verse.find_by_verse_key(params[:verse])
   end
 end

@@ -1,0 +1,186 @@
+.select-stylee {
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #dadbde !important;
+  border-radius: 8px !important;
+
+  .select2-search {
+    // padding: 10px 15px;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+    margin: 10px 15px;
+
+    &::after {
+      content: $icon-search;
+      font-family: quran-icon;
+      font-size: 12px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: $dark-green;
+      z-index: 100 !important;
+    }
+
+    input {
+      height: 32px;
+      // let select2 calculate the width
+      //width: 260px;
+      padding-left: 10px;
+      margin: 10px 15px;
+      border-radius: 30px;
+      margin: 0;
+      box-sizing: border-box;
+      outline: none;
+      position: relative;
+      color: $font-darkgrey;
+    }
+  }
+}
+
+.select2-search {
+  &::after {
+    content: $icon-search;
+    font-family: quran-icon;
+    font-size: 12px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: $dark-green;
+    z-index: 100 !important;
+  }
+}
+
+.select2-dropdown{
+  @at-root .dark & {
+    background-color: $dark-grey;
+    border-color: #71727e;
+    color: $white;
+  }
+}
+
+.select2-container--default {
+  .select2-selection--single {
+    background-color: $grey1;
+    border: 1px solid #dadbde;
+    border-radius: 4px;
+    height: 40px;
+    padding: 9px 8px;
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+    @at-root .dark & {
+      background-color: $black;
+      border-color: #71727e;
+    }
+    @at-root .audio-control & {
+      width: 100%;
+    }
+    // width: max-content;
+    &:focus {
+      outline: none;
+    }
+
+    &::after {
+      content: $icon-arrow-down;
+      font-family: quran-icon;
+      color: #93949c;
+      font-size: 7px;
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transition: 0.3s;
+      transform: translateY(-50%);
+      transform-origin: center;
+    }
+
+    .select2-selection__rendered {
+      color: $grey8;
+    }
+  }
+}
+
+.simple-select-div {
+  .select2-container--default.select2-container--open.select2-container--below
+  .select2-selection--single,
+  .select2-container--default.select2-container--open.select2-container--below
+  .select2-selection--multiple {
+    border-radius: 4px;
+    width: 100%;
+
+    &::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+}
+
+.select2-container--default
+.select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: $grey2;
+  color: $font-darkgrey;
+}
+
+.select2-results__option--selected {
+  color: $dark-green !important;
+  background: none !important;
+}
+
+.select2-results__option--highlighted[aria-selected]{
+  background: $dark-green !important;
+}
+
+.select2-container--default
+.select2-selection--single
+.select2-selection__arrow {
+  display: none;
+}
+
+// .simple-select-div {
+// }
+
+.select2-results {
+  .select2-results__options {
+    @include scrollbarStyle;
+  }
+
+  li {
+    padding: 5px 16px;
+    margin: 5px 0;
+    color: $font-darkgrey;
+    font-size: $font-medium;
+    font-weight: $font-semibold;
+    line-height: 20px;
+
+    @at-root .dark & {
+      color: $font-softgrey;
+    }
+  }
+}
+
+.simple-select-div {
+  width: 160px;
+  @at-root .audio-select & {
+    width: 100%;
+  }
+}
+
+
+[aria-disabled=true]{
+  color: #666;
+  cursor: not-allowed;
+}

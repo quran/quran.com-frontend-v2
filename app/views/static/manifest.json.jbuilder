@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-#
 
 json.cache! 'pwa-manifest', expires_in: 1.week do
   json.short_name 'Quran.com'
@@ -10,7 +9,7 @@ json.cache! 'pwa-manifest', expires_in: 1.week do
   json.theme_color '#00acc1'
   json.background_color '#fff'
 
-  json.icons ['192x192', '256x256', '512x512', ['256x256', 'maskable']] do |data|
+  json.icons ['192x192', '256x256', '512x512', %w[256x256 maskable]] do |data|
     icon, purpose = data
     json.sizes icon
     json.type 'image/png'

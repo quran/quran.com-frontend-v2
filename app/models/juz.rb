@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: juzs
@@ -12,9 +13,8 @@
 #  verse_mapping :json
 #
 
-class Juz < ApiCoreRecord
+class Juz < QuranCoreRecord
   serialize :verse_mapping, Hash
-
   include QuranNavigationSearchable
 
   has_many :verses, foreign_key: :juz_number

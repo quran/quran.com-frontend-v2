@@ -41,7 +41,7 @@ export default class extends Controller {
     this.text = el.data("text");
     this.title = el.data("title");
 
-    this.addButton("fb", "Facebook", {
+    this.addButton("facebook", "Facebook", {
       href: `https://www.facebook.com/sharer/sharer.php?u=${this.url}`
     });
 
@@ -110,8 +110,8 @@ export default class extends Controller {
                   <span class='share-icon ${icon}'>
                    <a target='_blank' rel='noopener'
                    title='Share on ${name}'
-                   class='align-items-center d-flex justify-content-center' ${linkOptions}>
-                   <i class='fa fa-${icon}'></i></a>
+                   ${linkOptions}>
+                   <i class='quran-icon icon-${icon}'></i></a>
                    </span><p class='text-muted fs-sm'>${name}</p></div>`;
 
     this.shareButtons.append(content);

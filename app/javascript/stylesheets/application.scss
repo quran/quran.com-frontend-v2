@@ -12,54 +12,16 @@
  *
  */
 
-@import "bootstrap-components";
-@import "extentions/extension-pace";
-@import "extentions/extension-slimscroll";
+@import "bootstrap";
 
-@import "partials/font_sizes";
-@import "partials/scrolling";
-@import "partials/search";
-@import "partials/toggle_switch";
-@import "partials/sidebars";
-@import "partials/highlighting";
-@import "partials/footer";
-@import "partials/animation";
-@import "partials/buttons";
-@import "partials/tajweed";
-@import "partials/footnotes";
-@import "partials/share";
-@import "partials/repeat_player_setting";
-@import "partials/loading_spinner";
-
-@import "partials/player";
-
-@import "./pages/home";
-@import "./pages/chapter";
-@import "./pages/common";
-
-@import "theme/dark";
-
-[class^="fa-"],
-[class*=" fa-"] {
-  color: #b1bec5;
-}
-
-.fa-play {
-  color: $color-primary;
-  font-size: 25px;
-}
-.fa-book {
-  font-size: 23px;
-}
-
-.fa-share-alt {
-  font-size: 20px;
-}
-
-.nav-link:focus {
-  outline: none !important;
-}
-
-.break-space {
-  white-space: break-spaces;
-}
+/**
+ * Toolkit styles
+ */
+@import "select2/dist/css/select2.css";
+@import "quran-icon";
+@import "locals";
+@import "mixins";
+@import "atoms";
+@import "molecules";
+@import "organism";
+@import "utility";

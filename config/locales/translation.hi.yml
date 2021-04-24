@@ -23,12 +23,14 @@ hi:
       उफ़! वेब कंसोल मिडलवेयर से कनेक्ट करने में विफल।
       कृपया सुनिश्चित करें कि रेल सर्वर चल रहा है।
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: अंग्रेज़ी
   site_local: साइट की भाषा
   change_local: |2-
 
     साइट देखने के लिए अपनी पसंद की भाषा चुनें
-  local_native_name: अंग्रेज़ी
+  local_native_name: हिन्दी
   language: भाषा
   page: पन्ना
   reader_mode:
@@ -54,6 +56,7 @@ hi:
       qcf_v1: सम्राट फहद कुरान कॉम्प्लेक्स v1
       qcf_v2: सम्राट फहद कुरान कॉम्प्लेक्स v2
       indopak: भारत-पाक टेक्स्ट
+      imlaei:
     font_size:
       label: फ़ॉन्ट आकार
       arabic: अरबी भाषा मे
@@ -103,6 +106,7 @@ hi:
     copy:
       label: कॉपी करें
       done: कॉपी हो गया!
+      advance:
   search:
     label: तलाशी
     placeholder: '"नूह" खोजें'
@@ -136,6 +140,8 @@ hi:
     pause: के लिए रुकें
     play_continuously: बिना रुके खेलते रहें
     show_word_tooltip: आयत चलते समय टूलटिप में शब्द अनुवाद दिखाएं
+    repeatCurrent:
+    loading:
   loading: लोड हो रहा है...
   nav:
     title: कुरान
@@ -171,3 +177,11 @@ hi:
     audio: पवित्र कुरान ऑडियो में
     audio_description: एक ही समय में सीखना और सुनना
   close: बंद करे
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

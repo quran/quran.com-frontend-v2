@@ -1,0 +1,153 @@
+<div
+  id='audio-setting-tab'
+  class="audio-settings tab-pane fade"
+  data-tab-group="basic-settings-tabs"
+  data-page-mode="<%=@presenter.page_mode?%>"
+  data-controller="audio-repeat-setting">
+  <div class="tab__row tab__row--small">
+    <label class="switch-wrapper">
+      <div class="switch">
+        <input id="repeat-switch" type="checkbox">
+        <span class="slider round"></span>
+      </div>
+      <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_title') %></p>
+    </label>
+  </div>
+
+  
+  <div class="audio-control hidden">
+    <div class="repeat-ayah tab__row tab__row--between tab__row--small">
+      <label class="radio-label radio-label--border"><%= _t('player.repeat_single') %>
+        <input id="repeat-single" class="single-ayah-radio" name="ayah-repeat" type="radio" checked>
+        <span class="checkmark"></span>
+      </label>
+      <label class="radio-label radio-label--border"><%= _t('player.repeat_range') %>
+        <input id="repeat-range" class="range-ayah-radio" name="ayah-repeat" type="radio">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <div class="single-ayah">
+      <div class="flexx">
+        <div class="audio-select tab__row tab__row--col">
+          <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.select_verse') %></p>
+          <div class="simple-select-div">
+            <select id=repeat-single-ayah class="simple-select">
+              <option selected value="0">
+                <%= _t('player.select_verse') %>
+              </option>
+              <% @presenter.verse_keys.each do |key| %>
+                <option value="<%= key %>"><%= key %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="audio-select tab__row tab__row--col">
+          <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_times') %></p>
+          <div class="simple-select-div">
+            <select id=repeat-single-times class="simple-select">
+              <option selected value="1"><%= _t('player.repeat_times') %></option>
+              <% 2.upto(10) do |count| %>
+                <option value="<%= count %>"><%= count %></option>
+              <% end %>
+              <option value="1000"><%= _t('player.loop') %></option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="range-ayah hidden">
+      <div class="flexx ">
+        <div class="audio-select tab__row tab__row--col">
+
+          <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_from') %></p>
+          <div class="simple-select-div">
+            <select id=repeat-range-from class="simple-select">
+              <option selected value="0">
+                <%= _t('player.select_verse') %>
+              </option>
+
+              <% @presenter.verse_keys.each do |key| %>
+                <option value="<%= key %>"><%= key %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="audio-select tab__row tab__row--col">
+          <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_to') %></p>
+          <div class="simple-select-div">
+            <select id=repeat-range-to class="simple-select">
+              <option selected value="0">
+                <%= _t('player.select_verse') %>
+              </option>
+
+              <% @presenter.verse_keys.each do |key| %>
+                <option value="<%= key %>"><%= key %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-select half tab__row tab__row--col space-y-16 ">
+        <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.repeat_times') %></p>
+        <div class="simple-select-div">
+          <select id=repeat-range-times class="simple-select">
+            <option selected value="1"><%= _t('player.repeat_times') %></option>
+            <% 2.upto(10) do |count| %>
+              <option value="<%= count %>"><%= count %></option>
+            <% end %>
+            <option value="1000"><%= _t('player.loop') %></option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab__row">
+    <div class="horizontal-line"></div>
+  </div>
+
+  <div class="tab__row tab__row--col">
+    <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.pause_bw_ayah') %></p>
+    <div class="radio-input">
+      <label class="radio-label "><%= _t('player.pause') %>
+        <input type="radio" name="pause-bw-ayah" id="pause-ayah">
+        <span class="checkmark"></span>
+      </label>
+      <div class="mini-input">
+        <select class="mini-input__input" id=pause-bw-ayah-seconds>
+          <% 0.upto(3) do |pause| %>
+            <option value="<%= pause %>" selected>
+              <%= pause %>
+            </option>
+          <% end %>
+
+          <% 4.step(30, 2) do |pause| %>
+            <option value="<%= pause %>"><%= pause %></option>
+          <% end %>
+        </select>
+
+        <p class="text  text--grey text--medium text--regular"><%= _t('player.pause_seconds') %></p>
+      </div>
+    </div>
+    <label class="radio-label "><%= _t('player.play_continuously') %>
+      <input name="pause-bw-ayah" type="radio" id="play-continuously" checked>
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <div class="tab__row">
+    <div class="horizontal-line"></div>
+  </div>
+  <div>
+    <label class="switch-wrapper">
+      <div class="switch">
+        <input id="tooltip-switch" type="checkbox">
+        <span class="slider round"></span>
+      </div>
+      <p class="text text--darkgrey text--medium text--semibold"><%= _t('player.show_word_tooltip') %></p>
+    </label>
+  </div>
+</div>

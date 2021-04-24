@@ -17,7 +17,9 @@ nl:
       '
     connection_refused:
     format: "%{attribute} %{message}"
-  local: dutch
+    invalid_page:
+    invalid_juz:
+  local: Engels
   site_local: Site Taal
   change_local: Kies de taal waarin u de site wilt weergeven
   local_native_name: Dutch
@@ -55,6 +57,7 @@ nl:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: IndoPak-tekst
+      imlaei:
     translation_count:
       one: Er wordt één vertaling weergegeven
       other: Vertalingen van %{count} worden weergegeven
@@ -88,6 +91,7 @@ nl:
     copy:
       label: Kopiëren
       done: Gekopieerd!
+      advance:
     share: 'Deel '
     addNote: |-
       Notitie Toevoegen
@@ -131,6 +135,8 @@ nl:
     pause: Pauzeer voor
     play_continuously: Blijf spelen zonder pauze
     show_word_tooltip: Toon woordvertaling in tooltip tijdens het spelen van ayah
+    repeatCurrent:
+    loading:
   loading: Laden...
   nav:
     title: Koran
@@ -179,3 +185,11 @@ nl:
     translation: Vertalingen
     info: Soera Info
   share_ayah: Deel ayah
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

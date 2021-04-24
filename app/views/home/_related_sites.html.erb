@@ -1,0 +1,12 @@
+<div class="container space-y-16 green-images-wrapper">
+  <% related_sites.each do |img, link, name, description| %>
+    <%= link_to link, class: 'green-image-link', data: {controller: 'track', name: 'related-sizes', category: link} do %>
+      <div class="green-image ">
+        <div class="content">
+          <h5><%= name %></h5>
+          <p><%= description %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -6,14 +6,12 @@
 // <div data-controller="ajax-modal" data-url="url-to-load-content">
 // </div>
 
-import { Controller } from "stimulus";
-import Modal from "bootstrap/js/src/modal";
+import {Controller} from "stimulus";
+import AjaxModal from "../utility/ajax-modal";
 
 export default class extends Controller {
   connect() {
-    this.element.addEventListener("click", e => {
-      this.loadModal(e);
-    });
+    this.element.addEventListener("click", e => this.loadModal(e));
   }
 
   loadModal(e) {
@@ -24,75 +22,6 @@ export default class extends Controller {
     let url = target.data("url");
     let classes = target.data("class");
 
-    this.createModel(classes);
-
-    $("#ajax-modal").on("hidden.bs.modal", function(e) {
-      $("#ajax-modal")
-        .empty()
-        .remove();
-    });
-
-    fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
-      .then(resp => resp.text())
-      .then(content => {
-        const response = $("<div>").html(content);
-
-        document.getElementById("modal-title").innerHTML = response
-          .find("#title")
-          .html();
-        document.getElementById("modal-body").innerHTML = response
-          .find("#modal")
-          .html();
-      })
-      .catch(err => {
-        //TODO: show error
-      });
-  }
-
-  createModel(classes) {
-    this.removeModal("#ajax-modal");
-
-    let modal = `
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modal-title">Loading</h5>
-              <a class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" class="fa fa-times fa-center"></span>
-              </a>
-            </div>
-            <div class="modal-body" id="modal-body">
-              <p class="text-center"><i class="fa fa-spinner animate-spin fa-2x my-3"></i> Loading...</p>
-            </div>
-            <div class="modal-footer" id="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>`;
-
-    let ajaxModal = document.createElement("div");
-    ajaxModal.classList.add("modal");
-    ajaxModal.id = "ajax-modal";
-    ajaxModal.innerHTML = modal;
-    document.body.append(ajaxModal);
-
-    ajaxModal.addEventListener("hidden.bs.modal", () => {
-      this.removeModal(ajaxModal);
-    });
-
-    global.dialog = new Modal(ajaxModal, { backdrop: "static" });
-    global.dialog.show();
-  }
-
-  removeModal() {
-    let modal = document.getElementById("ajax-modal");
-    if (modal) {
-      // can also use dom.remove, but parentNode.removeChild
-      document.body.removeChild(modal);
-
-      let backdrop = document.getElementsByClassName("modal-backdrop");
-      if (backdrop && backdrop.length > 0)
-        document.body.removeChild(backdrop[0]);
-    }
+    new AjaxModal().loadModal(url, classes);
   }
 }

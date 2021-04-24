@@ -1,0 +1,137 @@
+<div class="menus hidden" id=menus-wrapper>
+  <%= yield :menus %>
+
+  <div class="menus__right-tab hidden side-menu"
+       data-controller="menu"
+       data-trigger="#site-menu--trigger"
+       data-menu=".site-menu">
+    <div class="site-menu">
+      <div class="site-menu__header">
+        <p class="text text--black text--large2 text--semibold">Menu</p>
+        <div id="close-menu" class="icon-x site-menu__icon-x"></div>
+      </div>
+
+      <div class="theme-language">
+        <%= render 'shared/theme_switch' %>
+      </div>
+
+      <div class="site-menu__items">
+        <div class="menu-item">
+          <%= link_to root_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-home"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('home') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to apps_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-mobile"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.mobile_apps') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to donations_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-contribute"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.contribute') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to about_us_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-about"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.about_us') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to '#_', class: 'menu-item__link', data: { controller: 'ajax-modal', url: '/popups/feedback' } do %>
+            <span class="quran-icon icon-help"></span>
+            <p class="text text--grey text--large text--semibold">
+              Feedback
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to support_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-help"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.help') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to developers_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-dev"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.developers') %>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="menu-item">
+          <%= link_to privacy_path, class: 'menu-item__link' do %>
+            <span class="quran-icon icon-about"></span>
+            <p class="text text--grey text--large text--semibold">
+              <%= _t('nav.privacy') %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="site-menu__sites">
+        <p class="text text--large2 text--black text--semibold">
+          <%= _t('related_sites.label') %>
+        </p>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://quranicaudio.com/" rel="noopener">
+            <p class="text text--grey text--large text--semibold">Quranaudio.com</p>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://sunnah.com/" rel="noopener">
+            <p class="text text--grey text--large text--semibold">Sunnah.com</p>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://salah.com/" rel="noopener">
+            <p class="text text--grey text--large text--semibold">Salah.com</p>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://legacy.quran.com/" rel="noopener">
+            <p class="text text--grey text--large text--semibold">Legacy Quran.com</p>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://corpus.quran.com/wordbyword.jsp" rel="noopener">
+            <p class="text text--grey text--large text--semibold">Corpus.Quran.com</p>
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a class="menu-item__link" href="https://quranreflect.com" target="_blank" rel="noopener">
+            <p class="text text--grey text--large text--semibold">QuranReflect.com</p>
+          </a>
+        </div>
+      </div>
+
+      <%#= render 'shared/alerts/sidebar' %>
+    </div>
+  </div>
+</div>

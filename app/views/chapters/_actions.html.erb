@@ -1,0 +1,172 @@
+<% current_chapter = @presenter.chapter.id %>
+<% verse_locale = _t('player.current_verse') %>
+
+<div class="navbar surah-actions">
+  <div class="navbar-inner container">
+    <div class="navbar-inner--firstpart">
+      <div class="navbar-label navbar-first-label"
+           data-controller="filterable-dropdown"
+           data-trigger="#surah-dropdown"
+           data-dropdown="#filter-surah-dropdown">
+        <div class="label label-nav label__right-border"
+             id=surah-dropdown>
+          <div class="label--text my-auto">
+            <h1 class="label--title">
+              <%= @presenter.name_simple %>
+            </h1>
+            <p class="label--subtitle truncate">
+              <%= @presenter.translated_name %>
+            </p>
+          </div>
+          <div class="label--arrow"></div>
+          <div
+            id=filter-surah-dropdown
+            class="dropdown-wrapper"
+            data-controller="filter-list"
+            data-list="#chapter-list"
+            data-input="#filter-chapter">
+            <div class="dropdown">
+              <div class="menu__header">
+                <div class='first'>
+                  <div id="close-dropdown" class="quran-icon icon-x"></div>
+                  <p class="text text--black text--large2 text--semibold">Surah</p>
+                </div>
+              </div>
+              <div class="dropdown--input">
+                <div class="input-wrapper large select2-search">
+                  <input id="filter-chapter"
+                         autocapitalize="none"
+                         autocomplete="off"
+                         autocorrect="off"
+                         type="search"
+                         spellcheck="false"
+                         placeholder="Search"
+                         aria-label="Search"
+                         aria-haspopup="false"
+                         role="combobox"
+                         aria-autocomplete="list"
+                  >
+                </div>
+              </div>
+              <div class="dropdown--items" id="chapter-list">
+                <% @presenter.chapters.each do |chapter| %>
+                  <a
+                    class="dropdown-item <%= 'dropdown-item--selected' if chapter.id == current_chapter %>"
+                    data-filter-tags="<%= chapter.chapter_number %> <%= chapter.name_simple.downcase %> <%= chapter.translated_name.name.downcase %> <%= chapter.name_arabic %>"
+                    href=<%= chapter_path(chapter) %>
+                  >
+                    <div class="dropdown-item__number">
+                      <p><%= chapter.chapter_number %></p>
+                    </div>
+                    <div class="dropdown-item__name-latin">
+                      <p class="dropdown-item__arabic"><%= chapter.name_simple %></p>
+                      <p class="dropdown-item__english"><%= chapter.name_arabic %></p>
+                    </div>
+                    <div class="dropdown-item__name-arabic">
+                      <p><%= chapter.translated_name.name %></p>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-label"
+           data-controller="filterable-dropdown"
+           data-trigger="#ayah-dropdown"
+           data-dropdown="#filter-ayah-dropdown">
+        <div
+          class="label label-nav label__small"
+          id=ayah-dropdown>
+          <div class="label--text">
+            <p class="label--title">
+              <%= verse_locale %>
+              <span id=current>
+                <%= @presenter.first_verse.verse_number %>
+              </span>
+            </p>
+          </div>
+          <div class="label--arrow"></div>
+          <div class="dropdown-wrapper"
+               id=filter-ayah-dropdown
+               data-controller="filter-list"
+               data-list="#verse-list"
+               data-input="#filter-ayah">
+            <div class="dropdown">
+              <div class="menu__header">
+                <div class='first'>
+                  <div id="close-dropdown" class="quran-icon icon-x"></div>
+                  <p class="text text--black text--large2 text--semibold">
+                    <%= _t('verses.go') %>
+                  </p>
+                </div>
+              </div>
+
+              <div class="dropdown--input">
+                <div class="input-wrapper large select2-search">
+                  <input id="filter-ayah"
+                         autocapitalize="none"
+                         autocomplete="off"
+                         autocorrect="off"
+                         type="search"
+                         spellcheck="false"
+                         placeholder="Search"
+                         aria-autocomplete="list">
+                </div>
+              </div>
+
+              <div class="dropdown--items" id="verse-list">
+                <% 1.upto(@presenter.chapter.verses_count) do |verse_num| %>
+                  <a class="dropdown-item"
+                    data-filter-tags="<%= verse_num %>"
+                    data-verse-key="<%= current_chapter %>:<%= verse_num %>">
+                    <div class="dropdown-item__number">
+                      <p><%= verse_num %></p>
+                    </div>
+                    <div class="dropdown-item__name-latin">
+                      <p class="dropdown-item__arabic">
+                        <%= verse_locale %> <%= verse_num %>
+                      </p>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <div class="tabs" data-controller="tabs">
+        <a class="tabs__item translation-tab <%= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
+           href="<%= @presenter.translation_view_path %>"
+           data-target="#translation-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.translation') %>
+        </a>
+
+        <a class="tabs__item reading-tab <%= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
+           href="<%= @presenter.reading_view_path %>"
+           data-target="#reading-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.reading') %>
+        </a>
+
+        <a class="tabs__item info-tab surah-info-tab"
+           href="<%= chapter_info_path(@presenter.chapter.id, locale: I18n.locale) %>"
+           data-target="#info-section"
+           data-tab="chapter-tabs">
+          <%= _t('reader_mode.info') %>
+        </a>
+
+      </div>
+    </div>
+    <div class="nav-button">
+      <button id="open-settings" class="btn btn--darkgrey btn--settings sidebar-btns">
+        <%= _t('settings.label', {}, 'sidebar-btns') %>
+      </button>
+    </div>
+  </div>
+</div>

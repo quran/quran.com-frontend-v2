@@ -25,6 +25,7 @@ export default class extends SettingController {
     this.element.querySelectorAll("[name=recitation]").forEach(reciter => {
       if (recitation == reciter.value) {
         reciter.setAttribute("checked", "checked");
+        $(reciter).prop("checked", true);
       }
     });
 

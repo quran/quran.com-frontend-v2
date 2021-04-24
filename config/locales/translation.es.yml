@@ -24,6 +24,8 @@ es:
       de middleware. Por favor verifica que el servidor de desarrollo rails está en
       funcionamiento."
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: inglés
   site_local: Idioma de la página
   change_local: Elije el idioma de la página
@@ -56,6 +58,7 @@ es:
       qcf_v1: Complejo de imprenta de Coranes Rey Fahd v1
       qcf_v2: QCF V2
       indopak: Texto IndoPakistaní
+      imlaei:
     font_size:
       label: Tamaño de fuente
       arabic: Árabe
@@ -102,6 +105,7 @@ es:
     copy:
       label: Copiar
       done: "¡Copiado!"
+      advance:
   search:
     label: búsqueda
     placeholder: Buscar "Noé"
@@ -138,6 +142,8 @@ es:
     show_word_tooltip: Mostrar traducción de palabras en la descripción emergente
       mientras se reproduce el ayah
     scroll: Baja automaticamente al ayah reproduciéndose actualmente
+    repeatCurrent:
+    loading:
   loading: Cargando...
   nav:
     title: Quran
@@ -173,3 +179,11 @@ es:
     audio: El Noble Quran en audio
     audio_description: Aprender y escuchar al mismo tiempo
   close: Cerrar
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

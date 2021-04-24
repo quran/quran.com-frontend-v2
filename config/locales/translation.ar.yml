@@ -21,6 +21,8 @@ ar:
       يعمل بشكل أفضل مع تفعيل جافا سكريبت. لمزيد من التعليمات حول كيفية تفعيل جافا
       سكريبت
     format: "%{message}"
+    invalid_page:
+    invalid_juz:
   local: الإنجليزية
   site_local: لغة الموقع
   change_local: أختر اللغة المرجو إظهار الموقع بها
@@ -57,9 +59,10 @@ ar:
       qcf_v1: مجمع الملك فهد للقرآن الإصدار ١
       qcf_v2: مجمع الملك فهد للقرآن الإصدار ٢
       indopak: نص الأوردو
+      imlaei:
     translation_count:
-      one: عرض ترجمة واحدة
-      other: عرض ترجمات %{count}
+      one: عرض ترجمة <count>واحدة</count>
+      other: عرض<count> %{count}</count> الترجمات
   verses:
     media: شاهد تعليق الفيديو من %{from}
     go: إذهب إلى الآية
@@ -86,6 +89,7 @@ ar:
     copy:
       label: نسخ
       done: تم النسخ!
+      advance:
     share: شارك الآية
     addNote: اضف ملاحظة
     tafsir:
@@ -124,8 +128,10 @@ ar:
     pause_bw_ayah: حدد مدة التوقف قبل تشغيل الآية التالية
     pause_seconds: ثواني
     pause: أوقف
-    play_continuously: استمر في اللعب دون توقف
+    play_continuously: استمر في التشغيل دون توقف
     show_word_tooltip: إظهار ترجمة الكلمات في تلميح الأداة أثناء تشغيل الآية
+    repeatCurrent: كرّر هذه الآية
+    loading: جار تجهيز الصوت
   loading: جار التحميل...
   nav:
     title: القرآن
@@ -164,8 +170,14 @@ ar:
   page: صفحة
   reader_mode:
     reading: قراءة
-    translation: 'الترجمة
-
-      '
+    translation: الترجمة
     info: معلومات عن السورة
   share_ayah: شارك الآية
+  tabs:
+    chapter: عرض فهرس السور
+    juz: عرض فهرس الأجزاء
+  filter:
+    translations: بحث عن ترجمة
+    reciters: بحث عن قارئ
+    surah: بحث عن سورة
+    ayah: بحث عن آية

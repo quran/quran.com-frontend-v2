@@ -1,0 +1,23 @@
+<div class="translations hidden" id="translations-sidebar">
+  <div class="tab__container">
+    <div class="translations__header">
+      <div class="menu__header">
+        <div class="first">
+          <div id="close-translations" class="close-translations "></div>
+          <p class="text text--black text--large2 text--semibold">translations</p>
+        </div>
+        <div>
+          <button id="translation-clear-all" class="btn btn--lightgreen btn--medium">Clear All</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <%= render_async '/settings/translations', lazy_load: {root: '#translations-sidebar'} do %>
+        <p class="text-center p-3">
+          <%= loading_spinner %>
+        </p>
+      <% end.html_safe %>
+    </div>
+  </div>
+</div>

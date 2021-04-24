@@ -4,13 +4,11 @@
 // that code so it'll be compiled.
 
 require("turbolinks").start();
-require("partial_replacement");
+require('select2/dist/js/select2.full');
 
 import JQuery from "jquery";
 window.$ = window.JQuery = JQuery;
 
-require("popper.js/dist/umd/popper");
-//require('bootstrap/dist/js/bootstrap');
 import "custom-bootstrap";
 import "../utility/trubolink-patch";
 
@@ -20,6 +18,8 @@ global.GoogleAnalytic = GoogleAnalytic;
 
 require("service-worker-companion");
 
+//require("./selection.js");
+
 import "controllers";
 
 document.addEventListener("turbolinks:request-start", function(event) {
@@ -27,10 +27,22 @@ document.addEventListener("turbolinks:request-start", function(event) {
   xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 });
 
-$(document).on("click", ".dropdown-menu", function(e) {
-  // don't close dropdown on click, within
-  e.stopPropagation();
+/*
+$('.label-nav').click(function(e) {
+  if ($(e.target).parents('.dropdown').length == 1) return;
+  $(this).toggleClass('label--open');
+  $(this).toggleClass('label__opened');
+  $('.label-nav')
+    .not(this)
+    .removeClass('label--open , label__opened');
 });
+
+$('.label-nav .icon-x').click(function() {
+  $(this)
+    .parents('.label-nav')
+    .removeClass('label--open');
+});
+*/
 
 require("../stylesheets/application.scss");
 

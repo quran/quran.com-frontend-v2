@@ -1,3 +1,7 @@
+// update this version when need to expire the cached settings
+const LOCAL_STORE_CACHE_VERSION = "quran-v1.2";
+const PERSISTED_CACHE_key = "quran-store";
+
 class CookieStore {
   getItem(key) {
     let values = document.cookie.match(`(^|;)\\s*${key}\\s*=\\s*([^;]+)`);
@@ -14,6 +18,14 @@ class CookieStore {
 }
 
 class LocalStore {
+  constructor(usePersistedStore) {
+    if (usePersistedStore) {
+      this.storeKey = PERSISTED_CACHE_key;
+    } else {
+      this.storeKey = LOCAL_STORE_CACHE_VERSION;
+    }
+  }
+
   get(key) {
     return this.getStore().getItem(this.transformKey(key));
   }
@@ -23,7 +35,7 @@ class LocalStore {
   }
 
   transformKey(key) {
-    return `quran-${key}`;
+    return `${this.storeKey}-${key}`;
   }
 
   getStore() {

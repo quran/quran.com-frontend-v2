@@ -1,0 +1,117 @@
+.play-selected-wrapper {
+    display: none;
+    &.active {
+        display: block;
+    }
+@include smmin {
+  position: absolute;
+  left: var(--el-selection-x);
+  top: var(--el-selection-y);
+  z-index: 10;
+  transform: translateX(-50%) translateY(15px);
+}
+  @include sm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.541);
+    justify-content: center;
+    align-items: center;
+    &.active {
+        display: flex;
+    }
+  }
+}
+
+.play-selected {
+  background-color: #ffffff;
+  border: 1px solid $grey2;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  width: 193px;
+  //   height: 270px;
+  padding: 16px;
+  box-sizing: border-box;
+
+  @include sm {
+  }
+  @at-root .dark & {
+    background-color: $dark-grey;
+    border: 1px solid #71727e;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .counter {
+    margin-bottom: 24px;
+  }
+}
+.play-selected--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+  @include sm {
+    margin-bottom: 24px;
+  }
+  .icon-x {
+    display: none;
+    @include sm {
+      display: block;
+    }
+    &::before {
+      color: #999aa2;
+      font-weight: 400;
+      font-size: 24px;
+    }
+  }
+}
+.play-selected--title {
+  color: #71727e;
+  font-size: 14px;
+  margin: 0;
+  @at-root .dark & {
+    color: #999aa2;
+  }
+}
+.play-selected--counterlabel {
+  color: #333647;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 4px;
+  @at-root .dark & {
+    color: #ffffff;
+  }
+}
+
+.play-selected--playbutton {
+  background-color: $dark-green;
+  border-radius: 4px;
+  width: 127px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  &:hover {
+    text-decoration: none;
+    background-color: darken($color: $dark-green, $amount: 5%);
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  .icon-play1::before {
+    color: #fbfbfb;
+    font-size: 14px;
+    font-family: quran-icon;
+  }
+}

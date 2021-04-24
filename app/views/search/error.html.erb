@@ -1,21 +1,137 @@
-<div class="container">
-  <div class="col-12 my-5">
-    <h3>
-      Sorry there was a problem with search.
-    </h3>
+<div class="search-results" data-controller="search-results">
+  <div class="container-xl search-results__content">
+    <div class="search-results__first space-b-32">
+      <div class="search-results__space"></div>
+      <div class="search-results__input space-x-32">
+        <div class="space-y-32">
+          <p class="text text--black text--xlarge text--semibold">Search</p>
+        </div>
 
-    <small>Here are some popular searches</small>
+        <div class="search-suggestion-">
+          <div class="input-wrapper suggestion-input large fluid">
+            <input type="search" placeholder="Search for surah, ayah or tafsirs">
 
-    <% popular_searches.each do |item| %>
-      <div class="link my-2">
-        <a href="<%= item[0] %>"
-           data-controller="track"
-           data-name="search-suggestion-extra"
-           data-category="<%= item[0] %>"
-        >
-          <%= item[1] %>
-        </a>
+            <div>
+              <div class="did-you-mean">
+                <p class="text-red">Did you mean:</p>
+                <a class="text--green" href="">Ar-Rrahman</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    <% end %>
+    </div>
+
+    <div class="search-results__second">
+      <div class="search-results__menu">
+        <div class="search-menu">
+          <div class="space-b-32">
+            <p class="text text  text--black text--large2 text--semibold">Filter</p>
+          </div>
+          <div class="space-b-32">
+            <p class="text text text  text--darkgrey text--medium text--semibold">
+              Language
+            </p>
+            <div class="simple-select-div">
+              <select class="simple-select">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+                <option value="5">option 5</option>
+                <option value="6">option 6</option>
+                <option value="7">option 7</option>
+                <option value="8">option 8</option>
+              </select>
+            </div>
+          </div>
+          <div class="space-b-32">
+            <p class="text text text  text--darkgrey text--medium text--semibold">Translations</p>
+            <div class="simple-select-div">
+              <select class="simple-select">
+                <option value="1">option 1</option>
+                <option value="2">option 2</option>
+                <option value="3">option 3</option>
+                <option value="4">option 4</option>
+                <option value="5">option 5</option>
+                <option value="6">option 6</option>
+                <option value="7">option 7</option>
+                <option value="8">option 8</option>
+              </select>
+            </div>
+          </div>
+          <div class="">
+            <p class="text text text  text--darkgrey text--medium text--semibold">Show</p>
+            <label class="radio-label ">All <input class="" name="radio" type="radio">
+              <span class="checkmark"></span>
+            </label> <label class="radio-label ">Only English <input class="" name="radio" type="radio">
+            <span class="checkmark"></span>
+          </label> <label class="radio-label ">Only <input class="" name="radio" type="radio">
+            <span class="checkmark"></span>
+          </label></div>
+        </div>
+      </div>
+
+      <div class="search-results__results space-x-32">
+        <div class="search-results__results--header space-b-32">
+          <div class="tabs">
+            <a id="" class="tabs__item tabs__item--selected ">All results</a>
+            <a id="" class="tabs__item ">Surah's</a>
+            <a id="" class="tabs__item ">Ayah</a>
+            <a id="" class="tabs__item ">Tefsirs</a>
+          </div>
+          <p class="text text text--grey text--small
+                    text--regular">1-10 OF 20 SEARCH RESULTS</p>
+        </div>
+        <div class="search-results__results--body">
+          <div>
+            <p class="text text--grey text--medium text--regular">SURAHS</p>
+            <div class="search-item">
+              <div><p class="number">1:1</p></div>
+              <div class="search-item--results">
+                <div class=" search-item--title">
+                  <p class="text text--black">Surah Ar-Rrahman</p>
+                </div>
+              </div>
+            </div>
+            <p class="text  text--grey text--medium text--regular">Ayah’s</p>
+            <% 5.times do %>
+              <div class="search-item">
+                <div><p class="number">1:1</p></div>
+                <div class="search-item--results">
+                  <div class="search-item--ayah">
+                    <p class="arabic text_uthmani">
+                      قُلْ أَرَءَيْتُمْ إِن كَانَ مِنْ عِندِ ٱللَّهِ وَكَفَرْتُم بِهِۦ وَشَهِدَ شَاهِدٌ مِّنۢ بَنِىٓ
+                      إِسْرَٰٓءِيلَ عَلَىٰ مِثْلِهِۦ فَـَٔامَنَ وَٱسْتَكْبَرْتُمْ ۖ إِنَّ ٱللَّهَ لَا يَهْدِى ٱلْقَوْمَ
+                      ٱلظَّـٰلِمِينَ
+                    </p>
+                  </div>
+                  <div class="search-item--translation">
+                    <p class="text text--grey text--medium">Only your Lord Himself, full of
+                      Majesty and Honour, will remain ˹forever˺.</p></div>
+                </div>
+              </div>
+              <% if [true, false].sample %>
+                <div class="text-center space-b-24">
+                  <p class="text text--green text--medium">
+                    20 more translation matched with this query
+                  </p>
+                </div>
+              <% end %>
+            <% end %>
+
+            <p class="text  text--grey text--medium text--regular">Tafsir’s</p>
+            <div class="search-item">
+              <div><p class="number">1:1</p></div>
+              <div class="search-item--results">
+                <div class=" search-item--title"><p class="">Surah Ar-Rrahman</p></div>
+                <div class="search-item--translation"><p>The face of your Lord, O Messenger, the One of
+                  greatness, kindness…</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

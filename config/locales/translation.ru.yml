@@ -28,10 +28,12 @@ ru:
       Не удалось подключиться к промежуточному програмному обеспечению веб-консоли.
       Пожалуйста убедитесь что сервер разработки рельсов работает.
     format: "%{attribute} %{message}"
-  local: английский
+    invalid_page:
+    invalid_juz:
+  local: Английский
   site_local: Язык сайта
   change_local: Выбрать язык
-  local_native_name: Английский
+  local_native_name: русский
   language: Язык
   page: страница
   reader_mode:
@@ -66,6 +68,7 @@ ru:
       indopak: 'Текст IndoPak
 
         '
+      imlaei:
     font_size:
       label: Размер шрифта
       arabic: арабский
@@ -112,6 +115,7 @@ ru:
     copy:
       label: Копировать
       done: Скопированo!
+      advance:
   search:
     label: Поиск
     placeholder: Искать "Нух"
@@ -148,6 +152,8 @@ ru:
     show_word_tooltip: Показывать перевод слова во всплывающей подсказке при воспроизведении
       аята
     scroll: Автоматический переход к проигрывающемуся в данный момент аяту
+    repeatCurrent:
+    loading:
   loading: Загружается ...
   nav:
     title: Коран
@@ -184,3 +190,11 @@ ru:
     audio: Благородный Коран в аудио
     audio_description: Учить и слушать одновременно
   close: Закрыть
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

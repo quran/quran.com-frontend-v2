@@ -1,0 +1,58 @@
+.counter {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.counter__button {
+  background-color: #fbfbfb;
+  border: 1px solid #dadbde;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: #999aa2;
+  position: relative;
+  padding: 0;
+  @at-root .dark & {
+    background-color: #1c1c20;
+    border-color: #71727e;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:nth-child(1) {
+    &::after {
+      content: $icon-minus1;
+      font-family: quran-icon;
+      font-size: 10px;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      color: #999aa2;
+    }
+  }
+  &:nth-child(3) {
+    &::after {
+      content: $icon-plus;
+      font-family: quran-icon;
+      font-size: 10px;
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      color: #999aa2;
+    }
+  }
+}
+
+.counter__text {
+  padding: 0;
+  margin: 0 8px;
+  margin-left: 8px !important;
+  font-size: 14px;
+  color: #333647;
+  @at-root .dark & {
+    color: #fbfbfb;
+  }
+}

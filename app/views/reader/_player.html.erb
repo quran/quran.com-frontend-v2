@@ -1,0 +1,38 @@
+<div class="player-section" id="player" data-controller="player word-player">
+  <div class="container player__container">
+    <div class="player__controls">
+      <a class="quran-icon icon-prev" id=btn-previous></a>
+
+      <a class="quran-icon icon-play1" id=btn-play></a>
+      <a class="quran-icon icon-pause d-none" id=btn-pause></a>
+      <a class='spinner text text--green d-none'
+         id=btn-loading
+         data-title="<%= _t("player.loading", default: 'Loading audio') %>">
+        <i class='spinner--swirl'></i>
+      </a>
+      <a class="quran-icon icon-next" id=btn-next></a>
+      <a class="quran-icon icon-repeat" id=btn-repeat
+         data-title="<%= _t("player.repeatCurrent") %>">
+      </a>
+      <a class="quran-icon icon-link control-hidden-icon" id=btn-follow></a>
+    </div>
+
+    <div class="player__bar">
+      <p class="current-time">00:00</p>
+      <input id="player-range"
+             class="bar"
+             type="range"
+             min="0" max="100"
+             step="1"
+             value=0
+             disabled
+             direction="rtl"
+        />
+      <p class="all-time">00:00</p>
+      <a class="quran-icon icon-link bar-hidden-icon"
+         id="btn-scroll"
+         data-title="<%= _t("player.scroll") %>">
+      </a>
+    </div>
+  </div>
+</div>

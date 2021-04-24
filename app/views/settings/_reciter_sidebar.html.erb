@@ -1,0 +1,17 @@
+<div class="reciters hidden" id="reciters-sidebar">
+  <div class="tab__container">
+    <div class="menu__header">
+      <div class="first">
+        <div id="close-reciters" class="close-reciters "></div>
+        <p class="text text--black text--large2 text--semibold"><%= _t('settings.reciters') %></p>
+      </div>
+    </div>
+    <div>
+      <%= render_async '/settings/recitations', lazy_load: {root: '#reciters-sidebar'} do %>
+        <p class="text-center p-3">
+          <%= loading_spinner %>
+        </p>
+      <% end.html_safe %>
+    </div>
+  </div>
+</div>

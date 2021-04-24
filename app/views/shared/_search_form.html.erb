@@ -1,13 +1,19 @@
 <% query = (params[:q] || params[:query]).presence %>
 
-<div class="search-form flex-fill">
-  <form class="form-search form-group sb-search-open" action="/search" data-controller="search-form" data-expand=<%= local_assigns[:expandable] %>>
-    <input class="form-control bg-light <%= I18n.locale %>" placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>" type="search" name="query" value="<%= query %>">
-    <button type="submit" class="form-control form-control-submit search-btn"></button>
-
-    <span class="search-label rounded-right" id=search-trigger>
-      <i class="fa fa-search"></i>
-    </span>
-    <div class="suggestions"></div>
-  </form>
-</div>
+<form action="/search" data-controller="search-form" data-expand=<%= local_assigns[:expandable] %>>
+  <input type="search"
+         name="query"
+         value="<%= query %>"
+         placeholder="<%= t('search.placeholder', default: "Search 'Noah'") %>"
+         autocapitalize="none"
+         autocomplete="off"
+         autocorrect="off"
+         spellcheck="false"
+         aria-label="Search"
+         aria-haspopup="false"
+         role="combobox"
+         aria-autocomplete="list"/>
+  <button type="submit" class="quran-icon icon-search">
+  </button>
+  <div id="suggestions"></div>
+</form>

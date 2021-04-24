@@ -1,0 +1,63 @@
+.check-label {
+  display: block;
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  color: $grey8;
+  padding-left: 25px;
+  @at-root .dark & {
+    color: #999aa2;
+  }
+  @at-root .translations & {
+    //margin-bottom: 24px;
+    margin-bottom: 15px;
+  }
+  @at-root .copy-translation & {
+    margin-left: 8px;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    display: none;
+    cursor: pointer;
+  }
+  .checkmark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
+    // background-color: #eee;
+    border: 2px solid $grey8;
+    &::after {
+      content: $icon-checkmark;
+      display: none;
+      font-size: 10px;
+      @at-root .dark & {
+        color: $dark-grey;
+      }
+      color: white;
+      font-family: 'quran-icon';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+  input:checked ~ .checkmark {
+    border: 2px solid $dark-green;
+    background-color: $dark-green;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+  }
+}

@@ -6,10 +6,12 @@
 // <div data-controller="verse" data-verse=VERSE_NUMBER>
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 import copyToClipboard from "copy-to-clipboard";
 import Tooltip from "bootstrap/js/src/tooltip";
-
+import isChildOf from "../utility/child-of";
+import DeviceDetector from "../utility/deviceDetector";
+import LocalStore from "../utility/local-store";
 
 const TAJWEED_RULE_DESCRIPTION = {
   ham_wasl: "Hamzat ul Wasl",
@@ -52,80 +54,89 @@ const TAJWEED_RULES = [
 ];
 
 export default class extends Controller {
+  static store = new LocalStore(true);
+
   connect() {
-    let el = $(this.element);
-    //TODO: enable these action only for reading mode.
-    this.element.querySelectorAll(".ayah-action").forEach(actionDom => {
-      actionDom.tooltip = new Tooltip(actionDom, {
-        trigger: "hover",
-        placement: "right",
-        html: true,
-        sanitize: false,
-        template:
-          "<div class='tooltip bs-tooltip-top' role='tooltip'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>",
-        title: () => {
-          const locale = window.locale;
-          return `<div class='${locale}'>${actionDom.dataset.title}</div>`;
-        }
-      });
-    });
+    const el = $(this.element);
+    this.el = el;
 
-    let copyDom = this.element.querySelector(".copy");
-
-    copyDom && copyDom.addEventListener('click', e => {
-      e.preventDefault();
-      this.copy();
-    });
-
-    this.copyDom = copyDom;
-
-    let playButton = el.find(".ayah-action.play");
-
-    playButton.on("click", event => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-
-      let player,
-        playerDom = document.getElementById("player");
-
-      if (playerDom) player = playerDom.player;
-
-      if (playButton.find(".fa").hasClass("fa-play-circle")) {
-        if (player) {
-          return player.play(el.data("verseNumber"));
-        }
-      } else {
-        if (player) {
-          player.handlePauseBtnClick();
-        }
-      }
-    });
+    this.bindAction(el);
 
     if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+      this.fixTajweedForSarari();
       this.bindTajweedTooltip();
     }
-
-    this.el = el;
   }
 
-  disconnect() {
-  }
+  disconnect() {}
 
   copy() {
-    copyToClipboard(this.el.data("text"));
+    copyToClipboard(this.copyText);
 
-    let {title, done} = this.copyDom.dataset;
+    const copyBtn = this.el.find(".quick-copy");
+    let { title, done } = copyBtn.data();
+    copyBtn.find("span").text(done);
+    setTimeout(() => {
+      copyBtn.find("span").text(title);
+    }, 2000);
+  }
 
-    this.copyDom.title = `<div class='${window.locale}'>${done}</div>`
-    this.copyDom.tooltip._fixTitle()
+  toggleBookmark() {
+    let bookmarks = this.loadBookmarks();
 
-    this.copyDom.tooltip.show();
+    if (this.isBookmarked()) {
+      delete bookmarks[this.verseKey];
+    } else {
+      bookmarks[this.verseKey] = location.href;
+    }
 
-    this.copyDom.addEventListener("hidden.bs.tooltip", () => {
-        this.copyDom.setAttribute("title", title);
-        this.copyDom.tooltip._fixTitle()
-      }
-    );
+    this.constructor.store.set("bookmarks", JSON.stringify(bookmarks));
+    this.updateBookmarkState();
+  }
+
+  updateBookmarkState() {
+    const btn = this.el.find(".bookmark");
+    let { title, done } = btn.data();
+
+    if (this.isBookmarked()) {
+      btn.find("span").text(done);
+      btn
+        .find("i")
+        .removeClass("icon-bookmark")
+        .addClass("icon-bookmarked");
+    } else {
+      btn.find("span").text(title);
+      btn
+        .find("i")
+        .removeClass("icon-bookmarked")
+        .addClass("icon-bookmark");
+    }
+  }
+
+  isBookmarked() {
+    return !!this.loadBookmarks()[this.verseKey];
+  }
+
+  loadBookmarks() {
+    try {
+      return JSON.parse(this.constructor.store.get("bookmarks") || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  togglePlay(playButton) {
+    let player,
+      playerDom = document.getElementById("player");
+
+    if (!playerDom) return;
+    player = playerDom.player;
+
+    if (playButton.find("span").hasClass("icon-play1")) {
+      return player.playVerse(this.verseKey);
+    } else {
+      player.pauseCurrent();
+    }
   }
 
   bindTajweedTooltip() {
@@ -141,5 +152,115 @@ export default class extends Controller {
         });
       });
     });
+  }
+
+  fixTajweedForSarari() {
+    const deviceDetector = new DeviceDetector();
+
+    if (deviceDetector.isSafari()) {
+      const text = this.el.find(".arabic").html();
+      const textWithZwj = this.addZwj(text);
+      //console.log("text before", text);
+      //console.log("text after", textWithZwj);
+
+      this.el.find(".arabic").html(textWithZwj);
+    }
+  }
+
+  addZwj(text) {
+    return text.replace(
+      /([ئبت-خس-غف-نهيی])([^ء-يی\n ]*<[^>]+>[ً-ْٰۖۗۚۛۜ]*)(?=[آ-يی])/g,
+      "$1&zwj;$2&zwj;"
+    );
+  }
+
+  bindAction(el) {
+    if (el.data("reading")) {
+      return;
+    }
+
+    this.actionOpened = false;
+    this.actionTrigger = el.find("#open-actions");
+    this.actionTrigger.on("click", e => this.toggleActions(e));
+
+    new Tooltip(this.element.querySelector(".qr"), {
+      html: true,
+      sanitize: false,
+      direction: "top"
+    });
+
+    this.element
+      .querySelector("#close-actions")
+      .addEventListener("click", e => {
+        e.stopImmediatePropagation();
+        this.closeAction();
+      });
+
+    el.find(".quick-copy").on("click", e => {
+      e.preventDefault();
+      this.copy();
+    });
+
+    el.find(".bookmark").on("click", e => {
+      e.preventDefault();
+      this.toggleBookmark();
+    });
+
+    let playButton = el.find(".play");
+
+    playButton.on("click", event => {
+      event.preventDefault();
+      this.togglePlay(playButton);
+    });
+  }
+
+  toggleActions(event) {
+    if (this.actionOpened) {
+      this.closeAction();
+    } else {
+      this.updateBookmarkState();
+      this.openAction();
+    }
+  }
+
+  openAction() {
+    this.onClicked = this.click.bind(this);
+    this.el.find(".actions-wrapper").removeClass("hidden");
+    document.addEventListener("click", this.onClicked);
+
+    setTimeout(() => {
+      this.actionOpened = true;
+    }, 100);
+  }
+
+  closeAction() {
+    this.actionOpened = false;
+    this.el.find(".actions-wrapper").addClass("hidden");
+    document.removeEventListener("click", this.onClicked);
+  }
+
+  click(event) {
+    const target = event.target;
+    const clickedOut = !isChildOf(
+      this.element.querySelector("#ayah-actions"),
+      target
+    );
+
+    if (this.actionOpened && clickedOut) {
+      this.closeAction();
+    }
+    return true;
+  }
+
+  get verseNumber() {
+    return this.el.data("verseNumber");
+  }
+
+  get verseKey() {
+    return this.el.data("key");
+  }
+
+  get copyText() {
+    return this.el.data("text");
   }
 }

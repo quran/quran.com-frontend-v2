@@ -11,7 +11,6 @@ export default class extends Controller {
     else context = window;
 
     const itemsContainer = $(el.data("items-container") || `#${containerId}`);
-
     const plugin = new InfinitePages(itemsContainer, {
       debug: false,
       buffer: 1000, // load new page when within 200px of nav link

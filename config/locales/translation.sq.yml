@@ -24,7 +24,9 @@ sq:
     connection_refused: 'Ups! Dështim në lidhjen me shtresën e Web Console. Ju lutem,
       sigurohuni që një server zhvillimi rails është aktiv. '
     format: "%{attribute} %{message}"
-  local: Shqip
+    invalid_page:
+    invalid_juz:
+  local: Anglisht
   site_local: Gjuha e sitit
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet në faqe
   local_native_name: Shqip
@@ -60,6 +62,7 @@ sq:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: Teksti IndoPak
+      imlaei:
     translation_count:
       one: Po tregon një përkthim
       other: Po shfaqen përkthimet %{count}
@@ -91,6 +94,7 @@ sq:
     copy:
       label: Kopjo
       done: U kopjua!
+      advance:
     share: Shpërndani
     addNote: Shtoni shënim
     tafsir:
@@ -134,6 +138,8 @@ sq:
     play_continuously: Vazhdoni të luani pa ndalur
     show_word_tooltip: Shfaqni përkthimin e fjalëve në majë të mjetit ndërsa luani
       ayah
+    repeatCurrent:
+    loading:
   loading: Duke u ngarkuar...
   nav:
     title: Kuran
@@ -176,3 +182,11 @@ sq:
     translation: përkthime
     info: Informacioni i Kapitullit
   share_ayah: Ndani ajetin
+  tabs:
+    chapter:
+    juz:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:

@@ -1,0 +1,66 @@
+.uighur,
+.uyghur,
+.ur,
+.urdu,
+.persian,
+.hebrew,
+.pashto,
+.arabic,
+divehi,
+.dhivehi {
+  direction: rtl;
+  text-align: right;
+
+  .alert-dismissible {
+    .close {
+      left: 0;
+      right: auto;
+    }
+  }
+}
+
+.ur,
+.urdu {
+  font-family: nafees;
+  line-height: 2.2em;
+}
+
+.divehi,
+.dhivehi,
+.maldivian {
+  font-family: "divehi";
+}
+
+.indopak,
+.text_indopak {
+  font-family: "pdms";
+}
+
+.madani,
+.text_uthmani_tajweed,
+.text_imlaei,
+.text_uthmani {
+  font-family: me_quran;
+}
+
+.lang-ar,
+.lang-ur {
+  input {
+    direction: rtl;
+  }
+}
+
+.text_indopak,
+.text_uthmani,
+.text_uthmani_tajweed {
+  .end {
+    font-family: UthmanicHafs1;
+    font-size: 35px;
+    unicode-bidi: bidi-override;
+
+    * {
+      font-family: UthmanicHafs1;
+      font-size: 35px;
+    }
+  }
+}

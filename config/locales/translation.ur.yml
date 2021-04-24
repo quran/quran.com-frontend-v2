@@ -23,6 +23,8 @@ ur:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
+    invalid_page:
+    invalid_juz:
   local: urdu
   site_local: سائٹ کی زبان
   change_local: جس زبان میں سایٹ دیکھنا چاہتے ہیں اس زبان کا انتخاب کریں
@@ -59,9 +61,10 @@ ur:
       qcf_v1: QCF v1 فونٹ
       qcf_v2: QCF v2 فونٹ
       indopak: انڈوپاک مصحف
+      imlaei:
     translation_count:
-      one: آپ ایک ترجمہ پڑھ رہے ہیں
-      other: آپ %{count} ترجمے پڑھ رہے ہیں
+      one: " آپ <count>%{count}</count> ترجمہ پڑھ رہے ہیں"
+      other: آپ <count>%{count}</count> ترجمے پڑھ رہے ہیں
   verses:
     media: '"کے لیکچر دیکھے %{from}"'
     go: آیت منتخب کریں
@@ -88,6 +91,7 @@ ur:
     copy:
       label: کاپی
       done: کاپی کر لیا
+      advance:
     share: بانٹیں
     addNote: نوٹ شامل کریں
     tafsir:
@@ -132,6 +136,8 @@ ur:
     show_word_tooltip: 'آیت چلاتے ہوئے لفظ کا ترجمہ دکھائیں
 
       '
+    repeatCurrent: موجودہ آیت کو چلاتے رہیں
+    loading: آڈیو لوڈ ہو رہا ہے
   loading: لوڈ کر رہا ہے ...
   nav:
     title: قرآن
@@ -173,3 +179,11 @@ ur:
     translation: آیت ترجمہ کے ساتھ
     info: سورہ کی معلومات
   share_ayah: آیت شیئر کریں
+  tabs:
+    chapter: سورتیں
+    juz: سپارے
+  filter:
+    translations: ترجمہ تلاش کریں
+    reciters: قاری منتخب کریں
+    surah: سورہ تلاش کریں
+    ayah: آیہ تلاش کریں

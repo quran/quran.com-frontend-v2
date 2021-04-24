@@ -17,15 +17,7 @@ export default class extends Controller {
   }
 
   trackActions(e) {
-    let data;
-
-    if (e.target.dataset.action) {
-      data = e.target.dataset
-    } else {
-      data = e.target.dataset
-    }
-
-    const {name, category, action, value} = data
+    const {name, category, action, value} = e.target.dataset
 
     GoogleAnalytic.trackEvent(name, category, action || "Clicked", value);
   }
