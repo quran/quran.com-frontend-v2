@@ -91,7 +91,7 @@ class ChapterPresenter < HomePresenter
     if params[:to]
       params[:to].to_i < total_verses
     else
-      true
+      ayah_range_to < total_verses
     end
   end
 
