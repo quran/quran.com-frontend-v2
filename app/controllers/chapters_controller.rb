@@ -73,8 +73,7 @@ class ChaptersController < ApplicationController
 
   def validate_range_rules
     expected = get_valid_range_params
-
-    ayah_range_path(params[:id], range: expected) if expected != current_ayah_range
+    ayah_range_path(params[:id], range: expected.to_s) if expected != current_ayah_range
   end
 
   def get_valid_range_params
