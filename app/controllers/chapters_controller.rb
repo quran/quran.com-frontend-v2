@@ -81,7 +81,7 @@ class ChaptersController < ApplicationController
       start = params[:from]
       finish = params[:to]
 
-      valid_start = start.to_i.abs
+      valid_start = [1, start.to_i.abs].max
       valid_end = finish.to_i.abs
 
       if finish.nil?

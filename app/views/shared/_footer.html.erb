@@ -7,6 +7,7 @@
           <%= link_to _t('nav.about_us'), about_us_path %>
           <%= link_to _t('nav.contribute'), donations_path %>
           <%= link_to _t('nav.help'), support_path %>
+          <%= link_to _t('nav.feedback', default: 'Feedback'), '#_', data: { controller: 'ajax-modal', url: '/popups/feedback' }  %>
           <%= link_to _t('nav.developers'), developers_path %>
           <%= link_to _t('download'), apps_path %>
           <%= link_to _t('nav.privacy'), privacy_path %>

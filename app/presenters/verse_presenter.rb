@@ -2,7 +2,9 @@
 
 class VersePresenter < QuranPresenter
   def verse
-    Verse.find_with_id_or_key(params[:id])
+    strong_memoize :verse do
+      Verse.find_with_id_or_key(params[:id])
+    end
   end
 
   def approved_tafsirs
@@ -15,8 +17,8 @@ class VersePresenter < QuranPresenter
 
   def tafsir_languages
     list = Language
-               .eager_load(:translated_name)
-               .where(id: approved_tafsirs.select(:language_id))
+             .eager_load(:translated_name)
+             .where(id: approved_tafsirs.select(:language_id))
 
     eager_load_translated_name(list).each_with_object({}) do |translation, hash|
       hash[translation.id] = translation
@@ -113,10 +115,10 @@ class VersePresenter < QuranPresenter
     return 16 if params[:tafsir_id].blank?
 
     ResourceContent
-        .approved
-        .tafsirs
-        .where(id: params[:tafsir_id])
-        .or(ResourceContent.where(slug: params[:tafsir_id]))
-        .first&.id || 16
+      .approved
+      .tafsirs
+      .where(id: params[:tafsir_id])
+      .or(ResourceContent.where(slug: params[:tafsir_id]))
+      .first&.id || 16
   end
 end

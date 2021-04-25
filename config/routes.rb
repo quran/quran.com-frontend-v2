@@ -119,7 +119,11 @@ Rails.application.routes.draw do
   get '/:chapter::from::to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301)
 
   # /2/1/3 => /2/1-3
-  get '/:chapter/:from/:to', to: redirect('/%{chapter}/%{from}-%{to}', status: 301)
+  get '/:chapter/:from/:to', to: redirect { |params, request|
+    # cast "from" and "to" into integer to break infinite redirect loop for some legacy URLs
+    # https://quran.com/2/27/en-sahih-international
+    "/#{params[:chapter]}/#{params[:from].to_i}-#{params[:to].to_i}"
+  }
 
   # 2-3-5 => 2/3-5
   # Can't redirect this format. Surah slug might have - as well
