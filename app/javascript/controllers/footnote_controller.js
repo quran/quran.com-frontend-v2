@@ -16,6 +16,8 @@ export default class extends Controller {
   updateInternalLinks() {
     this.element.querySelectorAll('a').forEach(item => {
       if (item.host === location.host) {
+        item.classList.remove()
+        item.classList.add('see-more')
         item.setAttribute('data-controller', 'ajax-modal');
         item.setAttribute('data-class', 'modal-lg');
 

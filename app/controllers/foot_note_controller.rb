@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class FootNoteController < ApplicationController
-  caches_action :show,
-                cache_path: :generate_localised_cache_key
+  #caches_action :show,
+  #              cache_path: :generate_localised_cache_key
 
   def show
     @foot_note = FootNote.find_by(id: params[:id])
