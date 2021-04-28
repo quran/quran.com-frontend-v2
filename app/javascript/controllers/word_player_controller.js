@@ -9,7 +9,8 @@ export default class extends AudioController {
   }
 
   play(audioPath) {
-    let player, playerDom = document.getElementById("player");
+    let player,
+      playerDom = document.getElementById("player");
 
     if (playerDom) player = playerDom.player;
 
@@ -21,7 +22,7 @@ export default class extends AudioController {
         html5: false,
         autoplay: false,
         onload: () => {
-          player.isPlaying() && player.playCurrent();
+          player.isPlaying() && player.pauseCurrent();
         },
         onplayerror: () => {
           this.playWordQueue = [];
@@ -38,7 +39,7 @@ export default class extends AudioController {
             this.resumeOnWordPlayEnd && player.playCurrent();
             this.resumeOnWordPlayEnd = false;
           }
-        }
+        },
       });
 
       this.playWordQueue.push(howl);
