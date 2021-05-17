@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  after_action :allow_iframe
   before_action :set_locale
   rescue_from ActionController::RoutingError, with: :not_found
 
@@ -23,6 +24,9 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
+  end
 
   def set_locale
     locale = fetch_locale
