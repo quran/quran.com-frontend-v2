@@ -47,12 +47,14 @@ if (fs.existsSync(whitelist_path)) {
 environment.plugins.append(
   "PurgecssPlugin",
   new PurgecssPlugin({
-    whitelist: ["tajweed", ".h", "inline-comment", ".urdu", "sup", "select2"],
-    whitelistPatterns: [/hlt|select2|aria-disabled|modal-open/],
-    whitelistPatternsChildren: [],
+    safelist: {
+      standard: ["tajweed", ".h", "inline-comment", ".urdu", "sup", "select2"],
+      deep: [/hlt/, 'aria-disabled', 'modal-open', /icon-/],
+      greedy: []
+    },
     paths: glob.sync([
-      path.join(__dirname, "../../app/javascript/**/*.js"),
-      path.join(__dirname, "../../app/views/**/*.erb")
+      path.join(__dirname, "../../app/javascript/**/*"),
+      path.join(__dirname, "../../app/views/**/*")
     ])
   })
 );
