@@ -7,7 +7,7 @@
 //   <h1 data-target="hello.output"></h1>
 // </div>
 
-import {Controller} from "stimulus";
+import { Controller } from "stimulus";
 
 export default class extends Controller {
   connect() {
@@ -22,8 +22,7 @@ export default class extends Controller {
 
     /* on change keyboard */
     if (searchInput.length) {
-      if (searchInput.is(":visible"))
-        searchInput.trigger("focus");
+      if (searchInput.is(":visible")) searchInput.trigger("focus");
 
       searchInput.on("change", () => {
         var filter = searchInput.val().toLowerCase();
@@ -42,19 +41,23 @@ export default class extends Controller {
   }
 
   doFilter(text, list) {
-    console.log("filtering", text);
-
     /* when user types more than 1 letter start search filter */
     if (text.length >= 1) {
-      list
-        .find(`[data-filter-tags]:not([data-filter-tags*="${text}"])`)
-        .removeClass("filter-show")
-        .addClass("hidden");
+      text = text.toLowerCase();
 
-      list
-        .find(`[data-filter-tags*="${text}"]`)
-        .removeClass("hidden")
-        .addClass("filter-show");
+      const elemWithTags = list.find("[data-filter-tags]");
+      elemWithTags.each((i, elem) => {
+        if (elem.dataset.filterTags.includes(text)) {
+          elem.classList.remove("hidden");
+          const parent = elem.parentNode;
+          if (parent.classList.contains("hidden")) {
+            // show parent as well
+            parent.classList.remove("hidden");
+          }
+        } else {
+          elem.classList.add("hidden");
+        }
+      });
     } else {
       list.find("[data-filter-tags]").removeClass("hidden filter-show");
     }

@@ -17,7 +17,7 @@ class PagePresenter < QuranPresenter
   end
 
   def meta_title
-    "Mushaf page #{current_page}"
+    "Muhsaf page #{current_page}"
   end
 
   def meta_keyword

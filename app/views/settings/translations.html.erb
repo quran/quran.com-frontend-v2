@@ -25,15 +25,16 @@
     </div>
   </div>
 
+  <%
+    language = languages[38]
+    translated = language.translated_name
+    name_for_filters = translation_name_filter(language.name, translated.name)
+  %>
+
   <div id='ordered-translations'>
     <div class="translations__languages">
       <div>
-        <%
-          language = languages[38]
-          translated = language.translated_name
-          name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
-        %>
-        <p class="text text--darkgrey text--medium text--semibold country-name <%= language.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+        <p class="text text--darkgrey text--medium text--semibold country-name <%= language.name.downcase %>">
           <%= translated.name %>
         </p>
       </div>
@@ -51,13 +52,14 @@
           <%
             language = languages[lang]
             translated = language.translated_name
-            name_for_filters = "#{language.name.downcase} #{translated.name.downcase}"
+            name_for_filters = translation_name_filter(language.name, translated.name)
           %>
           <div>
-            <p class="text text--darkgrey text--medium text--semibold country-name  <%#= translated.name.downcase %>" data-filter-tags="<%= name_for_filters %>">
+            <p class="text text--darkgrey text--medium text--semibold">
               <%= translated.name %>
             </p>
           </div>
+
           <div class="translations__padding">
             <%= render partial: 'translation', collection: translations[lang], as: :translation, locals: {language: name_for_filters} %>
           </div>

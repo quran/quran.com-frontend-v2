@@ -15,4 +15,7 @@ module TranslationsHelper
     end
   end
 
+  def translation_name_filter(language_name, translated_name)
+    "#{language_name.downcase} #{translated_name.to_s.downcase}".split(' ').uniq.join(' ')
+  end
 end
