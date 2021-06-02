@@ -55,7 +55,7 @@ environment.plugins.append(
     paths: glob.sync([
       path.join(__dirname, "../../app/javascript/**/*"),
       path.join(__dirname, "../../app/views/**/*")
-    ])
+    ], { nodir: true })
   })
 );
 
