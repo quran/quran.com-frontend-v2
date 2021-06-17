@@ -1,38 +1,3 @@
-.lines {
-  .line {
-    display: block;
-    direction: rtl;
-
-    .line-verses {
-      //line-break: anywhere; safari don't play nicely with this
-      display: flex;
-      -webkit-box-pack: justify;
-      justify-content: center;
-
-      &.line--single-verse {
-        .verse,
-        .arabic {
-          flex: 1 0 100%;
-          display: flex;
-          justify-content: center;
-          -webkit-box-pack: justify;
-        }
-      }
-      .verse {
-        .arabic {
-          display: flex;
-          justify-content: center;
-        }
-      }
-      .w {
-        margin: 0 1.5px;
-        &.p2-uthmani {
-          margin: 0 3px;
-        }
-      }
-    }
-  }
-}
 //ayah ul kursi
 .page--center {
   .lines .line .line-verses {

@@ -62,7 +62,7 @@ export default class extends Controller {
 
     this.bindAction(el);
 
-    if (el.find(".arabic").hasClass("text_uthmani_tajweed")) {
+    if (el.find(".arabic").hasClass("tajweed")) {
       this.fixTajweedForSarari();
       this.bindTajweedTooltip();
     }

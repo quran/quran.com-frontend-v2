@@ -35,11 +35,17 @@ divehi,
   font-family: "pdms";
 }
 
-.madani,
-.text_uthmani_tajweed,
-.text_imlaei,
-.text_uthmani {
+.tajweed,
+.uthmani {
   font-family: me_quran;
+}
+
+.muhsaf-qpc_hafs,
+.qpc_hafs {
+  font-family: UthmanicHafs1-Ver17;
+  * {
+    unicode-bidi: bidi-override;
+  }
 }
 
 .lang-ar,
@@ -49,17 +55,12 @@ divehi,
   }
 }
 
-.text_indopak,
-.text_uthmani,
-.text_uthmani_tajweed {
+.indopak,
+.uthmani,
+.tajweed {
   .end {
-    font-family: UthmanicHafs1;
+    font-family: UthmanicHafs1-Ver17;
     font-size: 35px;
     unicode-bidi: bidi-override;
-
-    * {
-      font-family: UthmanicHafs1;
-      font-size: 35px;
-    }
   }
 }

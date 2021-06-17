@@ -35,11 +35,12 @@
   @extend .text--semibold;
   color: #333647;
 }
-.content-page a {
+.content-page a:not(.btn) {
   @extend .text;
   @extend .text--green;
   @extend .text--medium;
   @extend .text--regular;
+
   @at-root .dark & {
     color: $dark-green;
   }

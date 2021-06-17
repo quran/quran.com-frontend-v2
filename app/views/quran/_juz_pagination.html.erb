@@ -1,4 +1,9 @@
-<% reading = {reading: @presenter.reading_mode?} %>
+<%
+  reading = {
+    reading: @presenter.reading_mode?,
+    font: @presenter.font_type
+  }
+%>
 
 <div class="reading__buttons flexx-center"
      id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination"

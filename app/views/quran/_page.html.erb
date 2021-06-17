@@ -1,43 +1,39 @@
-<% lines = group_verse_by_page_and_lines(verses) %>
+<%
+  font = @presenter.font_type
+  lines = group_words_lines(verses, font)
+  first_verse = verses[0]
+  page = first_verse.get_page_number(font)
+  bismillah_shown = {}
+%>
 
-<% lines.each do |page, page_lines| %>
-  <% first_verse = verses[page_lines.first[1].first[1][:index]] %>
+<div class="mushaf-layout mushaf muhsaf-<%= font %>">
+  <div class="page-wrapper">
+    <div class="mushaf-page p<%= page %>-<%= font %> <%= font %>" id="page-<%= page %>">
+      <% lines.each do |line_number, line_verses| %>
+        <div class="line" id=line-<%= line_number %>>
+          <% line_verses.each do |verse_id, words| %>
+            <%
+              verse_key = words.first.verse_key
+            %>
 
-  <div class="row page my-3 <%= 'page--center' if @presenter.center_align_page?(page) %>"
-     id="page-<%= page %>"
-     data-page="<%= page %>"
-     data-controller="page"
-  >
-  <div class="col-md-12">
-    <div class="lines text-center px-3">
-      <% page_lines.each do |_page, line| %>
-        <% if @presenter.show_chapter_name?(verses[line.first[1][:index]]) %>
-          <%= render 'reader/chapter_name', verse: verses[line.first[1][:index]] %>
-        <% end %>
-
-        <div class="line <%= @presenter.font_method %>">
-          <div class="line-verses  <%= 'line--single-verse' if line.keys.size == 1 %>">
-            <% line.each do |verse_number, word_list| %>
-              <%
-                words = word_list[:words]
-                verse_key = words.first.verse_key
-              %>
-              <div class="verse"
-                   data-controller="verse"
-                   data-reading="true"
-                   data-key="<%= verse_key %>">
-                <div class="arabic" data-key="<%= verse_key %>">
-                  <%= render partial: 'reader/word', collection: word_list[:words] %>
-                </div>
+            <% if QuranUtils::Quran.first_ayah?(verse_id) && bismillah_shown[verse_id].nil? %>
+              <div class="line--center">
+              <%= render 'reader/chapter_name', verse: words.first.verse %>
+              <% bismillah_shown[verse_id] = true %>
               </div>
             <% end %>
-          </div>
+
+            <div class="verse arabic"
+                 data-controller="verse"
+                 data-reading="true"
+                 data-key="<%= verse_key %>">
+              <%= render partial: 'reader/word', collection: words, locals: { font: font } %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
-<%= render 'reader/juz_art', verse: first_verse, page: page  %>
+<%= render 'reader/juz_art', verse: first_verse, page: page %>
 <div class="horizontal-line"></div>
-<% end %>

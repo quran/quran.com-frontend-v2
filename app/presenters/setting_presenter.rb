@@ -2,12 +2,12 @@
 
 class SettingPresenter < AudioPresenter
   FONT_LOCAL_KEYS = {
-      'v1' => 'qcf_v1',
-      'v2' => 'qcf_v2',
-      'uthmani' => 'uthmani',
-      'imlaei' => 'imlaei',
-      'indopak' => 'indopak',
-      'tajweed' => 'tajweed'
+    v1: 'qcf_v1',
+    v2: 'qcf_v2',
+    uthmani: 'uthmani',
+    indopak: 'indopak',
+    tajweed: 'tajweed',
+    qpc_hafs: 'qpc_hafs'
   }
 
   def selected_reciter
@@ -43,7 +43,7 @@ class SettingPresenter < AudioPresenter
     strong_memoize :verse_keys do
       if params[:chapter]
         verses_count = QuranUtils::Quran.get_ayah_count(params[:chapter].to_i)
-        1.upto(verses_count).map { |verse_number| "#{params[:chapter]}:#{verse_number}"}
+        1.upto(verses_count).map { |verse_number| "#{params[:chapter]}:#{verse_number}" }
       elsif params[:juz_number]
         Verse.where(juz_number: params[:juz_number]).order('verse_index ASC').pluck(:verse_key)
       elsif params[:page_number]
@@ -54,11 +54,11 @@ class SettingPresenter < AudioPresenter
 
   def translations
     list = ResourceContent
-           .eager_load(:translated_name)
-           .one_verse
-           .translations
-           .approved
-           .order('priority ASC')
+             .eager_load(:translated_name)
+             .one_verse
+             .translations
+             .approved
+             .order('priority ASC')
 
     translations = eager_load_translated_name(list)
 
@@ -77,8 +77,8 @@ class SettingPresenter < AudioPresenter
 
   def load_recitations
     list = Recitation
-           .eager_load(reciter: :translated_name)
-           .approved
+             .eager_load(reciter: :translated_name)
+             .approved
 
     eager_load_translated_name(list)
   end

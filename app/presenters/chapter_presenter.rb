@@ -3,7 +3,7 @@
 class ChapterPresenter < HomePresenter
   def initialize(context)
     super
-    @finder = VerseFinder.new(params)
+    @finder = VerseFinder.new(params, mushaf: :v1)
   end
 
   def show_header_search?
