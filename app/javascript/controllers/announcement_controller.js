@@ -28,12 +28,12 @@ export default class extends Controller {
   }
 
   show() {
-    GoogleAnalytic.trackEvent(
+    /*GoogleAnalytic.trackEvent(
       "notification-shown",
       "donation",
       "donation-notification",
       1
-    );
+    );*/
 
     this.el.find(".close").on("click", e => {
       e.preventDefault();
@@ -51,7 +51,7 @@ export default class extends Controller {
     const url = this.element.dataset.url;
     new AjaxModal().loadModal(url);
 
-    GoogleAnalytic.trackEvent("popup-shown", "donation", "donation-popup", 1);
+    //GoogleAnalytic.trackEvent("popup-shown", "donation", "donation-popup", 1);
 
     $("#ajax-modal").on("hidden.bs.modal", e => {
       this.store.set(
@@ -59,12 +59,12 @@ export default class extends Controller {
         new Date().getTime()
       );
 
-      GoogleAnalytic.trackEvent(
+      /*GoogleAnalytic.trackEvent(
         "popup-dismissed",
         "donation",
         "donation-popup",
         1
-      );
+      );*/
     });
 
     this.store.set(`pop-${this.el.data("id")}`, new Date().getTime());
@@ -75,7 +75,7 @@ export default class extends Controller {
     this.el.addClass("hidden");
   }
 
-  shouldShowPopup() {
+  /*shouldShowPopup() {
     return !this.popupShownAt && this.canShowDonation();
   }
 
@@ -88,7 +88,7 @@ export default class extends Controller {
 
   shouldShowNotification() {
     return this.popupShownAt && !this.dismissedAt && this.canShowDonation();
-  }
+  }*/
 
   canShowJobsBanner() {
     return !this.dismissedAt;
