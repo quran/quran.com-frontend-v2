@@ -10,10 +10,15 @@
 
 <div class="reading__buttons flexx-center"
      id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination"
-     data-url="<%= ayah_range_path(@presenter.chapter.id, @presenter.ayah_range) %>">
+     data-url="<%= ayah_range_path(@presenter.chapter.id, @presenter.ayah_range, font: @presenter.font_type) %>">
   <%= chapter_next_page_link %>
 
-  <% reading = { reading: @presenter.reading_mode? } %>
+  <%
+    reading = {
+      reading: @presenter.reading_mode?,
+      font: @presenter.font_type
+    }
+  %>
 
   <% if @presenter.continue? %>
     <%= link_to chapter_path(@presenter.chapter, reading), class: 'btn btn--lightgrey btn--large btn--icon' do %>

@@ -144,6 +144,6 @@ class BasePresenter
   end
 
   def verse_finder
-    VerseFinder.new(params)
+    VerseFinder.new(params, mushaf: font_type)
   end
 end

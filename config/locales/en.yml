@@ -41,6 +41,7 @@ en:
       qcf_v1: King Fahd Quran Complex v1
       qcf_v2: King Fahd Quran Complex v2
       indopak: IndoPak text
+      qpc_hafs: King Fahd Quran Complex Hafs
     font_size:
       label: Font size
       arabic: Arabic
@@ -80,7 +81,7 @@ en:
     tafsir:
       label: Tafsirs
       select: Select Tafsir
-      filter_tafsir: 'Filter by language:'
+      filter_tafsir: "Filter by language:"
     bookmark:
       label: Bookmark
       done: Bookmarked!
@@ -134,7 +135,8 @@ en:
     other_links: Other links
     contact_us: Contact us
     help: Help
-    about_project: Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone
+    about_project:
+      Quran.com is a Sadaqah Jariyah. We hope to make it easy for everyone
       to read, study, and learn The Noble Quran. The Noble Quran has many names including
       Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr, and Al-Noor.
     rights: All Rights Reserved
@@ -151,7 +153,8 @@ en:
     invalid_chapter: Check your Surah selection. It's out of range.
     invalid_page: Page is out of range.
     invalid_juz: Juz is out of range.
-    no_script: Looks like either your browser does not support Javascript or its disabled.
+    no_script:
+      Looks like either your browser does not support Javascript or its disabled.
       Quran.com workes best with JavaScript enabled. For more instruction on how to
       enable javascript <a href="http://www.enable-javascript.com/" target="_blank"
       rel="nofollow">click here</a>.

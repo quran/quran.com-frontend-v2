@@ -65,10 +65,6 @@ class VersePresenter < QuranPresenter
     'v1'
   end
 
-  def font_method
-    'code_v1'
-  end
-
   def show_verse_actions?
     false
   end

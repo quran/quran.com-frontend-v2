@@ -63,4 +63,29 @@ class Verse < QuranCoreRecord
   def verse_id
     id
   end
+
+  def get_page_number(version)
+    if :v1 == version
+      page_number
+    else
+      v2_page
+    end
+  end
+
+  def get_text(version)
+    case version
+    when :v1
+      code_v1
+    when :v2
+      code_v2
+    when :uthmani
+      text_uthmani
+    when :tajweed
+      text_uthmani_tajweed.html_safe
+    when :indopak
+      text_indopak
+    when :qpc_hafs
+      qpc_uthmani_hafs
+    end
+  end
 end

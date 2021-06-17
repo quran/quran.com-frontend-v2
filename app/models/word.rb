@@ -56,15 +56,34 @@ class Word < ApplicationRecord
 
   default_scope { order 'position asc' }
 
-  def get_code_v1
-    "&#x#{code_hex};"
+  def get_page_number(version)
+    if :v1 == version
+      page_number
+    else
+      v2_page
+    end
   end
 
-  def get_code_v2
-    code_v2
+  def get_line_number(version)
+    if :v1 == version
+      line_number
+    else
+      line_v2
+    end
   end
 
-  def class_name
-    "p#{page_number}"
+  def get_text(version)
+    case version
+    when :v1
+      code_v1
+    when :v2
+      code_v2
+    when :uthmani
+      text_uthmani
+    when :indopak
+      text_indopak
+    when :qpc_hafs
+      qpc_uthmani_hafs
+    end
   end
 end

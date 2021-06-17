@@ -53,11 +53,21 @@
   </div>
 
   <div class="font">
+    <label class="radio-label "><%= _t('settings.fonts.qpc_hafs', default: 'King Fahd Quran Complex Hafs') %>
+      <input class="" name="font" type="radio" checked=checked name="font" value="qpc_hafs" id=qpc_hafs>
+      <span class="checkmark"></span>
+    </label>
+    <div class="arabic muhsaf-qpc_hafs">
+      <%= verse.qpc_uthmani_hafs %>
+    </div>
+  </div>
+
+  <div class="font">
     <label class="radio-label "><%= _t('settings.fonts.uthmani') %>
       <input class="" name="font" type="radio" checked=checked name="font" value="uthmani" id=uthmani>
       <span class="checkmark"></span>
     </label>
-    <div class="arabic madani">
+    <div class="arabic uthmani">
       <%= verse.text_uthmani %>
     </div>
   </div>
@@ -77,7 +87,7 @@
       <input class="" name="font" type="radio" value="tajweed" id=tajweed>
       <span class="checkmark"></span>
     </label>
-    <div class="arabic text_uthmani_tajweed">
+    <div class="arabic tajweed">
       <%= verse.text_uthmani_tajweed.html_safe %>
     </div>
   </div>

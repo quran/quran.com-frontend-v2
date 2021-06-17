@@ -23,9 +23,9 @@ module PagesHelper
         lines[w.line_number] ||= {}
 
         lines[w.line_number][verse.id] ||= {
-            index: i,
-            verse_number: verse.verse_number,
-            words: []
+          index: i,
+          verse_number: verse.verse_number,
+          words: []
         }
 
         lines[w.line_number][verse.id][:words] << w
@@ -52,9 +52,9 @@ module PagesHelper
 
     lines = {}
     index = 0
+
     verses.group_by(&:page_number).each do |page, page_verses|
       lines[page] = {
-
       }
 
       page_verses.each do |verse, i|
@@ -62,14 +62,30 @@ module PagesHelper
           lines[page][w.line_number] ||= {}
 
           lines[page][w.line_number][verse.verse_number] ||= {
-              index: index ,
-              verse_number: verse.verse_number,
-              words: []
+            index: index,
+            verse_number: verse.verse_number,
+            words: []
           }
 
           lines[page][w.line_number][verse.verse_number][:words] << w
         end
         index += 1
+      end
+    end
+
+    lines
+  end
+
+  def group_words_lines(verses, mushaf_type)
+    lines = {}
+
+    verses.each do |verse|
+      verse.words.each do |w|
+        line_number = w.get_line_number(mushaf_type)
+        lines[line_number] ||= {}
+        lines[line_number][w.verse_id] ||= []
+
+        lines[line_number][w.verse_id] << w
       end
     end
 
