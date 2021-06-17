@@ -78,7 +78,7 @@ class Word < ApplicationRecord
       code_v1
     when :v2
       code_v2
-    when :uthmani
+    when :uthmani, :tajweed
       text_uthmani
     when :indopak
       text_indopak

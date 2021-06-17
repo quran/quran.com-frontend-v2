@@ -49,7 +49,7 @@ environment.plugins.append(
   new PurgecssPlugin({
     safelist: {
       standard: ["tajweed", ".h", "inline-comment", ".urdu", "sup", "select2"],
-      deep: [/hlt/, 'aria-disabled', 'modal-open', /icon-/],
+      deep: [/hlt/, 'aria-disabled', 'modal-open', /icon-/, /mushaf/],
       greedy: []
     },
     paths: glob.sync([
