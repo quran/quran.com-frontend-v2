@@ -8,7 +8,7 @@
 %>
 
 <div class="mushaf-layout mushaf muhsaf-<%= font %>">
-  <div class="page-wrapper">
+  <div class="mushaf-wrapper">
     <div class="mushaf-page p<%= page %>-<%= font %> <%= font %>" id="page-<%= page %>">
       <% lines.each do |line_number, line_verses| %>
         <div class="line" id=line-<%= line_number %>>
@@ -17,8 +17,8 @@
               verse_key = words.first.verse_key
             %>
 
-            <% if false && QuranUtils::Quran.first_ayah?(verse_id) && bismillah_shown[verse_id].nil? %>
-              <%= render 'reader/chapter_name', verse: verses[line.first[1][:index]] %>
+            <% if QuranUtils::Quran.first_ayah?(verse_id) && bismillah_shown[verse_id].nil? %>
+              <%= render 'reader/chapter_name', verse: words.first.verse %>
 
               <% bismillah_shown[verse_id] = true %>
             <% end %>

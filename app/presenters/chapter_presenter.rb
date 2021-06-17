@@ -99,7 +99,7 @@ class ChapterPresenter < HomePresenter
     ayah_range_from > 1
   end
 
-  def show_bismillah?
+  def show_bismillah?(verse=nil)
     single_ayah? || chapter.bismillah_pre?
   end
 

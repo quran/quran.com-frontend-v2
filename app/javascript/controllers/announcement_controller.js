@@ -49,7 +49,8 @@ export default class extends Controller {
 
   showPopup() {
     const url = this.element.dataset.url;
-    new AjaxModal().loadModal(url);
+    if(url)
+      new AjaxModal().loadModal(url);
 
     //GoogleAnalytic.trackEvent("popup-shown", "donation", "donation-popup", 1);
 
