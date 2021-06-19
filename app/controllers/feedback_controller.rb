@@ -2,6 +2,8 @@ class FeedbackController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+    headers["Access-Control-Allow-Origin"] = 'https://quran.com'
+
     feedback = Feedback.new(feedback_params)
 
     if feedback.save
