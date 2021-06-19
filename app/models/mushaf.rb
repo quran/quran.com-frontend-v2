@@ -1,0 +1,2 @@
+class Mushaf < QuranCoreRecord
+end
