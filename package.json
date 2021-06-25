@@ -2,7 +2,7 @@
   "name": "quran",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^5.2.1",
+    "@rails/webpacker": "^5.2.2",
     "bootstrap": "^4.3.1",
     "copy-to-clipboard": "^3.0.8",
     "es6-promise": "^4.2.8",
