@@ -230,7 +230,7 @@ Distributed under the GNU GPLv3 License. See [LICENSE](./LICENSE) for more infor
 
 ## Contact
 
-Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our Slack channel, and we'll try to add you as soon as possible.
+Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our <a href=https://quran-community.herokuapp.com/>Community></a>, and we'll try to add you as soon as possible.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
