@@ -17,7 +17,7 @@
   <p align="center">
     The official source code repository for Quran.com
     <br />
-    <strong><a href="https://quranslack.herokuapp.com">Join the Slack Channel <img src="http://i.imgur.com/Lk5HsBo.png"/></a></strong>
+    <strong><a href="https://quran-community.herokuapp.com/">Join the Quran.com community</a></strong>
     <br />
     <br />
     <a href="https://quran.com">Visit Quran.com</a>
