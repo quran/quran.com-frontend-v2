@@ -11,7 +11,8 @@ ru:
     not_found: Извините, этой страницы не существует
     invalid_verse: Проверьте свой выбор Аят. Это вне диапазона.
     invalid_chapter: Проверьте свой выбор суры. Это вне диапазона.
-    no_script: Похоже что ваш браузер не поддерживает Javascript либо он отключен.
+    no_script:
+      Похоже что ваш браузер не поддерживает Javascript либо он отключен.
       Quran.com лучше всего работает с включенным JavaScript. Для дополнительных инструкций
       о том, как включить JavaScript, <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">нажмите сюда</a> .
@@ -21,15 +22,15 @@ ru:
       Если вы работаете на многопроцессорном сервере (например, Unicorn или Puma), процесс
       попадание этого запроса не сохраняет %{id} в памяти. Рассмотрите возможность поворота числа
       процессов / работников одного (1) или другого сервера в разработке.
-    unacceptable_request: 'Поддерживаемая версия ожидается в Accept header.
+    unacceptable_request: "Поддерживаемая версия ожидается в Accept header.
 
-      '
+      "
     connection_refused: |-
       Не удалось подключиться к промежуточному програмному обеспечению веб-консоли.
       Пожалуйста убедитесь что сервер разработки рельсов работает.
     format: "%{attribute} %{message}"
-    invalid_page:
-    invalid_juz:
+    invalid_page: Страница вне допустимого диапазона.
+    invalid_juz: Джуз вне досягаемости.
   local: Английский
   site_local: Язык сайта
   change_local: Выбрать язык
@@ -49,8 +50,8 @@ ru:
     sample_audio: Воспроизвести образец
     translations: Выберите перевод
     translation_count:
-      one: Отображение один перевод
-      other: отображение %{count} перевод
+      one: Отображение<count> один</count> перевод
+      other: отображение <count>%{count}</count> перевод
     remove_all: Удалить все
     translation_english: английский
     translation_other: Другие языки
@@ -59,16 +60,17 @@ ru:
     fonts:
       tajweed: Текст таджвида
       uthmani: Текст Усмани
-      qcf_v1: 'King Fahd Quran Complex v1
+      qcf_v1: "King Fahd Quran Complex v1
 
-        '
-      qcf_v2: 'King Fahd Quran Complex v2
+        "
+      qcf_v2: "King Fahd Quran Complex v2
 
-        '
-      indopak: 'Текст IndoPak
+        "
+      indopak: "Текст IndoPak
 
-        '
+        "
       imlaei:
+      qpc_hafs:
     font_size:
       label: Размер шрифта
       arabic: арабский
@@ -115,7 +117,7 @@ ru:
     copy:
       label: Копировать
       done: Скопированo!
-      advance:
+      advance: Расширенное копирование
   search:
     label: Поиск
     placeholder: Искать "Нух"
@@ -138,9 +140,9 @@ ru:
     previous_verse: Предыдущий аят
     repeat_title: Повторите Аят
     repeat_single: одиночный
-    repeat_range: 'Пределы
+    repeat_range: "Пределы
 
-      '
+      "
     repeat_from: От аята
     repeat_to: К аяту
     repeat_times: Количество повторов
@@ -149,11 +151,12 @@ ru:
     pause_seconds: секунды
     pause: Пауза для
     play_continuously: Продолжить воспроизведение без пауз
-    show_word_tooltip: Показывать перевод слова во всплывающей подсказке при воспроизведении
+    show_word_tooltip:
+      Показывать перевод слова во всплывающей подсказке при воспроизведении
       аята
     scroll: Автоматический переход к проигрывающемуся в данный момент аяту
-    repeatCurrent:
-    loading:
+    repeatCurrent: Продолжайте играть в текущий аят
+    loading: Загрузка аудио
   loading: Загружается ...
   nav:
     title: Коран
@@ -165,7 +168,8 @@ ru:
     other_links: Прочие ссылки
     contact_us: Свяжитесь с нами
     help: Помощь и обратная связь
-    about_project: Quran.com - это садака Джария. Мы надеемся, что всем будет легко
+    about_project:
+      Quran.com - это садака Джария. Мы надеемся, что всем будет легко
       читать, учить и изучать Благородный Коран. В Благородном Коране много имен,
       включая Аль-Коран (Чтение, читать) аль-Карим (Щедрый), Китаб (Книга), Фуркан
       (Различение — добра и зла, истины и лжи, дозволенного и запретного), Аль-Мав'иза
@@ -191,10 +195,10 @@ ru:
     audio_description: Учить и слушать одновременно
   close: Закрыть
   tabs:
-    chapter:
+    chapter: Показать суру
     juz:
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: Поиск
+    reciters: Поиск
+    surah: Поиск
+    ayah: Поиск

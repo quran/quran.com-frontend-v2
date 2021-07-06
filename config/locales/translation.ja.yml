@@ -51,6 +51,7 @@ ja:
       qcf_v2:
       indopak:
       imlaei:
+      qpc_hafs:
     font_size:
       label:
       arabic: アラビア語
@@ -82,13 +83,13 @@ ja:
   footnote:
   share_ayah:
   action:
-    play: '再生する
+    play: "再生する
 
-      '
+      "
     pause:
-    share: '共有する。
+    share: "共有する。
 
-      '
+      "
     quran_reflect:
     addNote:
     tafsir:
@@ -99,9 +100,9 @@ ja:
       label:
       done:
     copy:
-      label: 'コピー
+      label: "コピー
 
-        '
+        "
       done:
       advance:
   search:

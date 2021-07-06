@@ -11,7 +11,8 @@ pl:
     not_found: Przepraszamy, strona nie istnieje
     invalid_verse: Werset nie istnieje
     invalid_chapter: Sura nie istnieje.
-    no_script: Wygląda na to, że twoja przeglądarka nie obsługuje JavaScript lub jest
+    no_script:
+      Wygląda na to, że twoja przeglądarka nie obsługuje JavaScript lub jest
       ono wyłączone. Quran.com działa najlepiej z JavaScript. Aby uzyskać instrukcję
       jak włączyć JavaScript <a href="http://www.enable-javascript.com/" target="_blank"
       rel="nofollow"> kliknij tutaj</a>.
@@ -45,7 +46,7 @@ pl:
     translations: Wybierz tłumaczenia
     translation_count:
       one: Wyświetlane jedno tłumaczenie
-      other: 'Ilość wyświetlanych tłumaczeń: %{count}'
+      other: "Ilość wyświetlanych tłumaczeń: %{count}"
     remove_all: Usuń wszystko
     translation_english: Angielski
     translation_other: Inne języki
@@ -58,6 +59,7 @@ pl:
       qcf_v2: King Fahd Quran Complex v2
       indopak: IndoPak
       imlaei: Imlaei uproszczony
+      qpc_hafs:
     font_size:
       label: Rozmiar czcionki
       arabic: Arabski
@@ -97,18 +99,19 @@ pl:
     tafsir:
       label: Tafsiry
       select: Wybierz Tafsir
-      filter_tafsir: 'Filtruj według języka:'
+      filter_tafsir: "Filtruj według języka:"
     bookmark:
       label: Zakładka
       done: Dodano do zakładek!
     copy:
       label: Kopiuj
       done: Skopiowano!
-      advance:
+      advance: Kopiowanie zaawansowane
   search:
     label: Szukaj
     placeholder: Wyszukaj „Noe”
-    result: "%{from}-%{to} Z <span> %{total} </span> WYNIKI WYSZUKIWANIA DLA: <span
+    result:
+      "%{from}-%{to} Z <span> %{total} </span> WYNIKI WYSZUKIWANIA DLA: <span
       class=text-primary>%{query}</span>"
     error: Przepraszamy, wystąpił błąd podczas wyszukiwania.
     no_query: Nie znaleziono zapytania
@@ -145,14 +148,15 @@ pl:
   nav:
     title: Koran
     settings: Ustawienia
-    contribute: Przyczyń się
+    contribute: Dotacje
     about_us: O nas
     developers: Deweloperzy
     useful_sites: Przydatne strony
     other_links: Inne linki
     contact_us: Kontakt
     help: Pomoc i feedback
-    about_project: Quran.com jest projektem pro bono (Sadaqah Jariyah). Chcemy ułatwić
+    about_project:
+      Quran.com jest projektem pro bono (Sadaqah Jariyah). Chcemy ułatwić
       każdemu czytanie, studiowanie i naukę Koranu. Koran określany jest różnymi nazwami
       m.in. Al-Quran (Recytacja), Al-Kareem (Wspaniały), Al-Ketab (Księga), Al-Furqan,
       (Rozróżnienie), Al-Maw'itha (Przewodnictwo), Al-Thikr (Napomnienie) i Al-Noor
