@@ -17,7 +17,7 @@
   <p align="center">
     The official source code repository for Quran.com
     <br />
-    <strong><a href="https://quranslack.herokuapp.com">Join the Slack Channel <img src="http://i.imgur.com/Lk5HsBo.png"/></a></strong>
+    <strong><a href="https://quran-community.herokuapp.com/">Join the Quran.com community</a></strong>
     <br />
     <br />
     <a href="https://quran.com">Visit Quran.com</a>
@@ -230,7 +230,7 @@ Distributed under the GNU GPLv3 License. See [LICENSE](./LICENSE) for more infor
 
 ## Contact
 
-Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our Slack channel, and we'll try to add you as soon as possible.
+Please [open an issue](https://github.com/quran/quran.com-frontend/issues/new) with your email to join our <a href="https://quran-community.herokuapp.com">Community</a>, and we'll try to add you as soon as possible.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

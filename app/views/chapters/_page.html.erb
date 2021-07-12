@@ -18,8 +18,9 @@
             %>
 
             <% if QuranUtils::Quran.first_ayah?(verse_id) && bismillah_shown[verse_id].nil? %>
+              <div class="line--center">
               <%= render 'reader/chapter_name', verse: words.first.verse %>
-
+              </div>
               <% bismillah_shown[verse_id] = true %>
             <% end %>
 

@@ -24,6 +24,8 @@ bn:
       ওহ! ওয়েব কনসোল মিডলওয়্যারের সাথে সংযোগ স্থাপন সম্ভব হয়নি।
       দয়া করে নিশ্চিত করুন যে রেল উন্নয়ন সার্ভার চলছে।
     format: "%{attribute} %{message}"
+    invalid_page: পৃষ্ঠাটি সীমার বাইরে।
+    invalid_juz: জুজ সীমার বাইরে।
   local: ইংরেজি
   site_local: সাইট-এর ভাষা
   change_local: "ভাষা নির্বাচন করুন, যে ভাষায় আপনি সাইট দেখতে চান "
@@ -60,9 +62,13 @@ bn:
       qcf_v1: QCF V1
       qcf_v2: QCF V2
       indopak: "ইন্দোপাক টেক্সট "
+      imlaei:
+      qpc_hafs: "King Fahd Quran Complex Hafs
+
+        "
     translation_count:
-      one: "একটি অনুবাদ দেখানো হচ্ছে "
-      other: "%{count} অনুবাদগুলি দেখানো হচ্ছে"
+      one: "<count> একটি </count> অনুবাদ দেখাচ্ছে"
+      other: "<count>%{count}</count> অনুবাদগুলি দেখানো হচ্ছে"
   verses:
     media: "%{from} এর ভিডিও মন্তব্য দেখুন"
     go: আয়াত-এ যান
@@ -91,13 +97,12 @@ bn:
     copy:
       label: কপি
       done: কপি করা হয়েছে
+      advance: অ্যাডভান্সড কপি
     tafsir:
       label: "তাফসির "
       select: তাফসির নির্বাচন করুন
       filter_tafsir: "ভাষা অনুসারে ফিল্টার করুন:"
-    quran_reflect: 'এই আয়াত এর রিফ্লেকশান পড়ুন "কুরআনরিফ্লেক্ট"-এ
-
-      '
+    quran_reflect: এই আয়াত এর রিফ্লেকশান পড়ুন  QuranReflect -এ
   search:
     label: অনুসন্ধান
     placeholder: '"নূহ" অনুসন্ধান করুন'
@@ -131,6 +136,8 @@ bn:
     pause: বিরতি দিন
     play_continuously: বিরতি না দিয়ে প্লে করুন
     show_word_tooltip: যখন প্লে হচ্ছে তখন টুলটিপ-এ শব্দ-এর অনুবাদ দেখান
+    repeatCurrent: কারেন্ট আয়া খেলতে থাকুন
+    loading: অডিও লোড হচ্ছে
   loading: লোড হচ্ছে ...
   nav:
     title: কুরআন
@@ -152,6 +159,7 @@ bn:
     blog: ব্লগ
     forum: ফোরাম
     mobile_apps: মোবাইল অ্যাপস
+    privacy: গোপনীয়তা
   juz: পারা
   click_here: এখানে ক্লিক করুন
   download: ডাউনলোড
@@ -171,3 +179,11 @@ bn:
     translation: অনুবাদ
     info: সূরা-র তথ্য
   share_ayah: আয়াত শেয়ার করুন
+  tabs:
+    chapter: সূরা দেখান
+    juz: জুজ দেখান
+  filter:
+    translations: অনুসন্ধান
+    reciters: অনুসন্ধান
+    surah: অনুসন্ধান
+    ayah: অনুসন্ধান

@@ -30,8 +30,8 @@
   white-space: nowrap;
   cursor: pointer;
   @at-root .content-page & {
-    padding: 3px 8px;
-    margin: 0;
+    padding: 3px 8px !important;
+    margin: 0 !important;
   }
   @at-root .dark & {
     color: #999aa2;

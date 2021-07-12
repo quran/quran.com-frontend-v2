@@ -47,29 +47,20 @@ export default class extends Controller {
     this.el.removeClass("hidden");
   }
 
-  showPopup() {
+  /*showPopup() {
     const url = this.element.dataset.url;
     if(url)
       new AjaxModal().loadModal(url);
-
-    //GoogleAnalytic.trackEvent("popup-shown", "donation", "donation-popup", 1);
 
     $("#ajax-modal").on("hidden.bs.modal", e => {
       this.store.set(
         `pop-${this.el.data("id")}-dismissed`,
         new Date().getTime()
       );
-
-      /*GoogleAnalytic.trackEvent(
-        "popup-dismissed",
-        "donation",
-        "donation-popup",
-        1
-      );*/
     });
 
     this.store.set(`pop-${this.el.data("id")}`, new Date().getTime());
-  }
+  }*/
 
   onHide(e) {
     this.store.set(`ann-${this.el.data("id")}`, new Date().getTime());
