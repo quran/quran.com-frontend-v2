@@ -17,7 +17,7 @@
     "popper.js": "1.14.7",
     "purgecss-webpack-plugin": "^4.0.3",
     "rails-erb-loader": "^5.5.2",
-    "resolve-url-loader": "^3.1.2",
+    "resolve-url-loader": "^4.0.0",
     "sass": "^1.25.0",
     "select2": "^4.0.13",
     "serialize-javascript": ">=3.1.0",
