@@ -18,19 +18,6 @@
 }
 
 @font-face {
-  font-family: "Kitab";
-  src: url("<%= asset_url 'quran_fonts/kitab/kitab.woff2' %>"),
-  url("<%= asset_url 'quran_fonts/kitab/kitab.woff' %>") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Qalam";
-  src: url("<%= asset_url 'quran_fonts/qalam/al_qalam.ttf'%>");
-  font-display: swap;
-}
-
-@font-face {
   font-family: "me_quran";
   src: url("<%= asset_url 'quran_fonts/me_quran/me_quran.ttf'%>");
   font-display: swap;
@@ -56,7 +43,9 @@
 }
 
 @font-face {
-  font-family: "UthmanicHafs1";
-  src: url("<%= asset_url 'quran_fonts/UthmanicHafs1/UthmanicHafs1Ex1Ver12.otf'%>");
+  font-family: "UthmanicHafs1-Ver17";
+  src: local('KFGQPC HAFS Uthmanic Script Regular. Version 0.17'),
+  url("<%= asset_url 'quran_fonts/uthmanic_hafs/UthmanicHafs1-Ver17.woff2'%>"),
+  url("<%= asset_url 'quran_fonts/uthmanic_hafs/UthmanicHafs1-Ver17.ttf'%>") format('truetype');
   font-display: swap;
 }

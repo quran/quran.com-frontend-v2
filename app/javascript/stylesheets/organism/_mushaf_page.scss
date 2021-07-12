@@ -1,0 +1,67 @@
+.mushaf-layout {
+  display: flex;
+  justify-content: center;
+
+  .word--missing {
+    color: #f04903;
+  }
+
+  .line--center {
+    text-align: center;
+    text-align-last: center;
+  }
+
+  .verse {
+    display: inline;
+  }
+
+  .mushaf-wrapper {
+    direction: rtl;
+    //    line-height: 1.85;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    margin: auto;
+  }
+}
+
+.mushaf-page {
+  text-align: justify;
+  text-align-last: justify;
+}
+
+#page-1,
+#page-2 {
+  text-align: center;
+  text-align-last: center;
+  word-spacing: 0;
+}
+
+.mushaf {
+  #page-255 #line-2,
+  #page-528 #line-9,
+  #page-534 #line-6,
+  #page-545 #line-6,
+  #page-586 #line-1,
+  #page-593 #line-2,
+  #page-594 #line-5,
+  #page-600 #line-10,
+  #page-602 #line-5,
+  #page-602 #line-15,
+  #page-603 #line-10,
+  #page-603 #line-15,
+  #page-604 #line-4,
+  #page-604 #line-9,
+  #page-604 #line-14,
+  #page-604 #line-15 {
+    text-align: center;
+    text-align-last: center;
+  }
+}
+
+.muhsaf-v2,
+.muhsaf-qpc_hafs {
+  .w {
+    word-spacing: -0.25em;
+  }
+}

@@ -1,3 +1,7 @@
+<%
+  font_type = @presenter.font_type
+%>
+
 <div class="translation__item verse"
      id="<%= verse.verse_key %>"
      data-controller="verse"
@@ -122,12 +126,12 @@
 
   <div class="translation__text">
     <div class="translation__arabic">
-      <div class="arabic <%= @presenter.font_method %>"
+      <div class="arabic p<%= verse.get_page_number(font_type) %>-<%= font_type %> <%= font_type %>"
            data-verse="<%= verse.verse_key %>">
         <% if @presenter.render_verse_words? %>
-          <%= render partial: 'reader/word', collection: verse.words %>
+          <%= render partial: 'reader/word', collection: verse.words, locals: {font: font_type} %>
         <% else %>
-          <%= verse.send(@presenter.font_method).to_s.html_safe %>
+          <%= verse.get_text(font_type) %>
         <% end %>
       </div>
     </div>

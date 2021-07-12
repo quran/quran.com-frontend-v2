@@ -9,11 +9,14 @@ pt-BR:
   noble_quran: O Nobre Alcorão
   errors:
     not_found: Desculpe, esta página não existe
-    invalid_verse: O Ayah (verso) está fora dos limites. Por favor, vá para a página
+    invalid_verse:
+      O Ayah (verso) está fora dos limites. Por favor, vá para a página
       inicial.
-    invalid_chapter: O capítulo está fora dos limites. Por favor, vá para a página
+    invalid_chapter:
+      O capítulo está fora dos limites. Por favor, vá para a página
       inicial
-    no_script: Parece que seu navegador não suporta Javascript ou este está desativado.
+    no_script:
+      Parece que seu navegador não suporta Javascript ou este está desativado.
       O Quran.com funciona melhor com o JavaScript ativado. Para obter mais instruções
       sobre como ativar o javascript <a href="http://www.enable-javascript.com/" target="_blank"
       rel="nofollow">clique aqui</a>.
@@ -68,9 +71,10 @@ pt-BR:
       qcf_v2: Alcorão do Complexo do Rei Fahd v2
       indopak: Texto IndoPak
       imlaei: Imlaei/Simples
+      qpc_hafs: Hafs do Complexo do Alcorão do Rei Fahd
     translation_count:
-      one: Mostrando uma tradução
-      other: Mostrando %{count} traduções
+      one: Mostrando<count> 1</count> tradução
+      other: Mostrando <count>%{count}</count> traduções
   verses:
     media: Assistir comentário do vídeo a partir de %{from}
     go: Ir para o verso
@@ -103,12 +107,13 @@ pt-BR:
     tafsir:
       label: Tafsirs
       select: Selecione Tafsir
-      filter_tafsir: 'Filtrar por idioma:'
+      filter_tafsir: "Filtrar por idioma:"
     quran_reflect: Leia as reflexões para este Ayah no QuranReflect
   search:
     label: Pesquisar
     placeholder: Pesquisar "Noé"
-    result: "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa para:
+    result:
+      "%{from}-%{to} de <span> %{total} </span> Resultados da pesquisa para:
       <span>%{query}</span>"
     error: Desculpe, ocorreu um erro com sua busca.
     no_query: Nenhum texto de pesquisa.
@@ -152,7 +157,8 @@ pt-BR:
     other_links: Outros links
     contact_us: Nos contate
     help: Ajuda e feedback
-    about_project: Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
+    about_project:
+      Quran.com é um projeto pro bono para ler e estudar o Alcorão (também
       conhecido como The Noble Quran, Al Quran, Holy Quran, Quran).
     rights: Todos os direitos reservados
     navigate: Navegar

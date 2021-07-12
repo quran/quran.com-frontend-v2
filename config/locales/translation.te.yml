@@ -11,7 +11,8 @@ te:
     not_found:
     invalid_verse:
     invalid_chapter:
-    no_script: మీ బ్రౌజర్ జావాస్క్రిప్ట్‌కు లేదా దాని డిసేబుల్‌కు మద్దతు ఇవ్వనట్లు
+    no_script:
+      మీ బ్రౌజర్ జావాస్క్రిప్ట్‌కు లేదా దాని డిసేబుల్‌కు మద్దతు ఇవ్వనట్లు
       కనిపిస్తోంది. జావాస్క్రిప్ట్ ప్రారంభించబడిన ఖురాన్.కామ్ ఉత్తమంగా పనిచేస్తుంది.
       జావాస్క్రిప్ట్‌ను ఎలా ప్రారంభించాలో మరింత సూచనల కోసం <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">ఇక్కడ క్లిక్ చేయండి</a> .
@@ -54,6 +55,7 @@ te:
       qcf_v2:
       indopak:
       imlaei:
+      qpc_hafs:
     font_size:
       label:
       arabic:
@@ -131,9 +133,9 @@ te:
     pause_bw_ayah:
     pause_seconds:
     pause:
-    play_continuously: 'విరామం లేకుండా వింటూవుండుండి
+    play_continuously: "విరామం లేకుండా వింటూవుండుండి
 
-      '
+      "
     show_word_tooltip:
     scroll:
     repeatCurrent: ప్రస్తుత అయాహ్ వింటూవుండుండి

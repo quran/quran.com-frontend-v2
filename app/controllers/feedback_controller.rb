@@ -1,8 +1,12 @@
 class FeedbackController < ApplicationController
-  def create
-    contact_us = Feedback.new(feedback_params)
+  skip_before_action :verify_authenticity_token
 
-    if contact_us.save
+  def create
+    headers["Access-Control-Allow-Origin"] = 'https://quran.com'
+
+    feedback = Feedback.new(feedback_params)
+
+    if feedback.save
       render json: { message: "Thank you! We'll get back to you soon إن شاء الله" }
     else
       render json: { message: 'Sorry something went wrong.' }

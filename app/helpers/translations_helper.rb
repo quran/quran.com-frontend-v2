@@ -7,7 +7,7 @@ module TranslationsHelper
   end
 
   def available_locales
-    keys = %i[en ur ar bn fa fr id it nl pt sq th tr]
+    keys = %i[en ur ar bn ru fa fr id it nl pt sq th tr]
     locales = I18n.backend.send(:translations)
 
     keys.map do |key|

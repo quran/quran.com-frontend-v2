@@ -3,7 +3,7 @@
 class ChapterPresenter < HomePresenter
   def initialize(context)
     super
-    @finder = VerseFinder.new(params)
+    @finder = VerseFinder.new(params, mushaf: :v1)
   end
 
   def show_header_search?
@@ -99,7 +99,7 @@ class ChapterPresenter < HomePresenter
     ayah_range_from > 1
   end
 
-  def show_bismillah?
+  def show_bismillah?(verse=nil)
     single_ayah? || chapter.bismillah_pre?
   end
 

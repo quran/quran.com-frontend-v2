@@ -4,10 +4,12 @@ class VerseFinder
   attr_reader :params,
               :results,
               :next_page,
-              :total_records
+              :total_records,
+              :mushaf
 
-  def initialize(params)
+  def initialize(params, mushaf: :v1)
     @params = params
+    @mushaf = mushaf
   end
 
   def random_verse(filters, language, words: true, translations: false)
@@ -57,6 +59,9 @@ class VerseFinder
   end
 
   protected
+  def mushaf_page_attribute
+    mushaf == :v1 ? :page_number : :v2_page
+  end
 
   def fetch_by_chapter
     if chapter = Chapter.find_using_slug(params[:id])
@@ -89,7 +94,7 @@ class VerseFinder
   end
 
   def fetch_by_page
-    @results = Verse.where(page_number: params[:page_number].to_i.abs)
+    @results = Verse.where(mushaf_page_attribute => params[:page_number].to_i.abs)
     # No pagination in page mode
     @next_page = nil
     @total_records = @results.size
@@ -148,7 +153,7 @@ class VerseFinder
     last_verse ||= Verse.find(juz.first_verse_id)
 
     @results = rescope_verses('verse_index')
-                 .where(juz_number: juz.juz_number, page_number: last_verse.page_number)
+                 .where(juz_number: juz.juz_number, mushaf_page_attribute => last_verse.send(mushaf_page_attribute))
 
     if @results.last.id < juz.last_verse_id
       @next_page = current_page + 1
@@ -168,7 +173,7 @@ class VerseFinder
     verse_to = (params[:to] || params[:from] || chapter.verses_count).to_i
 
     @results = rescope_verses('verse_index')
-                 .where(chapter_id: chapter.id, page_number: last_verse.page_number)
+                 .where(chapter_id: chapter.id, mushaf_page_attribute => last_verse.send(mushaf_page_attribute))
                  .where('verses.verse_number >= ? AND verses.verse_number <= ?', params[:from].to_i, verse_to)
 
     if @results.last.verse_number < verse_to

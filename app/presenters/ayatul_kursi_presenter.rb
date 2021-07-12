@@ -4,7 +4,7 @@ class AyatulKursiPresenter < ChapterPresenter
   def initialize(context)
     super
 
-    @finder = VerseFinder.new(params)
+    @finder = VerseFinder.new(params, mushaf: font_type)
   end
 
   def verses

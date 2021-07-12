@@ -1,6 +1,6 @@
 // update this version when need to expire the cached settings
-const LOCAL_STORE_CACHE_VERSION = "quran-v1.2";
-const PERSISTED_CACHE_key = "quran-store";
+const LOCAL_STORE_CACHE_VERSION = "quran-v1.4";
+const PERSISTED_CACHE_KEY = "quran-store";
 
 class CookieStore {
   getItem(key) {
@@ -20,7 +20,7 @@ class CookieStore {
 class LocalStore {
   constructor(usePersistedStore) {
     if (usePersistedStore) {
-      this.storeKey = PERSISTED_CACHE_key;
+      this.storeKey = PERSISTED_CACHE_KEY;
     } else {
       this.storeKey = LOCAL_STORE_CACHE_VERSION;
     }

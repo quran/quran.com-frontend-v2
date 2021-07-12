@@ -1,26 +1,26 @@
 class QuranPresenter < BasePresenter
   DEFAULT_FONT_METHOD = 'code_v1'
-  DEFAULT_FONT_TYPE = 'v1'
+  DEFAULT_FONT_TYPE = :v1
 
-  QCF_FONTS = %w[v2 v1].freeze
+  QCF_FONTS = %i[v2 v1].freeze
   PAGES_WITH_CENTER_ALIGN = [1, 2, 42, 601, 602, 603, 604].freeze
 
-  WORD_TEXT_TYPES = %w[
+  WORD_TEXT_TYPES = %i[
     v1
     v2
     indopak
     uthmani
-    imlaei
+    qpc_hafs
   ].freeze
 
-  FONT_METHODS = {
-      'v1' => 'code_v1',
-      'v2' => 'code_v2',
-      'uthmani' => 'text_uthmani',
-      'imlaei' => 'text_imlaei',
-      'indopak' => 'text_indopak',
-      'tajweed' => 'text_uthmani_tajweed'
-  }.freeze
+  AVAILABLE_FONTS = {
+    'v1' => :v1,
+    'v2' => :v2,
+    'uthmani' => :uthmani,
+    'indopak' => :indopak,
+    'qpc_hafs' => :qpc_hafs,
+    'tajweed' => :tajweed
+  }
 
   def initialize(context)
     super
@@ -76,7 +76,7 @@ class QuranPresenter < BasePresenter
   def font_type(store: false)
     strong_memoize "font_type_#{store}" do
       font = params[:font].presence || session[:font]
-      font = FONT_METHODS[font].presence ? font : DEFAULT_FONT_TYPE
+      font = AVAILABLE_FONTS[font] || DEFAULT_FONT_TYPE
 
       if store
         session[:font] = font
@@ -86,22 +86,9 @@ class QuranPresenter < BasePresenter
     end
   end
 
-  def font_method
-    strong_memoize :font_method do
-      font = font_type(store: true)
-
-      if reading_mode? && font == 'tajweed'
-        # we don't have wbw data for tajweed, fallback to uthmani script
-        font = 'uthmani'
-      end
-
-      FONT_METHODS[font] || DEFAULT_FONT_METHOD
-    end
-  end
-
   def params_for_verse_link
     strong_memoize :verse_link_params do
-      query = {font: font_type}
+      query = { font: font_type }
       if (translation = valid_translations).present?
         query[:translations] = translation.join(',')
       end
@@ -127,13 +114,13 @@ class QuranPresenter < BasePresenter
         saved = saved.split(',') if saved.is_a?(String)
 
         approved_translations = ResourceContent
-                                    .approved
-                                    .translations
-                                    .one_verse
+                                  .approved
+                                  .translations
+                                  .one_verse
 
         with_ids = approved_translations.where(id: saved)
         translations = approved_translations
-                           .where(slug: saved).or(with_ids).pluck(:id)
+                         .where(slug: saved).or(with_ids).pluck(:id)
 
         if store_result
           context.session[:translations] = translations
