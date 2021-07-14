@@ -11,8 +11,7 @@ so:
     not_found: Waanu ka xunnahay, beejkan ma jiro
     invalid_verse: Iska fiiri aayadda aad dooratay. Xadka ayey ka baxsantahay
     invalid_chapter: Iska fiiri suuradda aad dooratay. Xadka ayey ka baxsantahay
-    no_script:
-      Waxay u egtahay in barowsarkaagu uusan taageerin Javascript ama laga
+    no_script: Waxay u egtahay in barowsarkaagu uusan taageerin Javascript ama laga
       xayiray. Quran.com wuxuu si fiican ugu shaqeeyaa JavaScript. Halkaan ka fiirso
       sida xayiraada looga qaado javascript  <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">click here</a>
@@ -118,9 +117,9 @@ so:
     no_query: Kan raadin ma leh
     no_result: Wax natiijo ah ma leh.
     popular: Waxa inta bada la raadiyo
-    ayatul_kursi: "Ayatul Kursi
+    ayatul_kursi: 'Ayatul Kursi
 
-      "
+      '
     yaseen: Suuradda Yaseen
     al_mulk: Suuradda Al Mulk
     ar_rahman: Suuradda Ar-Raxmaan
@@ -139,8 +138,7 @@ so:
     repeat_to: Illaa aayadda
     repeat_times: Kusoo celi tirinta
     repeat_loop: Inta jeer ee lagu cel celinayyo
-    pause_bw_ayah:
-      go`aanso inta uu la egyahay joogsiga ka hor inta aan loo gudbin
+    pause_bw_ayah: go`aanso inta uu la egyahay joogsiga ka hor inta aan loo gudbin
       aayadda xigta
     pause_seconds: Ilbiriqsiyo
     pause: U joojiso
@@ -152,20 +150,19 @@ so:
   loading: Waa soo socdaa ...
   nav:
     title: Quraan
-    settings: "Habeyso
+    settings: 'Habeyso
 
-      "
+      '
     contribute: Wax ku darso
     about_us: Nagu saabsan
     developers: Horumariyayaasha
     useful_sites: Beejaj waxtar leh
-    other_links: "Linkiyaal kale
+    other_links: 'Linkiyaal kale
 
-      "
+      '
     contact_us: Nagala soo xiriir
     help: Caawimaad & jawaab celin
-    about_project:
-      Quran.com waa Sadaqo jaariyo ah. Waxaan rabnaa in ann qof kasta
+    about_project: Quran.com waa Sadaqo jaariyo ah. Waxaan rabnaa in ann qof kasta
       u fududeyno aqrinta iyo barasha quraanka kariiimka. Quraanka kariimka wuxuu
       leeyahay magacyo kala duwan sida; Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha,
       Al-Thikr, and Al-Noor.

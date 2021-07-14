@@ -9,11 +9,9 @@ fr:
   errors:
     not_found: Désolé, cette page n'existe pas
     invalid_verse: Verifiez votre choix de verset. Le numéro de verset est hors d'atteinte.
-    invalid_chapter:
-      La sourate est hors de portée. Accédez à la page d'accueil et
+    invalid_chapter: La sourate est hors de portée. Accédez à la page d'accueil et
       sélectionnez une Sourate
-    no_script:
-      On dirait que votre navigateur ne supporte pas Javascript ou qu'il
+    no_script: On dirait que votre navigateur ne supporte pas Javascript ou qu'il
       est désactivé. Coran.com fonctionne mieux avec JavaScript activé. Pour plus
       d'instructions sur l'activation de javascript
     unavailable_session: |
@@ -22,11 +20,10 @@ fr:
       Si vous utilisez un serveur multi-processus (comme Unicorn ou Puma), le processus
       cet appel de requête ne stocke pas %{id} en mémoire. Pensez à tourner le nombre de
       processus / travailleurs à un (1) ou en utilisant un serveur différent en développement.
-    unacceptable_request:
-      "Une version prise en charge est attendue dans l'en-tête
+    unacceptable_request: 'Une version prise en charge est attendue dans l''en-tête
       Accept.
 
-      "
+      '
     connection_refused: |
       Oops! Impossible de se connecter à la console Web middleware.
       faire S'il vous plaît assurer un serveur de développement de rails est en cours d'exécution.
@@ -34,9 +31,9 @@ fr:
     invalid_page:
     invalid_juz:
   local: Anglais
-  site_local: "Langue du Site
+  site_local: 'Langue du Site
 
-    "
+    '
   change_local: Choisir la langue du site
   local_native_name: Français
   language: Langue
@@ -108,21 +105,20 @@ fr:
     tafsir:
       label: Tafsirs
       select: Sélectionnez Tafsir
-      filter_tafsir: "Filtrer par langue:"
+      filter_tafsir: 'Filtrer par langue:'
     quran_reflect: Lire les réflexions pour cette Ayah sur le Coran
   search:
     placeholder: Chercher "Noah"
-    result:
-      "%{from}-%{to} DE <span> %{total} </span> RESULTATS DE LA RECHERCHE POUR:
+    result: "%{from}-%{to} DE <span> %{total} </span> RESULTATS DE LA RECHERCHE POUR:
       <span>%{query}</span>"
     error: Désolé, une erreur s’est produite lors de votre recherche.
     no_query: Aucune requête de recherche.
     no_result: Aucun résultat trouvé.
     popular: Recherches populaires
     ayatul_kursi: Ayatul Kursi
-    yaseen: "Sourate Yaseen
+    yaseen: 'Sourate Yaseen
 
-      "
+      '
     al_mulk: Sourate Al Mulk
     ar_rahman: Sourate Ar-Rahman
     al_waqiah: Sourate Al Waqiah
@@ -146,8 +142,7 @@ fr:
     pause_seconds: Secondes
     pause: Pause pour
     play_continuously: Continuez à jouer sans pause
-    show_word_tooltip:
-      Afficher la traduction des mots dans l'info-bulle tout en jouant
+    show_word_tooltip: Afficher la traduction des mots dans l'info-bulle tout en jouant
       à ayah
     repeatCurrent:
     loading:
@@ -162,8 +157,7 @@ fr:
     other_links: Autre liens
     contact_us: Contacter nous
     help: Aide et feedback
-    about_project:
-      Quran.com est une Sadaqah Jariyah. Nous espérons que tout le monde
+    about_project: Quran.com est une Sadaqah Jariyah. Nous espérons que tout le monde
       puisse lire, étudier et apprendre le Noble Coran. Le Noble Coran a de nombreux
       noms dont Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr et
       Al-Noor.

@@ -3,8 +3,9 @@
 TranslationIO.configure do |config|
   config.api_key        = Rails.application.credentials[:translation_key]
   config.source_locale  = 'en'
-  config.target_locales = %w[sq am-ET ar az bn bn-BD zh-CN dv nl fr de ha-Latn-NG he
-                             hi id it ja ks ko ms ne-NP ps-AF fa pl pt-BR ru sd si-LK so es ta te te-IN th tr ug-CN ur vi yo-NG]
+  #config.target_locales = %w[sq am-ET ar az bn bn-BD zh-CN dv nl fr de ha-Latn-NG he
+  #                           hi id it ja ks ko ms ne-NP ps-AF fa pl pt-BR ru sd si-LK so es ta te te-IN th tr ug-CN ur vi yo-NG]
+  config.target_locales = ['sq', 'am-ET', 'ar', 'az', 'bn', 'bn-BD', 'zh-CN', 'dv', 'nl', 'fr', 'de', 'ha-Latn-NG', 'he', 'hi', 'id', 'it', 'ja', 'ks', 'ko', 'ms', 'ne-NP', 'ps-AF', 'fa', 'pl', 'pt-BR', 'ru', 'sd', 'si-LK', 'so', 'es', 'ta', 'te', 'te-IN', 'th', 'tr', 'ug-CN', 'ur', 'vi', 'yo-NG', 'zh-TW']
 
   # Uncomment this if you don't want to use gettext
   config.disable_gettext = true

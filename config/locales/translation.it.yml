@@ -10,8 +10,7 @@ it:
     not_found: Siamo spiacenti, ma questa pagina non esiste
     invalid_verse: Controlla il versetto selezionato. È fuori dal limite..
     invalid_chapter: Controlla la Surah selezionata. È fuori dal limite..
-    no_script:
-      Sembra che il tuo browser non supporta Javascript o il Javascript sia
+    no_script: Sembra che il tuo browser non supporta Javascript o il Javascript sia
       disabilitato. Quran.com funziona meglio con JavaScript abilitato. Per ulteriori
       istruzioni su come abilitare javascript, <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">clicca qui</a> .
@@ -19,10 +18,10 @@ it:
       Session %{id} non è più disponibile in memoria.
 
       Se si esegue su un server multiprocesso (come Unicorn o Puma) che esegue questa richiesta non memorizza %{id} in memoria. Considera di trasformare il numero di processi / operatori a uno (1) o utilizzare un server diverso in fase di sviluppo.
-    unacceptable_request: "Una versione supportata è prevista per l'intestazione
+    unacceptable_request: 'Una versione supportata è prevista per l''intestazione
       Accept.
 
-      "
+      '
     connection_refused: |-
       Oops! Impossibile connettersi al middleware del Web Console.
       Si prega di assicurarsi che un server di sviluppo basato su Rails sia attivo.
@@ -102,12 +101,11 @@ it:
     tafsir:
       label: I Tafsir
       select: Seleziona un tafsir
-      filter_tafsir: "Filtra per lingua:"
+      filter_tafsir: 'Filtra per lingua:'
     quran_reflect: Leggi le Riflessioni riguardo questa Ayah su QuranReflect
   search:
     placeholder: Cerca "Noah"
-    result:
-      "%{from} - %{to} DI <span>%{total}</span> RISULTATI DELLA RICERCA PER:
+    result: "%{from} - %{to} DI <span>%{total}</span> RISULTATI DELLA RICERCA PER:
       <span>%{query}</span>"
     error: Siamo spiacenti, si è verificato un errore durante la ricerca.
     no_query: Nessuna query di ricerca.
@@ -138,8 +136,7 @@ it:
     pause_seconds: secondi
     pause: Pausa per
     play_continuously: Continua ad ascoltare senza pause
-    show_word_tooltip:
-      Mostra la traduzione delle parole nella descrizione comando
+    show_word_tooltip: Mostra la traduzione delle parole nella descrizione comando
       durante la riproduzione dell'ayah
     repeatCurrent: Continua ad ascoltare l'ayah attuale
     loading: Caricamento dell'audio
@@ -154,8 +151,7 @@ it:
     other_links: Altri link
     contact_us: Contattaci
     help: Aiuto e feedback
-    about_project:
-      Quran.com è una Sadaqah Jariyah. Speriamo di rendere facile per
+    about_project: Quran.com è una Sadaqah Jariyah. Speriamo di rendere facile per
       tutti leggere, studiare e imparare Il Nobile Corano. Il Nobile Corano ha molti
       nomi tra cui Al-Quran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr
       e Al-Noor.

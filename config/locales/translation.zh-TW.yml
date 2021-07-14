@@ -2,35 +2,40 @@
 # IF YOU UPDATE IT, YOUR CHANGES WILL BE LOST AT THE NEXT SYNC.
 #
 # To update this file, use this translation interface:
-# https://translation.io/quran/quran/te
+# https://translation.io/quran/quran/zh-TW
 #
 ---
-te:
+zh-TW:
   noble_quran:
   errors:
     not_found:
     invalid_verse:
     invalid_chapter:
-    no_script: మీ బ్రౌజర్ జావాస్క్రిప్ట్‌కు లేదా దాని డిసేబుల్‌కు మద్దతు ఇవ్వనట్లు
-      కనిపిస్తోంది. జావాస్క్రిప్ట్ ప్రారంభించబడిన ఖురాన్.కామ్ ఉత్తమంగా పనిచేస్తుంది.
-      జావాస్క్రిప్ట్‌ను ఎలా ప్రారంభించాలో మరింత సూచనల కోసం <a href="http://www.enable-javascript.com/"
-      target="_blank" rel="nofollow">ఇక్కడ క్లిక్ చేయండి</a> .
+    invalid_page:
+    invalid_juz:
+    no_script:
     unavailable_session:
     unacceptable_request:
     connection_refused:
     format: "%{attribute} %{message}"
-    invalid_page:
-    invalid_juz:
   local:
   site_local:
   change_local:
   local_native_name:
   language:
   page:
+  tabs:
+    chapter:
+    juz:
   reader_mode:
     reading:
     translation:
     info:
+  filter:
+    translations:
+    reciters:
+    surah:
+    ayah:
   settings:
     label:
     display:
@@ -50,10 +55,10 @@ te:
     fonts:
       tajweed:
       uthmani:
+      imlaei:
       qcf_v1:
       qcf_v2:
       indopak:
-      imlaei:
       qpc_hafs:
     font_size:
       label:
@@ -132,12 +137,10 @@ te:
     pause_bw_ayah:
     pause_seconds:
     pause:
-    play_continuously: 'విరామం లేకుండా వింటూవుండుండి
-
-      '
+    play_continuously:
     show_word_tooltip:
     scroll:
-    repeatCurrent: ప్రస్తుత అయాహ్ వింటూవుండుండి
+    repeatCurrent:
     loading:
   loading:
   nav:
@@ -170,17 +173,4 @@ te:
     salah_description:
     audio:
     audio_description:
-  close: |-
-    Close: మూసివేయు
-
-    closing: మూసివేయుట
-
-    closed: మూసివేయబడింది
-  tabs:
-    chapter:
-    juz:
-  filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+  close:
