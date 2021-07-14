@@ -325,7 +325,7 @@ DEPENDENCIES
   actionpack-page_caching!
   annotate (>= 3.1.1)
   binding_of_caller
-  capybara (>= 3.33.0)
+  capybara (>= 3.35.3)
   chromedriver-helper (>= 2.1.1)
   cld3 (>= 3.4.1)
   connection_pool

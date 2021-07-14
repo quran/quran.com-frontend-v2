@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         extract_browser_locale(request.env['HTTP_ACCEPT_LANGUAGE']) ||
         I18n.default_locale
 
-    @locale = requested_locale.to_s.split('-').first
+    @locale = requested_locale.to_s.strip#.split('-').first
   end
 
   protected
