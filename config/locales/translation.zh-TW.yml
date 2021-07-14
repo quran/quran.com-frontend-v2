@@ -28,7 +28,7 @@ zh-TW:
   local: 英文
   site_local: 網站語言
   change_local: 選擇網站所顯示的語言
-  local_native_name: 英文
+  local_native_name: 繁體中文
   language: 語言
   page: 頁
   tabs:
@@ -60,8 +60,8 @@ zh-TW:
     reset: 重置回原本
     font_type: 選擇字體
     fonts:
-      tajweed: Tajweed 文字
-      uthmani: 奧斯曼文字
+      tajweed: Tajweed 標記
+      uthmani: 奧斯曼字體
       imlaei: Imlaei/Simple
       qcf_v1: 法赫德國王古蘭經彙集 v1
       qcf_v2: 法赫德國王古蘭經彙集 v2
