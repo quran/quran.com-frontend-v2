@@ -11,6 +11,11 @@
 #
 ---
 zh-TW:
+  support:
+    array:
+      last_word_connector: ", 和 "
+      two_words_connector: " 和 "
+      words_connector: ", "
   date:
     formats:
       default: "%Y-%m-%d"
@@ -56,11 +61,6 @@ zh-TW:
     precision:
       format:
         delimiter: ''
-  support:
-    array:
-      last_word_connector: ", 和 "
-      two_words_connector: " 和 "
-      words_connector: ", "
   time:
     formats:
       default: "%Y年%m月%d日 %A %H:%M:%S %Z"

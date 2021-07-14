@@ -6,171 +6,180 @@
 #
 ---
 zh-TW:
-  noble_quran:
+  noble_quran: 尊貴的古蘭經
   errors:
-    not_found:
-    invalid_verse:
-    invalid_chapter:
-    invalid_page:
-    invalid_juz:
-    no_script:
-    unavailable_session:
-    unacceptable_request:
-    connection_refused:
+    not_found: 抱歉，該頁面不存在
+    invalid_verse: 您選擇的節文已超出範圍，請再檢查一次。
+    invalid_chapter: 您選擇的章節已超出範圍，請再檢查一次。
+    invalid_page: 頁數已超出範圍。
+    invalid_juz: 卷數已超出範圍。
+    no_script: 您的瀏覽器似乎不支援 Javascript 或已禁用。Quran.com 在啟用 Javascript 的情況下效果最佳。有關如何啟用
+      Javascript 的更多說明，<a href="http://www.enable-javascript.com/" target="_blank"
+      rel="nofollow">請點擊這裡</a>。
+    unavailable_session: |-
+      Session %{id} is no longer available in memory.
+
+      If you happen to run on a multi-process server (like Unicorn or Puma) the process
+      this request hit doesn't store %{id} in memory. Consider turning the number of
+      processes/workers to one (1) or using a different server in development.
+    unacceptable_request: A supported version is expected in the Accept header.
+    connection_refused: 糟糕！無法連接到 Web Console middleware。請確認 Rails 開發服務器正在運行。
     format: "%{attribute} %{message}"
-  local:
-  site_local:
-  change_local:
-  local_native_name:
-  language:
-  page:
+  local: 英文
+  site_local: 網站語言
+  change_local: 選擇網站所顯示的語言
+  local_native_name: 英文
+  language: 語言
+  page: 頁
   tabs:
-    chapter:
-    juz:
+    chapter: 顯示章節
+    juz: 顯示卷
   reader_mode:
-    reading:
-    translation:
-    info:
+    reading: 閱讀
+    translation: 翻譯
+    info: 章節信息
   filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    translations: 搜尋翻譯
+    reciters: 搜尋朗誦者
+    surah: 搜尋章節
+    ayah: 搜尋節文
   settings:
-    label:
-    display:
-    audio:
-    chapters:
-    reciters:
-    sample_audio:
-    translations:
+    label: 設定
+    display: 顯示設定
+    audio: 音頻設定
+    chapters: 選擇章節
+    reciters: 選擇朗誦者
+    sample_audio: 播放樣本
+    translations: 選擇翻譯
     translation_count:
-      one:
-      other:
-    remove_all:
-    translation_english:
-    translation_other:
-    reset:
-    font_type:
+      one: 顯示<count>一</count>個翻譯
+      other: 顯示<count>%{count}</count>個翻譯
+    remove_all: 移除所有
+    translation_english: 英文
+    translation_other: 其他語言
+    reset: 重置回原本
+    font_type: 選擇字體
     fonts:
-      tajweed:
-      uthmani:
-      imlaei:
-      qcf_v1:
-      qcf_v2:
-      indopak:
-      qpc_hafs:
+      tajweed: Tajweed 文字
+      uthmani: 奧斯曼文字
+      imlaei: Imlaei/Simple
+      qcf_v1: 法赫德國王古蘭經彙集 v1
+      qcf_v2: 法赫德國王古蘭經彙集 v2
+      indopak: 印巴文字
+      qpc_hafs: 法赫德國王古蘭經彙集 Hafs
     font_size:
-      label:
-      arabic:
-      translation:
+      label: 字體大小
+      arabic: 阿拉伯文
+      translation: 翻譯
     tooltip:
-      label:
-      translation:
-      transliteration:
+      label: 提示顯示
+      translation: 翻譯
+      transliteration: 音譯
     night_mode:
-      label:
-      day_tip:
-      night_tip:
+      label: 夜間模式
+      day_tip: 切換到白天模式
+      night_tip: 切換到夜間模式
   verses:
-    media:
-    go:
-    not_found:
+    media: 在 %{from} 觀看影片評論
+    go: 到節文
+    not_found: 找不到節文
   chapters:
-    label:
-    next:
-    previous:
-    verses:
-    pages:
-    revelation_place:
-    continue:
-    quick_links:
-    go_to_beginning:
-    read_full:
-    invalid:
-  footnote:
-  share_ayah:
+    label: 章節
+    next: 下一章
+    previous: 前一章節
+    verses: 節文
+    pages: 頁數
+    revelation_place: 啟示地點
+    continue: 繼續
+    quick_links: 捷徑
+    go_to_beginning: 章節開頭
+    read_full: 閱讀完整的章節
+    invalid: 搜尋結果無法找到此章節
+  footnote: 備註
+  share_ayah: 分享節文
   action:
-    play:
-    pause:
-    share:
-    quran_reflect:
-    addNote:
+    play: 播放
+    pause: 暫停
+    share: 分享
+    quran_reflect: 在 QuranReflect 上了解關於這一節文
+    addNote: 添加註釋
     tafsir:
-      label:
-      select:
-      filter_tafsir:
+      label: 古蘭經註解
+      select: 選擇註解
+      filter_tafsir: 按語言篩選：
     bookmark:
-      label:
-      done:
+      label: 書籤
+      done: 已加入書籤！
     copy:
-      label:
-      done:
-      advance:
+      label: 複製
+      done: 已複製！
+      advance: 進階複製
   search:
-    label:
-    placeholder:
-    result:
-    error:
-    no_query:
-    no_result:
-    popular:
-    ayatul_kursi:
-    yaseen:
-    al_mulk:
-    ar_rahman:
-    al_waqiah:
-    al_kahf:
-    al_muzammil:
+    label: 搜尋
+    placeholder: 搜尋 “努哈”
+    result: 有關<span class=text-primary>%{query}</span>的搜索結果：<span> %{total} </span>中的
+      %{from}-%{to}
+    error: 抱歉，在搜尋時發生問題。
+    no_query: 無搜尋關鍵字。
+    no_result: 無搜尋結果。
+    popular: 熱門搜索
+    ayatul_kursi: 寶座之節
+    yaseen: 雅辛章
+    al_mulk: 權柄章
+    ar_rahman: 至仁主章
+    al_waqiah: 大事章
+    al_kahf: 山洞章
+    al_muzammil: 披大衣的人章
   player:
-    current_verse:
-    select_verse:
-    next_verse:
-    previous_verse:
-    repeat_title:
-    repeat_single:
-    repeat_range:
-    repeat_from:
-    repeat_to:
-    repeat_times:
-    repeat_loop:
-    pause_bw_ayah:
-    pause_seconds:
-    pause:
-    play_continuously:
-    show_word_tooltip:
-    scroll:
-    repeatCurrent:
-    loading:
-  loading:
+    current_verse: 節文
+    select_verse: 選擇節文
+    next_verse: 下一節
+    previous_verse: 前一節
+    repeat_title: 重複節文
+    repeat_single: 單一
+    repeat_range: 範圍
+    repeat_from: 從節文
+    repeat_to: 到節文
+    repeat_times: 重複計數
+    repeat_loop: 循環
+    pause_bw_ayah: 設定在播放下一節之前暫停多久
+    pause_seconds: 秒
+    pause: 暫停
+    play_continuously: 不停地播放
+    show_word_tooltip: 在播放節文時顯示單詞的翻譯
+    scroll: 自動滾動到當前播放的節文
+    repeatCurrent: 繼續播放當前的節文
+    loading: 載入音源中
+  loading: 載入中...
   nav:
-    title:
-    settings:
-    contribute:
-    about_us:
-    developers:
-    useful_sites:
-    other_links:
-    contact_us:
-    help:
-    about_project:
-    rights:
-    mobile_apps:
-    navigate:
-    legacy_site:
-    blog:
-    forum:
-    privacy:
-  juz:
-  click_here:
-  download:
-  home:
+    title: 古蘭經
+    settings: 設定
+    contribute: 捐款
+    about_us: 關於我們
+    developers: 開發者
+    useful_sites: 相關連結
+    other_links: 其它連結
+    contact_us: 聯絡我們
+    help: 幫助
+    about_project: Quran.com 是一個慈善專案。我們希望讓每個人都能輕鬆閱讀、學習和研究《古蘭經》。古蘭經有許多名字，包括 Al-Quran
+      Al-Kareem、Al-Ketab、Al-Furqan、Al-Maw'itha、Al-Thikr 和 Al-Noor。
+    rights: 版權所有
+    mobile_apps: 手機 App
+    navigate: 瀏覽
+    legacy_site: 舊版 Quran.com
+    blog: 部落格
+    forum: 論壇
+    privacy: 隱私
+  juz: 卷
+  click_here: 點擊這裡
+  download: 下載
+  home: 首頁
   related_sites:
-    label:
-    sunnah:
-    sunnah_description:
-    salah:
-    salah_description:
-    audio:
-    audio_description:
-  close:
+    label: 相關網站
+    sunnah: 聖行
+    sunnah_description: 先知穆罕默德的聖訓 (ﷺ)
+    salah: 禮拜
+    salah_description: 搜索任何地點的禮拜時間
+    audio: 古蘭經音頻
+    audio_description: 邊聽邊學
+  close: 關閉
