@@ -28,7 +28,7 @@ zh-CN:
   local: 英语
   site_local: 网站语言
   change_local: 选择网站所显示的语言
-  local_native_name: 英语
+  local_native_name: 简体中文
   language: 语言
   page: 頁
   reader_mode:
@@ -52,8 +52,8 @@ zh-CN:
     reset: 重置回原本
     font_type: 选择字体
     fonts:
-      tajweed: Tajweed 文字
-      uthmani: 奥斯曼文字
+      tajweed: Tajweed 标记
+      uthmani: 奥斯曼字体
       qcf_v1: 法赫德国王古兰经彙集 v1
       qcf_v2: 法赫德国王古兰经彙集 v2
       indopak: 印巴文字
