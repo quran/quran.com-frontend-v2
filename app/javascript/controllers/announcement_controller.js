@@ -16,12 +16,6 @@ export default class extends Controller {
     this.el = $(this.element);
     this.store = new LocalStore();
 
-    /*if (this.shouldShowPopup())
-      setTimeout(() => this.showPopup(), 1500)
-    else if (this.shouldShowNotification()) {
-      this.show()
-    }*/
-
     if (this.canShowJobsBanner()) {
       this.show();
     }
