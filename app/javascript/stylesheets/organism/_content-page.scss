@@ -163,22 +163,26 @@
   width: 100%;
 }
 .popular-searches {
-  // width: 100%;
   overflow: hidden;
-  // // max-width: 100%;
-  // background-color: red;
-  // max-width: 100vw;
   display: flex;
   position: relative;
   overflow-x: scroll;
-  // width: auto;
   flex: 1;
-  height: 60px;
-  margin-top: 4px;
+  height: 40px;
+  margin: 0 4px;
+
   &::-webkit-scrollbar {
     display: none;
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
+
+  /* Optional: show position indicator in red */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
   }
 }
+
 .popular-searches > div {
   position: absolute;
   top: 0;
