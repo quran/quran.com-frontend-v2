@@ -9,7 +9,7 @@ ruby '3.0.0'
 gem 'rails', '~> 6.1.3.2'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.12.6'
+gem 'puma', '~> 4.3.8'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'sass-rails', '~> 6.0.0'
@@ -74,7 +74,7 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 
   gem 'annotate', '>= 3.1.1'
-  gem 'puma-ngrok-tunnel', '>= 1.0.0'
+  gem 'puma-ngrok-tunnel', '>= 1.2.0'
   # gem 'rails_real_favicon', '>= 0.1.0'
   gem 'listen'
   gem 'rubocop', '>= 1.8.1', require: false
