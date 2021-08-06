@@ -171,6 +171,9 @@
   height: 40px;
   margin: 0 4px;
 
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
   &::-webkit-scrollbar {
     display: none;
     width: 0;  /* Remove scrollbar space */
