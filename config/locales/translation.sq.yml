@@ -7,11 +7,11 @@
 ---
 sq:
   errors:
-    not_found: Na vjen keq, kjo faqe nuk ekziston
+    not_found: Na vjen keq, kjo faqe nuk ekziston.
     invalid_verse: Kontrolloni zgjedhjen tuaj të ajetit.  Është jashtë kapacitetit.
     invalid_chapter: Kontrolloni zgjedhjen tuaj të sures. Është jashtë kapacitetit.
     no_script: Mesa duket sikur shfletuesi juaj nuk e suporton Javascript ose është
-      i çaktivizuar. Quran.com punon më  mirë me JavaScript të aktivizuar. Për më
+      i çaktivizuar. Quran.com punon më mirë me JavaScript të aktivizuar. Për më
       shumë udhëzime se si të aktivizoni Javascript <a href="http://www.enable-javascript.com/"
       target="_blank" rel="nofollow">klikoni këtu</a> .
     unavailable_session: |
@@ -27,7 +27,7 @@ sq:
     invalid_page:
     invalid_juz:
   local: Anglisht
-  site_local: Gjuha e sitit
+  site_local: Gjuha e uebfaqes
   change_local: Zgjidhni gjuhën që dëshironi të shfaqet në faqe
   local_native_name: Shqip
   language: Gjuhë
@@ -35,24 +35,24 @@ sq:
     label: Cilësimet
     chapters: kapitujt
     reciters: recitues
-    translations: përkthime
-    remove_all: Hiq të gjitha
+    translations: përkthimet
+    remove_all: Hiqi të gjitha
     translation_english: Shqip
-    translation_other: Gjuhe te tjera
+    translation_other: Gjuhë te tjera
     font_size:
-      label: Përmasa e germave
+      label: Përmasa e shkronjave
       arabic: Arabic
-      translation: përkthime
+      translation: përkthimi
     tooltip:
       label: Ekrani i udhëzuesve
-      translation: përkthim
-      transliteration: transliterim
+      translation: përkthimi
+      transliteration: transliterimi
     night_mode:
       label: Mënyra e natës
       day_tip: Kaloni në modalitetin e ditës
       night_tip: Kaloni në modalitetin e natës
     reset: Rivendosja e Vendosjes
-    font_type: Zgjidhni shkronjën
+    font_type: Zgjidhni shkronjat
     sample_audio: Luaj Modelin
     display: Parametrat e ekranit
     audio: Cilësimet e audios
@@ -69,8 +69,8 @@ sq:
       other: Po tregon<count> %{count}</count> përkthime
   verses:
     media: Shikoni komentin e videos nga %{from}
-    go: Shkoni në vargje
-    not_found: Vargu nuk u gjet
+    go: Shkoni te Ajeti
+    not_found: Ajeti nuk u gjet
   chapters:
     label: Sure
     next: Sureja tjetër
@@ -82,11 +82,11 @@ sq:
     go_to_beginning: Fillimi i Sures
     read_full: Lexoni suren e plotë
     invalid: Sureja nuk u gjet gjatë kontrollit
-    revelation_place: Vendi i Zbulesës
+    revelation_place: Vendi i Zbritjes
   footnote: fusnota
   action:
     play: Luaj
-    pause: Pushim
+    pause: Ndalo
     bookmark:
       label: Ruaje
       done: 'U ruajt për aksesim të shpejtë!
@@ -106,24 +106,24 @@ sq:
       filter_tafsir: 'Filtro sipas gjuhës:'
     quran_reflect: Lexoni Reflektimet për këtë Ajet në QuranReflect
   search:
-    placeholder: Kërko "Noah"
+    placeholder: Kërko "Surja Nuh"
     result: "%{from}-%{to} OF <span> %{total} </span> SEARCH RESULTS FOR: <span class=text-success>%{query}</span>"
     error: Na vjen keq, pati një gabim në kërkimin tuaj.
     no_query: Asnjë pyetje kërkimi.
     no_result: Nuk u gjet asnjë rezultat
     popular: Kërkime popullore
-    ayatul_kursi: Ayatul Kursi
-    yaseen: Surah Yaseen
-    al_mulk: Sure Al Mulk
-    ar_rahman: Sure Ar-Rahman
-    al_waqiah: Sure El Waqi'ah
-    al_kahf: Sure Al Kahf
+    ayatul_kursi: Ajeti Kursi
+    yaseen: Surja Jasin
+    al_mulk: Surja Mulk
+    ar_rahman: Surja Rahman
+    al_waqiah: Surja Vaqi'ah
+    al_kahf: Surja e Shpellës
     al_muzammil: Sure Al Muzzammil
     label: kërkim
   player:
-    current_verse: Varg
-    next_verse: Vargu tjetër
-    previous_verse: Vargu i mëparshëm
+    current_verse: Ajeti
+    next_verse: Ajeti tjetër
+    previous_verse: Ajeti i mëparshëm
     repeat_title: Përsëriteni Ajetin
     repeat_single: I Vetëm
     repeat_range: Shtrirje
@@ -132,7 +132,7 @@ sq:
     repeat_times: Përsërit numërimin
     repeat_loop: Cikël
     scroll: Automatikisht lëviz pgamër tek ajeti që po luhet aktualisht
-    select_verse: Zgjidh vargun
+    select_verse: Zgjidh Ajetin
     pause_bw_ayah: Vendosni sa kohë të ndalet para se të luani vargun tjetër
     pause_seconds: sekonda
     pause: Bëni pauzë për
@@ -145,14 +145,14 @@ sq:
   nav:
     title: Kuran
     settings: Cilësimet
-    contribute: Kontribo
+    contribute: Kontribuo
     about_us: Rreth nesh
     developers: Zhvilluesit
     useful_sites: Faqet e dobishme
     other_links: Lidhje të tjera
     contact_us: Na kontaktoni
-    help: Ndihmë & reagime
-    about_project: Quran.com është një sadaka e rrjedhshme. Ne shpresojmë që ta lehtësojmë  për
+    help: Ndihmë & Reagime
+    about_project: Quran.com është një projekt si sadaka. Ne shpresojmë që ta lehtësojmë për
       të leximin, studimin dhe mësimin e Kuranit Fisnik. Kurani Fisnik ka shumë emra
       përfshirë Al-Kuran Al-Kareem, Al-Ketab, Al-Furqan, Al-Maw'itha, Al-Thikr dhe
       Al-Noor.
@@ -166,28 +166,28 @@ sq:
   juz: Xhuzi
   click_here: Kliko këtu
   download: Shkarko
-  home: Shtëpi
+  home: Ballina
   noble_quran: Kurani Fisnik
   related_sites:
-    label: Sitet e ngjashme
+    label: Uebfaqet e ngjashme
     sunnah: Suneti
     sunnah_description: Hadithi i Profetit Muhamed (as)
-    salah: Salah
+    salah: Namazi
     salah_description: Kërkoni kohën e lutjes për çdo vend
-    audio: Noble Quran in audio
+    audio: Kurani Fisnik në Audio
     audio_description: Mësoni dhe dëgjoni në të njëjtën kohë
-  close: Afër
+  close: Mbyllë
   page: Faqe
   reader_mode:
     reading: lexim
     translation: përkthime
     info: Informacioni i Kapitullit
-  share_ayah: Ndani ajetin
+  share_ayah: Shpërndani Ajetin
   tabs:
-    chapter:
-    juz:
-  filter:
-    translations:
-    reciters:
-    surah:
-    ayah:
+    chapter: Kapitulli
+    juz: Xhuzi
+  filter: Filtroni
+    translations: Përkthimet
+    reciters: Recituesit
+    surah: Kapitulli
+    ayah: Ajeti
