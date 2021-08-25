@@ -31,11 +31,11 @@ namespace :elasticsearch do
     Rails.logger.level = :warn
 
     Verse.__elasticsearch__.create_index!
-    [Chapter, Juz, MuhsafPage].each do |model|
+    [Chapter, Juz, MushafPage].each do |model|
       model.__elasticsearch__.create_index!
     end
 
-    Parallel.each([MuhsafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
+    Parallel.each([MushafPage, Chapter, Juz], in_processes: 3, progress: "Indexing chapters and juz data") do |model|
       model.import
     end
 

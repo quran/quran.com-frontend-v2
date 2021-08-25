@@ -1,3 +1,3 @@
-class MuhsafPage < QuranCoreRecord
+class MushafPage < QuranCoreRecord
   include QuranNavigationSearchable
 end
