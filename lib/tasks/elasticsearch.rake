@@ -12,7 +12,7 @@ namespace :elasticsearch do
     end
 
     begin
-      [Chapter, Juz, MuhsafPage].each do |model|
+      [Chapter, Juz, MushafPage].each do |model|
         model.__elasticsearch__.delete_index!
       end
     rescue Elasticsearch::Transport::Transport::Errors::NotFound => e

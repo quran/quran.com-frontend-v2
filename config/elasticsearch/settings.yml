@@ -1,12 +1,5 @@
 index:
-  refresh_interval: 30s
   number_of_shards: 5
-  # translations now has separate index, no need to configure nested fields limit
-  #mapping:
-  #  nested_fields:
-  #    limit: 200
-  #    query:
-  #        default_field: text
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/similarity.html
   similarity:
     my_bm25:

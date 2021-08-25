@@ -28,20 +28,20 @@ module QuranUtils
       end
     end
 
-    def self.import_translation_for_language(lang)
-      puts "importing #{lang.name} translations"
+    def self.import_translation_for_language(language)
+      puts "importing #{language.name} translations"
 
-      LANG_INDEX_CLASSES[lang.id].import(
+      LANG_INDEX_CLASSES[language.id].import(
         batch_size: 500,
         refresh: false,
         scope: 'translations',
-        index: "quran_content_#{lang.iso_code}"
+        index: get_index_name(language)
       )
     end
 
     def self.setup_indexes
       TRANSLATION_LANGUAGES.each do |language|
-        LANG_INDEX_CLASSES[language.id].__elasticsearch__.create_index!(index: "quran_content_#{language.iso_code}")
+        LANG_INDEX_CLASSES[language.id].__elasticsearch__.create_index!(index: get_index_name(language))
       end
     end
 
@@ -57,7 +57,6 @@ module QuranUtils
           include Elasticsearch::Model
 
           scope :translations, -> {
-            puts "#{language.name} translation record count #{joins(:resource_content).where(language_id: language.id, resource_contents: { approved: true }).size}"
             joins(:resource_content).where(language_id: language.id, resource_contents: { approved: true })
           }
 

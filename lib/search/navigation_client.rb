@@ -10,7 +10,7 @@ module Search
     end
 
     def search
-      search = Elasticsearch::Model.search(search_definition, [Chapter, Juz, MuhsafPage])
+      search = Elasticsearch::Model.search(search_definition, [Chapter, Juz, MushafPage])
 
       # For debugging, copy the query and paste in kibana for debugging
       #File.open("last_navigational_query.json", "wb") do |f|
