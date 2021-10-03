@@ -16,6 +16,17 @@
       </div>
 
       <div class="site-menu__items">
+        <div class="menu-item d-none" data-controller="percentage-show" data-percentage="90">
+          <%= link_to "https://next.quran.com", class: 'menu-item__link', data: {controller:  'track', name: 'Clicked', action: 'Clicked', category: 'next.quran.com'} do %>
+            <span class="">
+              <%= image_tag "sparkle.svg", width: 22 %>
+            </span>
+            <p class="text text--grey text--large text--semibold">
+              Try The New Website!
+            </p>
+          <% end %>
+        </div>
+
         <div class="menu-item">
           <%= link_to root_path, class: 'menu-item__link' do %>
             <span class="quran-icon icon-home"></span>
@@ -48,15 +59,6 @@
             <span class="quran-icon icon-about"></span>
             <p class="text text--grey text--large text--semibold">
               <%= _t('nav.about_us') %>
-            </p>
-          <% end %>
-        </div>
-
-        <div class="menu-item">
-          <%= link_to '#_', class: 'menu-item__link', data: { controller: 'ajax-modal', url: '/popups/feedback' } do %>
-            <span class="quran-icon icon-help"></span>
-            <p class="text text--grey text--large text--semibold">
-              Feedback
             </p>
           <% end %>
         </div>
