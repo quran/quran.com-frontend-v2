@@ -10,7 +10,7 @@ import {Controller} from "stimulus";
 
 export default class extends Controller {
   connect() {
-    if (this.shuffle()) {
+    if (this.shouldShow()) {
      this.show()
     } else{
       this.hide()
@@ -30,7 +30,11 @@ export default class extends Controller {
     let percentage = Number(this.element.dataset.percentage)
     let draw = Math.round(Math.random(100) * 100);
 
-    console.log("draw", draw, "percentage", percentage)
+    console.log("draw ", draw, draw <= percentage);
     return draw <= percentage;
+  }
+
+  shouldShow(){
+    return window.locale == 'en' && this.shuffle()
   }
 }
