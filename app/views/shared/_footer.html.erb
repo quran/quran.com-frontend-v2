@@ -4,6 +4,9 @@
       <div class="footer-links">
         <div>
           <h5><%= _t('nav.navigate') %></h5>
+          <%= link_to "https://beta.quran.com",  data: {controller:  'track', name: 'Clicked', action: 'Clicked', category: 'next.quran.com'} do %>
+            Try the New Website!
+          <% end %>
           <%= link_to _t('nav.about_us'), about_us_path %>
           <%#= link_to _t('nav.contribute'), "https://quranfund.com/" %>
           <%= link_to _t('nav.help'), support_path %>
@@ -24,6 +27,7 @@
         </div>
         <div>
           <h5><%= _t('nav.other_links') %></h5>
+          <a href="https://road-persimmon-adc.notion.site/QDC-Job-Board-a4478217b79c465ea1d6670ae4e0d645" target="_blank">We're Hiring</a>
           <a href="https://quran.com/sitemap.xml.gz" target="_blank">Sitemap</a>
           <a href="/surah-ya-sin">Surah Yaseen (يس)</a>
           <a href="/ayatul-kursi">Ayat Al-Kursi (آية الكرسي)</a>
