@@ -104,7 +104,7 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 
 2. Clone the repository of your fork. Launch your terminal, and enter the following command:
 
-  ```sh
+  ```
   git clone https://github.com/<your-username>/quran.com-frontend-v2.git
   ```
 
@@ -112,34 +112,40 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 
 3. Move into the `quran.com-frontend-v2` directory with the following command:
 
-  ```sh
+  ```
   cd quran.com-frontend-v2
   ```
 
 4. Assign the forked repository to a remote called "origin".
 
-  ```sh
+  ```
   git remote add origin git://github.com:<your-username>/quran.com-frontend-v2.git
   ```
 
 5. Assign the original repository to a remote called "upstream".
 
-  ```sh
+  ```
   git remote add upstream git@github.com:quran/quran.com-frontend-v2.git
   ```
 
 6. Install the frontend packages with yarn:
 
-  ```sh
+  ```
   yarn
   ```
 
 7. Install the Ruby bundles with the following series of commands:
 
-  ```sh
+  ```
   rvm gemset create quran
+  ```
+  ```
   rvm gemset use quran
+  ```
+  ```
   gem install bundler
+  ```
+  ```
   bundle install
   ```
   
@@ -149,19 +155,19 @@ The setup instructions assume that you're using [Git Bash](https://git-scm.com/)
 
 10. Inside the `quran.com-frontend-v2` directory, run:
 
-  ```sh
+  ```
   bundle exec rails db:create
   ```
 
 11. Load the dump in the PostgreSQL database. This process may vary for different operating systems. For Linux, use:
 
-  ```sh
+  ```
   psql -cxq --quiet -d quran_dev -f dump.sql
   ```
 
 12. To start the local server with Rails, run:
 
-  ```sh
+  ```
   rails s
   ```
 
@@ -177,16 +183,22 @@ If you're new to Git, see the [Git references](https://git-scm.com/docs) and the
 
 - Pull the latest changes from "upstream" and push these changes to your forked "origin". You'll need to repeat this step each time you plan to contribute.
 
-  ```sh
+  ```
   git checkout master
+  ```
+  ```
   git fetch upstream
+  ```
+  ```
   git rebase upstream/master
+  ```
+  ```
   git push -f origin master
   ```
 
 - Make a branch for your feature or fix. It's a good practice to make a separate branch for each feature or fix.
 
-  ```sh
+  ```
   git checkout -b branchName
   ```
 
@@ -194,15 +206,19 @@ If you're new to Git, see the [Git references](https://git-scm.com/docs) and the
 
 - Run the following commands before you switch from your current branch to a new branch, to prevent leaking the changes on your current branch to another branch. The `git status` commands shows you the modified files, and `git add .` adds all the changed files to the staging area. The`git commit` command moves the files from the staging area and makes a commit in the branch. Only the committed changes can be pushed.
 
-  ```sh
+  ```
   git status
+  ```
+  ```
   git add .
+  ```
+  ```
   git commit -m "this is a commit"
   ```
 
 - When you're done making changes, push your branch to the "origin". The `-u` flag links this branch with the remote branch, so that in the future you can simply type `git push origin`.
 
-  ```sh
+  ```
   git push -u origin branchName
   ```
 
