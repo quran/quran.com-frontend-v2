@@ -92,7 +92,7 @@ You'll need:
 - [Git](https://git-scm.com/downloads) for source code version control. If you want, you may use another Version Control Software, such as SVN.
 - [Node.js](https://nodejs.org/en/), a JavaScript runtime environment that executes JavaScript code outside of a browser
 - [Yarn](https://yarnpkg.com/en/) stands for "Yet Another Resource Negotiator", it's an Apache Hadoop technology
-- Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `2.7.1`
+- Follow [this guide](https://gorails.com/setup) to install [Ruby, Rails & and PostgreSQL](https://gorails.com/setup) together. Select Ruby version `3.0.0`
 - [pgAdmin](https://www.pgadmin.org/) is a GUI for PostgreSQL
 - You're strongly encouraged to install Ruby with _Ruby Version Manager_ (RVM). [RVM](https://rvm.io/) is a command-line tool that lets you easily install and manage multiple Ruby environments.
 
