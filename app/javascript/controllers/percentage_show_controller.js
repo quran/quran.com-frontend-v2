@@ -24,10 +24,6 @@ export default class extends Controller {
       e.preventDefault();
       this.dismiss();
     });
-
-    this.el.find(".cta").on("click", e => {
-      this.hide();
-    });
   }
 
   show() {

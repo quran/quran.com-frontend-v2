@@ -1,5 +1,7 @@
+<% beta_url = url_for(host: 'https://beta.quran.com') %>
+
 <section class="d-none border-bottom"
-         data-controller="percentage-show" data-percentage=10
+         data-controller="percentage-show" data-percentage=100
          data-id="new-site"
 >
   <div id=notification-alert>
@@ -18,7 +20,7 @@
         <div>
           <a class="btn btn-primary mr-2 cta"
              data-controller="track" data-name="Clicked" data-action="Clicked" data-category="next.quran.com"
-             href="https://beta.quran.com"
+             href="<%= beta_url %>"
              data-category="apply">
             Visit website
           </a>
@@ -55,7 +57,7 @@
             </a>
             <a class="btn btn-primary mr-1 cta"
                data-controller="track" data-name="Clicked" data-action="Clicked" data-category="next.quran.com"
-               href="https://beta.quran.com"
+               href="<%= beta_url %>"
             >
               Visit website
             </a>
