@@ -7,14 +7,27 @@
 // </div>
 
 import {Controller} from "stimulus";
+import LocalStore from "../utility/local-store";
 
 export default class extends Controller {
   connect() {
+    this.el = $(this.element);
+    this.store = new LocalStore();
+
     if (this.shouldShow()) {
-     this.show()
-    } else{
+      this.show()
+    } else {
       this.hide()
     }
+
+    this.el.find(".close").on("click", e => {
+      e.preventDefault();
+      this.dismiss();
+    });
+
+    this.el.find(".cta").on("click", e => {
+      this.hide();
+    });
   }
 
   show() {
@@ -22,8 +35,17 @@ export default class extends Controller {
     GoogleAnalytic.trackEvent('Shown', 'next.quran.com', 'shown', 1);
   }
 
+  get dismissedAt() {
+    return this.store.get(`ann-${this.el.data("id")}`);
+  }
+
   hide() {
     this.element.classList.add('d-none')
+  }
+
+  dismiss(){
+    this.store.set(`ann-${this.el.data("id")}`, new Date().getTime());
+    this.hide();
   }
 
   shuffle() {
@@ -34,7 +56,7 @@ export default class extends Controller {
     return draw <= percentage;
   }
 
-  shouldShow(){
-    return window.locale == 'en' && this.shuffle()
+  shouldShow() {
+    return this.shuffle() && !this.dismissedAt;
   }
 }
