@@ -134,9 +134,7 @@ ur:
     pause_seconds: سیکنڈ
     pause: وقفہ لیں
     play_continuously: توقف کیے بغیر چلاتے رہیں
-    show_word_tooltip: 'آیت چلاتے ہوئے لفظ کا ترجمہ دکھائیں
-
-      '
+    show_word_tooltip: 'آیت چلاتے ہوئے لفظ کا ترجمہ/تلفظ دکھائیں'
     repeatCurrent: موجودہ آیت کو چلاتے رہیں
     loading: آڈیو لوڈ ہو رہا ہے
   loading: لوڈ کر رہا ہے ...
