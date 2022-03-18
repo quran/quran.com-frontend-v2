@@ -151,14 +151,14 @@
     <div class="nav-tabs">
       <div class="tabs" data-controller="tabs">
         <a class="tabs__item translation-tab <%= 'tabs__item--selected' if 'translation' == @presenter.active_tab %>"
-           href="<%= url_for(reading: false) %>"
+           href="<%= url_for(reading: false, xhr: true) %>"
            data-target="#translation-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.translation') %>
         </a>
 
         <a class="tabs__item reading-tab <%= 'tabs__item--selected' if 'reading' == @presenter.active_tab %>"
-           href="<%= url_for(reading: true) %>"
+           href="<%= url_for(reading: true, xhr: true) %>"
            data-target="#reading-section"
            data-tab="chapter-tabs">
           <%= _t('reader_mode.reading') %>

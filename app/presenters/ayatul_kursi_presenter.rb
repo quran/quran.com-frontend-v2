@@ -19,7 +19,7 @@ class AyatulKursiPresenter < ChapterPresenter
   end
 
   def translation_view_path
-    "/ayatul-kursi?reading=false"
+    "/ayatul-kursi?reading=false&xhr=true"
   end
 
   def next_page
@@ -27,7 +27,7 @@ class AyatulKursiPresenter < ChapterPresenter
   end
 
   def reading_view_path
-    "/ayatul-kursi?reading=true"
+    "/ayatul-kursi?reading=true&xhr=true"
   end
 
   def continue?
@@ -35,7 +35,7 @@ class AyatulKursiPresenter < ChapterPresenter
   end
 
   def continue_path
-    '/2/255-286'
+    '/2/255-286&xhr=true'
   end
 
   def single_ayah?

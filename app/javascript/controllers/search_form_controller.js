@@ -45,7 +45,7 @@ export default class extends Controller {
     if (text && text.length > 0) {
       this.showSuggestions();
 
-      fetch(`/search/suggestion?query=${text}`)
+      fetch(`/search/suggestion?query=${text}&xhr=true`)
         .then(response => response.text())
         .then(suggestions => {
           this.suggestions.html(suggestions);

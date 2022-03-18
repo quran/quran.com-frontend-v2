@@ -1,4 +1,5 @@
 class AdvanceCopyController < ApplicationController
+  after_action :cache_on_edge
   before_action :init_presenter
   caches_action :copy_options,
                 :copy_text,

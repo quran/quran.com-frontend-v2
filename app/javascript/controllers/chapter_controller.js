@@ -43,7 +43,8 @@ export default class extends QuranController {
         start: verseKey,
         reading,
         font,
-        translations
+        translations,
+        xhr: true
       })}`,
       {headers: {"X-Requested-With": "XMLHttpRequest"}}
     )

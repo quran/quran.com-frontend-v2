@@ -30,3 +30,4 @@ TranslationIO.configure do |config|
 end
 
 I18n::Backend::Simple.include I18n::Backend::Fallbacks
+I18n.default_locale = 'en'

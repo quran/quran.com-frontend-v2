@@ -2,13 +2,13 @@
      id="<%= @presenter.reading_mode? ? 'verses-reading' : 'verses-translation' %>_pagination">
 
   <% if page = @presenter.previous_muhsaf_page %>
-    <%= link_to url_for(page_number: page, reading: @presenter.reading_mode?, font: @presenter.font_type), class: 'btn btn--lightgrey btn--large btn--icon' do %>
+    <%= link_to url_for(page_number: page, reading: @presenter.reading_mode?, font: @presenter.font_type, xhr: true), class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('pages.previous', default: 'Previous Page') %>
     <% end %>
   <% end %>
 
   <% if page = @presenter.next_muhsaf_page %>
-    <%= link_to url_for(page_number: page, reading: @presenter.reading_mode?, font: @presenter.font_type), class: 'btn btn--lightgrey btn--large btn--icon' do %>
+    <%= link_to url_for(page_number: page, reading: @presenter.reading_mode?, font: @presenter.font_type, xhr: true), class: 'btn btn--lightgrey btn--large btn--icon' do %>
       <%= _t('pages.next', default: 'Next Page') %>
     <% end %>
   <% end %>

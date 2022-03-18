@@ -118,6 +118,7 @@ export default class extends Controller {
       arabic: this.addArabic(),
       footnote: this.addFootnote(),
       translations: this.selectedTranslations().join(","),
+      xhr: true,
       from,
       to
     }

@@ -2,6 +2,8 @@
 
 class AudioFilesController < ApplicationController
   before_action :init_presenter
+  after_action :cache_on_edge
+
   caches_action :index,
                 cache_path: :generate_localised_cache_key
 

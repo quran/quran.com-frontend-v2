@@ -2,6 +2,7 @@
 
 class SettingsController < ApplicationController
   layout false
+  after_action :cache_on_edge
   before_action :init_presenter
   caches_action :show,
                 :translations,

@@ -642,7 +642,8 @@ export default class extends AudioController {
     // get page
     let audioRequestQuery = {
       recitation: this.config.recitation,
-      verse
+      verse,
+      xhr: true
     };
 
     let callback = data => {

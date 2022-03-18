@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ChaptersController < ApplicationController
+  before_action :redirect_non_xhr_requests
   before_action :check_routes, only: :show
   before_action :init_presenter
+  after_action :cache_on_edge, except: [:index]
 
   caches_action :index,
                 :show,
@@ -28,6 +30,11 @@ class ChaptersController < ApplicationController
   end
 
   def load_verses
+    unless request.xhr?
+      query_strings = params.except(:controller, :xhr, :action).permit!.to_h
+      return redirect_to chapter_path(query_strings)
+    end
+
     verse = Verse.find_by(verse_key: params[:start])
     params[:from] = verse.verse_number
     params[:to] = verse.chapter.verses_count

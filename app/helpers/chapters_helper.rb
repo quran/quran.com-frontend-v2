@@ -30,7 +30,8 @@ module ChaptersHelper
         @presenter.ayah_range,
         start: next_ayah_key,
         reading: @presenter.reading_mode?,
-        font: @presenter.font_type
+        font: @presenter.font_type,
+        xhr: true
       )
 
       link_to 'load more',
@@ -45,10 +46,13 @@ module ChaptersHelper
     if @presenter.next_page && @presenter.last_verse
       next_ayah_key = QuranUtils::Quran.get_ayah_key_from_id(@presenter.last_verse.id + 1)
 
-      next_link = quran_juz_path(@presenter.current_juz,
-                                 start: next_ayah_key,
-                                 reading: @presenter.reading_mode?,
-                                 font: @presenter.font_type)
+      next_link = quran_juz_path(
+        @presenter.current_juz,
+        start: next_ayah_key,
+        reading: @presenter.reading_mode?,
+        font: @presenter.font_type,
+        xhr: true
+      )
 
       link_to 'load more',
               next_link,

@@ -388,7 +388,8 @@ export default class extends Controller {
     let params = {
       translations: setting.selectedTranslations.join(","),
       start: this.currentVerse.key,
-      font: font
+      font: font,
+      xhr: true
     };
 
     const readingUrl = `${this.readingTab.href}&${$.param(params)}`;
@@ -438,7 +439,8 @@ export default class extends Controller {
 
     let params = {
       translations: translationsToLoad,
-      start: this.currentVerse.key
+      start: this.currentVerse.key,
+      xhr: true
     };
 
     const path = `${this.translationTab.href}&${$.param(params)}`;

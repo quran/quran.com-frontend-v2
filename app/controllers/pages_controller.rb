@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  after_action :cache_on_edge
+  before_action :redirect_non_xhr_requests
+
   before_action :set_presenter
   caches_page :about_us,
               :apps,
@@ -21,7 +24,6 @@ class PagesController < ApplicationController
   def developers; end
 
   def api
-
   end
 
   protected

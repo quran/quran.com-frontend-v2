@@ -18,12 +18,11 @@ global.GoogleAnalytic = GoogleAnalytic;
 
 require("service-worker-companion");
 
-//require("./selection.js");
-
 import "controllers";
 
 document.addEventListener("turbolinks:request-start", function(event) {
   var xhr = event.data.xhr;
+
   xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 });
 
@@ -45,7 +44,3 @@ $('.label-nav .icon-x').click(function() {
 */
 
 require("../stylesheets/application.scss");
-
-// fonts are moved to rails assets pipeline
-//require.context("../fonts/quran_fonts", true);
-//require.context("../images", true);

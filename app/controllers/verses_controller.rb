@@ -9,14 +9,20 @@ class VersesController < ApplicationController
                 cache_path: :generate_localised_cache_key
 
   def share
+    expires_in 7.days
+
     render layout: false
   end
 
   def select_tafsirs
+    expires_in 7.days
+
     render layout: false
   end
 
-  def tafsir; end
+  def tafsir
+    expires_in 7.days
+  end
 
   protected
 

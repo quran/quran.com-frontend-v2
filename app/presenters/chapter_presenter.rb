@@ -30,11 +30,11 @@ class ChapterPresenter < HomePresenter
   end
 
   def translation_view_path
-    context.ayah_range_path(chapter, range: ayah_range, reading: false)
+    context.ayah_range_path(chapter, range: ayah_range, reading: false, xhr: true)
   end
 
   def reading_view_path
-    context.ayah_range_path(chapter, range: ayah_range, reading: true)
+    context.ayah_range_path(chapter, range: ayah_range, reading: true, xhr: true)
   end
 
   def continue?
@@ -42,7 +42,7 @@ class ChapterPresenter < HomePresenter
   end
 
   def continue_path
-    context.ayah_range_path(chapter, range: "#{ayah_range_from}-#{total_verses}")
+    context.ayah_range_path(chapter, range: "#{ayah_range_from}-#{total_verses}", xhr: true)
   end
 
   def chapter

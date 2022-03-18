@@ -3,6 +3,8 @@
 class SearchController < ApplicationController
   include LanguageBoost
   QUERY_SANITIZER = Rails::Html::WhiteListSanitizer.new
+  after_action :cache_on_edge
+  before_action :redirect_non_xhr_requests
 
   def search
     if do_search

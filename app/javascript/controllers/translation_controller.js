@@ -30,7 +30,7 @@ export default class extends Controller {
           return existing.toggleClass("d-none");
         }
 
-        fetch(`/foot_note/${id}?resource_content_id=${this.element.dataset.resourceContentId}`, {
+        fetch(`/foot_note/${id}?resource_content_id=${this.element.dataset.resourceContentId}&xhr=true`, {
           headers: { "X-Requested-With": "XMLHttpRequest" }
         })
           .then(resp => resp.text())
