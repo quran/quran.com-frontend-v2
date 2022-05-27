@@ -194,7 +194,7 @@ GEM
       ngrok-tunnel (~> 2.1, >= 2.1.1)
       puma (>= 3, < 6)
     racc (1.5.2)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-proxy (0.6.5)
