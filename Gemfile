@@ -57,7 +57,7 @@ gem 'pagy', '= 3.7.3'
 
 # Cache
 gem 'connection_pool'
-gem 'dalli'
+gem 'dalli', '>= 3.2.3'
 gem 'memcachier'
 
 gem 'sitemap_generator'
