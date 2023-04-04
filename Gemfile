@@ -6,10 +6,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.3.2'
+gem 'rails', '~> 6.1.7.3'
 
 # Use Puma as the app server
-gem 'puma', '~> 4.3.11'
+gem 'puma', '~> 4.3.12'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'sass-rails', '~> 6.0.0'
@@ -21,7 +21,7 @@ gem 'turbolinks', '~> 5.2.1'
 gem 'fast_blank'
 gem 'pg'
 
-gem 'jbuilder', '>= 2.10.1'
+gem 'jbuilder', '>= 2.11.2'
 gem 'oj'
 
 # i18n
@@ -57,7 +57,7 @@ gem 'pagy', '= 3.7.3'
 
 # Cache
 gem 'connection_pool'
-gem 'dalli'
+gem 'dalli', '>= 3.2.3'
 gem 'memcachier'
 
 gem 'sitemap_generator'
