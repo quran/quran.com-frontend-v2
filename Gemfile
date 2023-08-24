@@ -6,14 +6,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.3.2'
+gem 'rails', '~> 6.1.7.5'
 
 # Use Puma as the app server
 gem 'puma', '~> 4.3.11'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'sass-rails', '~> 6.0.0'
-gem 'webpacker', '>= 5.2.1'
+gem 'webpacker', '>= 5.2.2'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.2.1'
@@ -21,7 +21,7 @@ gem 'turbolinks', '~> 5.2.1'
 gem 'fast_blank'
 gem 'pg'
 
-gem 'jbuilder', '>= 2.10.1'
+gem 'jbuilder', '>= 2.11.3'
 gem 'oj'
 
 # i18n
@@ -32,7 +32,7 @@ gem 'parallel', require: false
 gem 'ruby-progressbar', require: false
 
 # seo
-gem 'meta-tags', '>= 2.14.0'
+gem 'meta-tags', '>= 2.15.0'
 
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
@@ -43,7 +43,7 @@ gem 'cld3', '>= 3.4.1'
 
 # Elasticsearch
 # using excon as faraday adapter (net::http breaks)
-gem 'elasticsearch-model', '>= 7.1.1'
+gem 'elasticsearch-model', '>= 7.2.0'
 gem 'excon'
 gem 'typhoeus', github: 'naveed-ahmad/typhoeus'
 
@@ -71,9 +71,9 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'web-console', '>= 4.1.0'
+  gem 'web-console', '>= 4.2.0'
 
-  gem 'annotate', '>= 3.1.1'
+  gem 'annotate', '>= 3.2.0'
   gem 'puma-ngrok-tunnel', '>= 1.2.0'
   # gem 'rails_real_favicon', '>= 0.1.0'
   gem 'listen'
