@@ -13,7 +13,7 @@ gem 'puma', '~> 4.3.11'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'sass-rails', '~> 6.0.0'
-gem 'webpacker', '>= 5.2.1'
+gem 'webpacker', '>= 5.2.2'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.2.1'
@@ -71,7 +71,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'web-console', '>= 4.1.0'
+  gem 'web-console', '>= 4.2.0'
 
   gem 'annotate', '>= 3.1.1'
   gem 'puma-ngrok-tunnel', '>= 1.2.0'

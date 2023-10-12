@@ -7,17 +7,17 @@ GIT
 
 GIT
   remote: https://github.com/rails/actionpack-action_caching.git
-  revision: 7bdfa663274a2620dde8daad7dcb995c1cfef840
+  revision: 05c821ec84eb79760e95b0a57ae72919eefb0257
   specs:
-    actionpack-action_caching (1.2.1)
+    actionpack-action_caching (1.2.2)
       actionpack (>= 4.0.0)
 
 GIT
   remote: https://github.com/rails/actionpack-page_caching.git
-  revision: 0369da809329e18b7ce83797792895ba4bebcf1e
+  revision: d929689748f09c5d7c73cefbd9326701dcf52a30
   specs:
-    actionpack-page_caching (1.2.3)
-      actionpack (>= 5.0.0)
+    actionpack-page_caching (1.2.4)
+      actionpack (>= 4.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -108,7 +108,7 @@ GEM
     cld3 (3.4.2)
       ffi (>= 1.1.0, < 1.16.0)
     coderay (1.1.3)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.2.2)
     connection_pool (2.2.5)
     crass (1.0.6)
     dalli (2.7.11)
@@ -125,7 +125,7 @@ GEM
     elasticsearch-transport (7.12.0)
       faraday (~> 1)
       multi_json
-    erubi (1.10.0)
+    erubi (1.12.0)
     ethon (0.13.0)
       ffi (>= 1.15.0)
     excon (0.80.1)
@@ -147,7 +147,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
-    i18n (1.8.10)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     jbuilder (2.11.2)
@@ -156,9 +156,9 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     locale (2.1.3)
-    loofah (2.10.0)
+    loofah (2.21.4)
       crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
+      nokogiri (>= 1.12.0)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
@@ -167,14 +167,14 @@ GEM
       actionpack (>= 3.2.0, < 6.2)
     method_source (1.0.0)
     mini_mime (1.0.3)
-    mini_portile2 (2.5.3)
-    minitest (5.14.4)
+    mini_portile2 (2.8.4)
+    minitest (5.20.0)
     multi_json (1.15.0)
     multipart-post (2.1.1)
     ngrok-tunnel (2.1.1)
     nio4r (2.5.8)
-    nokogiri (1.11.7)
-      mini_portile2 (~> 2.5.0)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     oj (3.11.5)
     pagy (3.7.3)
@@ -193,14 +193,14 @@ GEM
     puma-ngrok-tunnel (1.2.0)
       ngrok-tunnel (~> 2.1, >= 2.1.1)
       puma (>= 3, < 6)
-    racc (1.5.2)
-    rack (2.2.3)
+    racc (1.7.1)
+    rack (2.2.8)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-proxy (0.6.5)
+    rack-proxy (0.7.7)
       rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
+    rack-test (2.1.0)
+      rack (>= 1.3)
     rails (6.1.3.2)
       actioncable (= 6.1.3.2)
       actionmailbox (= 6.1.3.2)
@@ -216,11 +216,13 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.3.2)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.0.3)
-      activesupport (>= 4.2.0)
+    rails-dom-testing (2.2.0)
+      activesupport (>= 5.0.0)
+      minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.3.0)
-      loofah (~> 2.3)
+    rails-html-sanitizer (1.6.0)
+      loofah (~> 2.21)
+      nokogiri (~> 1.14)
     railties (6.1.3.2)
       actionpack (= 6.1.3.2)
       activesupport (= 6.1.3.2)
@@ -290,22 +292,22 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     text (1.3.1)
-    thor (1.1.0)
+    thor (1.2.2)
     tilt (2.0.10)
     translation (1.23)
       gettext (~> 3.2, >= 3.2.5)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
-    web-console (4.1.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.2.1)
+    webpacker (5.4.4)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -316,7 +318,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   ruby
@@ -362,12 +364,12 @@ DEPENDENCIES
   turbolinks (~> 5.2.1)
   typhoeus!
   tzinfo-data
-  web-console (>= 4.1.0)
-  webpacker (>= 5.2.1)
+  web-console (>= 4.2.0)
+  webpacker (>= 5.2.2)
   webrick
 
 RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.24
+   2.2.3
