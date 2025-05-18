@@ -35,7 +35,7 @@ gem 'ruby-progressbar', require: false
 gem 'meta-tags', '>= 2.14.0'
 
 # For managing cros
-gem 'rack-cors', require: 'rack/cors'
+gem 'rack-cors', '>= 3.0.0', require: 'rack/cors'
 gem 'sentry-raven'
 
 # Detect language from text
