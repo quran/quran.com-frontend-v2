@@ -6,14 +6,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.3.2'
+gem 'rails', '~> 6.1.4.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 4.3.11'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'sass-rails', '~> 6.0.0'
-gem 'webpacker', '>= 5.2.1'
+gem 'webpacker', '>= 5.2.2'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.2.1'
@@ -32,7 +32,7 @@ gem 'parallel', require: false
 gem 'ruby-progressbar', require: false
 
 # seo
-gem 'meta-tags', '>= 2.14.0'
+gem 'meta-tags', '>= 2.15.0'
 
 # For managing cros
 gem 'rack-cors', require: 'rack/cors'
@@ -71,7 +71,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'web-console', '>= 4.1.0'
+  gem 'web-console', '>= 4.2.0'
 
   gem 'annotate', '>= 3.1.1'
   gem 'puma-ngrok-tunnel', '>= 1.2.0'
@@ -105,7 +105,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.35.3'
+  gem 'capybara', '>= 3.36.0'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper', '>= 2.1.1'
