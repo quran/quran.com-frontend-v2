@@ -77,10 +77,10 @@ group :development do
   gem 'puma-ngrok-tunnel', '>= 1.2.0'
   # gem 'rails_real_favicon', '>= 0.1.0'
   gem 'listen'
-  gem 'rubocop', '>= 1.8.1', require: false
-  gem 'rubocop-performance', '>= 1.7.1'
-  gem 'rubocop-rails', '~> 2.3.2'
-  gem 'rubocop-rspec', '>= 1.43.2'
+  gem 'rubocop', '>= 1.66.0', require: false
+  gem 'rubocop-performance', '>= 1.11.1'
+  gem 'rubocop-rails', '~> 2.4.0'
+  gem 'rubocop-rspec', '>= 2.3.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
